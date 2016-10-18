@@ -89,7 +89,7 @@ public class TTConfiguration {
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
-        messageSource.setBasename("/woodmsg");
+        messageSource.setBasename("/ttmsg");
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
