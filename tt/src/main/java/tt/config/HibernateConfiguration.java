@@ -17,6 +17,8 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import tt.model.User;
+
 
 
 @Configuration
@@ -54,7 +56,7 @@ public class HibernateConfiguration {
         LocalSessionFactoryBuilder sessionBuilder = new LocalSessionFactoryBuilder(dataSource);
         sessionBuilder.addProperties(hibernateProperties());
 
-       // sessionBuilder.addAnnotatedClasses(DirBrand.class);
+        sessionBuilder.addAnnotatedClasses(User.class);
         //sessionBuilder.addAnnotatedClasses(DirCustomer.class);
         //sessionBuilder.addAnnotatedClasses(DirColor.class);
         //sessionBuilder.addAnnotatedClasses(Request.class);
