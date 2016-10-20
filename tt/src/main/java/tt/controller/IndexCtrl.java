@@ -22,7 +22,16 @@ public class IndexCtrl {
 	@RequestMapping(value = {"/index","/"} , method = RequestMethod.GET)
 	public ModelAndView  index(HttpSession session, @RequestParam(value = "pg",   required=false) Long id_partgroup) 
 	{
-		ModelAndView model = new ModelAndView("index_all");
+		ModelAndView model = new ModelAndView("index");
+		System.out.println(""+ttService.getUserList());
+		
+		return model;
+	}
+	
+	@RequestMapping(value = {"/messageUrl"} , method = RequestMethod.GET)
+	public ModelAndView  messageUrl(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView("index");
 		System.out.println(""+ttService.getUserList());
 		
 		return model;
