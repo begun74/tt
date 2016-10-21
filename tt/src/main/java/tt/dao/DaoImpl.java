@@ -24,7 +24,12 @@ public class DaoImpl implements Dao {
 	@SuppressWarnings("unchecked")
 	public List<User> getUserList() {
 		// TODO Auto-generated method stub
-		return getSession().createSQLQuery("select * from tt.user order by name").addEntity(User.class).list();
+		return getSession().createSQLQuery("select * from tt_user order by name").addEntity(User.class).list();
+	}
+
+	public void addUser(User user) {
+		// TODO Auto-generated method stub
+		getSession().saveOrUpdate(user);
 	}
 
 }

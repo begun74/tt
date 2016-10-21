@@ -7,12 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Table(name = "tt.user")
+@Table(name = "tt_user")
 public class User implements Serializable{
 
 	/**
@@ -22,7 +23,12 @@ public class User implements Serializable{
 
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="seq_global")
+	@SequenceGenerator(
+			name="seq_global",
+			sequenceName="seq_global",
+			allocationSize=1
+		)
 	@Column(name="id_user")
 	private long id;
 	
@@ -31,6 +37,14 @@ public class User implements Serializable{
 	
 	@NotEmpty (message = "Please enter password.") 
 	private String password;
+	
+	public User()	{}
+	
+	public User(String name,String password)
+	{
+		this.name = name;
+		this.password = password;
+	}
 
 	public long getId() {
 		return id;
@@ -58,7 +72,7 @@ public class User implements Serializable{
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + "]";
+		return "User [id=" + id + ", name = " + name + "]";
 	}
 
 	

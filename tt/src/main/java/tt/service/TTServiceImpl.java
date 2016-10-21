@@ -24,4 +24,10 @@ public class TTServiceImpl implements Dao {
 		return dao.getUserList();
 	}
 
+
+	public void addUser(User user) {
+		// TODO Auto-generated method stub
+		dao.addUser(user);
+	}
+
 }

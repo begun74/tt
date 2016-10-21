@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import tt.model.User;
 import tt.service.TTServiceImpl;
 
 
@@ -23,12 +24,18 @@ public class IndexCtrl {
 	public ModelAndView  index(HttpSession session, @RequestParam(value = "pg",   required=false) Long id_partgroup) 
 	{
 		ModelAndView model = new ModelAndView("index");
+		User user = new User();
+		user.setName("name "+user.getId());
+		user.setPassword("pass "+user.getId());
+		
+		ttService.addUser(user);
+		
 		System.out.println(""+ttService.getUserList());
 		
 		return model;
 	}
 	
-	@RequestMapping(value = {"/messageUrl"} , method = RequestMethod.GET)
+	@RequestMapping(value = {"/showMessage"} , method = RequestMethod.GET)
 	public ModelAndView  messageUrl(HttpSession session) 
 	{
 		ModelAndView model = new ModelAndView("index");
