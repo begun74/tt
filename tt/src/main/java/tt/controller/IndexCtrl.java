@@ -44,4 +44,54 @@ public class IndexCtrl {
 		return model;
 	}
 
+	
+	@RequestMapping(value = {"/404.html"} , method = RequestMethod.GET)
+	public ModelAndView  not_found(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView("404");
+		
+		return model;
+	}
+
+
+	@RequestMapping(value = {"/contact-us.html"} , method = RequestMethod.GET)
+	public ModelAndView  contact_us(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView("contact-us");
+		
+		return model;
+	}
+
+	@RequestMapping(value = {"/product-details.html"} , method = RequestMethod.GET)
+	public ModelAndView  product_details(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView("product-details");
+		
+		return model;
+	}
+
+	@RequestMapping(value = {"/cart.html"} , method = RequestMethod.GET)
+	public ModelAndView  cart(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView("cart");
+		
+		return model;
+	}
+
+	@RequestMapping(value = {"/checkout.html"} , method = RequestMethod.GET)
+	public ModelAndView  checkout(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView("checkout");
+		
+		return model;
+	}
+
+	@RequestMapping(value = {"/login.html"} , method = RequestMethod.GET)
+	public ModelAndView  login(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView("login");
+		
+		return model;
+	}
+
 }
