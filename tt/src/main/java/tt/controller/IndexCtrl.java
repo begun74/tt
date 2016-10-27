@@ -28,9 +28,9 @@ public class IndexCtrl {
 		user.setName("name "+user.getId());
 		user.setPassword("pass "+user.getId());
 		
-		ttService.addUser(user);
+		//ttService.addUser(user);
 		
-		System.out.println(""+ttService.getUserList());
+		//System.out.println(""+ttService.getUserList());
 		
 		return model;
 	}
@@ -39,7 +39,7 @@ public class IndexCtrl {
 	public ModelAndView  messageUrl(HttpSession session) 
 	{
 		ModelAndView model = new ModelAndView("index");
-		System.out.println(""+ttService.getUserList());
+		//System.out.println(""+ttService.getUserList());
 		
 		return model;
 	}
@@ -94,4 +94,11 @@ public class IndexCtrl {
 		return model;
 	}
 
+	@RequestMapping(value = {"/shop.html"} , method = RequestMethod.GET)
+	public ModelAndView  shop(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView("shop");
+		
+		return model;
+	}
 }
