@@ -36,9 +36,11 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<!-- product_filter -->
-				<%@include file="common/product_filter.jsp" %>
-				<!-- product_filter -->
+				<div class="col-sm-3">
+					<!-- product_filter -->
+					<%@include file="common/product_filter.jsp" %>
+					<!-- product_filter -->
+				</div>
 
 				
 				<div class="col-sm-9 padding-right">

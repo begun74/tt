@@ -2,7 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<div class="col-sm-3">
+
 					<div class="left-sidebar">
 						<h2><spring:message code="category"/></h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
@@ -140,4 +140,3 @@
 						</div><!--/shipping-->
 					
 					</div>
-				</div>
