@@ -1173,7 +1173,7 @@ h2.title {
 
 .view-product img {
   border: 1px solid #F7F7F0;
-  height: 380px;
+  height: 450px;
   width: 100%;
 }
 
@@ -2529,7 +2529,7 @@ margin-right:3vw;
 }    
 
 .zoom {      
-/**-webkit-transition: all 0.35s ease-in-out;**/    
+-webkit-transition: all 0.35s ease-in-out;   
 -moz-transition: all 0.15s ease-out;    
 transition: all 0.35s ease-out;     
 cursor: -webkit-zoom-in;      
@@ -2542,12 +2542,12 @@ cursor: zoom-in;
 .zoom:focus {
 /**adjust scale to desired size, 
 add browser prefixes**/
--ms-transform: scale(2.5);    
--moz-transform: scale(2.5);  
--webkit-transform: scale(2.5);  
--o-transform: scale(2.5);/
-transform: scale(2.5);    
-position:relative;      
+-ms-transform: scale(2.5,2.5);    
+-moz-transform: scale(2.5,2.5);  
+-webkit-transform: scale(2.5,2.5);  
+-o-transform: scale(2.5,2.5);/
+transform: scale(2.5,2.5);    
+position: fixed;      
 z-index:100;  
 }
 
