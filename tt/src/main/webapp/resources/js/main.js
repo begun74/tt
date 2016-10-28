@@ -27,4 +27,14 @@ $(document).ready(function(){
 	        zIndex: 2147483647 // Z-Index for the overlay
 		});
 	});
+	
+	$(function () {
+		
+		$('.zoom')
+	    .on('mousemove', function(e){
+	      $(this).css({'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 40 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 40 +'%'});
+	    })
+	    
+	});
+	
 });

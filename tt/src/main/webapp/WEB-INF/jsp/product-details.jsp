@@ -173,9 +173,8 @@
 				<div class="col-sm-9 padding-right">
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
-							<div class="view-product">
-								<img src="resources/images/product-details/1.jpg" alt="" />
-								<h3>ZOOM</h3>
+							<div class="view-product zoom">
+								<img  src="resources/images/product-details/1.jpg" alt="" />
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								
@@ -258,7 +257,7 @@
 								<div class="col-sm-3">
 									<div class="product-image-wrapper">
 										<div class="single-products">
-											<div class="productinfo text-center">
+											<div class="productinfo text-center ">
 												<img src="resources/images/home/gallery2.jpg" alt="" />
 												<h2>$56</h2>
 												<p>Easy Polo Black Edition</p>
