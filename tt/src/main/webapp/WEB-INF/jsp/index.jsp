@@ -117,7 +117,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 										<div class="productinfo text-center">
-											<a href="product-details.html"><img src="resources/images/home/product4.jpg" alt="" /></a>
+											<a href="product-details.html"><img class="pic1" src="resources/images/home/pic1.jpg" alt="" /></a>
 											<h2>$56</h2>
 											<p>Easy Polo Black Edition</p>
 											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>

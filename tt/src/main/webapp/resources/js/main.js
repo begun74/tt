@@ -29,9 +29,16 @@ $(document).ready(function(){
 	});
 	
 	$(function () {
+		var zoom = false;
 		$('.zoom')
-	    .on('mousemove', function(e){
-	      $(this).css({'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 40 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 40 +'%'});
+	    .on('mouseclick', function(e){
+	    	zoom = true;
+	    })
+		.on('mousemove', function(e){
+			$(this).css({'transform-origin': ((e.pageX - $(this).offset().left) / $(this).width()) * 30 + '% ' + ((e.pageY - $(this).offset().top) / $(this).height()) * 30 +'%'});
+	    })
+	    .on('mouseout', function(e){
+	    	zoom = false;
 	    })
 	    
 	});

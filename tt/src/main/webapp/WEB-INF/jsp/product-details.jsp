@@ -41,7 +41,7 @@
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 							<div class="view-product zoom">
-								<img  src="resources/images/product-details/1.jpg" alt="" />
+								<img  src="resources/images/product-details/pic1.jpg" alt="" />
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								

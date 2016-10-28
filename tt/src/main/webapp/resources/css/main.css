@@ -2542,12 +2542,12 @@ cursor: zoom-in;
 .zoom:focus {
 /**adjust scale to desired size, 
 add browser prefixes**/
--ms-transform: scale(2.5,2.5);    
--moz-transform: scale(2.5,2.5);  
--webkit-transform: scale(2.5,2.5);  
--o-transform: scale(2.5,2.5);/
-transform: scale(2.5,2.5);    
-position: fixed;      
+-ms-transform: scale(3.5 );    
+-moz-transform: scale(3.5);  
+-webkit-transform: scale(3.5);  
+-o-transform: scale(3.5);
+transform: scale(3.5);    
+position: relative;      
 z-index:100;  
 }
 
@@ -2564,5 +2564,8 @@ give gallery's parent container a cursor: pointer.**/
 .DivName {cursor: pointer}
 }
 
-
+img.pic1 {
+	width: 170px;
+	height: 236px;
+}
 
