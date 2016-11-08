@@ -40,8 +40,8 @@
 				<div class="col-sm-9 padding-right">
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
-							<div class="view-product zoom">
-								<img  src="resources/images/product-details/pic1.jpg" alt="" />
+							<div class="view-product">
+								<img  id="zoom_01" src="resources/images/product-details/pic1.jpg" data-zoom-image="resources/images/product-details/pic1.jpg" alt="" />
 							</div>
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								
@@ -549,6 +549,27 @@
     <script src="resources/js/jquery.scrollUp.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
     <script src="resources/js/jquery.prettyPhoto.js"></script>
+    <script src='resources/js/jquery.elevatezoom.js'></script>
     <script src="resources/js/main.js"></script>
+    
+    <script>
+    $('#zoom_01').elevateZoom(
+      	{
+      		
+      		cursor: "crosshair",
+      		scrollZoom : true,
+      		zoomWindowPosition: 1,
+      		easing: true
+      		
+		 /*
+      		zoomType: "inner",
+			cursor: "crosshair",
+			zoomWindowFadeIn: 500,
+			zoomWindowFadeOut: 750
+			*/
+		}
+      ); 
+	</script>
+    
 </body>
 </html>

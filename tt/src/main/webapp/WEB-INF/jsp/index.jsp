@@ -36,7 +36,7 @@
 	<!-- header_top -->
 		
 	<section id="slider"><!--slider-->
-		<div class="container">
+		<div class="content">
 			<div class="row">
 				<div class="col-sm-12">
 					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
