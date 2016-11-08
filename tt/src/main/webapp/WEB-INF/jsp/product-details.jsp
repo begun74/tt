@@ -43,9 +43,19 @@
 							<div class="view-product">
 								<img  id="zoom_01" src="resources/images/product-details/pic1.jpg" data-zoom-image="resources/images/product-details/pic1.jpg" alt="" />
 							</div>
+
+									<div id="gal1">
+									    	<a href="" data-image="resources/images/product-details/pic1.jpg" data-zoom-image="resources/images/product-details/pic1.jpg">
+									        	<img id="img_01" width="30%" height="30%" src="resources/images/product-details/pic1.jpg"/>
+									    	</a>
+									    	<a href="" data-image="resources/images/product-details/p6.jpg" data-zoom-image="resources/images/product-details/p6.jpg">
+									        	<img id="img_01" width="30%" height="30%" src="resources/images/product-details/p6.jpg"/>
+									    	</a>
+									</div>
+
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								
-								  <!-- Wrapper for slides -->
+								  <!-- Wrapper for slides>
 								    <div class="carousel-inner">
 										<div class="item active">
 										  <a href=""><img src="resources/images/product-details/similar1.jpg" alt=""></a>
@@ -63,7 +73,8 @@
 										  <a href=""><img src="resources/images/product-details/similar3.jpg" alt=""></a>
 										</div>
 										
-									</div>
+									</div -->
+									
 
 								  <!-- Controls -->
 								  <a class="left item-control" href="#similar-product" data-slide="prev">
@@ -548,19 +559,20 @@
 	<script src="resources/js/price-range.js"></script>
     <script src="resources/js/jquery.scrollUp.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
-    <script src="resources/js/jquery.prettyPhoto.js"></script>
-    <script src='resources/js/jquery.elevatezoom.js'></script>
+    <!-- script src="resources/js/jquery.prettyPhoto.js"></script -->
+    <script src="resources/js/jquery.elevatezoom.js"></script>
     <script src="resources/js/main.js"></script>
     
     <script>
     $('#zoom_01').elevateZoom(
       	{
-      		
       		cursor: "crosshair",
       		scrollZoom : true,
       		zoomWindowPosition: 1,
-      		easing: true
-      		
+      		easing: true,
+      		zoomWindowFadeIn: 500,
+			zoomWindowFadeOut: 750
+      		/**/
 		 /*
       		zoomType: "inner",
 			cursor: "crosshair",
@@ -569,6 +581,8 @@
 			*/
 		}
       ); 
+    
+  
 	</script>
     
 </body>
