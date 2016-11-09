@@ -23,9 +23,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="resources/images/ico/apple-touch-icon-57-precomposed.png">
     
-    <!-- Add fancyBox >
-	<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
-	<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script -->
     
 </head><!--/head-->
 
@@ -50,17 +47,30 @@
 								<img  id="img_01" src="resources/images/product-details/ps_1.jpg" data-zoom-image="resources/images/product-details/p1.jpg" alt="" />
 							</div>
 
-							<div id="gal1">
-								<a href="#" data-image="resources/images/product-details/ps_1.jpg" data-zoom-image="resources/images/product-details/p1.jpg">
-									   <img id="img_01" width="30%" height="30%" src="resources/images/product-details/ps_1.jpg"/>
-								</a>
-								<a href="#" data-image="resources/images/product-details/ps_2.jpg" data-zoom-image="resources/images/product-details/p2.jpg">
-									   <img id="img_01" width="30%" height="30%" src="resources/images/product-details/p2.jpg"/>
-								</a>
-							</div>
+							
 
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
+							    
 								
+								<div id="gal1">
+									<div class="carousel-inner">							
+										<div class="item active">
+											<a href="#" data-image="resources/images/product-details/ps_1.jpg" data-zoom-image="resources/images/product-details/p1.jpg">
+										   		<img id="img_01" width="30%" height="30%" src="resources/images/product-details/ps_1.jpg"/>
+											</a>
+											<a href="#" data-image="resources/images/product-details/ps_2.jpg" data-zoom-image="resources/images/product-details/p2.jpg">
+										   		<img id="img_01" width="30%" height="30%" src="resources/images/product-details/p2.jpg"/>
+											</a>
+										</div>
+										<div class="item">
+											<a href="#" data-image="resources/images/product-details/ps_3.jpg" data-zoom-image="resources/images/product-details/p3.jpg">
+										   		<img id="img_01" width="30%" height="30%" src="resources/images/product-details/p3.jpg"/>
+											</a>
+										</div>
+										
+									</div>
+								
+								</div>
 								  <!-- Wrapper for slides>
 								    <div class="carousel-inner">
 										<div class="item active">
@@ -578,7 +588,9 @@
       		scrollZoom : true,
       		cursor: 'pointer', 
       		galleryActiveClass: 'active', 
-      		imageCrossfade: true, 
+      		imageCrossfade: true,
+      		zoomWindowWidth:500,
+            zoomWindowHeight:500
       		
       		
       		/*      	
