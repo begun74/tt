@@ -22,6 +22,11 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="resources/images/ico/apple-touch-icon-57-precomposed.png">
+    
+    <!-- Add fancyBox >
+	<link rel="stylesheet" href="/fancybox/source/jquery.fancybox.css?v=2.1.5" type="text/css" media="screen" />
+	<script type="text/javascript" src="/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script -->
+    
 </head><!--/head-->
 
 <body>
@@ -40,18 +45,19 @@
 				<div class="col-sm-9 padding-right">
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
-							<div class="view-product">
-								<img  id="zoom_01" src="resources/images/product-details/pic1.jpg" data-zoom-image="resources/images/product-details/pic1.jpg" alt="" />
+						<br/>
+							<div>
+								<img  id="img_01" src="resources/images/product-details/ps_1.jpg" data-zoom-image="resources/images/product-details/p1.jpg" alt="" />
 							</div>
 
-									<div id="gal1">
-									    	<a href="" data-image="resources/images/product-details/pic1.jpg" data-zoom-image="resources/images/product-details/pic1.jpg">
-									        	<img id="img_01" width="30%" height="30%" src="resources/images/product-details/pic1.jpg"/>
-									    	</a>
-									    	<a href="" data-image="resources/images/product-details/p6.jpg" data-zoom-image="resources/images/product-details/p6.jpg">
-									        	<img id="img_01" width="30%" height="30%" src="resources/images/product-details/p6.jpg"/>
-									    	</a>
-									</div>
+							<div id="gal1">
+								<a href="#" data-image="resources/images/product-details/ps_1.jpg" data-zoom-image="resources/images/product-details/p1.jpg">
+									   <img id="img_01" width="30%" height="30%" src="resources/images/product-details/ps_1.jpg"/>
+								</a>
+								<a href="#" data-image="resources/images/product-details/ps_2.jpg" data-zoom-image="resources/images/product-details/p2.jpg">
+									   <img id="img_01" width="30%" height="30%" src="resources/images/product-details/p2.jpg"/>
+								</a>
+							</div>
 
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 								
@@ -561,28 +567,41 @@
 	<script src="resources/js/bootstrap.min.js"></script>
     <!-- script src="resources/js/jquery.prettyPhoto.js"></script -->
     <script src="resources/js/jquery.elevatezoom.js"></script>
+    <!-- script src="resources/js/jquery.fancybox.pack.js"></script -->
     <script src="resources/js/main.js"></script>
     
     <script>
-    $('#zoom_01').elevateZoom(
-      	{
+    $('#img_01').elevateZoom({
+    	
+    
+      		gallery:'gal1', 
+      		scrollZoom : true,
+      		cursor: 'pointer', 
+      		galleryActiveClass: 'active', 
+      		imageCrossfade: true, 
+      		
+      		
+      		/*      	
       		cursor: "crosshair",
       		scrollZoom : true,
       		zoomWindowPosition: 1,
       		easing: true,
       		zoomWindowFadeIn: 500,
 			zoomWindowFadeOut: 750
-      		/**/
+      		*/
 		 /*
       		zoomType: "inner",
 			cursor: "crosshair",
 			zoomWindowFadeIn: 500,
 			zoomWindowFadeOut: 750
 			*/
-		}
-      ); 
+		}); 
     
-  
+    $("#img_01").bind("click", function(e) {  
+    	  	var ez =   $('#img_01').data('elevateZoom');
+    	  	$.fancybox(ez.getGalleryList());
+    	  return false;
+    	});
 	</script>
     
 </body>
