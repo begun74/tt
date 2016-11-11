@@ -77,7 +77,7 @@ public class AdminCtrl {
 	}
 
 	@RequestMapping(value = "delObject")
-	public String  delObject(HttpSession session,@RequestParam(value = "id",   defaultValue = "-1") long id ,@RequestParam(value = "act",   defaultValue = "-1") long act
+	public String  delObject(HttpSession session,@RequestParam(value = "id",   defaultValue = "-1") long id ,@RequestParam(value = "act",   defaultValue = "-1") int act
 			,@RequestParam(value = "clazz",  required=true, defaultValue = "") String clazz) 
 	{
 
@@ -90,6 +90,17 @@ public class AdminCtrl {
 		return "redirect:/admin?act="+act;
 	}
 	
+	
+	@RequestMapping(value = "addFile" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ModelAndView   processPhoto( @ModelAttribute  MultipartFile file, @RequestParam(value = "act",   defaultValue = "-1") int act,
+										@RequestParam(value = "row",   defaultValue = "1") int row , @RequestParam(value = "cols",   defaultValue = "1") String cols) 
+	{
+		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
+
+		//fileUpload.processPhoto(file);
+		System.out.println(row+"  "+cols);
+	    return model;
+	}
 	
 	//@Loggable
 	public void doAdmin() {

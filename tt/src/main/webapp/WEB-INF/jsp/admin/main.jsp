@@ -74,7 +74,7 @@
 				<!-- breadcrumbs -->
 		        <div class="breadcrumbs">
 		          <ul>
-		            <li class="home"><a href="index">Homepage</a></li>
+		            <li class="home"><a href="index">На главную</a></li>
 		          </ul>
 		        </div>
 		        <!-- /breadcrumbs -->

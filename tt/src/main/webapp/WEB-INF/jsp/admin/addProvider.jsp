@@ -127,6 +127,20 @@
 						    	</form:form>
 							</div>					    
 				    		<div class="col2">
+							</div>
+					    </div>
+            </div>
+
+            <div id="tabs-2">
+					<%@include file="load_file_form.jsp" %>
+            </div>
+            
+          </div><!-- /box-content -->  
+        </div>        
+        <!-- /box -->
+        
+        <!-- /box -->
+        <div class="box">
  				    			<table class="tab" border="0">
 				    				<tr align="center">
 					    				<th width="45%"><spring:message code="name2"/></th>
@@ -150,19 +164,6 @@
 											</c:forEach>
 										</table>
 									</div>
-							</div>
-					    </div>
-            </div>
-
-            <div id="tabs-2">
-            </div>
-            
-          </div><!-- /box-content -->  
-        </div>        
-        <!-- /box -->
-        
-        <!-- /box -->
-        <div class="box">
         </div>
         <!-- /box -->
     
@@ -181,7 +182,21 @@
 	
 
   <!-- /#main --> 
-  
+  <script>
+  		$(document).ready(function(){
+				
+		    $('#allCols').click(function(){
+		    	var allCols = 9;
+				
+				for (var item in allCols) {
+	                /*$('#col'+item).attr("checked","checked");*/
+	                alert('#col'+item);
+	            }
+			});
+	
+	    });
+	    
+    </script>
 </body>
 
 </html>
