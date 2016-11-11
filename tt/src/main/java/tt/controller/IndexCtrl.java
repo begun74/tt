@@ -3,6 +3,7 @@ package tt.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,6 +35,26 @@ public class IndexCtrl {
 		
 		return model;
 	}
+	
+	@RequestMapping(value = {"/login"} , method = RequestMethod.GET)
+	public ModelAndView  login(HttpSession session, @RequestParam(value = "error",required = false) String error,
+			@RequestParam(value = "logout",	required = false) String logout) 
+	{
+	    
+		ModelAndView model = new ModelAndView("login");
+		if (error != null) {
+			model.addObject("error", "Invalid username or password!");
+		}
+
+		if (logout != null) {
+			SecurityContextHolder.clearContext();
+			session.invalidate();
+			model.setViewName("login");
+		}
+		
+		return model;
+	}
+	
 	
 	@RequestMapping(value = {"/showMessage"} , method = RequestMethod.GET)
 	public ModelAndView  messageUrl(HttpSession session) 

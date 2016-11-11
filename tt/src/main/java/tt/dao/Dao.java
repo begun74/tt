@@ -2,6 +2,7 @@ package tt.dao;
 
 import java.util.List;
 
+import tt.model.DirProvider;
 import tt.model.User;
 
 public interface Dao {
@@ -9,4 +10,14 @@ public interface Dao {
 	public List<User> getUserList();
 	public void addUser(User user);
 
+
+	public List<DirProvider> getProviderList();
+	public void addProvider(DirProvider dirProvider);
+	public DirProvider getProvider(long id);
+	
+	
+	public Object getObject(Class clazz,long id);
+	public void delObject(Object obj);
+	
+	
 }

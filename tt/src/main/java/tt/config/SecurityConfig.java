@@ -35,12 +35,12 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
         .antMatchers("/admin/**").access("hasRole('ADMIN')")
         .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
         .and().formLogin()
-        	.loginPage("/loginPage")
+        	.loginPage("/login")
 			.defaultSuccessUrl("/admin")
-			.failureUrl("/loginPage?error")
+			.failureUrl("/login?error")
 			.usernameParameter("username").passwordParameter("password")				
 			.and()
-			.logout().logoutSuccessUrl("/loginPage?logout")
+			.logout().logoutSuccessUrl("/login?logout")
         .and()
         	.exceptionHandling().accessDeniedPage("/403");
   

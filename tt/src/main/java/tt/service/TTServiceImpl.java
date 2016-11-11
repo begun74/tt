@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tt.dao.Dao;
 import tt.dao.DaoImpl;
+import tt.model.DirProvider;
 import tt.model.User;
 
 
@@ -28,6 +29,41 @@ public class TTServiceImpl implements Dao {
 	public void addUser(User user) {
 		// TODO Auto-generated method stub
 		dao.addUser(user);
+	}
+
+
+	@Override
+	public List<DirProvider> getProviderList() {
+		// TODO Auto-generated method stub
+		return dao.getProviderList();
+	}
+
+
+	@Override
+	public void addProvider(DirProvider dirProvider) {
+		// TODO Auto-generated method stub
+		dao.addProvider(dirProvider);
+	}
+
+
+	@Override
+	public DirProvider getProvider(long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public Object getObject(Class clazz, long id) {
+		// TODO Auto-generated method stub
+		return dao.getObject(clazz, id);
+	}
+
+
+	@Override
+	public void delObject(Object obj) {
+		// TODO Auto-generated method stub
+		dao.delObject(obj);
 	}
 
 }
