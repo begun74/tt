@@ -12,6 +12,10 @@
     <meta name='robots' content='all, follow' />
     <meta name="description" content="" />
     <meta name="keywords" content="" />
+    
+    <meta name="_csrf" content="${_csrf.token}"/>
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
+    
     <title>Great admin</title>   
     <link href="resources/admin/css/default.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="resources/admin/css/blue.css" rel="stylesheet" type="text/css" media="screen" /> <!-- color skin: blue / red / green / dark -->
@@ -185,14 +189,7 @@
   <script>
   		$(document).ready(function(){
 				
-		    $('#allCols').click(function(){
-		    	var allCols = 9;
-				
-				for (var item in allCols) {
-	                /*$('#col'+item).attr("checked","checked");*/
-	                alert('#col'+item);
-	            }
-			});
+  			checkAllCols(${allCount});
 	
 	    });
 	    

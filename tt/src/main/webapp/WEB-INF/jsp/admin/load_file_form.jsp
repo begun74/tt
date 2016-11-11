@@ -5,6 +5,8 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 
+<c:set var="allCount" value="10"/>
+
 <div class="form-cols">
 	   		<div class="col1">            
 
@@ -24,7 +26,7 @@
 													</c:forEach>
 												</select -->
 													<label><input type="checkbox" name="cols" id="allCols" />Все&nbsp;&nbsp;&nbsp;</label>
-											        <c:forEach begin="1" end="10" var="colN">
+											        <c:forEach begin="1" end="${allCount}" var="colN">
 														<label><input type="checkbox" name="cols" id="col${colN}" value="${colN}"/>${colN}</label>		
 													</c:forEach>
 																		                   		  
@@ -35,7 +37,7 @@
 									        	<label>Начальная строка</label>
 									        </div>
 									        <div class="con">
-											        <c:forEach begin="1" end="10" var="rowN">
+											        <c:forEach begin="1" end="${allCount}" var="rowN">
 														<label><input type="radio" name="rowN" id="rowN" value="${rowN}"/>${rowN}</label>		
 													</c:forEach>
 									        </div>
