@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import tt.annotation.Loggable;
 import tt.model.DirProvider;
 import tt.service.TTServiceImpl;
+import tt.util.FileUpload;
 
 
 
@@ -25,6 +26,8 @@ import tt.service.TTServiceImpl;
 @RequestMapping(value = {"/admin"} , method = RequestMethod.GET)
 public class AdminCtrl {
 	
+	@Autowired
+	FileUpload fileUpload;
 	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
@@ -97,7 +100,7 @@ public class AdminCtrl {
 	{
 		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
 
-		//fileUpload.processPhoto(file);
+		fileUpload.process(file);
 		System.out.println(row+"  "+cols);
 	    return model;
 	}
