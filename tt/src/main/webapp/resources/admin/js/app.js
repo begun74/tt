@@ -9,11 +9,18 @@ function checkAllCols(amount){
 	
     $('#allCols').click(function(){
     	
-		
-		for (i = 0; i <= amount; i++) {
-            $('#col'+i).attr("checked","checked");
-           
-        }
+    	if($('#allCols').attr("checked"))
+    	{
+	    	for (i = 0; i <= amount; i++) {
+	            $('#col'+i).attr("checked","checked");
+	        }
+    	}
+    	else 
+    	{
+	    	for (i = 0; i <= amount; i++) {
+	            $('#col'+i).attr("checked","");
+	        }
+    	}
 	});
 
 }
