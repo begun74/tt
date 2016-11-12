@@ -48,7 +48,7 @@
 							         	<p><spring:message code="load"/> <input type="file" name="file"></p>
 							 </div>
 				
-					         <button type="submit" class=""><spring:message code="load"/></button>
+					         <button type="submit" class="" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};"><spring:message code="load"/></button>
 					         <input type="hidden" name ="act" id ="act" value="1"/>
 				</form:form>
 			</div>
