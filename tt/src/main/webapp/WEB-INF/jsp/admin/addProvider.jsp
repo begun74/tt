@@ -105,7 +105,7 @@
 							  	<form:form id="addProviderForm" class="formBox" role="form"
 							  			commandName="addProviderForm"
 							  			enctype="multipart/form-data" 
-							  			action="${pageContext.request.contextPath}/admin/addProvider?${_csrf.parameterName}=${_csrf.token}" 
+							  			action="${pageContext.request.contextPath}/admin/addProvider" 
 							  			method="POST"
 							  			modelAttribute="dirProvider">
 							  			
@@ -136,7 +136,11 @@
             </div>
 
             <div id="tabs-2">
+            
+					<c:set var="allCount" value="10"/>
+					<c:set var="act" value="1"/>
 					<%@include file="load_file_form.jsp" %>
+					
             </div>
             
           </div><!-- /box-content -->  

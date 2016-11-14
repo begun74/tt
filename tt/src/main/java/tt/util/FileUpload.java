@@ -16,9 +16,10 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import tt.model.DirProvider;
+import tt.model.IModel;
 
 
-@Component
+@Service
 @Transactional()
 public class FileUpload {
 	
@@ -45,34 +46,31 @@ public class FileUpload {
 	void destr() {
 		//System.out.println("BacketBean @PreDestroy ");
 	}    
-	public List<DirProvider>  process(MultipartFile file) {
+	public List<?>  process(IModel model , MultipartFile file, int row, int[] cols) {
 		if (!file.isEmpty()) {
 			String contentType = file.getContentType().toString().toLowerCase();
+			String extention ;
 			
-			if (isValidContentType_XLS(contentType)) {
-            	String newFile = null;
-            	//System.out.println("process - "+TEMP_FILE_PATH);
+			if ((extention = isValidContentType(ALLOWED_FILE_TYPES_XLS,contentType)) != null) {
+            	File tmpFile = new File(TEMP_FILE_PATH + File.separator+"tmp."+extention );
 
 				try {
-					file.transferTo(new File(TEMP_FILE_PATH + File.separator+"file.tmp"));
+					file.transferTo(tmpFile);
+					
+					if(model instanceof DirProvider)
+					return ReadExcelFile.processFile(tmpFile,(DirProvider) model, row , cols) ;
+					
+					//else if(model instanceof DirProvider)
+					//return ReadExcelFile.processFile((DirProvider) model) ;
+					
 				} catch (IllegalStateException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					return null;
 				}
-
-            	/*
-                if (belowMaxFileSize(file.getSize())) {
-                    new File(newFile).mkdirs();
-                    try {
-						file.transferTo(new File(newFile));
-						//return ReadExcelUtil.readParticleboard(new File(newFile));
-					} catch (Exception e) {
-						e.printStackTrace();
-						return null;
-					}
-                }
-                */
-            	
+				finally {
+					tmpFile.delete();
+				}
 			}
 		}
 		
@@ -81,29 +79,22 @@ public class FileUpload {
 	}
 
     
-    private boolean isValidContentType_PICS(String contentType) {
+    private Object ReadExcelFile(int i, int[] js) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private String isValidContentType(String[][] ALLOWED_FILE_TYPES,String contentType) {
     	//System.out.println("contentType - "+contentType);
-    	List<String[]> lExt= Arrays.asList(ALLOWED_FILE_TYPES_PICS);
+    	List<String[]> lExt= Arrays.asList(ALLOWED_FILE_TYPES);
     	
     	for(String[] ext: lExt) 
     		if(ext[0].equals(contentType))
-    			return true; 
+    			return ext[1]; 
         
-        return false;
+        return null;
     }
 
     
-    
-    private boolean isValidContentType_XLS(String contentType) {
-    	
-    	List<String[]> lExt= Arrays.asList(ALLOWED_FILE_TYPES_XLS);
-    	
-    	for(String[] ext: lExt) 
-    		if(ext[0].equals(contentType))
-    			return true; 
-        
-        return false;
-    }
-
 	
 }

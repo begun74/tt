@@ -14,7 +14,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "tt_user")
-public class User implements Serializable{
+public class User implements Serializable, IModel{
 
 	/**
 	 * 

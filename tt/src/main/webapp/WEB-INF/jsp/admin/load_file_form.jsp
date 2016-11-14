@@ -4,8 +4,11 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-
+<!--  Required accCount -->
 <c:set var="allCount" value="10"/>
+
+<!--  Required act -->
+<c:set var="act" value="1"/>
 
 <div class="form-cols">
 	   		<div class="col1">            
@@ -25,9 +28,9 @@
 														<option>${colN}</option>		
 													</c:forEach>
 												</select -->
-													<label><input type="checkbox" name="cols" id="allCols" />Все&nbsp;&nbsp;&nbsp;</label>
+													<label><input type="checkbox" id="allCols" />Все&nbsp;&nbsp;&nbsp;</label>
 											        <c:forEach begin="1" end="${allCount}" var="colN">
-														<label><input type="checkbox" name="cols" id="col${colN}" value="${colN}"/>${colN}</label>		
+														<label><input type="checkbox" name="cols" id="col${colN}" value="${colN-1}"/>${colN}</label>		
 													</c:forEach>
 																		                   		  
 									        </div>
@@ -38,7 +41,7 @@
 									        </div>
 									        <div class="con">
 											        <c:forEach begin="1" end="${allCount}" var="rowN">
-														<label><input type="radio" name="rowN" id="rowN" value="${rowN}"/>${rowN}</label>		
+														<label><input type="radio" name="row" id="row" value="${rowN}"/>${rowN}</label>		
 													</c:forEach>
 									        </div>
 							 </div>
@@ -48,8 +51,8 @@
 							         	<p><spring:message code="load"/> <input type="file" name="file"></p>
 							 </div>
 				
-					         <button type="submit" class="" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};"><spring:message code="load"/></button>
-					         <input type="hidden" name ="act" id ="act" value="1"/>
+					         <button type="submit" class="" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
+					         <input type="hidden" name ="act" id ="act" value="${act}"/>
 				</form:form>
 			</div>
 </div>

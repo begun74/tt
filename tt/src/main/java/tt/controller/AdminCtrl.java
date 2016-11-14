@@ -1,9 +1,13 @@
 package tt.controller;
 
+import java.util.Arrays;
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.MediaType;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -16,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import tt.annotation.Loggable;
+import tt.bean.SessionBean;
 import tt.model.DirProvider;
 import tt.service.TTServiceImpl;
 import tt.util.FileUpload;
@@ -28,6 +33,9 @@ public class AdminCtrl {
 	
 	@Autowired
 	FileUpload fileUpload;
+	
+	@Autowired
+	SessionBean sessionBean;
 	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
@@ -95,13 +103,40 @@ public class AdminCtrl {
 	
 	
 	@RequestMapping(value = "addFile" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ModelAndView   processPhoto( @ModelAttribute  MultipartFile file, @RequestParam(value = "act",   defaultValue = "-1") int act,
+	public ModelAndView   processFile( @ModelAttribute  MultipartFile file, @RequestParam(value = "act",   defaultValue = "-1", required=true) int act,
 										@RequestParam(value = "row",   defaultValue = "1") int row , @RequestParam(value = "cols",   defaultValue = "1") String cols) 
 	{
 		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
+		String[] str_cols = cols.split(",");
+		int[] new_cols = new int[str_cols.length];
+		//int[] array = Arrays.asList(str_cols).stream().mapToInt(Integer::parseInt).toArray();
+		
+		for(int i=0; i< str_cols.length ;++i) {
+			try {
+				new_cols[i] = Integer.parseInt(str_cols[i]);
+			}
+			catch(java.lang.NumberFormatException nfe) {
+				nfe.printStackTrace();
+			}
+		}
 
-		fileUpload.process(file);
-		System.out.println(row+"  "+cols);
+		
+		
+		System.out.println(row + "  " +Arrays.toString(new_cols));
+
+		switch (act)
+		{
+			case 1:
+				List<DirProvider> lP = (List<DirProvider>) fileUpload.process(new DirProvider(),file, row, new_cols);
+				for(DirProvider dp: lP)
+					ttService.addProvider(dp);
+				
+			break;
+
+			
+		}
+		
+		//System.out.println(row+"  "+cols);
 	    return model;
 	}
 	
