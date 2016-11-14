@@ -105,7 +105,7 @@
 							  	<form:form id="addProviderForm" class="formBox" role="form"
 							  			commandName="addProviderForm"
 							  			enctype="multipart/form-data" 
-							  			action="${pageContext.request.contextPath}/admin/addProvider" 
+							  			action="${pageContext.request.contextPath}/admin/addProvider?${_csrf.parameterName}=${_csrf.token}" 
 							  			method="POST"
 							  			modelAttribute="dirProvider">
 							  			

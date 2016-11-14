@@ -15,7 +15,7 @@
 
 				<form:form id="addFileForm" class="formBox" role="form"  
 					  			enctype="multipart/form-data" 
-					  			action="${pageContext.request.contextPath}/admin/addFile?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
+					  			action="${pageContext.request.contextPath}/admin/addFile?${_csrf.parameterName}=${_csrf.token}" 
 					  			method="POST">
 				
 				  			<div class="clearfix checkbox">

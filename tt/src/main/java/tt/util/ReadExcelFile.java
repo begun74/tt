@@ -38,7 +38,7 @@ public class ReadExcelFile {
 	
 
 	
-	public  static List<?> processFile(File tmpFile, DirProvider dirProvider, int row, int[] cols) throws IOException {
+	public  static List<?> processFile(File tmpFile, DirProvider dirProvider, int row, int[] cols) throws IOException{
 		
 		List<DirProvider>  lProvs = new ArrayList<DirProvider>();
 		
@@ -49,7 +49,7 @@ public class ReadExcelFile {
 		
 		
 		int row_ = 0;
-        while(rowIterator.hasNext())
+        while(rowIterator.hasNext() )
         {
         	Row tmp = rowIterator.next();
         	
@@ -63,13 +63,13 @@ public class ReadExcelFile {
 		        	lProvs.add(dirProvider);
         		}
         	}
-        	catch(Exception exc) {
-        		exc.printStackTrace();
+        	catch(NumberFormatException nexc) {
+        		nexc.printStackTrace();
         	}
         	
         	++row_;
         }
-		
+        
 		return lProvs;
 		
 	}

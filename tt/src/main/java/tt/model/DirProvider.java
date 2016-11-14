@@ -64,6 +64,13 @@ public class DirProvider  implements Serializable, IModel{
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public int compareTo(Object o) {
+		// TODO Auto-generated method stub
+		
+		return ( ((DirProvider)o).getName().compareTo(this.getName()) + ((DirProvider)o).getCode().compareTo(this.getCode()));
+	}
 	
 	
 	

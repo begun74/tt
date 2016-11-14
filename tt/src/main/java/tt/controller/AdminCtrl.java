@@ -1,7 +1,9 @@
 package tt.controller;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.TreeSet;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -127,10 +129,17 @@ public class AdminCtrl {
 		switch (act)
 		{
 			case 1:
-				List<DirProvider> lP = (List<DirProvider>) fileUpload.process(new DirProvider(),file, row, new_cols);
-				for(DirProvider dp: lP)
-					ttService.addProvider(dp);
-				
+				try {
+					TreeSet<DirProvider> sP = new TreeSet<DirProvider>();
+					sP.addAll((List<DirProvider>) fileUpload.process(new DirProvider(),file, row, new_cols));
+	
+					for(DirProvider dp: sP)
+						ttService.addProvider(dp);
+	
+				} catch (IllegalStateException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			break;
 
 			
@@ -141,9 +150,8 @@ public class AdminCtrl {
 	}
 	
 	//@Loggable
-	public void doAdmin() {
-		
-		//return new ModelAndView("admin/admin2") ;
+	public void doAddFile() {
+
 	}
 
 }

@@ -1,5 +1,5 @@
 package tt.model;
 
-public interface IModel {
+public interface IModel extends Comparable{
 
 }

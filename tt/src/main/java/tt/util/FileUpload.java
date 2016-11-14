@@ -3,6 +3,7 @@ package tt.util;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -46,7 +47,9 @@ public class FileUpload {
 	void destr() {
 		//System.out.println("BacketBean @PreDestroy ");
 	}    
-	public List<?>  process(IModel model , MultipartFile file, int row, int[] cols) {
+
+	
+	public Collection<?>  process(IModel model , MultipartFile file, int row, int[] cols) throws IllegalStateException, IOException {
 		if (!file.isEmpty()) {
 			String contentType = file.getContentType().toString().toLowerCase();
 			String extention ;
@@ -63,11 +66,7 @@ public class FileUpload {
 					//else if(model instanceof DirProvider)
 					//return ReadExcelFile.processFile((DirProvider) model) ;
 					
-				} catch (IllegalStateException | IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					return null;
-				}
+				} 
 				finally {
 					tmpFile.delete();
 				}
@@ -79,10 +78,6 @@ public class FileUpload {
 	}
 
     
-    private Object ReadExcelFile(int i, int[] js) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	private String isValidContentType(String[][] ALLOWED_FILE_TYPES,String contentType) {
     	//System.out.println("contentType - "+contentType);
@@ -95,6 +90,5 @@ public class FileUpload {
         return null;
     }
 
-    
 	
 }
