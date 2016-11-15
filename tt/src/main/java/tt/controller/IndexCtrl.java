@@ -122,4 +122,16 @@ public class IndexCtrl {
 		
 		return model;
 	}
+	
+	
+	@RequestMapping(value = "/test" , method = RequestMethod.GET)
+	public ModelAndView  test(HttpSession session, 
+				@RequestParam(value = "act",   defaultValue = "0") String act,
+				@RequestParam(value = "error",   defaultValue = "") String error) 
+	{
+		ModelAndView model = new ModelAndView("admin/test2");
+		
+		return model;
+	}
+
 }

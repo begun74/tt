@@ -43,6 +43,8 @@ public class AdminCtrl {
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
 	
+
+	
 	//@Loggable
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView  manage(HttpSession session, 
@@ -56,12 +58,13 @@ public class AdminCtrl {
 			case "1":
 				model = new ModelAndView("admin/addProvider");
 				model.addObject("dirProviders",ttService.getProviderList());
+				model.addObject("error",error);
 			break;
 
 			
 		}
 		
-		model.addObject("error", error);
+		//model.addObject("error", error);
 		model.addObject("sessionBean",sessionBean);
 		
 		return model;
@@ -106,7 +109,7 @@ public class AdminCtrl {
 	}
 	
 	
-	@RequestMapping(value = "addFile" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@RequestMapping(value = "addFile2" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFile( @ModelAttribute  MultipartFile file, @RequestParam(value = "act",   defaultValue = "-1", required=true) int act,
 										@RequestParam(value = "row",   defaultValue = "1") int row , @RequestParam(value = "cols",   defaultValue = "1") String cols) 
 	{
@@ -152,7 +155,7 @@ public class AdminCtrl {
 	}
 	
 	
-	@RequestMapping(value = "addFile2" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	@RequestMapping(value = "addFile" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFile2( @ModelAttribute  MultipartFile file, 
 										@Valid @ModelAttribute("loadProviderForm") MA_loadProvider mA_loadProvider ,
 										@RequestParam(value = "act",   defaultValue = "-1", required=true) int act)
@@ -168,15 +171,28 @@ public class AdminCtrl {
 		{
 			case 1:
 				try {
+
 					TreeSet<DirProvider> sP = new TreeSet<DirProvider>();
 					sP.addAll((List<DirProvider>) fileUpload.process(new DirProvider(),file, mA_loadProvider));
 	
-					for(DirProvider dp: sP)
-						ttService.addProvider(dp);
+					for(DirProvider dp: sP) 
+					{
+						try {
+							ttService.addProvider(dp);
+						}
+						catch(org.springframework.dao.DataIntegrityViolationException dve) {
+							//System.out.println("org.hibernate.exception.ConstraintViolationException");
+							//dve.printStackTrace();
+							model.addObject("error", dp.getName()+" Already exists!");
+						}
+						
+					}
 	
-				} catch (IllegalStateException | IOException e) {
+				}
+				catch (IllegalStateException | IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
+					model.addObject("error", "Ошибка загрузки файла!");
 				}
 			break;
 
