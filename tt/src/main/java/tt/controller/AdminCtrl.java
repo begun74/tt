@@ -38,7 +38,7 @@ public class AdminCtrl {
 	FileUpload fileUpload;
 	
 	@Autowired
-	SessionBean sessionBean;
+	SessionBean sessBean;
 	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
@@ -58,14 +58,16 @@ public class AdminCtrl {
 			case "1":
 				model = new ModelAndView("admin/addProvider");
 				model.addObject("dirProviders",ttService.getProviderList());
-				model.addObject("error",error);
+				model.addObject("error",sessBean.getErrorList());
+				//sessBean.getErrorList().clear();
 			break;
 
 			
 		}
 		
 		//model.addObject("error", error);
-		model.addObject("sessionBean",sessionBean);
+		model.addObject("sessionBean",sessBean);
+		
 		
 		return model;
 	}
@@ -114,6 +116,8 @@ public class AdminCtrl {
 										@RequestParam(value = "row",   defaultValue = "1") int row , @RequestParam(value = "cols",   defaultValue = "1") String cols) 
 	{
 		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
+		
+		/*
 		String[] str_cols = cols.split(",");
 		int[] new_cols = new int[str_cols.length];
 		//int[] array = Arrays.asList(str_cols).stream().mapToInt(Integer::parseInt).toArray();
@@ -130,7 +134,7 @@ public class AdminCtrl {
 		
 		
 		//System.out.println(row + "  " +Arrays.toString(new_cols));
-		/*
+		
 		switch (act)
 		{
 			case 1:
@@ -163,13 +167,14 @@ public class AdminCtrl {
 		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
 		
 		
-		sessionBean.setmA_loadProvider(mA_loadProvider);
+		sessBean.setmA_loadProvider(mA_loadProvider);
 		
-		System.out.println("sessionBean - " +sessionBean);
+		System.out.println("sessBean - " +sessBean);
 		
 		switch (act)
 		{
 			case 1:
+				
 				try {
 
 					TreeSet<DirProvider> sP = new TreeSet<DirProvider>();
@@ -181,9 +186,8 @@ public class AdminCtrl {
 							ttService.addProvider(dp);
 						}
 						catch(org.springframework.dao.DataIntegrityViolationException dve) {
-							//System.out.println("org.hibernate.exception.ConstraintViolationException");
-							//dve.printStackTrace();
-							model.addObject("error", dp.getName()+" Already exists!");
+							//dve.printStackTrace(); 
+							sessBean.getErrorList().add(dp.getName()+" уже существует! ");
 						}
 						
 					}
@@ -198,7 +202,6 @@ public class AdminCtrl {
 
 			
 		}
-		
 		
 		
 		return model;

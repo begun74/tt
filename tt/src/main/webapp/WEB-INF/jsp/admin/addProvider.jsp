@@ -139,7 +139,7 @@
    		            <!-- Error form message -->            
    		            <c:if test="${not empty error}">
 		            <div class="form-message error">
-		              <p>On the page the following error occurred:</p>
+		              <p>Ошибка :</p>
 		              <ul>
 		                <li>"${error}"</li>
 		              </ul>
@@ -154,32 +154,30 @@
 							  			action="${pageContext.request.contextPath}/admin/addFile?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
 							  			method="POST">
 						
-									  			<div class="clearfix">
-												         <div class="lab">
-										                    <label><spring:message code="name2"/></label> 
-												         </div>
-												         <div   class="con">
-															<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadProvider.col_name}">										         
-												         </div>
-												 </div>
-									  			<div class="clearfix">
-												         <div class="lab">
-								                   			<label><spring:message code="code"/></label>
-												         </div>
-												         <div class="con">
-								                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadProvider.col_code}"> 
-												         </div>
-												 </div>
-												<div class="clearfix radio">									        
-														        <div class="lab">
-														        	<label>Начальная строка</label>
-														        </div>
-														        <div class="con">
-																        <input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadProvider.row}" > 
-														        </div>
-												 </div>
-									 
-									
+										  			<div class="clearfix">
+													         <div class="lab">
+											                    <label><spring:message code="name2"/></label> 
+													         </div>
+													         <div  style="width: 25px" class="conleft" >
+																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadProvider.col_name}">										         
+													         </div>
+													 </div>
+										  			<div class="clearfix">
+													         <div class="lab">
+									                   			<label><spring:message code="code"/></label>
+													         </div>
+													         <div style="width: 25px" class="conleft">
+									                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadProvider.col_code}"> 
+													         </div>
+													 </div>
+													<div class="clearfix radio">									        
+															        <div class="lab">
+															        	<label>Начальная строка</label>
+															        </div>
+															        <div style="width: 25px" class="conleft">
+															        	<input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadProvider.row}" >
+															        </div>
+													 </div>
 							         
 									 <div class="clearfix file">
 						              <div class="lab"><label for="file"><spring:message code="load"/> </label></div>
@@ -194,10 +192,7 @@
 							         <input type="hidden" name ="act" id ="act" value="1"/>
 						</form:form>
 				</div>
-				<div class="col2"><div></div>
-				</div>
-				<div class="col3"><div></div>
-				</div>
+
 
 				</div>
 

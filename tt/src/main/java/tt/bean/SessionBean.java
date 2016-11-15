@@ -1,6 +1,8 @@
 package tt.bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -25,6 +27,10 @@ public class SessionBean  implements Serializable {
 	@Autowired
 	private MA_loadProvider mA_loadProvider;
 	
+	
+	private List<String> errorList = new ArrayList<String>();
+	private List<String> successList = new ArrayList<String>();
+	
 	public SessionBean() {
 		
 	}
@@ -41,6 +47,31 @@ public class SessionBean  implements Serializable {
 	public void setmA_loadProvider(MA_loadProvider mA_loadProvider) {
 		this.mA_loadProvider = mA_loadProvider;
 	}
+
+	
+	
+
+	public List<String> getSuccessList() {
+		return successList;
+	}
+
+	public void setSuccessList(List<String> successList) {
+		this.successList = successList;
+	}
+
+
+
+
+	public List<String> getErrorList() {
+		return errorList;
+	}
+
+	public void setErrorList(List<String> errorList) {
+		this.errorList = errorList;
+	}
+
+
+
 
 
 	@PostConstruct
