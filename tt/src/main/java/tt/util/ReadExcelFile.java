@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import tt.model.DirProvider;
 import tt.model.IModel;
+import tt.modelattribute.MA_loadProvider;
 
 @Service
 public class ReadExcelFile {
@@ -38,7 +39,7 @@ public class ReadExcelFile {
 	
 
 	
-	public  static List<?> processFile(File tmpFile, DirProvider dirProvider, int row, int[] cols) throws IOException{
+	public  static List<?> processFile(File tmpFile, DirProvider dirProvider, MA_loadProvider mA_loadProvider) throws IOException{
 		
 		List<DirProvider>  lProvs = new ArrayList<DirProvider>();
 		
@@ -54,11 +55,11 @@ public class ReadExcelFile {
         	Row tmp = rowIterator.next();
         	
         	try {
-        		if(row_ >= row) {
+        		if(row_ >= mA_loadProvider.getRow()) {
 	        		dirProvider = new DirProvider();
 	        	
-	        		dirProvider.setName(df.formatCellValue(tmp.getCell(cols[0])));
-	        		dirProvider.setCode(Integer.parseInt(df.formatCellValue(tmp.getCell(cols[1])) ) );
+	        		dirProvider.setName(df.formatCellValue(tmp.getCell(mA_loadProvider.getCol_name()-1)));
+	        		dirProvider.setCode(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadProvider.getCol_code()-1)) ) );
 	        	
 		        	lProvs.add(dirProvider);
         		}

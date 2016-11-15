@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import tt.model.DirProvider;
 import tt.model.IModel;
+import tt.modelattribute.MA_loadProvider;
 
 
 @Service
@@ -49,7 +50,7 @@ public class FileUpload {
 	}    
 
 	
-	public Collection<?>  process(IModel model , MultipartFile file, int row, int[] cols) throws IllegalStateException, IOException {
+	public Collection<?>  process(IModel model , MultipartFile file, MA_loadProvider mA_loadProvider) throws IllegalStateException, IOException {
 		if (!file.isEmpty()) {
 			String contentType = file.getContentType().toString().toLowerCase();
 			String extention ;
@@ -61,7 +62,7 @@ public class FileUpload {
 					file.transferTo(tmpFile);
 					
 					if(model instanceof DirProvider)
-					return ReadExcelFile.processFile(tmpFile,(DirProvider) model, row , cols) ;
+					return ReadExcelFile.processFile(tmpFile,(DirProvider) model, mA_loadProvider) ;
 					
 					//else if(model instanceof DirProvider)
 					//return ReadExcelFile.processFile((DirProvider) model) ;

@@ -5,10 +5,10 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!--  Required accCount -->
-<c:set var="allCount" value="10"/>
+<!-- c:set var="allCount" value="10"/ -->
 
 <!--  Required act -->
-<c:set var="act" value="1"/>
+<!-- c:set var="act" value="1"/ -->
 
 <div class="form-cols">
 	   		<div class="col1">            

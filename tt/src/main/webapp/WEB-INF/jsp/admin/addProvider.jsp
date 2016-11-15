@@ -95,7 +95,8 @@
 		<div id="tabs" class="box">
             <ul class="bookmarks">
 		            <li><a href="#tabs-1"><spring:message code="admin.addProvider" /></a></li>
-		           	<li><a href="#tabs-2"><spring:message code="admin.load.info.from.file" /></a></li>
+		           	<!-- li><a href="#tabs-2"><spring:message code="admin.load.info.from.file" />(1)</a></li -->
+		           	<li><a href="#tabs-2"><spring:message code="admin.load.info.from.file" />(2)</a></li>
             </ul>
           	<div class="box-content">    
           
@@ -103,7 +104,7 @@
               	<div class="form-cols">
 				    		<div class="col1">
 							  	<form:form id="addProviderForm" class="formBox" role="form"
-							  			commandName="addProviderForm"
+							  			commandName="loadProviderForm"
 							  			enctype="multipart/form-data" 
 							  			action="${pageContext.request.contextPath}/admin/addProvider?${_csrf.parameterName}=${_csrf.token}" 
 							  			method="POST"
@@ -137,9 +138,50 @@
 
             <div id="tabs-2">
             
-					<c:set var="allCount" value="10"/>
-					<c:set var="act" value="1"/>
-					<%@include file="load_file_form.jsp" %>
+					<div class="form-cols col-sm-offset-4">
+	   				<div class="col1">            
+
+				<form:form id="addFileForm" class="formBox" role="form"  
+					  			enctype="multipart/form-data" 
+					  			action="${pageContext.request.contextPath}/admin/addFile2?${_csrf.parameterName}=${_csrf.token}" 
+					  			method="POST">
+				
+							  			<div class="clearfix">
+										         <div class="lab">
+								                    <label><spring:message code="name2"/></label> 
+										         </div>
+										         <div class="con">
+													<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadProvider.col_name}">										         
+										         </div>
+										 </div>
+							  			<div class="clearfix">
+										         <div class="lab">
+						                   			<label><spring:message code="code"/></label>
+										         </div>
+										         <div class="con">
+						                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadProvider.col_code}"> 
+										         </div>
+										 </div>
+										<div class="clearfix radio">									        
+												        <div class="lab">
+												        	<label>Начальная строка</label>
+												        </div>
+												        <div class="con">
+														        <input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadProvider.row}" > 
+												        </div>
+										 </div>
+							 
+							
+					         <div style="margin-bottom: 15px" class="clearfix file">
+							         	<p><spring:message code="load"/> <input type="file" name="file"></p>
+							 </div>
+				
+					         <button type="submit" class="" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
+					         <input type="hidden" name ="act" id ="act" value="${act}"/>
+				</form:form>
+			</div>
+</div>
+
 					
             </div>
             
@@ -151,9 +193,9 @@
         <div class="box">
  				    			<table class="tab" border="0">
 				    				<tr align="center">
-					    				<th width="45%"><spring:message code="name2"/></th>
-					    				<th width="28%"><spring:message code="code"/></th>
-					    				<th width="27%">Action</th>
+					    				<th width="54%"><spring:message code="name2"/></th>
+					    				<th width="23%"><spring:message code="code"/></th>
+					    				<th width="23%">Action</th>
 				    				</tr>
 				    			</table>
 

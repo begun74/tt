@@ -24,6 +24,7 @@ import org.springframework.web.servlet.ModelAndView;
 import tt.annotation.Loggable;
 import tt.bean.SessionBean;
 import tt.model.DirProvider;
+import tt.modelattribute.MA_loadProvider;
 import tt.service.TTServiceImpl;
 import tt.util.FileUpload;
 
@@ -61,6 +62,7 @@ public class AdminCtrl {
 		}
 		
 		model.addObject("error", error);
+		model.addObject("sessionBean",sessionBean);
 		
 		return model;
 	}
@@ -124,14 +126,50 @@ public class AdminCtrl {
 
 		
 		
-		System.out.println(row + "  " +Arrays.toString(new_cols));
-
+		//System.out.println(row + "  " +Arrays.toString(new_cols));
+		/*
 		switch (act)
 		{
 			case 1:
 				try {
 					TreeSet<DirProvider> sP = new TreeSet<DirProvider>();
-					sP.addAll((List<DirProvider>) fileUpload.process(new DirProvider(),file, row, new_cols));
+					sP.addAll((List<DirProvider>) fileUpload.process(new DirProvider(),file, mA_loadProvider));
+	
+					for(DirProvider dp: sP)
+						ttService.addProvider(dp);
+	
+				} catch (IllegalStateException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			break;
+
+			
+		}
+		*/
+		//System.out.println(row+"  "+cols);
+	    return model;
+	}
+	
+	
+	@RequestMapping(value = "addFile2" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ModelAndView   processFile2( @ModelAttribute  MultipartFile file, 
+										@Valid @ModelAttribute("loadProviderForm") MA_loadProvider mA_loadProvider ,
+										@RequestParam(value = "act",   defaultValue = "-1", required=true) int act)
+	{
+		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
+		
+		
+		sessionBean.setmA_loadProvider(mA_loadProvider);
+		
+		System.out.println("sessionBean - " +sessionBean);
+		
+		switch (act)
+		{
+			case 1:
+				try {
+					TreeSet<DirProvider> sP = new TreeSet<DirProvider>();
+					sP.addAll((List<DirProvider>) fileUpload.process(new DirProvider(),file, mA_loadProvider));
 	
 					for(DirProvider dp: sP)
 						ttService.addProvider(dp);
@@ -145,13 +183,8 @@ public class AdminCtrl {
 			
 		}
 		
-		//System.out.println(row+"  "+cols);
-	    return model;
+		
+		
+		return model;
 	}
-	
-	//@Loggable
-	public void doAddFile() {
-
-	}
-
 }
