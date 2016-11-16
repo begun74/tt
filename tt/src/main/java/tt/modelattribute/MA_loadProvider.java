@@ -20,8 +20,8 @@ public class MA_loadProvider implements IMAmodel {
 	private int col_name=1;
 	private int col_code=2;
 	
-	private boolean save = true;
-	private boolean autoload = false;
+	private int save;
+	private int autoload ;
 	
 	
 	public int getRow() {
@@ -50,24 +50,23 @@ public class MA_loadProvider implements IMAmodel {
 
 	
 
-	public boolean isSave() {
+
+
+	public int getSave() {
 		return save;
 	}
 
-	public void setSave(boolean save) {
+	public void setSave(int save) {
 		this.save = save;
 	}
-	
-	
 
-	public boolean isAutoload() {
+	public int getAutoload() {
 		return autoload;
 	}
 
-	public void setAutoload(boolean autoload) {
+	public void setAutoload(int autoload) {
 		this.autoload = autoload;
 	}
-
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -75,8 +74,11 @@ public class MA_loadProvider implements IMAmodel {
 
 	@Override
 	public String toString() {
-		return "MA_loadProvider [row=" + row + ", col_name=" + col_name + ", col_code=" + col_code + "]";
+		return "MA_loadProvider [row=" + row + ", col_name=" + col_name + ", col_code=" + col_code + ", save=" + save
+				+ ", autoload=" + autoload + "]";
 	}
+
+	
 
 
 	

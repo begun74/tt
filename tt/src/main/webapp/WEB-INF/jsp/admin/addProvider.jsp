@@ -186,13 +186,13 @@
 
 													<div class="clearfix">									        
 														<div class="lab">
-														   	<label><input name="save" id="save" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadProvider.save == true}">checked="checked"</c:if> value="${sessionBean.mA_loadProvider.save}" >Сохранить</label>
+														   	<label><input name="save" id="save" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadProvider.save == 1}">checked="checked"</c:if> value="${sessionBean.mA_loadProvider.save}" >Сохранить</label>
 														</div>
 													</div>
 
 													<div class="clearfix">									        
 														<div class="lab">
-														   	<label><input name="autoload" id="autoload" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadProvider.autoload == true}">checked="checked"</c:if> value="${sessionBean.mA_loadProvider.autoload}" >Автозагрузка</label>
+														   	<label><input name="autoload" id="autoload" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadProvider.autoload == 1}">checked="checked"</c:if> value="${sessionBean.mA_loadProvider.autoload}" >Автозагрузка</label>
 														</div>
 													</div>
 						
