@@ -1,5 +1,7 @@
 package tt.model;
 
-public interface IModel extends Comparable{
+import java.io.Serializable;
+
+public interface IModel extends Comparable , Serializable {
 
 }

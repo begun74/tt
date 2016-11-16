@@ -10,6 +10,7 @@
           <li class="first"><a href="#"><spring:message code="dictionary"/></a>
             <ul class="submenu">
               <li><a href="admin?act=1" ><spring:message code="provider"/></li>          
+              <li><a href="admin?act=2" ><spring:message code="nomenclature"/></li>          
             </ul>
           </li>
           <li><a href="#">Load info</a>

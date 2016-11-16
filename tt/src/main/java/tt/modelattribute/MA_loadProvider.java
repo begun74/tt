@@ -20,6 +20,9 @@ public class MA_loadProvider implements IMAmodel {
 	private int col_name=1;
 	private int col_code=2;
 	
+	private boolean save = true;
+	private boolean autoload = false;
+	
 	
 	public int getRow() {
 		return row;
@@ -46,6 +49,29 @@ public class MA_loadProvider implements IMAmodel {
 	}
 
 	
+
+	public boolean isSave() {
+		return save;
+	}
+
+	public void setSave(boolean save) {
+		this.save = save;
+	}
+	
+	
+
+	public boolean isAutoload() {
+		return autoload;
+	}
+
+	public void setAutoload(boolean autoload) {
+		this.autoload = autoload;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	@Override
 	public String toString() {

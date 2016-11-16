@@ -77,6 +77,16 @@ public class SessionBean  implements Serializable {
 	}
 
 
+	public void clearError() {
+		getErrorList().clear();
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+
 
 
 	@PostConstruct

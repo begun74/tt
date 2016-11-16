@@ -138,7 +138,7 @@
             <div id="tabs-2">
    		            <!-- Error form message -->            
    		            <c:if test="${not empty error}">
-		            <div class="form-message error"  onclick="alert('!')">
+		            <div class="form-message error"  onclick="clearErrors()">
 		              <p>Ошибка :</p>
 		              <ul>
 		                <li>"${error}"</li>
@@ -149,9 +149,9 @@
 					<div class="form-cols">
 	   				<div class="col1">            
 
-						<form:form id="addFileForm" class="formBox" role="form"  
+						<form:form id="addFileProvider" class="formBox" role="form"  
 							  			enctype="multipart/form-data" 
-							  			action="${pageContext.request.contextPath}/admin/addFile?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
+							  			action="${pageContext.request.contextPath}/admin/addFileProvider?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
 							  			method="POST">
 						
 										  			<div class="clearfix">
@@ -169,26 +169,39 @@
 													         <div style="width: 25px" class="conleft">
 									                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadProvider.col_code}"> 
 													         </div>
-													 </div>
-													<div class="clearfix radio">									        
+													</div>
+													<div class="clearfix">									        
 															        <div class="lab">
 															        	<label>Начальная строка</label>
 															        </div>
 															        <div style="width: 25px" class="conleft">
 															        	<input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadProvider.row}" >
 															        </div>
-													 </div>
+													</div>
 							         
-									 <div class="clearfix file">
-						              <div class="lab"><label for="file"><spring:message code="load"/> </label></div>
-						              <div class="con"><input type="file" name="file" class="upload-file" id="file" /> 	
-						                <!--<div class="bubble-left"></div>
-							              <div class="bubble-inner">JPEG, GIF 5MB max per image</div>
-							              <div class="bubble-right"></div>--> 
-						              </div>
-						              </div>
+													 <div class="clearfix file">
+										              <div class="lab"><label for="file"><spring:message code="load"/> </label></div>
+										              <div class="con"><input type="file" name="file" class="upload-file" id="file" /></div>
+										            </div>
+
+													<div class="clearfix">									        
+														<div class="lab">
+														   	<label><input name="save" id="save" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadProvider.save == true}">checked="checked"</c:if> value="${sessionBean.mA_loadProvider.save}" >Сохранить</label>
+														</div>
+													</div>
+
+													<div class="clearfix">									        
+														<div class="lab">
+														   	<label><input name="autoload" id="autoload" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadProvider.autoload == true}">checked="checked"</c:if> value="${sessionBean.mA_loadProvider.autoload}" >Автозагрузка</label>
+														</div>
+													</div>
 						
-							         <button type="submit" class="" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
+							        				<div class="clearfix">
+								        				<div class="lab">	
+								        					<button type="submit" class="" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
+								        				</div>
+							        				</div>
+							        				
 							         <input type="hidden" name ="act" id ="act" value="1"/>
 						</form:form>
 				</div>

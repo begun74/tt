@@ -17,6 +17,7 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.User;
 
@@ -59,6 +60,7 @@ public class HibernateConfiguration {
 
         sessionBuilder.addAnnotatedClasses(User.class);
         sessionBuilder.addAnnotatedClasses(DirProvider.class);
+        sessionBuilder.addAnnotatedClasses(DirNomenclature.class);
         //sessionBuilder.addAnnotatedClasses(DirColor.class);
         //sessionBuilder.addAnnotatedClasses(Request.class);
         //sessionBuilder.addAnnotatedClasses(Particleboard.class);

@@ -23,7 +23,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import tt.annotation.Loggable;
 import tt.bean.SessionBean;
+import tt.model.DirNomenclature;
 import tt.model.DirProvider;
+import tt.modelattribute.IMAmodel;
 import tt.modelattribute.MA_loadProvider;
 import tt.service.TTServiceImpl;
 import tt.util.FileUpload;
@@ -58,14 +60,17 @@ public class AdminCtrl {
 			case "1":
 				model = new ModelAndView("admin/addProvider");
 				model.addObject("dirProviders",ttService.getProviderList());
-				model.addObject("error",sessBean.getErrorList());
-				//sessBean.getErrorList().clear();
+				//model.addObject("error",sessBean.getErrorList());
 			break;
 
+			case "2":
+				model = new ModelAndView("admin/addNomencl");
+				model.addObject("dirNomencl",null);
+			break;
 			
 		}
 		
-		//model.addObject("error", error);
+		model.addObject("error",sessBean.getErrorList());
 		model.addObject("sessionBean",sessBean);
 		
 		
@@ -74,6 +79,28 @@ public class AdminCtrl {
 	
 	
 	
+	@RequestMapping(value = "addNomencl" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ModelAndView   addNomencl(HttpSession session, @Valid @ModelAttribute("addNomenclForm") DirNomenclature dirNomenclature,
+			BindingResult result,
+			@ModelAttribute  MultipartFile file,
+			@RequestParam(value = "id_dir_nomenclature",   required=false) Long id_dir_nomenclature) 
+	{
+		
+		ModelAndView model = new ModelAndView("redirect:/admin?act=2");
+
+		if(result.hasErrors())
+		{
+			model.addObject("error", result.getFieldError().getDefaultMessage());
+			return model;
+		}
+		if(id_dir_nomenclature != null && id_dir_nomenclature.longValue()>0) 
+			dirNomenclature.setId(id_dir_nomenclature);
+		
+		//ttService.addProvider(dirNomenclature);
+		
+	    return model;
+	}
+
 	@RequestMapping(value = "addProvider" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processBrand(HttpSession session, @Valid @ModelAttribute("addProviderForm") DirProvider dirProvider,
 			BindingResult result,
@@ -96,6 +123,7 @@ public class AdminCtrl {
 	    return model;
 	}
 
+	
 	@RequestMapping(value = "delObject")
 	public String  delObject(HttpSession session,@RequestParam(value = "id",   defaultValue = "-1") long id ,@RequestParam(value = "act",   defaultValue = "-1") int act
 			,@RequestParam(value = "clazz",  required=true, defaultValue = "") String clazz) 
@@ -112,7 +140,7 @@ public class AdminCtrl {
 	
 	
 	@RequestMapping(value = "addFile2" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ModelAndView   processFile( @ModelAttribute  MultipartFile file, @RequestParam(value = "act",   defaultValue = "-1", required=true) int act,
+	public ModelAndView   processFile2( @ModelAttribute  MultipartFile file, @RequestParam(value = "act",   defaultValue = "-1", required=true) int act,
 										@RequestParam(value = "row",   defaultValue = "1") int row , @RequestParam(value = "cols",   defaultValue = "1") String cols) 
 	{
 		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
@@ -159,23 +187,27 @@ public class AdminCtrl {
 	}
 	
 	
-	@RequestMapping(value = "addFile" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ModelAndView   processFile2( @ModelAttribute  MultipartFile file, 
-										@Valid @ModelAttribute("loadProviderForm") MA_loadProvider mA_loadProvider ,
+	@RequestMapping(value = "addFileProvider" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ModelAndView   processFile( @ModelAttribute  MultipartFile file,
+										@Valid MA_loadProvider mA_loadProvider ,
+										BindingResult result,
 										@RequestParam(value = "act",   defaultValue = "-1", required=true) int act)
 	{
 		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
 		
+		if(result.hasErrors())
+		{
+			sessBean.addError("Правильно введите данные!");
+			return model;
+		}
 		
-		sessBean.setmA_loadProvider(mA_loadProvider);
+		
 		
 		System.out.println("sessBean - " +sessBean);
 		
-		switch (act)
-		{
-			case 1:
+		sessBean.setmA_loadProvider(mA_loadProvider);
 				
-				try {
+		try {
 
 					TreeSet<DirProvider> sP = new TreeSet<DirProvider>();
 					sP.addAll((List<DirProvider>) fileUpload.process(new DirProvider(),file, mA_loadProvider));
@@ -192,19 +224,15 @@ public class AdminCtrl {
 						
 					}
 	
-				}
-				catch (java.lang.NumberFormatException nfe) {
+		}
+		catch (java.lang.NumberFormatException nfe) {
 					nfe.printStackTrace();
 					sessBean.addError("Ошибка формата данных !");
-				}
-				catch (Exception e) {
+		}
+		catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 					sessBean.addError("Ошибка загрузки файла!");
-				}
-			break;
-
-			
 		}
 		
 		
