@@ -70,6 +70,11 @@ public class SessionBean  implements Serializable {
 		this.errorList = errorList;
 	}
 
+	
+	public void addError(String error) {
+		getErrorList().clear();
+		getErrorList().add(error);
+	}
 
 
 

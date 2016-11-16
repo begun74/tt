@@ -50,7 +50,7 @@ public class FileUpload {
 	}    
 
 	
-	public Collection<?>  process(IModel model , MultipartFile file, MA_loadProvider mA_loadProvider) throws IllegalStateException, IOException {
+	public Collection<?>  process(IModel model , MultipartFile file, MA_loadProvider mA_loadProvider) throws Exception {
 		if (!file.isEmpty()) {
 			String contentType = file.getContentType().toString().toLowerCase();
 			String extention ;

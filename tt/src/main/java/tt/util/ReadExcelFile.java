@@ -39,7 +39,7 @@ public class ReadExcelFile {
 	
 
 	
-	public  static List<?> processFile(File tmpFile, DirProvider dirProvider, MA_loadProvider mA_loadProvider) throws IOException{
+	public  static List<?> processFile(File tmpFile, DirProvider dirProvider, MA_loadProvider mA_loadProvider) throws Exception{
 		
 		List<DirProvider>  lProvs = new ArrayList<DirProvider>();
 		
@@ -54,7 +54,7 @@ public class ReadExcelFile {
         {
         	Row tmp = rowIterator.next();
         	
-        	try {
+        	
         		if(row_ >= mA_loadProvider.getRow()) {
 	        		dirProvider = new DirProvider();
 	        	
@@ -63,10 +63,7 @@ public class ReadExcelFile {
 	        	
 		        	lProvs.add(dirProvider);
         		}
-        	}
-        	catch(NumberFormatException nexc) {
-        		nexc.printStackTrace();
-        	}
+        	
         	
         	++row_;
         }

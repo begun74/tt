@@ -193,10 +193,14 @@ public class AdminCtrl {
 					}
 	
 				}
-				catch (IllegalStateException | IOException e) {
+				catch (java.lang.NumberFormatException nfe) {
+					nfe.printStackTrace();
+					sessBean.addError("Ошибка формата данных !");
+				}
+				catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					model.addObject("error", "Ошибка загрузки файла!");
+					sessBean.addError("Ошибка загрузки файла!");
 				}
 			break;
 

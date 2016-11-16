@@ -138,7 +138,7 @@
             <div id="tabs-2">
    		            <!-- Error form message -->            
    		            <c:if test="${not empty error}">
-		            <div class="form-message error">
+		            <div class="form-message error"  onclick="alert('!')">
 		              <p>Ошибка :</p>
 		              <ul>
 		                <li>"${error}"</li>

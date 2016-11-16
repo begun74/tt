@@ -17,8 +17,8 @@ public class MA_loadProvider implements IMAmodel {
 	
 	
 	private int row=1;
-	private int col_name=0;
-	private int col_code=1;
+	private int col_name=1;
+	private int col_code=2;
 	
 	
 	public int getRow() {
