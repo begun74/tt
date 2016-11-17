@@ -38,7 +38,7 @@ public class DirNomenclature implements  IModel {
 	
 	@Column(name="code")
 	@NotNull (message = "Please enter code.") 
-	private Integer code;
+	private Long code;
 
 	@NotEmpty (message = "Please enter name.") 
 	private String name;
@@ -56,11 +56,11 @@ public class DirNomenclature implements  IModel {
 		this.id = id;
 	}
 
-	public Integer getCode() {
+	public Long getCode() {
 		return code;
 	}
 
-	public void setCode(Integer code) {
+	public void setCode(Long code) {
 		this.code = code;
 	}
 
@@ -89,8 +89,13 @@ public class DirNomenclature implements  IModel {
 	
 	@Override
 	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
+		/*if( ((DirNomenclature)o).getName().compareTo(this.getName()) !=0 && ((DirNomenclature)o).getArticle().compareTo(this.getArticle()) !=0)
+			return ( ((DirNomenclature)o).getName().compareTo(this.getName()) );
+		else if(((DirNomenclature)o).getCode().compareTo(this.getCode()) !=0 )
+			return (+ ((DirNomenclature)o).getCode().compareTo(this.getCode()));
+			*/
+		return ( ((DirNomenclature)o).getCode().compareTo(this.getCode()) );
+		
 	}
 	
 	

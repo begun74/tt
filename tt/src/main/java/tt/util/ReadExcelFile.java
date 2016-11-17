@@ -91,11 +91,11 @@ public class ReadExcelFile {
         	Row tmp = rowIterator.next();
         	
         	
-        		if(row_ >= mA_loadNomencl.getRow()) {
+        		if(row_ >= mA_loadNomencl.getRow()-1) {
         			dirNomenclature = new DirNomenclature();
 	        	
         			dirNomenclature.setName(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_name()-1)));
-        			dirNomenclature.setCode(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_code()-1)) ) );
+        			dirNomenclature.setCode(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_code()-1)) ) );
         			dirNomenclature.setArticle(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_article()-1)));
         			
 		        	lNomencls.add(dirNomenclature);
