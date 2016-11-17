@@ -43,6 +43,11 @@ public class DirNomenclature implements  IModel {
 	@NotEmpty (message = "Please enter name.") 
 	private String name;
 
+	
+	@NotEmpty (message = "Please enter name.") 
+	private String article;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -68,8 +73,19 @@ public class DirNomenclature implements  IModel {
 	}
 
 	
-	
-	
+	public String getArticle() {
+		return article;
+	}
+
+	public void setArticle(String article) {
+		this.article = article;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 	
 	@Override
 	public int compareTo(Object o) {
