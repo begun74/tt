@@ -203,7 +203,7 @@ public class AdminCtrl {
 		
 		
 		
-		System.out.println("sessBean - " +sessBean);
+		//System.out.println("sessBean - " +sessBean);
 		
 		sessBean.setmA_loadProvider(mA_loadProvider);
 				
