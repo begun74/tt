@@ -89,13 +89,7 @@ public class DirNomenclature implements  IModel {
 	
 	@Override
 	public int compareTo(Object o) {
-		/*if( ((DirNomenclature)o).getName().compareTo(this.getName()) !=0 && ((DirNomenclature)o).getArticle().compareTo(this.getArticle()) !=0)
-			return ( ((DirNomenclature)o).getName().compareTo(this.getName()) );
-		else if(((DirNomenclature)o).getCode().compareTo(this.getCode()) !=0 )
-			return (+ ((DirNomenclature)o).getCode().compareTo(this.getCode()));
-			*/
 		return ( ((DirNomenclature)o).getCode().compareTo(this.getCode()) );
-		
 	}
 	
 	

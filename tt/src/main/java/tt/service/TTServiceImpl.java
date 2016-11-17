@@ -10,6 +10,7 @@ import tt.dao.Dao;
 import tt.dao.DaoImpl;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
+import tt.model.Store;
 import tt.model.User;
 
 
@@ -86,6 +87,34 @@ public class TTServiceImpl implements Dao {
 	public DirNomenclature getNomenclature(long id) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public List<Store> getStoreList() {
+		// TODO Auto-generated method stub
+		return dao.getStoreList();
+	}
+
+
+	@Override
+	public void addStore(Store store) {
+		// TODO Auto-generated method stub
+		dao.addStore(store);
+	}
+
+
+	/*@Override
+	public Store getStore(long id) {
+		// TODO Auto-generated method stub
+		return dao.getStore(id);
+	}
+	*/
+
+	@Override
+	public Store getStoreBySerVerUID(long serialVersionUID) {
+		// TODO Auto-generated method stub
+		return dao.getStoreBySerVerUID(serialVersionUID);
 	}
 
 }

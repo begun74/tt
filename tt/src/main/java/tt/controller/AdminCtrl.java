@@ -1,6 +1,8 @@
 package tt.controller;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectOutputStream;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeSet;
@@ -25,6 +27,7 @@ import tt.annotation.Loggable;
 import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
+import tt.model.Store;
 import tt.modelattribute.IMAmodel;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
@@ -55,6 +58,8 @@ public class AdminCtrl {
 				@RequestParam(value = "error",   defaultValue = "") String error) 
 	{
 		ModelAndView model = new ModelAndView("admin/main");
+		
+		System.out.println(ttService.getStoreList());
 		
 		switch (act)
 		{
@@ -141,11 +146,12 @@ public class AdminCtrl {
 	
 	
 
+	@SuppressWarnings("static-access")
 	@RequestMapping(value = "addFileNomencl" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFileProvider( @ModelAttribute  MultipartFile file,
 										@Valid MA_loadNomencl mA_loadNomencl ,
 										BindingResult result,
-										@RequestParam(value = "act",   defaultValue = "-1", required=true) int act)
+										@RequestParam(value = "act",   defaultValue = "-1", required=true) int act) 
 	{
 		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
 		
@@ -155,6 +161,30 @@ public class AdminCtrl {
 			return model;
 		}
 		
+		if(mA_loadNomencl.isSave())
+		{
+			try {
+				ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+				ObjectOutputStream objOut = new ObjectOutputStream(byteOut);
+				objOut.writeObject(mA_loadNomencl);
+				objOut.close();
+				byteOut.close();
+				byte[] bytes = byteOut.toByteArray();
+				
+				Store store = new Store();
+				store.setSerialVersionUID(mA_loadNomencl.getSerialversionuid());
+				store.setBytearray(bytes);
+				
+				ttService.addStore(store);
+			}
+			catch(IOException ioe)
+			{
+				ioe.printStackTrace();
+				sessBean.getErrorList().add("Параметры не записаны! ");
+			}
+			
+		}
+			
 		sessBean.setmA_loadNomencl(mA_loadNomencl);
 
 		try {

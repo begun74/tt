@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
+import tt.model.Store;
 import tt.model.User;
 
 
@@ -48,6 +49,7 @@ public class HibernateConfiguration {
         properties.put("hibernate.dialect", environment.getRequiredProperty("db.hibernate.dialect"));
         properties.put("hibernate.show_sql", environment.getRequiredProperty("db.hibernate.show_sql"));
         properties.put("hibernate.format_sql", environment.getRequiredProperty("db.hibernate.format_sql"));
+        properties.put("hibernate.jdbc.use_streams_for_binary", environment.getRequiredProperty("db.use_streams_for_binary"));
         return properties;        
     }
 
@@ -61,6 +63,7 @@ public class HibernateConfiguration {
         sessionBuilder.addAnnotatedClasses(User.class);
         sessionBuilder.addAnnotatedClasses(DirProvider.class);
         sessionBuilder.addAnnotatedClasses(DirNomenclature.class);
+        sessionBuilder.addAnnotatedClasses(Store.class);
         //sessionBuilder.addAnnotatedClasses(DirColor.class);
         //sessionBuilder.addAnnotatedClasses(Request.class);
         //sessionBuilder.addAnnotatedClasses(Particleboard.class);
