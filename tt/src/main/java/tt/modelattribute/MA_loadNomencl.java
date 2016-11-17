@@ -73,6 +73,8 @@ public class MA_loadNomencl  implements IMAmodel {
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
+	
+	
 
 	@Override
 	public String toString() {
