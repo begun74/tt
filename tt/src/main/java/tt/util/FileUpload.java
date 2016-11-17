@@ -16,8 +16,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.IModel;
+import tt.modelattribute.IMAmodel;
+import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
 
 
@@ -50,7 +53,7 @@ public class FileUpload {
 	}    
 
 	
-	public Collection<?>  process(IModel model , MultipartFile file, MA_loadProvider mA_loadProvider) throws Exception {
+	public Collection<?>  process(IModel model , MultipartFile file, IMAmodel IMAmodel) throws Exception {
 		if (!file.isEmpty()) {
 			String contentType = file.getContentType().toString().toLowerCase();
 			String extention ;
@@ -62,10 +65,10 @@ public class FileUpload {
 					file.transferTo(tmpFile);
 					
 					if(model instanceof DirProvider)
-					return ReadExcelFile.processFile(tmpFile,(DirProvider) model, mA_loadProvider) ;
+					return ReadExcelFile.processFile(tmpFile,(DirProvider) model, (MA_loadProvider) IMAmodel) ;
 					
-					//else if(model instanceof DirProvider)
-					//return ReadExcelFile.processFile((DirProvider) model) ;
+					else if(model instanceof DirNomenclature)
+					return ReadExcelFile.processFile(tmpFile,(DirNomenclature) model, (MA_loadNomencl) IMAmodel) ;
 					
 				} 
 				finally {

@@ -12,6 +12,7 @@ import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
 
 
@@ -27,6 +28,8 @@ public class SessionBean  implements Serializable {
 	@Autowired
 	private MA_loadProvider mA_loadProvider;
 	
+	@Autowired
+	private MA_loadNomencl mA_loadNomencl;
 	
 	private List<String> errorList = new ArrayList<String>();
 	private List<String> successList = new ArrayList<String>();
@@ -39,10 +42,21 @@ public class SessionBean  implements Serializable {
 
 
 
+	public MA_loadNomencl getmA_loadNomencl() {
+		return mA_loadNomencl;
+	}
+
+	public void setmA_loadNomencl(MA_loadNomencl mA_loadNomencl) {
+		this.mA_loadNomencl = mA_loadNomencl;
+	}
+
+
+
+
+
 	public MA_loadProvider getmA_loadProvider() {
 		return mA_loadProvider;
 	}
-
 
 	public void setmA_loadProvider(MA_loadProvider mA_loadProvider) {
 		this.mA_loadProvider = mA_loadProvider;

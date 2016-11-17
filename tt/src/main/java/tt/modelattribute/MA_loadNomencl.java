@@ -1,5 +1,10 @@
 package tt.modelattribute;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Service;
+
+@Service
+@Scope(value="session")
 public class MA_loadNomencl  implements IMAmodel {
 
 	/**
@@ -12,7 +17,7 @@ public class MA_loadNomencl  implements IMAmodel {
 	private int row=1;
 	private int col_name=1;
 	private int col_code=2;
-	private int col_article=2;
+	private int col_article=3;
 	
 	private boolean save;
 	private boolean autoload;

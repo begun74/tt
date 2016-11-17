@@ -26,6 +26,7 @@ import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.modelattribute.IMAmodel;
+import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
 import tt.service.TTServiceImpl;
 import tt.util.FileUpload;
@@ -65,7 +66,7 @@ public class AdminCtrl {
 
 			case "2":
 				model = new ModelAndView("admin/addNomencl");
-				model.addObject("dirNomencl",null);
+				model.addObject("dirNomencls",null);
 			break;
 			
 		}
@@ -90,7 +91,7 @@ public class AdminCtrl {
 
 		if(result.hasErrors())
 		{
-			model.addObject("error", result.getFieldError().getDefaultMessage());
+			sessBean.addError("Правильно введите данные!");
 			return model;
 		}
 		if(id_dir_nomenclature != null && id_dir_nomenclature.longValue()>0) 
@@ -102,7 +103,7 @@ public class AdminCtrl {
 	}
 
 	@RequestMapping(value = "addProvider" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ModelAndView   processBrand(HttpSession session, @Valid @ModelAttribute("addProviderForm") DirProvider dirProvider,
+	public ModelAndView   processProvider(HttpSession session, @Valid @ModelAttribute("addProviderForm") DirProvider dirProvider,
 			BindingResult result,
 			@ModelAttribute  MultipartFile file,
 			@RequestParam(value = "id_dir_provider",   required=false) Long id_dir_provider) 
@@ -139,56 +140,58 @@ public class AdminCtrl {
 	}
 	
 	
-	@RequestMapping(value = "addFile2" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ModelAndView   processFile2( @ModelAttribute  MultipartFile file, @RequestParam(value = "act",   defaultValue = "-1", required=true) int act,
-										@RequestParam(value = "row",   defaultValue = "1") int row , @RequestParam(value = "cols",   defaultValue = "1") String cols) 
+
+	@RequestMapping(value = "addFileNomencl" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ModelAndView   processFileProvider( @ModelAttribute  MultipartFile file,
+										@Valid MA_loadNomencl mA_loadNomencl ,
+										BindingResult result,
+										@RequestParam(value = "act",   defaultValue = "-1", required=true) int act)
 	{
 		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
 		
-		/*
-		String[] str_cols = cols.split(",");
-		int[] new_cols = new int[str_cols.length];
-		//int[] array = Arrays.asList(str_cols).stream().mapToInt(Integer::parseInt).toArray();
-		
-		for(int i=0; i< str_cols.length ;++i) {
-			try {
-				new_cols[i] = Integer.parseInt(str_cols[i]);
-			}
-			catch(java.lang.NumberFormatException nfe) {
-				nfe.printStackTrace();
-			}
-		}
-
-		
-		
-		//System.out.println(row + "  " +Arrays.toString(new_cols));
-		
-		switch (act)
+		if(result.hasErrors())
 		{
-			case 1:
-				try {
-					TreeSet<DirProvider> sP = new TreeSet<DirProvider>();
-					sP.addAll((List<DirProvider>) fileUpload.process(new DirProvider(),file, mA_loadProvider));
-	
-					for(DirProvider dp: sP)
-						ttService.addProvider(dp);
-	
-				} catch (IllegalStateException | IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			break;
-
-			
+			sessBean.addError("Правильно введите данные!");
+			return model;
 		}
-		*/
-		//System.out.println(row+"  "+cols);
-	    return model;
+		
+		sessBean.setmA_loadNomencl(mA_loadNomencl);
+
+		try {
+
+					TreeSet<DirNomenclature> sP = new TreeSet<DirNomenclature>();
+					sP.addAll((List<DirNomenclature>) fileUpload.process(new DirNomenclature(),file, mA_loadNomencl));
+		
+					for(DirNomenclature dN: sP) 
+					{
+						try {
+							ttService.addNomenclature(dN);
+							
+						}
+						catch(org.springframework.dao.DataIntegrityViolationException dve) {
+							//dve.printStackTrace(); 
+							sessBean.getErrorList().add(dN.getName()+" уже существует! ");
+						}
+						
+					}
+
+			}
+			catch (java.lang.NumberFormatException nfe) {
+						nfe.printStackTrace();
+						sessBean.addError("Ошибка формата данных !");
+			}
+			catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						sessBean.addError("Ошибка загрузки файла!");
+			}
+
+
+		return model;
 	}
 	
-	
 	@RequestMapping(value = "addFileProvider" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ModelAndView   processFile( @ModelAttribute  MultipartFile file,
+	public ModelAndView   processFileProvidere( @ModelAttribute  MultipartFile file,
 										@Valid MA_loadProvider mA_loadProvider ,
 										BindingResult result,
 										@RequestParam(value = "act",   defaultValue = "-1", required=true) int act)
@@ -238,4 +241,53 @@ public class AdminCtrl {
 		
 		return model;
 	}
+
+
+	@RequestMapping(value = "addFile2" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ModelAndView   processFile2( @ModelAttribute  MultipartFile file, @RequestParam(value = "act",   defaultValue = "-1", required=true) int act,
+										@RequestParam(value = "row",   defaultValue = "1") int row , @RequestParam(value = "cols",   defaultValue = "1") String cols) 
+	{
+		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
+		
+		/*
+		String[] str_cols = cols.split(",");
+		int[] new_cols = new int[str_cols.length];
+		//int[] array = Arrays.asList(str_cols).stream().mapToInt(Integer::parseInt).toArray();
+		
+		for(int i=0; i< str_cols.length ;++i) {
+			try {
+				new_cols[i] = Integer.parseInt(str_cols[i]);
+			}
+			catch(java.lang.NumberFormatException nfe) {
+				nfe.printStackTrace();
+			}
+		}
+
+		
+		
+		//System.out.println(row + "  " +Arrays.toString(new_cols));
+		
+		switch (act)
+		{
+			case 1:
+				try {
+					TreeSet<DirProvider> sP = new TreeSet<DirProvider>();
+					sP.addAll((List<DirProvider>) fileUpload.process(new DirProvider(),file, mA_loadProvider));
+	
+					for(DirProvider dp: sP)
+						ttService.addProvider(dp);
+	
+				} catch (IllegalStateException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			break;
+
+			
+		}
+		*/
+		//System.out.println(row+"  "+cols);
+	    return model;
+	}
+
 }

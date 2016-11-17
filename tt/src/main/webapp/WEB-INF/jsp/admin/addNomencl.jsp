@@ -94,7 +94,7 @@
 
 		<div id="tabs" class="box">
             <ul class="bookmarks">
-		            <li><a href="#tabs-1"><spring:message code="admin.addProvider" /></a></li>
+		            <li><a href="#tabs-1"><spring:message code="admin.addNomencl" /></a></li>
 		           	<li><a href="#tabs-2"><spring:message code="admin.load.info.from.file" /></a></li>
             </ul>
           	<div class="box-content">    
@@ -102,12 +102,12 @@
             <div id="tabs-1">  
               	<div class="form-cols">
 				    		<div class="col1">
-							  	<form:form id="addProviderForm" class="formBox" role="form"
-							  			commandName="loadProviderForm"
+							  	<form:form id="addNomenclForm" class="formBox" role="form"
+							  			commandName="loadNomenclrForm"
 							  			enctype="multipart/form-data" 
-							  			action="${pageContext.request.contextPath}/admin/addProvider?${_csrf.parameterName}=${_csrf.token}" 
+							  			action="${pageContext.request.contextPath}/admin/addNomencl?${_csrf.parameterName}=${_csrf.token}" 
 							  			method="POST"
-							  			modelAttribute="dirProvider">
+							  			modelAttribute="dirNomencl">
 							  			
 							  			<div class="clearfix">
 										         <div class="lab">
@@ -123,6 +123,14 @@
 										         </div>
 										         <div class="con">
 						                   			<input name="code" id="code" type="text" class="input" value="" > 
+										         </div>
+										 </div>
+							  			<div class="clearfix">
+										         <div class="lab">
+						                   			<label><spring:message code="article"/></label>
+										         </div>
+										         <div class="con">
+						                   			<input name="article" id="article" type="text" class="input"> 
 										         </div>
 										 </div>
 								         
@@ -149,9 +157,9 @@
 					<div class="form-cols">
 	   				<div class="col1">            
 
-						<form:form id="addFileProvider" class="formBox" role="form"  
+						<form:form id="addFileNomencl" class="formBox" role="form"  
 							  			enctype="multipart/form-data" 
-							  			action="${pageContext.request.contextPath}/admin/addFileProvider?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
+							  			action="${pageContext.request.contextPath}/admin/addFileNomencl?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
 							  			method="POST">
 						
 										  			<div class="clearfix">
@@ -159,7 +167,7 @@
 											                    <label><spring:message code="name2"/></label> 
 													         </div>
 													         <div  style="width: 25px" class="conleft" >
-																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadProvider.col_name}">										         
+																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_name}">										         
 													         </div>
 													 </div>
 										  			<div class="clearfix">
@@ -167,7 +175,15 @@
 									                   			<label><spring:message code="code"/></label>
 													         </div>
 													         <div style="width: 25px" class="conleft">
-									                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadProvider.col_code}"> 
+									                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_code}"> 
+													         </div>
+													</div>
+										  			<div class="clearfix">
+													         <div class="lab">
+									                   			<label><spring:message code="article"/></label>
+													         </div>
+													         <div style="width: 25px" class="conleft">
+									                   			<input name="col_article" id="col_article" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_article}"> 
 													         </div>
 													</div>
 													<div class="clearfix">									        
@@ -175,7 +191,7 @@
 															        	<label>Начальная строка</label>
 															        </div>
 															        <div style="width: 25px" class="conleft">
-															        	<input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadProvider.row}" >
+															        	<input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadNomencl.row}" >
 															        </div>
 													</div>
 							         
@@ -186,13 +202,13 @@
 
 													<div class="clearfix">									        
 														<div class="lab">
-														   	<label><input name="save" id="save" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadProvider.save == true}">checked="checked" </c:if>  >Сохранить</label>
+														   	<label><input name="save" id="save" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadNomencl.save == true}">checked="checked" </c:if>  >Сохранить</label>
 														</div>
 													</div>
 
 													<div class="clearfix">									        
 														<div class="lab">
-														   	<label><input name="autoload" id="autoload" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadProvider.autoload == true}">checked="checked"</c:if>  >Автозагрузка</label>
+														   	<label><input name="autoload" id="autoload" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadNomencl.autoload == true}">checked="checked"</c:if>  >Автозагрузка</label>
 														</div>
 													</div>
 						
@@ -202,7 +218,7 @@
 								        				</div>
 							        				</div>
 							        				
-							         <input type="hidden" name ="act" id ="act" value="1"/>
+							         <input type="hidden" name ="act" id ="act" value="2"/>
 						</form:form>
 				</div>
 
@@ -229,14 +245,14 @@
 
 									<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
 										<table class="tab tab-drag">
-											<c:forEach items="${dirProviders}" var="dirProvider">
+											<c:forEach items="${dirNomencls}" var="dirNomencl">
 												<tr>
 													<td class="dragHandle">&nbsp;</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirProvider.name}'); $('#code').val('${dirProvider.code}');">(${dirProvider.id}) ${dirProvider.name}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirProvider.name}'); $('#code').val('${dirProvider.code}');">${dirProvider.code}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}');">(${dirNomencl.id}) ${dirNomencl.name}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}');">${dirNomencl.code}</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
-							         					<a href="javascript:delObject(${dirProvider.id},'DirProvider','1');" class="ico ico-delete" onclick=""></a>
+							         					<a href="javascript:delObject(${dirNomencl.id},'DirProvider','1');" class="ico ico-delete" onclick=""></a>
 							         				</td>
 												</tr>
 											</c:forEach>
@@ -263,7 +279,6 @@
   <script>
   		$(document).ready(function(){
 				
-  			checkAllCols(${allCount});
 			/*$("#save").attr("checked","checked");*/
 	    });
 	    

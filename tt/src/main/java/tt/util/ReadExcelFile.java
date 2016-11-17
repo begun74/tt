@@ -15,8 +15,10 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Service;
 
+import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.IModel;
+import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
 
 @Service
@@ -69,6 +71,41 @@ public class ReadExcelFile {
         }
         
 		return lProvs;
+		
+	}
+
+	
+	public  static List<?> processFile(File tmpFile, DirNomenclature dirNomenclature, MA_loadNomencl mA_loadNomencl) throws Exception{
+		
+		List<DirNomenclature>  lNomencls = new ArrayList<DirNomenclature>();
+		
+		Workbook workbook = getWorkbook(tmpFile);
+        Sheet firstSheet = workbook.getSheetAt(0);  
+        Iterator<Row> rowIterator = firstSheet.iterator();
+        DataFormatter df = new DataFormatter();
+		
+		
+		int row_ = 0;
+        while(rowIterator.hasNext() )
+        {
+        	Row tmp = rowIterator.next();
+        	
+        	
+        		if(row_ >= mA_loadNomencl.getRow()) {
+        			dirNomenclature = new DirNomenclature();
+	        	
+        			dirNomenclature.setName(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_name()-1)));
+        			dirNomenclature.setCode(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_code()-1)) ) );
+        			dirNomenclature.setArticle(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_article()-1)));
+        			
+		        	lNomencls.add(dirNomenclature);
+        		}
+        	
+        	
+        	++row_;
+        }
+        
+		return lNomencls;
 		
 	}
 

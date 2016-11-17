@@ -2,6 +2,7 @@ package tt.dao;
 
 import java.util.List;
 
+import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.User;
 
@@ -14,6 +15,11 @@ public interface Dao {
 	public List<DirProvider> getProviderList();
 	public void addProvider(DirProvider dirProvider);
 	public DirProvider getProvider(long id);
+	
+
+	public List<DirNomenclature> getNomenclatureList();
+	public void addNomenclature(DirNomenclature dirNomenclature);
+	public DirNomenclature getNomenclature(long id);
 	
 	
 	public Object getObject(Class clazz,long id);
