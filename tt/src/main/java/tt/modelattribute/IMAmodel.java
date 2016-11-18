@@ -8,5 +8,7 @@ public interface IMAmodel extends Serializable {
 	
 	public void setRow(int row);
 	
+	public long  getSerialversionuid();
+	
 
 }

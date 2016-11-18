@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
+import tt.service.TTServiceImpl;
 
 
 @Service
@@ -25,6 +26,10 @@ public class SessionBean  implements Serializable {
 	 */
 	private static final long serialVersionUID = 4017739667981879557L;
 	
+
+	@Autowired
+	private AppBean appBean;
+	
 	@Autowired
 	private MA_loadProvider mA_loadProvider;
 	
@@ -35,7 +40,7 @@ public class SessionBean  implements Serializable {
 	private List<String> successList = new ArrayList<String>();
 	
 	public SessionBean() {
-		
+		//this.setmA_loadNomencl((MA_loadNomencl) appBean.getMapStore().get(mA_loadNomencl.getSerialversionuid()) );
 	}
 	
 	
@@ -106,6 +111,7 @@ public class SessionBean  implements Serializable {
 	@PostConstruct
 	void init(){
 		//System.out.println("SessionBean @PostConstruct ");
+		this.setmA_loadNomencl((MA_loadNomencl) appBean.getMapStore().get(mA_loadNomencl.getSerialversionuid()) );
 	}
 	
 	@PreDestroy

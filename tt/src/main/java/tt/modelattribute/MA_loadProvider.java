@@ -67,7 +67,7 @@ public class MA_loadProvider implements IMAmodel {
 	}
 	
 
-	public static long getSerialversionuid() {
+	public long getSerialversionuid() {
 		return serialVersionUID;
 	}
 

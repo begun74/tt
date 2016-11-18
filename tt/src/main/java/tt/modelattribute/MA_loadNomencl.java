@@ -75,7 +75,7 @@ public class MA_loadNomencl  implements IMAmodel {
 		this.autoload = autoload;
 	}
 
-	public static long getSerialversionuid() {
+	public long getSerialversionuid() {
 		return serialVersionUID;
 	}
 	

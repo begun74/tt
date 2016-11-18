@@ -59,7 +59,7 @@ public class AdminCtrl {
 	{
 		ModelAndView model = new ModelAndView("admin/main");
 		
-		System.out.println(ttService.getStoreList());
+		//System.out.println(ttService.getStoreList());
 		
 		switch (act)
 		{
@@ -71,7 +71,7 @@ public class AdminCtrl {
 
 			case "2":
 				model = new ModelAndView("admin/addNomencl");
-				model.addObject("dirNomencls",null);
+				model.addObject("dirNomencls", ttService.getNomenclatureList());
 			break;
 			
 		}
@@ -146,7 +146,7 @@ public class AdminCtrl {
 	
 	
 
-	@SuppressWarnings("static-access")
+	//@SuppressWarnings("static-access")
 	@RequestMapping(value = "addFileNomencl" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFileProvider( @ModelAttribute  MultipartFile file,
 										@Valid MA_loadNomencl mA_loadNomencl ,
@@ -164,18 +164,7 @@ public class AdminCtrl {
 		if(mA_loadNomencl.isSave())
 		{
 			try {
-				ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-				ObjectOutputStream objOut = new ObjectOutputStream(byteOut);
-				objOut.writeObject(mA_loadNomencl);
-				objOut.close();
-				byteOut.close();
-				byte[] bytes = byteOut.toByteArray();
-				
-				Store store = new Store();
-				store.setSerialVersionUID(mA_loadNomencl.getSerialversionuid());
-				store.setBytearray(bytes);
-				
-				ttService.addStore(store);
+				ttService.addStore(objectToBytes(mA_loadNomencl));
 			}
 			catch(IOException ioe)
 			{
@@ -220,6 +209,27 @@ public class AdminCtrl {
 		return model;
 	}
 	
+	
+	
+	private Store objectToBytes(IMAmodel IMAmodel) throws IOException{
+		// TODO Auto-generated method stub
+		Store store = new Store();
+
+		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+		ObjectOutputStream objOut = new ObjectOutputStream(byteOut);
+		objOut.writeObject(IMAmodel);
+		objOut.close();
+		byteOut.close();
+		byte[] bytes = byteOut.toByteArray();
+		
+		store.setSerialVersionUID(IMAmodel.getSerialversionuid());
+		store.setBytearray(bytes);
+
+		return store;
+	}
+
+
+
 	@RequestMapping(value = "addFileProvider" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFileProvidere( @ModelAttribute  MultipartFile file,
 										@Valid MA_loadProvider mA_loadProvider ,
