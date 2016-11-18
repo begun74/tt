@@ -49,7 +49,7 @@ public class FileUpload {
 		if (!file.isEmpty()) {
 			String contentType = file.getContentType().toString().toLowerCase();
 			
-			if (isValidContentType_XLS(contentType)) {
+			if (isValidContentType(ALLOWED_FILE_TYPES_XLS,contentType)) {
             	String newFile = null;
             	//System.out.println("process - "+TEMP_FILE_PATH);
 
@@ -80,10 +80,10 @@ public class FileUpload {
 
 	}
 
-    
-    private boolean isValidContentType_PICS(String contentType) {
-    	//System.out.println("contentType - "+contentType);
-    	List<String[]> lExt= Arrays.asList(ALLOWED_FILE_TYPES_PICS);
+
+    private boolean isValidContentType(String[][] ALLOWED_FILE_TYPES,String contentType) {
+    	
+    	List<String[]> lExt= Arrays.asList(ALLOWED_FILE_TYPES);
     	
     	for(String[] ext: lExt) 
     		if(ext[0].equals(contentType))
@@ -91,19 +91,5 @@ public class FileUpload {
         
         return false;
     }
-
-    
-    
-    private boolean isValidContentType_XLS(String contentType) {
-    	
-    	List<String[]> lExt= Arrays.asList(ALLOWED_FILE_TYPES_XLS);
-    	
-    	for(String[] ext: lExt) 
-    		if(ext[0].equals(contentType))
-    			return true; 
-        
-        return false;
-    }
-
 	
 }
