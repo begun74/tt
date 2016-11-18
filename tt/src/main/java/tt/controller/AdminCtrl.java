@@ -171,7 +171,7 @@ public class AdminCtrl {
 			try {
 				appBean.addToMapStore(mA_loadNomencl);
 			}
-			catch(IOException ioe)
+			catch(Exception ioe)
 			{
 				ioe.printStackTrace();
 				sessBean.getErrorList().add("Параметры не записаны! ");

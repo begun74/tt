@@ -46,7 +46,6 @@ public class AppBean implements Serializable {
 			Store s = (Store)iterStore.next();
 			try {
 				mapStore.put(s.getSerialVersionUID(), bytesToObject(s.getBytearray()));
-				//System.out.println(s.getSerialVersionUID()+"  "+bytesToObject(s.getBytearray()));
 			} catch (ClassNotFoundException | IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -61,7 +60,7 @@ public class AppBean implements Serializable {
 	public void addToMapStore(IMAmodel IMAmodel) throws IOException {
 		Store s = objectToBytes(IMAmodel);
 		ttService.addStore(s);
-		mapStore.containsKey(s.getSerialVersionUID());
+		
 		mapStore.put(s.getSerialVersionUID(), s);
 		
 	}
