@@ -196,6 +196,7 @@ public class AdminCtrl {
 						catch(org.springframework.dao.DataIntegrityViolationException dve) 
 						{
 							dve.printStackTrace();
+							sessBean.getErrorList().add("Настройки уже существуют! ");
 						}
 						catch(Exception ioe)
 						{
