@@ -39,11 +39,6 @@ public class SessionBean  implements Serializable {
 	private List<String> errorList = new ArrayList<String>();
 	private List<String> successList = new ArrayList<String>();
 	
-	public SessionBean() {
-		//this.setmA_loadNomencl((MA_loadNomencl) appBean.getMapStore().get(mA_loadNomencl.getSerialversionuid()) );
-	}
-	
-	
 
 
 
@@ -111,8 +106,13 @@ public class SessionBean  implements Serializable {
 	@PostConstruct
 	void init(){
 		//System.out.println("SessionBean @PostConstruct ");
-		this.setmA_loadNomencl((MA_loadNomencl) appBean.getMapStore().get(mA_loadNomencl.getSerialversionuid()) );
+		
+		if(appBean.getMapStore().get(mA_loadNomencl.getSerialversionuid()) == null)
+			setmA_loadNomencl(new MA_loadNomencl());
+		else
+			this.setmA_loadNomencl((MA_loadNomencl) appBean.getMapStore().get(mA_loadNomencl.getSerialversionuid()) );
 	}
+	
 	
 	@PreDestroy
 	void destr() {

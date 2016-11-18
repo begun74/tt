@@ -14,10 +14,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import tt.model.*;
 import tt.modelattribute.IMAmodel;
@@ -61,7 +58,13 @@ public class AppBean implements Serializable {
 	}
 	
 	
-	
+	public void addToMapStore(IMAmodel IMAmodel) throws IOException {
+		Store s = objectToBytes(IMAmodel);
+		ttService.addStore(s);
+		mapStore.containsKey(s.getSerialVersionUID());
+		mapStore.put(s.getSerialVersionUID(), s);
+		
+	}
 
 	public HashMap<Long, Object> getMapStore() {
 		return this.mapStore;
@@ -86,6 +89,23 @@ public class AppBean implements Serializable {
 		byteIn.close();
 
 		return obj;
+	}
+
+	private Store objectToBytes(IMAmodel IMAmodel) throws IOException{
+		// TODO Auto-generated method stub
+		Store store = new Store();
+
+		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+		ObjectOutputStream objOut = new ObjectOutputStream(byteOut);
+		objOut.writeObject(IMAmodel);
+		objOut.close();
+		byteOut.close();
+		byte[] bytes = byteOut.toByteArray();
+		
+		store.setSerialVersionUID(IMAmodel.getSerialversionuid());
+		store.setBytearray(bytes);
+
+		return store;
 	}
 
 

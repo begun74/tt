@@ -19,7 +19,7 @@ public class MA_loadNomencl  implements IMAmodel {
 	private int col_code=2;
 	private int col_article=3;
 	
-	private boolean save;
+	private transient  boolean save;
 	private boolean autoload;
 	
 	

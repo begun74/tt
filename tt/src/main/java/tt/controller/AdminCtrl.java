@@ -24,6 +24,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import tt.annotation.Loggable;
+import tt.bean.AppBean;
 import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
@@ -40,11 +41,15 @@ import tt.util.FileUpload;
 @RequestMapping(value = {"/admin"} , method = RequestMethod.GET)
 public class AdminCtrl {
 	
-	@Autowired
-	FileUpload fileUpload;
 	
 	@Autowired
-	SessionBean sessBean;
+	private AppBean appBean;
+
+	@Autowired
+	private FileUpload fileUpload;
+	
+	@Autowired
+	private SessionBean sessBean;
 	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
@@ -164,7 +169,7 @@ public class AdminCtrl {
 		if(mA_loadNomencl.isSave())
 		{
 			try {
-				ttService.addStore(objectToBytes(mA_loadNomencl));
+				appBean.addToMapStore(mA_loadNomencl);
 			}
 			catch(IOException ioe)
 			{
@@ -211,23 +216,6 @@ public class AdminCtrl {
 	
 	
 	
-	private Store objectToBytes(IMAmodel IMAmodel) throws IOException{
-		// TODO Auto-generated method stub
-		Store store = new Store();
-
-		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-		ObjectOutputStream objOut = new ObjectOutputStream(byteOut);
-		objOut.writeObject(IMAmodel);
-		objOut.close();
-		byteOut.close();
-		byte[] bytes = byteOut.toByteArray();
-		
-		store.setSerialVersionUID(IMAmodel.getSerialversionuid());
-		store.setBytearray(bytes);
-
-		return store;
-	}
-
 
 
 	@RequestMapping(value = "addFileProvider" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
@@ -283,51 +271,22 @@ public class AdminCtrl {
 	}
 
 
-	@RequestMapping(value = "addFile2" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ModelAndView   processFile2( @ModelAttribute  MultipartFile file, @RequestParam(value = "act",   defaultValue = "-1", required=true) int act,
-										@RequestParam(value = "row",   defaultValue = "1") int row , @RequestParam(value = "cols",   defaultValue = "1") String cols) 
-	{
-		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
-		
-		/*
-		String[] str_cols = cols.split(",");
-		int[] new_cols = new int[str_cols.length];
-		//int[] array = Arrays.asList(str_cols).stream().mapToInt(Integer::parseInt).toArray();
-		
-		for(int i=0; i< str_cols.length ;++i) {
-			try {
-				new_cols[i] = Integer.parseInt(str_cols[i]);
-			}
-			catch(java.lang.NumberFormatException nfe) {
-				nfe.printStackTrace();
-			}
-		}
+	private Store objectToBytes(IMAmodel IMAmodel) throws IOException{
+		// TODO Auto-generated method stub
+		Store store = new Store();
 
+		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
+		ObjectOutputStream objOut = new ObjectOutputStream(byteOut);
+		objOut.writeObject(IMAmodel);
+		objOut.close();
+		byteOut.close();
+		byte[] bytes = byteOut.toByteArray();
 		
-		
-		//System.out.println(row + "  " +Arrays.toString(new_cols));
-		
-		switch (act)
-		{
-			case 1:
-				try {
-					TreeSet<DirProvider> sP = new TreeSet<DirProvider>();
-					sP.addAll((List<DirProvider>) fileUpload.process(new DirProvider(),file, mA_loadProvider));
-	
-					for(DirProvider dp: sP)
-						ttService.addProvider(dp);
-	
-				} catch (IllegalStateException | IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			break;
+		store.setSerialVersionUID(IMAmodel.getSerialversionuid());
+		store.setBytearray(bytes);
 
-			
-		}
-		*/
-		//System.out.println(row+"  "+cols);
-	    return model;
+		return store;
 	}
+
 
 }
