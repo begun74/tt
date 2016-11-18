@@ -57,7 +57,7 @@ public class AppBean implements Serializable {
 	}
 	
 	
-	public void addToMapStore(IMAmodel IMAmodel) throws IOException {
+	public void addToMapStore(IMAmodel IMAmodel) throws IOException, org.springframework.dao.DataIntegrityViolationException {
 		Store s = objectToBytes(IMAmodel);
 		ttService.addStore(s);
 		
@@ -65,8 +65,15 @@ public class AppBean implements Serializable {
 		
 	}
 
-	public HashMap<Long, Object> getMapStore() {
-		return this.mapStore;
+	public Object findBySerialVerUID(Long serialVersionUID)
+	{
+		try {
+			return bytesToObject(((Store)mapStore.get(serialVersionUID)).getBytearray());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 

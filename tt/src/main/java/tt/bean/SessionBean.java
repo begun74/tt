@@ -107,10 +107,10 @@ public class SessionBean  implements Serializable {
 	void init(){
 		//System.out.println("SessionBean @PostConstruct ");
 		
-		if(appBean.getMapStore().get(mA_loadNomencl.getSerialversionuid()) == null)
+		if(appBean.findBySerialVerUID(mA_loadNomencl.getSerialversionuid()) == null)
 			setmA_loadNomencl(new MA_loadNomencl());
 		else
-			this.setmA_loadNomencl((MA_loadNomencl) appBean.getMapStore().get(mA_loadNomencl.getSerialversionuid()) );
+			this.setmA_loadNomencl((MA_loadNomencl) appBean.findBySerialVerUID(mA_loadNomencl.getSerialversionuid()) );
 	}
 	
 	
