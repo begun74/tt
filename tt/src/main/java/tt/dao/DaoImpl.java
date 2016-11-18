@@ -7,7 +7,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import tt.model.DirNomenclature;
 import tt.model.DirProvider;
+import tt.model.Store;
 import tt.model.User;
 
 
@@ -63,5 +65,49 @@ public class DaoImpl implements Dao {
 		// TODO Auto-generated method stub
 		return getSession().get(clazz, id);
 	}
+
+	@Override
+	public List<DirNomenclature> getNomenclatureList() {
+		// TODO Auto-generated method stub
+		return getSession().createSQLQuery("select * from dir_nomenclature order by name").addEntity(DirNomenclature.class).list();
+	}
+
+	@Override
+	public void addNomenclature(DirNomenclature dirNomenclature) {
+		// TODO Auto-generated method stub
+		getSession().saveOrUpdate(dirNomenclature);
+	}
+
+	@Override
+	public DirNomenclature getNomenclature(long id) {
+		// TODO Auto-generated method stub
+		return (DirNomenclature) getSession().get(DirNomenclature.class, id);
+	}
+
+	@Override
+	public List<Store> getStoreList() {
+		// TODO Auto-generated method stub
+		return getSession().createSQLQuery("select * from store").addEntity(Store.class).list();
+	}
+
+	@Override
+	public void addStore(Store store) {
+		// TODO Auto-generated method stub
+		getSession().saveOrUpdate(store);
+	}
+
+	/* @Override
+	public Store getStore(long id) {
+		// TODO Auto-generated method stub
+		return (Store) getSession().get(Store.class, id);
+	}
+	*/
+
+	@Override
+	public Store getStoreBySerVerUID(long serialVersionUID) {
+		// TODO Auto-generated method stub
+		return (Store) getSession().createQuery("from store s where s.serialVersionUID = :serialVersionUID").setParameter("serialVersionUID", serialVersionUID).uniqueResult();
+	}
+
 
 }

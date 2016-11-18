@@ -1,0 +1,112 @@
+package tt.util;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.stereotype.Service;
+
+import tt.model.DirNomenclature;
+import tt.model.DirProvider;
+import tt.model.IModel;
+import tt.modelattribute.MA_loadNomencl;
+import tt.modelattribute.MA_loadProvider;
+
+@Service
+public class ReadExcelFile {
+	
+	
+	
+    private static Workbook getWorkbook(File tmpFile) throws IOException {
+        
+    	Workbook workbook = null;
+        FileInputStream fis = new FileInputStream(tmpFile);
+        
+        if (tmpFile.toString().endsWith("xlsx")) {
+            workbook = new XSSFWorkbook(fis);
+        } else if (tmpFile.toString().endsWith("xls")) {
+            workbook = new HSSFWorkbook(fis);
+        }
+        return workbook;
+    }
+	
+
+	
+	public  static List<?> processFile(File tmpFile, DirProvider dirProvider, MA_loadProvider mA_loadProvider) throws Exception{
+		
+		List<DirProvider>  lProvs = new ArrayList<DirProvider>();
+		
+		Workbook workbook = getWorkbook(tmpFile);
+        Sheet firstSheet = workbook.getSheetAt(0);  
+        Iterator<Row> rowIterator = firstSheet.iterator();
+        DataFormatter df = new DataFormatter();
+		
+		
+		int row_ = 0;
+        while(rowIterator.hasNext() )
+        {
+        	Row tmp = rowIterator.next();
+        	
+        	
+        		if(row_ >= mA_loadProvider.getRow()) {
+	        		dirProvider = new DirProvider();
+	        	
+	        		dirProvider.setName(df.formatCellValue(tmp.getCell(mA_loadProvider.getCol_name()-1)));
+	        		dirProvider.setCode(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadProvider.getCol_code()-1)) ) );
+	        	
+		        	lProvs.add(dirProvider);
+        		}
+        	
+        	
+        	++row_;
+        }
+        
+		return lProvs;
+		
+	}
+
+	
+	public  static List<?> processFile(File tmpFile, DirNomenclature dirNomenclature, MA_loadNomencl mA_loadNomencl) throws Exception{
+		
+		List<DirNomenclature>  lNomencls = new ArrayList<DirNomenclature>();
+		
+		Workbook workbook = getWorkbook(tmpFile);
+        Sheet firstSheet = workbook.getSheetAt(0);  
+        Iterator<Row> rowIterator = firstSheet.iterator();
+        DataFormatter df = new DataFormatter();
+		
+		
+		int row_ = 0;
+        while(rowIterator.hasNext() )
+        {
+        	Row tmp = rowIterator.next();
+        	
+        	
+        		if(row_ >= mA_loadNomencl.getRow()-1) {
+        			dirNomenclature = new DirNomenclature();
+	        	
+        			dirNomenclature.setName(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_name()-1)));
+        			dirNomenclature.setCode(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_code()-1)) ) );
+        			dirNomenclature.setArticle(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_article()-1)));
+        			
+		        	lNomencls.add(dirNomenclature);
+        		}
+        	
+        	
+        	++row_;
+        }
+        
+		return lNomencls;
+		
+	}
+
+}

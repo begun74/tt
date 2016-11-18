@@ -13,16 +13,18 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+
 @Entity
-@Table(name = "dir_provider")
-public class DirProvider  implements Serializable, IModel{
-	
-	
+@Table(name = "dir_nomenclature")
+public class DirNomenclature implements  IModel {
+
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1457717147351995086L;
+	private static final long serialVersionUID = 4460232450371446581L;
 
+	
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="seq_global")
 	@SequenceGenerator(
@@ -30,17 +32,22 @@ public class DirProvider  implements Serializable, IModel{
 			sequenceName="seq_global",
 			allocationSize=1
 		)
-	@Column(name="id_dir_provider")
+	@Column(name="id_dir_nomenclature")
 	private long id;
 	
 	
 	@Column(name="code")
 	@NotNull (message = "Please enter code.") 
-	private Integer code;
+	private Long code;
 
 	@NotEmpty (message = "Please enter name.") 
 	private String name;
 
+	
+	@NotEmpty (message = "Please enter name.") 
+	private String article;
+	
+	
 	public long getId() {
 		return id;
 	}
@@ -49,11 +56,11 @@ public class DirProvider  implements Serializable, IModel{
 		this.id = id;
 	}
 
-	public Integer getCode() {
+	public Long getCode() {
 		return code;
 	}
 
-	public void setCode(Integer code) {
+	public void setCode(Long code) {
 		this.code = code;
 	}
 
@@ -65,13 +72,25 @@ public class DirProvider  implements Serializable, IModel{
 		this.name = name;
 	}
 
+	
+	public String getArticle() {
+		return article;
+	}
+
+	public void setArticle(String article) {
+		this.article = article;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
+	
 	@Override
 	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		
-		return ( ((DirProvider)o).getName().compareTo(this.getName()) + ((DirProvider)o).getCode().compareTo(this.getCode()));
+		return ( ((DirNomenclature)o).getCode().compareTo(this.getCode()) );
 	}
-	
 	
 	
 

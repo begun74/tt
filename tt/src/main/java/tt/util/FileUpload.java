@@ -3,6 +3,7 @@ package tt.util;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -15,10 +16,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import tt.model.DirNomenclature;
 import tt.model.DirProvider;
+import tt.model.IModel;
+import tt.modelattribute.IMAmodel;
+import tt.modelattribute.MA_loadNomencl;
+import tt.modelattribute.MA_loadProvider;
 
 
-@Component
+@Service
 @Transactional()
 public class FileUpload {
 	
@@ -45,34 +51,29 @@ public class FileUpload {
 	void destr() {
 		//System.out.println("BacketBean @PreDestroy ");
 	}    
-	public List<DirProvider>  process(MultipartFile file) {
+
+	
+	public Collection<?>  process(IModel model , MultipartFile file, IMAmodel IMAmodel) throws Exception {
 		if (!file.isEmpty()) {
 			String contentType = file.getContentType().toString().toLowerCase();
+			String extention ;
 			
-			if (isValidContentType(ALLOWED_FILE_TYPES_XLS,contentType)) {
-            	String newFile = null;
-            	//System.out.println("process - "+TEMP_FILE_PATH);
+			if ((extention = isValidContentType(ALLOWED_FILE_TYPES_XLS,contentType)) != null) {
+            	File tmpFile = new File(TEMP_FILE_PATH + File.separator+"tmp."+extention );
 
 				try {
-					file.transferTo(new File(TEMP_FILE_PATH + File.separator+"file.tmp"));
-				} catch (IllegalStateException | IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					file.transferTo(tmpFile);
+					
+					if(model instanceof DirProvider)
+					return ReadExcelFile.processFile(tmpFile,(DirProvider) model, (MA_loadProvider) IMAmodel) ;
+					
+					else if(model instanceof DirNomenclature)
+					return ReadExcelFile.processFile(tmpFile,(DirNomenclature) model, (MA_loadNomencl) IMAmodel) ;
+					
+				} 
+				finally {
+					tmpFile.delete();
 				}
-
-            	/*
-                if (belowMaxFileSize(file.getSize())) {
-                    new File(newFile).mkdirs();
-                    try {
-						file.transferTo(new File(newFile));
-						//return ReadExcelUtil.readParticleboard(new File(newFile));
-					} catch (Exception e) {
-						e.printStackTrace();
-						return null;
-					}
-                }
-                */
-            	
 			}
 		}
 		
@@ -80,16 +81,18 @@ public class FileUpload {
 
 	}
 
+    
 
-    private boolean isValidContentType(String[][] ALLOWED_FILE_TYPES,String contentType) {
-    	
+	private String isValidContentType(String[][] ALLOWED_FILE_TYPES,String contentType) {
+    	//System.out.println("contentType - "+contentType);
     	List<String[]> lExt= Arrays.asList(ALLOWED_FILE_TYPES);
     	
     	for(String[] ext: lExt) 
     		if(ext[0].equals(contentType))
-    			return true; 
+    			return ext[1]; 
         
-        return false;
+        return null;
     }
+
 	
 }
