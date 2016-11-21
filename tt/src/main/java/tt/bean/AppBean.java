@@ -26,10 +26,8 @@ public class AppBean implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7749935089438907695L;
+	private static final long serialVersionUID = 7749935089438907691L;
 	
-	
-
 	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
