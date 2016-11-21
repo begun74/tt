@@ -26,7 +26,7 @@ public class AppBean implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7749935089438907691L;
+	private static final long serialVersionUID = 7749935089438907692L;
 	
 	
 	@Autowired
