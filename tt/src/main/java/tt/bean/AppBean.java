@@ -28,7 +28,7 @@ public class AppBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 7749935089438907695L;
 	
-	private long t = System.currentTimeMillis();
+	
 
 	
 	@Autowired
@@ -57,16 +57,27 @@ public class AppBean implements Serializable {
 	}
 	
 	
-	public void addToMapStore(IMAmodel IMAmodel) throws IOException {
-		Store s = objectToBytes(IMAmodel);
+	public void addToMapStore(IMAmodel IMAmodel) throws Exception {
+		
+		Store s = new Store();
+		s.setSerialVersionUID(IMAmodel.getSerialversionuid());
+		s.setBytearray(objectToBytes(IMAmodel));
+
 		ttService.addStore(s);
 		
-		mapStore.put(s.getSerialVersionUID(), s);
+		mapStore.put(s.getSerialVersionUID(), bytesToObject(s.getBytearray()));
 		
 	}
 
-	public HashMap<Long, Object> getMapStore() {
-		return this.mapStore;
+	public Object findBySerialVerUID(Long serialVersionUID)
+	{
+		try {
+			return mapStore.get(serialVersionUID);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 
@@ -90,9 +101,8 @@ public class AppBean implements Serializable {
 		return obj;
 	}
 
-	private Store objectToBytes(IMAmodel IMAmodel) throws IOException{
+	private byte[] objectToBytes(IMAmodel IMAmodel) throws IOException{
 		// TODO Auto-generated method stub
-		Store store = new Store();
 
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		ObjectOutputStream objOut = new ObjectOutputStream(byteOut);
@@ -101,10 +111,8 @@ public class AppBean implements Serializable {
 		byteOut.close();
 		byte[] bytes = byteOut.toByteArray();
 		
-		store.setSerialVersionUID(IMAmodel.getSerialversionuid());
-		store.setBytearray(bytes);
 
-		return store;
+		return bytes;
 	}
 
 
@@ -116,12 +124,4 @@ public class AppBean implements Serializable {
 
 
 
-
-	@Override
-	public String toString() {
-		return "AppBean [t=" + t + "]";
-	}
-
-	
-	
 }

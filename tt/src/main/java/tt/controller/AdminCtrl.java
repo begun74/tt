@@ -167,20 +167,8 @@ public class AdminCtrl {
 			return model;
 		}
 		
-		if(mA_loadNomencl.isSave())
-		{
-			try {
-				appBean.addToMapStore(mA_loadNomencl);
-			}
-			catch(Exception ioe)
-			{
-				ioe.printStackTrace();
-				sessBean.getErrorList().add("Параметры не записаны! ");
-			}
-			
-		}
-			
-		sessBean.setmA_loadNomencl(mA_loadNomencl);
+		
+
 
 		try {
 
@@ -197,9 +185,27 @@ public class AdminCtrl {
 							//dve.printStackTrace(); 
 							sessBean.getErrorList().add(dN.getName()+" уже существует! ");
 						}
-						
 					}
 
+
+					if(mA_loadNomencl.isSave())
+					{
+						try {
+							appBean.addToMapStore(mA_loadNomencl);
+							sessBean.setmA_loadNomencl(mA_loadNomencl);
+						}
+						catch(org.springframework.dao.DataIntegrityViolationException dve) 
+						{
+							dve.printStackTrace();
+							sessBean.getErrorList().add("Настройки уже существуют! ");
+						}
+						catch(Exception ioe)
+						{
+							ioe.printStackTrace();
+							sessBean.getErrorList().add("Параметры не записаны! ");
+						}
+					}
+					
 			}
 			catch (java.lang.NumberFormatException nfe) {
 						nfe.printStackTrace();
