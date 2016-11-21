@@ -3,6 +3,7 @@ package tt.controller;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeSet;
@@ -94,7 +95,7 @@ public class AdminCtrl {
 	public ModelAndView   addNomencl(HttpSession session, @Valid @ModelAttribute("addNomenclForm") DirNomenclature dirNomenclature,
 			BindingResult result,
 			@ModelAttribute  MultipartFile file,
-			@RequestParam(value = "id_dir_nomenclature",   required=false) Long id_dir_nomenclature) 
+			@RequestParam(value = "id_dir_nomenclature",   required=false) BigInteger id_dir_nomenclature) 
 	{
 		
 		ModelAndView model = new ModelAndView("redirect:/admin?act=2");
@@ -116,7 +117,7 @@ public class AdminCtrl {
 	public ModelAndView   processProvider(HttpSession session, @Valid @ModelAttribute("addProviderForm") DirProvider dirProvider,
 			BindingResult result,
 			@ModelAttribute  MultipartFile file,
-			@RequestParam(value = "id_dir_provider",   required=false) Long id_dir_provider) 
+			@RequestParam(value = "id_dir_provider",   required=false) BigInteger id_dir_provider) 
 	{
 		
 		ModelAndView model = new ModelAndView("redirect:/admin?act=1");

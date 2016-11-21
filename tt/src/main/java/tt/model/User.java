@@ -1,6 +1,7 @@
 package tt.model;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,7 +31,7 @@ public class User implements Serializable, IModel{
 			allocationSize=1
 		)
 	@Column(name="id_user")
-	private long id;
+	private BigInteger id;
 	
 	@NotEmpty (message = "Please enter name.") 
 	private String name;
@@ -46,11 +47,11 @@ public class User implements Serializable, IModel{
 		this.password = password;
 	}
 
-	public long getId() {
+	public BigInteger getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 

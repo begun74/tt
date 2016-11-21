@@ -1,11 +1,12 @@
 package tt.model;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 
 public interface IModel extends Comparable , Serializable {
 
 	
-	public long getId();
-	public void setId(long id);
+	public BigInteger getId();
+	public void setId(BigInteger id);
 
 }
