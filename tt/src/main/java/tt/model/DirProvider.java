@@ -16,7 +16,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "dir_provider")
-public class DirProvider  implements Serializable, IModel{
+public class DirProvider  implements  IModel{
 	
 	
 	/**
