@@ -13,9 +13,9 @@
               <li><a href="admin?act=2" ><spring:message code="nomenclature"/></li>          
             </ul>
           </li>
-          <li><a href="#">Load info</a>
+          <li><a href="#"><spring:message code="admin.load.info.from.file"/></a>
             <ul class="submenu">
-              <li><a href="admin?act=3" ><spring:message code="admin.load.info.from.file"/></a></li>          
+              <li><a href="admin?act=3" ><spring:message code="load.tails"/></a></li>          
             </ul>
           </li>
           <li><a href="#" ><spring:message code="admin.view.orders"/></a>

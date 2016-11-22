@@ -111,6 +111,12 @@ public class SessionBean  implements Serializable {
 			setmA_loadNomencl(new MA_loadNomencl());
 		else
 			this.setmA_loadNomencl((MA_loadNomencl) appBean.findBySerialVerUID(mA_loadNomencl.getSerialversionuid()) );
+
+		if(appBean.findBySerialVerUID(mA_loadProvider.getSerialversionuid()) == null)
+			setmA_loadProvider(new MA_loadProvider());
+		else
+			this.setmA_loadProvider((MA_loadProvider) appBean.findBySerialVerUID(mA_loadProvider.getSerialversionuid()) );
+	
 	}
 	
 	

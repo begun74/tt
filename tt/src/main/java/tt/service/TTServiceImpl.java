@@ -1,5 +1,6 @@
 package tt.service;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,15 +49,10 @@ public class TTServiceImpl implements Dao {
 	}
 
 
-	@Override
-	public DirProvider getProvider(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 	@Override
-	public Object getObject(Class clazz, long id) {
+	public Object getObject(Class clazz, BigInteger id) {
 		// TODO Auto-generated method stub
 		return dao.getObject(clazz, id);
 	}
@@ -82,12 +78,6 @@ public class TTServiceImpl implements Dao {
 		dao.addNomenclature(dirNomenclature);
 	}
 
-
-	@Override
-	public DirNomenclature getNomenclature(long id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 
 	@Override

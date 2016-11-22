@@ -1,5 +1,6 @@
 package tt.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import tt.model.DirNomenclature;
@@ -15,12 +16,12 @@ public interface Dao {
 
 	public List<DirProvider> getProviderList();
 	public void addProvider(DirProvider dirProvider);
-	public DirProvider getProvider(long id);
+	//public DirProvider getProvider(BigInteger id);
 	
 
 	public List<DirNomenclature> getNomenclatureList();
 	public void addNomenclature(DirNomenclature dirNomenclature);
-	public DirNomenclature getNomenclature(long id);
+	//public DirNomenclature getNomenclature(BigInteger id);
 	
 
 	public List<Store> getStoreList();
@@ -29,7 +30,7 @@ public interface Dao {
 	public Store getStoreBySerVerUID(long serialVersionUID);
 	
 	
-	public Object getObject(Class clazz,long id);
+	public Object getObject(Class clazz,BigInteger id);
 	public void delObject(Object obj);
 	
 	

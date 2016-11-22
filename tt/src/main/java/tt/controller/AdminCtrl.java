@@ -79,6 +79,11 @@ public class AdminCtrl {
 				model = new ModelAndView("admin/addNomencl");
 				model.addObject("dirNomencls", ttService.getNomenclatureList());
 			break;
+
+			case "3":
+				model = new ModelAndView("admin/addTails");
+				model.addObject("tails", ttService.getNomenclatureList());
+			break;
 			
 		}
 		
@@ -137,12 +142,14 @@ public class AdminCtrl {
 
 	
 	@RequestMapping(value = "delObject")
-	public String  delObject(HttpSession session,@RequestParam(value = "id",   defaultValue = "-1") long id ,@RequestParam(value = "act",   defaultValue = "-1") int act
+	public String  delObject(HttpSession session,@RequestParam(value = "id",   defaultValue = "-1") BigInteger id ,@RequestParam(value = "act",   defaultValue = "-1") int act
 			,@RequestParam(value = "clazz",  required=true, defaultValue = "") String clazz) 
 	{
 
 		try {
+			
 			ttService.delObject(ttService.getObject(Class.forName("tt.model."+clazz), id));
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -168,6 +175,24 @@ public class AdminCtrl {
 		}
 		
 		
+		if(mA_loadNomencl.isSave())
+		{
+			try {
+				appBean.addToMapStore(mA_loadNomencl);
+				sessBean.setmA_loadNomencl(mA_loadNomencl);
+			}
+			catch(org.springframework.dao.DataIntegrityViolationException dve) 
+			{
+				dve.printStackTrace();
+				sessBean.getErrorList().add("Настройки уже существуют! ");
+			}
+			catch(Exception ioe)
+			{
+				ioe.printStackTrace();
+				sessBean.getErrorList().add("Параметры не записаны! ");
+			}
+		}
+		
 
 
 		try {
@@ -188,28 +213,11 @@ public class AdminCtrl {
 					}
 
 
-					if(mA_loadNomencl.isSave())
-					{
-						try {
-							appBean.addToMapStore(mA_loadNomencl);
-							sessBean.setmA_loadNomencl(mA_loadNomencl);
-						}
-						catch(org.springframework.dao.DataIntegrityViolationException dve) 
-						{
-							dve.printStackTrace();
-							sessBean.getErrorList().add("Настройки уже существуют! ");
-						}
-						catch(Exception ioe)
-						{
-							ioe.printStackTrace();
-							sessBean.getErrorList().add("Параметры не записаны! ");
-						}
-					}
-					
 			}
 			catch (java.lang.NumberFormatException nfe) {
-						nfe.printStackTrace();
-						sessBean.addError("Ошибка формата данных !");
+				nfe.printStackTrace();
+				sessBean.addError(nfe.getMessage());
+				
 			}
 			catch (Exception e) {
 						// TODO Auto-generated catch block
@@ -241,7 +249,23 @@ public class AdminCtrl {
 		
 		
 		
-		//System.out.println("sessBean - " +sessBean);
+		if(mA_loadProvider.isSave())
+		{
+			try {
+				appBean.addToMapStore(mA_loadProvider);
+				sessBean.setmA_loadProvider(mA_loadProvider);
+			}
+			catch(org.springframework.dao.DataIntegrityViolationException dve) 
+			{
+				dve.printStackTrace();
+				sessBean.getErrorList().add("Настройки уже существуют! ");
+			}
+			catch(Exception ioe)
+			{
+				ioe.printStackTrace();
+				sessBean.getErrorList().add("Параметры не записаны! ");
+			}
+		}
 		
 		sessBean.setmA_loadProvider(mA_loadProvider);
 				
@@ -261,11 +285,14 @@ public class AdminCtrl {
 						}
 						
 					}
+					
+					
 	
 		}
 		catch (java.lang.NumberFormatException nfe) {
-					nfe.printStackTrace();
-					sessBean.addError("Ошибка формата данных !");
+			nfe.printStackTrace();
+			sessBean.addError(nfe.getMessage());
+			
 		}
 		catch (Exception e) {
 					// TODO Auto-generated catch block

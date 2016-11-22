@@ -1,5 +1,6 @@
 package tt.dao;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -48,11 +49,6 @@ public class DaoImpl implements Dao {
 		getSession().saveOrUpdate(dirProvider);
 	}
 
-	@Override
-	public DirProvider getProvider(long id) {
-		// TODO Auto-generated method stub
-		return (DirProvider) getSession().get(DirProvider.class, id);
-	}
 
 	@Override
 	public void delObject(Object obj) {
@@ -61,7 +57,7 @@ public class DaoImpl implements Dao {
 	}
 
 	@Override
-	public Object getObject(Class clazz, long id) {
+	public Object getObject(Class clazz, BigInteger id) {
 		// TODO Auto-generated method stub
 		return getSession().get(clazz, id);
 	}
@@ -78,11 +74,6 @@ public class DaoImpl implements Dao {
 		getSession().saveOrUpdate(dirNomenclature);
 	}
 
-	@Override
-	public DirNomenclature getNomenclature(long id) {
-		// TODO Auto-generated method stub
-		return (DirNomenclature) getSession().get(DirNomenclature.class, id);
-	}
 
 	@Override
 	public List<Store> getStoreList() {

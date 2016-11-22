@@ -13,8 +13,10 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.IModel;
@@ -24,6 +26,9 @@ import tt.modelattribute.MA_loadProvider;
 @Service
 public class ReadExcelFile {
 	
+	@Autowired
+	private static SessionBean sessBean;
+
 	
 	
     private static Workbook getWorkbook(File tmpFile) throws IOException {
@@ -41,7 +46,7 @@ public class ReadExcelFile {
 	
 
 	
-	public  static List<?> processFile(File tmpFile, DirProvider dirProvider, MA_loadProvider mA_loadProvider) throws Exception{
+	public  static List<?> processFile(File tmpFile, DirProvider dirProvider, MA_loadProvider mA_loadProvider) throws IOException {
 		
 		List<DirProvider>  lProvs = new ArrayList<DirProvider>();
 		
@@ -58,14 +63,22 @@ public class ReadExcelFile {
         	
         	
         		if(row_ >= mA_loadProvider.getRow()) {
-	        		dirProvider = new DirProvider();
-	        	
-	        		dirProvider.setName(df.formatCellValue(tmp.getCell(mA_loadProvider.getCol_name()-1)));
-	        		dirProvider.setCode(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadProvider.getCol_code()-1)) ) );
-	        	
-		        	lProvs.add(dirProvider);
+        			try {
+		        		dirProvider = new DirProvider();
+		        	
+		        		dirProvider.setName(df.formatCellValue(tmp.getCell(mA_loadProvider.getCol_name()-1)));
+		        		dirProvider.setCode(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadProvider.getCol_code()-1)) ) );
+		        	
+			        	lProvs.add(dirProvider);
+        			}
+		    		catch (java.lang.NumberFormatException nfe) {
+						//nfe.printStackTrace();
+						throw new java.lang.NumberFormatException("("+(row_+1) +") Ошибка формата данных !");
+						
+		    		}
+
         		}
-        	
+        	System.out.println("row - "+row_);
         	
         	++row_;
         }

@@ -20,7 +20,7 @@ public class MA_loadProvider implements IMAmodel {
 	private int col_name=1;
 	private int col_code=2;
 	
-	private boolean save;
+	private transient boolean save;
 	private boolean autoload;
 	
 	
