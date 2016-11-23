@@ -129,7 +129,7 @@ public class ReadExcelFile {
 
 	public static Collection<?> processFile(File tmpFile, Tail tail, MA_loadTail mA_loadTail)  throws Exception {
 		// TODO Auto-generated method stub
-		List<Tail>  lNomencls = new ArrayList<Tail>();
+		List<Tail>  lTails = new ArrayList<Tail>();
 		
 		Workbook workbook = getWorkbook(tmpFile);
         Sheet firstSheet = workbook.getSheetAt(0);  
@@ -146,15 +146,17 @@ public class ReadExcelFile {
         		if(row_ >= mA_loadTail.getRow()-1) {
         			tail = new Tail();
 	        	
+        			tail.setAmountTail(mA_loadTail.getCol_amountTail());
+        			tail.setFirstPrice(mA_loadTail.getCol_firstPrice());
         			
-		        	lNomencls.add(tail);
+        			lTails.add(tail);
         		}
         	
         	
         	++row_;
         }
         
-		return lNomencls;
+		return lTails;
 	}
 
 }
