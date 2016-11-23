@@ -152,6 +152,14 @@
 									                   			<input name="col_firstPrice" id="col_firstPrice" type="text" class="input" value="${sessionBean.mA_loadTail.col_firstPrice}"> 
 													         </div>
 													</div>
+										  			<div class="clearfix">
+													         <div class="lab">
+									                   			<label>КодПоставщика</label>
+													         </div>
+													         <div style="width: 25px" class="conleft">
+									                   			<input name="col_codeProvider" id="col_codeProvider" type="text" class="input" value="${sessionBean.mA_loadTail.col_codeProvider}"> 
+													         </div>
+													</div>
 													<div class="clearfix">									        
 															        <div class="lab">
 															        	<label>Начальная строка</label>
@@ -203,8 +211,10 @@
         <div class="box">
  				    			<table class="tab" border="0">
 				    				<tr align="center">
-					    				<th width="54%"><spring:message code="name2"/></th>
-					    				<th width="23%"><spring:message code="code"/></th>
+				    					<tр class="dragHandle">&nbsp;</tр>
+					    				<th width="27%">Дата</th>
+					    				<th width="27%">Количество</th>
+					    				<th width="23%">Первая цена</th>
 					    				<th width="23%">Action</th>
 				    				</tr>
 				    			</table>
@@ -214,11 +224,12 @@
 											<c:forEach items="${tails}" var="tail">
 												<tr>
 													<td class="dragHandle">&nbsp;</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirProvider.name}'); $('#code').val('${dirProvider.code}');">(${dirProvider.id}) ${dirProvider.name}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirProvider.name}'); $('#code').val('${dirProvider.code}');">${dirProvider.code}</td>
+													<td style="cursor:pointer;">${tail.create_date}</td>
+													<td style="cursor:pointer;" onclick="$('#amountTail').val('${tail.amountTail}'); $('#firstPrice').val('${tail.firstPrice}');">(${tail.id}) ${tail.amountTail}</td>
+													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.firstPrice}</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
-							         					<a href="javascript:delObject(${dirProvider.id},'DirProvider','1');" class="ico ico-delete" onclick=""></a>
+							         					<a href="javascript:delObject(${tail.id},'Tail','3');" class="ico ico-delete" onclick=""></a>
 							         				</td>
 												</tr>
 											</c:forEach>

@@ -1,6 +1,8 @@
 package tt.model;
 
 import java.math.BigInteger;
+import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -37,6 +39,8 @@ public class Tail implements  IModel {
 	@Column(name="firstPrice")
 	private double firstPrice;  //Первая цена
 	
+	private Timestamp create_date;
+	
 	public BigInteger getId() {
 		return id;
 	}
@@ -56,12 +60,24 @@ public class Tail implements  IModel {
 		this.firstPrice = firstPrice;
 	}
 	
-	
+	public Timestamp getCreate_date() {
+		return create_date;
+	}
+	public void setCreate_date(Timestamp create_date) {
+		this.create_date = create_date;
+	}
+
 	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 	
+	
+	
+	@Override
+	public String toString() {
+		return "Tail [id=" + id + ", amountTail=" + amountTail + ", firstPrice=" + firstPrice + "]";
+	}
 	@Override
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub

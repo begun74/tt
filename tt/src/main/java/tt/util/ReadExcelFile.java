@@ -3,8 +3,10 @@ package tt.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,10 +31,7 @@ import tt.modelattribute.MA_loadTail;
 @Service
 public class ReadExcelFile {
 	
-	@Autowired
-	private static SessionBean sessBean;
-
-	
+		
 	
     private static Workbook getWorkbook(File tmpFile) throws IOException {
         
@@ -134,7 +133,9 @@ public class ReadExcelFile {
 		Workbook workbook = getWorkbook(tmpFile);
         Sheet firstSheet = workbook.getSheetAt(0);  
         Iterator<Row> rowIterator = firstSheet.iterator();
-        DataFormatter df = new DataFormatter();
+       // DataFormatter df = new DataFormatter();
+        
+        Timestamp timestamp = new Timestamp(new Date().getTime());
 		
 		
 		int row_ = 0;
@@ -148,7 +149,7 @@ public class ReadExcelFile {
 	        	
         			tail.setAmountTail(mA_loadTail.getCol_amountTail());
         			tail.setFirstPrice(mA_loadTail.getCol_firstPrice());
-        			
+        			tail.setCreate_date(timestamp);
         			lTails.add(tail);
         		}
         	

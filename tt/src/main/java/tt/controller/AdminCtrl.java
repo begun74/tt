@@ -142,6 +142,29 @@ public class AdminCtrl {
 	    return model;
 	}
 
+
+	@RequestMapping(value = "addTails" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ModelAndView   addTails( @Valid @ModelAttribute("addTailForm") Tail tail,
+									BindingResult result,
+									@ModelAttribute  MultipartFile file,
+									@RequestParam(value = "id_tail",   required=false) BigInteger id_tail) 
+	{
+		
+		ModelAndView model = new ModelAndView("redirect:/admin?act=3");
+
+		if(result.hasErrors())
+		{
+			sessBean.addError("Правильно введите данные!");
+			return model;
+		}
+		if(id_tail != null && id_tail.longValue()>0) 
+			tail.setId(id_tail);
+		
+		//ttService.addProvider(dirNomenclature);
+		
+	    return model;
+	}
+	
 	
 	@RequestMapping(value = "delObject")
 	public String  delObject(HttpSession session,@RequestParam(value = "id",   defaultValue = "-1") BigInteger id ,@RequestParam(value = "act",   defaultValue = "-1") int act
@@ -307,6 +330,7 @@ public class AdminCtrl {
 	}
 
 
+	
 	@RequestMapping(value = "addFileTail" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFileTail( @ModelAttribute  MultipartFile file,
 										@Valid MA_loadTail mA_loadTail ,
@@ -345,18 +369,11 @@ public class AdminCtrl {
 				
 		try {
 
-					TreeSet<Tail> lT = new TreeSet<Tail>();
-					lT.addAll((List<Tail>) fileUpload.process(new Tail(),file, mA_loadTail));
+					List<Tail> lT = (List<Tail>) fileUpload.process(new Tail(),file, mA_loadTail);
 	
 					for(Tail t: lT) 
 					{
-						try {
 							ttService.addTail(t);
-						}
-						catch(org.springframework.dao.DataIntegrityViolationException dve) {
-							//dve.printStackTrace(); 
-							sessBean.getErrorList().add("Остаток уже существует! ");
-						}
 						
 					}
 					
