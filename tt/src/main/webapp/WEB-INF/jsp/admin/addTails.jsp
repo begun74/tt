@@ -94,7 +94,7 @@
 
 		<div id="tabs" class="box">
             <ul class="bookmarks">
-		            <li><a href="#tabs-1"><spring:message code="admin.addTail" /></a></li>
+		            <li><a href="#tabs-1"><spring:message code="tails" /></a></li>
 		           	<li><a href="#tabs-2"><spring:message code="admin.load.info.from.file" /></a></li>
             </ul>
           	<div class="box-content">    
@@ -141,7 +141,7 @@
 											                    <label><spring:message code="name2"/></label> 
 													         </div>
 													         <div  style="width: 25px" class="conleft" >
-																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadTail.col_name}">										         
+																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadTail.col_amountTail}">										         
 													         </div>
 													 </div>
 										  			<div class="clearfix">
@@ -149,7 +149,7 @@
 									                   			<label><spring:message code="code"/></label>
 													         </div>
 													         <div style="width: 25px" class="conleft">
-									                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadTail.col_code}"> 
+									                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadTail.col_firstPrice}"> 
 													         </div>
 													</div>
 													<div class="clearfix">									        

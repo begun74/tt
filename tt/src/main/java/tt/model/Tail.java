@@ -31,8 +31,8 @@ public class Tail implements  IModel {
 	@Column(name="id_tails")
 	private BigInteger id;
 	
-	private int amountTail;
-	private double firstPrice;
+	private int amountTail; //Кол-во
+	private double firstPrice;  //Первая цена
 	public BigInteger getId() {
 		return id;
 	}

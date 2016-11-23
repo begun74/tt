@@ -6,6 +6,7 @@ import java.util.List;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Store;
+import tt.model.Tail;
 import tt.model.User;
 
 public interface Dao {
@@ -23,6 +24,8 @@ public interface Dao {
 	public void addNomenclature(DirNomenclature dirNomenclature);
 	//public DirNomenclature getNomenclature(BigInteger id);
 	
+	public List<Tail> getTailsList();
+	public void addTail(Tail tail);
 
 	public List<Store> getStoreList();
 	public void addStore(Store store);

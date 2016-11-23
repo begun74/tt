@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Store;
+import tt.model.Tail;
 import tt.model.User;
 
 
@@ -98,6 +99,18 @@ public class DaoImpl implements Dao {
 	public Store getStoreBySerVerUID(long serialVersionUID) {
 		// TODO Auto-generated method stub
 		return (Store) getSession().createQuery("from store s where s.serialVersionUID = :serialVersionUID").setParameter("serialVersionUID", serialVersionUID).uniqueResult();
+	}
+
+	@Override
+	public List<Tail> getTailsList() {
+		// TODO Auto-generated method stub
+		return getSession().createQuery("from tail").list();
+	}
+
+	@Override
+	public void addTail(Tail tail) {
+		// TODO Auto-generated method stub
+		getSession().saveOrUpdate(tail);
 	}
 
 

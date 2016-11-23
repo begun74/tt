@@ -83,7 +83,7 @@ public class AdminCtrl {
 
 			case "3":
 				model = new ModelAndView("admin/addTails");
-				model.addObject("tails", ttService.getNomenclatureList());
+				model.addObject("tails", ttService.getTailsList());
 			break;
 			
 		}
