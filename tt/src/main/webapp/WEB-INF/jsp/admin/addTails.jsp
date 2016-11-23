@@ -131,25 +131,25 @@
 					<div class="form-cols">
 	   				<div class="col1">            
 
-						<form:form id="addFileProvider" class="formBox" role="form"  
+						<form:form id="addFileTail" class="formBox" role="form"  
 							  			enctype="multipart/form-data" 
 							  			action="${pageContext.request.contextPath}/admin/addFileTail?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
 							  			method="POST">
 						
 										  			<div class="clearfix">
 													         <div class="lab">
-											                    <label><spring:message code="name2"/></label> 
+											                    <label>Количество</label> 
 													         </div>
 													         <div  style="width: 25px" class="conleft" >
-																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadTail.col_amountTail}">										         
+																<input name="col_amountTail" id="col_amountTail" type="text" class="input" value="${sessionBean.mA_loadTail.col_amountTail}">										         
 													         </div>
 													 </div>
 										  			<div class="clearfix">
 													         <div class="lab">
-									                   			<label><spring:message code="code"/></label>
+									                   			<label>ПерваяЦена</label>
 													         </div>
 													         <div style="width: 25px" class="conleft">
-									                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadTail.col_firstPrice}"> 
+									                   			<input name="col_firstPrice" id="col_firstPrice" type="text" class="input" value="${sessionBean.mA_loadTail.col_firstPrice}"> 
 													         </div>
 													</div>
 													<div class="clearfix">									        
@@ -184,7 +184,7 @@
 								        				</div>
 							        				</div>
 							        				
-							         <input type="hidden" name ="act" id ="act" value="1"/>
+							         <input type="hidden" name ="act" id ="act" value="3"/>
 						</form:form>
 				</div>
 

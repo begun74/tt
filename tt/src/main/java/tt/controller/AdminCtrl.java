@@ -30,6 +30,7 @@ import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Store;
+import tt.model.Tail;
 import tt.modelattribute.IMAmodel;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
@@ -344,17 +345,17 @@ public class AdminCtrl {
 				
 		try {
 
-					TreeSet<DirProvider> sP = new TreeSet<DirProvider>();
-					sP.addAll((List<DirProvider>) fileUpload.process(new DirProvider(),file, mA_loadTail));
+					TreeSet<Tail> lT = new TreeSet<Tail>();
+					lT.addAll((List<Tail>) fileUpload.process(new Tail(),file, mA_loadTail));
 	
-					for(DirProvider dp: sP) 
+					for(Tail t: lT) 
 					{
 						try {
-							ttService.addProvider(dp);
+							ttService.addTail(t);
 						}
 						catch(org.springframework.dao.DataIntegrityViolationException dve) {
 							//dve.printStackTrace(); 
-							sessBean.getErrorList().add(dp.getName()+" уже существует! ");
+							sessBean.getErrorList().add("Остаток уже существует! ");
 						}
 						
 					}

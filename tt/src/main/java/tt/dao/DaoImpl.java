@@ -104,7 +104,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<Tail> getTailsList() {
 		// TODO Auto-generated method stub
-		return getSession().createQuery("from tail").list();
+		return getSession().createQuery(" from Tail").list();
 	}
 
 	@Override

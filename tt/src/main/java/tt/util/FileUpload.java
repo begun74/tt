@@ -19,9 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.IModel;
+import tt.model.Tail;
 import tt.modelattribute.IMAmodel;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
+import tt.modelattribute.MA_loadTail;
 
 
 @Service
@@ -70,6 +72,8 @@ public class FileUpload {
 					else if(model instanceof DirNomenclature)
 					return ReadExcelFile.processFile(tmpFile,(DirNomenclature) model, (MA_loadNomencl) IMAmodel) ;
 					
+					else if(model instanceof Tail)
+					return ReadExcelFile.processFile(tmpFile,(Tail) model, (MA_loadTail) IMAmodel) ;
 				} 
 				finally {
 					tmpFile.delete();

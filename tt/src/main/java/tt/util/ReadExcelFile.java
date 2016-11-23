@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 
@@ -20,8 +21,10 @@ import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.IModel;
+import tt.model.Tail;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
+import tt.modelattribute.MA_loadTail;
 
 @Service
 public class ReadExcelFile {
@@ -120,6 +123,38 @@ public class ReadExcelFile {
         
 		return lNomencls;
 		
+	}
+
+
+
+	public static Collection<?> processFile(File tmpFile, Tail tail, MA_loadTail mA_loadTail)  throws Exception {
+		// TODO Auto-generated method stub
+		List<Tail>  lNomencls = new ArrayList<Tail>();
+		
+		Workbook workbook = getWorkbook(tmpFile);
+        Sheet firstSheet = workbook.getSheetAt(0);  
+        Iterator<Row> rowIterator = firstSheet.iterator();
+        DataFormatter df = new DataFormatter();
+		
+		
+		int row_ = 0;
+        while(rowIterator.hasNext() )
+        {
+        	Row tmp = rowIterator.next();
+        	
+        	
+        		if(row_ >= mA_loadTail.getRow()-1) {
+        			tail = new Tail();
+	        	
+        			
+		        	lNomencls.add(tail);
+        		}
+        	
+        	
+        	++row_;
+        }
+        
+		return lNomencls;
 	}
 
 }
