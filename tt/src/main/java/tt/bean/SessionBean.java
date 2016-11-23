@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
+import tt.modelattribute.MA_loadTail;
 import tt.service.TTServiceImpl;
 
 
@@ -36,6 +37,9 @@ public class SessionBean  implements Serializable {
 	@Autowired
 	private MA_loadNomencl mA_loadNomencl;
 	
+	@Autowired
+	private MA_loadTail mA_loadTail;
+	
 	private List<String> errorList = new ArrayList<String>();
 	private List<String> successList = new ArrayList<String>();
 	
@@ -52,8 +56,6 @@ public class SessionBean  implements Serializable {
 
 
 
-
-
 	public MA_loadProvider getmA_loadProvider() {
 		return mA_loadProvider;
 	}
@@ -64,7 +66,16 @@ public class SessionBean  implements Serializable {
 
 	
 	
+	public MA_loadTail getmA_loadTail() {
+		return mA_loadTail;
+	}
 
+	public void setmA_loadTail(MA_loadTail mA_loadTail) {
+		this.mA_loadTail = mA_loadTail;
+	}
+
+	
+	
 	public List<String> getSuccessList() {
 		return successList;
 	}
@@ -133,6 +144,7 @@ public class SessionBean  implements Serializable {
 	public String toString() {
 		return "SessionBean [mA_loadProvider=" + mA_loadProvider + "]";
 	}
+
 
 
 	

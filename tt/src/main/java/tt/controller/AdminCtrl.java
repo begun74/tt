@@ -33,6 +33,7 @@ import tt.model.Store;
 import tt.modelattribute.IMAmodel;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
+import tt.modelattribute.MA_loadTail;
 import tt.service.TTServiceImpl;
 import tt.util.FileUpload;
 
@@ -305,22 +306,76 @@ public class AdminCtrl {
 	}
 
 
-	private Store objectToBytes(IMAmodel IMAmodel) throws IOException{
-		// TODO Auto-generated method stub
-		Store store = new Store();
-
-		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
-		ObjectOutputStream objOut = new ObjectOutputStream(byteOut);
-		objOut.writeObject(IMAmodel);
-		objOut.close();
-		byteOut.close();
-		byte[] bytes = byteOut.toByteArray();
+	@RequestMapping(value = "addFileTail" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ModelAndView   processFileTail( @ModelAttribute  MultipartFile file,
+										@Valid MA_loadTail mA_loadTail ,
+										BindingResult result,
+										@RequestParam(value = "act",   defaultValue = "-1", required=true) int act)
+	{
+		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
 		
-		store.setSerialVersionUID(IMAmodel.getSerialversionuid());
-		store.setBytearray(bytes);
+		if(result.hasErrors())
+		{
+			sessBean.addError("Правильно введите данные!");
+			return model;
+		}
+		
+		
+		
+		if(mA_loadTail.isSave())
+		{
+			try {
+				appBean.addToMapStore(mA_loadTail);
+				sessBean.setmA_loadTail(mA_loadTail);
+			}
+			catch(org.springframework.dao.DataIntegrityViolationException dve) 
+			{
+				dve.printStackTrace();
+				sessBean.getErrorList().add("Настройки уже существуют! ");
+			}
+			catch(Exception ioe)
+			{
+				ioe.printStackTrace();
+				sessBean.getErrorList().add("Параметры не записаны! ");
+			}
+		}
+		
+		sessBean.setmA_loadTail(mA_loadTail);
+				
+		try {
 
-		return store;
+					TreeSet<DirProvider> sP = new TreeSet<DirProvider>();
+					sP.addAll((List<DirProvider>) fileUpload.process(new DirProvider(),file, mA_loadTail));
+	
+					for(DirProvider dp: sP) 
+					{
+						try {
+							ttService.addProvider(dp);
+						}
+						catch(org.springframework.dao.DataIntegrityViolationException dve) {
+							//dve.printStackTrace(); 
+							sessBean.getErrorList().add(dp.getName()+" уже существует! ");
+						}
+						
+					}
+					
+					
+	
+		}
+		catch (java.lang.NumberFormatException nfe) {
+			nfe.printStackTrace();
+			sessBean.addError(nfe.getMessage());
+			
+		}
+		catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					sessBean.addError("Ошибка загрузки файла!");
+		}
+		
+		
+		return model;
 	}
-
+	
 
 }
