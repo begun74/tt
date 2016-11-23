@@ -4,11 +4,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Locale;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -133,7 +136,10 @@ public class ReadExcelFile {
 		Workbook workbook = getWorkbook(tmpFile);
         Sheet firstSheet = workbook.getSheetAt(0);  
         Iterator<Row> rowIterator = firstSheet.iterator();
-       // DataFormatter df = new DataFormatter();
+        DataFormatter df = new DataFormatter();
+        DecimalFormat formatter = new DecimalFormat("###,##");
+        
+        NumberFormat nf_in = NumberFormat.getNumberInstance();
         
         Timestamp timestamp = new Timestamp(new Date().getTime());
 		
@@ -146,9 +152,9 @@ public class ReadExcelFile {
         	
         		if(row_ >= mA_loadTail.getRow()-1) {
         			tail = new Tail();
-	        	
-        			tail.setAmountTail(mA_loadTail.getCol_amountTail());
-        			tail.setFirstPrice(mA_loadTail.getCol_firstPrice());
+        			
+        			tail.setAmountTail(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_amountTail()-1))));
+        			tail.setFirstPrice(nf_in.parse(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_firstPrice()-1) )).doubleValue());
         			tail.setCreate_date(timestamp);
         			lTails.add(tail);
         		}
