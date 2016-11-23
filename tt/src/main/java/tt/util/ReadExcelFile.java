@@ -3,6 +3,8 @@ package tt.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -137,9 +139,8 @@ public class ReadExcelFile {
         Sheet firstSheet = workbook.getSheetAt(0);  
         Iterator<Row> rowIterator = firstSheet.iterator();
         DataFormatter df = new DataFormatter();
-        DecimalFormat formatter = new DecimalFormat("###,##");
         
-        NumberFormat nf_in = NumberFormat.getNumberInstance();
+        
         
         Timestamp timestamp = new Timestamp(new Date().getTime());
 		
@@ -154,7 +155,8 @@ public class ReadExcelFile {
         			tail = new Tail();
         			
         			tail.setAmountTail(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_amountTail()-1))));
-        			tail.setFirstPrice(nf_in.parse(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_firstPrice()-1) )).doubleValue());
+        			tail.setFk_id_provider(new BigInteger(((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeProvider()-1)))))));
+        			tail.setFirstPrice(NumberFormat.getNumberInstance().parse(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_firstPrice()-1) )).doubleValue());
         			tail.setCreate_date(timestamp);
         			lTails.add(tail);
         		}

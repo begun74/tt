@@ -41,6 +41,8 @@ public class Tail implements  IModel {
 	
 	private Timestamp create_date;
 	
+	private BigInteger fk_id_provider;
+	
 	public BigInteger getId() {
 		return id;
 	}
@@ -65,6 +67,14 @@ public class Tail implements  IModel {
 	}
 	public void setCreate_date(Timestamp create_date) {
 		this.create_date = create_date;
+	}
+
+	
+	public BigInteger getFk_id_provider() {
+		return fk_id_provider;
+	}
+	public void setFk_id_provider(BigInteger fk_id_provider) {
+		this.fk_id_provider = fk_id_provider;
 	}
 
 	

@@ -15,8 +15,8 @@ public class MA_loadTail implements IMAmodel {
 	private int row=1;
 	private int col_amountTail = 1; //Кол-во
 	private int col_firstPrice = 2;  //Первая цена
-	private long col_codeProvider = 3; //Код поставщика
-	private long col_codeNomencl = 4; //Код номенклатуры
+	private int col_codeProvider = 3; //Код поставщика
+	private int col_codeNomencl = 4; //Код номенклатуры
 	
 	private transient boolean save;
 	private boolean autoload;
@@ -71,21 +71,22 @@ public class MA_loadTail implements IMAmodel {
 	}
 	
 
-	public long getCol_codeProvider() {
+	public int getCol_codeProvider() {
 		return col_codeProvider;
 	}
 
-	public void setCol_codeProvider(long col_codeProvider) {
+	public void setCol_codeProvider(int col_codeProvider) {
 		this.col_codeProvider = col_codeProvider;
 	}
 
-	public long getCol_codeNomencl() {
+	public int getCol_codeNomencl() {
 		return col_codeNomencl;
 	}
 
-	public void setCol_codeNomencl(long col_codeNomencl) {
+	public void setCol_codeNomencl(int col_codeNomencl) {
 		this.col_codeNomencl = col_codeNomencl;
 	}
+
 
 	@Override
 	public long getSerialversionuid() {
