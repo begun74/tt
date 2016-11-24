@@ -175,7 +175,11 @@ public class AdminCtrl {
 			
 			ttService.delObject(ttService.getObject(Class.forName("tt.model."+clazz), id));
 			
-		} catch (ClassNotFoundException e) {
+		} 
+		catch( org.springframework.dao.DataIntegrityViolationException dve) {
+			sessBean.addError("Нельзя удалить!");
+		}
+		catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

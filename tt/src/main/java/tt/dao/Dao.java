@@ -17,7 +17,7 @@ public interface Dao {
 
 	public List<DirProvider> getProviderList();
 	public void addProvider(DirProvider dirProvider);
-	//public DirProvider getProvider(BigInteger id);
+	public DirProvider getProviderByCode(Integer code);
 	
 
 	public List<DirNomenclature> getNomenclatureList();
@@ -30,7 +30,7 @@ public interface Dao {
 	public List<Store> getStoreList();
 	public void addStore(Store store);
 	//public Store getStore(long id);
-	public Store getStoreBySerVerUID(long serialVersionUID);
+	public Store getStoreBySerVerUID(Long serialVersionUID);
 	
 	
 	public Object getObject(Class clazz,BigInteger id);

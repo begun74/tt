@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -24,6 +25,7 @@ import tt.modelattribute.IMAmodel;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
+import tt.service.TTServiceImpl;
 
 
 @Service
@@ -32,10 +34,13 @@ public class FileUpload {
 	
 	@Autowired
 	Constants constants; 
+	
+	@Autowired
+	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
 
 	private static final String[][] ALLOWED_FILE_TYPES_PICS = {{"image/jpeg","jpeg"}, {"image/jpg","jpg"}, {"image/gif","gif"}};
 	private static final String[][] ALLOWED_FILE_TYPES_XLS = {{"application/vnd.ms-excel","xls"},{"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","xlsx"}};
-    private static final Long MAX_FILE_SIZE = 1048576L; //1MB
+    //private static final Long MAX_FILE_SIZE = 1048576L; //1MB
     //private static final String UPLOAD_FILE_PATH = "D:/GIT_/wood/src/main/webapp/resources/pics/";
     private static final String UPLOAD_FILE_PATH = "UPLOAD_FILE_PATH";
     private File TEMP_FILE_PATH = null;
@@ -73,7 +78,19 @@ public class FileUpload {
 					return ReadExcelFile.processFile(tmpFile,(DirNomenclature) model, (MA_loadNomencl) IMAmodel) ;
 					
 					else if(model instanceof Tail)
-					return ReadExcelFile.processFile(tmpFile,(Tail) model, (MA_loadTail) IMAmodel) ;
+					{
+						List<DirProvider> lP = ttService.getProviderList();
+						HashMap<Integer,DirProvider> hmProv = new HashMap<Integer,DirProvider>();
+						for(DirProvider dp: lP) 
+							hmProv.put(dp.getCode(), dp);
+
+						List<DirNomenclature> lN = ttService.getNomenclatureList();
+						HashMap<Long,DirNomenclature> hmNomencl = new HashMap<Long,DirNomenclature>();
+						for(DirNomenclature dn: lN) 
+							hmNomencl.put(dn.getCode(), dn);
+
+						return ReadExcelFile.processFile(tmpFile,(Tail) model, (MA_loadTail) IMAmodel, hmProv, hmNomencl) ;
+					}
 				} 
 				finally {
 					tmpFile.delete();

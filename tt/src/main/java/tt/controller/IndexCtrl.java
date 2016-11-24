@@ -49,7 +49,7 @@ public class IndexCtrl {
 		if (logout != null) {
 			SecurityContextHolder.clearContext();
 			session.invalidate();
-			model.setViewName("login");
+			//model.setViewName("index");
 		}
 		
 		return model;

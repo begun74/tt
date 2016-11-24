@@ -57,13 +57,15 @@ public class AppBean implements Serializable {
 	
 	public void addToMapStore(IMAmodel IMAmodel) throws Exception {
 		
-		Store s = new Store();
-		s.setSerialVersionUID(IMAmodel.getSerialversionuid());
-		s.setBytearray(objectToBytes(IMAmodel));
-
-		ttService.addStore(s);
-		
-		mapStore.put(s.getSerialVersionUID(), bytesToObject(s.getBytearray()));
+			 
+			Store s = ttService.getStoreBySerVerUID(IMAmodel.getSerialversionuid()) == null? new Store() : ttService.getStoreBySerVerUID(IMAmodel.getSerialversionuid());
+			s.setSerialVersionUID(IMAmodel.getSerialversionuid());
+			s.setBytearray(objectToBytes(IMAmodel));
+			
+			ttService.addStore(s);
+			
+			mapStore.put(s.getSerialVersionUID(), bytesToObject(s.getBytearray()));
+			
 		
 	}
 

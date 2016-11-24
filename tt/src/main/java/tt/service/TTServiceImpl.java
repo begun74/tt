@@ -103,7 +103,7 @@ public class TTServiceImpl implements Dao {
 	*/
 
 	@Override
-	public Store getStoreBySerVerUID(long serialVersionUID) {
+	public Store getStoreBySerVerUID(Long serialVersionUID) {
 		// TODO Auto-generated method stub
 		return dao.getStoreBySerVerUID(serialVersionUID);
 	}
@@ -120,6 +120,13 @@ public class TTServiceImpl implements Dao {
 	public void addTail(Tail tail) {
 		// TODO Auto-generated method stub
 		dao.addTail(tail);
+	}
+
+
+	@Override
+	public DirProvider getProviderByCode(Integer code) {
+		// TODO Auto-generated method stub
+		return dao.getProviderByCode(code);
 	}
 
 }

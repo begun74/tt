@@ -100,6 +100,15 @@
           	<div class="box-content">    
           
             <div id="tabs-1">  
+   		            <!-- Error form message -->            
+   		            <c:if test="${not empty error}">
+		            <div class="form-message error"  onclick="clearErrors()">
+		              <p>Ошибка :</p>
+		              <ul>
+		                <li>"${error}"</li>
+		              </ul>
+		            </div>
+		            </c:if>
               	<div class="form-cols">
 				    		<div class="col1">
 							  	<form:form id="addProviderForm" class="formBox" role="form"

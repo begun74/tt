@@ -2,15 +2,18 @@ package tt.model;
 
 import java.math.BigInteger;
 import java.sql.Timestamp;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "tails")
@@ -41,7 +44,21 @@ public class Tail implements  IModel {
 	
 	private Timestamp create_date;
 	
+	@Column(insertable=false ,updatable=false)
 	private BigInteger fk_id_provider;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_id_provider")
+	private DirProvider dirProvider;
+	
+	@Column(insertable=false ,updatable=false)
+	private BigInteger fk_id_nomenclature;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_id_nomenclature")
+	private DirNomenclature dirNomenclature;
+	
+	
 	
 	public BigInteger getId() {
 		return id;
@@ -75,6 +92,28 @@ public class Tail implements  IModel {
 	}
 	public void setFk_id_provider(BigInteger fk_id_provider) {
 		this.fk_id_provider = fk_id_provider;
+	}
+
+	
+	public DirProvider getDirProvider() {
+		return dirProvider;
+	}
+	public void setDirProvider(DirProvider dirProvider) {
+		this.dirProvider = dirProvider;
+	}
+	
+	
+	public BigInteger getFk_id_nomenclature() {
+		return fk_id_nomenclature;
+	}
+	public void setFk_id_nomenclature(BigInteger fk_id_nomenclature) {
+		this.fk_id_nomenclature = fk_id_nomenclature;
+	}
+	public DirNomenclature getDirNomenclature() {
+		return dirNomenclature;
+	}
+	public void setDirNomenclature(DirNomenclature dirNomenclature) {
+		this.dirNomenclature = dirNomenclature;
 	}
 
 	

@@ -110,7 +110,7 @@
 							  			modelAttribute="Tail">
 							  			
 								         
-						         <button type="submit" class=""><spring:message code="label.button.add"/></button>
+						         <!-- button type="submit" class=""><spring:message code="label.button.add"/></button -->
 						         <input type="hidden" name ="id_tail" id ="id_tail" value="-1"/>
 						    	</form:form>
 							</div>					    
@@ -233,7 +233,8 @@
 												<tr>
 													<td class="dragHandle">&nbsp;</td>
 													<td style="cursor:pointer;">${tail.create_date}</td>
-													<td style="cursor:pointer;" onclick="$('#amountTail').val('${tail.amountTail}'); $('#firstPrice').val('${tail.firstPrice}');">(${tail.id}) ${tail.amountTail}</td>
+													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.dirProvider.name}</td>
+													<td style="cursor:pointer;" onclick="$('#amountTail').val('${tail.amountTail}'); $('#firstPrice').val('${tail.firstPrice}');">${tail.amountTail}</td>
 													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.firstPrice}</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->

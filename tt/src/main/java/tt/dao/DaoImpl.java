@@ -79,7 +79,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<Store> getStoreList() {
 		// TODO Auto-generated method stub
-		return getSession().createSQLQuery("select * from store").addEntity(Store.class).list();
+		return getSession().createQuery("from Store").list();
 	}
 
 	@Override
@@ -96,9 +96,9 @@ public class DaoImpl implements Dao {
 	*/
 
 	@Override
-	public Store getStoreBySerVerUID(long serialVersionUID) {
+	public Store getStoreBySerVerUID(Long serialVersionUID) {
 		// TODO Auto-generated method stub
-		return (Store) getSession().createQuery("from store s where s.serialVersionUID = :serialVersionUID").setParameter("serialVersionUID", serialVersionUID).uniqueResult();
+		return (Store) getSession().createQuery("from Store s where s.serialVersionUID = :serialVersionUID").setParameter("serialVersionUID", serialVersionUID).uniqueResult();
 	}
 
 	@Override
@@ -111,6 +111,12 @@ public class DaoImpl implements Dao {
 	public void addTail(Tail tail) {
 		// TODO Auto-generated method stub
 		getSession().saveOrUpdate(tail);
+	}
+
+	@Override
+	public DirProvider getProviderByCode(Integer code) {
+		// TODO Auto-generated method stub
+		return (DirProvider) getSession().createQuery("from dir_provider dp where dp.code = :code").setParameter("code", code).uniqueResult();
 	}
 
 

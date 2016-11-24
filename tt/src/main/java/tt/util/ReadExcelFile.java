@@ -11,6 +11,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
@@ -32,12 +33,12 @@ import tt.model.Tail;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
+import tt.service.TTServiceImpl;
 
 @Service
 public class ReadExcelFile {
 	
 		
-	
     private static Workbook getWorkbook(File tmpFile) throws IOException {
         
     	Workbook workbook = null;
@@ -85,7 +86,7 @@ public class ReadExcelFile {
 		    		}
 
         		}
-        	System.out.println("row - "+row_);
+        	//System.out.println("row - "+row_);
         	
         	++row_;
         }
@@ -131,7 +132,7 @@ public class ReadExcelFile {
 
 
 
-	public static Collection<?> processFile(File tmpFile, Tail tail, MA_loadTail mA_loadTail)  throws Exception {
+	public static Collection<?> processFile(File tmpFile, Tail tail, MA_loadTail mA_loadTail, HashMap<Integer,DirProvider> hP, HashMap<Long,DirNomenclature> hmNomencl)  throws Exception {
 		// TODO Auto-generated method stub
 		List<Tail>  lTails = new ArrayList<Tail>();
 		
@@ -152,9 +153,10 @@ public class ReadExcelFile {
         	
         		if(row_ >= mA_loadTail.getRow()-1) {
         			tail = new Tail();
-        			
+        			//System.out.println("row - "+row_);
         			tail.setAmountTail(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_amountTail()-1))));
-        			tail.setFk_id_provider(new BigInteger(((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeProvider()-1)))))));
+        			//BigInteger id_prov = ttService.getProviderByCode( new Integer((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeProvider()-1))))) ).getId();
+        			tail.setFk_id_provider(hP.get(new Integer((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeProvider()-1)))))).getId());
         			tail.setFirstPrice(NumberFormat.getNumberInstance().parse(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_firstPrice()-1) )).doubleValue());
         			tail.setCreate_date(timestamp);
         			lTails.add(tail);
