@@ -140,8 +140,8 @@
 																			<td style="cursor:pointer;">${tail.amountTail}</td>
 																			<td style="cursor:pointer;">${tail.firstPrice}</td>
 																			<td style="cursor:pointer;">${tail.create_date}</td>
-																			<td class="checkbox"><input name="save" id="save" type="checkbox" value="${tail.save}" class="checkbox"/></td>
-													         				<td class="checkbox">
+																			<td class="checkbox"><input name="tail_save_${tail.id}" id="tail_save_${tail.id}" type="checkbox"  style="cursor:pointer;" class="checkbox"/></td>
+													         				<td >
 													         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
 													         					<a href="" class="ico ico-delete" onclick=""></a>
 													         				</td>

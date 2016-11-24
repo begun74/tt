@@ -75,7 +75,6 @@ public class AdminCtrl {
 			case "1":
 				model = new ModelAndView("admin/addProvider");
 				model.addObject("dirProviders",ttService.getProviderList());
-				//model.addObject("error",sessBean.getErrorList());
 			break;
 
 			case "2":
@@ -349,13 +348,11 @@ public class AdminCtrl {
 	
 					while(iter_lT.hasNext()) 
 					{
-							
 							ttService.addTail(iter_lT.next());
 							iter_lT.remove();
-							
 					}
 					
-					System.out.println("sessBean.getTempListTails() - " +sessBean.getTempListTails());
+					//System.out.println("sessBean.getTempListTails() - " +sessBean.getTempListTails());
 	
 		}
 		catch (javax.validation.ConstraintViolationException cve)
