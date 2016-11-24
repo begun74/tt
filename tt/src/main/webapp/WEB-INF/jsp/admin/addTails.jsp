@@ -94,30 +94,13 @@
 
 		<div id="tabs" class="box">
             <ul class="bookmarks">
-		            <li><a href="#tabs-1"><spring:message code="tails" /></a></li>
-		           	<li><a href="#tabs-2"><spring:message code="admin.load.info.from.file" /></a></li>
+		           	<li><a href="#tabs-1"><spring:message code="admin.load.info.from.file" /></a></li>
+		            <li><a href="#tabs-2"><spring:message code="tails" /></a></li>
             </ul>
           	<div class="box-content">    
           
-            <div id="tabs-1">  
-              	<div class="form-cols">
-				    		<div class="col1">
-							  	<form:form id="addTailForm" class="formBox" role="form"
-							  			commandName="loadTailForm"
-							  			enctype="multipart/form-data" 
-							  			action="${pageContext.request.contextPath}/admin/addTail?${_csrf.parameterName}=${_csrf.token}" 
-							  			method="POST"
-							  			modelAttribute="Tail">
-							  			
-								         
-						         <!-- button type="submit" class=""><spring:message code="label.button.add"/></button -->
-						         <input type="hidden" name ="id_tail" id ="id_tail" value="-1"/>
-						    	</form:form>
-							</div>					    
-					    </div>
-            </div>
 
-            <div id="tabs-2">
+            <div id="tabs-1">
    		            <!-- Error form message -->            
    		            <c:if test="${not empty error}">
 		            <div class="form-message error"  onclick="clearErrors()">
@@ -128,12 +111,61 @@
 		            </div>
 		            </c:if>
             		
-					<div class="form-cols cols1v2">
-		   				<div class="col1">            
+					<div class="form-cols cols2v1">
+		   				<div class="col1">
+		   						<form id="addTempFileTail" class="formBox" role="form"  
+									  			enctype="multipart/form-data" 
+									  			action="${pageContext.request.contextPath}/admin/addFileTail?${_csrf.parameterName}=${_csrf.token}#tabs-1" 
+									  			method="POST">
+						 				    			<table class="tab" border="0">
+										    				<tr align="center">
+											    				<th width="5%">№п/п</th>
+											    				<th width="50%">Наименование</th>
+											    				<th width="12%">Поставщик</th>
+											    				<th width="6%">Кол-во</th>
+											    				<th width="6%">Первая цена</th>
+											    				<th width="22%">Дата загрузки</th>
+											    				<th width="4%" class="checkbox"><input type="checkbox" name="" value="" class="check-all" /></th>
+											    				<th width="2%">Action</th>
+										    				</tr>
+										    			</table>
+						
+															<div align="center" style="overflow-y:scroll; overflow-x: none; height:300px; width:100%;">
+																<table class="tab tab-drag">
+																	<c:forEach items="${tempTails}" var="tail" varStatus="loop">
+																		<tr>
+																			<td >${loop.count}</td>
+																			<td style="cursor:pointer;">(${tail.dirNomenclature.name})</td>
+																			<td style="cursor:pointer;">${tail.dirProvider.name}</td>
+																			<td style="cursor:pointer;">${tail.amountTail}</td>
+																			<td style="cursor:pointer;">${tail.firstPrice}</td>
+																			<td style="cursor:pointer;">${tail.create_date}</td>
+																			<td class="checkbox"><input name="save" id="save" type="checkbox" value="${tail.save}" class="checkbox"/></td>
+													         				<td class="checkbox">
+													         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
+													         					<a href="" class="ico ico-delete" onclick=""></a>
+													         				</td>
+													         				
+																		</tr>
+																	</c:forEach>
+																</table>
+															</div>
 	
+															<div class="tab-action">
+										        				<div class="clearfix">
+											        				<div class="lab">	
+											        					<button type="submit" class="" onclick="" >Обработать</button>
+											        				</div>
+										        				</div>
+									        				</div>
+									      <input type="hidden" name ="act" id ="act" value="3"/>
+		   				       </form>
+						</div>
+
+		   				<div class="col2">            
 							<form:form id="addTempFileTail" class="formBox" role="form"  
 								  			enctype="multipart/form-data" 
-								  			action="${pageContext.request.contextPath}/admin/addTempFileTail?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
+								  			action="${pageContext.request.contextPath}/admin/addTempFileTail?${_csrf.parameterName}=${_csrf.token}#tabs-1" 
 								  			method="POST">
 							
 											  			<div class="clearfix">
@@ -203,57 +235,29 @@
 								         <input type="hidden" name ="act" id ="act" value="3"/>
 							</form:form>
 					</div>
-	   				<div class="col2">
-	   						<form id="addTempFileTail" class="formBox" role="form"  
-								  			enctype="multipart/form-data" 
-								  			action="${pageContext.request.contextPath}/admin/addFileTail?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
-								  			method="POST">
-					 				    			<table class="tab" border="0">
-									    				<tr align="center">
-										    				<th width="5%">№п/п</th>
-										    				<th width="50%">Наименование</th>
-										    				<th width="12%">Поставщик</th>
-										    				<th width="6%">Кол-во</th>
-										    				<th width="6%">Первая цена</th>
-										    				<th width="22%">Дата загрузки</th>
-										    				<th width="4%" class="checkbox"><input type="checkbox" name="" value="" class="check-all" /></th>
-										    				<th width="2%">Action</th>
-									    				</tr>
-									    			</table>
-					
-														<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
-															<table class="tab tab-drag">
-																<c:forEach items="${tempTails}" var="tail" varStatus="loop">
-																	<tr>
-																		<td >${loop.count}</td>
-																		<td style="cursor:pointer;">(${tail.dirNomenclature.name})</td>
-																		<td style="cursor:pointer;">${tail.dirProvider.name}</td>
-																		<td style="cursor:pointer;">${tail.amountTail}</td>
-																		<td style="cursor:pointer;">${tail.firstPrice}</td>
-																		<td style="cursor:pointer;">${tail.create_date}</td>
-																		<td class="checkbox"><input type="checkbox" name="" value="" /></td>
-												         				<td class="checkbox">
-												         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
-												         					<a href="" class="ico ico-delete" onclick=""></a>
-												         				</td>
-												         				
-																	</tr>
-																</c:forEach>
-															</table>
-														</div>
-
-								        				<div class="clearfix">
-									        				<div class="lab">	
-									        					<button type="submit" class="" onclick="" ><spring:message code="load"/></button>
-									        				</div>
-								        				</div>
-	   				       </form>
-					</div>
 
 				</div>
 
 
 					
+            </div>
+
+            <div id="tabs-2">  
+              	<div class="form-cols">
+				    		<div class="col1">
+							  	<form:form id="addTailForm" class="formBox" role="form"
+							  			commandName="loadTailForm"
+							  			enctype="multipart/form-data" 
+							  			action="${pageContext.request.contextPath}/admin/addTail?${_csrf.parameterName}=${_csrf.token}" 
+							  			method="POST"
+							  			modelAttribute="Tail">
+							  			
+								         
+						         <!-- button type="submit" class=""><spring:message code="label.button.add"/></button -->
+						         <input type="hidden" name ="id_tail" id ="id_tail" value="-1"/>
+						    	</form:form>
+							</div>					    
+					    </div>
             </div>
             
           </div><!-- /box-content -->  
@@ -274,7 +278,7 @@
 				    				</tr>
 				    			</table>
 
-									<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
+									<div align="center" style="overflow-y:scroll; overflow-x: none; height:300px; width:100%;">
 										<table class="tab tab-drag">
 											<c:forEach items="${tails}" var="tail" varStatus="loop">
 												<tr>

@@ -58,6 +58,9 @@ public class Tail implements  IModel {
 	private DirNomenclature dirNomenclature;
 	
 	
+	private transient boolean save;
+	
+	
 	
 	public BigInteger getId() {
 		return id;
@@ -108,6 +111,18 @@ public class Tail implements  IModel {
 	}
 
 	
+	
+	
+	public boolean isSave() {
+		return save;
+	}
+
+	public void setSave(boolean save) {
+		this.save = save;
+	}
+	
+	
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
