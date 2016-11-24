@@ -128,82 +128,127 @@
 		            </div>
 		            </c:if>
             		
-					<div class="form-cols">
-	   				<div class="col1">            
-
-						<form:form id="addFileTail" class="formBox" role="form"  
-							  			enctype="multipart/form-data" 
-							  			action="${pageContext.request.contextPath}/admin/addFileTail?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
-							  			method="POST">
-						
-										  			<div class="clearfix">
-													         <div class="lab">
-											                    <label>Количество</label> 
-													         </div>
-													         <div  style="width: 25px" class="conleft" >
-																<input name="col_amountTail" id="col_amountTail" type="text" class="input" value="${sessionBean.mA_loadTail.col_amountTail}">										         
-													         </div>
-													 </div>
-										  			<div class="clearfix">
-													         <div class="lab">
-									                   			<label>ПерваяЦена</label>
-													         </div>
-													         <div style="width: 25px" class="conleft">
-									                   			<input name="col_firstPrice" id="col_firstPrice" type="text" class="input" value="${sessionBean.mA_loadTail.col_firstPrice}"> 
-													         </div>
-													</div>
-										  			<div class="clearfix">
-													         <div class="lab">
-									                   			<label>КодПоставщика</label>
-													         </div>
-													         <div style="width: 25px" class="conleft">
-									                   			<input name="col_codeProvider" id="col_codeProvider" type="text" class="input" value="${sessionBean.mA_loadTail.col_codeProvider}"> 
-													         </div>
-													</div>
-										  			<div class="clearfix">
-													         <div class="lab">
-									                   			<label>КодНоменклатуры</label>
-													         </div>
-													         <div style="width: 25px" class="conleft">
-									                   			<input name="col_codeNomencl" id="col_codeNomencl" type="text" class="input" value="${sessionBean.mA_loadTail.col_codeNomencl}"> 
-													         </div>
-													</div>
-													<div class="clearfix">									        
-															        <div class="lab">
-															        	<label>Начальная строка</label>
-															        </div>
-															        <div style="width: 25px" class="conleft">
-															        	<input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadTail.row}" >
-															        </div>
-													</div>
-							         
-													 <div class="clearfix file">
-										              <div class="lab"><label for="file"><spring:message code="load"/> </label></div>
-										              <div class="con"><input type="file" name="file" class="upload-file" id="file" /></div>
-										            </div>
-
-													<div class="clearfix">									        
-														<div class="lab">
-														   	<label><input name="save" id="save" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadTail.save == true}">checked="checked" </c:if>  >Сохранить</label>
+					<div class="form-cols cols1v2">
+		   				<div class="col1">            
+	
+							<form:form id="addTempFileTail" class="formBox" role="form"  
+								  			enctype="multipart/form-data" 
+								  			action="${pageContext.request.contextPath}/admin/addTempFileTail?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
+								  			method="POST">
+							
+											  			<div class="clearfix">
+														         <div class="lab">
+												                    <label>Количество</label> 
+														         </div>
+														         <div  style="width: 25px" class="conleft" >
+																	<input name="col_amountTail" id="col_amountTail" type="text" class="input" value="${sessionBean.mA_loadTail.col_amountTail}">										         
+														         </div>
+														 </div>
+											  			<div class="clearfix">
+														         <div class="lab">
+										                   			<label>Первая Цена</label>
+														         </div>
+														         <div style="width: 25px" class="conleft">
+										                   			<input name="col_firstPrice" id="col_firstPrice" type="text" class="input" value="${sessionBean.mA_loadTail.col_firstPrice}"> 
+														         </div>
 														</div>
-													</div>
-
-													<div class="clearfix">									        
-														<div class="lab">
-														   	<label><input name="autoload" id="autoload" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadTail.autoload == true}">checked="checked"</c:if>  >Автозагрузка</label>
+											  			<div class="clearfix">
+														         <div class="lab">
+										                   			<label>Код Поставщика</label>
+														         </div>
+														         <div style="width: 25px" class="conleft">
+										                   			<input name="col_codeProvider" id="col_codeProvider" type="text" class="input" value="${sessionBean.mA_loadTail.col_codeProvider}"> 
+														         </div>
 														</div>
-													</div>
-						
-							        				<div class="clearfix">
-								        				<div class="lab">	
-								        					<button type="submit" class="" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
+											  			<div class="clearfix">
+														         <div class="lab">
+										                   			<label>Код Номенкл.</label>
+														         </div>
+														         <div style="width: 25px" class="conleft">
+										                   			<input name="col_codeNomencl" id="col_codeNomencl" type="text" class="input" value="${sessionBean.mA_loadTail.col_codeNomencl}"> 
+														         </div>
+														</div>
+														<div class="clearfix">									        
+																        <div class="lab">
+																        	<label>Начальная строка</label>
+																        </div>
+																        <div style="width: 25px" class="conleft">
+																        	<input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadTail.row}" >
+																        </div>
+														</div>
+								         
+														 <div class="clearfix file">
+											              <div class="lab"><label for="file"><spring:message code="load"/> </label></div>
+											              <div class="con"><input type="file" name="file" class="upload-file" id="file" /></div>
+											            </div>
+	
+														<div class="clearfix">									        
+															<div class="lab">
+															   	<label><input name="save" id="save" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadTail.save == true}">checked="checked" </c:if>  >Сохранить</label>
+															</div>
+														</div>
+	
+														<div class="clearfix">									        
+															<div class="lab">
+															   	<label><input name="autoload" id="autoload" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadTail.autoload == true}">checked="checked"</c:if>  >Автозагрузка</label>
+															</div>
+														</div>
+														</br>
+								        				<div class="clearfix">
+									        				<div class="lab">	
+									        					<button type="submit" class="" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="admin.load.info.from.file"/></button>
+									        				</div>
 								        				</div>
-							        				</div>
-							        				
-							         <input type="hidden" name ="act" id ="act" value="3"/>
-						</form:form>
-				</div>
+								        				
+								         <input type="hidden" name ="act" id ="act" value="3"/>
+							</form:form>
+					</div>
+	   				<div class="col2">
+	   						<form id="addTempFileTail" class="formBox" role="form"  
+								  			enctype="multipart/form-data" 
+								  			action="${pageContext.request.contextPath}/admin/addFileTail?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
+								  			method="POST">
+					 				    			<table class="tab" border="0">
+									    				<tr align="center">
+										    				<th width="5%">№п/п</th>
+										    				<th width="50%">Наименование</th>
+										    				<th width="12%">Поставщик</th>
+										    				<th width="6%">Кол-во</th>
+										    				<th width="6%">Первая цена</th>
+										    				<th width="22%">Дата загрузки</th>
+										    				<th width="4%" class="checkbox"><input type="checkbox" name="" value="" class="check-all" /></th>
+										    				<th width="2%">Action</th>
+									    				</tr>
+									    			</table>
+					
+														<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
+															<table class="tab tab-drag">
+																<c:forEach items="${tempTails}" var="tail" varStatus="loop">
+																	<tr>
+																		<td >${loop.count}</td>
+																		<td style="cursor:pointer;">(${tail.dirNomenclature.name})</td>
+																		<td style="cursor:pointer;">${tail.dirProvider.name}</td>
+																		<td style="cursor:pointer;">${tail.amountTail}</td>
+																		<td style="cursor:pointer;">${tail.firstPrice}</td>
+																		<td style="cursor:pointer;">${tail.create_date}</td>
+																		<td class="checkbox"><input type="checkbox" name="" value="" /></td>
+												         				<td class="checkbox">
+												         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
+												         					<a href="" class="ico ico-delete" onclick=""></a>
+												         				</td>
+												         				
+																	</tr>
+																</c:forEach>
+															</table>
+														</div>
 
+								        				<div class="clearfix">
+									        				<div class="lab">	
+									        					<button type="submit" class="" onclick="" ><spring:message code="load"/></button>
+									        				</div>
+								        				</div>
+	   				       </form>
+					</div>
 
 				</div>
 
@@ -219,24 +264,26 @@
         <div class="box">
  				    			<table class="tab" border="0">
 				    				<tr align="center">
-				    					<tр class="dragHandle">&nbsp;</tр>
-					    				<th width="27%">Дата</th>
-					    				<th width="27%">Количество</th>
-					    				<th width="23%">Первая цена</th>
-					    				<th width="23%">Action</th>
+					    				<th width="5%">№п/п</th>
+					    				<th width="34%">Наименование</th>
+					    				<th width="8%">Поставщик</th>
+					    				<th width="4%">Кол-во</th>
+					    				<th width="4%">Первая цена</th>
+					    				<th width="16%">Дата загрузки</th>
+					    				<th width="2%">Action</th>
 				    				</tr>
 				    			</table>
 
 									<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
 										<table class="tab tab-drag">
-											<c:forEach items="${tails}" var="tail">
+											<c:forEach items="${tails}" var="tail" varStatus="loop">
 												<tr>
-													<td class="dragHandle">&nbsp;</td>
-													<td style="cursor:pointer;">${tail.create_date}</td>
+													<td >${loop.count}</td>
+													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">(${tail.dirNomenclature.name})</td>
 													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.dirProvider.name}</td>
-													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">(${tail.dirNomenclature.id})</td>
 													<td style="cursor:pointer;" onclick="$('#amountTail').val('${tail.amountTail}'); $('#firstPrice').val('${tail.firstPrice}');">${tail.amountTail}</td>
 													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.firstPrice}</td>
+													<td style="cursor:pointer;">${tail.create_date}</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
 							         					<a href="javascript:delObject(${tail.id},'Tail','3');" class="ico ico-delete" onclick=""></a>

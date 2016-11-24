@@ -12,6 +12,7 @@ import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import tt.model.Tail;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
@@ -42,9 +43,20 @@ public class SessionBean  implements Serializable {
 	
 	private List<String> errorList = new ArrayList<String>();
 	private List<String> successList = new ArrayList<String>();
+	private List<Tail> tempListTails = new ArrayList<Tail>();
 	
 
 
+
+	public List<Tail> getTempListTails() {
+		return tempListTails;
+	}
+
+	public void setTempListTails(List<Tail> tempListTails) {
+		this.tempListTails = tempListTails;
+	}
+	
+	
 
 	public MA_loadNomencl getmA_loadNomencl() {
 		return mA_loadNomencl;

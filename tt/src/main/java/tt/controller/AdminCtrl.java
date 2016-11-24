@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.math.BigInteger;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -84,6 +85,7 @@ public class AdminCtrl {
 
 			case "3":
 				model = new ModelAndView("admin/addTails");
+				model.addObject("tempTails", sessBean.getTempListTails());
 				model.addObject("tails", ttService.getTailsList());
 			break;
 			
@@ -336,7 +338,43 @@ public class AdminCtrl {
 
 	
 	@RequestMapping(value = "addFileTail" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ModelAndView   processFileTail( @ModelAttribute  MultipartFile file,
+	public ModelAndView   processFileTail(@RequestParam(value = "act",   defaultValue = "-1", required=true) int act)
+	{
+		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
+		
+				
+		try {
+
+					Iterator<Tail> iter_lT = sessBean.getTempListTails().iterator();
+	
+					while(iter_lT.hasNext()) 
+					{
+							
+							ttService.addTail(iter_lT.next());
+							iter_lT.remove();
+							
+					}
+					
+					System.out.println("sessBean.getTempListTails() - " +sessBean.getTempListTails());
+	
+		}
+		catch (javax.validation.ConstraintViolationException cve)
+		{
+			sessBean.addError(cve.getLocalizedMessage());
+		}
+		catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					sessBean.addError("Ошибка загрузки остатков!");
+		}
+		
+		
+		return model;
+	}
+	
+
+	@RequestMapping(value = "addTempFileTail" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ModelAndView   processTempFileTail( @ModelAttribute  MultipartFile file,
 										@Valid MA_loadTail mA_loadTail ,
 										BindingResult result,
 										@RequestParam(value = "act",   defaultValue = "-1", required=true) int act)
@@ -377,8 +415,7 @@ public class AdminCtrl {
 	
 					for(Tail t: lT) 
 					{
-							ttService.addTail(t);
-						
+							sessBean.getTempListTails().add(t);
 					}
 					
 					
@@ -387,7 +424,6 @@ public class AdminCtrl {
 		catch (java.lang.NumberFormatException nfe) {
 			nfe.printStackTrace();
 			sessBean.addError(nfe.getMessage());
-			
 		}
 		catch (Exception e) {
 					// TODO Auto-generated catch block
@@ -398,6 +434,5 @@ public class AdminCtrl {
 		
 		return model;
 	}
-	
 
 }

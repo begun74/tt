@@ -48,13 +48,13 @@ public class Tail implements  IModel {
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_provider")
-	//@NotNull
+	@NotNull
 	private DirProvider dirProvider;
 
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_nomenclature")
-	//@NotNull
+	@NotNull
 	private DirNomenclature dirNomenclature;
 	
 	
@@ -62,18 +62,23 @@ public class Tail implements  IModel {
 	public BigInteger getId() {
 		return id;
 	}
+	
 	public void setId(BigInteger id) {
 		this.id = id;
 	}
+	
 	public int getAmountTail() {
 		return amountTail;
 	}
+	
 	public void setAmountTail(int amountTail) {
 		this.amountTail = amountTail;
 	}
+	
 	public double getFirstPrice() {
 		return firstPrice;
 	}
+	
 	public void setFirstPrice(double firstPrice) {
 		this.firstPrice = firstPrice;
 	}
@@ -81,15 +86,15 @@ public class Tail implements  IModel {
 	public Timestamp getCreate_date() {
 		return create_date;
 	}
+
 	public void setCreate_date(Timestamp create_date) {
 		this.create_date = create_date;
 	}
 
-	
-	
 	public DirProvider getDirProvider() {
 		return dirProvider;
 	}
+
 	public void setDirProvider(DirProvider dirProvider) {
 		this.dirProvider = dirProvider;
 	}
@@ -113,6 +118,8 @@ public class Tail implements  IModel {
 	public String toString() {
 		return "Tail [id=" + id + ", amountTail=" + amountTail + ", firstPrice=" + firstPrice + "]";
 	}
+	
+	
 	@Override
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
