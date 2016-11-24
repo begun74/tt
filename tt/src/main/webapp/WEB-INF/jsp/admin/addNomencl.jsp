@@ -252,7 +252,7 @@
 													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}');">${dirNomencl.code}</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
-							         					<a href="javascript:delObject(${dirNomencl.id},'DirProvider','1');" class="ico ico-delete" onclick=""></a>
+							         					<a href="javascript:delObject(${dirNomencl.id},'DirNomenclature','2');" class="ico ico-delete" onclick=""></a>
 							         				</td>
 												</tr>
 											</c:forEach>

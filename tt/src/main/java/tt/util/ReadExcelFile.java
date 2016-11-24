@@ -155,10 +155,10 @@ public class ReadExcelFile {
         			tail = new Tail();
         			//System.out.println("row - "+row_);
         			tail.setAmountTail(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_amountTail()-1))));
-        			//BigInteger id_prov = ttService.getProviderByCode( new Integer((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeProvider()-1))))) ).getId();
-        			tail.setFk_id_provider(hP.get(new Integer((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeProvider()-1)))))).getId());
         			tail.setFirstPrice(NumberFormat.getNumberInstance().parse(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_firstPrice()-1) )).doubleValue());
         			tail.setCreate_date(timestamp);
+        			tail.setDirProvider(hP.get(new Integer((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeProvider()-1)))))));
+        			tail.setDirNomenclature( hmNomencl.get(new Long((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeNomencl()-1)))))) );
         			lTails.add(tail);
         		}
         	

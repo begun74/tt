@@ -234,6 +234,7 @@
 													<td class="dragHandle">&nbsp;</td>
 													<td style="cursor:pointer;">${tail.create_date}</td>
 													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.dirProvider.name}</td>
+													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">(${tail.dirNomenclature.id})</td>
 													<td style="cursor:pointer;" onclick="$('#amountTail').val('${tail.amountTail}'); $('#firstPrice').val('${tail.firstPrice}');">${tail.amountTail}</td>
 													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.firstPrice}</td>
 							         				<td>
