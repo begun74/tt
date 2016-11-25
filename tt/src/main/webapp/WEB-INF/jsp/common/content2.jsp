@@ -12,8 +12,8 @@
 										<div class="productinfo text-center">
 											<a href="product-details.html"><img class="pic1" src="resources/images/product-details/ps_1.jpg" alt="" /></a>
 											<h2>${tail.dirProvider.name}</h2>
-											<span>${tail.dirNomenclature.name}</span>
-											<p>Easy Polo Black Edition</p>
+											<p>${tail.dirNomenclature.name} </p>
+											<p>${tail.dirNomenclature.article}</p>
 											<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 										<!-- div class="product-overlay">

@@ -20,7 +20,7 @@ import tt.model.*;
 import tt.modelattribute.IMAmodel;
 import tt.service.TTServiceImpl;
 
-@Component
+@Component(value = "appBean")
 public class AppBean implements Serializable {
 
 	/**
@@ -34,6 +34,21 @@ public class AppBean implements Serializable {
 	
 	private HashMap<Long,Object> mapStore = new HashMap<Long,Object>();
 	
+	private double version = 1.0;
+	
+	
+	
+	
+	public double getVersion() {
+		return version;
+	}
+
+
+	public void setVersion(double version) {
+		this.version = version;
+	}
+
+
 	@PostConstruct
 	void init() {
 		

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import tt.bean.AppBean;
 import tt.model.User;
 import tt.service.TTServiceImpl;
 
@@ -18,8 +19,14 @@ import tt.service.TTServiceImpl;
 @Controller
 public class IndexCtrl {
 	
+	
+	@Autowired
+	private AppBean appBean;
+	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
+	
+	
 	
 	@RequestMapping(value = {"/index","/"} , method = RequestMethod.GET)
 	public ModelAndView  index() 
@@ -30,6 +37,7 @@ public class IndexCtrl {
 		user.setPassword("pass "+user.getId());
 		
 		model.addObject("tails",ttService.getTailsList());
+		model.addObject("version",appBean.getVersion());
 		//ttService.addUser(user);
 		
 		//System.out.println(""+ttService.getUserList());
