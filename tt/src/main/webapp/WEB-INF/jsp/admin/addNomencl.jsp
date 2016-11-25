@@ -111,20 +111,20 @@
 							  			
 							  			<div class="clearfix">
 										         <div class="lab">
-								                    <label><spring:message code="name2"/></label> 
-										         </div>
-										         <div class="con">
-													<input name="name" id="name" type="text" class="input" value="" >										         
-										         </div>
-										 </div>
-							  			<div class="clearfix">
-										         <div class="lab">
 						                   			<label><spring:message code="code"/></label>
 										         </div>
 										         <div class="con">
 						                   			<input name="code" id="code" type="text" class="input" value="" > 
 										         </div>
-										 </div>
+										</div>
+							  			<div class="clearfix">
+										         <div class="lab">
+								                    <label><spring:message code="name2"/></label> 
+										         </div>
+										         <div class="con">
+													<input name="name" id="name" type="text" class="input" value="" >										         
+										         </div>
+										</div>
 							  			<div class="clearfix">
 										         <div class="lab">
 						                   			<label><spring:message code="article"/></label>
@@ -132,7 +132,7 @@
 										         <div class="con">
 						                   			<input name="article" id="article" type="text" class="input"> 
 										         </div>
-										 </div>
+										</div>
 								         
 						         <button type="submit" class=""><spring:message code="label.button.add"/></button>
 						         <input type="hidden" name ="id_dir_provider" id ="id_dir_provider" value="-1"/>
@@ -164,20 +164,20 @@
 						
 										  			<div class="clearfix">
 													         <div class="lab">
-											                    <label><spring:message code="name2"/></label> 
-													         </div>
-													         <div  style="width: 25px" class="conleft" >
-																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_name}">										         
-													         </div>
-													 </div>
-										  			<div class="clearfix">
-													         <div class="lab">
 									                   			<label><spring:message code="code"/></label>
 													         </div>
 													         <div style="width: 25px" class="conleft">
 									                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_code}"> 
 													         </div>
 													</div>
+										  			<div class="clearfix">
+													         <div class="lab">
+											                    <label><spring:message code="name2"/></label> 
+													         </div>
+													         <div  style="width: 25px" class="conleft" >
+																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_name}">										         
+													         </div>
+													 </div>
 										  			<div class="clearfix">
 													         <div class="lab">
 									                   			<label>Код НомГруппы</label>
@@ -253,11 +253,14 @@
 
 									<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
 										<table class="tab tab-drag">
-											<c:forEach items="${dirNomencls}" var="dirNomencl">
+											<c:forEach items="${dirNomencls}" var="dirNomencl" varStatus="loop">
 												<tr>
 													<td class="dragHandle">&nbsp;</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}');">(${dirNomencl.id}) ${dirNomencl.name}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}');">${dirNomencl.code}</td>
+													<td>${loop.count}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}');">${dirNomencl.name}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}');">${dirNomencl.code}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}');">${dirNomencl.article}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}');">${dirNomencl.dirNomenclGroup.name}(${dirNomencl.dirNomenclGroup.code})</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
 							         					<a href="javascript:delObject(${dirNomencl.id},'DirNomenclature','2');" class="ico ico-delete" onclick=""></a>

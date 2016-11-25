@@ -123,7 +123,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<DirNomenclGroup> getNomenclGroupList() {
 		// TODO Auto-generated method stub
-		return getSession().createQuery("from DirNomenclGroup").list();
+		return getSession().createQuery("from DirNomenclGroup order by name").list();
 	}
 
 	@Override

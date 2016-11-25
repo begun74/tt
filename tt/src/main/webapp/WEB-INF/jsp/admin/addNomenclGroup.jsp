@@ -111,18 +111,18 @@
 							  			
 							  			<div class="clearfix">
 										         <div class="lab">
-								                    <label><spring:message code="name2"/></label> 
-										         </div>
-										         <div class="conleft">
-													<input name="name" id="name" type="text" class="input" value="" >										         
-										         </div>
-										 </div>
-							  			<div class="clearfix">
-										         <div class="lab">
 						                   			<label><spring:message code="code"/></label>
 										         </div>
 										         <div class="conleft">
 						                   			<input name="code" id="code" type="text" class="input" value="" > 
+										         </div>
+										 </div>
+							  			<div class="clearfix">
+										         <div class="lab">
+								                    <label><spring:message code="name2"/></label> 
+										         </div>
+										         <div class="conleft">
+													<input name="name" id="name" type="text" class="input" value="" >										         
 										         </div>
 										 </div>
 								         
@@ -156,20 +156,20 @@
 						
 										  			<div class="clearfix">
 													         <div class="lab">
-											                    <label><spring:message code="name2"/></label> 
-													         </div>
-													         <div  style="width: 25px" class="conleft" >
-																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadNomenclGroup.col_name}">										         
-													         </div>
-													 </div>
-										  			<div class="clearfix">
-													         <div class="lab">
 									                   			<label><spring:message code="code"/></label>
 													         </div>
 													         <div style="width: 25px" class="conleft">
 									                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadNomenclGroup.col_code}"> 
 													         </div>
 													</div>
+										  			<div class="clearfix">
+													         <div class="lab">
+											                    <label><spring:message code="name2"/></label> 
+													         </div>
+													         <div  style="width: 25px" class="conleft" >
+																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadNomenclGroup.col_name}">										         
+													         </div>
+													 </div>
 													<div class="clearfix">									        
 															        <div class="lab">
 															        	<label>Начальная строка</label>
@@ -232,7 +232,7 @@
 											<c:forEach items="${dirNomenclGroups}" var="dirNomGroup">
 												<tr>
 													<td class="dragHandle">&nbsp;</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomGroup.name}'); $('#code').val('${dirNomGroup.code}');">(${dirNomGroup.id}) ${dirNomGroup.name}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomGroup.name}'); $('#code').val('${dirNomGroup.code}');">${dirNomGroup.name}</td>
 													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomGroup.name}'); $('#code').val('${dirNomGroup.code}');">${dirNomGroup.code}</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
