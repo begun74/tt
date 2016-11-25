@@ -5,26 +5,20 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Scope(value="session")
-public class MA_loadNomencl  implements IMAmodel {
+public class MA_loadNomenclGroup implements IMAmodel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -765852209444376374L;
-
-
+	private static final long serialVersionUID = -7274925296730280149L;
 	
 	private int row=1;
 	private int col_name=1;
 	private int col_code=2;
-	private int col_article=3;
-	private int col_codeNomenclGroup=4;
-	
+
 	private transient  boolean save;
 	private boolean autoload;
-	
-	
-	
+
 	@Override
 	public int getRow() {
 		// TODO Auto-generated method stub
@@ -33,8 +27,11 @@ public class MA_loadNomencl  implements IMAmodel {
 
 	@Override
 	public void setRow(int row) {
-		this.row=row;
+		this.row = row;
 	}
+	
+	
+	
 
 	public int getCol_name() {
 		return col_name;
@@ -52,24 +49,9 @@ public class MA_loadNomencl  implements IMAmodel {
 		this.col_code = col_code;
 	}
 
-	public int getCol_article() {
-		return col_article;
-	}
-
-	public void setCol_article(int col_article) {
-		this.col_article = col_article;
-	}
 	
 	
-	public int getCol_codeNomenclGroup() {
-		return col_codeNomenclGroup;
-	}
-
-	public void setCol_codeNomenclGroup(int col_codeNomenclGroup) {
-		this.col_codeNomenclGroup = col_codeNomenclGroup;
-	}
-
-
+	
 	public boolean isSave() {
 		return save;
 	}
@@ -86,18 +68,10 @@ public class MA_loadNomencl  implements IMAmodel {
 		this.autoload = autoload;
 	}
 
-	public long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
-
 	@Override
-	public String toString() {
-		return "MA_loadNomencl [row=" + row + ", col_name=" + col_name + ", col_code=" + col_code + ", col_article="
-				+ col_article + ", save=" + save + ", autoload=" + autoload + "]";
+	public long getSerialversionuid() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
-	
-	
 
 }

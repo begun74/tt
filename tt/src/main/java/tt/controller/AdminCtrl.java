@@ -1,10 +1,6 @@
 package tt.controller;
 
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.math.BigInteger;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
@@ -13,9 +9,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -28,12 +22,12 @@ import org.springframework.web.servlet.ModelAndView;
 import tt.annotation.Loggable;
 import tt.bean.AppBean;
 import tt.bean.SessionBean;
+import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
-import tt.model.Store;
 import tt.model.Tail;
-import tt.modelattribute.IMAmodel;
 import tt.modelattribute.MA_loadNomencl;
+import tt.modelattribute.MA_loadNomenclGroup;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
 import tt.modelattribute.MA_loadTempTail;
@@ -88,7 +82,12 @@ public class AdminCtrl {
 				model.addObject("tempTails", sessBean.getTempListTails());
 				model.addObject("tails", ttService.getTailsList());
 			break;
-			
+
+			case "4":
+				model = new ModelAndView("admin/addNomenclGroup");
+				model.addObject("dirNomenclGroups", ttService.getNomenclGroupList());
+			break;
+
 		}
 		
 		model.addObject("error",sessBean.getErrorList());
@@ -190,7 +189,6 @@ public class AdminCtrl {
 	
 	
 
-	//@SuppressWarnings("static-access")
 	@RequestMapping(value = "addFileNomencl" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFileProvider( @ModelAttribute  MultipartFile file,
 										@Valid MA_loadNomencl mA_loadNomencl ,
@@ -262,6 +260,74 @@ public class AdminCtrl {
 	
 	
 	
+	@RequestMapping(value = "addFileNomenclGroup" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ModelAndView   processFileNomenclGroup( @ModelAttribute  MultipartFile file,
+										@Valid MA_loadNomenclGroup mA_loadNomenclGroup ,
+										BindingResult result,
+										@RequestParam(value = "act",   defaultValue = "-1", required=true) int act) 
+	{
+		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
+		
+		if(result.hasErrors())
+		{
+			sessBean.addError("Правильно введите данные!");
+			return model;
+		}
+		
+		
+		if(mA_loadNomenclGroup.isSave())
+		{
+			try {
+				appBean.addToMapStore(mA_loadNomenclGroup);
+				sessBean.setmA_loadNomenclGroup(mA_loadNomenclGroup);
+			}
+			catch(org.springframework.dao.DataIntegrityViolationException dve) 
+			{
+				dve.printStackTrace();
+				sessBean.getErrorList().add("Настройки уже существуют! ");
+			}
+			catch(Exception ioe)
+			{
+				ioe.printStackTrace();
+				sessBean.getErrorList().add("Параметры не записаны! ");
+			}
+		}
+		
+
+
+		try {
+
+					TreeSet<DirNomenclGroup> lDNG = new TreeSet<DirNomenclGroup>();
+					lDNG.addAll((List<DirNomenclGroup>) fileUpload.process(new DirNomenclGroup(),file, mA_loadNomenclGroup));
+		
+					for(DirNomenclGroup dNG: lDNG) 
+					{
+						try {
+							ttService.addNomenclGroup(dNG);
+							
+						}
+						catch(org.springframework.dao.DataIntegrityViolationException dve) {
+							//dve.printStackTrace(); 
+							sessBean.getErrorList().add(dNG.getName()+" уже существует! ");
+						}
+					}
+
+
+			}
+			catch (java.lang.NumberFormatException nfe) {
+				nfe.printStackTrace();
+				sessBean.addError(nfe.getMessage());
+				
+			}
+			catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						sessBean.addError("Ошибка загрузки файла!");
+			}
+
+
+		return model;
+	}
 
 
 	@RequestMapping(value = "addFileProvider" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)

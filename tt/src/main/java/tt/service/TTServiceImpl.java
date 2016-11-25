@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tt.dao.Dao;
 import tt.dao.DaoImpl;
+import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Store;
@@ -127,6 +128,19 @@ public class TTServiceImpl implements Dao {
 	public DirProvider getProviderByCode(Integer code) {
 		// TODO Auto-generated method stub
 		return dao.getProviderByCode(code);
+	}
+
+
+	@Override
+	public List<DirNomenclGroup> getNomenclGroupList() {
+		// TODO Auto-generated method stub
+		return dao.getNomenclGroupList();
+	}
+
+
+	@Override
+	public void addNomenclGroup(DirNomenclGroup dirNomenclGroup) {
+		dao.addNomenclGroup(dirNomenclGroup);
 	}
 
 }

@@ -17,12 +17,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.IModel;
 import tt.model.Tail;
 import tt.modelattribute.IMAmodel;
 import tt.modelattribute.MA_loadNomencl;
+import tt.modelattribute.MA_loadNomenclGroup;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
 import tt.service.TTServiceImpl;
@@ -70,13 +72,24 @@ public class FileUpload {
 
 				try {
 					file.transferTo(tmpFile);
-					
+
+
 					if(model instanceof DirProvider)
 					return ReadExcelFile.processFile(tmpFile,(DirProvider) model, (MA_loadProvider) IMAmodel) ;
 					
 					else if(model instanceof DirNomenclature)
-					return ReadExcelFile.processFile(tmpFile,(DirNomenclature) model, (MA_loadNomencl) IMAmodel) ;
-					
+					{
+						List<DirNomenclGroup> lNG = ttService.getNomenclGroupList();
+						HashMap<Long,DirNomenclGroup> hmNomenclGroup = new HashMap<Long,DirNomenclGroup>();
+						for(DirNomenclGroup dng: lNG) 
+							hmNomenclGroup.put(dng.getCode(), dng);
+
+						return ReadExcelFile.processFile(tmpFile,(DirNomenclature) model, (MA_loadNomencl) IMAmodel, hmNomenclGroup) ;
+					}
+
+					else if(model instanceof DirNomenclGroup)
+						return ReadExcelFile.processFile(tmpFile,(DirNomenclGroup) model, (MA_loadNomenclGroup) IMAmodel) ;
+
 					else if(model instanceof Tail)
 					{
 						List<DirProvider> lP = ttService.getProviderList();

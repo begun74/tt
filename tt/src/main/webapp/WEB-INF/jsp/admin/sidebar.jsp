@@ -11,6 +11,7 @@
             <ul class="submenu">
               <li><a href="admin?act=1" ><spring:message code="provider"/></li>          
               <li><a href="admin?act=2" ><spring:message code="nomenclature"/></li>          
+			  <li><a href="admin?act=4" ><spring:message code="nomencl.group"/></li>
             </ul>
           </li>
           <li><a href="#"><spring:message code="admin.load.info.from.file"/></a>

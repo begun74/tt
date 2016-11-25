@@ -4,9 +4,12 @@ package tt.model;
 import java.math.BigInteger;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -48,6 +51,13 @@ public class DirNomenclature implements  IModel {
 	private String article;
 	
 	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_id_dir_nomencl_group")
+	@NotNull
+	private DirNomenclGroup dirNomenclGroup;
+
+	
+	
 	public BigInteger getId() {
 		return id;
 	}
@@ -80,6 +90,18 @@ public class DirNomenclature implements  IModel {
 	public void setArticle(String article) {
 		this.article = article;
 	}
+
+	
+	
+	public DirNomenclGroup getDirNomenclGroup() {
+		return dirNomenclGroup;
+	}
+
+	public void setDirNomenclGroup(DirNomenclGroup dirNomenclGroup) {
+		this.dirNomenclGroup = dirNomenclGroup;
+	}
+	
+	
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

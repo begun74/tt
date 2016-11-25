@@ -26,11 +26,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tt.bean.SessionBean;
+import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.IModel;
 import tt.model.Tail;
 import tt.modelattribute.MA_loadNomencl;
+import tt.modelattribute.MA_loadNomenclGroup;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
 import tt.service.TTServiceImpl;
@@ -96,7 +98,7 @@ public class ReadExcelFile {
 	}
 
 	
-	public  static List<?> processFile(File tmpFile, DirNomenclature dirNomenclature, MA_loadNomencl mA_loadNomencl) throws Exception{
+	public  static List<?> processFile(File tmpFile, DirNomenclature dirNomenclature, MA_loadNomencl mA_loadNomencl, HashMap<Long,DirNomenclGroup> hmNomenclGroup) throws Exception{
 		
 		List<DirNomenclature>  lNomencls = new ArrayList<DirNomenclature>();
 		
@@ -118,7 +120,7 @@ public class ReadExcelFile {
         			dirNomenclature.setName(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_name()-1)));
         			dirNomenclature.setCode(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_code()-1)) ) );
         			dirNomenclature.setArticle(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_article()-1)));
-        			
+        			dirNomenclature.setDirNomenclGroup(hmNomenclGroup.get(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_code()-1)) ) );
 		        	lNomencls.add(dirNomenclature);
         		}
         	
@@ -130,6 +132,38 @@ public class ReadExcelFile {
 		
 	}
 
+	public  static List<?> processFile(File tmpFile, DirNomenclGroup dirNomenclGroup, MA_loadNomenclGroup mA_loadNomenclGroup) throws Exception{
+		
+		List<DirNomenclGroup>  lNomencls = new ArrayList<DirNomenclGroup>();
+		
+		Workbook workbook = getWorkbook(tmpFile);
+        Sheet firstSheet = workbook.getSheetAt(0);  
+        Iterator<Row> rowIterator = firstSheet.iterator();
+        DataFormatter df = new DataFormatter();
+		
+		
+		int row_ = 0;
+        while(rowIterator.hasNext() )
+        {
+        	Row tmp = rowIterator.next();
+        	
+        	
+        		if(row_ >= mA_loadNomenclGroup.getRow()-1) {
+        			dirNomenclGroup = new DirNomenclGroup();
+	        	
+        			dirNomenclGroup.setName(df.formatCellValue(tmp.getCell(mA_loadNomenclGroup.getCol_name()-1)));
+        			dirNomenclGroup.setCode(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomenclGroup.getCol_code()-1)) ) );
+        			
+		        	lNomencls.add(dirNomenclGroup);
+        		}
+        	
+        	
+        	++row_;
+        }
+        
+		return lNomencls;
+		
+	}
 
 
 	public static Collection<?> processFile(File tmpFile, Tail tail, MA_loadTail mA_loadTail, HashMap<Integer,DirProvider> hP, HashMap<Long,DirNomenclature> hmNomencl)  throws Exception {

@@ -94,7 +94,7 @@
 
 		<div id="tabs" class="box">
             <ul class="bookmarks">
-		            <li><a href="#tabs-1"><spring:message code="admin.addNomencl" /></a></li>
+		            <li><a href="#tabs-1"><spring:message code="admin.addNomenclGroup" /></a></li>
 		           	<li><a href="#tabs-2"><spring:message code="admin.load.info.from.file" /></a></li>
             </ul>
           	<div class="box-content">    
@@ -102,18 +102,18 @@
             <div id="tabs-1">  
               	<div class="form-cols">
 				    		<div class="col1">
-							  	<form:form id="addNomenclForm" class="formBox" role="form"
+							  	<form:form id="addNomenclGroupForm" class="formBox" role="form"
 							  			commandName="loadNomenclrForm"
 							  			enctype="multipart/form-data" 
-							  			action="${pageContext.request.contextPath}/admin/addNomencl?${_csrf.parameterName}=${_csrf.token}" 
+							  			action="${pageContext.request.contextPath}/admin/addFileNomenclGroup?${_csrf.parameterName}=${_csrf.token}" 
 							  			method="POST"
-							  			modelAttribute="dirNomencl">
+							  			modelAttribute="dirNomenclGroup">
 							  			
 							  			<div class="clearfix">
 										         <div class="lab">
 								                    <label><spring:message code="name2"/></label> 
 										         </div>
-										         <div class="con">
+										         <div class="conleft">
 													<input name="name" id="name" type="text" class="input" value="" >										         
 										         </div>
 										 </div>
@@ -121,21 +121,13 @@
 										         <div class="lab">
 						                   			<label><spring:message code="code"/></label>
 										         </div>
-										         <div class="con">
+										         <div class="conleft">
 						                   			<input name="code" id="code" type="text" class="input" value="" > 
-										         </div>
-										 </div>
-							  			<div class="clearfix">
-										         <div class="lab">
-						                   			<label><spring:message code="article"/></label>
-										         </div>
-										         <div class="con">
-						                   			<input name="article" id="article" type="text" class="input"> 
 										         </div>
 										 </div>
 								         
 						         <button type="submit" class=""><spring:message code="label.button.add"/></button>
-						         <input type="hidden" name ="id_dir_provider" id ="id_dir_provider" value="-1"/>
+						         <input type="hidden" name ="id_dir_nomencl_group" id ="id_dir_nomencl_group" value="-1"/>
 						    	</form:form>
 							</div>					    
 				    		<div class="col2">
@@ -157,9 +149,9 @@
 					<div class="form-cols">
 	   				<div class="col1">            
 
-						<form:form id="addFileNomencl" class="formBox" role="form"  
+						<form:form id="addFileNomenclGroup" class="formBox" role="form"  
 							  			enctype="multipart/form-data" 
-							  			action="${pageContext.request.contextPath}/admin/addFileNomencl?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
+							  			action="${pageContext.request.contextPath}/admin/addFileNomenclGroup?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
 							  			method="POST">
 						
 										  			<div class="clearfix">
@@ -167,7 +159,7 @@
 											                    <label><spring:message code="name2"/></label> 
 													         </div>
 													         <div  style="width: 25px" class="conleft" >
-																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_name}">										         
+																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadNomenclGroup.col_name}">										         
 													         </div>
 													 </div>
 										  			<div class="clearfix">
@@ -175,23 +167,7 @@
 									                   			<label><spring:message code="code"/></label>
 													         </div>
 													         <div style="width: 25px" class="conleft">
-									                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_code}"> 
-													         </div>
-													</div>
-										  			<div class="clearfix">
-													         <div class="lab">
-									                   			<label>Код НомГруппы</label>
-													         </div>
-													         <div style="width: 25px" class="conleft">
-									                   			<input name="col_codeNomenclGroup" id="col_codeNomenclGroup" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_codeNomenclGroup}"> 
-													         </div>
-													</div>
-										  			<div class="clearfix">
-													         <div class="lab">
-									                   			<label><spring:message code="article"/></label>
-													         </div>
-													         <div style="width: 25px" class="conleft">
-									                   			<input name="col_article" id="col_article" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_article}"> 
+									                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadNomenclGroup.col_code}"> 
 													         </div>
 													</div>
 													<div class="clearfix">									        
@@ -199,7 +175,7 @@
 															        	<label>Начальная строка</label>
 															        </div>
 															        <div style="width: 25px" class="conleft">
-															        	<input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadNomencl.row}" >
+															        	<input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadNomenclGroup.row}" >
 															        </div>
 													</div>
 							         
@@ -210,13 +186,13 @@
 
 													<div class="clearfix">									        
 														<div class="lab">
-														   	<label><input name="save" id="save" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadNomencl.save == true}">checked="checked" </c:if>  >Сохранить</label>
+														   	<label><input name="save" id="save" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadNomenclGroup.save == true}">checked="checked" </c:if>  >Сохранить</label>
 														</div>
 													</div>
 
 													<div class="clearfix">									        
 														<div class="lab">
-														   	<label><input name="autoload" id="autoload" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadNomencl.autoload == true}">checked="checked"</c:if>  >Автозагрузка</label>
+														   	<label><input name="autoload" id="autoload" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadNomenclGroup.autoload == true}">checked="checked"</c:if>  >Автозагрузка</label>
 														</div>
 													</div>
 						
@@ -226,7 +202,7 @@
 								        				</div>
 							        				</div>
 							        				
-							         <input type="hidden" name ="act" id ="act" value="2"/>
+							         <input type="hidden" name ="act" id ="act" value="4"/>
 						</form:form>
 				</div>
 
@@ -253,14 +229,14 @@
 
 									<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
 										<table class="tab tab-drag">
-											<c:forEach items="${dirNomencls}" var="dirNomencl">
+											<c:forEach items="${dirNomenclGroups}" var="dirNomGroup">
 												<tr>
 													<td class="dragHandle">&nbsp;</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}');">(${dirNomencl.id}) ${dirNomencl.name}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}');">${dirNomencl.code}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomGroup.name}'); $('#code').val('${dirNomGroup.code}');">(${dirNomGroup.id}) ${dirNomGroup.name}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomGroup.name}'); $('#code').val('${dirNomGroup.code}');">${dirNomGroup.code}</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
-							         					<a href="javascript:delObject(${dirNomencl.id},'DirNomenclature','2');" class="ico ico-delete" onclick=""></a>
+							         					<a href="javascript:delObject(${dirNomGroup.id},'DirNomenclGroup','4');" class="ico ico-delete" onclick=""></a>
 							         				</td>
 												</tr>
 											</c:forEach>

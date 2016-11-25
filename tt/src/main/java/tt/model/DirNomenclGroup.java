@@ -3,14 +3,19 @@ package tt.model;
 import java.math.BigInteger;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+
+@Entity
+@Table(name = "dir_nomencl_group")
 public class DirNomenclGroup implements IModel {
 
 	/**
@@ -25,7 +30,7 @@ public class DirNomenclGroup implements IModel {
 			sequenceName="seq_global",
 			allocationSize=1
 		)
-	@Column(name="id_dir_nomenclature")
+	@Column(name="id_dir_nomencl_group")
 	private BigInteger id;
 
 	
@@ -35,6 +40,8 @@ public class DirNomenclGroup implements IModel {
 
 	@NotEmpty (message = "Please enter name.") 
 	private String name;
+	
+	
 	
 
 	@Override
@@ -74,7 +81,7 @@ public class DirNomenclGroup implements IModel {
 	@Override
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
-		return 0;
+		return ( ((DirNomenclGroup)o).getCode().compareTo(this.getCode()) );
 	}
 
 }

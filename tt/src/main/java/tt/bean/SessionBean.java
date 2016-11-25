@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import tt.model.Tail;
 import tt.modelattribute.MA_loadNomencl;
+import tt.modelattribute.MA_loadNomenclGroup;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
 import tt.service.TTServiceImpl;
@@ -37,6 +38,9 @@ public class SessionBean  implements Serializable {
 	
 	@Autowired
 	private MA_loadNomencl mA_loadNomencl;
+	
+	@Autowired
+	private MA_loadNomenclGroup mA_loadNomenclGroup;
 	
 	@Autowired
 	private MA_loadTail mA_loadTail;
@@ -87,6 +91,15 @@ public class SessionBean  implements Serializable {
 	}
 
 	
+	
+	public MA_loadNomenclGroup getmA_loadNomenclGroup() {
+		return mA_loadNomenclGroup;
+	}
+
+	public void setmA_loadNomenclGroup(MA_loadNomenclGroup mA_loadNomenclGroup) {
+		this.mA_loadNomenclGroup = mA_loadNomenclGroup;
+	}
+
 	
 	public List<String> getSuccessList() {
 		return successList;
@@ -144,6 +157,8 @@ public class SessionBean  implements Serializable {
 			setmA_loadTail(new MA_loadTail());
 		else
 			this.setmA_loadTail((MA_loadTail) appBean.findBySerialVerUID(mA_loadTail.getSerialversionuid()) );
+		
+		setmA_loadNomenclGroup( (appBean.findBySerialVerUID(mA_loadNomenclGroup.getSerialversionuid()) == null?new MA_loadNomenclGroup(): (MA_loadNomenclGroup) appBean.findBySerialVerUID(mA_loadNomenclGroup.getSerialversionuid())));
 
 	}
 	

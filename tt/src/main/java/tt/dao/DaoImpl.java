@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Store;
@@ -117,6 +118,18 @@ public class DaoImpl implements Dao {
 	public DirProvider getProviderByCode(Integer code) {
 		// TODO Auto-generated method stub
 		return (DirProvider) getSession().createQuery("from dir_provider dp where dp.code = :code").setParameter("code", code).uniqueResult();
+	}
+
+	@Override
+	public List<DirNomenclGroup> getNomenclGroupList() {
+		// TODO Auto-generated method stub
+		return getSession().createQuery("from DirNomenclGroup").list();
+	}
+
+	@Override
+	public void addNomenclGroup(DirNomenclGroup dirNomenclGroup) {
+		// TODO Auto-generated method stub
+		getSession().saveOrUpdate(dirNomenclGroup);
 	}
 
 
