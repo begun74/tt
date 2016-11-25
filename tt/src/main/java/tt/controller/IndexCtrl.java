@@ -29,6 +29,7 @@ public class IndexCtrl {
 		user.setName("name "+user.getId());
 		user.setPassword("pass "+user.getId());
 		
+		model.addObject("tails",ttService.getTailsList());
 		//ttService.addUser(user);
 		
 		//System.out.println(""+ttService.getUserList());

@@ -110,7 +110,7 @@
 				</div>
 				<div class="col-sm-9 padding-right">
 					<!-- content -->
-					<%@include file="common/content.jsp" %>
+					<%@include file="common/content2.jsp" %>
 					<!-- content -->
 				</div>
 				
