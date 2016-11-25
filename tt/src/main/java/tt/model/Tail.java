@@ -58,7 +58,7 @@ public class Tail implements  IModel {
 	private DirNomenclature dirNomenclature;
 	
 	
-	private transient boolean save;
+	private transient int index;
 	
 	
 	
@@ -111,17 +111,16 @@ public class Tail implements  IModel {
 	}
 
 	
-	
-	
-	public boolean isSave() {
-		return save;
+
+	public int getIndex() {
+		return index;
 	}
 
-	public void setSave(boolean save) {
-		this.save = save;
+	public void setIndex(int index) {
+		this.index = index;
 	}
 	
-	
+
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

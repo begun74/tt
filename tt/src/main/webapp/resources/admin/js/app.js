@@ -42,3 +42,14 @@ function clearErrors() {
 		}
 	});
 }
+	
+function checkboxAny(flag,clazz)
+{
+	/* flag - boolean */
+	//alert(flag,clazz);
+	if(flag)
+		$('.'+clazz).attr("checked","checked");
+	else
+		$('.'+clazz).attr("checked","");
+
+}

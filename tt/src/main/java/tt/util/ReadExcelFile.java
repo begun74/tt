@@ -146,14 +146,14 @@ public class ReadExcelFile {
 		
 		
 		int row_ = 0;
+		int index = 0;
         while(rowIterator.hasNext() )
         {
         	Row tmp = rowIterator.next();
         	
-        	
         		if(row_ >= mA_loadTail.getRow()-1) {
         			tail = new Tail();
-        			//System.out.println("row - "+row_);
+        			tail.setIndex(index++);
         			tail.setAmountTail(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_amountTail()-1))));
         			tail.setFirstPrice(NumberFormat.getNumberInstance().parse(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_firstPrice()-1) )).doubleValue());
         			tail.setCreate_date(timestamp);

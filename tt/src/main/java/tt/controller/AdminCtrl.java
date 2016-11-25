@@ -36,6 +36,7 @@ import tt.modelattribute.IMAmodel;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
+import tt.modelattribute.MA_loadTempTail;
 import tt.service.TTServiceImpl;
 import tt.util.FileUpload;
 
@@ -337,21 +338,28 @@ public class AdminCtrl {
 
 	
 	@RequestMapping(value = "addFileTail" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ModelAndView   processFileTail(@RequestParam(value = "act",   defaultValue = "-1", required=true) int act)
+	public ModelAndView   processFileTail(@ModelAttribute MA_loadTempTail mA_loadTempTail, @RequestParam(value = "act",   defaultValue = "-1", required=true) int act)
 	{
 		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
 		
 				
 		try {
 
-					Iterator<Tail> iter_lT = sessBean.getTempListTails().iterator();
-	
-					while(iter_lT.hasNext()) 
-					{
-							ttService.addTail(iter_lT.next());
-							iter_lT.remove();
+					synchronized(this) {
+
+						Iterator<Tail> iter_lT = sessBean.getTempListTails().iterator();
+						
+						while(iter_lT.hasNext()) 
+						{
+								Tail tail = iter_lT.next();
+								if( mA_loadTempTail.getTailIndex().contains(tail.getIndex()) ) //Проверка отмечена ли запись на загрузку
+								{
+									ttService.addTail(tail);
+									iter_lT.remove();
+								}
+						}
+						
 					}
-					
 					//System.out.println("sessBean.getTempListTails() - " +sessBean.getTempListTails());
 	
 		}

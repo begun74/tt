@@ -125,7 +125,7 @@
 											    				<th width="6%">Кол-во</th>
 											    				<th width="6%">Первая цена</th>
 											    				<th width="22%">Дата загрузки</th>
-											    				<th width="4%" class="checkbox"><input type="checkbox" name="" value="" class="check-all" /></th>
+											    				<th width="4%" class="checkbox"><input type="checkbox" name="" class="check-all" onclick='checkboxAny($(this).attr("checked"),"tailIndex");'/></th>
 											    				<th width="2%">Action</th>
 										    				</tr>
 										    			</table>
@@ -140,7 +140,7 @@
 																			<td style="cursor:pointer;">${tail.amountTail}</td>
 																			<td style="cursor:pointer;">${tail.firstPrice}</td>
 																			<td style="cursor:pointer;">${tail.create_date}</td>
-																			<td class="checkbox"><input name="tail_save_${tail.id}" id="tail_save_${tail.id}" type="checkbox"  style="cursor:pointer;" class="checkbox"/></td>
+																			<td class="checkbox"><input name="tailIndex" class="tailIndex" value="${tail.index}" type="checkbox"  style="cursor:pointer;" class="checkbox"/></td>
 													         				<td >
 													         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
 													         					<a href="" class="ico ico-delete" onclick=""></a>
@@ -228,7 +228,7 @@
 														</br>
 								        				<div class="clearfix">
 									        				<div class="lab">	
-									        					<button type="submit" class="" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="admin.load.info.from.file"/></button>
+									        					<button type="submit" style="width:130px;" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="admin.load.info.from.file"/></button>
 									        				</div>
 								        				</div>
 								        				
@@ -317,7 +317,7 @@
   <script>
   		$(document).ready(function(){
 				
-  			checkAllCols(${allCount});
+  			
 			/*$("#save").attr("checked","checked");*/
 	    });
 	    

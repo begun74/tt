@@ -22,7 +22,7 @@ public class IndexCtrl {
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
 	
 	@RequestMapping(value = {"/index","/"} , method = RequestMethod.GET)
-	public ModelAndView  index(HttpSession session, @RequestParam(value = "pg",   required=false) Long id_partgroup) 
+	public ModelAndView  index() 
 	{
 		ModelAndView model = new ModelAndView("index");
 		User user = new User();
@@ -49,7 +49,8 @@ public class IndexCtrl {
 		if (logout != null) {
 			SecurityContextHolder.clearContext();
 			session.invalidate();
-			//model.setViewName("index");
+			model = new ModelAndView("redirect:/admin");
+			
 		}
 		
 		return model;
