@@ -103,6 +103,7 @@
 											<td class="dragHandle">&nbsp;</td>
 											<td>${loop.count}</td>
 											<td style="cursor:pointer;" >${MAmodel}</td>
+											<td style="cursor:pointer;" >autoload - ${MAmodel.autoload}</td>
 										</tr>
 									</c:forEach>
 							</table>
