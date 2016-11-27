@@ -7,6 +7,11 @@
 
         <!-- mainmenu -->
         <ul id="floatMenu" class="mainmenu">
+          <li><a href="#">Автозагрузка</a>
+            <ul class="submenu">
+              <li><a href="admin?act=5">Автозагрузка (старт/стоп)</a></li>          
+            </ul>
+          </li>
           <li class="first"><a href="#"><spring:message code="dictionary"/></a>
             <ul class="submenu">
               <li><a href="admin?act=1" ><spring:message code="provider"/></li>          

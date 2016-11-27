@@ -88,6 +88,10 @@ public class AdminCtrl {
 				model.addObject("dirNomenclGroups", ttService.getNomenclGroupList());
 			break;
 
+			case "5":
+				model = new ModelAndView("admin/autoLoad");
+				model.addObject("autoLoadObjects", appBean.getAutoLoad_IMAmodels());
+			break;
 		}
 		
 		model.addObject("error",sessBean.getErrorList());

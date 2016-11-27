@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -70,9 +71,8 @@ public class AppBean implements Serializable {
 	}
 	
 	
-	public void addToMapStore(IMAmodel IMAmodel) throws Exception {
-		
-			 
+	public void addToMapStore(IMAmodel IMAmodel) throws Exception 
+	{
 			Store s = ttService.getStoreBySerVerUID(IMAmodel.getSerialversionuid()) == null? new Store() : ttService.getStoreBySerVerUID(IMAmodel.getSerialversionuid());
 			s.setSerialVersionUID(IMAmodel.getSerialversionuid());
 			s.setBytearray(objectToBytes(IMAmodel));
@@ -80,10 +80,25 @@ public class AppBean implements Serializable {
 			ttService.addStore(s);
 			
 			mapStore.put(s.getSerialVersionUID(), bytesToObject(s.getBytearray()));
-			
-		
 	}
 
+
+	public List<IMAmodel> getAutoLoad_IMAmodels()
+	{
+		List<IMAmodel> listAutoLoads = new ArrayList();
+		for(Object MAmodel:mapStore.values())
+		{
+			try {
+				if( ((IMAmodel)MAmodel).isAutoload() )
+					listAutoLoads.add((IMAmodel) MAmodel);
+			}
+			catch(ClassCastException cce){
+				cce.getMessage();
+			}
+		}
+		return listAutoLoads;
+	}
+	
 	public Object findBySerialVerUID(Long serialVersionUID)
 	{
 		try {
