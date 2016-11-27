@@ -90,7 +90,7 @@ public class AdminCtrl {
 
 			case "5":
 				model = new ModelAndView("admin/autoLoad");
-				model.addObject("autoLoadObjects", appBean.getAutoLoad_IMAmodels());
+				model.addObject("autoLoadIMAmodels", appBean.getAutoLoad_IMAmodels());
 			break;
 		}
 		
