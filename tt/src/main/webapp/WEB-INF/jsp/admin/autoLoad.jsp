@@ -96,6 +96,14 @@
             </ul>
           	<div class="box-content">    
             	<div id="tab1">
+					<table class="tab" border="0">
+				    				<tr align="center">
+					    				<th class="dragHandle">&nbsp;</th>
+					    				<th width="7%">№ п/п</th>
+					    				<th width="83%">Название</th>
+					    				<th >Auto load</th>
+				    			</tr>
+				    </table>            	
 					<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
 							<table class="tab tab-drag">
 									<c:forEach items="${autoLoadIMAmodels}" var="MAmodel" varStatus="loop">
@@ -103,7 +111,7 @@
 											<td class="dragHandle">&nbsp;</td>
 											<td>${loop.count}</td>
 											<td style="cursor:pointer;" >${MAmodel}</td>
-											<td style="cursor:pointer;" >autoload - ${MAmodel.autoload}</td>
+											<td><input type="checkbox" style="cursor:pointer;" <c:if test="${MAmodel.autoload}">checked='checked'</c:if> /></td>
 										</tr>
 									</c:forEach>
 							</table>
