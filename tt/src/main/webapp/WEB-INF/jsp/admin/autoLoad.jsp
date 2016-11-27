@@ -90,12 +90,23 @@
         <!-- /box -->
         
         <!-- /box -->
-        <div class="box">
+        <div id="tabs" class="box">
             <ul class="bookmarks">
-		           	<li><a href="#tabs-1">Объекты автозагрузки</a></li>
+		           	<li><a href="#tab1">Объекты автозагрузки</a></li>
             </ul>
           	<div class="box-content">    
-            	<div id="tabs-1">
+            	<div id="tab1">
+					<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
+							<table class="tab tab-drag">
+									<c:forEach items="${autoLoadIMAmodels}" var="MAmodel" varStatus="loop">
+										<tr>
+											<td class="dragHandle">&nbsp;</td>
+											<td>${loop.count}</td>
+											<td style="cursor:pointer;" >${MAmodel}</td>
+										</tr>
+									</c:forEach>
+							</table>
+					</div>            	
         		</div>
         	</div>
         </div>
