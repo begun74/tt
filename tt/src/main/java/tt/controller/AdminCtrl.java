@@ -1,6 +1,7 @@
 package tt.controller;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
@@ -26,6 +27,7 @@ import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Tail;
+import tt.modelattribute.IMAmodel;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadNomenclGroup;
 import tt.modelattribute.MA_loadProvider;
@@ -33,6 +35,8 @@ import tt.modelattribute.MA_loadTail;
 import tt.modelattribute.MA_loadTempTail;
 import tt.service.TTServiceImpl;
 import tt.util.FileUpload;
+import tt.util.autoLoad.Handler;
+import tt.util.autoLoad.MainAutoLoad;
 
 
 
@@ -510,4 +514,31 @@ public class AdminCtrl {
 		return model;
 	}
 
+
+	@RequestMapping(value = "autoLoad" , method = RequestMethod.POST )
+	public ModelAndView   processAutoLoad(@RequestParam(value = "act",   defaultValue = "-1", required=true) int act,
+											@RequestParam(value = "status",   required=false) int status)
+	{
+		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
+		
+		List<IMAmodel> listMAmodel = appBean.getAutoLoad_IMAmodels();
+		List<Handler> listHandler = new ArrayList(listMAmodel.size());
+
+		for(IMAmodel mam: listMAmodel)
+			listHandler.add(new Handler(mam));
+		
+		
+		switch (status) {
+			
+			case 0:
+				MainAutoLoad.stopAutoLoad();
+				break;
+			
+			case 1:
+				MainAutoLoad.startAutoLoad(listHandler);
+				break;
+		}
+		
+		return model;
+	}
 }

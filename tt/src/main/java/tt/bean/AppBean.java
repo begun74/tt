@@ -89,8 +89,8 @@ public class AppBean implements Serializable {
 		for(Object MAmodel:mapStore.values())
 		{
 			try {
-				if( ((IMAmodel)MAmodel).isAutoload() )
-					listAutoLoads.add((IMAmodel) MAmodel);
+				//if( ((IMAmodel)MAmodel).isAutoload() )
+				listAutoLoads.add((IMAmodel) MAmodel);
 			}
 			catch(ClassCastException cce){
 				cce.getMessage();

@@ -108,6 +108,23 @@
 							</table>
 					</div>            	
         		</div>
+        		
+        		<form id="autoLoadForm" class="formBox" role="form"  
+							  			enctype="multipart/form-data" 
+							  			action="${pageContext.request.contextPath}/admin/autoLoad?${_csrf.parameterName}=${_csrf.token}#tab1" 
+							  			method="POST">
+							  			
+							  			<div class="clearfix">
+								        				<div class="lab">	
+								        					<button type="submit" name="status" value="1" >Старт</button>
+								        				</div>
+								        				<div class="lab">	
+								        					<button type="submit" name="status" value="0" >Стоп</button>
+								        				</div>
+							        	</div>
+							        	
+						<input type="hidden" name ="act" id ="act" value="5"/>
+				</form>
         	</div>
         </div>
         <!-- /box -->
