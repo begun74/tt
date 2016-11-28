@@ -3,6 +3,7 @@ package tt.dao;
 import java.math.BigInteger;
 import java.util.List;
 
+import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
@@ -26,6 +27,9 @@ public interface Dao {
 
 	public List<DirNomenclGroup> getNomenclGroupList();
 	public void addNomenclGroup(DirNomenclGroup dirNomenclGroup);
+
+
+	public List<DirGender> getGenderList();
 
 	
 	public List<Tail> getTailsList();

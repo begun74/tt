@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tt.dao.Dao;
 import tt.dao.DaoImpl;
+import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
@@ -141,6 +142,13 @@ public class TTServiceImpl implements Dao {
 	@Override
 	public void addNomenclGroup(DirNomenclGroup dirNomenclGroup) {
 		dao.addNomenclGroup(dirNomenclGroup);
+	}
+
+
+	@Override
+	public List<DirGender> getGenderList() {
+		// TODO Auto-generated method stub
+		return dao.getGenderList();
 	}
 
 }

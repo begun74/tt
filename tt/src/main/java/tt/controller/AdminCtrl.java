@@ -100,7 +100,7 @@ public class AdminCtrl {
 		
 		model.addObject("error",adminSessBean.getErrorList());
 		model.addObject("sessionBean",adminSessBean);
-		model.addObject("brands", ttService.getProviderList());
+		model.addObject("providers", ttService.getProviderList());
 		
 		return model;
 	}

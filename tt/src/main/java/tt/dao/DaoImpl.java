@@ -8,6 +8,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
@@ -130,6 +131,12 @@ public class DaoImpl implements Dao {
 	public void addNomenclGroup(DirNomenclGroup dirNomenclGroup) {
 		// TODO Auto-generated method stub
 		getSession().saveOrUpdate(dirNomenclGroup);
+	}
+
+	@Override
+	public List<DirGender> getGenderList() {
+		// TODO Auto-generated method stub
+		return getSession().createQuery("from DirGender order by gender").list();
 	}
 
 

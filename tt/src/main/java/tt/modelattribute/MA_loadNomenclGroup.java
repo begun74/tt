@@ -71,7 +71,7 @@ public class MA_loadNomenclGroup implements IMAmodel {
 	@Override
 	public long getSerialversionuid() {
 		// TODO Auto-generated method stub
-		return 0;
+		return serialVersionUID;
 	}
 
 	@Override

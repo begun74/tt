@@ -35,6 +35,8 @@ public class AppBean implements Serializable {
 	
 	private HashMap<Long,Object> mapStore = new HashMap<Long,Object>();
 	
+	private List<DirProvider> listProviders = new ArrayList<DirProvider>();
+	
 	private double version = 1.0;
 	
 	
@@ -66,11 +68,17 @@ public class AppBean implements Serializable {
 			}
 		}
 		
-		System.out.println("mapStore - "+mapStore);
-		System.out.println("AppBean @PostConstruct ");
+		//listProviders = ttService.getProviderList();
+		//System.out.println("mapStore - "+mapStore);
+		//System.out.println("AppBean @PostConstruct ");
 	}
 	
 	
+	public List<DirProvider> getListProviders() {
+		return listProviders;
+	}
+
+
 	public void addToMapStore(IMAmodel IMAmodel) throws Exception 
 	{
 			Store s = ttService.getStoreBySerVerUID(IMAmodel.getSerialversionuid()) == null? new Store() : ttService.getStoreBySerVerUID(IMAmodel.getSerialversionuid());

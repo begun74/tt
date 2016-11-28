@@ -4,35 +4,39 @@
 
 
 					<div class="left-sidebar">
-						<h2><spring:message code="category"/></h2><!-- Категория -->
-						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
-							<c:forEach items="${categories}" var="category" varStatus="loop"> 
-
-								<div class="panel panel-default">
-									<div class="panel-heading">
-										<h4 class="panel-title">
-											<a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
-												<!-- span class="badge pull-right"><i class="fa fa-plus"></i></span -->
-												${category.name}
-											</a>
-										</h4>
-									</div>
-								</div>
-							
-							</c:forEach>
-							
-						</div><!--/category-products-->
+						<div class="brands_products"><!-- genders -->
+							<h2><spring:message code="sex.attribute"/></h2>
+							<div class="brands-name" >
+								<ul class="nav nav-pills nav-stacked">
+									<c:forEach items="${genders}" var="gender" varStatus="loop"> 
+										<li class="checkbox"><a href="#"><label><input type="checkbox" />${gender.gender}</label></a></li>
+									</c:forEach>
+								</ul>
+							</div>
+						</div><!--/genders-->
 					
 						<div class="brands_products"><!--brands_products-->
-							<h2><spring:message code="brands"/></h2>
-							<div class="brands-name">
+							<h2><spring:message code="provider"/></h2>
+							<div class="brands-name" style="overflow-y:scroll; overflow-x: none; height:200px;">
 								<ul class="nav nav-pills nav-stacked">
-									<c:forEach items="${brands}" var="brand" varStatus="loop"> 
-										<li><a href="#"><span class="pull-right"></span>${brand.name}</a></li>
+									<c:forEach items="${providers}" var="provider" varStatus="loop"> 
+										<li class="checkbox"><a href="#"><label><input type="checkbox" />${provider.name}</label></a></li>
 									</c:forEach>
 								</ul>
 							</div>
 						</div><!--/brands_products-->
+
+						<div class="brands_products">
+							<h2><spring:message code="category"/></h2><!-- Категория -->
+							<div class="panel-group category-products" id="accordian" style="overflow-y:scroll; overflow-x: none; height:200px;"><!--category-productsr-->
+								<ul class="nav nav-pills nav-stacked">
+									<c:forEach items="${categories}" var="category" varStatus="loop"> 
+											<li class="checkbox"><a href="#"><label><input type="checkbox" />${category.name}</label></a></li>
+									</c:forEach>
+								</ul>
+							</div>
+						</div><!--/Категория-->
+					
 						
 						<div class="price-range"><!--price-range-->
 							<h2><spring:message code="price.range"/></h2>

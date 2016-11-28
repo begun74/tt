@@ -41,8 +41,9 @@ public class IndexCtrl {
 		//ttService.addUser(user);
 		
 		//System.out.println(""+ttService.getUserList());
-		model.addObject("brands", ttService.getProviderList());
+		model.addObject("providers", ttService.getProviderList());
 		model.addObject("categories", ttService.getNomenclGroupList());
+		model.addObject("genders", ttService.getGenderList());
 		
 		return model;
 	}
@@ -100,8 +101,9 @@ public class IndexCtrl {
 	{
 		ModelAndView model = new ModelAndView("product-details");
 
-		model.addObject("brands", ttService.getProviderList());
+		model.addObject("providers", ttService.getProviderList());
 		model.addObject("categories", ttService.getNomenclGroupList());
+		model.addObject("genders", ttService.getGenderList());
 		
 		return model;
 	}
