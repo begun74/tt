@@ -135,7 +135,7 @@
 																	<c:forEach items="${tempTails}" var="tail" varStatus="loop">
 																		<tr>
 																			<td >${loop.count}</td>
-																			<td style="cursor:pointer;">(${tail.dirNomenclature.name})</td>
+																			<td style="cursor:pointer;">${tail.dirNomenclature.name}</td>
 																			<td style="cursor:pointer;">${tail.dirProvider.name}</td>
 																			<td style="cursor:pointer;">${tail.amountTail}</td>
 																			<td style="cursor:pointer;">${tail.firstPrice}</td>
