@@ -22,7 +22,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import tt.annotation.Loggable;
 import tt.bean.AppBean;
-import tt.bean.SessionBean;
+import tt.bean.AdminSessionBean;
 import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
@@ -52,7 +52,7 @@ public class AdminCtrl {
 	private FileUpload fileUpload;
 	
 	@Autowired
-	private SessionBean sessBean;
+	private AdminSessionBean adminSessBean;
 	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
@@ -83,7 +83,7 @@ public class AdminCtrl {
 
 			case "3":
 				model = new ModelAndView("admin/addTails");
-				model.addObject("tempTails", sessBean.getTempListTails());
+				model.addObject("tempTails", adminSessBean.getTempListTails());
 				model.addObject("tails", ttService.getTailsList());
 			break;
 
@@ -98,9 +98,9 @@ public class AdminCtrl {
 			break;
 		}
 		
-		model.addObject("error",sessBean.getErrorList());
-		model.addObject("sessionBean",sessBean);
-		
+		model.addObject("error",adminSessBean.getErrorList());
+		model.addObject("sessionBean",adminSessBean);
+		model.addObject("brands", ttService.getProviderList());
 		
 		return model;
 	}
@@ -118,7 +118,7 @@ public class AdminCtrl {
 
 		if(result.hasErrors())
 		{
-			sessBean.addError("Правильно введите данные!");
+			adminSessBean.addError("Правильно введите данные!");
 			return model;
 		}
 		if(id_dir_nomenclature != null && id_dir_nomenclature.longValue()>0) 
@@ -163,7 +163,7 @@ public class AdminCtrl {
 
 		if(result.hasErrors())
 		{
-			sessBean.addError("Правильно введите данные!");
+			adminSessBean.addError("Правильно введите данные!");
 			return model;
 		}
 		if(id_tail != null && id_tail.longValue()>0) 
@@ -186,7 +186,7 @@ public class AdminCtrl {
 			
 		} 
 		catch( org.springframework.dao.DataIntegrityViolationException dve) {
-			sessBean.addError("Нельзя удалить!");
+			adminSessBean.addError("Нельзя удалить!");
 		}
 		catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
@@ -207,7 +207,7 @@ public class AdminCtrl {
 		
 		if(result.hasErrors())
 		{
-			sessBean.addError("Правильно введите данные!");
+			adminSessBean.addError("Правильно введите данные!");
 			return model;
 		}
 		
@@ -216,17 +216,17 @@ public class AdminCtrl {
 		{
 			try {
 				appBean.addToMapStore(mA_loadNomencl);
-				sessBean.setmA_loadNomencl(mA_loadNomencl);
+				adminSessBean.setmA_loadNomencl(mA_loadNomencl);
 			}
 			catch(org.springframework.dao.DataIntegrityViolationException dve) 
 			{
 				dve.printStackTrace();
-				sessBean.getErrorList().add("Настройки уже существуют! ");
+				adminSessBean.getErrorList().add("Настройки уже существуют! ");
 			}
 			catch(Exception ioe)
 			{
 				ioe.printStackTrace();
-				sessBean.getErrorList().add("Параметры не записаны! ");
+				adminSessBean.getErrorList().add("Параметры не записаны! ");
 			}
 		}
 		
@@ -245,7 +245,7 @@ public class AdminCtrl {
 						}
 						catch(org.springframework.dao.DataIntegrityViolationException dve) {
 							//dve.printStackTrace(); 
-							sessBean.getErrorList().add(dN.getName()+" уже существует! ");
+							adminSessBean.getErrorList().add(dN.getName()+" уже существует! ");
 						}
 					}
 
@@ -253,13 +253,13 @@ public class AdminCtrl {
 			}
 			catch (java.lang.NumberFormatException nfe) {
 				nfe.printStackTrace();
-				sessBean.addError(nfe.getMessage());
+				adminSessBean.addError(nfe.getMessage());
 				
 			}
 			catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-						sessBean.addError("Ошибка загрузки файла!");
+						adminSessBean.addError("Ошибка загрузки файла!");
 			}
 
 
@@ -278,7 +278,7 @@ public class AdminCtrl {
 		
 		if(result.hasErrors())
 		{
-			sessBean.addError("Правильно введите данные!");
+			adminSessBean.addError("Правильно введите данные!");
 			return model;
 		}
 		
@@ -287,17 +287,17 @@ public class AdminCtrl {
 		{
 			try {
 				appBean.addToMapStore(mA_loadNomenclGroup);
-				sessBean.setmA_loadNomenclGroup(mA_loadNomenclGroup);
+				adminSessBean.setmA_loadNomenclGroup(mA_loadNomenclGroup);
 			}
 			catch(org.springframework.dao.DataIntegrityViolationException dve) 
 			{
 				dve.printStackTrace();
-				sessBean.getErrorList().add("Настройки уже существуют! ");
+				adminSessBean.getErrorList().add("Настройки уже существуют! ");
 			}
 			catch(Exception ioe)
 			{
 				ioe.printStackTrace();
-				sessBean.getErrorList().add("Параметры не записаны! ");
+				adminSessBean.getErrorList().add("Параметры не записаны! ");
 			}
 		}
 		
@@ -316,7 +316,7 @@ public class AdminCtrl {
 						}
 						catch(org.springframework.dao.DataIntegrityViolationException dve) {
 							//dve.printStackTrace(); 
-							sessBean.getErrorList().add(dNG.getName()+" уже существует! ");
+							adminSessBean.getErrorList().add(dNG.getName()+" уже существует! ");
 						}
 					}
 
@@ -324,13 +324,13 @@ public class AdminCtrl {
 			}
 			catch (java.lang.NumberFormatException nfe) {
 				nfe.printStackTrace();
-				sessBean.addError(nfe.getMessage());
+				adminSessBean.addError(nfe.getMessage());
 				
 			}
 			catch (Exception e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
-						sessBean.addError("Ошибка загрузки файла!");
+						adminSessBean.addError("Ошибка загрузки файла!");
 			}
 
 
@@ -348,7 +348,7 @@ public class AdminCtrl {
 		
 		if(result.hasErrors())
 		{
-			sessBean.addError("Правильно введите данные!");
+			adminSessBean.addError("Правильно введите данные!");
 			return model;
 		}
 		
@@ -358,21 +358,21 @@ public class AdminCtrl {
 		{
 			try {
 				appBean.addToMapStore(mA_loadProvider);
-				sessBean.setmA_loadProvider(mA_loadProvider);
+				adminSessBean.setmA_loadProvider(mA_loadProvider);
 			}
 			catch(org.springframework.dao.DataIntegrityViolationException dve) 
 			{
 				dve.printStackTrace();
-				sessBean.getErrorList().add("Настройки уже существуют! ");
+				adminSessBean.getErrorList().add("Настройки уже существуют! ");
 			}
 			catch(Exception ioe)
 			{
 				ioe.printStackTrace();
-				sessBean.getErrorList().add("Параметры не записаны! ");
+				adminSessBean.getErrorList().add("Параметры не записаны! ");
 			}
 		}
 		
-		sessBean.setmA_loadProvider(mA_loadProvider);
+		adminSessBean.setmA_loadProvider(mA_loadProvider);
 				
 		try {
 
@@ -386,7 +386,7 @@ public class AdminCtrl {
 						}
 						catch(org.springframework.dao.DataIntegrityViolationException dve) {
 							//dve.printStackTrace(); 
-							sessBean.getErrorList().add(dp.getName()+" уже существует! ");
+							adminSessBean.getErrorList().add(dp.getName()+" уже существует! ");
 						}
 						
 					}
@@ -396,13 +396,13 @@ public class AdminCtrl {
 		}
 		catch (java.lang.NumberFormatException nfe) {
 			nfe.printStackTrace();
-			sessBean.addError(nfe.getMessage());
+			adminSessBean.addError(nfe.getMessage());
 			
 		}
 		catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					sessBean.addError("Ошибка загрузки файла!");
+					adminSessBean.addError("Ошибка загрузки файла!");
 		}
 		
 		
@@ -421,7 +421,7 @@ public class AdminCtrl {
 
 					synchronized(this) {
 
-						Iterator<Tail> iter_lT = sessBean.getTempListTails().iterator();
+						Iterator<Tail> iter_lT = adminSessBean.getTempListTails().iterator();
 						
 						while(iter_lT.hasNext()) 
 						{
@@ -439,12 +439,12 @@ public class AdminCtrl {
 		}
 		catch (javax.validation.ConstraintViolationException cve)
 		{
-			sessBean.addError(cve.getLocalizedMessage());
+			adminSessBean.addError(cve.getLocalizedMessage());
 		}
 		catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					sessBean.addError("Ошибка загрузки остатков!");
+					adminSessBean.addError("Ошибка загрузки остатков!");
 		}
 		
 		
@@ -462,7 +462,7 @@ public class AdminCtrl {
 		
 		if(result.hasErrors())
 		{
-			sessBean.addError("Правильно введите данные!");
+			adminSessBean.addError("Правильно введите данные!");
 			return model;
 		}
 		
@@ -472,21 +472,21 @@ public class AdminCtrl {
 		{
 			try {
 				appBean.addToMapStore(mA_loadTail);
-				sessBean.setmA_loadTail(mA_loadTail);
+				adminSessBean.setmA_loadTail(mA_loadTail);
 			}
 			catch(org.springframework.dao.DataIntegrityViolationException dve) 
 			{
 				dve.printStackTrace();
-				sessBean.getErrorList().add("Настройки уже существуют! ");
+				adminSessBean.getErrorList().add("Настройки уже существуют! ");
 			}
 			catch(Exception ioe)
 			{
 				ioe.printStackTrace();
-				sessBean.getErrorList().add("Параметры не записаны! ");
+				adminSessBean.getErrorList().add("Параметры не записаны! ");
 			}
 		}
 		
-		sessBean.setmA_loadTail(mA_loadTail);
+		adminSessBean.setmA_loadTail(mA_loadTail);
 				
 		try {
 
@@ -494,7 +494,7 @@ public class AdminCtrl {
 	
 					for(Tail t: lT) 
 					{
-							sessBean.getTempListTails().add(t);
+							adminSessBean.getTempListTails().add(t);
 					}
 					
 					
@@ -502,12 +502,12 @@ public class AdminCtrl {
 		}
 		catch (java.lang.NumberFormatException nfe) {
 			nfe.printStackTrace();
-			sessBean.addError(nfe.getMessage());
+			adminSessBean.addError(nfe.getMessage());
 		}
 		catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-					sessBean.addError("Ошибка загрузки файла!");
+					adminSessBean.addError("Ошибка загрузки файла!");
 		}
 		
 		

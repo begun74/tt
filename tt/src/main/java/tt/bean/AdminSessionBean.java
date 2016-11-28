@@ -22,7 +22,7 @@ import tt.service.TTServiceImpl;
 
 @Service
 @Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
-public class SessionBean  implements Serializable {
+public class AdminSessionBean  implements Serializable {
 
 	/**
 	 * 

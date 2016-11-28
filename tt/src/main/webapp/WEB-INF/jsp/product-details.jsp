@@ -34,7 +34,7 @@
 			<div class="row">
 				<div class="col-sm-3">
 				<!-- product_filter -->
-				<%@include file="common/product_filter.jsp" %>
+				<%@include file="common/product_filter2.jsp" %>
 				<!-- product_filter -->
 
 				</div>

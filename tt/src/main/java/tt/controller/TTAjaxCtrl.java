@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import tt.bean.SessionBean;
+import tt.bean.AdminSessionBean;
 
 @Controller
 public class TTAjaxCtrl {
 	
 	@Autowired
-	SessionBean sessBean;
+	AdminSessionBean adminSessBean;
 
 	@ResponseBody
 	@RequestMapping(value = "/clearErrors", method = RequestMethod.GET)
@@ -26,7 +26,7 @@ public class TTAjaxCtrl {
 	{
 		
 		//System.out.println("clearErrors " +sessBean.getErrorList());
-		sessBean.clearError();
+		adminSessBean.clearError();
 		//System.out.println("clearErrors " +sessBean.getErrorList());
 		
 		return  HttpStatus.OK;
