@@ -172,7 +172,7 @@
 													 </div>
 										  			<div class="clearfix">
 													         <div class="lab">
-											                    <label>НомГруппаРодитель</label> 
+											                    <label>НомГруппа Родитель</label> 
 													         </div>
 													         <div  style="width: 25px" class="conleft" >
 																<input name="col_codeNomenclGroupRoot" id="col_codeNomenclGroupRoot" type="text" class="input" value="${sessionBean.mA_loadNomenclGroup.col_codeNomenclGroupRoot}">										         

@@ -172,6 +172,8 @@ public class AdminSessionBean  implements Serializable {
 			this.setmA_loadTail((MA_loadTail) appBean.findBySerialVerUID(mA_loadTail.getSerialversionuid()) );
 		
 		setmA_loadNomenclGroup( (appBean.findBySerialVerUID(mA_loadNomenclGroup.getSerialversionuid()) == null?new MA_loadNomenclGroup(): (MA_loadNomenclGroup) appBean.findBySerialVerUID(mA_loadNomenclGroup.getSerialversionuid())));
+		
+		setmA_loadNomenclGroupRoot( (appBean.findBySerialVerUID(mA_loadNomenclGroupRoot.getSerialversionuid()) == null?new MA_loadNomenclGroupRoot(): (MA_loadNomenclGroupRoot) appBean.findBySerialVerUID(mA_loadNomenclGroupRoot.getSerialversionuid())));
 
 	}
 	

@@ -94,7 +94,7 @@
 
 		<div id="tabs" class="box">
             <ul class="bookmarks">
-		            <li><a href="#tabs-1"><spring:message code="admin.addNomenclGroup" /></a></li>
+		            <li><a href="#tabs-1">Добавить НоменклГруппуРодитель</a></li>
 		           	<li><a href="#tabs-2"><spring:message code="admin.load.info.from.file" /></a></li>
             </ul>
           	<div class="box-content">    
