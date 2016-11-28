@@ -37,14 +37,18 @@ public class Tail implements  IModel {
 	@Column(name="id_tails")
 	private BigInteger id;
 	
+	@NotNull
 	@Column(name="amounttail")
 	private int amountTail; //Кол-во
 	
+	@NotNull
 	@Column(name="firstPrice")
 	private double firstPrice;  //Первая цена
 	
+	@NotNull
 	private Timestamp create_date;
 	
+	private Timestamp destruction_date;
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_provider")
@@ -93,6 +97,16 @@ public class Tail implements  IModel {
 	public void setCreate_date(Timestamp create_date) {
 		this.create_date = create_date;
 	}
+
+	
+	public Timestamp getDestruction_date() {
+		return destruction_date;
+	}
+
+	public void setDestruction_date(Timestamp destruction_date) {
+		this.destruction_date = destruction_date;
+	}
+
 
 	public DirProvider getDirProvider() {
 		return dirProvider;

@@ -14,9 +14,10 @@
           </li>
           <li class="first"><a href="#"><spring:message code="dictionary"/></a>
             <ul class="submenu">
-              <li><a href="admin?act=1" ><spring:message code="provider"/></li>          
-              <li><a href="admin?act=2" ><spring:message code="nomenclature"/></li>          
-			  <li><a href="admin?act=4" ><spring:message code="nomencl.group"/></li>
+              <li><a href="admin?act=1" >Поставщик</li>          
+              <li><a href="admin?act=2" >Номенклатура</li>          
+			  <li><a href="admin?act=4" >Номенклатурная группа</li>
+			  <li><a href="admin?act=6" >НоменклГруппаРодитель</li>
             </ul>
           </li>
           <li><a href="#"><spring:message code="admin.load.info.from.file"/></a>

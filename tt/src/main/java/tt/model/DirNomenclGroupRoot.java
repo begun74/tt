@@ -4,28 +4,25 @@ import java.math.BigInteger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-
 @Entity
-@Table(name = "dir_nomencl_group")
-public class DirNomenclGroup implements IModel {
+@Table(name = "dir_nomencl_group_root")
+public class DirNomenclGroupRoot implements IModel {
+
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -389035476310981392L;
+	private static final long serialVersionUID = 1479184845704836945L;
+
 
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="seq_global")
@@ -34,7 +31,7 @@ public class DirNomenclGroup implements IModel {
 			sequenceName="seq_global",
 			allocationSize=1
 		)
-	@Column(name="id_dir_nomencl_group")
+	@Column(name="id_dir_nomencl_group_root")
 	private BigInteger id;
 
 	
@@ -46,21 +43,18 @@ public class DirNomenclGroup implements IModel {
 	private String name;
 	
 	
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "fk_dir_nomencl_group_root")
-	@NotNull
-	private DirNomenclGroupRoot dirNomenclGroupRoot;
-	
-
 	@Override
 	public BigInteger getId() {
+		// TODO Auto-generated method stub
 		return id;
 	}
 
 	@Override
 	public void setId(BigInteger id) {
-		this.id=id;
+		// TODO Auto-generated method stub
+		this.id = id;
 	}
+
 
 
 	
@@ -80,8 +74,6 @@ public class DirNomenclGroup implements IModel {
 		this.name = name;
 	}
 
-
-	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -89,7 +81,7 @@ public class DirNomenclGroup implements IModel {
 	@Override
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
-		return ( ((DirNomenclGroup)o).getCode().compareTo(this.getCode()) );
+		return ((DirNomenclGroupRoot)o).getId().compareTo(this.getId());
 	}
-
+	
 }

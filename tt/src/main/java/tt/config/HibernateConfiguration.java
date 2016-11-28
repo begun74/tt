@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
+import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Store;
@@ -69,6 +70,7 @@ public class HibernateConfiguration {
         sessionBuilder.addAnnotatedClasses(Store.class);
         sessionBuilder.addAnnotatedClasses(Tail.class);
         sessionBuilder.addAnnotatedClasses(DirNomenclGroup.class);
+        sessionBuilder.addAnnotatedClasses(DirNomenclGroupRoot.class);
         sessionBuilder.addAnnotatedClasses(DirGender.class);
 
         //sessionBuilder.addAnnotatedClasses(DirColor.class);
