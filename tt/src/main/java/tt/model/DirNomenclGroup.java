@@ -82,6 +82,15 @@ public class DirNomenclGroup implements IModel {
 
 
 	
+	public DirNomenclGroupRoot getDirNomenclGroupRoot() {
+		return dirNomenclGroupRoot;
+	}
+
+	public void setDirNomenclGroupRoot(DirNomenclGroupRoot dirNomenclGroupRoot) {
+		this.dirNomenclGroupRoot = dirNomenclGroupRoot;
+	}
+
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

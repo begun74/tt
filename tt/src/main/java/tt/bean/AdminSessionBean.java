@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import tt.model.Tail;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadNomenclGroup;
+import tt.modelattribute.MA_loadNomenclGroupRoot;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
 import tt.service.TTServiceImpl;
@@ -42,6 +43,9 @@ public class AdminSessionBean  implements Serializable {
 	@Autowired
 	private MA_loadNomenclGroup mA_loadNomenclGroup;
 	
+	@Autowired
+	private MA_loadNomenclGroupRoot mA_loadNomenclGroupRoot;
+
 	@Autowired
 	private MA_loadTail mA_loadTail;
 	
@@ -101,6 +105,15 @@ public class AdminSessionBean  implements Serializable {
 	}
 
 	
+	public MA_loadNomenclGroupRoot getmA_loadNomenclGroupRoot() {
+		return mA_loadNomenclGroupRoot;
+	}
+
+	public void setmA_loadNomenclGroupRoot(MA_loadNomenclGroupRoot mA_loadNomenclGroupRoot) {
+		this.mA_loadNomenclGroupRoot = mA_loadNomenclGroupRoot;
+	}
+
+
 	public List<String> getSuccessList() {
 		return successList;
 	}

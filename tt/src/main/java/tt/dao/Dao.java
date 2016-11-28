@@ -5,6 +5,7 @@ import java.util.List;
 
 import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
+import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Store;
@@ -25,9 +26,12 @@ public interface Dao {
 	public List<DirNomenclature> getNomenclatureList();
 	public void addNomenclature(DirNomenclature dirNomenclature);
 
+
 	public List<DirNomenclGroup> getNomenclGroupList();
 	public void addNomenclGroup(DirNomenclGroup dirNomenclGroup);
 
+	public List<DirNomenclGroupRoot> getNomenclGroupRootList();
+	public void addNomenclGroupRoot(DirNomenclGroupRoot dirNomenclGroupRoot);
 
 	public List<DirGender> getGenderList();
 

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
+import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Store;
@@ -137,6 +138,18 @@ public class DaoImpl implements Dao {
 	public List<DirGender> getGenderList() {
 		// TODO Auto-generated method stub
 		return getSession().createQuery("from DirGender order by gender").list();
+	}
+
+	@Override
+	public List<DirNomenclGroupRoot> getNomenclGroupRootList() {
+		// TODO Auto-generated method stub
+		return getSession().createQuery("from DirNomenclGroupRoot order by name").list();
+	}
+
+	@Override
+	public void addNomenclGroupRoot(DirNomenclGroupRoot dirNomenclGroupRoot) {
+		// TODO Auto-generated method stub
+		getSession().saveOrUpdate(dirNomenclGroupRoot);
 	}
 
 

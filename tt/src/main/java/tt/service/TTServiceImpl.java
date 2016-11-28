@@ -11,6 +11,7 @@ import tt.dao.Dao;
 import tt.dao.DaoImpl;
 import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
+import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Store;
@@ -97,12 +98,6 @@ public class TTServiceImpl implements Dao {
 	}
 
 
-	/*@Override
-	public Store getStore(long id) {
-		// TODO Auto-generated method stub
-		return dao.getStore(id);
-	}
-	*/
 
 	@Override
 	public Store getStoreBySerVerUID(Long serialVersionUID) {
@@ -149,6 +144,20 @@ public class TTServiceImpl implements Dao {
 	public List<DirGender> getGenderList() {
 		// TODO Auto-generated method stub
 		return dao.getGenderList();
+	}
+
+
+	@Override
+	public List<DirNomenclGroupRoot> getNomenclGroupRootList() {
+		// TODO Auto-generated method stub
+		return dao.getNomenclGroupRootList();
+	}
+
+
+	@Override
+	public void addNomenclGroupRoot(DirNomenclGroupRoot dirNomenclGroupRoot) {
+		// TODO Auto-generated method stub
+		dao.addNomenclGroupRoot(dirNomenclGroupRoot);
 	}
 
 }

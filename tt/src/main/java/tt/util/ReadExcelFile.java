@@ -22,11 +22,13 @@ import org.springframework.stereotype.Service;
 
 
 import tt.model.DirNomenclGroup;
+import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Tail;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadNomenclGroup;
+import tt.modelattribute.MA_loadNomenclGroupRoot;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
 import tt.service.TTServiceImpl;
@@ -126,7 +128,7 @@ public class ReadExcelFile {
 		
 	}
 
-	public  static List<?> processFile(File tmpFile, DirNomenclGroup dirNomenclGroup, MA_loadNomenclGroup mA_loadNomenclGroup) throws Exception{
+	public  static List<?> processFile(File tmpFile, DirNomenclGroup dirNomenclGroup, MA_loadNomenclGroup mA_loadNomenclGroup, HashMap<Long,DirNomenclGroupRoot> hmNomenclGroupRoot) throws Exception{
 		
 		List<DirNomenclGroup>  lNomencls = new ArrayList<DirNomenclGroup>();
 		
@@ -147,6 +149,7 @@ public class ReadExcelFile {
 	        	
         			dirNomenclGroup.setName(df.formatCellValue(tmp.getCell(mA_loadNomenclGroup.getCol_name()-1)));
         			dirNomenclGroup.setCode(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomenclGroup.getCol_code()-1)) ) );
+        			dirNomenclGroup.setDirNomenclGroupRoot(hmNomenclGroupRoot.get(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomenclGroup.getCol_codeNomenclGroupRoot()-1)) )) );
         			
 		        	lNomencls.add(dirNomenclGroup);
         		}
@@ -195,6 +198,39 @@ public class ReadExcelFile {
         }
         
 		return lTails;
+	}
+
+
+
+	public static Collection<?> processFile(File tmpFile, DirNomenclGroupRoot dirNomenclGroupRoot, MA_loadNomenclGroupRoot mA_loadNomenclGroupRoot) throws Exception {
+		List<DirNomenclGroupRoot>  lNomencls = new ArrayList<DirNomenclGroupRoot>();
+		
+		Workbook workbook = getWorkbook(tmpFile);
+        Sheet firstSheet = workbook.getSheetAt(0);  
+        Iterator<Row> rowIterator = firstSheet.iterator();
+        DataFormatter df = new DataFormatter();
+		
+		
+		int row_ = 0;
+        while(rowIterator.hasNext() )
+        {
+        	Row tmp = rowIterator.next();
+        	
+        	
+        		if(row_ >= mA_loadNomenclGroupRoot.getRow()-1) {
+        			dirNomenclGroupRoot = new DirNomenclGroupRoot();
+	        	
+        			dirNomenclGroupRoot.setName(df.formatCellValue(tmp.getCell(mA_loadNomenclGroupRoot.getCol_name()-1)));
+        			dirNomenclGroupRoot.setCode(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomenclGroupRoot.getCol_code()-1)) ) );
+        			
+		        	lNomencls.add(dirNomenclGroupRoot);
+        		}
+        	
+        	
+        	++row_;
+        }
+        
+		return lNomencls;
 	}
 
 }

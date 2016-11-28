@@ -18,6 +18,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import tt.model.DirNomenclGroup;
+import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.IModel;
@@ -25,6 +26,7 @@ import tt.model.Tail;
 import tt.modelattribute.IMAmodel;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadNomenclGroup;
+import tt.modelattribute.MA_loadNomenclGroupRoot;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
 import tt.service.TTServiceImpl;
@@ -88,8 +90,19 @@ public class FileUpload {
 					}
 
 					else if(model instanceof DirNomenclGroup)
-						return ReadExcelFile.processFile(tmpFile,(DirNomenclGroup) model, (MA_loadNomenclGroup) IMAmodel) ;
+					{
+						List<DirNomenclGroupRoot> lNGR = ttService.getNomenclGroupRootList();
+						HashMap<Long,DirNomenclGroupRoot> hmNomenclGroupRoot = new HashMap<Long,DirNomenclGroupRoot>();
+						
+						for(DirNomenclGroupRoot dngr: lNGR) 
+							hmNomenclGroupRoot.put(dngr.getCode(), dngr);
+					
+						return ReadExcelFile.processFile(tmpFile,(DirNomenclGroup) model, (MA_loadNomenclGroup) IMAmodel, hmNomenclGroupRoot) ;
+					}
 
+					else if(model instanceof DirNomenclGroupRoot)
+						return ReadExcelFile.processFile(tmpFile,(DirNomenclGroupRoot) model, (MA_loadNomenclGroupRoot) IMAmodel) ;
+					
 					else if(model instanceof Tail)
 					{
 						List<DirProvider> lP = ttService.getProviderList();

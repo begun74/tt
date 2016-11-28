@@ -102,10 +102,10 @@
             <div id="tabs-1">  
               	<div class="form-cols">
 				    		<div class="col1">
-							  	<form:form id="addNomenclGroupForm" class="formBox" role="form"
+							  	<form:form id="addNomenclGroupRootForm" class="formBox" role="form"
 							  			commandName="loadNomenclrForm"
 							  			enctype="multipart/form-data" 
-							  			action="${pageContext.request.contextPath}/admin/addFileNomenclGroup?${_csrf.parameterName}=${_csrf.token}" 
+							  			action="${pageContext.request.contextPath}/admin/addFileNomenclGroupRoot?${_csrf.parameterName}=${_csrf.token}" 
 							  			method="POST"
 							  			modelAttribute="dirNomenclGroup">
 							  			
@@ -127,7 +127,7 @@
 										 </div>
 								         
 						         <button type="submit" class=""><spring:message code="label.button.add"/></button>
-						         <input type="hidden" name ="id_dir_nomencl_group" id ="id_dir_nomencl_group" value="-1"/>
+						         <input type="hidden" name ="id_dir_nomencl_group_root" id ="id_dir_nomencl_group_root" value="-1"/>
 						    	</form:form>
 							</div>					    
 				    		<div class="col2">
@@ -149,9 +149,9 @@
 					<div class="form-cols">
 	   				<div class="col1">            
 
-						<form:form id="addFileNomenclGroup" class="formBox" role="form"  
+						<form:form id="addFileNomenclGroupRoot" class="formBox" role="form"  
 							  			enctype="multipart/form-data" 
-							  			action="${pageContext.request.contextPath}/admin/addFileNomenclGroup?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
+							  			action="${pageContext.request.contextPath}/admin/addFileNomenclGroupRoot?${_csrf.parameterName}=${_csrf.token}#tabs-2" 
 							  			method="POST">
 						
 										  			<div class="clearfix">
@@ -159,7 +159,7 @@
 									                   			<label><spring:message code="code"/></label>
 													         </div>
 													         <div style="width: 25px" class="conleft">
-									                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadNomenclGroup.col_code}"> 
+									                   			<input name="col_code" id="col_code" type="text" class="input" value="${sessionBean.mA_loadNomenclGroupRoot.col_code}"> 
 													         </div>
 													</div>
 										  			<div class="clearfix">
@@ -167,15 +167,7 @@
 											                    <label><spring:message code="name2"/></label> 
 													         </div>
 													         <div  style="width: 25px" class="conleft" >
-																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadNomenclGroup.col_name}">										         
-													         </div>
-													 </div>
-										  			<div class="clearfix">
-													         <div class="lab">
-											                    <label>НомГруппаРодитель</label> 
-													         </div>
-													         <div  style="width: 25px" class="conleft" >
-																<input name="col_codeNomenclGroupRoot" id="col_codeNomenclGroupRoot" type="text" class="input" value="${sessionBean.mA_loadNomenclGroup.col_codeNomenclGroupRoot}">										         
+																<input name="col_name" id="col_name" type="text" class="input" value="${sessionBean.mA_loadNomenclGroupRoot.col_name}">										         
 													         </div>
 													 </div>
 													<div class="clearfix">									        
@@ -183,7 +175,7 @@
 															        	<label>Начальная строка</label>
 															        </div>
 															        <div style="width: 25px" class="conleft">
-															        	<input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadNomenclGroup.row}" >
+															        	<input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadNomenclGroupRoot.row}" >
 															        </div>
 													</div>
 							         
@@ -194,13 +186,13 @@
 
 													<div class="clearfix">									        
 														<div class="lab">
-														   	<label><input name="save" id="save" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadNomenclGroup.save == true}">checked="checked" </c:if>  >Сохранить</label>
+														   	<label><input name="save" id="save" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadNomenclGroupRoot.save == true}">checked="checked" </c:if>  >Сохранить</label>
 														</div>
 													</div>
 
 													<div class="clearfix">									        
 														<div class="lab">
-														   	<label><input name="autoload" id="autoload" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadNomenclGroup.autoload == true}">checked="checked"</c:if>  >Автозагрузка</label>
+														   	<label><input name="autoload" id="autoload" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadNomenclGroupRoot.autoload == true}">checked="checked"</c:if>  >Автозагрузка</label>
 														</div>
 													</div>
 						
@@ -210,7 +202,7 @@
 								        				</div>
 							        				</div>
 							        				
-							         <input type="hidden" name ="act" id ="act" value="4"/>
+							         <input type="hidden" name ="act" id ="act" value="6"/>
 						</form:form>
 				</div>
 
@@ -237,14 +229,14 @@
 
 									<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
 										<table class="tab tab-drag">
-											<c:forEach items="${dirNomenclGroups}" var="dirNomGroup">
+											<c:forEach items="${dirNomenclGroupRoots}" var="dirNomGroupRoot">
 												<tr>
 													<td class="dragHandle">&nbsp;</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomGroup.name}'); $('#code').val('${dirNomGroup.code}');">${dirNomGroup.name}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomGroup.name}'); $('#code').val('${dirNomGroup.code}');">${dirNomGroup.code}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomGroupRoot.name}'); $('#code').val('${dirNomGroupRoot.code}');">${dirNomGroupRoot.name}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomGroupRoot.name}'); $('#code').val('${dirNomGroupRoot.code}');">${dirNomGroupRoot.code}</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
-							         					<a href="javascript:delObject(${dirNomGroup.id},'DirNomenclGroup','4');" class="ico ico-delete" onclick=""></a>
+							         					<a href="javascript:delObject(${dirNomGroupRoot.id},'DirNomenclGroup','4');" class="ico ico-delete" onclick=""></a>
 							         				</td>
 												</tr>
 											</c:forEach>

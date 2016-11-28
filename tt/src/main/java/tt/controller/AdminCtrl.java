@@ -24,12 +24,14 @@ import tt.annotation.Loggable;
 import tt.bean.AppBean;
 import tt.bean.AdminSessionBean;
 import tt.model.DirNomenclGroup;
+import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Tail;
 import tt.modelattribute.IMAmodel;
 import tt.modelattribute.MA_loadNomencl;
 import tt.modelattribute.MA_loadNomenclGroup;
+import tt.modelattribute.MA_loadNomenclGroupRoot;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
 import tt.modelattribute.MA_loadTempTail;
@@ -95,6 +97,11 @@ public class AdminCtrl {
 			case "5":
 				model = new ModelAndView("admin/autoLoad");
 				model.addObject("autoLoadIMAmodels", appBean.getAutoLoad_IMAmodels());
+			break;
+
+			case "6":
+				model = new ModelAndView("admin/addNomenclGroupRoot");
+				model.addObject("dirNomenclGroupRoots", ttService.getNomenclGroupRootList());
 			break;
 		}
 		
@@ -337,6 +344,77 @@ public class AdminCtrl {
 		return model;
 	}
 
+	
+	@RequestMapping(value = "addFileNomenclGroupRoot" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ModelAndView   processFileNomenclGroupRoot( @ModelAttribute  MultipartFile file,
+										@Valid MA_loadNomenclGroupRoot mA_loadNomenclGroupRoot ,
+										BindingResult result,
+										@RequestParam(value = "act",   defaultValue = "-1", required=true) int act) 
+	{
+		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
+		
+		if(result.hasErrors())
+		{
+			adminSessBean.addError("Правильно введите данные!");
+			return model;
+		}
+		
+		
+		if(mA_loadNomenclGroupRoot.isSave())
+		{
+			try {
+				appBean.addToMapStore(mA_loadNomenclGroupRoot);
+				adminSessBean.setmA_loadNomenclGroupRoot(mA_loadNomenclGroupRoot);
+			}
+			catch(org.springframework.dao.DataIntegrityViolationException dve) 
+			{
+				dve.printStackTrace();
+				adminSessBean.getErrorList().add("Настройки уже существуют! ");
+			}
+			catch(Exception ioe)
+			{
+				ioe.printStackTrace();
+				adminSessBean.getErrorList().add("Параметры не записаны! ");
+			}
+		}
+		
+
+
+		try {
+
+					TreeSet<DirNomenclGroupRoot> lDNGR = new TreeSet<DirNomenclGroupRoot>();
+					lDNGR.addAll((List<DirNomenclGroupRoot>) fileUpload.process(new DirNomenclGroupRoot(),file, mA_loadNomenclGroupRoot));
+		
+					for(DirNomenclGroupRoot dNGR: lDNGR) 
+					{
+						try {
+							ttService.addNomenclGroupRoot(dNGR);
+							
+						}
+						catch(org.springframework.dao.DataIntegrityViolationException dve) {
+							//dve.printStackTrace(); 
+							adminSessBean.getErrorList().add(dNGR.getName()+" уже существует! ");
+						}
+					}
+
+
+			}
+			catch (java.lang.NumberFormatException nfe) {
+				nfe.printStackTrace();
+				adminSessBean.addError(nfe.getMessage());
+				
+			}
+			catch (Exception e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+						adminSessBean.addError("Ошибка загрузки файла!");
+			}
+
+
+		return model;
+	}
+	
+	
 
 	@RequestMapping(value = "addFileProvider" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFileProvidere( @ModelAttribute  MultipartFile file,

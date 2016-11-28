@@ -81,7 +81,7 @@ public class DirNomenclGroupRoot implements IModel {
 	@Override
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
-		return ((DirNomenclGroupRoot)o).getId().compareTo(this.getId());
+		return ((DirNomenclGroupRoot)o).getCode().compareTo(this.getCode());
 	}
 	
 }

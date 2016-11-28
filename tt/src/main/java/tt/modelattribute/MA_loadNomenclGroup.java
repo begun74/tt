@@ -12,9 +12,10 @@ public class MA_loadNomenclGroup implements IMAmodel {
 	 */
 	private static final long serialVersionUID = -7274925296730280149L;
 	
-	private int row=1;
-	private int col_name=1;
-	private int col_code=2;
+	private int row = 1;
+	private int col_name = 1;
+	private int col_code = 2;
+	private int col_codeNomenclGroupRoot = 3;
 
 	private transient  boolean save;
 	private boolean autoload;
@@ -49,8 +50,15 @@ public class MA_loadNomenclGroup implements IMAmodel {
 		this.col_code = col_code;
 	}
 
-	
-	
+	public int getCol_codeNomenclGroupRoot() {
+		return col_codeNomenclGroupRoot;
+	}
+
+	public void setCol_codeNomenclGroupRoot(int col_codeNomenclGroupRoot) {
+		this.col_codeNomenclGroupRoot = col_codeNomenclGroupRoot;
+	}
+
+
 	
 	public boolean isSave() {
 		return save;
