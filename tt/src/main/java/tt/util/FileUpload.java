@@ -86,8 +86,14 @@ public class FileUpload {
 						HashMap<Long,DirNomenclGroup> hmNomenclGroup = new HashMap<Long,DirNomenclGroup>();
 						for(DirNomenclGroup dng: lNG) 
 							hmNomenclGroup.put(dng.getCode(), dng);
+						
+						List<DirGender> lDGen = ttService.getGenderList();
+						HashMap<String,DirGender> hmDGen = new HashMap<String,DirGender>();
+						for(DirGender dG: lDGen) 
+							hmDGen.put(dG.getName(), dG);
 
-						return ReadExcelFile.processFile(tmpFile,(DirNomenclature) model, (MA_loadNomencl) IMAmodel, hmNomenclGroup) ;
+
+						return ReadExcelFile.processFile(tmpFile,(DirNomenclature) model, (MA_loadNomencl) IMAmodel, hmNomenclGroup, hmDGen) ;
 					}
 
 					else if(model instanceof DirNomenclGroup)
@@ -116,13 +122,8 @@ public class FileUpload {
 						for(DirNomenclature dn: lN) 
 							hmNomencl.put(dn.getCode(), dn);
 
-						List<DirGender> lDGen = ttService.getGenderList();
-						HashMap<String,DirGender> hmDGen = new HashMap<String,DirGender>();
-						for(DirGender dG: lDGen) 
-							hmDGen.put(dG.getName(), dG);
-
 						
-						return ReadExcelFile.processFile(tmpFile,(Tail) model, (MA_loadTail) IMAmodel, hmProv, hmNomencl, hmDGen) ;
+						return ReadExcelFile.processFile(tmpFile,(Tail) model, (MA_loadTail) IMAmodel, hmProv, hmNomencl) ;
 					}
 				} 
 				finally {

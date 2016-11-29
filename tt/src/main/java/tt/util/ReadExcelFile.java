@@ -94,7 +94,7 @@ public class ReadExcelFile {
 	}
 
 	
-	public  static List<?> processFile(File tmpFile, DirNomenclature dirNomenclature, MA_loadNomencl mA_loadNomencl, HashMap<Long,DirNomenclGroup> hmNomenclGroup) throws Exception{
+	public  static List<?> processFile(File tmpFile, DirNomenclature dirNomenclature, MA_loadNomencl mA_loadNomencl, HashMap<Long,DirNomenclGroup> hmNomenclGroup, HashMap<String,DirGender> hmDGen) throws Exception{
 		
 		List<DirNomenclature>  lNomencls = new ArrayList<DirNomenclature>();
 		
@@ -117,6 +117,8 @@ public class ReadExcelFile {
         			dirNomenclature.setCode(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_code()-1)) ) );
         			dirNomenclature.setArticle(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_article()-1)));
         			dirNomenclature.setDirNomenclGroup(hmNomenclGroup.get(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_codeNomenclGroup()-1)) ) ) );
+        			dirNomenclature.setDirGender(hmDGen.get(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_gender()-1)) ) ));
+        			
 		        	lNomencls.add(dirNomenclature);
         		}
         	
@@ -163,7 +165,7 @@ public class ReadExcelFile {
 	}
 
 
-	public static Collection<?> processFile(File tmpFile, Tail tail, MA_loadTail mA_loadTail, HashMap<Integer,DirProvider> hP, HashMap<Long,DirNomenclature> hmNomencl, HashMap<String,DirGender> hmDGen)  throws Exception {
+	public static Collection<?> processFile(File tmpFile, Tail tail, MA_loadTail mA_loadTail, HashMap<Integer,DirProvider> hP, HashMap<Long,DirNomenclature> hmNomencl)  throws Exception {
 		// TODO Auto-generated method stub
 		List<Tail>  lTails = new ArrayList<Tail>();
 		

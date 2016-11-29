@@ -46,6 +46,8 @@ public class DirNomenclature implements  IModel {
 	@NotEmpty (message = "Please enter name.") 
 	private String name;
 
+	@NotEmpty (message = "Please enter size.") 
+	private String size;
 	
 	@NotEmpty (message = "Please enter name.") 
 	private String article;
@@ -56,6 +58,10 @@ public class DirNomenclature implements  IModel {
 	@NotNull
 	private DirNomenclGroup dirNomenclGroup;
 
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_dir_gender")
+	@NotNull
+	private DirGender dirGender;
 	
 	
 	public Long getId() {
@@ -92,7 +98,15 @@ public class DirNomenclature implements  IModel {
 	}
 
 	
-	
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+
 	public DirNomenclGroup getDirNomenclGroup() {
 		return dirNomenclGroup;
 	}
@@ -101,8 +115,16 @@ public class DirNomenclature implements  IModel {
 		this.dirNomenclGroup = dirNomenclGroup;
 	}
 	
-	
 
+	public DirGender getDirGender() {
+		return dirGender;
+	}
+
+	public void setDirGender(DirGender dirGender) {
+		this.dirGender = dirGender;
+	}
+
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
