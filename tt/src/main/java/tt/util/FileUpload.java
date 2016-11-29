@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
@@ -115,7 +116,13 @@ public class FileUpload {
 						for(DirNomenclature dn: lN) 
 							hmNomencl.put(dn.getCode(), dn);
 
-						return ReadExcelFile.processFile(tmpFile,(Tail) model, (MA_loadTail) IMAmodel, hmProv, hmNomencl) ;
+						List<DirGender> lDGen = ttService.getGenderList();
+						HashMap<String,DirGender> hmDGen = new HashMap<String,DirGender>();
+						for(DirGender dG: lDGen) 
+							hmDGen.put(dG.getName(), dG);
+
+						
+						return ReadExcelFile.processFile(tmpFile,(Tail) model, (MA_loadTail) IMAmodel, hmProv, hmNomencl, hmDGen) ;
 					}
 				} 
 				finally {
