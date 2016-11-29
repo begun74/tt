@@ -37,6 +37,7 @@ public interface Dao {
 	public void addNomenclGroupRoot(DirNomenclGroupRoot dirNomenclGroupRoot);
 
 	public List<DirGender> getGenderList();
+	public DirGender getGenderByName(String name);
 
 	
 	public void addTail(Tail tail);

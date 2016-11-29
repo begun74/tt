@@ -169,5 +169,11 @@ public class DaoImpl implements Dao {
 		return criteria.list();
 	}
 
+	@Override
+	public DirGender getGenderByName(String name) {
+		// TODO Auto-generated method stub
+		return (DirGender) getSession().createQuery("from DirGender where gender := gender").setParameter("gender", name).uniqueResult();
+	}
+
 
 }

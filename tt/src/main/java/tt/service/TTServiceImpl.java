@@ -186,4 +186,11 @@ public class TTServiceImpl implements Dao {
 		// TODO Auto-generated method stub
 		return dao.getTailsList(tail_example, criterions);
 	}
+
+
+	@Override
+	public DirGender getGenderByName(String name) {
+		// TODO Auto-generated method stub
+		return dao.getGenderByName(name);
+	}
 }

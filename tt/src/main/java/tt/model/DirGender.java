@@ -31,8 +31,9 @@ public class DirGender implements  IModel {
 	@Column(name="id_dir_gender")
 	public Long id;
 	
+	@Column(name="gender")
 	@NotNull
-	private String gender;
+	private String name;
 
 	@Override
 	public Long getId() {
@@ -47,15 +48,14 @@ public class DirGender implements  IModel {
 	
 	
 	
-	public String getGender() {
-		return gender;
+
+	public String getName() {
+		return name;
 	}
 
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setName(String name) {
+		this.name = name;
 	}
-	
-	
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
