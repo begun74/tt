@@ -31,7 +31,7 @@ public class DirGender implements  IModel {
 	@Column(name="id_dir_gender")
 	public Long id;
 	
-	@Column(name="gender")
+	@Column(name="name")
 	@NotNull
 	private String name;
 

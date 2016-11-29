@@ -142,7 +142,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<DirGender> getGenderList() {
 		// TODO Auto-generated method stub
-		return getSession().createQuery("from DirGender order by gender").list();
+		return getSession().createQuery("from DirGender order by name").list();
 	}
 
 	@Override
@@ -172,7 +172,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public DirGender getGenderByName(String name) {
 		// TODO Auto-generated method stub
-		return (DirGender) getSession().createQuery("from DirGender where gender := gender").setParameter("gender", name.toLowerCase()).uniqueResult();
+		return (DirGender) getSession().createQuery("from DirGender where name = :name").setParameter("name", name.toLowerCase()).uniqueResult();
 	}
 
 
