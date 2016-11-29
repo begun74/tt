@@ -118,7 +118,7 @@ public class AdminCtrl {
 	public ModelAndView   addNomencl(HttpSession session, @Valid @ModelAttribute("addNomenclForm") DirNomenclature dirNomenclature,
 			BindingResult result,
 			@ModelAttribute  MultipartFile file,
-			@RequestParam(value = "id_dir_nomenclature",   required=false) BigInteger id_dir_nomenclature) 
+			@RequestParam(value = "id_dir_nomenclature",   required=false) Long id_dir_nomenclature) 
 	{
 		
 		ModelAndView model = new ModelAndView("redirect:/admin?act=2");
@@ -140,7 +140,7 @@ public class AdminCtrl {
 	public ModelAndView   processProvider(HttpSession session, @Valid @ModelAttribute("addProviderForm") DirProvider dirProvider,
 			BindingResult result,
 			@ModelAttribute  MultipartFile file,
-			@RequestParam(value = "id_dir_provider",   required=false) BigInteger id_dir_provider) 
+			@RequestParam(value = "id_dir_provider",   required=false) Long id_dir_provider) 
 	{
 		
 		ModelAndView model = new ModelAndView("redirect:/admin?act=1");
@@ -163,7 +163,7 @@ public class AdminCtrl {
 	public ModelAndView   addTails( @Valid @ModelAttribute("addTailForm") Tail tail,
 									BindingResult result,
 									@ModelAttribute  MultipartFile file,
-									@RequestParam(value = "id_tail",   required=false) BigInteger id_tail) 
+									@RequestParam(value = "id_tail",   required=false) Long id_tail) 
 	{
 		
 		ModelAndView model = new ModelAndView("redirect:/admin?act=3");
@@ -183,7 +183,7 @@ public class AdminCtrl {
 	
 	
 	@RequestMapping(value = "delObject")
-	public String  delObject(HttpSession session,@RequestParam(value = "id",   defaultValue = "-1") BigInteger id ,@RequestParam(value = "act",   defaultValue = "-1") int act
+	public String  delObject(HttpSession session,@RequestParam(value = "id",   defaultValue = "-1") Long id ,@RequestParam(value = "act",   defaultValue = "-1") int act
 			,@RequestParam(value = "clazz",  required=true, defaultValue = "") String clazz) 
 	{
 

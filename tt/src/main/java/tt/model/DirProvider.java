@@ -32,7 +32,7 @@ public class DirProvider  implements  IModel{
 			allocationSize=1
 		)
 	@Column(name="id_dir_provider")
-	private BigInteger id;
+	private Long id;
 	
 	
 	@Column(name="code")
@@ -42,11 +42,11 @@ public class DirProvider  implements  IModel{
 	@NotEmpty (message = "Please enter name.") 
 	private String name;
 
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -68,10 +68,10 @@ public class DirProvider  implements  IModel{
 
 	@Override
 	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
 		
 		return ( ((DirProvider)o).getName().compareTo(this.getName()) + ((DirProvider)o).getCode().compareTo(this.getCode()));
 	}
+
 	
 	
 	

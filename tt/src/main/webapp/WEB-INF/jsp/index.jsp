@@ -131,5 +131,24 @@
 	<script src="resources/js/price-range.js"></script>
     <script src="resources/js/jquery.prettyPhoto.js"></script>
     <script src="resources/js/main.js"></script>
+    
+    <script>
+	    $(function() {
+				var pns = ${mA_search.pn};
+							
+				for (var item in pns) {
+	                $('#pn_'+pns[item]).attr("checked","checked");
+	            }
+	
+				/*
+	            $('#priceFrom').val('${mIndex.priceFrom}');
+	            $('#priceTo').val('${mIndex.priceTo}');
+
+	            $('#thickness').val('${mIndex.thickness}');
+	            $('#weight').val('${mIndex.weight}');
+	            $('#length').val('${mIndex.length}');
+				*/
+	    });
+    </script>
 </body>
 </html>

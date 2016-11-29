@@ -6,7 +6,7 @@ import java.math.BigInteger;
 public interface IModel extends Comparable<Object> , Serializable {
 
 	
-	public BigInteger getId();
-	public void setId(BigInteger id);
+	public Long getId();
+	public void setId(Long id);
 
 }

@@ -29,18 +29,18 @@ public class DirGender implements  IModel {
 			allocationSize=1
 		)
 	@Column(name="id_dir_gender")
-	public BigInteger id;
+	public Long id;
 	
 	@NotNull
 	private String gender;
 
 	@Override
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 
 	@Override
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

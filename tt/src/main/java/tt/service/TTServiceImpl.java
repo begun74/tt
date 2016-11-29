@@ -1,8 +1,13 @@
 package tt.service;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
 import java.util.List;
 
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -56,7 +61,7 @@ public class TTServiceImpl implements Dao {
 
 
 	@Override
-	public Object getObject(Class clazz, BigInteger id) {
+	public Object getObject(Class clazz, Long id) {
 		// TODO Auto-generated method stub
 		return dao.getObject(clazz, id);
 	}
@@ -160,4 +165,25 @@ public class TTServiceImpl implements Dao {
 		dao.addNomenclGroupRoot(dirNomenclGroupRoot);
 	}
 
+	
+	public List<Tail> getTailsList(List<Long> providers) {
+		// TODO Auto-generated method stub
+		List<DirProvider> lProvs = new ArrayList<DirProvider>();
+		Tail tail = new Tail();
+		Collection<Criterion> criterions = new LinkedList<Criterion>();
+		for(Long idProv: providers)
+			lProvs.add((DirProvider) dao.getObject(DirProvider.class, idProv));
+		
+		if(lProvs.size() > 0)
+			criterions.add( Restrictions.in("dirProvider", lProvs.toArray()));
+
+		return criterions.size() >0 ? getTailsList(tail,criterions): getTailsList();
+	}
+
+
+	@Override
+	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions) {
+		// TODO Auto-generated method stub
+		return dao.getTailsList(tail_example, criterions);
+	}
 }

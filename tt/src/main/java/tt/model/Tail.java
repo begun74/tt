@@ -35,7 +35,7 @@ public class Tail implements  IModel {
 			allocationSize=1
 		)
 	@Column(name="id_tails")
-	private BigInteger id;
+	private Long id;
 	
 	@NotNull
 	@Column(name="amounttail")
@@ -66,11 +66,11 @@ public class Tail implements  IModel {
 	
 	
 	
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 	
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	

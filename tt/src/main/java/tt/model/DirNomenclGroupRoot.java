@@ -32,7 +32,7 @@ public class DirNomenclGroupRoot implements IModel {
 			allocationSize=1
 		)
 	@Column(name="id_dir_nomencl_group_root")
-	private BigInteger id;
+	private Long id;
 
 	
 	@Column(name="code")
@@ -44,13 +44,13 @@ public class DirNomenclGroupRoot implements IModel {
 	
 	
 	@Override
-	public BigInteger getId() {
+	public Long getId() {
 		// TODO Auto-generated method stub
 		return id;
 	}
 
 	@Override
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		// TODO Auto-generated method stub
 		this.id = id;
 	}

@@ -31,7 +31,7 @@ public class User implements Serializable, IModel{
 			allocationSize=1
 		)
 	@Column(name="id_user")
-	private BigInteger id;
+	private Long id;
 	
 	@NotEmpty (message = "Please enter name.") 
 	private String name;
@@ -47,11 +47,11 @@ public class User implements Serializable, IModel{
 		this.password = password;
 	}
 
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

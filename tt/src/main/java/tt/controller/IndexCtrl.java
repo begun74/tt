@@ -5,6 +5,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -12,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import tt.bean.AppBean;
 import tt.model.User;
+import tt.modelattribute.MA_search;
 import tt.service.TTServiceImpl;
 
 
@@ -26,7 +29,8 @@ public class IndexCtrl {
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
 	
-	
+	@Autowired
+	MA_search mA_search;
 	
 	@RequestMapping(value = {"/index","/"} , method = RequestMethod.GET)
 	public ModelAndView  index() 
@@ -36,7 +40,10 @@ public class IndexCtrl {
 		user.setName("name "+user.getId());
 		user.setPassword("pass "+user.getId());
 		
-		model.addObject("tails",ttService.getTailsList());
+		model.addObject("mA_search",mA_search);
+		
+		//model.addObject("tails",ttService.getTailsList());
+		model.addObject("tails",ttService.getTailsList(mA_search.getPn()));
 		model.addObject("version",appBean.getVersion());
 		//ttService.addUser(user);
 		
@@ -66,6 +73,26 @@ public class IndexCtrl {
 		}
 		
 		return model;
+	}
+	
+	
+	@RequestMapping(value = {"/search"} , method = RequestMethod.GET)
+	public String  searchGet(HttpSession session, @ModelAttribute("mA_search") MA_search mA_search, Model model) 
+	{
+		 //mIndex = session.getAttribute("mIndex") == null?new MIndex():(MIndex)session.getAttribute("mIndex");
+		this.mA_search = mA_search;
+		
+		//ModelAndView model = new ModelAndView("index");
+		
+		model.addAttribute("mA_search", mA_search);
+		
+		model.addAttribute("providers", ttService.getProviderList());
+		model.addAttribute("categories", ttService.getNomenclGroupList());
+		model.addAttribute("genders", ttService.getGenderList());
+
+		model.addAttribute("tails",ttService.getTailsList(mA_search.getPn()));
+		
+		return "index";
 	}
 	
 	

@@ -1,10 +1,14 @@
 package tt.dao;
 
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Example;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +20,7 @@ import tt.model.DirProvider;
 import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
+
 
 
 
@@ -61,7 +66,7 @@ public class DaoImpl implements Dao {
 	}
 
 	@Override
-	public Object getObject(Class clazz, BigInteger id) {
+	public Object getObject(Class clazz, Long id) {
 		// TODO Auto-generated method stub
 		return getSession().get(clazz, id);
 	}
@@ -150,6 +155,18 @@ public class DaoImpl implements Dao {
 	public void addNomenclGroupRoot(DirNomenclGroupRoot dirNomenclGroupRoot) {
 		// TODO Auto-generated method stub
 		getSession().saveOrUpdate(dirNomenclGroupRoot);
+	}
+
+	@Override
+	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions) {
+		// TODO Auto-generated method stub
+		
+		Criteria criteria = getSession().createCriteria(Tail.class);
+		
+		if(criterions != null)
+			criterions.forEach(c -> criteria.add(c));
+		
+		return criteria.list();
 	}
 
 

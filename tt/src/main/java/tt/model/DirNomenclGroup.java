@@ -35,7 +35,7 @@ public class DirNomenclGroup implements IModel {
 			allocationSize=1
 		)
 	@Column(name="id_dir_nomencl_group")
-	private BigInteger id;
+	private Long id;
 
 	
 	@Column(name="code")
@@ -53,12 +53,12 @@ public class DirNomenclGroup implements IModel {
 	
 
 	@Override
-	public BigInteger getId() {
+	public Long getId() {
 		return id;
 	}
 
 	@Override
-	public void setId(BigInteger id) {
+	public void setId(Long id) {
 		this.id=id;
 	}
 

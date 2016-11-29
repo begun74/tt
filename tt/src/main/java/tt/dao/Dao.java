@@ -1,7 +1,10 @@
 package tt.dao;
 
 import java.math.BigInteger;
+import java.util.Collection;
 import java.util.List;
+
+import org.hibernate.criterion.Criterion;
 
 import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
@@ -36,8 +39,9 @@ public interface Dao {
 	public List<DirGender> getGenderList();
 
 	
-	public List<Tail> getTailsList();
 	public void addTail(Tail tail);
+	public List<Tail> getTailsList();
+	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions );
 
 	public List<Store> getStoreList();
 	public void addStore(Store store);
@@ -45,7 +49,7 @@ public interface Dao {
 	public Store getStoreBySerVerUID(Long serialVersionUID);
 	
 	
-	public Object getObject(Class clazz,BigInteger id);
+	public Object getObject(Class clazz,Long id);
 	public void delObject(Object obj);
 	
 	
