@@ -190,6 +190,7 @@ public class ReadExcelFile {
         			tail.setCreate_date(timestamp);
         			tail.setDirProvider(hP.get(new Integer((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeProvider()-1)))))));
         			tail.setDirNomenclature( hmNomencl.get(new Long((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeNomencl()-1)))))) );
+        			
         			lTails.add(tail);
         		}
         	

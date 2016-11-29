@@ -16,4 +16,5 @@ public interface IMAmodel extends Serializable {
 	public long  getSerialversionuid();
 	
 	public boolean isAutoload();
+	
 }
