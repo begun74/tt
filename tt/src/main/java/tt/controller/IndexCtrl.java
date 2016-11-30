@@ -87,7 +87,7 @@ public class IndexCtrl {
 		 //mIndex = session.getAttribute("mIndex") == null?new MIndex():(MIndex)session.getAttribute("mIndex");
 		this.mA_search = mA_search;
 		
-		//ModelAndView model = new ModelAndView("index");
+		model.addAttribute("version",appBean.getVersion());
 		
 		model.addAttribute("mA_search", mA_search);
 		
@@ -133,9 +133,6 @@ public class IndexCtrl {
 	{
 		ModelAndView model = new ModelAndView("product-details");
 
-		//model.addObject("providers", ttService.getProviderList());
-		//model.addObject("categories", ttService.getNomenclGroupList());
-		//model.addObject("genders", ttService.getGenderList());
 		//=============== товар ====== поставщик === цена ====== размер ===
 		Object[] obj = {new Object(),new Object(),new Object(),new Object()};
 		
@@ -152,7 +149,7 @@ public class IndexCtrl {
 			while(iter.hasNext())
 			{
 				Tail t = iter.next();
-				size += "("+t.getSize()+ " - "+ t.getAmountTail()+")      ";
+				size += "("+t.getSize()+ " - "+ t.getAmountTail()+" шт.)      ";
 			}
 						
 			obj[3] = size;
