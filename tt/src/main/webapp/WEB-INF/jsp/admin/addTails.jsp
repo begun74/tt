@@ -120,10 +120,11 @@
 						 				    			<table class="tab" border="0">
 										    				<tr align="center">
 											    				<th width="5%">№п/п</th>
-											    				<th width="50%">Наименование</th>
-											    				<th width="12%">Поставщик</th>
-											    				<th width="6%">Кол-во</th>
-											    				<th width="6%">Первая цена</th>
+											    				<th width="30%">Наименование</th>
+											    				<th width="23%">Поставщик</th>
+											    				<th width="5%">Кол-во</th>
+											    				<th width="5%">Первая цена</th>
+											    				<th width="12%">Размер</th>
 											    				<th width="22%">Дата загрузки</th>
 											    				<th width="4%" class="checkbox"><input type="checkbox" name="" class="check-all" onclick='checkboxAny($(this).attr("checked"),"tailIndex");'/></th>
 											    				<th width="2%">Action</th>
@@ -139,6 +140,7 @@
 																			<td style="cursor:pointer;">${tail.dirProvider.name}</td>
 																			<td style="cursor:pointer;">${tail.amountTail}</td>
 																			<td style="cursor:pointer;">${tail.firstPrice}</td>
+																			<td style="cursor:pointer;">${tail.size}</td>
 																			<td style="cursor:pointer;">${tail.create_date}</td>
 																			<td class="checkbox"><input name="tailIndex" class="tailIndex" value="${tail.index}" type="checkbox"  style="cursor:pointer;" class="checkbox"/></td>
 													         				<td >
@@ -275,17 +277,18 @@
         
         <!-- /box -->
         <div class="box">
- 				    			<table class="tab" border="0">
-				    				<tr align="center">
-					    				<th width="5%">№п/п</th>
-					    				<th width="34%">Наименование</th>
-					    				<th width="8%">Поставщик</th>
-					    				<th width="4%">Кол-во</th>
-					    				<th width="4%">Первая цена</th>
-					    				<th width="16%">Дата загрузки</th>
-					    				<th width="2%">Action</th>
-				    				</tr>
-				    			</table>
+	 				    			<table class="tab" border="0">
+						    				<tr align="center">
+								    				<th width="5%">№п/п</th>
+								    				<th width="28%">Наименование</th>
+								    				<th width="23%">Поставщик</th>
+								    				<th width="5%">Кол-во</th>
+								    				<th width="7%">Первая цена</th>
+								    				<th width="12%">Размер</th>
+								    				<th width="22%">Дата загрузки</th>
+								    				<th width="5%">Action</th>
+						    				</tr>
+					    			</table>
 
 									<div align="center" style="overflow-y:scroll; overflow-x: none; height:300px; width:100%;">
 										<table class="tab tab-drag">
@@ -296,6 +299,7 @@
 													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.dirProvider.name}</td>
 													<td style="cursor:pointer;" onclick="$('#amountTail').val('${tail.amountTail}'); $('#firstPrice').val('${tail.firstPrice}');">${tail.amountTail}</td>
 													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.firstPrice}</td>
+													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.size}</td>
 													<td style="cursor:pointer;">${tail.create_date}</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
