@@ -118,6 +118,7 @@
 								<!-- p><b>Availability:</b> In Stock</p -->
 								<!-- p><b>Condition:</b> New</p -->
 								<p><b><spring:message code="brand.name"/>:  </b>${nomenclature[1]} </p>
+								<p><b><spring:message code="size"/>:  </b>${nomenclature[3]} </p>
 								<a href=""><img src="resources/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>

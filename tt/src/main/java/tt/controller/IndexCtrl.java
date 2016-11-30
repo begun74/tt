@@ -1,5 +1,6 @@
 package tt.controller;
 
+import java.util.Iterator;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
@@ -135,8 +136,8 @@ public class IndexCtrl {
 		//model.addObject("providers", ttService.getProviderList());
 		//model.addObject("categories", ttService.getNomenclGroupList());
 		//model.addObject("genders", ttService.getGenderList());
-		//=============== товар ====== поставщик === цена ======
-		Object[] obj = {new Object(),new Object(),new Object()};
+		//=============== товар ====== поставщик === цена ====== размер ===
+		Object[] obj = {new Object(),new Object(),new Object(),new Object()};
 		
 		if(id != null)
 		{
@@ -145,6 +146,17 @@ public class IndexCtrl {
 			
 			obj[1] = dn.getTails().iterator().next().getDirProvider().getName();
 			obj[2] = dn.getTails().iterator().next().getFirstPrice();
+			
+			String size = "";
+			Iterator<Tail> iter = dn.getTails().iterator();
+			while(iter.hasNext())
+			{
+				Tail t = iter.next();
+				size += "("+t.getSize()+ " - "+ t.getAmountTail()+")      ";
+			}
+						
+			obj[3] = size;
+			
 			model.addObject("nomenclature", obj);
 		}
 		
