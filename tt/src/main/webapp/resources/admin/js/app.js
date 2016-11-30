@@ -1,6 +1,6 @@
 
 
-function delObject(id,clazz,act)
+function delObject(clazz,id,act)
 {
 	if(confirm('Delete record?'))location.href='admin/delObject?id='+id+'&clazz='+clazz+'&act='+act;
 }

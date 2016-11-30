@@ -303,7 +303,7 @@
 													<td style="cursor:pointer;">${tail.create_date}</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
-							         					<a href="javascript:delObject(${tail.id},'Tail','3');" class="ico ico-delete" onclick=""></a>
+							         					<a href="javascript:delObject('Tail',${tail.id},'3');" class="ico ico-delete" onclick=""></a>
 							         				</td>
 												</tr>
 											</c:forEach>

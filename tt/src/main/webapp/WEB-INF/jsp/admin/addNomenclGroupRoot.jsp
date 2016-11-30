@@ -236,7 +236,7 @@
 													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomGroupRoot.name}'); $('#code').val('${dirNomGroupRoot.code}');">${dirNomGroupRoot.code}</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
-							         					<a href="javascript:delObject(${dirNomGroupRoot.id},'DirNomenclGroup','4');" class="ico ico-delete" onclick=""></a>
+							         					<a href="javascript:delObject('DirNomenclGroup',${dirNomGroupRoot.id},'4');" class="ico ico-delete" onclick=""></a>
 							         				</td>
 												</tr>
 											</c:forEach>
