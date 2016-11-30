@@ -27,6 +27,7 @@ public interface Dao {
 	
 
 	public List<DirNomenclature> getNomenclatureList();
+	public List<DirNomenclature> getNomenclatureList(Collection<Criterion> criterions);
 	public void addNomenclature(DirNomenclature dirNomenclature);
 
 

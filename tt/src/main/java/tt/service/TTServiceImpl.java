@@ -3,8 +3,12 @@ package tt.service;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
@@ -166,16 +170,29 @@ public class TTServiceImpl implements Dao {
 	}
 
 	
-	public List<Tail> getTailsList(List<Long> providers) {
+	public List<Tail> getTailsList(List<Long> providers, List<Long> genders) {
 		// TODO Auto-generated method stub
 		List<DirProvider> lProvs = new ArrayList<DirProvider>();
+		List<DirGender> lGndrs = new ArrayList<DirGender>();
+		
 		Tail tail = new Tail();
 		Collection<Criterion> criterions = new LinkedList<Criterion>();
+		Collection<Criterion> criterDN = new LinkedList<Criterion>();
+		
 		for(Long idProv: providers)
 			lProvs.add((DirProvider) dao.getObject(DirProvider.class, idProv));
 		
+		for(Long idGndr: genders)
+			lGndrs.add((DirGender) dao.getObject(DirGender.class, idGndr));
+		
+		if(lGndrs.size() > 0)
+			criterDN.add( Restrictions.in("dirGender", lGndrs.toArray()));
+
 		if(lProvs.size() > 0)
-			criterions.add( Restrictions.in("dirProvider", lProvs.toArray()));
+			criterions.add( Restrictions.in("dirProvider", lProvs));
+
+		if(getNomenclatureList(criterDN).size() > 0)
+			criterions.add( Restrictions.in("dirNomenclature", getNomenclatureList(criterDN)) );
 
 		return criterions.size() >0 ? getTailsList(tail,criterions): getTailsList();
 	}
@@ -193,4 +210,24 @@ public class TTServiceImpl implements Dao {
 		// TODO Auto-generated method stub
 		return dao.getGenderByName(name);
 	}
+
+
+	@Override
+	public List<DirNomenclature> getNomenclatureList(Collection<Criterion> criterions) {
+		// TODO Auto-generated method stub
+		return dao.getNomenclatureList(criterions);
+	}
+	
+	
+	public Map<DirNomenclature,DirProvider> tailSetNomenclature(List<Long> providers, List<Long> genders) 
+	{
+		List<Tail> tails = getTailsList(providers, genders);
+		Map<DirNomenclature,DirProvider> hmDN = new HashMap<DirNomenclature,DirProvider>();
+		
+		for(Tail t: tails)
+			hmDN.put(t.getDirNomenclature(),t.getDirProvider());
+		
+		return hmDN;
+	}
+
 }

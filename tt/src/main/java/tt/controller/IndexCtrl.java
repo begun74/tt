@@ -43,7 +43,7 @@ public class IndexCtrl {
 		model.addObject("mA_search",mA_search);
 		
 		//model.addObject("tails",ttService.getTailsList());
-		model.addObject("tails",ttService.getTailsList(mA_search.getPn()));
+		model.addObject("tails",ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr()));
 		model.addObject("version",appBean.getVersion());
 		//ttService.addUser(user);
 		
@@ -90,7 +90,7 @@ public class IndexCtrl {
 		model.addAttribute("categories", ttService.getNomenclGroupList());
 		model.addAttribute("genders", ttService.getGenderList());
 
-		model.addAttribute("tails",ttService.getTailsList(mA_search.getPn()));
+		model.addAttribute("tails",ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr()));
 		
 		return "index";
 	}

@@ -22,9 +22,9 @@
 														<div class="single-products">
 																<div class="productinfo text-center">
 																	<a href="product-details.html"><img class="pic1" src="resources/images/product-details/ps_1.jpg" alt="" /></a>
-																	<h2>${tail.dirProvider.name}</h2>
-																	<p>${tail.dirNomenclature.name} </p>
-																	<p>${tail.dirNomenclature.article}</p>
+																	<h2>${tail.key.name}</h2>
+																	<p>${tail.value.name} ${tail.key.article}</p>
+																	<p>(${tail.key.code})</p>
 																	<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
 																</div>
 																<!-- div class="product-overlay">

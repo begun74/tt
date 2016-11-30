@@ -2,13 +2,17 @@ package tt.dao;
 
 import java.math.BigInteger;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Projection;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -165,8 +169,9 @@ public class DaoImpl implements Dao {
 		
 		if(criterions != null)
 			criterions.forEach(c -> criteria.add(c));
+		List<Tail> lTail= criteria.list();
 		
-		return criteria.list();
+		return lTail;
 	}
 
 	@Override
@@ -175,5 +180,17 @@ public class DaoImpl implements Dao {
 		return (DirGender) getSession().createQuery("from DirGender where name = :name").setParameter("name", name.toLowerCase()).uniqueResult();
 	}
 
+	@Override
+	public List<DirNomenclature> getNomenclatureList(Collection<Criterion> criterions) {
+		// TODO Auto-generated method stub
+		Criteria criteria = getSession().createCriteria(DirNomenclature.class);
+		
+		if(criterions != null)
+			criterions.forEach(c -> criteria.add(c));
+		
+		return criteria.list();
+	}
+
+	
 
 }
