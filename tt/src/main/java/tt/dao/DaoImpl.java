@@ -3,6 +3,7 @@ package tt.dao;
 import java.math.BigInteger;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -11,6 +12,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -169,7 +171,7 @@ public class DaoImpl implements Dao {
 		
 		if(criterions != null)
 			criterions.forEach(c -> criteria.add(c));
-		List<Tail> lTail= criteria.list();
+		List<Tail> lTail= new LinkedList<Tail>(criteria.list());
 		
 		return lTail;
 	}
@@ -183,12 +185,12 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<DirNomenclature> getNomenclatureList(Collection<Criterion> criterions) {
 		// TODO Auto-generated method stub
-		Criteria criteria = getSession().createCriteria(DirNomenclature.class);
+		Criteria criteria = getSession().createCriteria(DirNomenclature.class).addOrder(Order.asc("name"));
 		
 		if(criterions != null)
 			criterions.forEach(c -> criteria.add(c));
 		
-		return criteria.list();
+		return new LinkedList<DirNomenclature>(criteria.list());
 	}
 
 	

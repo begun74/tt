@@ -32,14 +32,12 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
-				<!-- product_filter -->
-				<%@include file="common/product_filter.jsp" %>
-				<!-- product_filter -->
+				<!-- div class="col-sm-3">
+				<!-- %@include file="common/product_filter.jsp" % -->
 
-				</div>
+				</div -->
 				
-				<div class="col-sm-9 padding-right">
+				<div class="col-sm-12 padding-right">
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 						<br/>

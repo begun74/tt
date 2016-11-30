@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -172,8 +173,8 @@ public class TTServiceImpl implements Dao {
 	
 	public List<Tail> getTailsList(List<Long> providers, List<Long> genders) {
 		// TODO Auto-generated method stub
-		List<DirProvider> lProvs = new ArrayList<DirProvider>();
-		List<DirGender> lGndrs = new ArrayList<DirGender>();
+		List<DirProvider> lProvs = new LinkedList<DirProvider>();
+		List<DirGender> lGndrs = new LinkedList<DirGender>();
 		
 		Tail tail = new Tail();
 		Collection<Criterion> criterions = new LinkedList<Criterion>();
@@ -222,7 +223,7 @@ public class TTServiceImpl implements Dao {
 	public Map<DirNomenclature,DirProvider> tailSetNomenclature(List<Long> providers, List<Long> genders) 
 	{
 		List<Tail> tails = getTailsList(providers, genders);
-		Map<DirNomenclature,DirProvider> hmDN = new HashMap<DirNomenclature,DirProvider>();
+		Map<DirNomenclature,DirProvider> hmDN = new LinkedHashMap<DirNomenclature,DirProvider>();
 		
 		for(Tail t: tails)
 			hmDN.put(t.getDirNomenclature(),t.getDirProvider());
