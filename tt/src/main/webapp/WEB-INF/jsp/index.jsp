@@ -135,11 +135,16 @@
     <script>
 	    $(function() {
 				var pns = ${mA_search.pn};
+				var gndrs = ${mA_search.gndr};
 							
 				for (var item in pns) {
 	                $('#pn_'+pns[item]).attr("checked","checked");
 	            }
 	
+				for (var item in gndrs) {
+	                $('#gndr_'+gndrs[item]).attr("checked","checked");
+	            }
+
 				/*
 	            $('#priceFrom').val('${mIndex.priceFrom}');
 	            $('#priceTo').val('${mIndex.priceTo}');

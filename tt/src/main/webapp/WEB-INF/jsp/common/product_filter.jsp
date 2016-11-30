@@ -12,7 +12,7 @@
 									<div class="brands-name" >
 										<ul class="nav nav-pills nav-stacked">
 											<c:forEach items="${genders}" var="gender" varStatus="loop"> 
-												<li class="checkbox"><label><input type="checkbox" name="gender" value="${gender.id}"/>${gender.name}</label></li>
+												<li class="checkbox"><label><input type="checkbox" name="gndr" id="gndr_${gender.id}" value="${gender.id}"/>${gender.name}</label></li>
 											</c:forEach>
 										</ul>
 									</div>

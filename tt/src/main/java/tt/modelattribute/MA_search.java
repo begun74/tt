@@ -20,6 +20,8 @@ public class MA_search implements Serializable, Cloneable {
 	
 	List<Long> pn = new ArrayList<Long>();
 	
+	List<Long> gndr = new ArrayList<Long>();
+	
 
 	
 	public List<Long> getPn() {
@@ -35,6 +37,19 @@ public class MA_search implements Serializable, Cloneable {
 
 
 
+	public List<Long> getGndr() {
+		return gndr;
+	}
+
+
+
+	public void setGndr(List<Long> gndr) {
+		this.gndr = gndr;
+	}
+
+
+
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
