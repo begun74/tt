@@ -37,7 +37,7 @@ public class AppBean implements Serializable {
 	
 	private List<DirProvider> listProviders = new ArrayList<DirProvider>();
 	
-	private double version = 1.0;
+	private double version = 1.1;
 	
 	
 	
