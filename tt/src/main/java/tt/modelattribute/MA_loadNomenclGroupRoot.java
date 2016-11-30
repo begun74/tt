@@ -67,6 +67,11 @@ public class MA_loadNomenclGroupRoot implements IMAmodel {
 		// TODO Auto-generated method stub
 		return serialVersionUID;
 	}
+	@Override
+	public String toString() {
+		return "MA_loadNomenclGroupRoot [row=" + row + ", col_name=" + col_name + ", col_code=" + col_code
+				+ ", autoload=" + autoload + "]";
+	}
 	
 	
 	
