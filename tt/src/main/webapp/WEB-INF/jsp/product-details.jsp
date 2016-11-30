@@ -108,11 +108,11 @@
 								<img src="resources/images/product-details/rating.png" alt="" />
 								<span>
 									<span>US $59</span>
-									<label>Quantity:</label>
-									<input type="text" value="3" />
+									<label><spring:message code="quantity"/>:</label>
+									<input type="text" value="1" />
 									<button type="button" class="btn btn-fefault cart">
 										<i class="fa fa-shopping-cart"></i>
-										Add to cart
+										<spring:message code="add.to.cart"/>
 									</button>
 								</span>
 								<p><b>Availability:</b> In Stock</p>
