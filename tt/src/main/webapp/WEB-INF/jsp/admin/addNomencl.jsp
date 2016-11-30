@@ -202,14 +202,6 @@
 									                   			<input name="col_gender" id="col_gender" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_gender}"> 
 													         </div>
 													</div>
-										  			<div class="clearfix">
-													         <div class="lab">
-									                   			<label>Размер</label>
-													         </div>
-													         <div style="width: 25px" class="conleft">
-									                   			<input name="col_size" id="col_size" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_size}"> 
-													         </div>
-													</div>
 													<div class="clearfix">									        
 															        <div class="lab">
 															        	<label>Начальная строка</label>

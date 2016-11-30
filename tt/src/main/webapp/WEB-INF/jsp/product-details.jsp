@@ -103,8 +103,8 @@
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
 								<img src="resources/images/product-details/new.jpg" class="newarrival" alt="" />
-								<h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-								<p>Web ID: 1089772</p>
+								<h2>${nomenclature.name } (${nomenclature.dirGender.name })</h2>
+								<p>Web ID: ${nomenclature.code}</p>
 								<img src="resources/images/product-details/rating.png" alt="" />
 								<span>
 									<span>US $59</span>

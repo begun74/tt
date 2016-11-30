@@ -17,7 +17,8 @@ public class MA_loadTail implements IMAmodel {
 	private int col_firstPrice = 2;  //Первая цена
 	private int col_codeProvider = 3; //Код поставщика
 	private int col_codeNomencl = 4; //Код номенклатуры
-	
+	private int col_size=6;
+
 	private transient boolean save;
 	private boolean autoload;
 
@@ -57,6 +58,15 @@ public class MA_loadTail implements IMAmodel {
 	public boolean isSave() {
 		return save;
 	}
+	
+	public int getCol_size() {
+		return col_size;
+	}
+
+	public void setCol_size(int col_size) {
+		this.col_size = col_size;
+	}
+	
 
 	public void setSave(boolean save) {
 		this.save = save;

@@ -200,6 +200,15 @@
 										                   			<input name="col_codeNomencl" id="col_codeNomencl" type="text" class="input" value="${sessionBean.mA_loadTail.col_codeNomencl}"> 
 														         </div>
 														</div>
+											  			<div class="clearfix">
+														         <div class="lab">
+										                   			<label>Размер</label>
+														         </div>
+														         <div style="width: 25px" class="conleft">
+										                   			<input name="col_size" id="col_size" type="text" class="input" value="${sessionBean.mA_loadTail.col_size}"> 
+														         </div>
+														</div>
+														
 														<div class="clearfix">									        
 																        <div class="lab">
 																        	<label>Начальная строка</label>

@@ -12,7 +12,7 @@
 									<div class="brands-name" >
 										<ul class="nav nav-pills nav-stacked">
 											<c:forEach items="${genders}" var="gender" varStatus="loop"> 
-												<li class="checkbox"><label><input type="checkbox" name="gndr" id="gndr_${gender.id}" value="${gender.id}"/>${gender.name}</label></li>
+												<li class="checkbox"><a><label><input type="checkbox" name="gndr" id="gndr_${gender.id}" value="${gender.id}"/>${gender.name}</label></a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -23,22 +23,24 @@
 									<div class="brands-name" style="overflow-y:scroll; overflow-x: none; height:200px;">
 										<ul class="nav nav-pills nav-stacked">
 											<c:forEach items="${providers}" var="provider" varStatus="loop"> 
-												<li class="checkbox"><label><input type="checkbox" name="pn" id="pn_${provider.id}" value="${provider.id}"/>${provider.name}</label></li>
+												<li class="checkbox"><a><label><input type="checkbox" name="pn" id="pn_${provider.id}" value="${provider.id}"/>${provider.name}</label></a></li>
 											</c:forEach>
 										</ul>
 									</div>
 								</div><!--/brands_products-->
 		
-								<div class="brands_products">
-									<h2><spring:message code="category"/></h2><!-- Категория -->
-									<div class="panel-group category-products" id="accordian" style="overflow-y:scroll; overflow-x: none; height:200px;"><!--category-productsr-->
+								<!-- Категория -->
+								<!-- div class="brands_products">
+									<h2><spring:message code="category"/></h2>
+									<div class="panel-group category-products" id="accordian" style="overflow-y:scroll; overflow-x: none; height:200px;">
 										<ul class="nav nav-pills nav-stacked">
 											<c:forEach items="${categories}" var="category" varStatus="loop"> 
 													<li class="checkbox"><label><input type="checkbox" />${category.name}</label></li>
 											</c:forEach>
 										</ul>
 									</div>
-								</div><!--/Категория-->
+								</div -->
+								<!--/Категория-->
 							
 								
 								<div class="price-range"><!--price-range-->

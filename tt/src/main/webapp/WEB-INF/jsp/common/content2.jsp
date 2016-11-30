@@ -21,7 +21,7 @@
 													<div class="product-image-wrapper">
 														<div class="single-products">
 																<div class="productinfo text-center">
-																	<a href="product-details.html"><img class="pic1" src="resources/images/product-details/ps_1.jpg" alt="" /></a>
+																	<a href="product-details?id=${tail.key.id}"><img class="pic1" src="resources/images/product-details/ps_1.jpg" alt="" /></a>
 																	<h5>${tail.key.name}</h5>
 																	<p>${tail.value.name}</p>
 																	<p><spring:message code="article"/>  ${tail.key.article}</p>
@@ -38,8 +38,8 @@
 														</div>
 														<div class="choose">
 															<ul class="nav nav-pills nav-justified">
-																<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-																<li><a href="#"><i class="fa fa-plus-square"></i>Add to compare</a></li>
+																<!-- li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li -->
+																<li><a href="#"><i class="fa fa-plus-square"></i><spring:message code="compare"/></a></li>
 															</ul>
 														</div>
 													</div>

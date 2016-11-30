@@ -118,7 +118,7 @@ public class ReadExcelFile {
         			dirNomenclature.setArticle(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_article()-1)));
         			dirNomenclature.setDirNomenclGroup(hmNomenclGroup.get(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_codeNomenclGroup()-1)) ) ) );
         			dirNomenclature.setDirGender(hmDGen.get(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_gender()-1)).toLowerCase() ) );
-        			dirNomenclature.setSize(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_size()-1)).replaceAll("р-р", ""));
+        			
         			
 		        	lNomencls.add(dirNomenclature);
         		}

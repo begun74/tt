@@ -49,7 +49,9 @@ public class Tail implements  IModel {
 	private Timestamp create_date;
 	
 	private Timestamp destruction_date;
-	
+
+	private String size;
+
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_provider")
 	@NotNull
@@ -60,6 +62,7 @@ public class Tail implements  IModel {
 	@JoinColumn(name = "fk_id_nomenclature")
 	@NotNull
 	private DirNomenclature dirNomenclature;
+	
 	
 	
 	private transient int index;
@@ -90,6 +93,16 @@ public class Tail implements  IModel {
 		this.firstPrice = firstPrice;
 	}
 	
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+
 	public Timestamp getCreate_date() {
 		return create_date;
 	}

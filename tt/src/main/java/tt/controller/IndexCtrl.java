@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import tt.bean.AppBean;
+import tt.model.DirNomenclature;
 import tt.model.User;
 import tt.modelattribute.MA_search;
 import tt.service.TTServiceImpl;
@@ -123,14 +124,17 @@ public class IndexCtrl {
 		return model;
 	}
 
-	@RequestMapping(value = {"/product-details.html"} , method = RequestMethod.GET)
-	public ModelAndView  product_details(HttpSession session) 
+	@RequestMapping(value = {"/product-details{id}"} , method = RequestMethod.GET)
+	public ModelAndView  product_details(HttpSession session, @RequestParam(value = "id",   required=false) Long id) 
 	{
 		ModelAndView model = new ModelAndView("product-details");
 
-		model.addObject("providers", ttService.getProviderList());
-		model.addObject("categories", ttService.getNomenclGroupList());
-		model.addObject("genders", ttService.getGenderList());
+		//model.addObject("providers", ttService.getProviderList());
+		//model.addObject("categories", ttService.getNomenclGroupList());
+		//model.addObject("genders", ttService.getGenderList());
+
+		if(id != null)
+			model.addObject("nomenclature", ttService.getObject(DirNomenclature.class, id));
 		
 		return model;
 	}

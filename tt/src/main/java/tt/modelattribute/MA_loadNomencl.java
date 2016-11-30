@@ -20,7 +20,6 @@ public class MA_loadNomencl  implements IMAmodel {
 	private int col_article=3;
 	private int col_codeNomenclGroup=4;
 	private int col_gender=5;
-	private int col_size=6;
 	
 	private transient  boolean save;
 	private boolean autoload;
@@ -81,14 +80,7 @@ public class MA_loadNomencl  implements IMAmodel {
 	}
 	
 
-	public int getCol_size() {
-		return col_size;
-	}
-
-	public void setCol_size(int col_size) {
-		this.col_size = col_size;
-	}
-
+	
 
 	public boolean isSave() {
 		return save;
