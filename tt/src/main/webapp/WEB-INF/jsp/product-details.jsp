@@ -103,11 +103,11 @@
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
 								<img src="resources/images/product-details/new.jpg" class="newarrival" alt="" />
-								<h2>${nomenclature.name } (${nomenclature.dirGender.name })</h2>
-								<p>Web ID: ${nomenclature.code}</p>
+								<h2>${nomenclature[0].name } (${nomenclature[0].dirGender.name })</h2>
+								<p>Web ID: ${nomenclature[0].code}</p>
 								<img src="resources/images/product-details/rating.png" alt="" />
 								<span>
-									<span>US $59</span>
+									<span>BYN ${nomenclature[2]}</span>
 									<label><spring:message code="quantity"/>:</label>
 									<input type="text" value="1" />
 									<button type="button" class="btn btn-fefault cart">
@@ -115,9 +115,9 @@
 										<spring:message code="add.to.cart"/>
 									</button>
 								</span>
-								<p><b>Availability:</b> In Stock</p>
-								<p><b>Condition:</b> New</p>
-								<p><b>Brand:</b> E-SHOPPER</p>
+								<!-- p><b>Availability:</b> In Stock</p -->
+								<!-- p><b>Condition:</b> New</p -->
+								<p><b><spring:message code="brand.name"/>:  </b>${nomenclature[1]} </p>
 								<a href=""><img src="resources/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>

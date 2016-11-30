@@ -20,7 +20,7 @@
 							
 								<div class="brands_products"><!--brands_products-->
 									<h2><spring:message code="provider"/></h2>
-									<div class="brands-name" style="overflow-y:scroll; overflow-x: none; height:200px;">
+									<div class="brands-name" style="overflow-y:scroll; overflow-x: none; height:300px;">
 										<ul class="nav nav-pills nav-stacked">
 											<c:forEach items="${providers}" var="provider" varStatus="loop"> 
 												<li class="checkbox"><a><label><input type="checkbox" name="pn" id="pn_${provider.id}" value="${provider.id}"/>${provider.name}</label></a></li>

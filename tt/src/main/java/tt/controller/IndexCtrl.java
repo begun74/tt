@@ -1,5 +1,7 @@
 package tt.controller;
 
+import java.util.Set;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import tt.bean.AppBean;
 import tt.model.DirNomenclature;
+import tt.model.Tail;
 import tt.model.User;
 import tt.modelattribute.MA_search;
 import tt.service.TTServiceImpl;
@@ -132,9 +135,18 @@ public class IndexCtrl {
 		//model.addObject("providers", ttService.getProviderList());
 		//model.addObject("categories", ttService.getNomenclGroupList());
 		//model.addObject("genders", ttService.getGenderList());
-
+		//=============== товар ====== поставщик === цена ======
+		Object[] obj = {new Object(),new Object(),new Object()};
+		
 		if(id != null)
-			model.addObject("nomenclature", ttService.getObject(DirNomenclature.class, id));
+		{
+			DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id); 
+			obj[0] = dn;
+			
+			obj[1] = dn.getTails().iterator().next().getDirProvider().getName();
+			obj[2] = dn.getTails().iterator().next().getFirstPrice();
+			model.addObject("nomenclature", obj);
+		}
 		
 		return model;
 	}
