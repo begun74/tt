@@ -100,6 +100,16 @@
           	<div class="box-content">    
           
             <div id="tabs-1">  
+   		            <!-- Error form message -->            
+   		            <c:if test="${not empty error}">
+		            <div class="form-message error"  onclick="clearErrors()">
+		              <p>Ошибка :</p>
+		              <ul>
+		                <li>"${error}"</li>
+		              </ul>
+		            </div>
+		            </c:if>
+            
               	<div class="form-cols">
 				    		<div class="col1">
 							  	<form:form id="addNomenclForm" class="formBox" role="form"
@@ -139,6 +149,23 @@
 						    	</form:form>
 							</div>					    
 				    		<div class="col2">
+				    			<form id="addNomenclForm" class="formBox" role="form"
+							  			enctype="multipart/form-data" 
+							  			action="${pageContext.request.contextPath}/admin/addNomencl?${_csrf.parameterName}=${_csrf.token}" 
+							  			method="POST">
+										       
+							      	<div class="clearfix file">
+									         <div class="lab"><label for="file"><spring:message code="load"/> </label></div>
+									         <div class="con"><input type="file" name="photoFile" class="upload-file" id="photoFile" /></div>
+									</div>
+			        				<div class="clearfix">
+					        				<div class="lab">	
+						        					<button type="submit" class="" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
+					        				</div>
+			        				</div>
+									
+				    			</form>
+				    		
 							</div>
 					    </div>
             </div>
