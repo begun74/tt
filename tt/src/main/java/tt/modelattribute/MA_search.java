@@ -6,12 +6,14 @@ import java.util.List;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 
-@Service
-@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
-public class MA_search implements Serializable, Cloneable {
+
+@Component
+@Scope("session")
+public class MA_search implements Serializable {
 
 	/**
 	 * 
@@ -58,13 +60,8 @@ public class MA_search implements Serializable, Cloneable {
 
 	@Override
 	public String toString() {
-		return "MA_search [pn=" + pn + "]";
+		return "MA_search [pn=" + pn + ", gndr=" + gndr + "]";
 	}
 
-
-
-	
-	
-	
 	
 }

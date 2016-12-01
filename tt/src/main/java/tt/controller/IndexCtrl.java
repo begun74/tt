@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +29,7 @@ import tt.service.TTServiceImpl;
 
 
 @Controller
+@Scope("session")
 public class IndexCtrl {
 	
 	
@@ -41,21 +43,19 @@ public class IndexCtrl {
 	MA_search mA_search;
 	
 	@RequestMapping(value = {"/index","/"} , method = RequestMethod.GET)
-	public ModelAndView  index() 
+	public ModelAndView  index(HttpSession session) 
 	{
 		ModelAndView model = new ModelAndView("index");
 		User user = new User();
 		user.setName("name "+user.getId());
 		user.setPassword("pass "+user.getId());
 		
+		
 		model.addObject("mA_search",mA_search);
 		
 		//model.addObject("tails",ttService.getTailsList());
 		model.addObject("tails",ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr()));
 		model.addObject("version",appBean.getVersion());
-		//ttService.addUser(user);
-		
-		//System.out.println(""+ttService.getUserList());
 		model.addObject("providers", ttService.getProviderList());
 		model.addObject("categories", ttService.getNomenclGroupList());
 		model.addObject("genders", ttService.getGenderList());
@@ -88,6 +88,7 @@ public class IndexCtrl {
 	public String  searchGet(HttpSession session, @ModelAttribute("mA_search") MA_search mA_search, Model model) 
 	{
 		 //mIndex = session.getAttribute("mIndex") == null?new MIndex():(MIndex)session.getAttribute("mIndex");
+		//session.setAttribute("mA_search", mA_search);
 		this.mA_search = mA_search;
 		
 		model.addAttribute("version",appBean.getVersion());
