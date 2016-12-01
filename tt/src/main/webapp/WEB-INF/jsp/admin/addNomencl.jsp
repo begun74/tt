@@ -149,9 +149,12 @@
 						    	</form:form>
 							</div>					    
 				    		<div class="col2">
-				    			<form id="addNomenclForm" class="formBox" role="form"
+				    			<div calss="center">
+				    				<img src="resources/images/product-details/ps_111.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="" />
+				    			</div>
+				    			<form id="addPhotoNomenclForm" class="formBox" role="form"
 							  			enctype="multipart/form-data" 
-							  			action="${pageContext.request.contextPath}/admin/addNomencl?${_csrf.parameterName}=${_csrf.token}" 
+							  			action="${pageContext.request.contextPath}/admin/addPhotoNomencl?${_csrf.parameterName}=${_csrf.token}" 
 							  			method="POST">
 										       
 							      	<div class="clearfix file">
@@ -160,10 +163,10 @@
 									</div>
 			        				<div class="clearfix">
 					        				<div class="lab">	
-						        					<button type="submit" class="" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
+						        					<button type="submit" class="" onclick="if(photoFile.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
 					        				</div>
 			        				</div>
-									
+									<input type="hidden" name ="codeNomencl" id ="codeNomencl" />
 				    			</form>
 				    		
 							</div>

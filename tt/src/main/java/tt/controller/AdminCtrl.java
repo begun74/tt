@@ -138,6 +138,22 @@ public class AdminCtrl {
 	    return model;
 	}
 
+
+	@RequestMapping(value = "addPhotoNomencl" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+	public ModelAndView   addPhotoNomencl(HttpSession session, 
+			@ModelAttribute  MultipartFile photoFile,
+			@RequestParam(value = "codeNomencl", required=true) Long codeNomencl) 
+	{
+		
+		ModelAndView model = new ModelAndView("redirect:/admin?act=2");
+
+		
+		//ttService.addProvider(dirNomenclature);
+		
+	    return model;
+	}
+	
+	
 	@RequestMapping(value = "addProvider" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processProvider(HttpSession session, @Valid @ModelAttribute("addProviderForm") DirProvider dirProvider,
 			BindingResult result,
