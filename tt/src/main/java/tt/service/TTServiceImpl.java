@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.hibernate.Hibernate;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -184,17 +185,23 @@ public class TTServiceImpl implements Dao {
 			lProvs.add((DirProvider) dao.getObject(DirProvider.class, idProv));
 		
 		for(Long idGndr: genders)
-			lGndrs.add((DirGender) dao.getObject(DirGender.class, idGndr));
+		{
+			DirGender DG = (DirGender) dao.getObject(DirGender.class, idGndr);
+			criterDN.add( Restrictions.eq("dirGender", DG));
+			
+			//lGndrs.add((DirGender) dao.getObject(DirGender.class, idGndr));
+		}
 		
-		if(lGndrs.size() > 0)
-			criterDN.add( Restrictions.in("dirGender", lGndrs.toArray()));
+		//if(!lGndrs.isEmpty())
+		//	criterDN.add( Restrictions.in("dirGender", lGndrs.toArray()));
 
-		if(lProvs.size() > 0)
+		if(!lProvs.isEmpty())
 			criterions.add( Restrictions.in("dirProvider", lProvs));
 
-		if(getNomenclatureList(criterDN).size() > 0)
+		if(!getNomenclatureList(criterDN).isEmpty())
 			criterions.add( Restrictions.in("dirNomenclature", getNomenclatureList(criterDN)) );
-
+		
+		
 		return criterions.size() >0 ? getTailsList(tail,criterions): getTailsList();
 	}
 
@@ -230,5 +237,6 @@ public class TTServiceImpl implements Dao {
 		
 		return hmDN;
 	}
+	
 
 }

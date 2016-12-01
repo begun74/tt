@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,11 +106,12 @@
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
 								<img src="resources/images/product-details/new.jpg" class="newarrival" alt="" />
-								<h2>${nomenclature[0].name } (${nomenclature[0].dirGender.name })</h2>
-								<p>Web ID: ${nomenclature[0].code}</p>
+								<h2>${nomenclature.name } (${nomenclature.dirGender.name })</h2>
+								<p><b><spring:message code="article"/>:  </b>${nomenclature.article} </p>
+								<p>Web ID: ${nomenclature.code}</p>
 								<img src="resources/images/product-details/rating.png" alt="" />
 								<span>
-									<span>BYN ${nomenclature[2]}</span>
+									<span>BYN ${price}</span>
 									<label><spring:message code="quantity"/>:</label>
 									<input type="text" value="1" />
 									<button type="button" class="btn btn-fefault cart">
@@ -117,8 +121,11 @@
 								</span>
 								<!-- p><b>Availability:</b> In Stock</p -->
 								<!-- p><b>Condition:</b> New</p -->
-								<p><b><spring:message code="brand.name"/>:  </b>${nomenclature[1]} </p>
-								<p><b><spring:message code="size"/>:  </b>${nomenclature[3]} </p>
+								<p><b><spring:message code="brand.name"/>:  </b>${provider.name} </p>
+								<p><b><spring:message code="size"/>:  </b></p>
+								<c:forEach items="${sizes}" var="size" varStatus="loop">
+									<li>${size[0]} - ${size[1]} <spring:message code="items"/></li>
+								</c:forEach>
 								<a href=""><img src="resources/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
 							</div><!--/product-information-->
 						</div>

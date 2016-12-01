@@ -1,10 +1,13 @@
 package tt.controller;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -144,17 +147,21 @@ public class IndexCtrl {
 			obj[1] = dn.getTails().iterator().next().getDirProvider().getName();
 			obj[2] = dn.getTails().iterator().next().getFirstPrice();
 			
-			String size = "";
+			List<String[]> size = new ArrayList<String[]>();
 			Iterator<Tail> iter = dn.getTails().iterator();
 			while(iter.hasNext())
 			{
 				Tail t = iter.next();
-				size += "("+t.getSize()+ " - "+ t.getAmountTail()+" шт.)      ";
+				size.add(new String[]{t.getSize(),t.getAmountTail()+""});
+				
 			}
 						
 			obj[3] = size;
 			
-			model.addObject("nomenclature", obj);
+			model.addObject("nomenclature", dn);
+			model.addObject("sizes", size);
+			model.addObject("provider", dn.getTails().iterator().next().getDirProvider());
+			model.addObject("price", dn.getTails().iterator().next().getFirstPrice());
 		}
 		
 		return model;

@@ -15,6 +15,7 @@ import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projection;
 import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -118,7 +119,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<Tail> getTailsList() {
 		// TODO Auto-generated method stub
-		return getSession().createQuery(" from Tail").list();
+		return getSession().createCriteria(Tail.class).add(Restrictions.isNull("destruction_date")).list();
 	}
 
 	@Override
@@ -167,7 +168,7 @@ public class DaoImpl implements Dao {
 	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions) {
 		// TODO Auto-generated method stub
 		
-		Criteria criteria = getSession().createCriteria(Tail.class);
+		Criteria criteria = getSession().createCriteria(Tail.class).add(Restrictions.isNull("destruction_date"));
 		
 		if(criterions != null)
 			criterions.forEach(c -> criteria.add(c));
