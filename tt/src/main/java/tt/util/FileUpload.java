@@ -156,38 +156,50 @@ public class FileUpload {
 	
 	public void downloadPhoto (long code, String pathToShare) 
 	{
+		
+		
 		try {
-		File f = new File(pathToShare);
-		System.out.println("f.listFiles() - " +f.listFiles());
-		
-		Path path = Paths.get(new File(pathToShare).toURI());
-		byte[] data = Files.readAllBytes(path);
-		
-		File rootFolder = new File(env.getRequiredProperty(UPLOAD_FILE_PATH)+File.separator+code);
-		rootFolder.mkdirs();
-		
-		File largeFolder = new File(env.getRequiredProperty(UPLOAD_FILE_PATH)+File.separator+code+File.separator+"L");
-		largeFolder.mkdirs();
-		
-		File mediumFolder = new File(env.getRequiredProperty(UPLOAD_FILE_PATH)+File.separator+code+File.separator+"M");
-		mediumFolder.mkdirs();
-		
-		File smallFolder = new File(env.getRequiredProperty(UPLOAD_FILE_PATH)+File.separator+code+File.separator+"S");
-		smallFolder.mkdirs();
-		
-		File tempFile = new File(TEMP_FILE_PATH+File.separator+code+".tmp");
-		
-		path = Paths.get(tempFile.toURI());
-		Files.write(path, data);
-		
-		BufferedImage img = ImageIO.read(path.toFile());
-		ImageIO.write(scaleImage(img,389,582), "jpg", new File(mediumFolder+File.separator+code+".jpg"));
-		ImageIO.write(scaleImage(img,189,282), "jpg", new File(smallFolder+File.separator+code+".jpg"));
-		
-		
-		tempFile.delete();
-		
-		System.out.println("data - "+data.length);
+			
+			File[] files = new File(pathToShare).listFiles();  
+			
+			File rootFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code);
+			if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
+			
+			File largeFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
+			if(!largeFolder.exists() && !largeFolder.mkdirs()) throw new Exception("Can not create largeFolder! ");
+			
+			File mediumFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
+			if(!mediumFolder.exists() && !mediumFolder.mkdirs()) throw new Exception("Can not create mediumFolder! ");
+			
+			File smallFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
+			if(!smallFolder.exists() && !smallFolder.mkdirs()) throw new Exception("Can not create smallFolder! ");
+			
+
+			for(int i=0; i < files.length; ++i)
+			{
+					long time = System.currentTimeMillis();
+					
+					Path path = Paths.get(files[i].toURI());
+					byte[] data = Files.readAllBytes(path);
+					
+					File tempFile = new File(TEMP_FILE_PATH+File.separator+code+".tmp");
+					
+					path = Paths.get(tempFile.toURI());
+					Files.write(path, data);
+					
+					BufferedImage img = ImageIO.read(path.toFile());
+					ImageIO.write(img, "jpg", new File(largeFolder+File.separator+code+"_L_"+i+".jpg"));
+					ImageIO.write(scaleImage(img,389,582), "jpg", new File(mediumFolder+File.separator+code+"_M_"+i+".jpg"));
+					ImageIO.write(scaleImage(img,189,282), "jpg", new File(smallFolder+File.separator+code+"_S_"+i+".jpg"));
+					
+					tempFile.delete();
+					
+					System.out.println(files[i]+" time - " +(System.currentTimeMillis() - time)/1000+ " sec.");
+			}
+		}
+		catch(java.io.FileNotFoundException fnf)
+		{
+			fnf.getMessage();
 		}
 		catch(Exception e) {
 			e.printStackTrace();

@@ -24,7 +24,7 @@ public class Constants {
 	
     public static File tempDirectory = null;
     public static String IMAGES_SERVER = null;
-
+    public static File UPLOAD_FILE_PATH = null;
     
     public Constants() {
     	
@@ -37,8 +37,10 @@ public class Constants {
 		
 		IMAGES_SERVER = env.getRequiredProperty("IMAGES_SERVER");
 		tempDirectory = (File) context.getAttribute("javax.servlet.context.tempdir");
+		UPLOAD_FILE_PATH = new File(env.getRequiredProperty("UPLOAD_FILE_PATH"));
 		System.out.println("Constants tempDirectory " +tempDirectory);
 		System.out.println("IMAGES_SERVER - " +IMAGES_SERVER);
+		System.out.println("UPLOAD_FILE_PATH - " +UPLOAD_FILE_PATH);
 	}
 	
 	@PreDestroy
