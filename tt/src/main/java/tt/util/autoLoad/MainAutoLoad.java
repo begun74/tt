@@ -25,7 +25,7 @@ public class MainAutoLoad {
 		for(Handler handler: pool)
 			service.scheduleWithFixedDelay(handler, 1, 5, TimeUnit.SECONDS);
 		
-		photoFileService = Executors.newCachedThreadPool();
+		
 	}
 	
 	public static void stopAutoLoad()
@@ -36,6 +36,7 @@ public class MainAutoLoad {
 	
 	public static void startPhotoFileService(HashMap<Long,String> hmPhotoFile) 
 	{
+		photoFileService = Executors.newCachedThreadPool();
 		
 		for(Long code : hmPhotoFile.keySet())
 			photoFileService.execute(new FileHandler(code, hmPhotoFile.get(code)));

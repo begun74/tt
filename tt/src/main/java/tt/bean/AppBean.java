@@ -13,8 +13,10 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import tt.model.*;
@@ -29,6 +31,8 @@ public class AppBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 7749935089438907692L;
 	
+	@Resource
+    private Environment env;
 	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
@@ -39,7 +43,7 @@ public class AppBean implements Serializable {
 	
 	private double version = 1.1;
 	
-	
+	private  String IMAGES_SERVER = null;
 	
 	
 	public double getVersion() {
@@ -119,6 +123,13 @@ public class AppBean implements Serializable {
 	}
 
 
+	
+
+
+	public String getIMAGES_SERVER() {
+		IMAGES_SERVER = env.getRequiredProperty("IMAGES_SERVER");
+		return IMAGES_SERVER;
+	}
 
 
 	public static long getSerialversionuid() {

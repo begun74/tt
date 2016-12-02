@@ -12,12 +12,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import tt.model.DirGender;
@@ -36,6 +39,7 @@ import tt.util.autoLoad.MainAutoLoad;
 
 @Service
 public class ReadExcelFile {
+	
 	
 		
     private static Workbook getWorkbook(File tmpFile) throws IOException {
@@ -123,7 +127,7 @@ public class ReadExcelFile {
         			
         			String path = df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_pathToImage()-1));
         			if(path.length() >0)
-        				hmPollPaths.put(dirNomenclature.getCode(), path.substring(3)); //Добавляем файл в список на загрузку
+        				hmPollPaths.put(dirNomenclature.getCode(), Constants.IMAGES_SERVER +File.separator+path.substring(3).replace('\\', '/')); //Добавляем файл в список на загрузку
         			
 		        	lNomencls.add(dirNomenclature);
         		}
@@ -132,7 +136,7 @@ public class ReadExcelFile {
         	++row_;
         }
         
-        //MainAutoLoad.startPhotoFileService(hmPollPaths);
+        MainAutoLoad.startPhotoFileService(hmPollPaths);
         
 		return lNomencls;
 		
