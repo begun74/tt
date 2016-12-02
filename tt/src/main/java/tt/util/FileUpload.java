@@ -154,9 +154,9 @@ public class FileUpload {
 
     
 	
-	public void downloadPhoto (long code, String pathToShare) throws IOException
+	public void downloadPhoto (long code, String pathToShare) 
 	{
-		
+		try {
 		File f = new File(pathToShare);
 		System.out.println("f.listFiles() - " +f.listFiles());
 		
@@ -188,6 +188,10 @@ public class FileUpload {
 		tempFile.delete();
 		
 		System.out.println("data - "+data.length);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 	}
 

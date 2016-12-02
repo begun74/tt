@@ -148,13 +148,7 @@ public class AdminCtrl {
 		
 		ModelAndView model = new ModelAndView("redirect:/admin?act=2");
 
-		try {
-			fileUpload.downloadPhoto(System.currentTimeMillis(),"\\\\192.168.0.9\\интернет магазин\\ТОП\\Юбка\\А");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//ttService.addProvider(dirNomenclature);
+		//fileUpload.downloadPhoto(System.currentTimeMillis(),"\\\\192.168.0.9\\интернет магазин\\ТОП\\Юбка\\А");
 		
 	    return model;
 	}
