@@ -51,8 +51,6 @@ public class DirNomenclature implements  IModel {
 	@NotEmpty (message = "Please enter name.") 
 	private String name;
 
-	@NotEmpty (message = "Please enter size.") 
-	private String size;
 	
 	@NotEmpty (message = "Please enter name.") 
 	private String article;
@@ -102,15 +100,6 @@ public class DirNomenclature implements  IModel {
 
 	public void setArticle(String article) {
 		this.article = article;
-	}
-
-	
-	public String getSize() {
-		return size;
-	}
-
-	public void setSize(String size) {
-		this.size = size;
 	}
 
 
