@@ -1,7 +1,19 @@
 package tt.util;
 
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.Transparency;
+import java.awt.image.BufferedImage;
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
@@ -9,9 +21,12 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
+import javax.annotation.Resource;
+import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -48,9 +63,10 @@ public class FileUpload {
     //private static final Long MAX_FILE_SIZE = 1048576L; //1MB
     //private static final String UPLOAD_FILE_PATH = "D:/GIT_/wood/src/main/webapp/resources/pics/";
     private static final String UPLOAD_FILE_PATH = "UPLOAD_FILE_PATH";
-    private File TEMP_FILE_PATH = null;
+    private static File TEMP_FILE_PATH = null;
 
-    
+    @Resource
+    private Environment env;
     
     
     @PostConstruct
@@ -137,7 +153,101 @@ public class FileUpload {
 	}
 
     
+	
+	public void downloadPhoto (long code, String pathToShare) throws IOException
+	{
+		
+		File f = new File(pathToShare);
+		System.out.println("f.listFiles() - " +f.listFiles());
+		
+		Path path = Paths.get(new File(pathToShare).toURI());
+		byte[] data = Files.readAllBytes(path);
+		
+		File rootFolder = new File(env.getRequiredProperty(UPLOAD_FILE_PATH)+File.separator+code);
+		rootFolder.mkdirs();
+		
+		File largeFolder = new File(env.getRequiredProperty(UPLOAD_FILE_PATH)+File.separator+code+File.separator+"L");
+		largeFolder.mkdirs();
+		
+		File mediumFolder = new File(env.getRequiredProperty(UPLOAD_FILE_PATH)+File.separator+code+File.separator+"M");
+		mediumFolder.mkdirs();
+		
+		File smallFolder = new File(env.getRequiredProperty(UPLOAD_FILE_PATH)+File.separator+code+File.separator+"S");
+		smallFolder.mkdirs();
+		
+		File tempFile = new File(TEMP_FILE_PATH+File.separator+code+".tmp");
+		
+		path = Paths.get(tempFile.toURI());
+		Files.write(path, data);
+		
+		BufferedImage img = ImageIO.read(path.toFile());
+		ImageIO.write(scaleImage(img,389,582), "jpg", new File(mediumFolder+File.separator+code+".jpg"));
+		ImageIO.write(scaleImage(img,189,282), "jpg", new File(smallFolder+File.separator+code+".jpg"));
+		
+		
+		tempFile.delete();
+		
+		System.out.println("data - "+data.length);
+		
+	}
 
+	
+	public BufferedImage scaleImage(BufferedImage img, int targetWidth, int targetHeight) {
+
+	    int type = (img.getTransparency() == Transparency.OPAQUE) ? BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB;
+	    BufferedImage ret = img;
+	    BufferedImage scratchImage = null;
+	    Graphics2D g2 = null;
+
+	    int w = img.getWidth();
+	    int h = img.getHeight();
+
+	    int prevW = w;
+	    int prevH = h;
+
+	    do {
+	        if (w > targetWidth) {
+	            w /= 2;
+	            w = (w < targetWidth) ? targetWidth : w;
+	        }
+
+	        if (h > targetHeight) {
+	            h /= 2;
+	            h = (h < targetHeight) ? targetHeight : h;
+	        }
+
+	        if (scratchImage == null) {
+	            scratchImage = new BufferedImage(w, h, type);
+	            g2 = scratchImage.createGraphics();
+	        }
+
+	        g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION,
+	                RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+	        g2.drawImage(ret, 0, 0, w, h, 0, 0, prevW, prevH, null);
+
+	        prevW = w;
+	        prevH = h;
+	        ret = scratchImage;
+	    } while (w != targetWidth || h != targetHeight);
+
+	    if (g2 != null) {
+	        g2.dispose();
+	    }
+
+	    if (targetWidth != ret.getWidth() || targetHeight != ret.getHeight()) {
+	        scratchImage = new BufferedImage(targetWidth, targetHeight, type);
+	        g2 = scratchImage.createGraphics();
+	        g2.drawImage(ret, 0, 0, null);
+	        g2.dispose();
+	        ret = scratchImage;
+	    }
+
+	    return ret;
+
+	}
+	
+	
+	
 	private String isValidContentType(String[][] ALLOWED_FILE_TYPES,String contentType) {
     	//System.out.println("contentType - "+contentType);
     	List<String[]> lExt= Arrays.asList(ALLOWED_FILE_TYPES);

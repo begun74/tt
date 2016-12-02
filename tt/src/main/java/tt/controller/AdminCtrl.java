@@ -1,5 +1,6 @@
 package tt.controller;
 
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -147,7 +148,12 @@ public class AdminCtrl {
 		
 		ModelAndView model = new ModelAndView("redirect:/admin?act=2");
 
-		
+		try {
+			fileUpload.downloadPhoto(System.currentTimeMillis(),"\\\\192.168.0.9\\интернет магазин\\ТОП\\Юбка\\А");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//ttService.addProvider(dirNomenclature);
 		
 	    return model;

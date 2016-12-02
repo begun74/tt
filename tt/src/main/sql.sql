@@ -23,3 +23,11 @@ ALTER TABLE public.tails
 select * from dir_nomenclature dn
 inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
 where dn.code=10002066039
+
+update tails  set destruction_date = now()
+
+select distinct t.* from tails t
+inner join dir_provider dp on dp.id_dir_provider=t.fk_id_provider
+inner join dir_nomenclature dn on dn.id_dir_nomenclature=t.fk_id_nomenclature
+inner join dir_gender dg on dg.id_dir_gender=dn.fk_dir_gender and dg.id_dir_gender in (58,56)
+where t.destruction_date is  null;
