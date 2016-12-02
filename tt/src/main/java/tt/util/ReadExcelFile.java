@@ -32,6 +32,7 @@ import tt.modelattribute.MA_loadNomenclGroupRoot;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
 import tt.service.TTServiceImpl;
+import tt.util.autoLoad.MainAutoLoad;
 
 @Service
 public class ReadExcelFile {
@@ -103,6 +104,7 @@ public class ReadExcelFile {
         Iterator<Row> rowIterator = firstSheet.iterator();
         DataFormatter df = new DataFormatter();
 		
+        HashMap<Long,String> hmPollPaths = new HashMap<Long,String>(); //Список файлов на загрузку
 		
 		int row_ = 0;
         while(rowIterator.hasNext() )
@@ -119,6 +121,7 @@ public class ReadExcelFile {
         			dirNomenclature.setDirNomenclGroup(hmNomenclGroup.get(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_codeNomenclGroup()-1)) ) ) );
         			dirNomenclature.setDirGender(hmDGen.get(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_gender()-1)).toLowerCase() ) );
         			
+        			hmPollPaths.put(dirNomenclature.getCode(), df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_gender()-1))); //Добавляем файл в список на загрузку
         			
 		        	lNomencls.add(dirNomenclature);
         		}
@@ -126,6 +129,8 @@ public class ReadExcelFile {
         	
         	++row_;
         }
+        
+        MainAutoLoad.startPhotoFileService(hmPollPaths);
         
 		return lNomencls;
 		

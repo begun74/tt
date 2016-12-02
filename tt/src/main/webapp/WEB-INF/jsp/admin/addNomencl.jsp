@@ -232,6 +232,14 @@
 									                   			<input name="col_gender" id="col_gender" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_gender}"> 
 													         </div>
 													</div>
+										  			<div class="clearfix">
+													         <div class="lab">
+									                   			<label>Путь к картинкам</label>
+													         </div>
+													         <div style="width: 25px" class="conleft">
+									                   			<input name="col_pathToImage" id="col_pathToImage" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_pathToImage}"> 
+													         </div>
+													</div>
 													<div class="clearfix">									        
 															        <div class="lab">
 															        	<label>Начальная строка</label>

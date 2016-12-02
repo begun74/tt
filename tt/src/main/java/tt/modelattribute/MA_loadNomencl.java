@@ -20,6 +20,7 @@ public class MA_loadNomencl  implements IMAmodel {
 	private int col_article=3;
 	private int col_codeNomenclGroup=4;
 	private int col_gender=5;
+	private int col_pathToImage=6;
 	
 	private transient  boolean save;
 	private boolean autoload;
@@ -80,7 +81,14 @@ public class MA_loadNomencl  implements IMAmodel {
 	}
 	
 
-	
+	public int getCol_pathToImage() {
+		return col_pathToImage;
+	}
+
+	public void setCol_pathToImage(int col_pathToImage) {
+		this.col_pathToImage = col_pathToImage;
+	}
+
 
 	public boolean isSave() {
 		return save;
