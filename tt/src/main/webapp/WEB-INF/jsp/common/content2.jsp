@@ -23,7 +23,7 @@
 														<div class="single-products">
 																<div class="productinfo text-center">
 																	<!-- a href="product-details?id=${tail.key.id}"><img class="pic1" src="resources/images/product-details/ps_1.jpg" alt="" /></a -->
-																	<a href="product-details?id=${tail.key.id}"><img class="pic1" src="resources/images/products/${tail.key.code}/S/${tail.key.code}_S_0.jpg" alt="" /></a>
+																	<a href="product-details?id=${tail.key.id}"><img class="pic1" src="resources/images/products/${tail.key.code}/M/${tail.key.code}_M_0.jpg" onError="this.style.display='none' //this.onerror=null;this.src='resources/images/products/nopicture.jpg';"" /></a>
 																	<h5>${tail.key.name}</h5>
 																	<p>${tail.value.name}</p>
 																	<p><spring:message code="article"/>  ${tail.key.article}</p>
