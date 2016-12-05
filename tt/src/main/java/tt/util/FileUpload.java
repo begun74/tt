@@ -12,6 +12,7 @@ import java.io.FileNotFoundException;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.URI;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.OpenOption;
 import java.nio.file.Path;
@@ -166,8 +167,23 @@ public class FileUpload {
 		
 		try {
 			
+			System.out.println();
 			
-			File[] files = new File(pathToShare).listFiles(IMAGE_FILTER); 
+			System.out.println("Default Charset=" + Charset.defaultCharset());
+			System.out.println("pathToShare - "+ pathToShare);
+			System.out.println("pathToShare UTF-8 - "+new String( pathToShare.getBytes() ,"UTF-8"));
+			System.out.println("pathToShare UTF-8 ISO-8859-1 - "+new String( pathToShare.getBytes("UTF-8") ,"ISO-8859-1"));
+			System.out.println("pathToShare ISO-8859-1 UTF-8 - "+new String( pathToShare.getBytes("ISO-8859-1") ,"UTF-8"));
+			System.out.println("pathToShare UTF-8 Cp1251- "+new String( pathToShare.getBytes("UTF-8") ,"Cp1251"));
+			System.out.println("pathToShare Cp1251 UTF-8 - "+new String( pathToShare.getBytes("Cp1251") ,"UTF-8"));
+			System.out.println("pathToShare ISO-8859-1 Cp1251 - "+new String( pathToShare.getBytes("ISO-8859-1") ,"Cp1251"));
+			System.out.println("pathToShare Cp1251 ISO-8859-1- "+new String( pathToShare.getBytes("Cp1251") ,"ISO-8859-1"));
+
+			System.out.println("pathToShare UTF-8 Cp1251- "+new String( pathToShare.getBytes("UTF-8") ,"Cp1252"));
+			System.out.println("pathToShare Cp1251 UTF-8 - "+new String( pathToShare.getBytes("Cp1252") ,"UTF-8"));
+			
+			
+			File[] files = new File( new String( pathToShare.getBytes("ISO-8859-1") ,"UTF-8")).listFiles(IMAGE_FILTER); 
 			
 			File rootFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code);
 			if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
