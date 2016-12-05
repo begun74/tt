@@ -1,5 +1,6 @@
 package tt.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -25,6 +26,7 @@ import tt.model.Tail;
 import tt.model.User;
 import tt.modelattribute.MA_search;
 import tt.service.TTServiceImpl;
+import tt.util.*;
 
 
 
@@ -60,6 +62,7 @@ public class IndexCtrl {
 		model.addObject("categories", ttService.getNomenclGroupList());
 		model.addObject("genders", ttService.getGenderList());
 		
+		model.addObject("UPLOAD_FILE_PATH", Constants.UPLOAD_FILE_PATH);
 		return model;
 	}
 	

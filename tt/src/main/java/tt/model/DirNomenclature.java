@@ -52,7 +52,7 @@ public class DirNomenclature implements  IModel {
 	private String name;
 
 	
-	@NotEmpty (message = "Please enter name.") 
+	@NotEmpty (message = "Please enter article.") 
 	private String article;
 	
 	

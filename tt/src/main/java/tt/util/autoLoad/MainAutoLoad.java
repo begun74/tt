@@ -49,18 +49,18 @@ public class MainAutoLoad {
 			photoFileService.awaitTermination(10, TimeUnit.SECONDS);
 			System.out.println("=========== stopped ! =========");
 		} catch (InterruptedException e) {
-			photoFileService.shutdown();
+			photoFileService.shutdownNow();
 			System.out.println("=========== stopped ! =========");
 		}
 	}
 	
 	@PostConstruct
 	void init() {
-		System.out.println("MainAutoLoad @PostConstruct - " +service);
+		//System.out.println("MainAutoLoad @PostConstruct - " +service);
 	}
 	
 	@PreDestroy
 	void destr() {
-		System.out.println("MainAutoLoad @PreDestroy - "+service);
+		//System.out.println("MainAutoLoad @PreDestroy - "+service);
 	} 	
 }

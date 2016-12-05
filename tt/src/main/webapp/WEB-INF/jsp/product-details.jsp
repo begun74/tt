@@ -45,7 +45,7 @@
 						<div class="col-sm-5">
 						<br/>
 							<div>
-								<img  id="img_01" src="resources/images/product-details/ps_1.jpg" data-zoom-image="resources/images/product-details/p1.jpg" alt="" />
+								<img  id="img_01" src="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg" alt="" />
 							</div>
 
 							
@@ -56,16 +56,16 @@
 								<div id="gal1">
 									<div class="carousel-inner">							
 										<div class="item active">
-											<a href="#" data-image="resources/images/product-details/ps_1.jpg" data-zoom-image="resources/images/product-details/p1.jpg">
-										   		<img id="img_01" width="30%" height="30%" src="resources/images/product-details/ps_1.jpg"/>
+											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg">
+										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_0.jpg"/>
 											</a>
-											<a href="#" data-image="resources/images/product-details/ps_2.jpg" data-zoom-image="resources/images/product-details/p2.jpg">
-										   		<img id="img_01" width="30%" height="30%" src="resources/images/product-details/p2.jpg"/>
+											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_1.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_1.jpg">
+										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_1.jpg"/>
 											</a>
 										</div>
 										<div class="item">
-											<a href="#" data-image="resources/images/product-details/ps_3.jpg" data-zoom-image="resources/images/product-details/p3.jpg">
-										   		<img id="img_01" width="30%" height="30%" src="resources/images/product-details/p3.jpg"/>
+											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_2.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_2.jpg">
+										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_2.jpg"/>
 											</a>
 										</div>
 										

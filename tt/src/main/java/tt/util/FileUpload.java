@@ -208,6 +208,12 @@ public class FileUpload {
 		{
 			fnf.getMessage();
 		}
+		catch(NullPointerException e) {
+			System.out.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+			 System.out.println("Catalog not found - "+pathToShare);
+			 e.printStackTrace(System.out);
+			System.out.println("========= ERROR: FileUpload.downloadPhoto ======= \n\n");
+		}
 		catch(Exception e) {
 			System.out.println("\n========= ERROR: FileUpload.downloadPhoto =======");
 			 System.out.println("pathToShare - "+pathToShare);
