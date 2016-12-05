@@ -6,8 +6,10 @@ import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Files;
@@ -24,6 +26,7 @@ import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -65,6 +68,8 @@ public class FileUpload {
     private static final String UPLOAD_FILE_PATH = "UPLOAD_FILE_PATH";
     private static File TEMP_FILE_PATH = null;
 
+    
+    
     @Resource
     private Environment env;
     
@@ -157,10 +162,12 @@ public class FileUpload {
 	public void downloadPhoto (long code, String pathToShare) 
 	{
 		
+		final ExtensionsFilter IMAGE_FILTER =  new FileUpload.ExtensionsFilter(new String[] {".jpg"});
 		
 		try {
 			
-			File[] files = new File(pathToShare).listFiles();  
+			
+			File[] files = new File(pathToShare).listFiles(IMAGE_FILTER); 
 			
 			File rootFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code);
 			if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
@@ -194,7 +201,7 @@ public class FileUpload {
 					
 					tempFile.delete();
 					
-					System.out.println(files[i]+" time - " +(System.currentTimeMillis() - time)/1000+ " sec.");
+					System.out.println("Code - "+code +" :  "+files[i]+" time - " +(System.currentTimeMillis() - time)/1000+ " sec.");
 			}
 		}
 		catch(java.io.FileNotFoundException fnf)
@@ -202,7 +209,10 @@ public class FileUpload {
 			fnf.getMessage();
 		}
 		catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+			 System.out.println("pathToShare - "+pathToShare);
+			 e.printStackTrace(System.out);
+			System.out.println("========= ERROR: FileUpload.downloadPhoto ======= \n\n");
 		}
 		
 	}
@@ -275,5 +285,47 @@ public class FileUpload {
         return null;
     }
 
+	
+	private class ExtensionsFilter implements FileFilter 
+	{
+	    private char[][] extensions;
+
+	    private ExtensionsFilter(String[] extensions)
+	    {
+	        int length = extensions.length;
+	        this.extensions = new char[length][];
+	        for (String s : extensions)
+	        {
+	            this.extensions[--length] = s.toCharArray();
+	        }
+	    }
+
+	    @Override
+	    public boolean accept(File file)
+	    {
+	        char[] path = file.getPath().toCharArray();
+	        for (char[] extension : extensions)
+	        {
+	            if (extension.length > path.length)
+	            {
+	                continue;
+	            }
+	            int pStart = path.length - 1;
+	            int eStart = extension.length - 1;
+	            boolean success = true;
+	            for (int i = 0; i <= eStart; i++)
+	            {
+	                if ((path[pStart - i] | 0x20) != (extension[eStart - i] | 0x20))
+	                {
+	                    success = false;
+	                    break;
+	                }
+	            }
+	            if (success)
+	                return true;
+	        }
+	        return false;
+	    }
+	}
 	
 }

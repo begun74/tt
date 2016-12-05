@@ -24,6 +24,7 @@ public class FileHandler implements Runnable {
 		}
 		catch(Exception e)
 		{
+			System.out.println("FileHandler - "+e.getMessage());
 			e.printStackTrace();
 		}
 	}
