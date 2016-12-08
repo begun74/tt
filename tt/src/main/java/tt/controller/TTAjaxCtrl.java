@@ -1,6 +1,9 @@
 package tt.controller;
 
 import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import tt.bean.AdminSessionBean;
 import tt.model.DirNomenclature;
+import tt.model.Tail;
 import tt.service.TTServiceImpl;
 
 
@@ -42,14 +46,20 @@ public class TTAjaxCtrl {
 	
 	
 	
-	@ResponseBody
+	
 	@RequestMapping(value = "/productDetail{id}", method = RequestMethod.GET)
-	public ResponseEntity<DirNomenclature>  productDetail(@RequestParam ("id") long id) 
+	public @ResponseBody Set<Tail> productDetail(@RequestParam ("id") long id) 
 	{
 		
 		DirNomenclature dirNomenclature = (DirNomenclature)ttService.getObject(DirNomenclature.class, id);
 		
-		return  new ResponseEntity<DirNomenclature>(dirNomenclature, HttpStatus.OK);
+		Set<Tail> tails = dirNomenclature.getTails();
+		
+		for(Tail tail: tails)
+			tail.setDirNomenclature(null); //!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
+		
+		
+		return  tails;
 	}
 	
 

@@ -118,9 +118,12 @@
 								<!-- p><b>Condition:</b> New</p -->
 								<p><b><spring:message code="brand.name"/>:  </b>${provider.name} </p>
 								<p><b><spring:message code="size"/>:  </b></p>
-								<c:forEach items="${sizes}" var="size" varStatus="loop">
-									<li>${size[0]} - ${size[1]} <spring:message code="items"/></li>
-								</c:forEach>
+								
+								<div class="size_info">
+								
+								</div>
+								
+								
 								<!-- a href=""><img src="resources/images/product-details/share.png" class="share img-responsive"  alt="" /></a -->
 								
 								
@@ -510,17 +513,18 @@
 			  $(".cart_quantity_up").attr("maxval",$( ".sizes" ).val())
 		});
 		
-		//alarm();
-		
-		productDetail(${nomenclature.id})
+		prodDet();
 
     });
     
-    function alarm() {
-    	alert('alarm');
-    	//setInterval(alarm,3000);
+    function prodDet() {
+    	productDetail(${nomenclature.id});
+    	
+    	
+    	setInterval(prodDet,15000);
     }
-	</script>
+
+    </script>
     
 </body>
 </html>

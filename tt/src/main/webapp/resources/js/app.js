@@ -20,14 +20,23 @@ function productDetail(id) {
 		url : "productDetail?id="+id,
 		timeout : 100000,
 		data : JSON.stringify(data),
-		dataType : 'json',
-		success : function() 
+		contentType: 'application/json; charset=utf-8',
+		success : function(data) 
 		{
-			alert(data);
+			$(".size_info").empty();
+			
+			for(var i=0;i< data.length; ++i)
+	    	{
+				$(".size_info").append("<li>"+data[i].size+" - "+data[i].amountTail+"</li>");
+	    		
+	    	}
+			
 		},
 		error : function(e) {
 			//alert("ERROR: addToCompare()", e);
 			display(e);
 		}
 	});
+	
+	//setInterval(productDetail,5000);
 }
