@@ -24,7 +24,7 @@ select * from dir_nomenclature dn
 inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
 where dn.code=10002066039
 
-update tails  set destruction_date = now()
+update tails  set destruction_date = null
 
 select distinct t.* from tails t
 inner join dir_provider dp on dp.id_dir_provider=t.fk_id_provider

@@ -114,15 +114,6 @@
 								<p><b><spring:message code="article"/>:  </b>${nomenclature.article} </p>
 								<p>Web ID: ${nomenclature.code}</p>
 								<img src="resources/images/product-details/rating.png" alt="" />
-								<span>
-									<span>BYN ${price}</span>
-									<label><spring:message code="quantity"/>:</label>
-									<input type="text" value="1" />
-									<button type="button" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
-										<spring:message code="add.to.cart"/>
-									</button>
-								</span>
 								<!-- p><b>Availability:</b> In Stock</p -->
 								<!-- p><b>Condition:</b> New</p -->
 								<p><b><spring:message code="brand.name"/>:  </b>${provider.name} </p>
@@ -130,10 +121,34 @@
 								<c:forEach items="${sizes}" var="size" varStatus="loop">
 									<li>${size[0]} - ${size[1]} <spring:message code="items"/></li>
 								</c:forEach>
-								<a href=""><img src="resources/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+								<!-- a href=""><img src="resources/images/product-details/share.png" class="share img-responsive"  alt="" /></a -->
+								
+								
+									<span><span>BYN ${price}</span></span>
+									<select name="sizes" class="sizes">
+										<c:forEach items="${sizes}" var="size" varStatus="loop">
+											<option value="${size[1]}">${size[0]}</option>
+										</c:forEach>
+									</select>
+
+									
+									<label><spring:message code="quantity"/>:
+										<div class="cart_quantity_button">
+											<a class="cart_quantity_up" maxval="1" href="#"> + </a>
+											<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+											<a class="cart_quantity_down" href="#"> - </a>
+										</div>
+									</label>
+
+									<div class="text-center">
+										<button type="button" class="btn btn-fefault cart">
+											<i class="fa fa-shopping-cart"></i>
+											<spring:message code="to.order"/>
+										</button>
+									</div><!--/product-details-->
+
 							</div><!--/product-information-->
 						</div>
-					</div><!--/product-details-->
 					
 					<div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12">
@@ -435,6 +450,7 @@
     <script src="resources/js/jquery.prettyPhoto.js"></script>
     <script src="resources/js/jquery.elevatezoom.js"></script>
     <script src="resources/js/main.js"></script>
+    <script src="resources/js/app.js"></script>
     
     <script>
     $('#img_01').elevateZoom({
@@ -472,6 +488,38 @@
     	  	$.fancybox(ez.getGalleryList());
     	  return false;
     	});
+    
+    $(document).ready(function(){
+		
+		$(".cart_quantity_up").click(function () {
+			var val = $(".cart_quantity_input").val();
+
+			if(val < $(".cart_quantity_up").attr("maxval"))
+				$(".cart_quantity_input").val(++val);		
+		});
+
+		$(".cart_quantity_down").click(function () {
+			var val = $(".cart_quantity_input").val();
+
+			if(val > 1)
+				$(".cart_quantity_input").val(--val);
+		});
+		
+		$( ".sizes" ).change(function() {
+			  $(".cart_quantity_input").val(1);
+			  $(".cart_quantity_up").attr("maxval",$( ".sizes" ).val())
+		});
+		
+		//alarm();
+		
+		productDetail(${nomenclature.id})
+
+    });
+    
+    function alarm() {
+    	alert('alarm');
+    	//setInterval(alarm,3000);
+    }
 	</script>
     
 </body>
