@@ -237,6 +237,13 @@ public class TTServiceImpl implements Dao {
 		
 		return hmDN;
 	}
+
+
+	@Override
+	public List<Tail> getTailsList(long id_dirNomenclature) {
+		// TODO Auto-generated method stub
+		return dao.getTailsList(id_dirNomenclature);
+	}
 	
 
 }

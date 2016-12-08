@@ -44,6 +44,7 @@ public interface Dao {
 	public void addTail(Tail tail);
 	public List<Tail> getTailsList();
 	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions );
+	public List<Tail> getTailsList(long id_dirNomenclature);
 
 	public List<Store> getStoreList();
 	public void addStore(Store store);

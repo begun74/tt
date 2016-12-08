@@ -4,6 +4,7 @@ import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.servlet.http.HttpSession;
 
@@ -48,15 +49,13 @@ public class TTAjaxCtrl {
 	
 	
 	@RequestMapping(value = "/productDetail{id}", method = RequestMethod.GET)
-	public @ResponseBody Set<Tail> productDetail(@RequestParam ("id") long id) 
+	public @ResponseBody List<Tail> productDetail(@RequestParam ("id") long id) 
 	{
 		
-		DirNomenclature dirNomenclature = (DirNomenclature)ttService.getObject(DirNomenclature.class, id);
+		List<Tail> tails = ttService.getTailsList(id);
 		
-		Set<Tail> tails = dirNomenclature.getTails();
-		
-		for(Tail tail: tails)
-			tail.setDirNomenclature(null); //!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
+		for(Tail tail: tails)				//!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
+			tail.setDirNomenclature(null);  //   вываливается в Exception
 		
 		
 		return  tails;

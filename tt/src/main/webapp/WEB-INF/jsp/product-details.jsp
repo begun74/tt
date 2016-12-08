@@ -129,8 +129,8 @@
 								
 									<span><span>BYN ${price}</span></span>
 									<select name="sizes" class="sizes">
-										<c:forEach items="${sizes}" var="size" varStatus="loop">
-											<option value="${size[1]}">${size[0]}</option>
+										<c:forEach items="${tails}" var="tail" varStatus="loop">
+											<option value="${tail.amountTail}">${tail.size} </option>
 										</c:forEach>
 									</select>
 
@@ -465,7 +465,7 @@
       		galleryActiveClass: 'active', 
       		imageCrossfade: true,
       		zoomWindowWidth:500,
-            zoomWindowHeight:500,
+            zoomWindowHeight:700,
             zoomWindowFadeIn: 500,
 			zoomWindowFadeOut: 750
       		
@@ -494,7 +494,16 @@
     
     $(document).ready(function(){
 		
-		$(".cart_quantity_up").click(function () {
+
+		PD.id = ${nomenclature.id};
+    	PD.productDetail();
+    	var tArr = PD.getTailsArr();
+    	
+    	alert(tArr);
+    	
+    	//$(".cart_quantity_up").attr("maxval",tArr[0].amountTail);
+
+    	$(".cart_quantity_up").click(function () {
 			var val = $(".cart_quantity_input").val();
 
 			if(val < $(".cart_quantity_up").attr("maxval"))
@@ -510,18 +519,17 @@
 		
 		$( ".sizes" ).change(function() {
 			  $(".cart_quantity_input").val(1);
-			  $(".cart_quantity_up").attr("maxval",$( ".sizes" ).val())
+			  $(".cart_quantity_up").attr("maxval",$( ".sizes" ).val());
 		});
 		
-		prodDet();
-
+    	
+    	setInterval(PD.productDetail,15000);
     });
     
     function prodDet() {
-    	productDetail(${nomenclature.id});
     	
     	
-    	setInterval(prodDet,15000);
+    	
     }
 
     </script>

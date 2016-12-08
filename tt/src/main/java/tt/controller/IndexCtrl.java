@@ -141,29 +141,14 @@ public class IndexCtrl {
 		ModelAndView model = new ModelAndView("product-details");
 
 		//=============== товар ====== поставщик === цена ====== размер ===
-		Object[] obj = {new Object(),new Object(),new Object(),new Object()};
+		//Object[] obj = {new Object(),new Object(),new Object(),new Object()};
 		
 		if(id != null)
 		{
 			DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id); 
-			obj[0] = dn;
-			
-			obj[1] = dn.getTails().iterator().next().getDirProvider().getName();
-			obj[2] = dn.getTails().iterator().next().getFirstPrice();
-			
-			List<String[]> size = new ArrayList<String[]>();
-			Iterator<Tail> iter = dn.getTails().iterator();
-			while(iter.hasNext())
-			{
-				Tail t = iter.next();
-				size.add(new String[]{t.getSize(),t.getAmountTail()+""});
-				
-			}
-						
-			obj[3] = size;
 			
 			model.addObject("nomenclature", dn);
-			model.addObject("sizes", size);
+			model.addObject("tails", ttService.getTailsList(dn.getId()));
 			model.addObject("provider", dn.getTails().iterator().next().getDirProvider());
 			model.addObject("price", dn.getTails().iterator().next().getFirstPrice());
 		}

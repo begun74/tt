@@ -165,7 +165,7 @@ public class Tail implements  IModel {
 	@Override
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
-		return 0;
+		return ((Tail)o).getId().compareTo(this.id);
 	}
 	
 	
