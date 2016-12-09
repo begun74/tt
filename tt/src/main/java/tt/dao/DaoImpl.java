@@ -200,6 +200,12 @@ public class DaoImpl implements Dao {
 		return getSession().createQuery("from Tail where fk_id_nomenclature = :id_dirNomenclature and destruction_date is null order by amountTail").setParameter("id_dirNomenclature", id_dirNomenclature).list();
 	}
 
+	@Override
+	public void addOrder(tt.model.Order order) {
+		// TODO Auto-generated method stub
+		getSession().saveOrUpdate(order);
+	}
+
 	
 
 }
