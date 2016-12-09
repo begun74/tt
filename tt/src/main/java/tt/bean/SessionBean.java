@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 
 import tt.model.Order;
 
-@Service
+@Service("sessBean")
 @Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
+
+
 public class SessionBean {
 	
 	
@@ -23,10 +25,5 @@ public class SessionBean {
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
-
-	
-	
-	
-	
 
 }

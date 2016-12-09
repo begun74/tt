@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import tt.bean.AppBean;
+import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
 import tt.model.Tail;
 import tt.model.User;
@@ -37,6 +38,9 @@ public class IndexCtrl {
 	
 	@Autowired
 	private AppBean appBean;
+	
+	@Autowired
+	SessionBean sessBean;
 	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
@@ -139,9 +143,9 @@ public class IndexCtrl {
 	public ModelAndView  product_details(HttpSession session, @RequestParam(value = "id",   required=false) Long id) 
 	{
 		ModelAndView model = new ModelAndView("product-details");
-
-		//=============== товар ====== поставщик === цена ====== размер ===
-		//Object[] obj = {new Object(),new Object(),new Object(),new Object()};
+		
+		System.out.println(sessBean.getOrders());
+		model.addObject("sessBean", sessBean);
 		
 		if(id != null)
 		{

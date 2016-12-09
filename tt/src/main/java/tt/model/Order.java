@@ -122,5 +122,12 @@ public class Order implements IModel {
 		return ((Order)o).getId().compareTo(getId());
 	}
 
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", size=" + size + ", amount=" + amount + ", create_date=" + create_date
+				+ ", destruction_date=" + destruction_date + ", dirNomenclature=" + dirNomenclature + "]";
+	}
 
+
+	
 }
