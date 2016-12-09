@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
@@ -65,7 +66,7 @@
 								<li><a href="admin"><i class="fa fa-user"></i>Account</a></li>
 								<!-- li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li -->
 								<!-- li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li -->
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i><spring:message code="cart"/></a></li>
+								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i><spring:message code="cart"/>(${fn:length(sessBean.orders)})</a></li>
 								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
 							</ul>
 						</div>

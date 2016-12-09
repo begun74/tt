@@ -14,18 +14,19 @@ import tt.model.Order;
 public class SessionBean {
 	
 	
-	private List<Order> listOrders = new ArrayList<Order>();
+	private List<Order> orders = new ArrayList<Order>();
 
-	
-	
-	
-	public List<Order> getListOrders() {
-		return listOrders;
+	public List<Order> getOrders() {
+		return orders;
 	}
 
-	public void setListOrders(List<Order> listOrders) {
-		this.listOrders = listOrders;
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
+
+	
+	
+	
 	
 
 }

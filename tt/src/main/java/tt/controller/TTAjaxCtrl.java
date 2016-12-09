@@ -83,7 +83,7 @@ public class TTAjaxCtrl {
 		order.setCreate_date(new Timestamp(new Date().getTime()));
 		order.setDirNomenclature((DirNomenclature)ttService.getObject(DirNomenclature.class, id));
 		
-		sessBean.getListOrders().add(order);
+		sessBean.getOrders().add(order);
 		
 		
 		System.out.println("toOrder  - "+id+"  "+size+"   "+amount);
