@@ -497,9 +497,9 @@
 
 		PD.id = ${nomenclature.id};
     	PD.productDetail();
-    	var tArr = PD.getTailsArr();
+    	var tArr = PD.tailsArr;
     	
-    	alert(tArr);
+    	alert(PD.tailsArr);
     	
     	//$(".cart_quantity_up").attr("maxval",tArr[0].amountTail);
 
