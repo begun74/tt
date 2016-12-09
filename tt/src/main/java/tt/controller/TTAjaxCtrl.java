@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import tt.bean.AdminSessionBean;
+import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
 import tt.model.Order;
 import tt.model.Tail;
@@ -31,6 +32,10 @@ public class TTAjaxCtrl {
 	
 	@Autowired
 	AdminSessionBean adminSessBean;
+	
+	
+	@Autowired
+	SessionBean sessBean;
 	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
@@ -78,7 +83,7 @@ public class TTAjaxCtrl {
 		order.setCreate_date(new Timestamp(new Date().getTime()));
 		order.setDirNomenclature((DirNomenclature)ttService.getObject(DirNomenclature.class, id));
 		
-		
+		sessBean.getListOrders().add(order);
 		
 		
 		System.out.println("toOrder  - "+id+"  "+size+"   "+amount);
