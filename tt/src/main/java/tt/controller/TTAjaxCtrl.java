@@ -1,5 +1,7 @@
 package tt.controller;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.List;
@@ -19,6 +21,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import tt.bean.AdminSessionBean;
 import tt.model.DirNomenclature;
+import tt.model.Order;
 import tt.model.Tail;
 import tt.service.TTServiceImpl;
 
@@ -35,9 +38,9 @@ public class TTAjaxCtrl {
 
 	@ResponseBody
 	@RequestMapping(value = "/clearErrors", method = RequestMethod.GET)
-	public HttpStatus  clearErrors() 
+	public HttpStatus  clearErrors(HttpSession session) 
 	{
-		
+		if(session.isNew()) return HttpStatus.FORBIDDEN;
 		//System.out.println("clearErrors " +sessBean.getErrorList());
 		adminSessBean.clearError();
 		//System.out.println("clearErrors " +sessBean.getErrorList());
@@ -49,8 +52,9 @@ public class TTAjaxCtrl {
 	
 	
 	@RequestMapping(value = "/productDetail{id}", method = RequestMethod.GET)
-	public @ResponseBody List<Tail> productDetail(@RequestParam ("id") long id) 
+	public @ResponseBody List<Tail> productDetail( @RequestParam ("id") long id) 
 	{
+		
 		
 		List<Tail> tails = ttService.getTailsList(id);
 		
@@ -61,5 +65,25 @@ public class TTAjaxCtrl {
 		return  tails;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/toOrder{id}", method = RequestMethod.GET)
+	public HttpStatus toOrder(HttpSession session, @RequestParam ("id") long id, @RequestParam ("size") String size, @RequestParam ("amount") int amount) 
+	{
+		//System.out.println("session.isNew() - " +session.isNew());
+		if(session.isNew()) return HttpStatus.FORBIDDEN;
+		
+		Order order = new Order();
+		order.setAmount(amount);
+		order.setSize(size);
+		order.setCreate_date(new Timestamp(new Date().getTime()));
+		order.setDirNomenclature((DirNomenclature)ttService.getObject(DirNomenclature.class, id));
+		
+		
+		
+		
+		System.out.println("toOrder  - "+id+"  "+size+"   "+amount);
+		
+		return  HttpStatus.OK;
+	}
 
 }

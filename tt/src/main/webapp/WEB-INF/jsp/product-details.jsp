@@ -138,13 +138,13 @@
 									<label><spring:message code="quantity"/>:
 										<div class="cart_quantity_button">
 											<a class="cart_quantity_up" maxval="1" href="#"> + </a>
-											<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
+											<input class="cart_quantity_input" type="text" name="quantity" value="1"  autocomplete="off" size="2">
 											<a class="cart_quantity_down" href="#"> - </a>
 										</div>
 									</label>
 
 									<div class="text-center">
-										<button type="button" class="btn btn-fefault cart">
+										<button type="button" class="btn btn-fefault cart" href="#">
 											<i class="fa fa-shopping-cart"></i>
 											<spring:message code="to.order"/>
 										</button>
@@ -490,23 +490,18 @@
     	  	var ez =   $('#img_01').data('elevateZoom');
     	  	$.fancybox(ez.getGalleryList());
     	  return false;
-    	});
+    });
     
     $(document).ready(function(){
 		
 
-		PD.id = ${nomenclature.id};
-    	PD.productDetail();
-    	var tArr = PD.tailsArr;
+		Product.id = ${nomenclature.id};
+    	Product.getDetail();
     	
-    	alert(PD.tailsArr);
-    	
-    	//$(".cart_quantity_up").attr("maxval",tArr[0].amountTail);
 
     	$(".cart_quantity_up").click(function () {
 			var val = $(".cart_quantity_input").val();
-
-			if(val < $(".cart_quantity_up").attr("maxval"))
+			//if(val < $(".cart_quantity_up").attr("maxval"))
 				$(".cart_quantity_input").val(++val);		
 		});
 
@@ -518,19 +513,22 @@
 		});
 		
 		$( ".sizes" ).change(function() {
-			  $(".cart_quantity_input").val(1);
-			  $(".cart_quantity_up").attr("maxval",$( ".sizes" ).val());
+			  //$(".cart_quantity_input").val(1);
+			  //$(".cart_quantity_up").attr("maxval",$( ".sizes" ).val());
 		});
 		
-    	
-    	setInterval(PD.productDetail,15000);
+    	$(".cart_quantity_input").keypress(function(event) {
+    		return isNumberKey(event);
+    	});
+
+    	$(".cart").click(function() {
+    		//alert(${nomenclature.id});
+    		Product.toOrder($( ".sizes option:selected" ).text(),$( ".cart_quantity_input" ).val());
+    	});
+
+    	setInterval(Product.getDetail,15000);
     });
     
-    function prodDet() {
-    	
-    	
-    	
-    }
 
     </script>
     
