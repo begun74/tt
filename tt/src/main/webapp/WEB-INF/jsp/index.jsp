@@ -19,6 +19,7 @@
     <link href="resources/css/animate.css" rel="stylesheet">
 	<link href="resources/css/main.css" rel="stylesheet">
 	<link href="resources/css/responsive.css" rel="stylesheet">
+	<link href="resources/css/simplePagination.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -110,7 +111,7 @@
 				</div>
 				<div class="col-sm-9 padding-right">
 					<!-- content -->
-					<%@include file="common/content2.jsp" %>
+					<%@include file="common/content3.jsp" %>
 					<!-- content -->
 				</div>
 				
@@ -131,6 +132,7 @@
 	<script src="resources/js/price-range.js"></script>
     <script src="resources/js/jquery.prettyPhoto.js"></script>
     <script src="resources/js/main.js"></script>
+    <script src="resources/js/jquery.simplePagination.js"></script>
     
     <script>
 	    $(function() {
@@ -152,7 +154,32 @@
 	            $('#thickness').val('${mIndex.thickness}');
 	            $('#weight').val('${mIndex.weight}');
 	            $('#length').val('${mIndex.length}');
+				
+				
+				$('selector').pagination({
+			        items: 20,
+			        itemOnPage: 8,
+			        currentPage: 1,
+			        cssStyle: '',
+			        prevText: '<span aria-hidden="true">&laquo;</span>',
+			        nextText: '<span aria-hidden="true">&raquo;</span>',
+			        onInit: function () {
+			            // fire first page loading
+			        },
+			        onPageClick: function (page, evt) {
+			            // some code
+			        }
+			    });
+				
 				*/
+	    });
+	    
+	    $(function() {
+	        $('#light-pagination').pagination({
+	            items: ${allItems},
+	            itemsOnPage: ${perPage},
+	            cssStyle: 'light-theme'
+	        });
 	    });
     </script>
 </body>

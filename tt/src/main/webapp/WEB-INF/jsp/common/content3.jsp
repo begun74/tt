@@ -52,19 +52,6 @@
 						</div>
 
 						<div class="col col-md-12">
-							<div class="pagination col-md-4">
-							
-								<c:set var="startPage" value="0"/>
-								<c:set var="stopPage" value="${allItems/perPage}"/>
-							
-								<li><<</li>
-								<ul class="pagination">
-									<c:forEach begin="${startPage}" end="${startPage +4}" var="pN">
-										<li <c:if test="${param.p == pN+1}" >class="active"</c:if>><a href="index?p=${pN+1}">${pN+1}</a></li>
-									</c:forEach>
-								</ul>
-								<li>>></li>
-							</div>
-							<div class="col col-md-3"></div>
+ 							<div id="light-pagination" class="pagination"></div>
 						</div>						
 
