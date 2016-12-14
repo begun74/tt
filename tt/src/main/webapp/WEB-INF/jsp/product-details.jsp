@@ -45,7 +45,7 @@
 						<div class="col-sm-5">
 						<br/>
 							<div>
-								<img  id="img_01" src="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg" alt="" />
+								<img  id="img_01" src="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" />
 							</div>
 
 							

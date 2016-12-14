@@ -111,7 +111,7 @@
 				</div>
 				<div class="col-sm-9 padding-right">
 					<!-- content -->
-					<%@include file="common/content3.jsp" %>
+					<%@include file="common/content2.jsp" %>
 					<!-- content -->
 				</div>
 				
@@ -178,8 +178,13 @@
 	        $('#light-pagination').pagination({
 	            items: ${allItems},
 	            itemsOnPage: ${perPage},
-	            cssStyle: 'light-theme'
+	            cssStyle: 'light-theme',
+	            prevText:"<<",
+	            nextText:">>",
+	            hrefTextPrefix: "?p=",
+	            currentPage: ${p}
 	        });
+	        
 	    });
     </script>
 </body>

@@ -144,7 +144,7 @@ public class IndexCtrl {
 	{
 		ModelAndView model = new ModelAndView("product-details");
 		
-		System.out.println(sessBean.getOrders());
+		//System.out.println(sessBean.getOrders());
 		model.addObject("sessBean", sessBean);
 		
 		if(id != null)

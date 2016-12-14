@@ -119,7 +119,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<Tail> getTailsList() {
 		// TODO Auto-generated method stub
-		return getSession().createCriteria(Tail.class).add(Restrictions.isNull("destruction_date")).list();
+		return getSession().createCriteria(Tail.class).add(Restrictions.isNull("destruction_date")).addOrder(Order.asc("id")).list();
 	}
 
 	@Override
