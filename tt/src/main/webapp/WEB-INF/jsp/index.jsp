@@ -137,55 +137,33 @@
     <script>
 	    $(function() {
 				var pns = ${mA_search.pn};
+				var pns_get ='';
 				var gndrs = ${mA_search.gndr};
+				var gndrs_get ='';
 							
 				for (var item in pns) {
 	                $('#pn_'+pns[item]).attr("checked","checked");
+	                pns_get += '&pn='+pns[item];
 	            }
 	
 				for (var item in gndrs) {
 	                $('#gndr_'+gndrs[item]).attr("checked","checked");
+	                gndrs_get += '&gndr='+gndrs[item];
 	            }
 
-				/*
-	            $('#priceFrom').val('${mIndex.priceFrom}');
-	            $('#priceTo').val('${mIndex.priceTo}');
-
-	            $('#thickness').val('${mIndex.thickness}');
-	            $('#weight').val('${mIndex.weight}');
-	            $('#length').val('${mIndex.length}');
+		        $('#light-pagination').pagination({
+		            items: ${allItems},
+		            itemsOnPage: ${perPage},
+		            cssStyle: 'light-theme',
+		            prevText:"<<",
+		            nextText:">>",
+		            hrefTextPrefix: "?p=",
+		            hrefTextSuffix: pns_get+gndrs_get,
+		            currentPage: ${p}
+		        });
 				
-				
-				$('selector').pagination({
-			        items: 20,
-			        itemOnPage: 8,
-			        currentPage: 1,
-			        cssStyle: '',
-			        prevText: '<span aria-hidden="true">&laquo;</span>',
-			        nextText: '<span aria-hidden="true">&raquo;</span>',
-			        onInit: function () {
-			            // fire first page loading
-			        },
-			        onPageClick: function (page, evt) {
-			            // some code
-			        }
-			    });
-				
-				*/
 	    });
 	    
-	    $(function() {/* pagination for common/content2.jsp */
-	        $('#light-pagination').pagination({
-	            items: ${allItems},
-	            itemsOnPage: ${perPage},
-	            cssStyle: 'light-theme',
-	            prevText:"<<",
-	            nextText:">>",
-	            hrefTextPrefix: "?p=",
-	            currentPage: ${p}
-	        });
-	        
-	    });
     </script>
 </body>
 </html>

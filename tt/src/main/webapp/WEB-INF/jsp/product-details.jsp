@@ -156,10 +156,10 @@
 					<div class="category-tab shop-details-tab"><!--category-tab-->
 						<div class="col-sm-12">
 							<ul class="nav nav-tabs">
-								<li><a href="#details" data-toggle="tab">Details</a></li>
+								<!-- li><a href="#details" data-toggle="tab">Details</a></li>
 								<li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
-								<li><a href="#tag" data-toggle="tab">Tag</a></li>
-								<li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+								<li><a href="#tag" data-toggle="tab">Tag</a></li -->
+								<li class="active"><a href="#reviews" data-toggle="tab"><spring:message code="reviews"/></a></li>
 							</ul>
 						</div>
 						<div class="tab-content">
@@ -320,21 +320,21 @@
 								<div class="col-sm-12">
 									<ul>
 										<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-										<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-										<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
+										<li><a href=""><i class="fa fa-clock-o"></i>12:41</a></li>
+										<li><a href=""><i class="fa fa-calendar-o"></i>31.12.2016</a></li>
 									</ul>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-									<p><b>Write Your Review</b></p>
+									<p></p>
+									<p><b><spring:message code="write.your.review"/></b></p>
 									
 									<form action="#">
 										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
+											<input type="text" placeholder='<spring:message code="name"/>'/>
+											<input type="email" placeholder='<spring:message code="email"/>'/>
 										</span>
 										<textarea name="" ></textarea>
-										<b>Rating: </b> <img src="resources/images/product-details/rating.png" alt="" />
+										<!-- b>Rating: </b> <img src="resources/images/product-details/rating.png" alt="" / -->
 										<button type="button" class="btn btn-default pull-right">
-											Submit
+											<spring:message code="submit"/>
 										</button>
 									</form>
 								</div>
@@ -343,7 +343,8 @@
 						</div>
 					</div><!--/category-tab-->
 					
-					<div class="recommended_items"><!--recommended_items-->
+					<!--recommended_items-->
+					<!-- div class="recommended_items">
 						<h2 class="title text-center">recommended items</h2>
 						
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
@@ -432,7 +433,7 @@
 								<i class="fa fa-angle-right"></i>
 							  </a>			
 						</div>
-					</div><!--/recommended_items-->
+					</div --><!--/recommended_items-->
 					
 				</div>
 			</div>
@@ -466,8 +467,8 @@
       		imageCrossfade: true,
       		zoomWindowWidth:500,
             zoomWindowHeight:700,
-            zoomWindowFadeIn: 500,
-			zoomWindowFadeOut: 750
+            zoomWindowFadeIn: 300,
+			zoomWindowFadeOut: 450
       		
       		
       		/*      	

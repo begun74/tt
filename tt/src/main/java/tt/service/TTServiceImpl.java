@@ -203,7 +203,7 @@ public class TTServiceImpl implements Dao {
 			criterions.add( Restrictions.in("dirNomenclature", getNomenclatureList(criterDN)) );
 		
 		
-		return criterions.size() >0 ? getTailsList(tail,criterions): getTailsList();
+		return criterions.size() >0 ? getTailsList(tail,criterions): new LinkedList<Tail>();
 	}
 
 
