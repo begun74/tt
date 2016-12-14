@@ -174,7 +174,7 @@
 				*/
 	    });
 	    
-	    $(function() {
+	    $(function() {/* pagination for common/content2.jsp */
 	        $('#light-pagination').pagination({
 	            items: ${allItems},
 	            itemsOnPage: ${perPage},

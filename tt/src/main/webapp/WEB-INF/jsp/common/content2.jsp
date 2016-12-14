@@ -13,6 +13,8 @@
 						<c:set var="start" value="${p*perPage-perPage}"/>
 						<c:set var="stop" value="${p*perPage-1}"/>
 						
+						
+						
 						<div class="features_items"><!--features_items-->
 							
 							<c:forEach items="${tails}" var="tail" varStatus="loop"  begin="${start}" end="${stop}">
@@ -47,7 +49,9 @@
 							</c:forEach>
 						</div>
 
-						<div class="col-md-12">
- 							<div id="light-pagination" class="pagination"></div>
+						<div class="col-md-14">
+							<div class="col-md-4"></div>
+ 							<div id="light-pagination" class="pagination col-md-6"></div>
+ 							<div class="col-md-4"></div>
 						</div>						
 
