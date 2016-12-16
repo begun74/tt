@@ -129,7 +129,7 @@ table { font-size: 1em; }
 
 /* -- Mainmenu -- */		
 ul#floatMenu            { position: absolute; top: 0; }
-ul.mainmenu             { padding: 0; margin: 0 0 30px 0; width: 315px; text-align: left; list-style: none; border: 1px solid #ccc; background-color: #F8F8F8; -webkit-border-radius: 6px; border-radius: 6px;  -moz-border-radius:6px;  }
+ul.mainmenu             { padding: 0; margin: 0 0 30px 0; width: 215px; text-align: left; list-style: none; border: 1px solid #ccc; background-color: #F8F8F8; -webkit-border-radius: 6px; border-radius: 6px;  -moz-border-radius:6px;  }
 ul.mainmenu li          { padding: 10px 20px; border-bottom:1px solid #dcdcdc; }
 ul.mainmenu li.active   { background: #f0f0f0 url(../images/ico/main-menu_active.gif) 0 14px no-repeat; }
 ul.mainmenu li.first    { -webkit-border-top-left-radius: 6px; -webkit-border-top-right-radius: 6px; -moz-border-radius-topleft: 6px; -moz-border-radius-topright: 6px; border-top-left-radius: 6px; border-top-right-radius: 6px; }
