@@ -5,7 +5,7 @@
 <div id="header"> 
       <!-- #logo --> 
       <div id="logo">
-        <a href="index" title="Go to Homepage"><span>E-shop Admin</span></a>
+        <a href="index" title="Go to Homepage"></a>
       </div>
       <!-- /#logo -->
       <!-- #user -->                        
