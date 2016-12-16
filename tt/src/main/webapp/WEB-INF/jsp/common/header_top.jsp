@@ -41,7 +41,7 @@
 						</div -->
 						
 						<ul>
-							<li class="dropdown"><a class="btn btn-default dropdown-toggle usa" data-toggle="dropdown" >Язык|Lang<span class="caret"></span></a>
+							<li class="dropdown"><a class="btn btn-default dropdown-toggle usa" data-toggle="dropdown" >Язык | Lang<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li role="presentation"><a role="menuitem" tabindex="0"
 										href="index?locale=ru">RU</a></li>
@@ -85,22 +85,17 @@
 							                <li>
 							                        <div class="">
 							                            <div class="col-xs-12 col-sm-6">
-							                                <!--<a href="cart.html.html" class="le-button inverse">View cart</a>-->
-							                                <a href="#" class="le-button inverse">View cart</a>
-							                            </div>
-							                            <div class="col-xs-12 col-sm-6">
-							                                <a href="createOrder" class="le-button">Checkout</a>
-							                                <!--<a href="checkout.html" class="le-button">Checkout</a>-->
+							                                <a href="createOrder" class="le-button"><spring:message code="to.order"/></a>
 							                            </div>
 							                        </div>
 							                </li>
 											
 										</ul>
 					                </li>
-									<li><a href="admin"><i class="fa fa-user"></i>Account</a></li>
+									<!-- li><a href="login"><i class="fa fa-user"></i>Account</a></li -->
 									<!-- li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li -->
 									<!-- li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li -->
-									<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+									<li><a href="login"><i class="fa fa-lock"></i> Login</a></li>
 					                
 					            </ul>							
 					</div>

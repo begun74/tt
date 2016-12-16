@@ -13,12 +13,15 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 @EnableWebSecurity
 public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 	
 	@Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("bill").password("123").roles("USER");
         auth.inMemoryAuthentication().withUser("admin").password("123").roles("ADMIN");
         auth.inMemoryAuthentication().withUser("dba").password("123").roles("ADMIN","DBA");//dba have two roles.
+        auth.inMemoryAuthentication().withUser("order").password("123").roles("ORDERS");//dba have two roles.
     }
      
     @Override
@@ -34,9 +37,11 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
         .antMatchers("/", "/loginPage").permitAll() 
         .antMatchers("/admin/**").access("hasRole('ADMIN')")
         .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
+        .antMatchers("/eshop/**").access("hasRole('ORDERS')")
         .and().formLogin()
+        	.successHandler(customAuthenticationSuccessHandler)
         	.loginPage("/login")
-			.defaultSuccessUrl("/admin")
+			//.defaultSuccessUrl("/admin")
 			.failureUrl("/login?error")
 			.usernameParameter("username").passwordParameter("password")				
 			.and()

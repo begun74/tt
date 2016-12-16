@@ -79,6 +79,10 @@ public class IndexCtrl {
 		if (error != null) {
 			model.addObject("error", "Invalid username or password!");
 		}
+		else {
+			
+			//SecurityContextHolder.
+		}
 
 		if (logout != null) {
 			SecurityContextHolder.clearContext();
