@@ -41,6 +41,15 @@ public class MainAutoLoad {
 		for(Long code : hmPhotoFile.keySet())
 			photoFileService.execute(new FileHandler(code, hmPhotoFile.get(code)));
 	}
+
+	public static void startPhotoFileService2(HashMap<Long,List<String>> hmPhotoFile) 
+	{
+		photoFileService = Executors.newCachedThreadPool();
+		
+		for(Long code : hmPhotoFile.keySet())
+			photoFileService.execute(new FileHandler(code, hmPhotoFile.get(code)));
+	}
+
 	
 	public static void stopPhotoFileService() 
 	{

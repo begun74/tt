@@ -20,6 +20,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -159,6 +160,80 @@ public class FileUpload {
 	}
 
     
+	public void downloadPhoto (long code, List<String> files) 
+	{
+		try {
+			
+				File rootFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code);
+				if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
+				
+				File largeFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
+				if(!largeFolder.exists() && !largeFolder.mkdirs()) throw new Exception("Can not create largeFolder! ");
+				
+				File mediumFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
+				if(!mediumFolder.exists() && !mediumFolder.mkdirs()) throw new Exception("Can not create mediumFolder! ");
+				
+				File smallFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
+				if(!smallFolder.exists() && !smallFolder.mkdirs()) throw new Exception("Can not create smallFolder! ");
+				
+			
+				Iterator<String> iter = files.iterator();
+				int i=0;
+				
+				while(iter.hasNext() )
+				{
+						File file = new File(iter.next());
+						long time = System.currentTimeMillis();
+						
+						Path path = Paths.get(file.toURI());
+						
+						try {
+
+							byte[] data = Files.readAllBytes(path);
+							
+							File tempFile = new File(TEMP_FILE_PATH+File.separator+code+".tmp");
+							
+							path = Paths.get(tempFile.toURI());
+							Files.write(path, data);
+							
+							BufferedImage img = ImageIO.read(path.toFile());
+							ImageIO.write(img, "jpg", new File(largeFolder+File.separator+code+"_L_"+i+".jpg"));
+							ImageIO.write(scaleImage(img,389,582), "jpg", new File(mediumFolder+File.separator+code+"_M_"+i+".jpg"));
+							ImageIO.write(scaleImage(img,189,282), "jpg", new File(smallFolder+File.separator+code+"_S_"+i+".jpg"));
+							
+							tempFile.delete();
+							
+							System.out.println("Code - "+code +" :  "+file+" time - " +(System.currentTimeMillis() - time)/1000+ " sec.");
+							++i;
+						}
+						catch(java.nio.file.FileSystemException fse) {
+							System.err.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+							fse.printStackTrace(System.err);
+							System.err.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+						}
+				}
+
+			}
+			catch(java.io.FileNotFoundException fnf)
+			{
+				fnf.getMessage();
+			}
+			catch(NullPointerException e) {
+				System.err.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+				 //System.out.println("Catalog not found - "+files);
+				 e.printStackTrace(System.err);
+				System.err.println("========= ERROR: FileUpload.downloadPhoto ======= \n\n");
+			}
+			catch(Exception e) {
+				System.err.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+				 //System.out.println("pathToShare - "+files);
+				 e.printStackTrace(System.err);
+				System.err.println("========= ERROR: FileUpload.downloadPhoto ======= \n\n");
+			}
+
+	}
+	
+	
 	
 	public void downloadPhoto (long code, String pathToShare) 
 	{
@@ -167,23 +242,8 @@ public class FileUpload {
 		
 		try {
 			
-			System.out.println();
 			
-			System.out.println("Default Charset=" + Charset.defaultCharset());
-			System.out.println("pathToShare - "+ pathToShare);
-			System.out.println("pathToShare UTF-8 - "+new String( pathToShare.getBytes() ,"UTF-8"));
-			System.out.println("pathToShare UTF-8 ISO-8859-1 - "+new String( pathToShare.getBytes("UTF-8") ,"ISO-8859-1"));
-			System.out.println("pathToShare ISO-8859-1 UTF-8 - "+new String( pathToShare.getBytes("ISO-8859-1") ,"UTF-8"));
-			System.out.println("pathToShare UTF-8 Cp1251- "+new String( pathToShare.getBytes("UTF-8") ,"Cp1251"));
-			System.out.println("pathToShare Cp1251 UTF-8 - "+new String( pathToShare.getBytes("Cp1251") ,"UTF-8"));
-			System.out.println("pathToShare ISO-8859-1 Cp1251 - "+new String( pathToShare.getBytes("ISO-8859-1") ,"Cp1251"));
-			System.out.println("pathToShare Cp1251 ISO-8859-1- "+new String( pathToShare.getBytes("Cp1251") ,"ISO-8859-1"));
-
-			System.out.println("pathToShare UTF-8 Cp1251- "+new String( pathToShare.getBytes("UTF-8") ,"Cp1252"));
-			System.out.println("pathToShare Cp1251 UTF-8 - "+new String( pathToShare.getBytes("Cp1252") ,"UTF-8"));
-			
-			
-			File[] files = new File( new String( pathToShare.getBytes("ISO-8859-1") ,"UTF-8")).listFiles(IMAGE_FILTER); 
+			File[] files = new File(pathToShare).listFiles(IMAGE_FILTER); 
 			
 			File rootFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code);
 			if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
