@@ -13,7 +13,7 @@
     <link href="resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="resources/css/prettyPhoto.css" rel="stylesheet">
     <link href="resources/css/price-range.css" rel="stylesheet">
-    <link href="resources/css/animate.css" rel="stylesheet">
+    <!-- link href="resources/css/animate.css" rel="stylesheet" -->
 	<link href="resources/css/main.css" rel="stylesheet">
 	<link href="resources/css/responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -35,10 +35,7 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<!-- div class="col-sm-3">
-				<!-- %@include file="common/product_filter.jsp" % -->
-
-				</div -->
+				
 				
 				<div class="col-sm-12 padding-right">
 					<div class="product-details"><!--product-details-->
@@ -57,18 +54,18 @@
 									<div class="carousel-inner">							
 										<div class="item active">
 											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg">
-											   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_0.jpg" onError="this.style.display='none'"/>
+											   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_0.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
 											</a>
 											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_1.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_1.jpg">
-										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_1.jpg" onError="this.style.display='none'"/>
+										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_1.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
 											</a>
 										</div>
 										<div class="item">
 											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_2.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_2.jpg">
-										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_2.jpg" onError="this.style.display='none'"/>
+										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_2.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"/>
 											</a>
 											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_3.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_3.jpg">
-										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_3.jpg" onError="this.style.display='none' "/>
+										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_3.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"/>
 											</a>
 											
 										</div>
@@ -119,9 +116,7 @@
 								<p><b><spring:message code="brand.name"/>:  </b>${provider.name} </p>
 								<p><b><spring:message code="size"/>:  </b></p>
 								
-								<div class="size_info">
-								
-								</div>
+								<div class="size_info"></div>
 								
 								
 								<!-- a href=""><img src="resources/images/product-details/share.png" class="share img-responsive"  alt="" /></a -->
@@ -153,167 +148,14 @@
 							</div><!--/product-information-->
 						</div>
 					
-					<div class="category-tab shop-details-tab"><!--category-tab-->
-						<div class="col-sm-12">
-							<ul class="nav nav-tabs">
-								<!-- li><a href="#details" data-toggle="tab">Details</a></li>
-								<li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
-								<li><a href="#tag" data-toggle="tab">Tag</a></li -->
-								<li class="active"><a href="#reviews" data-toggle="tab"><spring:message code="reviews"/></a></li>
-							</ul>
-						</div>
-						<div class="tab-content">
-							<div class="tab-pane fade" id="details" >
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center ">
-												<img src="resources/images/home/gallery2.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery4.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="tab-pane fade" id="companyprofile" >
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery2.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery4.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="tab-pane fade" id="tag" >
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery2.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery4.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
+					<div class="col-sm-12 category-tab shop-details-tab"><!--category-tab-->
+							<div class="col-sm-12">
+								<ul class="nav nav-tabs">
+									<!-- li><a href="#details" data-toggle="tab">Details</a></li>
+									<li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
+									<li><a href="#tag" data-toggle="tab">Tag</a></li -->
+									<li class="active"><a href="#reviews" data-toggle="tab"><spring:message code="reviews"/></a></li>
+								</ul>
 							</div>
 							
 							<div class="tab-pane fade active in" id="reviews" >
@@ -343,6 +185,9 @@
 						</div>
 					</div><!--/category-tab-->
 					
+					<div class="col-sm-12">
+						<h2 class="title text-center">recommended items</h2>
+					</div>
 					<!--recommended_items-->
 					<!-- div class="recommended_items">
 						<h2 class="title text-center">recommended items</h2>
