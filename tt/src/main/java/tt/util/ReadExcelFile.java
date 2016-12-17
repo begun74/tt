@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.StringTokenizer;
 
 import javax.annotation.Resource;
 
@@ -108,7 +109,8 @@ public class ReadExcelFile {
         Iterator<Row> rowIterator = firstSheet.iterator();
         DataFormatter df = new DataFormatter();
 		
-        HashMap<Long,String> hmPollPaths = new HashMap<Long,String>(); //Список файлов на загрузку
+        //HashMap<Long,String> hmPollPaths = new HashMap<Long,String>(); //Список файлов на загрузку
+        HashMap<Long,List<String>> hmPollPaths = new HashMap<Long,List<String>>(); //Список файлов на загрузку
 		
 		int row_ = 0;
         while(rowIterator.hasNext() )
@@ -125,9 +127,26 @@ public class ReadExcelFile {
         			dirNomenclature.setDirNomenclGroup(hmNomenclGroup.get(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_codeNomenclGroup()-1)) ) ) );
         			dirNomenclature.setDirGender(hmDGen.get(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_gender()-1)).toLowerCase() ) );
         			
-        			String path = df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_pathToImage()-1));
+        			String path = df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_pathToImage()-1)).trim();
+        			//System.out.println(path);
+
+        			//if(path.length() >0)
+        			//	hmPollPaths.put(dirNomenclature.getCode(), Constants.IMAGES_SERVER +File.separator+path.substring(3).replace('\\', '/')); //Добавляем файл в список на загрузку
+
         			if(path.length() >0)
-        				hmPollPaths.put(dirNomenclature.getCode(), Constants.IMAGES_SERVER +File.separator+path.substring(3).replace('\\', '/')); //Добавляем файл в список на загрузку
+        			{
+        				
+        				StringTokenizer st = new StringTokenizer(path,";");
+        				List<String> files = new ArrayList<String>();
+        				while (st.hasMoreTokens()) {
+        					files.add(Constants.IMAGES_SERVER +File.separator+st.nextToken().substring(3).replace('\\', '/'));
+        				}
+        				
+        				hmPollPaths.put(dirNomenclature.getCode(),files);
+        				//System.out.println(files);
+        			}
+        			
+        			
         			
 		        	lNomencls.add(dirNomenclature);
         		}
@@ -136,7 +155,7 @@ public class ReadExcelFile {
         	++row_;
         }
         
-        MainAutoLoad.startPhotoFileService(hmPollPaths);
+        MainAutoLoad.startPhotoFileService2(hmPollPaths);
         
 		return lNomencls;
 		

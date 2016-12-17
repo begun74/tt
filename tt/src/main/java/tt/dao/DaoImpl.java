@@ -119,7 +119,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<Tail> getTailsList() {
 		// TODO Auto-generated method stub
-		return getSession().createCriteria(Tail.class).add(Restrictions.isNull("destruction_date")).list();
+		return getSession().createCriteria(Tail.class).add(Restrictions.isNull("destruction_date")).addOrder(Order.asc("id")).list();
 	}
 
 	@Override
@@ -192,6 +192,18 @@ public class DaoImpl implements Dao {
 			criterions.forEach(c -> criteria.add(c));
 		
 		return new LinkedList<DirNomenclature>(criteria.list());
+	}
+
+	@Override
+	public List<Tail> getTailsList(long id_dirNomenclature) {
+		// TODO Auto-generated method stub
+		return getSession().createQuery("from Tail where fk_id_nomenclature = :id_dirNomenclature and destruction_date is null order by amountTail").setParameter("id_dirNomenclature", id_dirNomenclature).list();
+	}
+
+	@Override
+	public void addOrder(tt.model.Order order) {
+		// TODO Auto-generated method stub
+		getSession().saveOrUpdate(order);
 	}
 
 	

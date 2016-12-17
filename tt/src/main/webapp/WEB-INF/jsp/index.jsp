@@ -19,6 +19,7 @@
     <link href="resources/css/animate.css" rel="stylesheet">
 	<link href="resources/css/main.css" rel="stylesheet">
 	<link href="resources/css/responsive.css" rel="stylesheet">
+	<link href="resources/css/simplePagination.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -131,29 +132,39 @@
 	<script src="resources/js/price-range.js"></script>
     <script src="resources/js/jquery.prettyPhoto.js"></script>
     <script src="resources/js/main.js"></script>
+    <script src="resources/js/jquery.simplePagination.js"></script>
+    <script src="resources/js/bootstrap-hover-dropdown.min.js"></script>
     
     <script>
 	    $(function() {
 				var pns = ${mA_search.pn};
+				var pns_get ='';
 				var gndrs = ${mA_search.gndr};
+				var gndrs_get ='';
 							
 				for (var item in pns) {
 	                $('#pn_'+pns[item]).attr("checked","checked");
+	                pns_get += '&pn='+pns[item];
 	            }
 	
 				for (var item in gndrs) {
 	                $('#gndr_'+gndrs[item]).attr("checked","checked");
+	                gndrs_get += '&gndr='+gndrs[item];
 	            }
 
-				/*
-	            $('#priceFrom').val('${mIndex.priceFrom}');
-	            $('#priceTo').val('${mIndex.priceTo}');
-
-	            $('#thickness').val('${mIndex.thickness}');
-	            $('#weight').val('${mIndex.weight}');
-	            $('#length').val('${mIndex.length}');
-				*/
+		        $('#light-pagination').pagination({
+		            items: ${allItems},
+		            itemsOnPage: ${perPage},
+		            cssStyle: 'light-theme',
+		            prevText:"<<",
+		            nextText:">>",
+		            hrefTextPrefix: "?p=",
+		            hrefTextSuffix: pns_get+gndrs_get,
+		            currentPage: ${p}
+		        });
+				
 	    });
+	    
     </script>
 </body>
 </html>

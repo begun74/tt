@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
@@ -29,8 +30,10 @@
 			</div>
 		</div><!--/header_top-->
 		
+		
 		<div class="header-middle"><!--header-middle-->
 			<div class="container">
+
 				<div class="row">
 					<div class="col-sm-4">
 						<!-- div class="logo pull-left">
@@ -38,7 +41,7 @@
 						</div -->
 						
 						<ul>
-							<li class="dropdown"><a class="btn btn-default dropdown-toggle usa" data-toggle="dropdown" >Язык|Lang<span class="caret"></span></a>
+							<li class="dropdown"><a class="btn btn-default dropdown-toggle usa" data-toggle="dropdown" >Язык | Lang<span class="caret"></span></a>
 								<ul class="dropdown-menu">
 									<li role="presentation"><a role="menuitem" tabindex="0"
 										href="index?locale=ru">RU</a></li>
@@ -61,19 +64,45 @@
 					</div>
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="admin"><i class="fa fa-user"></i>Account</a></li>
-								<!-- li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li -->
-								<!-- li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li -->
-								<li><a href="cart.html"><i class="fa fa-shopping-cart"></i> <spring:message code="cart"/></a></li>
-								<li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
-							</ul>
-						</div>
+								<ul class="">
+									<li class="dropdown"><a class="dropdown-toggle " data-toggle="dropdown" href="#"><spring:message code="cart"/>(<c:out value="${fn:length(sessBean.orders)}"/>)</a>
+										<ul class="dropdown-menu">
+											<li>
+							                        <div class="row">
+							                            <div class="col-xs-4 col-sm-4 no-margin text-center">
+							                                <div class="thumb">
+							                                    <img src="resources/images/products/nopicture.jpg" width="73" height="73"  onerror="this.onerror=null;this.src='resources/assets/images/products/nopicture.jpg';" />
+							                                </div>
+							                            </div>
+								                            <div class="col-xs-8 col-sm-8 no-margin">
+								                                <div class="title">Blueberry</div>
+								                                <div class="price">$270.00</div>
+								                            </div>
+							                            
+							                        </div>
+							                        <a class="close-btn" href="del-from-backet?id=${particleboard.key.id}"></a>
+											</li>
+							                <li>
+							                        <div class="">
+							                            <div class="col-xs-12 col-sm-6">
+							                                <a href="createOrder" class="le-button"><spring:message code="to.order"/></a>
+							                            </div>
+							                        </div>
+							                </li>
+											
+										</ul>
+					                </li>
+									<!-- li><a href="login"><i class="fa fa-user"></i>Account</a></li -->
+									<!-- li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li -->
+									<!-- li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li -->
+									<li><a href="login"><i class="fa fa-lock"></i> Login</a></li>
+					                
+					            </ul>							
 					</div>
 				</div>
 			</div>
 		</div><!--/header-middle-->
-	
+		</div>
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">

@@ -1,5 +1,6 @@
 package tt.controller;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,11 +21,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import tt.bean.AppBean;
+import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
 import tt.model.Tail;
 import tt.model.User;
 import tt.modelattribute.MA_search;
 import tt.service.TTServiceImpl;
+import tt.util.*;
 
 
 
@@ -35,6 +38,9 @@ public class IndexCtrl {
 	
 	@Autowired
 	private AppBean appBean;
+	
+	@Autowired
+	SessionBean sessBean;
 	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
@@ -60,6 +66,7 @@ public class IndexCtrl {
 		model.addObject("categories", ttService.getNomenclGroupList());
 		model.addObject("genders", ttService.getGenderList());
 		
+		model.addObject("UPLOAD_FILE_PATH", Constants.UPLOAD_FILE_PATH);
 		return model;
 	}
 	
@@ -71,6 +78,10 @@ public class IndexCtrl {
 		ModelAndView model = new ModelAndView("login");
 		if (error != null) {
 			model.addObject("error", "Invalid username or password!");
+		}
+		else {
+			
+			//SecurityContextHolder.
 		}
 
 		if (logout != null) {
@@ -136,31 +147,16 @@ public class IndexCtrl {
 	public ModelAndView  product_details(HttpSession session, @RequestParam(value = "id",   required=false) Long id) 
 	{
 		ModelAndView model = new ModelAndView("product-details");
-
-		//=============== товар ====== поставщик === цена ====== размер ===
-		Object[] obj = {new Object(),new Object(),new Object(),new Object()};
+		
+		//System.out.println(sessBean.getOrders());
+		model.addObject("sessBean", sessBean);
 		
 		if(id != null)
 		{
 			DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id); 
-			obj[0] = dn;
-			
-			obj[1] = dn.getTails().iterator().next().getDirProvider().getName();
-			obj[2] = dn.getTails().iterator().next().getFirstPrice();
-			
-			List<String[]> size = new ArrayList<String[]>();
-			Iterator<Tail> iter = dn.getTails().iterator();
-			while(iter.hasNext())
-			{
-				Tail t = iter.next();
-				size.add(new String[]{t.getSize(),t.getAmountTail()+""});
-				
-			}
-						
-			obj[3] = size;
 			
 			model.addObject("nomenclature", dn);
-			model.addObject("sizes", size);
+			model.addObject("tails", ttService.getTailsList(dn.getId()));
 			model.addObject("provider", dn.getTails().iterator().next().getDirProvider());
 			model.addObject("price", dn.getTails().iterator().next().getFirstPrice());
 		}

@@ -22,6 +22,7 @@ import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
+import tt.model.Order;
 import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
@@ -72,6 +73,7 @@ public class HibernateConfiguration {
         sessionBuilder.addAnnotatedClasses(DirNomenclGroup.class);
         sessionBuilder.addAnnotatedClasses(DirNomenclGroupRoot.class);
         sessionBuilder.addAnnotatedClasses(DirGender.class);
+        sessionBuilder.addAnnotatedClasses(Order.class);
 
         //sessionBuilder.addAnnotatedClasses(DirColor.class);
         //sessionBuilder.addAnnotatedClasses(Request.class);

@@ -13,7 +13,7 @@
     <link href="resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="resources/css/prettyPhoto.css" rel="stylesheet">
     <link href="resources/css/price-range.css" rel="stylesheet">
-    <link href="resources/css/animate.css" rel="stylesheet">
+    <!-- link href="resources/css/animate.css" rel="stylesheet" -->
 	<link href="resources/css/main.css" rel="stylesheet">
 	<link href="resources/css/responsive.css" rel="stylesheet">
     <!--[if lt IE 9]>
@@ -35,17 +35,14 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<!-- div class="col-sm-3">
-				<!-- %@include file="common/product_filter.jsp" % -->
-
-				</div -->
+				
 				
 				<div class="col-sm-12 padding-right">
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 						<br/>
 							<div>
-								<img  id="img_01" src="resources/images/product-details/ps_1.jpg" data-zoom-image="resources/images/product-details/p1.jpg" alt="" />
+								<img  id="img_01" src="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" />
 							</div>
 
 							
@@ -56,17 +53,21 @@
 								<div id="gal1">
 									<div class="carousel-inner">							
 										<div class="item active">
-											<a href="#" data-image="resources/images/product-details/ps_1.jpg" data-zoom-image="resources/images/product-details/p1.jpg">
-										   		<img id="img_01" width="30%" height="30%" src="resources/images/product-details/ps_1.jpg"/>
+											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg">
+											   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_0.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
 											</a>
-											<a href="#" data-image="resources/images/product-details/ps_2.jpg" data-zoom-image="resources/images/product-details/p2.jpg">
-										   		<img id="img_01" width="30%" height="30%" src="resources/images/product-details/p2.jpg"/>
+											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_1.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_1.jpg">
+										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_1.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
 											</a>
 										</div>
 										<div class="item">
-											<a href="#" data-image="resources/images/product-details/ps_3.jpg" data-zoom-image="resources/images/product-details/p3.jpg">
-										   		<img id="img_01" width="30%" height="30%" src="resources/images/product-details/p3.jpg"/>
+											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_2.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_2.jpg">
+										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_2.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"/>
 											</a>
+											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_3.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_3.jpg">
+										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_3.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"/>
+											</a>
+											
 										</div>
 										
 									</div>
@@ -110,209 +111,72 @@
 								<p><b><spring:message code="article"/>:  </b>${nomenclature.article} </p>
 								<p>Web ID: ${nomenclature.code}</p>
 								<img src="resources/images/product-details/rating.png" alt="" />
-								<span>
-									<span>BYN ${price}</span>
-									<label><spring:message code="quantity"/>:</label>
-									<input type="text" value="1" />
-									<button type="button" class="btn btn-fefault cart">
-										<i class="fa fa-shopping-cart"></i>
-										<spring:message code="add.to.cart"/>
-									</button>
-								</span>
 								<!-- p><b>Availability:</b> In Stock</p -->
 								<!-- p><b>Condition:</b> New</p -->
 								<p><b><spring:message code="brand.name"/>:  </b>${provider.name} </p>
 								<p><b><spring:message code="size"/>:  </b></p>
-								<c:forEach items="${sizes}" var="size" varStatus="loop">
-									<li>${size[0]} - ${size[1]} <spring:message code="items"/></li>
-								</c:forEach>
-								<a href=""><img src="resources/images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+								
+								<div class="size_info"></div>
+								
+								
+								<!-- a href=""><img src="resources/images/product-details/share.png" class="share img-responsive"  alt="" /></a -->
+								
+								
+									<span><span>BYN ${price}</span></span>
+									<select name="sizes" class="sizes">
+										<c:forEach items="${tails}" var="tail" varStatus="loop">
+											<option value="${tail.amountTail}">${tail.size} </option>
+										</c:forEach>
+									</select>
+
+									
+									<label><spring:message code="quantity"/>:
+										<div class="cart_quantity_button">
+											<a class="cart_quantity_up" maxval="1" href="#"> + </a>
+											<input class="cart_quantity_input" type="text" name="quantity" value="1"  autocomplete="off" size="2">
+											<a class="cart_quantity_down" href="#"> - </a>
+										</div>
+									</label>
+
+									<div class="text-center">
+										<button type="button" class="btn btn-fefault cart" href="#">
+											<i class="fa fa-shopping-cart"></i>
+											<spring:message code="to.order"/>
+										</button>
+									</div><!--/product-details-->
+
 							</div><!--/product-information-->
 						</div>
-					</div><!--/product-details-->
 					
-					<div class="category-tab shop-details-tab"><!--category-tab-->
-						<div class="col-sm-12">
-							<ul class="nav nav-tabs">
-								<li><a href="#details" data-toggle="tab">Details</a></li>
-								<li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
-								<li><a href="#tag" data-toggle="tab">Tag</a></li>
-								<li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
-							</ul>
-						</div>
-						<div class="tab-content">
-							<div class="tab-pane fade" id="details" >
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center ">
-												<img src="resources/images/home/gallery2.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery4.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="tab-pane fade" id="companyprofile" >
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery2.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery4.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							
-							<div class="tab-pane fade" id="tag" >
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery1.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery2.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery3.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col-sm-3">
-									<div class="product-image-wrapper">
-										<div class="single-products">
-											<div class="productinfo text-center">
-												<img src="resources/images/home/gallery4.jpg" alt="" />
-												<h2>$56</h2>
-												<p>Easy Polo Black Edition</p>
-												<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-											</div>
-										</div>
-									</div>
-								</div>
+					<div class="col-sm-12 category-tab shop-details-tab"><!--category-tab-->
+							<div class="col-sm-12">
+								<ul class="nav nav-tabs">
+									<!-- li><a href="#details" data-toggle="tab">Details</a></li>
+									<li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
+									<li><a href="#tag" data-toggle="tab">Tag</a></li -->
+									<li class="active"><a href="#reviews" data-toggle="tab"><spring:message code="reviews"/></a></li>
+								</ul>
 							</div>
 							
 							<div class="tab-pane fade active in" id="reviews" >
 								<div class="col-sm-12">
 									<ul>
 										<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-										<li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-										<li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
+										<li><a href=""><i class="fa fa-clock-o"></i>12:41</a></li>
+										<li><a href=""><i class="fa fa-calendar-o"></i>31.12.2016</a></li>
 									</ul>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-									<p><b>Write Your Review</b></p>
+									<p></p>
+									<p><b><spring:message code="write.your.review"/></b></p>
 									
 									<form action="#">
 										<span>
-											<input type="text" placeholder="Your Name"/>
-											<input type="email" placeholder="Email Address"/>
+											<input type="text" placeholder='<spring:message code="name"/>'/>
+											<input type="email" placeholder='<spring:message code="email"/>'/>
 										</span>
 										<textarea name="" ></textarea>
-										<b>Rating: </b> <img src="resources/images/product-details/rating.png" alt="" />
+										<!-- b>Rating: </b> <img src="resources/images/product-details/rating.png" alt="" / -->
 										<button type="button" class="btn btn-default pull-right">
-											Submit
+											<spring:message code="submit"/>
 										</button>
 									</form>
 								</div>
@@ -321,7 +185,8 @@
 						</div>
 					</div><!--/category-tab-->
 					
-					<div class="recommended_items"><!--recommended_items-->
+					<!--recommended_items-->
+					<!-- div class="recommended_items">
 						<h2 class="title text-center">recommended items</h2>
 						
 						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
@@ -410,7 +275,7 @@
 								<i class="fa fa-angle-right"></i>
 							  </a>			
 						</div>
-					</div><!--/recommended_items-->
+					</div --><!--/recommended_items-->
 					
 				</div>
 			</div>
@@ -431,6 +296,7 @@
     <script src="resources/js/jquery.prettyPhoto.js"></script>
     <script src="resources/js/jquery.elevatezoom.js"></script>
     <script src="resources/js/main.js"></script>
+    <script src="resources/js/app.js"></script>
     
     <script>
     $('#img_01').elevateZoom({
@@ -442,9 +308,9 @@
       		galleryActiveClass: 'active', 
       		imageCrossfade: true,
       		zoomWindowWidth:500,
-            zoomWindowHeight:500,
-            zoomWindowFadeIn: 500,
-			zoomWindowFadeOut: 750
+            zoomWindowHeight:700,
+            zoomWindowFadeIn: 300,
+			zoomWindowFadeOut: 450
       		
       		
       		/*      	
@@ -467,8 +333,47 @@
     	  	var ez =   $('#img_01').data('elevateZoom');
     	  	$.fancybox(ez.getGalleryList());
     	  return false;
+    });
+    
+    $(document).ready(function(){
+		
+
+		Product.id = ${nomenclature.id};
+    	Product.getDetail();
+    	
+
+    	$(".cart_quantity_up").click(function () {
+			var val = $(".cart_quantity_input").val();
+			//if(val < $(".cart_quantity_up").attr("maxval"))
+				$(".cart_quantity_input").val(++val);		
+		});
+
+		$(".cart_quantity_down").click(function () {
+			var val = $(".cart_quantity_input").val();
+
+			if(val > 1)
+				$(".cart_quantity_input").val(--val);
+		});
+		
+		$( ".sizes" ).change(function() {
+			  //$(".cart_quantity_input").val(1);
+			  //$(".cart_quantity_up").attr("maxval",$( ".sizes" ).val());
+		});
+		
+    	$(".cart_quantity_input").keypress(function(event) {
+    		return isNumberKey(event);
     	});
-	</script>
+
+    	$(".cart").click(function() {
+    		//alert(${nomenclature.id});
+    		Product.toOrder($( ".sizes option:selected" ).text(),$( ".cart_quantity_input" ).val());
+    	});
+
+    	setInterval(Product.getDetail,15000);
+    });
+    
+
+    </script>
     
 </body>
 </html>

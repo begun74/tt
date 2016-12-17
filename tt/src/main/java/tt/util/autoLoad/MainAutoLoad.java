@@ -41,6 +41,15 @@ public class MainAutoLoad {
 		for(Long code : hmPhotoFile.keySet())
 			photoFileService.execute(new FileHandler(code, hmPhotoFile.get(code)));
 	}
+
+	public static void startPhotoFileService2(HashMap<Long,List<String>> hmPhotoFile) 
+	{
+		photoFileService = Executors.newCachedThreadPool();
+		
+		for(Long code : hmPhotoFile.keySet())
+			photoFileService.execute(new FileHandler(code, hmPhotoFile.get(code)));
+	}
+
 	
 	public static void stopPhotoFileService() 
 	{
@@ -49,18 +58,18 @@ public class MainAutoLoad {
 			photoFileService.awaitTermination(10, TimeUnit.SECONDS);
 			System.out.println("=========== stopped ! =========");
 		} catch (InterruptedException e) {
-			photoFileService.shutdown();
+			photoFileService.shutdownNow();
 			System.out.println("=========== stopped ! =========");
 		}
 	}
 	
 	@PostConstruct
 	void init() {
-		System.out.println("MainAutoLoad @PostConstruct - " +service);
+		//System.out.println("MainAutoLoad @PostConstruct - " +service);
 	}
 	
 	@PreDestroy
 	void destr() {
-		System.out.println("MainAutoLoad @PreDestroy - "+service);
+		//System.out.println("MainAutoLoad @PreDestroy - "+service);
 	} 	
 }

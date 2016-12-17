@@ -25,6 +25,7 @@ import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
+import tt.model.Order;
 import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
@@ -202,7 +203,7 @@ public class TTServiceImpl implements Dao {
 			criterions.add( Restrictions.in("dirNomenclature", getNomenclatureList(criterDN)) );
 		
 		
-		return criterions.size() >0 ? getTailsList(tail,criterions): getTailsList();
+		return criterions.size() >0 ? getTailsList(tail,criterions): new LinkedList<Tail>();
 	}
 
 
@@ -236,6 +237,20 @@ public class TTServiceImpl implements Dao {
 			hmDN.put(t.getDirNomenclature(),t.getDirProvider());
 		
 		return hmDN;
+	}
+
+
+	@Override
+	public List<Tail> getTailsList(long id_dirNomenclature) {
+		// TODO Auto-generated method stub
+		return dao.getTailsList(id_dirNomenclature);
+	}
+
+
+	@Override
+	public void addOrder(Order order) {
+		// TODO Auto-generated method stub
+		dao.addOrder(order);
 	}
 	
 

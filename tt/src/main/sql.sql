@@ -20,11 +20,15 @@ ALTER TABLE public.tails
       REFERENCES public.dir_provider (id_dir_provider) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-select * from dir_nomenclature dn
+select t.* from dir_nomenclature dn
 inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
-where dn.code=10002066039
+where dn.id_dir_nomenclature=1705
 
-update tails  set destruction_date = now()
+update tails  set destruction_date = now() where id_tails=2676
+
+update tails  set amounttail=0 , destruction_date = now() where id_tails=2682
+
+delete from tails where id_tails=2674
 
 select distinct t.* from tails t
 inner join dir_provider dp on dp.id_dir_provider=t.fk_id_provider

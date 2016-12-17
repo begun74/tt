@@ -1,6 +1,5 @@
 package tt.model;
 
-import java.math.BigInteger;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -11,23 +10,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-
 @Entity
-@Table(name = "tails")
-public class Tail implements  IModel {
-	
-	
+@Table(name = "orders")
+public class Order implements IModel {
 
+	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3431951539246492099L;
-
+	private static final long serialVersionUID = -4911618125897962158L;
+	
+	
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="seq_global")
 	@SequenceGenerator(
@@ -35,66 +32,43 @@ public class Tail implements  IModel {
 			sequenceName="seq_global",
 			allocationSize=1
 		)
-	@Column(name="id_tails")
-	private Long id;
+	@Column(name="id_orders")
+	private long id;
 	
 	@NotNull
-	@Column(name="amounttail")
-	private int amountTail; //Кол-во
+	private String size;
 	
 	@NotNull
-	@Column(name="firstPrice")
-	private double firstPrice;  //Первая цена
-	
+	private int amount;
+
 	@NotNull
 	private Timestamp create_date;
 	
 	private Timestamp destruction_date;
 
-	private String size;
-
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "fk_id_provider")
-	@NotNull
-	private DirProvider dirProvider;
-
-	
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "fk_id_nomenclature", nullable=false)
+	@JoinColumn(name = "fk_id_dir_nomenclature", nullable=false)
 	@NotNull
 	private DirNomenclature dirNomenclature;
 	
-	
-	
-	private transient int index;
-	
-	
-	
+	@Override
 	public Long getId() {
 		return id;
 	}
-	
+
+	@Override
 	public void setId(Long id) {
+
 		this.id = id;
 	}
-	
-	public int getAmountTail() {
-		return amountTail;
-	}
-	
-	public void setAmountTail(int amountTail) {
-		this.amountTail = amountTail;
-	}
-	
-	public double getFirstPrice() {
-		return firstPrice;
-	}
-	
-	public void setFirstPrice(double firstPrice) {
-		this.firstPrice = firstPrice;
-	}
-	
 
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	
 	public String getSize() {
 		return size;
 	}
@@ -103,7 +77,19 @@ public class Tail implements  IModel {
 		this.size = size;
 	}
 
+	public int getAmount() {
+		return amount;
+	}
 
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	
 	public Timestamp getCreate_date() {
 		return create_date;
 	}
@@ -112,7 +98,6 @@ public class Tail implements  IModel {
 		this.create_date = create_date;
 	}
 
-	
 	public Timestamp getDestruction_date() {
 		return destruction_date;
 	}
@@ -121,54 +106,28 @@ public class Tail implements  IModel {
 		this.destruction_date = destruction_date;
 	}
 
-
-	public DirProvider getDirProvider() {
-		return dirProvider;
-	}
-
-	public void setDirProvider(DirProvider dirProvider) {
-		this.dirProvider = dirProvider;
-	}
 	
 	
 	public DirNomenclature getDirNomenclature() {
 		return dirNomenclature;
 	}
+
 	public void setDirNomenclature(DirNomenclature dirNomenclature) {
 		this.dirNomenclature = dirNomenclature;
 	}
 
-	
-
-	public int getIndex() {
-		return index;
-	}
-
-	public void setIndex(int index) {
-		this.index = index;
-	}
-	
-
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-	
-	
-	
-	@Override
-	public String toString() {
-		return "Tail [id=" + id + ", amountTail=" + amountTail + ", firstPrice=" + firstPrice + "]";
-	}
-	
-	
 	@Override
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
-		return ((Tail)o).getId().compareTo(this.id);
+		return ((Order)o).getId().compareTo(getId());
 	}
-	
-	
-	
 
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", size=" + size + ", amount=" + amount + ", create_date=" + create_date
+				+ ", destruction_date=" + destruction_date + ", dirNomenclature=" + dirNomenclature + "]";
+	}
+
+
+	
 }

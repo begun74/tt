@@ -6,10 +6,13 @@ import java.awt.Transparency;
 import java.awt.image.BufferedImage;
 import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileFilter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.net.URI;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.OpenOption;
 import java.nio.file.Path;
@@ -17,6 +20,7 @@ import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -24,6 +28,7 @@ import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import javax.servlet.ServletContext;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -64,6 +69,8 @@ public class FileUpload {
     //private static final String UPLOAD_FILE_PATH = "UPLOAD_FILE_PATH";
     private static File TEMP_FILE_PATH = null;
 
+    
+    
     @Resource
     private Environment env;
     
@@ -152,14 +159,90 @@ public class FileUpload {
 	}
 
     
+	public void downloadPhoto (long code, List<String> files) 
+	{
+		try {
+			
+				File rootFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code);
+				if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
+				
+				File largeFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
+				if(!largeFolder.exists() && !largeFolder.mkdirs()) throw new Exception("Can not create largeFolder! ");
+				
+				File mediumFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
+				if(!mediumFolder.exists() && !mediumFolder.mkdirs()) throw new Exception("Can not create mediumFolder! ");
+				
+				File smallFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
+				if(!smallFolder.exists() && !smallFolder.mkdirs()) throw new Exception("Can not create smallFolder! ");
+				
+			
+				Iterator<String> iter = files.iterator();
+				int i=0;
+				
+				while(iter.hasNext() )
+				{
+						File file = new File(iter.next());
+						long time = System.currentTimeMillis();
+						
+						Path path = Paths.get(file.toURI());
+						
+						try {
+
+							byte[] data = Files.readAllBytes(path);
+							
+							File tempFile = new File(TEMP_FILE_PATH+File.separator+code+".tmp");
+							
+							path = Paths.get(tempFile.toURI());
+							Files.write(path, data);
+							
+							BufferedImage img = ImageIO.read(path.toFile());
+							ImageIO.write(img, "jpg", new File(largeFolder+File.separator+code+"_L_"+i+".jpg"));
+							ImageIO.write(scaleImage(img,389,582), "jpg", new File(mediumFolder+File.separator+code+"_M_"+i+".jpg"));
+							ImageIO.write(scaleImage(img,189,282), "jpg", new File(smallFolder+File.separator+code+"_S_"+i+".jpg"));
+							
+							tempFile.delete();
+							
+							System.out.println("Code - "+code +" :  "+file+" time - " +(System.currentTimeMillis() - time)/1000+ " sec.");
+							++i;
+						}
+						catch(java.nio.file.FileSystemException fse) {
+							System.err.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+							fse.printStackTrace(System.err);
+							System.err.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+						}
+				}
+
+			}
+			catch(java.io.FileNotFoundException fnf)
+			{
+				fnf.getMessage();
+			}
+			catch(NullPointerException e) {
+				System.err.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+				 //System.out.println("Catalog not found - "+files);
+				 e.printStackTrace(System.err);
+				System.err.println("========= ERROR: FileUpload.downloadPhoto ======= \n\n");
+			}
+			catch(Exception e) {
+				System.err.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+				 //System.out.println("pathToShare - "+files);
+				 e.printStackTrace(System.err);
+				System.err.println("========= ERROR: FileUpload.downloadPhoto ======= \n\n");
+			}
+
+	}
+	
+	
 	
 	public void downloadPhoto (long code, String pathToShare) 
 	{
 		
+		final ExtensionsFilter IMAGE_FILTER =  new FileUpload.ExtensionsFilter(new String[] {".jpg"});
 		
 		try {
 			
-			File[] files = new File(pathToShare).listFiles();  
+			
+			File[] files = new File(pathToShare).listFiles(IMAGE_FILTER); 
 			
 			File rootFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code);
 			if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
@@ -193,15 +276,24 @@ public class FileUpload {
 					
 					tempFile.delete();
 					
-					System.out.println(files[i]+" time - " +(System.currentTimeMillis() - time)/1000+ " sec.");
+					System.out.println("Code - "+code +" :  "+files[i]+" time - " +(System.currentTimeMillis() - time)/1000+ " sec.");
 			}
 		}
 		catch(java.io.FileNotFoundException fnf)
 		{
 			fnf.getMessage();
 		}
+		catch(NullPointerException e) {
+			System.out.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+			 System.out.println("Catalog not found - "+pathToShare);
+			 e.printStackTrace(System.out);
+			System.out.println("========= ERROR: FileUpload.downloadPhoto ======= \n\n");
+		}
 		catch(Exception e) {
-			e.printStackTrace();
+			System.out.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+			 System.out.println("pathToShare - "+pathToShare);
+			 e.printStackTrace(System.out);
+			System.out.println("========= ERROR: FileUpload.downloadPhoto ======= \n\n");
 		}
 		
 	}
@@ -274,5 +366,47 @@ public class FileUpload {
         return null;
     }
 
+	
+	private class ExtensionsFilter implements FileFilter 
+	{
+	    private char[][] extensions;
+
+	    private ExtensionsFilter(String[] extensions)
+	    {
+	        int length = extensions.length;
+	        this.extensions = new char[length][];
+	        for (String s : extensions)
+	        {
+	            this.extensions[--length] = s.toCharArray();
+	        }
+	    }
+
+	    @Override
+	    public boolean accept(File file)
+	    {
+	        char[] path = file.getPath().toCharArray();
+	        for (char[] extension : extensions)
+	        {
+	            if (extension.length > path.length)
+	            {
+	                continue;
+	            }
+	            int pStart = path.length - 1;
+	            int eStart = extension.length - 1;
+	            boolean success = true;
+	            for (int i = 0; i <= eStart; i++)
+	            {
+	                if ((path[pStart - i] | 0x20) != (extension[eStart - i] | 0x20))
+	                {
+	                    success = false;
+	                    break;
+	                }
+	            }
+	            if (success)
+	                return true;
+	        }
+	        return false;
+	    }
+	}
 	
 }

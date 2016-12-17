@@ -53,3 +53,5 @@ function checkboxAny(flag,clazz)
 		$('.'+clazz).attr("checked","");
 
 }
+
+
