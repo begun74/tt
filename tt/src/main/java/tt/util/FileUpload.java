@@ -52,8 +52,7 @@ import tt.service.TTServiceImpl;
 @Transactional()
 public class FileUpload {
 	
-	@Autowired
-	Constants constants; 
+	
 	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
@@ -62,7 +61,7 @@ public class FileUpload {
 	private static final String[][] ALLOWED_FILE_TYPES_XLS = {{"application/vnd.ms-excel","xls"},{"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet","xlsx"}};
     //private static final Long MAX_FILE_SIZE = 1048576L; //1MB
     //private static final String UPLOAD_FILE_PATH = "D:/GIT_/wood/src/main/webapp/resources/pics/";
-    private static final String UPLOAD_FILE_PATH = "UPLOAD_FILE_PATH";
+    //private static final String UPLOAD_FILE_PATH = "UPLOAD_FILE_PATH";
     private static File TEMP_FILE_PATH = null;
 
     @Resource
@@ -71,7 +70,7 @@ public class FileUpload {
     
     @PostConstruct
 	void init(){
-    	TEMP_FILE_PATH = constants.tempDirectory;
+    	TEMP_FILE_PATH = Constants.tempDirectory;
 		System.out.println("TEMP_FILE_PATH - " +TEMP_FILE_PATH);
 	}
 	
@@ -162,16 +161,16 @@ public class FileUpload {
 			
 			File[] files = new File(pathToShare).listFiles();  
 			
-			File rootFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code);
+			File rootFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code);
 			if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
 			
-			File largeFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
+			File largeFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
 			if(!largeFolder.exists() && !largeFolder.mkdirs()) throw new Exception("Can not create largeFolder! ");
 			
-			File mediumFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
+			File mediumFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
 			if(!mediumFolder.exists() && !mediumFolder.mkdirs()) throw new Exception("Can not create mediumFolder! ");
 			
-			File smallFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
+			File smallFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
 			if(!smallFolder.exists() && !smallFolder.mkdirs()) throw new Exception("Can not create smallFolder! ");
 			
 
