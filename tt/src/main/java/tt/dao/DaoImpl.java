@@ -7,6 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -172,7 +175,8 @@ public class DaoImpl implements Dao {
 		
 		if(criterions != null)
 			criterions.forEach(c -> criteria.add(c));
-		List<Tail> lTail= new LinkedList<Tail>(criteria.list());
+
+		List<Tail> lTail = new LinkedList<Tail>(criteria.createCriteria("dirNomenclature").addOrder(Order.asc("name")).list());
 		
 		return lTail;
 	}

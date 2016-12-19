@@ -173,15 +173,21 @@ public class TTServiceImpl implements Dao {
 	}
 
 	
-	public List<Tail> getTailsList(List<Long> providers, List<Long> genders) {
+	public List<Tail> getTailsList(List<Long> providers, List<Long> genders,  List<Long> categories) {
 		// TODO Auto-generated method stub
 		List<DirProvider> lProvs = new LinkedList<DirProvider>();
-		List<DirGender> lGndrs = new LinkedList<DirGender>();
+		List<DirNomenclGroup> lNomGroup = new LinkedList<DirNomenclGroup>();
+		List<DirGender> lGens = new LinkedList<DirGender>();
+		
 		
 		Tail tail = new Tail();
 		Collection<Criterion> criterions = new LinkedList<Criterion>();
 		Collection<Criterion> criterDN = new LinkedList<Criterion>();
 		
+		for(Long idNomGroup: categories)
+			lNomGroup.add((DirNomenclGroup)dao.getObject(DirNomenclGroup.class, idNomGroup));
+					
+					
 		for(Long idProv: providers)
 			lProvs.add((DirProvider) dao.getObject(DirProvider.class, idProv));
 		
@@ -189,10 +195,11 @@ public class TTServiceImpl implements Dao {
 		{
 			DirGender DG = (DirGender) dao.getObject(DirGender.class, idGndr);
 			criterDN.add( Restrictions.eq("dirGender", DG));
-			
-			//lGndrs.add((DirGender) dao.getObject(DirGender.class, idGndr));
 		}
 		
+		
+		if(!lNomGroup.isEmpty())
+			criterDN.add(Restrictions.in("dirNomenclGroup", lNomGroup));
 		//if(!lGndrs.isEmpty())
 		//	criterDN.add( Restrictions.in("dirGender", lGndrs.toArray()));
 
@@ -201,7 +208,8 @@ public class TTServiceImpl implements Dao {
 
 		if(!getNomenclatureList(criterDN).isEmpty())
 			criterions.add( Restrictions.in("dirNomenclature", getNomenclatureList(criterDN)) );
-		
+		else
+			return new LinkedList<Tail>();
 		
 		return criterions.size() >0 ? getTailsList(tail,criterions): new LinkedList<Tail>();
 	}
@@ -228,9 +236,9 @@ public class TTServiceImpl implements Dao {
 	}
 	
 	
-	public Map<DirNomenclature,DirProvider> tailSetNomenclature(List<Long> providers, List<Long> genders) 
+	public Map<DirNomenclature,DirProvider> tailSetNomenclature(List<Long> providers, List<Long> genders, List<Long> categories) 
 	{
-		List<Tail> tails = getTailsList(providers, genders);
+		List<Tail> tails = getTailsList(providers, genders, categories);
 		Map<DirNomenclature,DirProvider> hmDN = new LinkedHashMap<DirNomenclature,DirProvider>();
 		
 		for(Tail t: tails)
