@@ -198,8 +198,10 @@ public class FileUpload {
 							
 							BufferedImage img = ImageIO.read(path.toFile());
 							ImageIO.write(img, "jpg", new File(largeFolder+File.separator+code+"_L_"+i+".jpg"));
-							ImageIO.write(scaleImage(img,389,582), "jpg", new File(mediumFolder+File.separator+code+"_M_"+i+".jpg"));
-							ImageIO.write(scaleImage(img,189,282), "jpg", new File(smallFolder+File.separator+code+"_S_"+i+".jpg"));
+							img = scaleImage(img,389,582);
+							ImageIO.write(img, "jpg", new File(mediumFolder+File.separator+code+"_M_"+i+".jpg"));
+							img = scaleImage(img,189,282);
+							ImageIO.write(img, "jpg", new File(smallFolder+File.separator+code+"_S_"+i+".jpg"));
 							
 							tempFile.delete();
 							
@@ -318,12 +320,16 @@ public class FileUpload {
 	            w /= 2;
 	            w = (w < targetWidth) ? targetWidth : w;
 	        }
-
+	        else if(w < targetWidth)
+	        	targetWidth = w;
+	        
 	        if (h > targetHeight) {
 	            h /= 2;
 	            h = (h < targetHeight) ? targetHeight : h;
 	        }
-
+	        else if(h < targetHeight)
+	        	targetHeight = h;
+	        
 	        if (scratchImage == null) {
 	            scratchImage = new BufferedImage(w, h, type);
 	            g2 = scratchImage.createGraphics();

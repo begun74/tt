@@ -3,15 +3,31 @@ package tt.util.autoLoad;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
 import tt.util.*;
 
+
+@Service
+@Scope("request")
 public class FileHandler implements Runnable {
 	
 	private String pathToShare;
 	private Long code;
 	private List<String> listPaths;
 	
-	FileUpload fileUpload = new FileUpload();
+	
+	//@Autowired
+	private FileUpload fileUpload = new FileUpload();
+	
+	
+	public FileHandler(){}
 	
 	public FileHandler(Long code,String pathToShare) 
 	{
@@ -25,6 +41,17 @@ public class FileHandler implements Runnable {
 		this.code = code;
 	}
 
+	public void setParameters(Long code,String pathToShare) 
+	{
+		this.pathToShare = pathToShare;
+		this.code = code;
+	}
+
+	public void setParameters(Long code,List<String> listPaths)
+	{
+		this.listPaths = listPaths;
+		this.code = code;
+	}
 	
 	@Override
 	public void run() {
@@ -40,4 +67,15 @@ public class FileHandler implements Runnable {
 		}
 	}
 
+	
+	@PostConstruct
+	void init(){
+    	
+		System.out.println("FileHandler init " + fileUpload);
+	}
+	
+	@PreDestroy
+	void destr() {
+		System.out.println("FileHandler destr " );
+	}   
 }
