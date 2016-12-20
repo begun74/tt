@@ -2573,11 +2573,6 @@ give gallery's parent container a cursor: pointer.**/
 }
 
 
-.content_div_fixed {
-	display: inline-block;
-	width:100%;
-    max-height: 220px; 
-}
 
 /*set a border on the images to prevent shifting*/
 #gallery_01 img {
