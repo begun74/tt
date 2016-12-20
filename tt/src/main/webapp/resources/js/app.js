@@ -11,7 +11,7 @@ function decrement(obj) {
 
 var Product = {
 		id: 0,
-		tailsArr: [],
+		localItemName: '',
 		
 		getDetail: function () {
 				
@@ -29,8 +29,8 @@ var Product = {
 						$(".size_info").empty();
 						Product.tailsArr = [];
 						for(var i=0;i< data.length; ++i) {
-							$(".size_info").append("<li>"+data[i].size+" - "+data[i].amountTail+"</li>");
-							Product.tailsArr.push(data[i]);
+							$(".size_info").append("<li>"+data[i].size+" - "+data[i].amountTail+" "+Product.localItemName+"</li> ");
+							//Product.tailsArr.push(data[i]);
 						}
 					},
 					error : function(e) {

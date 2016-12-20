@@ -23,9 +23,13 @@
 														<div class="single-products">
 																<div class="productinfo text-center">
 																	<!-- a href="product-details?id=${tail.key.id}"><img class="pic1" src="resources/images/product-details/ps_1.jpg" alt="" /></a -->
-																	<a href="product-details?id=${tail.key.id}"><img class="" src="resources/images/products/${tail.key.code}/M/${tail.key.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" /></a>
-																	<h5>${tail.key.name}</h5>
-																	<p>${tail.value.name}</p>
+																	<a href="product-details?id=${tail.key.id}"><img class="" src="resources/images/products/${tail.key.code}/M/${tail.key.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" /></a>
+																	<c:set var="tail_name" value="${tail.key.name}" />
+																	<!-- h5>${fn:substring(tail_name, 0, 15)}</h5 -->
+																	<h5>${tail_name}</h5>
+																	<c:set var="prov_name" value=" ${tail.value.name}" />
+																	<!-- p>${fn:substring(prov_name, 0, 15)}</p -->
+																	<p>${prov_name}</p>
 																	<p><spring:message code="article"/>  ${tail.key.article}</p>
 																	<!-- p>(${tail.key.code})</p -->
 																	<a href="product-details?id=${tail.key.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i><spring:message code="to.order"/></a>

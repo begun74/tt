@@ -210,6 +210,14 @@
 													 </div>
 										  			<div class="clearfix">
 													         <div class="lab">
+											                    <label>Модель</label> 
+													         </div>
+													         <div  style="width: 25px" class="conleft" >
+																<input name="col_model" id="col_model" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_model}">										         
+													         </div>
+													 </div>
+										  			<div class="clearfix">
+													         <div class="lab">
 									                   			<label>Код НомГруппы</label>
 													         </div>
 													         <div style="width: 25px" class="conleft">

@@ -121,12 +121,13 @@ public class ReadExcelFile {
         		if(row_ >= mA_loadNomencl.getRow()-1) {
         			dirNomenclature = new DirNomenclature();
 	        	
-        			dirNomenclature.setName(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_name()-1)));
-        			dirNomenclature.setCode(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_code()-1)) ) );
-        			dirNomenclature.setArticle(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_article()-1)));
-        			dirNomenclature.setDirNomenclGroup(hmNomenclGroup.get(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_codeNomenclGroup()-1)) ) ) );
-        			dirNomenclature.setDirGender(hmDGen.get(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_gender()-1)).toLowerCase() ) );
-        			
+        			dirNomenclature.setName(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_name()-1)).trim());
+        			dirNomenclature.setModel(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_model()-1)).trim());
+        			dirNomenclature.setCode(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_code()-1)).trim() ) );
+        			dirNomenclature.setArticle(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_article()-1)).trim());
+        			dirNomenclature.setDirNomenclGroup(hmNomenclGroup.get(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_codeNomenclGroup()-1)).trim() ) ) );
+        			dirNomenclature.setDirGender(hmDGen.get(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_gender()-1)).toLowerCase().trim() ) );
+
         			String path = df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_pathToImage()-1)).trim();
         			//System.out.println(path);
 

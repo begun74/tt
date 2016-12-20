@@ -108,8 +108,9 @@
 							<div class="product-information"><!--/product-information-->
 								<img src="resources/images/product-details/new.jpg" class="newarrival" alt="" />
 								<h2>${nomenclature.name } (${nomenclature.dirGender.name })</h2>
+								<p><b><spring:message code="model"/></b>: ${nomenclature.model}</p>
 								<p><b><spring:message code="article"/>:  </b>${nomenclature.article} </p>
-								<p>Web ID: ${nomenclature.code}</p>
+								<p>ID: ${nomenclature.code}</p>
 								<img src="resources/images/product-details/rating.png" alt="" />
 								<!-- p><b>Availability:</b> In Stock</p -->
 								<!-- p><b>Condition:</b> New</p -->
@@ -340,7 +341,7 @@
 
 		Product.id = ${nomenclature.id};
     	Product.getDetail();
-    	
+    	Product.localItemName = '<spring:message code="items"/>';
 
     	$(".cart_quantity_up").click(function () {
 			var val = $(".cart_quantity_input").val();

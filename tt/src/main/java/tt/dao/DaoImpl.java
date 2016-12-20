@@ -201,7 +201,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<Tail> getTailsList(long id_dirNomenclature) {
 		// TODO Auto-generated method stub
-		return getSession().createQuery("from Tail where fk_id_nomenclature = :id_dirNomenclature and destruction_date is null order by amountTail").setParameter("id_dirNomenclature", id_dirNomenclature).list();
+		return getSession().createQuery("from Tail where fk_id_nomenclature = :id_dirNomenclature and destruction_date is null order by size, amountTail").setParameter("id_dirNomenclature", id_dirNomenclature).list();
 	}
 
 	@Override
