@@ -140,7 +140,10 @@ public class ReadExcelFile {
         				StringTokenizer st = new StringTokenizer(path,";");
         				List<String> files = new ArrayList<String>();
         				while (st.hasMoreTokens()) {
-        					files.add(Constants.IMAGES_SERVER +File.separator+st.nextToken().substring(3).replace('\\', '/'));
+        					
+        					String file = st.nextToken();
+        					//System.out.println("file - "+file);
+        					files.add(Constants.IMAGES_SERVER +File.separator+file.substring(3).replace('\\', '/'));
         				}
         				
         				hmPollPaths.put(dirNomenclature.getCode(),files);
@@ -155,7 +158,7 @@ public class ReadExcelFile {
         	
         	++row_;
         }
-        
+        System.out.println(hmPollPaths);
         MainAutoLoad.startPhotoFileService2(hmPollPaths);
         
 		return lNomencls;
