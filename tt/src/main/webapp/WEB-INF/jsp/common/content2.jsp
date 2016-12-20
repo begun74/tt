@@ -23,12 +23,12 @@
 														<div class="single-products">
 																<div class="productinfo text-center">
 																	<!-- a href="product-details?id=${tail.key.id}"><img class="pic1" src="resources/images/product-details/ps_1.jpg" alt="" /></a -->
-																	<a href="product-details?id=${tail.key.id}"><img class="pic1" src="resources/images/products/${tail.key.code}/M/${tail.key.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" /></a>
+																	<a href="product-details?id=${tail.key.id}"><img class="" src="resources/images/products/${tail.key.code}/M/${tail.key.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" /></a>
 																	<h5>${tail.key.name}</h5>
 																	<p>${tail.value.name}</p>
 																	<p><spring:message code="article"/>  ${tail.key.article}</p>
 																	<!-- p>(${tail.key.code})</p -->
-																	<a href="" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i><spring:message code="add.to.cart"/></a>
+																	<a href="product-details?id=${tail.key.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i><spring:message code="to.order"/></a>
 																</div>
 																<!-- div class="product-overlay">
 																	<div class="overlay-content">
@@ -38,12 +38,12 @@
 																	</div>
 																</div -->
 														</div>
-														<div class="choose">
+														<!-- div class="choose">
 															<ul class="nav nav-pills nav-justified">
-																<!-- li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li -->
+																<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
 																<li><a href="#"><i class="fa fa-plus-square"></i><spring:message code="compare"/></a></li>
 															</ul>
-														</div>
+														</div -->
 													</div>
 												</div>
 							</c:forEach>

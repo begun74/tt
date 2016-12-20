@@ -365,7 +365,6 @@
     	});
 
     	$(".cart").click(function() {
-    		//alert(${nomenclature.id});
     		Product.toOrder($( ".sizes option:selected" ).text(),$( ".cart_quantity_input" ).val());
     	});
 

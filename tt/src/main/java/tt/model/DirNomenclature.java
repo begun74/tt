@@ -57,6 +57,8 @@ public class DirNomenclature implements  IModel {
 	@NotEmpty (message = "Please enter article.") 
 	private String article;
 	
+	@NotEmpty (message = "Please enter model.") 
+	private String model;
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_dir_nomencl_group")
@@ -102,6 +104,15 @@ public class DirNomenclature implements  IModel {
 
 	public void setArticle(String article) {
 		this.article = article;
+	}
+
+
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
 	}
 
 
