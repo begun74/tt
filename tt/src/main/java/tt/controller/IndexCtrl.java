@@ -169,6 +169,8 @@ public class IndexCtrl {
 	{
 		ModelAndView model = new ModelAndView("cart2");
 		
+		model.addObject("orders", sessBean.getOrders());
+		
 		return model;
 	}
 

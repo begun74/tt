@@ -55,6 +55,8 @@ public interface Dao {
 	
 	public void addOrder(Order order);
 	
+	
+	
 	public Object getObject(Class clazz,Long id);
 	public void delObject(Object obj);
 	
