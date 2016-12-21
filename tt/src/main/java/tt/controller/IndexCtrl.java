@@ -164,10 +164,10 @@ public class IndexCtrl {
 		return model;
 	}
 
-	@RequestMapping(value = {"/cart.html"} , method = RequestMethod.GET)
+	@RequestMapping(value = {"/cart"} , method = RequestMethod.GET)
 	public ModelAndView  cart(HttpSession session) 
 	{
-		ModelAndView model = new ModelAndView("cart");
+		ModelAndView model = new ModelAndView("cart2");
 		
 		return model;
 	}

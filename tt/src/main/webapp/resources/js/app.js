@@ -55,6 +55,7 @@ var Product = {
 					success : function(data) 
 					{
 						Product.getDetail();
+						/*$('.add_product_alert').show();*/
 					},
 					error : function(e) {
 						

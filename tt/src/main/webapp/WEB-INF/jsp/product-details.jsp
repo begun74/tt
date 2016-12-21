@@ -34,8 +34,26 @@
 	
 	<section>
 		<div class="container">
+		
+			<div id="bs-example-modal-sm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="">
+			  <div class="modal-dialog modal-sm" role="document">
+			    <div class="modal-content">
+				    <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+			    	<div class="modal-body text-center">
+			      		<h2><spring:message code="add.to.order"/>. <a href="cart"><spring:message code="cart"/></h2></a>
+      				</div>
+      				<div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="close"/></button>
+				    </div>
+			    </div>
+			  </div>
+			</div>
+			
 			<div class="row">
 				
+							
 				
 				<div class="col-sm-12 padding-right">
 					<div class="product-details"><!--product-details-->
@@ -45,7 +63,6 @@
 								<img  id="img_01" src="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" />
 							</div>
 
-							
 
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 							    
@@ -123,7 +140,7 @@
 								<!-- a href=""><img src="resources/images/product-details/share.png" class="share img-responsive"  alt="" /></a -->
 								
 								
-									<span><span>BYN ${price}</span></span>
+									<span><span><!-- BYN ${price} --></span></span>
 									<select name="sizes" class="sizes">
 										<c:forEach items="${tails}" var="tail" varStatus="loop">
 											<option value="${tail.amountTail}">${tail.size} </option>
@@ -140,7 +157,7 @@
 									</label>
 
 									<div class="text-center">
-										<button type="button" class="btn btn-fefault cart" href="#">
+										<button type="button" class="btn btn-default cart " href="#" data-toggle="modal" data-target=".bs-example-modal-sm">
 											<i class="fa fa-shopping-cart"></i>
 											<spring:message code="to.order"/>
 										</button>
@@ -369,6 +386,8 @@
     		Product.toOrder($( ".sizes option:selected" ).text(),$( ".cart_quantity_input" ).val());
     	});
 
+    	
+    	
     	setInterval(Product.getDetail,15000);
     });
     

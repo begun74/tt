@@ -306,11 +306,11 @@ ul.sub-menu {
   padding-left: 0;
 }
 
-.dropdown:hover .dropdown-menu {
+/*.dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0; // remove the gap so it doesn't close
  }
- 
+ */
  
  
 
@@ -2577,6 +2577,12 @@ give gallery's parent container a cursor: pointer.**/
 /*set a border on the images to prevent shifting*/
 #gallery_01 img {
     border: 2px solid white;
+}
+
+.add_product_alert {
+	/*display: inline-block;
+	position: relative; */
+	display: none;
 }
 
 
