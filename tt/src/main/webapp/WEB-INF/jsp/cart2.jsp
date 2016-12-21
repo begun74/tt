@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +36,8 @@
 		<div class="container">
 			<div class="breadcrumbs">
 				<ol class="breadcrumb">
-				  <li><a href="#">Home</a></li>
-				  <li class="active">Shopping Cart</li>
+				  <li><a href="index"><spring:message code="home"/></a></li>
+				  <li class="active"><spring:message code="cart"/></li>
 				</ol>
 			</div>
 			<div class="table-responsive cart_info">
@@ -58,12 +60,13 @@
 							<td class="cart_description">
 								<h4>${order.dirNomenclature.name}</h4>
 								<p><b><spring:message code="model"/></b>: ${order.dirNomenclature.model}</p>
+								<p><b><spring:message code="size"/></b>: ${order.size}</p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
+									<a class="cart_quantity_up" href="#"> + </a>
 									<input class="cart_quantity_input" type="text" name="quantity" value="${order.amount}" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
+									<a class="cart_quantity_down" href="#"> - </a>
 								</div>
 							</td>
 							<td class="cart_delete">
@@ -81,76 +84,55 @@
 	<section id="do_action">
 		<div class="container">
 			<div class="heading">
-				<h3>What would you like to do next?</h3>
-				<p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+				<h3><spring:message code="requisites.of.order"/></h3>
 			</div>
 			<div class="row">
 				<div class="col-sm-6">
-					<div class="chose_area">
-						<ul class="user_option">
-							<li>
-								<input type="checkbox">
-								<label>Use Coupon Code</label>
-							</li>
-							<li>
-								<input type="checkbox">
-								<label>Use Gift Voucher</label>
-							</li>
-							<li>
-								<input type="checkbox">
-								<label>Estimate Shipping & Taxes</label>
-							</li>
-						</ul>
-						<ul class="user_info">
-							<li class="single_field">
-								<label>Country:</label>
-								<select>
-									<option>United States</option>
-									<option>Bangladesh</option>
-									<option>UK</option>
-									<option>India</option>
-									<option>Pakistan</option>
-									<option>Ucrane</option>
-									<option>Canada</option>
-									<option>Dubai</option>
-								</select>
-								
-							</li>
-							<li class="single_field">
-								<label>Region / State:</label>
-								<select>
-									<option>Select</option>
-									<option>Dhaka</option>
-									<option>London</option>
-									<option>Dillih</option>
-									<option>Lahore</option>
-									<option>Alaska</option>
-									<option>Canada</option>
-									<option>Dubai</option>
-								</select>
-							
-							</li>
-							<li class="single_field zip-field">
-								<label>Zip Code:</label>
-								<input type="text">
-							</li>
-						</ul>
-						<a class="btn btn-default update" href="">Get Quotes</a>
-						<a class="btn btn-default check_out" href="">Continue</a>
+							<form:form method="post" modelAttribute ="requestForm" id="requestForm"  
+								action="createOrder">
+										<div class="input-group">
+											<label>Имя <span>*</span></label>
+										</div>
+										<div class="input-group">
+											<input type="text" name="name" value="${requestForm.name}"/>
+										</div>
+										<div>
+											 <font color="red"><form:errors path="name" cssClass="formError"/></font>
+										</div>
+										<div class="input-group">
+											<label>Телефон <span>*</span></label>
+										</div>
+										<div class="input-group">
+											<input type="text" name="phone" value="${requestForm.phone}" placeholder="+375 XX 123-12-12"/>
+										</div>
+										<div>
+											 <font color="red"><form:errors path="phone" cssClass="formError"/></font>
+										</div>
+										<div class="input-group">
+											<label>Эл. почта</label>
+										</div>
+										<div class="input-group">
+											<input type="text" name="email" value="${requestForm.email}"/>
+										</div>
+										
+										<div class="input-group">
+											<label>Комментарии</label>
+										</div>
+										<div class="input-group">
+											<textarea name="description" id="description"   class="form-control" maxlength = "45"
+								                   rows="2" cols="20">${requestForm.description}</textarea>
+										</div>
+
+										<div class="col-sm-12 text-center">
+											<input  type="submit" name="toOrder" class="submit_order" value="<spring:message code="label.button.toOrder"/>"/>
+										</div>
+			
+										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+							</form:form>
+
 					</div>
 				</div>
-				<div class="col-sm-6">
-					<div class="total_area">
-						<ul>
-							<li>Cart Sub Total <span>$59</span></li>
-							<li>Eco Tax <span>$2</span></li>
-							<li>Shipping Cost <span>Free</span></li>
-							<li>Total <span>$61</span></li>
-						</ul>
-							<a class="btn btn-default update" href="">Update</a>
-							<a class="btn btn-default check_out" href="">Check Out</a>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</section><!--/#do_action-->
@@ -168,5 +150,41 @@
 	<script src="resources/js/jquery.scrollUp.min.js"></script>
     <script src="resources/js/jquery.prettyPhoto.js"></script>
     <script src="resources/js/main.js"></script>
+    
+    <script>
+    $(document).ready(function(){
+    	
+    	if('${fn:length(orders)}')
+    		$(".submit_order").attr("disabled","disabled");
+    	else
+    		$(".submit_order").attr("disabled","");
+    	
+    	
+    	$(".cart_quantity_up").click(function () {
+			var val = $(".cart_quantity_input").val();
+			
+			//if(val < $(".cart_quantity_up").attr("maxval"))
+				$(".cart_quantity_input").val(++val);		
+		});
+
+		$(".cart_quantity_down").click(function () {
+			var val = $(".cart_quantity_input").val();
+
+			if(val > 1)
+				$(".cart_quantity_input").val(--val);
+		});
+		
+		$( ".sizes" ).change(function() {
+			  //$(".cart_quantity_input").val(1);
+			  //$(".cart_quantity_up").attr("maxval",$( ".sizes" ).val());
+		});
+		
+    	$(".cart_quantity_input").keypress(function(event) {
+    		return isNumberKey(event);
+    	});
+    	
+    });
+    
+    </script>
 </body>
 </html>

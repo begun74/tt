@@ -65,8 +65,8 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 								<ul class="">
-									<li class="dropdown"><a class="dropdown-toggle " data-toggle="dropdown" href="#"><spring:message code="cart"/>  <span class="badge"><c:out value="${fn:length(sessBean.orders)}"/></span></a>
-										<ul class="dropdown-menu">
+									<li class="dropdown"><a href="cart"><spring:message code="cart"/>  <span class="badge"><c:out value="${fn:length(sessionScope.sessBean.orders)}"/></span></a>
+										<!-- ul class="dropdown-menu">
 											<li>
 							                        <div class="row">
 							                            <div class="col-xs-4 col-sm-4 no-margin text-center">
@@ -90,7 +90,7 @@
 							                        </div>
 							                </li>
 											
-										</ul>
+										</ul -->
 					                </li>
 									<!-- li><a href="login"><i class="fa fa-user"></i>Account</a></li -->
 									<!-- li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li -->

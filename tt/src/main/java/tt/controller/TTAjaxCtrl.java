@@ -84,9 +84,9 @@ public class TTAjaxCtrl {
 		order.setDirNomenclature((DirNomenclature)ttService.getObject(DirNomenclature.class, id));
 		
 		sessBean.getOrders().add(order);
+		session.setAttribute("sessBean", sessBean);
 		
-		
-		System.out.println("toOrder  - "+id+"  "+size+"   "+amount);
+		//System.out.println("toOrder  - "+id+"  "+size+"   "+amount);
 		
 		return  HttpStatus.OK;
 	}
