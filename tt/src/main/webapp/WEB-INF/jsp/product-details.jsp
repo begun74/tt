@@ -110,7 +110,7 @@
 								<h2>${nomenclature.name } (${nomenclature.dirGender.name })</h2>
 								<p><b><spring:message code="model"/></b>: ${nomenclature.model}</p>
 								<p><b><spring:message code="article"/>:  </b>${nomenclature.article} </p>
-								<p>ID: ${nomenclature.code}</p>
+								<!-- p>ID: ${nomenclature.code}</p -->
 								<img src="resources/images/product-details/rating.png" alt="" />
 								<!-- p><b>Availability:</b> In Stock</p -->
 								<!-- p><b>Condition:</b> New</p -->
