@@ -91,4 +91,20 @@ public class TTAjaxCtrl {
 		return  HttpStatus.OK;
 	}
 
+	@ResponseBody
+	@RequestMapping(value = "/delOrder{id}", method = RequestMethod.GET)
+	public HttpStatus delOrder(HttpSession session, @RequestParam ("id") long id) 
+	{
+		//System.out.println("session.isNew() - " +session.isNew());
+		if(session.isNew()) return HttpStatus.FORBIDDEN;
+		
+		
+		//sessBean.getOrders()(order);
+		session.setAttribute("sessBean", sessBean);
+		
+		System.out.println("Delete Order  - "+id);
+		
+		return  HttpStatus.OK;
+	}
+
 }

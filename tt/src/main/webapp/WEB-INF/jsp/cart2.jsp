@@ -55,7 +55,7 @@
 						<c:forEach items="${orders}" var="order" varStatus="loop">
 						<tr>
 							<td class="cart_product">
-								<a href=""><img src="resources/images/products/${order.dirNomenclature.code}/S/${order.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"></a>
+								<a href="product-details?id=${order.dirNomenclature.id}"><img src="resources/images/products/${order.dirNomenclature.code}/S/${order.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"></a>
 							</td>
 							<td class="cart_description">
 								<h4>${order.dirNomenclature.name}</h4>
@@ -83,11 +83,12 @@
 
 	<section id="do_action">
 		<div class="container">
-			<div class="heading">
-				<h3><spring:message code="requisites.of.order"/></h3>
-			</div>
 			<div class="row">
+				<div class="col-sm-3"></div>
 				<div class="col-sm-6">
+							<div class="heading">
+								<h3><spring:message code="requisites.of.order"/></h3>
+							</div>
 							<form:form method="post" modelAttribute ="requestForm" id="requestForm"  
 								action="createOrder">
 										<div class="input-group">
@@ -129,8 +130,8 @@
 			
 										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 							</form:form>
-
 					</div>
+					<div class="col-sm-3"></div>
 				</div>
 				
 			</div>
@@ -154,10 +155,14 @@
     <script>
     $(document).ready(function(){
     	
-    	if('${fn:length(orders)}')
+    	if('${fn:length(sessionScope.sessBean.orders) = 0}')
+    	{
     		$(".submit_order").attr("disabled","disabled");
+    	}
     	else
+    	{
     		$(".submit_order").attr("disabled","");
+    	}
     	
     	
     	$(".cart_quantity_up").click(function () {
