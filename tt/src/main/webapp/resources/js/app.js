@@ -62,7 +62,31 @@ var Product = {
 						display(e);
 					}
 				});
-		}
+		},
+
+		delOrder: function(id) {
+
+			var data = {};
+			
+
+			$.ajax({
+				type : "GET",
+				url : "delOrder?id="+id,
+				//timeout : 10000,
+				data : JSON.stringify(data),
+				contentType: 'application/json; charset=utf-8',
+				success : function(data) 
+				{
+					
+					/*$('.add_product_alert').show();*/
+				},
+				error : function(e) {
+					
+					display(e);
+				}
+			});
+	}
+
 };
 
 

@@ -70,7 +70,7 @@
 								</div>
 							</td>
 							<td class="cart_delete">
-								<a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>
+								<a class="cart_quantity_delete" href="#"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
 						</c:forEach>
@@ -155,7 +155,7 @@
     <script>
     $(document).ready(function(){
     	
-    	if('${fn:length(sessionScope.sessBean.orders) = 0}')
+    	if('${fn:length(sessionScope.sessBean.orders) == 0}')
     	{
     		$(".submit_order").attr("disabled","disabled");
     	}
@@ -187,6 +187,11 @@
     	$(".cart_quantity_input").keypress(function(event) {
     		return isNumberKey(event);
     	});
+    	
+    	$(".submit_order").click(function(id) {
+    		Product.delOrder(id);
+    	});
+
     	
     });
     
