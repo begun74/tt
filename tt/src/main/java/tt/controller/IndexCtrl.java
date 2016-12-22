@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,11 +19,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import tt.bean.AppBean;
 import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
+import tt.model.Order;
 import tt.model.Tail;
 import tt.model.User;
 import tt.modelattribute.MA_search;
@@ -163,6 +166,32 @@ public class IndexCtrl {
 		
 		return model;
 	}
+	
+	
+	@RequestMapping(value = "/delOrder{npp}", method = RequestMethod.GET)
+	public ModelAndView delOrder(HttpSession session, @RequestParam ("npp") int npp) 
+	{
+		ModelAndView model = new ModelAndView("redirect:/cart");
+		//sessBean.getOrders()(order);
+		
+		Iterator<Order> iter = sessBean.getOrders().listIterator();
+		
+		while(iter.hasNext())
+		{
+			Order order = iter.next();
+			if(order.getNpp() == npp)
+				iter.remove();
+		}
+		
+		session.setAttribute("sessBean", sessBean);
+		
+		
+		
+		System.out.println("Delete Order  - "+npp);
+		
+		return model;
+	}
+
 
 	@RequestMapping(value = {"/cart"} , method = RequestMethod.GET)
 	public ModelAndView  cart(HttpSession session) 

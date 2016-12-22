@@ -51,6 +51,8 @@ public class Order implements IModel {
 	@NotNull
 	private DirNomenclature dirNomenclature;
 	
+	private transient int npp;
+	
 	@Override
 	public Long getId() {
 		return id;
@@ -114,6 +116,15 @@ public class Order implements IModel {
 
 	public void setDirNomenclature(DirNomenclature dirNomenclature) {
 		this.dirNomenclature = dirNomenclature;
+	}
+
+	
+	public int getNpp() {
+		return npp;
+	}
+
+	public void setNpp(int npp) {
+		this.npp = npp;
 	}
 
 	@Override

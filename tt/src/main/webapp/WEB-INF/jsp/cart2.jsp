@@ -34,15 +34,48 @@
 
 	<section id="cart_items">
 		<div class="container">
-			<div class="breadcrumbs">
+			
+		
+			<!-- div class="breadcrumbs">
 				<ol class="breadcrumb">
 				  <li><a href="index"><spring:message code="home"/></a></li>
 				  <li class="active"><spring:message code="cart"/></li>
 				</ol>
+			</div -->
+
+			<section id="do_action">			
+			<div class="">
+					<form:form method="post" modelAttribute ="requestForm" id="requestForm"  
+								action="createOrder">
+							<div class="col-sm-4 form-check">
+								<input type="text" class="form-control" placeholder='<spring:message code="name"/>'/>
+							</div>
+							<div class="col-sm-4 form-check">
+								<input type="email" class="form-control"  placeholder='<spring:message code="email"/>'/>
+							</div>
+							<div class="col-sm-4 form-check">
+								<input type="text" class="form-control"  placeholder='+375 XX XXX-XX-XX'/>
+							</div>
+							<div class="col-sm-12 form-check">
+									<label>Комментарий</label>
+							</div>
+							<div class="col-sm-12 form-check">
+									<textarea name="" class="form-control"  ></textarea>
+							</div>
+
+							<div class="text-center">
+								<button type="submit" class="btn btn-default submit_order" >
+												<spring:message code="submit"/>
+								</button>
+							</div>
+					</form:form>			
 			</div>
+			</section>
+			
+			<div class="col-sm-12"></div>
+			
 			<div class="table-responsive cart_info">
 				<table class="table table-condensed">
-					<thead>
 						<tr class="cart_menu">
 							<td class="image"></td>
 							<td class="description"><spring:message code="name2"/></td>
@@ -50,93 +83,37 @@
 							<!-- td class="total"><spring:message code="total"/></td -->
 							<td></td>
 						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${orders}" var="order" varStatus="loop">
-						<tr>
-							<td class="cart_product">
-								<a href="product-details?id=${order.dirNomenclature.id}"><img src="resources/images/products/${order.dirNomenclature.code}/S/${order.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"></a>
-							</td>
-							<td class="cart_description">
-								<h4>${order.dirNomenclature.name}</h4>
-								<p><b><spring:message code="model"/></b>: ${order.dirNomenclature.model}</p>
-								<p><b><spring:message code="size"/></b>: ${order.size}</p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href="#"> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="${order.amount}" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href="#"> - </a>
-								</div>
-							</td>
-							<td class="cart_delete">
-								<a class="cart_quantity_delete" href="#"><i class="fa fa-times"></i></a>
-							</td>
-						</tr>
-						</c:forEach>
-
-					</tbody>
 				</table>
+				<div class="backet_info">
+				<table width="100%">
+							<c:forEach items="${orders}" var="order" varStatus="loop">
+							<tr>
+								<td class="cart_product">
+									<a href="product-details?id=${order.dirNomenclature.id}"><img src="resources/images/products/${order.dirNomenclature.code}/S/${order.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"></a>
+								</td>
+								<td class="cart_description">
+									<h4>${order.dirNomenclature.name}</h4>
+									<p><b><spring:message code="model"/></b>: ${order.dirNomenclature.model}</p>
+									<p><b><spring:message code="size"/></b>: ${order.size}</p>
+								</td>
+								<td class="cart_quantity">
+									<div class="cart_quantity_button">
+										<a class="cart_quantity_up" href="#"> + </a>
+										<input class="cart_quantity_input" type="text" name="quantity" value="${order.amount}" autocomplete="off" size="2">
+										<a class="cart_quantity_down" href="#"> - </a>
+									</div>
+								</td>
+								<td class="cart_delete">
+									<a class="cart_quantity_delete" href="delOrder?npp=${order.npp}"><i class="fa fa-times"></i></a>
+								</td>
+							</tr>
+							</c:forEach>
+				</table>
+				</div>
 			</div>
 		</div>
 	</section> <!--/#cart_items-->
 
-	<section id="do_action">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-3"></div>
-				<div class="col-sm-6">
-							<div class="heading">
-								<h3><spring:message code="requisites.of.order"/></h3>
-							</div>
-							<form:form method="post" modelAttribute ="requestForm" id="requestForm"  
-								action="createOrder">
-										<div class="input-group">
-											<label>Имя <span>*</span></label>
-										</div>
-										<div class="input-group">
-											<input type="text" name="name" value="${requestForm.name}"/>
-										</div>
-										<div>
-											 <font color="red"><form:errors path="name" cssClass="formError"/></font>
-										</div>
-										<div class="input-group">
-											<label>Телефон <span>*</span></label>
-										</div>
-										<div class="input-group">
-											<input type="text" name="phone" value="${requestForm.phone}" placeholder="+375 XX 123-12-12"/>
-										</div>
-										<div>
-											 <font color="red"><form:errors path="phone" cssClass="formError"/></font>
-										</div>
-										<div class="input-group">
-											<label>Эл. почта</label>
-										</div>
-										<div class="input-group">
-											<input type="text" name="email" value="${requestForm.email}"/>
-										</div>
-										
-										<div class="input-group">
-											<label>Комментарии</label>
-										</div>
-										<div class="input-group">
-											<textarea name="description" id="description"   class="form-control" maxlength = "45"
-								                   rows="2" cols="20">${requestForm.description}</textarea>
-										</div>
-
-										<div class="col-sm-12 text-center">
-											<input  type="submit" name="toOrder" class="submit_order" value="<spring:message code="label.button.toOrder"/>"/>
-										</div>
-			
-										<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
-							</form:form>
-					</div>
-					<div class="col-sm-3"></div>
-				</div>
-				
-			</div>
-		</div>
-	</section><!--/#do_action-->
 
 	<footer id="footer"><!--Footer-->
 		<!-- footer -->
@@ -151,17 +128,18 @@
 	<script src="resources/js/jquery.scrollUp.min.js"></script>
     <script src="resources/js/jquery.prettyPhoto.js"></script>
     <script src="resources/js/main.js"></script>
+    <script src="resources/js/app.js"></script>
     
     <script>
     $(document).ready(function(){
-    	
-    	if('${fn:length(sessionScope.sessBean.orders) == 0}')
+
+    	if(${fn:length(sessionScope.sessBean.orders) == 0})
     	{
     		$(".submit_order").attr("disabled","disabled");
     	}
     	else
     	{
-    		$(".submit_order").attr("disabled","");
+    		$(".submit_order").removeAttr('disabled');
     	}
     	
     	
@@ -188,9 +166,6 @@
     		return isNumberKey(event);
     	});
     	
-    	$(".submit_order").click(function(id) {
-    		Product.delOrder(id);
-    	});
 
     	
     });

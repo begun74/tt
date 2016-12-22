@@ -11,8 +11,8 @@ function decrement(obj) {
 
 var Product = {
 		id: 0,
-		localItemName: '',
-		
+		result: 0,
+
 		getDetail: function () {
 				
 				var data = {};
@@ -43,25 +43,27 @@ var Product = {
 
 		toOrder: function(size, amount) {
 
-				var data = {};
-				data['id'] = Product.id;
-
-				$.ajax({
+				var arrData = {};
+				arrData['id'] = Product.id;
+				
+				
+				var jqXHR = $.ajax({
 					type : "GET",
 					url : "toOrder?id="+Product.id+"&size="+size+"&amount="+amount,
 					//timeout : 10000,
-					data : JSON.stringify(data),
+					async: false,
+					dataType: 'json',
+					data : JSON.stringify(arrData),
 					contentType: 'application/json; charset=utf-8',
-					success : function(data) 
-					{
-						Product.getDetail();
-						/*$('.add_product_alert').show();*/
+					success : function(data) {
+						
 					},
 					error : function(e) {
-						
 						display(e);
 					}
 				});
+				
+				return jqXHR.responseText;
 		},
 
 		delOrder: function(id) {
@@ -85,7 +87,7 @@ var Product = {
 					display(e);
 				}
 			});
-	}
+		}
 
 };
 

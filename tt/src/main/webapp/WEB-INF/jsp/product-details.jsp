@@ -383,7 +383,10 @@
     	});
 
     	$(".cart").click(function() {
-    		Product.toOrder($( ".sizes option:selected" ).text(),$( ".cart_quantity_input" ).val());
+    		var res = Product.toOrder($( ".sizes option:selected" ).text(),$( ".cart_quantity_input" ).val());
+			
+    		$('.badge').text(res); //в header_top.jsp class='badge' Корзина - кол-во покупок
+    		//alert('res -  ' + res);
     	});
 
     	

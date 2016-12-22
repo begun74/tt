@@ -70,41 +70,27 @@ public class TTAjaxCtrl {
 		return  tails;
 	}
 	
-	@ResponseBody
+	
 	@RequestMapping(value = "/toOrder{id}", method = RequestMethod.GET)
-	public HttpStatus toOrder(HttpSession session, @RequestParam ("id") long id, @RequestParam ("size") String size, @RequestParam ("amount") int amount) 
+	public ResponseEntity<Integer> toOrder(HttpSession session, @RequestParam ("id") long id, @RequestParam ("size") String size, @RequestParam ("amount") int amount) 
 	{
 		//System.out.println("session.isNew() - " +session.isNew());
-		if(session.isNew()) return HttpStatus.FORBIDDEN;
+		if(session.isNew()) return new ResponseEntity<Integer>(0,HttpStatus.FORBIDDEN);
 		
 		Order order = new Order();
 		order.setAmount(amount);
 		order.setSize(size);
 		order.setCreate_date(new Timestamp(new Date().getTime()));
 		order.setDirNomenclature((DirNomenclature)ttService.getObject(DirNomenclature.class, id));
+		order.setNpp(sessBean.getNpp());
 		
 		sessBean.getOrders().add(order);
 		session.setAttribute("sessBean", sessBean);
 		
 		//System.out.println("toOrder  - "+id+"  "+size+"   "+amount);
 		
-		return  HttpStatus.OK;
+		return  new ResponseEntity<Integer>(sessBean.getOrders().size(),HttpStatus.OK);
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "/delOrder{id}", method = RequestMethod.GET)
-	public HttpStatus delOrder(HttpSession session, @RequestParam ("id") long id) 
-	{
-		//System.out.println("session.isNew() - " +session.isNew());
-		if(session.isNew()) return HttpStatus.FORBIDDEN;
-		
-		
-		//sessBean.getOrders()(order);
-		session.setAttribute("sessBean", sessBean);
-		
-		System.out.println("Delete Order  - "+id);
-		
-		return  HttpStatus.OK;
-	}
 
 }
