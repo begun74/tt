@@ -58,15 +58,15 @@
 				</ol>
 			</div -->
 
-			<section id="do_action">			
+			<section id="do_order">			
 			<div class="">
-					<form:form method="post" modelAttribute ="requestForm" id="requestForm"  
+					<form:form method="post" modelAttribute ="orderForm" id="orderForm"  
 								action="createOrder">
 							<div class="col-sm-4 form-check">
 								<input type="text" name="name" class="form-control" placeholder='<spring:message code="name"/>'/>
 							</div>
-							<div class="col-sm-4 form-check">
-								<input type="email" name="email" class="form-control"  placeholder='<spring:message code="email"/>'/>
+							<div class="col-sm-4">
+								<input type="email" name="email" class="form-control control-label"  placeholder='<spring:message code="email"/>'/>
 							</div>
 							<div class="col-sm-4 form-check">
 								<input type="text" name="phone" class="form-control"  placeholder='+375 XX XXX-XX-XX'/>
@@ -181,9 +181,28 @@
     		return isNumberKey(event);
     	});
     	
-		$('.submit_order').click(function() {
-			$('#bs-example-modal-sm').modal('show');
-		}); 
+    	$('#orderForm').submit(function(e){
+    		e.preventDefault();
+    		this.submit();
+    		$('#bs-example-modal-sm').modal('show');
+    	}).formValidation({
+            framework: 'bootstrap',
+            icon: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                email: {
+                    validators: {
+                        emailAddress: {
+                            message: 'The value is not a valid email address'
+                        }
+                    }
+                }
+            }
+        });
+    	
     	
     });
     
