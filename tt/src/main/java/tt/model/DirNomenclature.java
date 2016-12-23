@@ -153,6 +153,12 @@ public class DirNomenclature implements  IModel {
 	public int compareTo(Object o) {
 		return ( ((DirNomenclature)o).getCode().compareTo(this.getCode()) );
 	}
+
+	@Override
+	public String toString() {
+		return "DirNomenclature [id=" + id + ", code=" + code + ", name=" + name + ", article=" + article + ", model="
+				+ model + ", dirNomenclGroup=" + dirNomenclGroup + ", dirGender=" + dirGender + "]";
+	}
 	
 	
 

@@ -2,19 +2,25 @@ package tt.model;
 
 import java.sql.Timestamp;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+
+@Entity
+@Table(name = "orders")
 public class Order implements IModel {
 
 
@@ -34,13 +40,15 @@ public class Order implements IModel {
 			allocationSize=1
 		)
 	@Column(name="id_orders")
-	private long id;
+	@NotNull
+	private Long id;
 	
 	@NotNull
 	private Timestamp creation_date; 
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="order")
-	private Set<OrderItems> orderItems ;
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="order")
+	@NotNull
+	private List<OrderItems> orderItems ;
 	
 	@Override
 	public Long getId() {
@@ -63,12 +71,32 @@ public class Order implements IModel {
 		this.creation_date = creation_date;
 	}
 
-
 	
+	public List<OrderItems> getOrderItems() {
+		return orderItems;
+	}
+
+	public void setOrderItems(List<OrderItems> orderItems) {
+		this.orderItems = orderItems;
+	}
+
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+
 	@Override
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
 		return ((Order)o).getId().compareTo(getId());
 	}
+
+	@Override
+	public String toString() {
+		return "Order [id=" + id + ", creation_date=" + creation_date + ", orderItems=" + orderItems + "]";
+	}
+	
+	
 
 }

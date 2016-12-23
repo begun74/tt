@@ -25,6 +25,7 @@ import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
+import tt.model.Order;
 import tt.model.OrderItems;
 import tt.model.Store;
 import tt.model.Tail;
@@ -255,8 +256,9 @@ public class TTServiceImpl implements Dao {
 	}
 
 
+
 	@Override
-	public void addOrder(OrderItems order) {
+	public void addOrder(Order order) {
 		// TODO Auto-generated method stub
 		dao.addOrder(order);
 	}

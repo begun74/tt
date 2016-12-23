@@ -51,9 +51,8 @@ public class OrderItems implements IModel {
 	@NotNull
 	private DirNomenclature dirNomenclature;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_id_orders", nullable=false)
-	@NotNull
 	private Order order;
 	
 	
@@ -150,8 +149,8 @@ public class OrderItems implements IModel {
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", size=" + size + ", amount=" + amount + ", create_date=" + create_date
-				+ ", destruction_date=" + destruction_date + ", dirNomenclature=" + dirNomenclature + "]";
+		return "OrderItems [id=" + id + ", size=" + size + ", amount=" + amount + ", create_date=" + create_date
+				+ ", destruction_date=" + destruction_date + ", dirNomenclature=" + dirNomenclature +"]";
 	}
 
 

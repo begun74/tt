@@ -35,6 +35,21 @@
 	<section id="cart_items">
 		<div class="container">
 			
+			<div id="bs-example-modal-sm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="">
+			  <div class="modal-dialog modal-sm" role="document">
+			    <div class="modal-content">
+				    <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+			    	<div class="modal-body text-center">
+			      		<h2><a href="cart"><spring:message code="add.to.order"/></h2></a>
+      				</div>
+      				<div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="close"/></button>
+				    </div>
+			    </div>
+			  </div>
+			</div>
 		
 			<!-- div class="breadcrumbs">
 				<ol class="breadcrumb">
@@ -48,19 +63,19 @@
 					<form:form method="post" modelAttribute ="requestForm" id="requestForm"  
 								action="createOrder">
 							<div class="col-sm-4 form-check">
-								<input type="text" class="form-control" placeholder='<spring:message code="name"/>'/>
+								<input type="text" name="name" class="form-control" placeholder='<spring:message code="name"/>'/>
 							</div>
 							<div class="col-sm-4 form-check">
-								<input type="email" class="form-control"  placeholder='<spring:message code="email"/>'/>
+								<input type="email" name="email" class="form-control"  placeholder='<spring:message code="email"/>'/>
 							</div>
 							<div class="col-sm-4 form-check">
-								<input type="text" class="form-control"  placeholder='+375 XX XXX-XX-XX'/>
+								<input type="text" name="phone" class="form-control"  placeholder='+375 XX XXX-XX-XX'/>
 							</div>
 							<div class="col-sm-12 form-check">
 									<label>Комментарий</label>
 							</div>
 							<div class="col-sm-12 form-check">
-									<textarea name="" class="form-control"  ></textarea>
+									<textarea name="comment" class="form-control"  ></textarea>
 							</div>
 
 							<div class="text-center">
@@ -166,7 +181,9 @@
     		return isNumberKey(event);
     	});
     	
-
+		$('.submit_order').click(function() {
+			$('#bs-example-modal-sm').modal('show');
+		}); 
     	
     });
     

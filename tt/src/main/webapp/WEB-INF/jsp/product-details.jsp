@@ -42,7 +42,7 @@
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					</div>
 			    	<div class="modal-body text-center">
-			      		<h2><spring:message code="add.to.order"/>. <a href="cart"><spring:message code="cart"/></h2></a>
+			      		<h2><spring:message code="add.to.backet"/>. <a href="cart"><spring:message code="cart"/></h2></a>
       				</div>
       				<div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="close"/></button>

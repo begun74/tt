@@ -1,7 +1,9 @@
 package tt.controller;
 
 import java.io.File;
+import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
@@ -19,14 +21,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import tt.bean.AppBean;
 import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
+import tt.model.Order;
 import tt.model.OrderItems;
-import tt.model.Tail;
 import tt.model.User;
 import tt.modelattribute.MA_search;
 import tt.service.TTServiceImpl;
@@ -203,6 +204,36 @@ public class IndexCtrl {
 		return model;
 	}
 
+	
+	@RequestMapping(value = {"/createOrder"} , method = RequestMethod.POST)
+	public ModelAndView  createOrder(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView("redirect:/cart");
+		
+		Order order = new Order();
+		order.setCreation_date(new Timestamp(new Date().getTime()));
+				
+		for(OrderItems oI: sessBean.getOrderItems())
+		{
+			oI.setOrder(order);
+		}
+		
+		
+		order.setOrderItems(sessBean.getOrderItems());
+		System.out.println("Order - "+order);
+		
+		ttService.addOrder(order);
+		
+		sessBean.getOrderItems().clear();
+		model.addObject("orderItems", sessBean.getOrderItems());
+		model.addObject("last_order",order);
+		
+		
+		return model;
+	}
+	
+	
+	
 	@RequestMapping(value = {"/checkout.html"} , method = RequestMethod.GET)
 	public ModelAndView  checkout(HttpSession session) 
 	{
