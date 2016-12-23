@@ -58,18 +58,27 @@
 				</ol>
 			</div -->
 
+			<!-- Error form message -->            
+            <c:if test="${not empty sessionScope.error}">
+		            <div class="col-sm-12 form-message error"  onclick="clearErrors()">
+		              <ul>
+		                <li>"${sessionScope.error}"</li>
+		              </ul>
+		            </div>
+	        </c:if>
+
 			<section id="do_order">			
 			<div class="">
 					<form:form method="post" modelAttribute ="orderForm" id="orderForm"  
 								action="createOrder">
 							<div class="col-sm-4 form-check">
-								<input type="text" name="person_name" class="form-control" placeholder='<spring:message code="name"/>'/>
+								<input type="text" name="person_name" class="form-control control-label" placeholder='<spring:message code="name"/>'/>
 							</div>
 							<div class="col-sm-4">
 								<input type="email" name="email" class="form-control control-label" value="${orderForm.phone}" placeholder='<spring:message code="email"/>'/>
 							</div>
 							<div class="col-sm-4 form-check">
-								<input type="text" name="phone" class="form-control"  placeholder='+375 XX XXX-XX-XX'/>
+								<input type="text" name="phone" class="form-control control-label"  placeholder='+375 XX XXX-XX-XX'/>
 							</div>
 							<div class="col-sm-12 form-check">
 									<label>Комментарий</label>
@@ -199,7 +208,14 @@
                             message: 'The value is not a valid email address'
                         }
                     }
-                }
+                },
+	            person_name: {
+	            	validators: {
+	                    notEmpty: {
+	                        message: 'The full name is required'
+	                    }
+	                }
+	            }
             }
         });
     	

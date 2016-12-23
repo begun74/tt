@@ -202,6 +202,7 @@ public class IndexCtrl {
 	{
 		ModelAndView model = new ModelAndView("cart2");
 		
+	
 		model.addObject("orderItems", sessBean.getOrderItems());
 		
 		return model;
@@ -216,7 +217,7 @@ public class IndexCtrl {
 		
 		if(result.hasErrors())
 		{
-			System.out.println(result.getFieldErrors());
+			session.setAttribute("error", "Введите корректные данные");
 			return model;
 		}
 		
