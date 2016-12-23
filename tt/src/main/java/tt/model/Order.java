@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 
 @Entity
@@ -39,15 +41,28 @@ public class Order implements IModel {
 			sequenceName="seq_global",
 			allocationSize=1
 		)
-	@Column(name="id_orders")
-	@NotNull
+	@Column(name="id_orders", nullable=false)
 	private Long id;
 	
-	@NotNull
+	@Column(nullable=false)
 	private Timestamp creation_date; 
 	
+	
+	//@Pattern(regexp="\\(\\d{3}\\)\\d{3}-\\d{4}")
+	@Pattern(regexp="\\+\\d{3}\\s\\d{2,4}\\s\\d{3}-\\d{2}-\\d{2}")
+	//@NotEmpty (message = "Please enter phone.")
+	private String phone;
+		
+	private String email;
+	
+	@Size(min = 2, max = 20, message = "Please enter person_name.")
+	private String person_name;
+
+	@Size(min = 0, max = 100)
+	private String comment;
+
+	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="order")
-	@NotNull
 	private List<OrderItems> orderItems ;
 	
 	@Override
@@ -72,6 +87,40 @@ public class Order implements IModel {
 	}
 
 	
+	
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPerson_name() {
+		return person_name;
+	}
+
+	public void setPerson_name(String person_name) {
+		this.person_name = person_name;
+	}
+
+	
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
 	public List<OrderItems> getOrderItems() {
 		return orderItems;
 	}

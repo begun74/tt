@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -32,6 +34,7 @@ import tt.model.User;
 import tt.modelattribute.MA_search;
 import tt.service.TTServiceImpl;
 import tt.util.*;
+
 
 
 
@@ -206,11 +209,18 @@ public class IndexCtrl {
 
 	
 	@RequestMapping(value = {"/createOrder"} , method = RequestMethod.POST)
-	public ModelAndView  createOrder(HttpSession session) 
+	public ModelAndView  createOrder(HttpSession session, @ModelAttribute("orderForm") @Valid  Order order,
+			BindingResult result) 
 	{
 		ModelAndView model = new ModelAndView("redirect:/cart");
 		
-		Order order = new Order();
+		if(result.hasErrors())
+		{
+			System.out.println(result.getFieldErrors());
+			return model;
+		}
+		
+		//Order order = new Order();
 		order.setCreation_date(new Timestamp(new Date().getTime()));
 				
 		for(OrderItems oI: sessBean.getOrderItems())

@@ -63,10 +63,10 @@
 					<form:form method="post" modelAttribute ="orderForm" id="orderForm"  
 								action="createOrder">
 							<div class="col-sm-4 form-check">
-								<input type="text" name="name" class="form-control" placeholder='<spring:message code="name"/>'/>
+								<input type="text" name="person_name" class="form-control" placeholder='<spring:message code="name"/>'/>
 							</div>
 							<div class="col-sm-4">
-								<input type="email" name="email" class="form-control control-label"  placeholder='<spring:message code="email"/>'/>
+								<input type="email" name="email" class="form-control control-label" value="${orderForm.phone}" placeholder='<spring:message code="email"/>'/>
 							</div>
 							<div class="col-sm-4 form-check">
 								<input type="text" name="phone" class="form-control"  placeholder='+375 XX XXX-XX-XX'/>
