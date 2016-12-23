@@ -50,6 +50,12 @@ public class OrderItems implements IModel {
 	@JoinColumn(name = "fk_id_dir_nomenclature", nullable=false)
 	@NotNull
 	private DirNomenclature dirNomenclature;
+
+	@ManyToOne
+	@JoinColumn(name = "fk_id_orders", nullable=false)
+	@NotNull
+	private Order order;
+	
 	
 	private transient int npp;
 	
@@ -119,6 +125,15 @@ public class OrderItems implements IModel {
 	}
 
 	
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+
 	public int getNpp() {
 		return npp;
 	}

@@ -1,12 +1,19 @@
 package tt.model;
 
 import java.sql.Timestamp;
+import java.util.LinkedHashSet;
+import java.util.Set;
+import java.util.TreeSet;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
+import javax.validation.constraints.NotNull;
 
 public class Order implements IModel {
 
@@ -29,7 +36,11 @@ public class Order implements IModel {
 	@Column(name="id_orders")
 	private long id;
 	
+	@NotNull
 	private Timestamp creation_date; 
+	
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="order")
+	private Set<OrderItems> orderItems ;
 	
 	@Override
 	public Long getId() {
