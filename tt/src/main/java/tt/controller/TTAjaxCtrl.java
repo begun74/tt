@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import tt.bean.AdminSessionBean;
 import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
-import tt.model.Order;
+import tt.model.OrderItems;
 import tt.model.Tail;
 import tt.service.TTServiceImpl;
 
@@ -77,19 +77,19 @@ public class TTAjaxCtrl {
 		//System.out.println("session.isNew() - " +session.isNew());
 		if(session.isNew()) return new ResponseEntity<Integer>(0,HttpStatus.FORBIDDEN);
 		
-		Order order = new Order();
-		order.setAmount(amount);
-		order.setSize(size);
-		order.setCreate_date(new Timestamp(new Date().getTime()));
-		order.setDirNomenclature((DirNomenclature)ttService.getObject(DirNomenclature.class, id));
-		order.setNpp(sessBean.getNpp());
+		OrderItems orderItem = new OrderItems();
+		orderItem.setAmount(amount);
+		orderItem.setSize(size);
+		orderItem.setCreate_date(new Timestamp(new Date().getTime()));
+		orderItem.setDirNomenclature((DirNomenclature)ttService.getObject(DirNomenclature.class, id));
+		orderItem.setNpp(sessBean.getNpp());
 		
-		sessBean.getOrders().add(order);
+		sessBean.getOrderItems().add(orderItem);
 		session.setAttribute("sessBean", sessBean);
 		
 		//System.out.println("toOrder  - "+id+"  "+size+"   "+amount);
 		
-		return  new ResponseEntity<Integer>(sessBean.getOrders().size(),HttpStatus.OK);
+		return  new ResponseEntity<Integer>(sessBean.getOrderItems().size(),HttpStatus.OK);
 	}
 
 

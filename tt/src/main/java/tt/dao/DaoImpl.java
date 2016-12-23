@@ -205,7 +205,7 @@ public class DaoImpl implements Dao {
 	}
 
 	@Override
-	public void addOrder(tt.model.Order order) {
+	public void addOrder(tt.model.OrderItems order) {
 		// TODO Auto-generated method stub
 		getSession().saveOrUpdate(order);
 	}

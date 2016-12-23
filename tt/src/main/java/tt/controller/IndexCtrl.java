@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import tt.bean.AppBean;
 import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
-import tt.model.Order;
+import tt.model.OrderItems;
 import tt.model.Tail;
 import tt.model.User;
 import tt.modelattribute.MA_search;
@@ -174,11 +174,11 @@ public class IndexCtrl {
 		ModelAndView model = new ModelAndView("redirect:/cart");
 		//sessBean.getOrders()(order);
 		
-		Iterator<Order> iter = sessBean.getOrders().listIterator();
+		Iterator<OrderItems> iter = sessBean.getOrderItems().listIterator();
 		
 		while(iter.hasNext())
 		{
-			Order order = iter.next();
+			OrderItems order = iter.next();
 			if(order.getNpp() == npp)
 				iter.remove();
 		}
@@ -198,7 +198,7 @@ public class IndexCtrl {
 	{
 		ModelAndView model = new ModelAndView("cart2");
 		
-		model.addObject("orders", sessBean.getOrders());
+		model.addObject("orderItems", sessBean.getOrderItems());
 		
 		return model;
 	}

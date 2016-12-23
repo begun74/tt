@@ -3,28 +3,22 @@ package tt.model;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
-@Entity
-@Table(name = "orders")
 public class Order implements IModel {
+
 
 	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4911618125897962158L;
+	private static final long serialVersionUID = 8125750113397192529L;
 	
 	
+
 	@Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="seq_global")
 	@SequenceGenerator(
@@ -35,110 +29,35 @@ public class Order implements IModel {
 	@Column(name="id_orders")
 	private long id;
 	
-	@NotNull
-	private String size;
-	
-	@NotNull
-	private int amount;
-
-	@NotNull
-	private Timestamp create_date;
-	
-	private Timestamp destruction_date;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "fk_id_dir_nomenclature", nullable=false)
-	@NotNull
-	private DirNomenclature dirNomenclature;
-	
-	private transient int npp;
+	private Timestamp creation_date; 
 	
 	@Override
 	public Long getId() {
+		// TODO Auto-generated method stub
 		return id;
 	}
 
 	@Override
 	public void setId(Long id) {
-
+		// TODO Auto-generated method stub
 		this.id = id;
 	}
 
 
-	public void setId(long id) {
-		this.id = id;
+	public Timestamp getCreation_date() {
+		return creation_date;
+	}
+
+	public void setCreation_date(Timestamp creation_date) {
+		this.creation_date = creation_date;
 	}
 
 
 	
-	public String getSize() {
-		return size;
-	}
-
-	public void setSize(String size) {
-		this.size = size;
-	}
-
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
-	
-	public Timestamp getCreate_date() {
-		return create_date;
-	}
-
-	public void setCreate_date(Timestamp create_date) {
-		this.create_date = create_date;
-	}
-
-	public Timestamp getDestruction_date() {
-		return destruction_date;
-	}
-
-	public void setDestruction_date(Timestamp destruction_date) {
-		this.destruction_date = destruction_date;
-	}
-
-	
-	
-	public DirNomenclature getDirNomenclature() {
-		return dirNomenclature;
-	}
-
-	public void setDirNomenclature(DirNomenclature dirNomenclature) {
-		this.dirNomenclature = dirNomenclature;
-	}
-
-	
-	public int getNpp() {
-		return npp;
-	}
-
-	public void setNpp(int npp) {
-		this.npp = npp;
-	}
-
 	@Override
 	public int compareTo(Object o) {
 		// TODO Auto-generated method stub
 		return ((Order)o).getId().compareTo(getId());
 	}
 
-	@Override
-	public String toString() {
-		return "Order [id=" + id + ", size=" + size + ", amount=" + amount + ", create_date=" + create_date
-				+ ", destruction_date=" + destruction_date + ", dirNomenclature=" + dirNomenclature + "]";
-	}
-
-
-	
 }

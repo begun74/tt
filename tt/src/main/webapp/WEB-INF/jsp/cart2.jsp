@@ -86,25 +86,25 @@
 				</table>
 				<div class="backet_info">
 				<table width="100%">
-							<c:forEach items="${orders}" var="order" varStatus="loop">
+							<c:forEach items="${orderItems}" var="orderItem" varStatus="loop">
 							<tr>
 								<td class="cart_product">
-									<a href="product-details?id=${order.dirNomenclature.id}"><img src="resources/images/products/${order.dirNomenclature.code}/S/${order.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"></a>
+									<a href="product-details?id=${orderItem.dirNomenclature.id}"><img src="resources/images/products/${orderItem.dirNomenclature.code}/S/${orderItem.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"></a>
 								</td>
 								<td class="cart_description">
-									<h4>${order.dirNomenclature.name}</h4>
-									<p><b><spring:message code="model"/></b>: ${order.dirNomenclature.model}</p>
-									<p><b><spring:message code="size"/></b>: ${order.size}</p>
+									<h4>${orderItem.dirNomenclature.name}</h4>
+									<p><b><spring:message code="model"/></b>: ${orderItem.dirNomenclature.model}</p>
+									<p><b><spring:message code="size"/></b>: ${orderItem.size}</p>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
 										<a class="cart_quantity_up" href="#"> + </a>
-										<input class="cart_quantity_input" type="text" name="quantity" value="${order.amount}" autocomplete="off" size="2">
+										<input class="cart_quantity_input" type="text" name="quantity" value="${orderItem.amount}" autocomplete="off" size="2">
 										<a class="cart_quantity_down" href="#"> - </a>
 									</div>
 								</td>
 								<td class="cart_delete">
-									<a class="cart_quantity_delete" href="delOrder?npp=${order.npp}"><i class="fa fa-times"></i></a>
+									<a class="cart_quantity_delete" href="delOrder?npp=${orderItem.npp}"><i class="fa fa-times"></i></a>
 								</td>
 							</tr>
 							</c:forEach>
@@ -133,7 +133,7 @@
     <script>
     $(document).ready(function(){
 
-    	if(${fn:length(sessionScope.sessBean.orders) == 0})
+    	if(${fn:length(sessionScope.sessBean.orderItems) == 0})
     	{
     		$(".submit_order").attr("disabled","disabled");
     	}
