@@ -60,7 +60,7 @@
 						<div class="col-sm-5">
 						<br/>
 							<div>
-								<img  id="img_01" src="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" />
+								<img  id="img_01" src="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" />
 							</div>
 
 
@@ -70,18 +70,18 @@
 								<div id="gal1">
 									<div class="carousel-inner">							
 										<div class="item active">
-											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg">
-											   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_0.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
+											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg">
+											   		<img id="img_01" width="30%" height="30%" src="/pics/products/${nomenclature.code}/S/${nomenclature.code}_S_0.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
 											</a>
-											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_1.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_1.jpg">
+											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_1.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_1.jpg">
 										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_1.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
 											</a>
 										</div>
 										<div class="item">
-											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_2.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_2.jpg">
+											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_2.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_2.jpg">
 										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_2.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"/>
 											</a>
-											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_3.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_3.jpg">
+											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_3.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_3.jpg">
 										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_3.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"/>
 											</a>
 											

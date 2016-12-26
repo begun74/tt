@@ -1,6 +1,7 @@
 package tt.controller;
 
 import java.io.File;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -40,9 +41,15 @@ import tt.util.*;
 
 @Controller
 @Scope("session")
-public class IndexCtrl {
+public class IndexCtrl implements Serializable {
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -904284592001974037L;
+	
+
 	@Autowired
 	private AppBean appBean;
 	

@@ -167,14 +167,22 @@ public class FileUpload {
 				File rootFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code);
 				if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
 				
+				System.out.println("rootFolder - "+rootFolder);
+				
 				File largeFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
 				if(!largeFolder.exists() && !largeFolder.mkdirs()) throw new Exception("Can not create largeFolder! ");
+				
+				System.out.println("largeFolder - "+largeFolder);
 				
 				File mediumFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
 				if(!mediumFolder.exists() && !mediumFolder.mkdirs()) throw new Exception("Can not create mediumFolder! ");
 				
+				System.out.println("mediumFolder - "+mediumFolder);
+				
 				File smallFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
 				if(!smallFolder.exists() && !smallFolder.mkdirs()) throw new Exception("Can not create smallFolder! ");
+				
+				System.out.println("smallFolder - "+smallFolder);
 				
 			
 				Iterator<String> iter = files.iterator();
@@ -250,15 +258,25 @@ public class FileUpload {
 			File rootFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code);
 			if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
 			
+			System.out.println("rootFolder - "+rootFolder);
+			
 			File largeFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
 			if(!largeFolder.exists() && !largeFolder.mkdirs()) throw new Exception("Can not create largeFolder! ");
+
+			System.out.println("largeFolder - "+largeFolder);
+
 			
 			File mediumFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
 			if(!mediumFolder.exists() && !mediumFolder.mkdirs()) throw new Exception("Can not create mediumFolder! ");
+
+			System.out.println("mediumFolder - "+mediumFolder);
+
 			
 			File smallFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
 			if(!smallFolder.exists() && !smallFolder.mkdirs()) throw new Exception("Can not create smallFolder! ");
 			
+			System.out.println("smallFolder - "+smallFolder);
+
 
 			for(int i=0; i < files.length; ++i)
 			{

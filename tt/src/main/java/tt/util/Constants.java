@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
@@ -18,6 +19,9 @@ public class Constants {
 
 	@Autowired
     ServletContext context; 
+	
+	@Autowired
+	HttpSession session;
 	
 	@Resource
     private Environment env;
@@ -37,11 +41,13 @@ public class Constants {
 		
 		IMAGES_SERVER = env.getRequiredProperty("IMAGES_SERVER");
 		tempDirectory = (File) context.getAttribute("javax.servlet.context.tempdir");
-		//UPLOAD_FILE_PATH = new File(env.getRequiredProperty("UPLOAD_FILE_PATH"));
-		UPLOAD_FILE_PATH = new File(context.getRealPath("resources/images/products/"));
+		UPLOAD_FILE_PATH = new File(env.getRequiredProperty("UPLOAD_FILE_PATH"));
+		//UPLOAD_FILE_PATH = new File(context.getRealPath("/pics/products/"));
+		System.out.println("getParent - " +new File(context.getRealPath("/")).getParent());
 		System.out.println("Constants tempDirectory " +tempDirectory);
 		System.out.println("IMAGES_SERVER - " +IMAGES_SERVER);
 		System.out.println("UPLOAD_FILE_PATH - " +UPLOAD_FILE_PATH);
+		
 	}
 	
 	@PreDestroy
