@@ -113,7 +113,7 @@
 							<c:forEach items="${orderItems}" var="orderItem" varStatus="loop">
 							<tr>
 								<td class="cart_product">
-									<a href="product-details?id=${orderItem.dirNomenclature.id}"><img src="resources/images/products/${orderItem.dirNomenclature.code}/S/${orderItem.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"></a>
+									<a href="product-details?id=${orderItem.dirNomenclature.id}"><img src="/pics/products/${orderItem.dirNomenclature.code}/S/${orderItem.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"></a>
 								</td>
 								<td class="cart_description">
 									<h4>${orderItem.dirNomenclature.name}</h4>
