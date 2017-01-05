@@ -20,6 +20,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.context.annotation.Scope;
 
 
@@ -66,6 +68,7 @@ public class Order implements IModel {
 
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="order")
+	@Fetch(FetchMode.JOIN)
 	private List<OrderItems> orderItems ;
 	
 	@Override

@@ -95,18 +95,19 @@ public class TTAjaxCtrl {
 
 	
 	@RequestMapping(value = "/getOrderItems{id}", method = RequestMethod.GET)
-	public @ResponseBody List<OrderItems> getOrderItems( @RequestParam ("id") long id) 
+	public ResponseEntity<List<OrderItems>> getOrderItems( @RequestParam ("id") long id) 
 	{
 		
 		
 		List<OrderItems> orderItems = ttService.getOrderItems(id);
 		
 		
-		//for(Tail tail: tails)				//!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
-		//	tail.setDirNomenclature(null);  //   вываливается в Exception
+		//for(OrderItems orderItem: orderItems) {				//!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
+		//	orderItem.setDirNomenclature(null);  			//   вываливается в Exception
+		//	orderItem.setOrder(null);						//	
+		//}
 		
-		
-		return  orderItems;
+		return  new ResponseEntity<List<OrderItems>>(orderItems,HttpStatus.OK);
 	}	
 	
 

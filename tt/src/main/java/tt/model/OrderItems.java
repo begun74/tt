@@ -14,6 +14,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 @Entity
 @Table(name = "order_items")
 public class OrderItems implements IModel {
@@ -46,12 +49,13 @@ public class OrderItems implements IModel {
 	
 	private Timestamp destruction_date;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_id_dir_nomenclature", nullable=false)
 	@NotNull
 	private DirNomenclature dirNomenclature;
 
 	@ManyToOne(fetch = FetchType.LAZY)
+	@Fetch(FetchMode.JOIN)
 	@JoinColumn(name = "fk_id_orders", nullable=false)
 	private Order order;
 	
