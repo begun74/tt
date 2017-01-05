@@ -67,8 +67,8 @@ public class Order implements IModel {
 	private String comment;
 
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="order")
-	@Fetch(FetchMode.JOIN)
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="order")
+	//@Fetch(FetchMode.SELECT)
 	private List<OrderItems> orderItems ;
 	
 	@Override

@@ -102,10 +102,10 @@ public class TTAjaxCtrl {
 		List<OrderItems> orderItems = ttService.getOrderItems(id);
 		
 		
-		//for(OrderItems orderItem: orderItems) {				//!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
-		//	orderItem.setDirNomenclature(null);  			//   вываливается в Exception
+		for(OrderItems orderItem: orderItems) {				//!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
+			orderItem.setDirNomenclature(null);  			//   вываливается в Exception
 		//	orderItem.setOrder(null);						//	
-		//}
+		}
 		
 		return  new ResponseEntity<List<OrderItems>>(orderItems,HttpStatus.OK);
 	}	

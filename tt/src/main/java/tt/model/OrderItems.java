@@ -49,13 +49,13 @@ public class OrderItems implements IModel {
 	
 	private Timestamp destruction_date;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_dir_nomenclature", nullable=false)
 	@NotNull
 	private DirNomenclature dirNomenclature;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@Fetch(FetchMode.JOIN)
+	//@Fetch(FetchMode.SELECT)
 	@JoinColumn(name = "fk_id_orders", nullable=false)
 	private Order order;
 	
