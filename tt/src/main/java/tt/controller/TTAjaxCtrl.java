@@ -99,7 +99,7 @@ public class TTAjaxCtrl {
 	{
 		
 		
-		List<OrderItems> orderItems = ((Order)ttService.getObject(Order.class, id)).getOrderItems();
+		List<OrderItems> orderItems = ttService.getOrderItems(id);
 		
 		
 		//for(Tail tail: tails)				//!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
