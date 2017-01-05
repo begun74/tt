@@ -92,6 +92,32 @@ var Product = {
 };
 
 
+var Order = {
+		id: 0,
+		
+		getOrderItems: function(id) {
+			var arrData = {};
+			arrData['id'] = id;
+			
+			$.ajax({
+				type : "GET",
+				url : "getOrderItems?id="+id,
+				//timeout : 10000,
+				data : JSON.stringify(arrData),
+				contentType: 'application/json; charset=utf-8',
+				success : function(data) 
+				{
+					alert('Ok - ' + id)
+					/*$('.add_product_alert').show();*/
+				},
+				error : function(e) {
+					
+					display(e);
+				}
+			});
+		}
+}
+
 
 function isNumberKey(evt)
 {

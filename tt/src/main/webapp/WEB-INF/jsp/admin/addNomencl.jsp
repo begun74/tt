@@ -349,6 +349,7 @@
 	    });
 	    
     </script>
+</div>
 </body>
 
 </html>

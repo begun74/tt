@@ -27,6 +27,7 @@ import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
+import tt.model.OrderItems;
 import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
@@ -209,6 +210,19 @@ public class DaoImpl implements Dao {
 	public void addOrder(tt.model.Order order) {
 		// TODO Auto-generated method stub
 		getSession().persist(order);
+	}
+
+	@Override
+	public List<tt.model.Order> getOrdersList() {
+		// TODO Auto-generated method stub
+		return getSession().createQuery("from Order order by creation_date").list();
+	}
+
+	@Override
+	public List<OrderItems> getOrderItems(Long orderId) {
+		// TODO Auto-generated method stub
+		tt.model.Order order = (tt.model.Order) getSession().createQuery("from Order where id = :orderId").setParameter("orderId", orderId); 
+		return order.getOrderItems();
 	}
 
 

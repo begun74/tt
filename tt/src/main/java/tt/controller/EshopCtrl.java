@@ -1,5 +1,7 @@
 package tt.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import tt.bean.AppBean;
+import tt.model.Order;
+import tt.model.OrderItems;
+import tt.model.Tail;
 import tt.service.TTServiceImpl;
 import tt.util.FileUpload;
 
@@ -36,7 +42,16 @@ public class EshopCtrl {
 	{
 		ModelAndView model = new ModelAndView("eshop/main");
 
+		switch (act)
+		{
+			case "1":
+				model = new ModelAndView("eshop/newOrders");
+				model.addObject("orders",ttService.getOrdersList());
+			break;
+		}
+		
 		return model;
 	}
+	
 
 }

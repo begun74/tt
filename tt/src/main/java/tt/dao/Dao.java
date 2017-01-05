@@ -54,9 +54,10 @@ public interface Dao {
 	public Store getStoreBySerVerUID(Long serialVersionUID);
 	
 	
-	//public void addOrderItems(OrderItems order);
+	public List<OrderItems> getOrderItems(Long order);
 	
 	public void addOrder(Order order);
+	public List<Order>getOrdersList();
 	
 	public Object getObject(Class clazz,Long id);
 	public void delObject(Object obj);

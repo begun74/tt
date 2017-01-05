@@ -262,6 +262,20 @@ public class TTServiceImpl implements Dao {
 		// TODO Auto-generated method stub
 		dao.addOrder(order);
 	}
+
+
+	@Override
+	public List<Order> getOrdersList() {
+		// TODO Auto-generated method stub
+		return dao.getOrdersList();
+	}
+
+
+	@Override
+	public List<OrderItems> getOrderItems(Long orderId) {
+		// TODO Auto-generated method stub
+		return dao.getOrderItems(orderId);
+	}
 	
 
 }

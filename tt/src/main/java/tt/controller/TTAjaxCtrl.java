@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import tt.bean.AdminSessionBean;
 import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
+import tt.model.Order;
 import tt.model.OrderItems;
 import tt.model.Tail;
 import tt.service.TTServiceImpl;
@@ -92,5 +93,21 @@ public class TTAjaxCtrl {
 		return  new ResponseEntity<Integer>(sessBean.getOrderItems().size(),HttpStatus.OK);
 	}
 
+	
+	@RequestMapping(value = "/getOrderItems{id}", method = RequestMethod.GET)
+	public @ResponseBody List<OrderItems> getOrderItems( @RequestParam ("id") long id) 
+	{
+		
+		
+		List<OrderItems> orderItems = ((Order)ttService.getObject(Order.class, id)).getOrderItems();
+		
+		
+		//for(Tail tail: tails)				//!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
+		//	tail.setDirNomenclature(null);  //   вываливается в Exception
+		
+		
+		return  orderItems;
+	}	
+	
 
 }
