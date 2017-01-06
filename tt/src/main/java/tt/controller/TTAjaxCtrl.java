@@ -1,6 +1,7 @@
 package tt.controller;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Enumeration;
 import java.util.HashSet;
@@ -102,12 +103,20 @@ public class TTAjaxCtrl {
 		List<OrderItems> orderItems = ttService.getOrderItems(id);
 		
 		
-		for(OrderItems orderItem: orderItems) {				//!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
-			orderItem.setDirNomenclature(null);  			//   вываливается в Exception
+		//for(OrderItems orderItem: orderItems) {				//!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
+		//	orderItem.setDirNomenclature(null);  			//   вываливается в Exception
 		//	orderItem.setOrder(null);						//	
+		//}
+		System.out.println("orderItems.size() - " +orderItems.size());
+		
+		for(OrderItems orderItem: orderItems) {
+			System.out.println(orderItem.getId()+":  ");
+			System.out.println(orderItem.getOrder()+"  ");
+			System.out.println(orderItem.getDirNomenclature());
 		}
 		
-		return  new ResponseEntity<List<OrderItems>>(orderItems,HttpStatus.OK);
+		
+		return  new ResponseEntity<List<OrderItems>>(new ArrayList<OrderItems>(),HttpStatus.OK);
 	}	
 	
 
