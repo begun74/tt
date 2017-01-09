@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import tt.bean.AdminSessionBean;
 import tt.bean.SessionBean;
 import tt.model.DirNomenclature;
+import tt.model.JSON_OrderItems;
 import tt.model.Order;
 import tt.model.OrderItems;
 import tt.model.Tail;
@@ -96,27 +97,36 @@ public class TTAjaxCtrl {
 
 	
 	@RequestMapping(value = "/getOrderItems{id}", method = RequestMethod.GET)
-	public ResponseEntity<List<OrderItems>> getOrderItems( @RequestParam ("id") long id) 
+	public ResponseEntity<List<JSON_OrderItems>> getOrderItems( @RequestParam ("id") long id) 
 	{
 		
 		
 		List<OrderItems> orderItems = ttService.getOrderItems(id);
 		
+		List<JSON_OrderItems> json_oitems = new ArrayList<JSON_OrderItems>();
 		
-		//for(OrderItems orderItem: orderItems) {				//!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
-		//	orderItem.setDirNomenclature(null);  			//   вываливается в Exception
-		//	orderItem.setOrder(null);						//	
-		//}
 		System.out.println("orderItems.size() - " +orderItems.size());
 		
 		for(OrderItems orderItem: orderItems) {
-			System.out.println(orderItem.getId()+":  ");
-			System.out.println(orderItem.getOrder()+"  ");
-			System.out.println(orderItem.getDirNomenclature());
+			//System.out.println(orderItem.getId()+":  "+orderItem.getSize()+"  "+ orderItem.getAmount());
+			//System.out.println(orderItem.getOrder()+"  ");
+			//System.out.println(orderItem.getDirNomenclature());
+			JSON_OrderItems json_oitem = new JSON_OrderItems();
+			json_oitem.setId(orderItem.getId());
+			json_oitem.setAmount(orderItem.getAmount());
+			json_oitem.setArticle(orderItem.getDirNomenclature().getArticle());
+			json_oitem.setCode(orderItem.getDirNomenclature().getCode());
+			json_oitem.setCreate_date(orderItem.getCreate_date());
+			json_oitem.setModel(orderItem.getDirNomenclature().getModel());
+			json_oitem.setName(orderItem.getDirNomenclature().getName());
+			json_oitem.setSize(orderItem.getSize());
+			
+			
+			json_oitems.add(json_oitem);
 		}
+		System.out.println(" json_oitems - " + json_oitems);
 		
-		
-		return  new ResponseEntity<List<OrderItems>>(new ArrayList<OrderItems>(),HttpStatus.OK);
+		return  new ResponseEntity<List<JSON_OrderItems>>(json_oitems,HttpStatus.OK);
 	}	
 	
 

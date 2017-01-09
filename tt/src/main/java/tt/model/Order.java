@@ -67,8 +67,8 @@ public class Order implements IModel {
 	private String comment;
 
 	
-	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="order")
-	//@Fetch(FetchMode.SELECT)
+	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.LAZY, mappedBy="order")
+	@Fetch(FetchMode.SELECT)
 	private List<OrderItems> orderItems ;
 	
 	@Override
@@ -149,7 +149,7 @@ public class Order implements IModel {
 
 	@Override
 	public String toString() {
-		return "Order [id=" + id + ", creation_date=" + creation_date + ", orderItems=" + orderItems + "]";
+		return "Order [id=" + id + ", creation_date=" + creation_date + "]";
 	}
 	
 	
