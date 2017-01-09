@@ -105,7 +105,7 @@ public class TTAjaxCtrl {
 		
 		List<JSON_OrderItems> json_oitems = new ArrayList<JSON_OrderItems>();
 		
-		System.out.println("orderItems.size() - " +orderItems.size());
+		//System.out.println("orderItems.size() - " +orderItems.size());
 		
 		for(OrderItems orderItem: orderItems) {
 			//System.out.println(orderItem.getId()+":  "+orderItem.getSize()+"  "+ orderItem.getAmount());
@@ -124,7 +124,7 @@ public class TTAjaxCtrl {
 			
 			json_oitems.add(json_oitem);
 		}
-		System.out.println(" json_oitems - " + json_oitems);
+		//System.out.println(" json_oitems - " + json_oitems);
 		
 		return  new ResponseEntity<List<JSON_OrderItems>>(json_oitems,HttpStatus.OK);
 	}	

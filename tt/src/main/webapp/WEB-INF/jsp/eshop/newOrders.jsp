@@ -62,13 +62,14 @@
             </ul>        
             <div id="tabs-1"> 
 				<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
-							<table class="tab tab-drag">
+							<table class="tableOrders tab tab-drag">
 									<c:forEach items="${orders}" var="order" varStatus="loop">
-									<tr class="orders_tr" value="${order.id}">
+									<tr class="orders_tr" value="${order.id}" onfocus="alert('focus')">
 											<td class="dragHandle">&nbsp;</td>
 											<td>${loop.count}</td>
 											<td style="cursor:pointer;" onclick="">${order.id}</td>
 											<td style="cursor:pointer;" onclick="">${order.creation_date}</td>
+											<td style="cursor:pointer;" onclick="">${order.person_name}</td>											
 											<td style="cursor:pointer;" onclick="">${order.phone}</td>
 											<td style="cursor:pointer;" onclick="">${order.email}</td>
 											<td style="cursor:pointer;" onclick="">${order.comment}</td>
@@ -85,18 +86,7 @@
         <!-- /box -->
         <div class="box">
 				<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
-							<table class="tab tab-drag">
-									<c:forEach items="${orders}" var="order" varStatus="loop">
-									<tr>
-											<td class="dragHandle">&nbsp;</td>
-											<td>${loop.count}</td>
-											<td style="cursor:pointer;" onclick="">${order.id}</td>
-											<td style="cursor:pointer;" onclick="">${order.creation_date}</td>
-											<td style="cursor:pointer;" onclick="">${order.phone}</td>
-											<td style="cursor:pointer;" onclick="">${order.email}</td>
-											<td style="cursor:pointer;" onclick="">${order.comment}</td>
-									</tr>
-									</c:forEach>
+							<table class="tableDisplayOrderItems tab tab-drag">
 							</table>
 				</div>            
         </div>
@@ -152,9 +142,13 @@
 				
 			/*$("#save").attr("checked","checked");*/
 			
-			$(".orders_tr").click( function() {
-				//alert($(this).attr('value'));
+			$(".orders_tr").focus( function() {
+			    //blurredFrom = event.delegateTarget;
+			    alert('focus');
+				console.log('Focus');
+			}).click( function() {
 				Order.getOrderItems($(this).attr('value'));
+				//console.log('Focus');
 			});
 			
 	    });

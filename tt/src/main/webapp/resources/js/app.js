@@ -107,7 +107,7 @@ var Order = {
 				contentType: 'application/json; charset=utf-8',
 				success : function(data) 
 				{
-					alert('Ok - ' + id)
+					Order.displayOrderItems(data);
 					/*$('.add_product_alert').show();*/
 				},
 				error : function(e) {
@@ -115,6 +115,32 @@ var Order = {
 					display(e);
 				}
 			});
+		},
+		
+		displayOrderItems: function(arrData) {
+			var numCols = 1;
+			
+			$('.tableDisplayOrderItems').empty();
+			
+			$.each(arrData, function(i) {
+				  if(!(i%numCols)) tRow = $('<tr>');
+
+				  tCell = $('<td>').html(arrData[i].code);
+				  tRow.append(tCell);
+				  tCell = $('<td>').html(arrData[i].name);
+				  tRow.append(tCell);
+				  tCell = $('<td>').html(arrData[i].model);
+				  tRow.append(tCell);
+				  tCell = $('<td>').html(arrData[i].article);
+				  tRow.append(tCell);
+				  tCell = $('<td>').html(arrData[i].size);
+				  tRow.append(tCell);
+				  tCell = $('<td>').html(arrData[i].amount);
+				  tRow.append(tCell);
+
+				  $('.tableDisplayOrderItems').append(tRow);
+			});
+			
 		}
 }
 
