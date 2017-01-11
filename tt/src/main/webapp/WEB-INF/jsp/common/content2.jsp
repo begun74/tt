@@ -17,40 +17,28 @@
 						
 						<div class="features_items"><!--features_items-->
 							
+							<div class="row">
 							<c:forEach items="${tails}" var="tail" varStatus="loop"  begin="${start}" end="${stop}">
-												<div class="col-sm-4">
-													<div class="product-image-wrapper">
-														<div class="single-products ">
+												<div class="col-xs-4">
+														<div class="single-products product-image-wrapper">
 																<div class="productinfo text-center">
-																	<!-- a href="product-details?id=${tail.key.id}"><img class="" src="resources/images/products/${tail.key.code}/M/${tail.key.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" /></a -->
 																	<a href="product-details?id=${tail.key.id}"><img class="" src="/pics/products/${tail.key.code}/M/${tail.key.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" /></a>
 																	<c:set var="tail_name" value="${tail.key.name}" />
-																	<!-- h5>${fn:substring(tail_name, 0, 15)}</h5 -->
-																	<h5>${tail_name}</h5>
+																	<c:set var="tn_length" value="${fn:length(tail_name)}" />
+																	<h5>${fn:substring(tail_name, 0, 15)}</h5>
+																	<h5>&#160;${fn:substring(tail_name, 15, tn_length) }</h5>
+																	<!-- h5>${tail.key.name}</h5 -->
 																	<c:set var="prov_name" value=" ${tail.value.name}" />
 																	<!-- p>${fn:substring(prov_name, 0, 15)}</p -->
-																	<p>${prov_name}</p>
+																	<p>${tail.value.name}</p>
 																	<p><spring:message code="article"/>  ${tail.key.article}</p>
 																	<!-- p>(${tail.key.code})</p -->
 																	<a href="product-details?id=${tail.key.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i><spring:message code="to.order"/></a>
 																</div>
-																<!-- div class="product-overlay">
-																	<div class="overlay-content">
-																		<h2>$56</h2>
-																		<p>Easy Polo Black Edition</p>
-																		<a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-																	</div>
-																</div -->
 														</div>
-														<!-- div class="choose">
-															<ul class="nav nav-pills nav-justified">
-																<li><a href="#"><i class="fa fa-plus-square"></i>Add to wishlist</a></li>
-																<li><a href="#"><i class="fa fa-plus-square"></i><spring:message code="compare"/></a></li>
-															</ul>
-														</div -->
-													</div>
 												</div>
 							</c:forEach>
+							</div>
 						</div>
 
 						<div class="col-md-14">
