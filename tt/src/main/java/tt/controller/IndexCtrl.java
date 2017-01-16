@@ -63,7 +63,8 @@ public class IndexCtrl implements Serializable {
 	MA_search mA_search;
 	
 	@RequestMapping(value = {"/index","/"} , method = RequestMethod.GET)
-	public ModelAndView  index(HttpSession session) 
+	public ModelAndView  index(HttpSession session, @RequestParam(value = "p", defaultValue = "1") int p, 
+								@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
 	{
 		ModelAndView model = new ModelAndView("index");
 		User user = new User();
@@ -74,11 +75,12 @@ public class IndexCtrl implements Serializable {
 		model.addObject("mA_search",mA_search);
 		
 		//model.addObject("tails",ttService.getTailsList());
-		model.addObject("tails",ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat()));
+		model.addObject("tails",ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
 		model.addObject("version",appBean.getVersion());
 		model.addObject("providers", ttService.getProviderList());
 		model.addObject("categories", ttService.getNomenclGroupList());
 		model.addObject("genders", ttService.getGenderList());
+		
 		
 		model.addObject("UPLOAD_FILE_PATH", Constants.UPLOAD_FILE_PATH);
 		return model;
@@ -110,7 +112,8 @@ public class IndexCtrl implements Serializable {
 	
 	
 	@RequestMapping(value = {"/search"} , method = RequestMethod.GET)
-	public String  searchGet(HttpSession session, @ModelAttribute("mA_search") MA_search mA_search, Model model) 
+	public String  searchGet(HttpSession session, @ModelAttribute("mA_search") MA_search mA_search, Model model, @RequestParam(value = "p", defaultValue = "1") int p, 
+								@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
 	{
 		 //mIndex = session.getAttribute("mIndex") == null?new MIndex():(MIndex)session.getAttribute("mIndex");
 		//session.setAttribute("mA_search", mA_search);
@@ -124,7 +127,7 @@ public class IndexCtrl implements Serializable {
 		model.addAttribute("categories", ttService.getNomenclGroupList());
 		model.addAttribute("genders", ttService.getGenderList());
 
-		model.addAttribute("tails", ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat()) );
+		model.addAttribute("tails", ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
 		
 		return "index";
 	}

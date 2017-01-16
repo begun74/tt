@@ -174,7 +174,7 @@ public class TTServiceImpl implements Dao {
 	}
 
 	
-	public List<Tail> getTailsList(List<Long> providers, List<Long> genders,  List<Long> categories) {
+	public List<Tail> getTailsList(List<Long> providers, List<Long> genders,  List<Long> categories, int p) {
 		// TODO Auto-generated method stub
 		List<DirProvider> lProvs = new LinkedList<DirProvider>();
 		List<DirNomenclGroup> lNomGroup = new LinkedList<DirNomenclGroup>();
@@ -212,14 +212,14 @@ public class TTServiceImpl implements Dao {
 		else
 			return new LinkedList<Tail>();
 		
-		return criterions.size() >0 ? getTailsList(tail,criterions): new LinkedList<Tail>();
+		return criterions.size() >0 ? getTailsList(tail,criterions, p): new LinkedList<Tail>();
 	}
 
 
 	@Override
-	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions) {
+	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions, int p) {
 		// TODO Auto-generated method stub
-		return dao.getTailsList(tail_example, criterions);
+		return dao.getTailsList(tail_example, criterions, p);
 	}
 
 
@@ -237,9 +237,10 @@ public class TTServiceImpl implements Dao {
 	}
 	
 	
-	public Map<DirNomenclature,DirProvider> tailSetNomenclature(List<Long> providers, List<Long> genders, List<Long> categories) 
+	public Map<DirNomenclature,DirProvider> tailSetNomenclature(List<Long> providers, List<Long> genders, List<Long> categories , int p , int perPage) 
 	{
-		List<Tail> tails = getTailsList(providers, genders, categories);
+		List<Tail> tails = getTailsList(providers, genders, categories, p);
+		
 		Map<DirNomenclature,DirProvider> hmDN = new LinkedHashMap<DirNomenclature,DirProvider>();
 		
 		for(Tail t: tails)
@@ -275,6 +276,13 @@ public class TTServiceImpl implements Dao {
 	public List<OrderItems> getOrderItems(Long orderId) {
 		// TODO Auto-generated method stub
 		return dao.getOrderItems(orderId);
+	}
+
+
+	@Override
+	public Set<DirNomenclature> getTailsNomenclatureSet(Tail tail_example, Collection<Criterion> criterions, int p) {
+		// TODO Auto-generated method stub
+		return dao.getTailsNomenclatureSet(tail_example, criterions, p);
 	}
 	
 

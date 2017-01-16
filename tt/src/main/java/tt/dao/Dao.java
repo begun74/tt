@@ -3,6 +3,7 @@ package tt.dao;
 import java.math.BigInteger;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.criterion.Criterion;
 
@@ -31,6 +32,7 @@ public interface Dao {
 	public List<DirNomenclature> getNomenclatureList();
 	public List<DirNomenclature> getNomenclatureList(Collection<Criterion> criterions);
 	public void addNomenclature(DirNomenclature dirNomenclature);
+	public Set<DirNomenclature> getTailsNomenclatureSet(Tail tail_example, Collection<Criterion> criterions ,int p);
 
 
 	public List<DirNomenclGroup> getNomenclGroupList();
@@ -45,7 +47,7 @@ public interface Dao {
 	
 	public void addTail(Tail tail);
 	public List<Tail> getTailsList();
-	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions );
+	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions, int p );
 	public List<Tail> getTailsList(long id_dirNomenclature);
 
 	public List<Store> getStoreList();

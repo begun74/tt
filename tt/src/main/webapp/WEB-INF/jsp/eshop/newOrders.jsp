@@ -64,7 +64,7 @@
 				<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
 							<table class="tableOrders tab tab-drag">
 									<c:forEach items="${orders}" var="order" varStatus="loop">
-									<tr class="orders_tr" value="${order.id}" onfocus="alert('focus')">
+									<tr class="orders_tr" value="${order.id}" id="${loop.index}">
 											<td class="dragHandle">&nbsp;</td>
 											<td>${loop.count}</td>
 											<td style="cursor:pointer;" onclick="">${order.id}</td>
@@ -147,7 +147,8 @@
 			    alert('focus');
 				console.log('Focus');
 			}).click( function() {
-				Order.getOrderItems($(this).attr('value'));
+				Order.getOrderItems($(this).attr('value'), $(this).attr('id'));
+				//alert($(this).attr('id'));
 				//console.log('Focus');
 			});
 			

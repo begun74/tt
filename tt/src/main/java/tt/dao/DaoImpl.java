@@ -1,8 +1,11 @@
 package tt.dao;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
@@ -169,19 +172,66 @@ public class DaoImpl implements Dao {
 	}
 
 	@Override
-	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions) {
+	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions, int p) {
 		// TODO Auto-generated method stub
+		
+		List<Tail> lTail = null;
+		
+		/*
+		Criteria criteria = getSession().createCriteria(Tail.class).add(Restrictions.isNull("destruction_date"));
+		
+		
+		if(criterions != null) {
+			criterions.forEach(c -> criteria.add(c));
+		}
+
+		
+		lTail = criteria.createCriteria("dirNomenclature").addOrder(Order.asc("name")).list();
+		criteria.setFirstResult(p-1);
+		criteria.setMaxResults(p*9);
+		*/
+
+		Criteria criteria = getSession().createCriteria(Tail.class).add(Restrictions.isNull("destruction_date"));
+		
+		
+		if(criterions != null) {
+			criterions.forEach(c -> criteria.add(c));
+		}
+		
+		Set<Long> lDirNomenctls = new HashSet<Long>();
+		
+		List<Tail> tails = criteria.list();
+				
+		for(Tail tail: tails)
+			lDirNomenctls.add(tail.getDirNomenclature().getId());
+		
+		Criteria criteriaDN = getSession().createCriteria(DirNomenclature.class).add(Restrictions.in("id", lDirNomenctls)).addOrder(Order.asc("name"));
+		lTail = criteriaDN.list();
+		
+		return lTail;
+			
+	}
+
+	@Override
+	public Set<DirNomenclature> getTailsNomenclatureSet(Tail tail_example, Collection<Criterion> criterions, int p) {
+		LinkedHashSet<DirNomenclature> dirNomSet = new LinkedHashSet<DirNomenclature>();
 		
 		Criteria criteria = getSession().createCriteria(Tail.class).add(Restrictions.isNull("destruction_date"));
 		
-		if(criterions != null)
+		if(criterions != null) {
 			criterions.forEach(c -> criteria.add(c));
-
-		List<Tail> lTail = new LinkedList<Tail>(criteria.createCriteria("dirNomenclature").addOrder(Order.asc("name")).list());
+		}
 		
-		return lTail;
+		List<Tail> lTail = criteria.createCriteria("dirNomenclature").addOrder(Order.asc("name")).list();
+		
+		for(Tail tail: lTail)
+			dirNomSet.add(tail.getDirNomenclature());
+
+		return dirNomSet;
 	}
 
+
+	
 	@Override
 	public DirGender getGenderByName(String name) {
 		// TODO Auto-generated method stub

@@ -62,7 +62,7 @@ public class Tail implements  IModel {
 	private DirProvider dirProvider;
 
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	//@Fetch(FetchMode.SELECT)
 	@JoinColumn(name = "fk_id_nomenclature", nullable=false)
 	@NotNull

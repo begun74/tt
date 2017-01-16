@@ -95,7 +95,7 @@ var Product = {
 var Order = {
 		id: 0,
 		
-		getOrderItems: function(id) {
+		getOrderItems: function(id,row) {
 			var arrData = {};
 			arrData['id'] = id;
 			
@@ -107,8 +107,7 @@ var Order = {
 				contentType: 'application/json; charset=utf-8',
 				success : function(data) 
 				{
-					Order.displayOrderItems(data);
-					/*$('.add_product_alert').show();*/
+					Order.displayOrderItems(data,row);
 				},
 				error : function(e) {
 					
@@ -117,8 +116,9 @@ var Order = {
 			});
 		},
 		
-		displayOrderItems: function(arrData) {
+		displayOrderItems: function(arrData, row) {
 			var numCols = 1;
+			
 			
 			$('.tableDisplayOrderItems').empty();
 			
@@ -140,6 +140,8 @@ var Order = {
 
 				  $('.tableDisplayOrderItems').append(tRow);
 			});
+			
+			//alert('row - ' +row);
 			
 		}
 }

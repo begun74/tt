@@ -29,3 +29,4 @@ select count(*) from tails;
 select * from tails;
 
 update tails set destruction_date = now();
+
