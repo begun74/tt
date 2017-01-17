@@ -115,8 +115,12 @@ public class FileUpload {
 						for(DirGender dG: lDGen) 
 							hmDGen.put(dG.getName(), dG);
 
+						List<DirProvider> lDProv = ttService.getProviderList();
+						HashMap<Long,DirProvider> hmDProv = new HashMap<Long,DirProvider>();
+						for(DirProvider dP: lDProv)
+							hmDProv.put(dP.getCode(),dP);
 
-						return ReadExcelFile.processFile(tmpFile,(DirNomenclature) model, (MA_loadNomencl) IMAmodel, hmNomenclGroup, hmDGen) ;
+						return ReadExcelFile.processFile(tmpFile,(DirNomenclature) model, (MA_loadNomencl) IMAmodel, hmNomenclGroup, hmDGen, hmDProv) ;
 					}
 
 					else if(model instanceof DirNomenclGroup)
@@ -136,7 +140,7 @@ public class FileUpload {
 					else if(model instanceof Tail)
 					{
 						List<DirProvider> lP = ttService.getProviderList();
-						HashMap<Integer,DirProvider> hmProv = new HashMap<Integer,DirProvider>();
+						HashMap<Long,DirProvider> hmProv = new HashMap<Long,DirProvider>();
 						for(DirProvider dp: lP) 
 							hmProv.put(dp.getCode(), dp);
 

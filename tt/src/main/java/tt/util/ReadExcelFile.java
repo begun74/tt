@@ -79,7 +79,7 @@ public class ReadExcelFile {
 		        		dirProvider = new DirProvider();
 		        	
 		        		dirProvider.setName(df.formatCellValue(tmp.getCell(mA_loadProvider.getCol_name()-1)));
-		        		dirProvider.setCode(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadProvider.getCol_code()-1)) ) );
+		        		dirProvider.setCode(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadProvider.getCol_code()-1)) ) );
 		        	
 			        	lProvs.add(dirProvider);
         			}
@@ -100,7 +100,8 @@ public class ReadExcelFile {
 	}
 
 	
-	public  static List<?> processFile(File tmpFile, DirNomenclature dirNomenclature, MA_loadNomencl mA_loadNomencl, HashMap<Long,DirNomenclGroup> hmNomenclGroup, HashMap<String,DirGender> hmDGen) throws Exception{
+	public  static List<?> processFile(File tmpFile, DirNomenclature dirNomenclature, MA_loadNomencl mA_loadNomencl, HashMap<Long,DirNomenclGroup> hmNomenclGroup, HashMap<String,DirGender> hmDGen,
+											HashMap<Long,DirProvider> hmDProv) throws Exception{
 		
 		List<DirNomenclature>  lNomencls = new ArrayList<DirNomenclature>();
 		
@@ -127,6 +128,7 @@ public class ReadExcelFile {
         			dirNomenclature.setArticle(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_article()-1)).trim());
         			dirNomenclature.setDirNomenclGroup(hmNomenclGroup.get(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_codeNomenclGroup()-1)).trim() ) ) );
         			dirNomenclature.setDirGender(hmDGen.get(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_gender()-1)).toLowerCase().trim() ) );
+        			dirNomenclature.setDirProvider(hmDProv.get(new Integer((df.formatCellValue(tmp.getCell((mA_loadNomencl.getCol_codeProvider()-1)))))));
 
         			String path = df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_pathToImage()-1)).trim();
         			//System.out.println(path);
@@ -200,7 +202,7 @@ public class ReadExcelFile {
 	}
 
 
-	public static Collection<?> processFile(File tmpFile, Tail tail, MA_loadTail mA_loadTail, HashMap<Integer,DirProvider> hP, HashMap<Long,DirNomenclature> hmNomencl)  throws Exception {
+	public static Collection<?> processFile(File tmpFile, Tail tail, MA_loadTail mA_loadTail, HashMap<Long,DirProvider> hP, HashMap<Long,DirNomenclature> hmNomencl)  throws Exception {
 		// TODO Auto-generated method stub
 		List<Tail>  lTails = new ArrayList<Tail>();
 		

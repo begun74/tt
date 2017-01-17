@@ -37,7 +37,7 @@ public class DirProvider  implements  IModel{
 	
 	@Column(name="code")
 	@NotNull (message = "Please enter code.") 
-	private Integer code;
+	private Long code;
 
 	@NotEmpty (message = "Please enter name.") 
 	private String name;
@@ -50,11 +50,11 @@ public class DirProvider  implements  IModel{
 		this.id = id;
 	}
 
-	public Integer getCode() {
+	public Long getCode() {
 		return code;
 	}
 
-	public void setCode(Integer code) {
+	public void setCode(Long code) {
 		this.code = code;
 	}
 
