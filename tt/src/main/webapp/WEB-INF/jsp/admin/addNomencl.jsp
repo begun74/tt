@@ -242,7 +242,7 @@
 													</div>
 										  			<div class="clearfix">
 													         <div class="lab">
-									                   			<label>Поставщик</label>
+									                   			<label>Код Поставщика</label>
 													         </div>
 													         <div style="width: 25px" class="conleft">
 									                   			<input name="col_codeProvider" id="col_codeProvider" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_codeProvider}"> 

@@ -128,7 +128,7 @@ public class ReadExcelFile {
         			dirNomenclature.setArticle(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_article()-1)).trim());
         			dirNomenclature.setDirNomenclGroup(hmNomenclGroup.get(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_codeNomenclGroup()-1)).trim() ) ) );
         			dirNomenclature.setDirGender(hmDGen.get(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_gender()-1)).toLowerCase().trim() ) );
-        			dirNomenclature.setDirProvider(hmDProv.get(new Integer((df.formatCellValue(tmp.getCell((mA_loadNomencl.getCol_codeProvider()-1)))))));
+        			dirNomenclature.setDirProvider(hmDProv.get(new Long((df.formatCellValue(tmp.getCell((mA_loadNomencl.getCol_codeProvider()-1)))))));
 
         			String path = df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_pathToImage()-1)).trim();
         			//System.out.println(path);
@@ -161,7 +161,7 @@ public class ReadExcelFile {
         	++row_;
         }
         System.out.println(hmPollPaths);
-        MainAutoLoad.startPhotoFileService2(hmPollPaths);
+        //MainAutoLoad.startPhotoFileService2(hmPollPaths);
         
 		return lNomencls;
 		
