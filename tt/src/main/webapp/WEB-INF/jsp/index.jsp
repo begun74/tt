@@ -111,7 +111,7 @@
 				</div>
 				<div class="col-sm-9 padding-right">
 					<!-- content -->
-					<%@include file="common/content2.jsp" %>
+					<%@include file="common/content3.jsp" %>
 					<!-- content -->
 				</div>
 				

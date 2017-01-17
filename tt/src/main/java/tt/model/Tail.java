@@ -56,11 +56,12 @@ public class Tail implements  IModel {
 
 	private String size;
 
+	/*
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_provider")
 	@NotNull
 	private DirProvider dirProvider;
-
+*/
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	//@Fetch(FetchMode.SELECT)
@@ -125,7 +126,7 @@ public class Tail implements  IModel {
 		this.destruction_date = destruction_date;
 	}
 
-
+/*
 	public DirProvider getDirProvider() {
 		return dirProvider;
 	}
@@ -133,7 +134,7 @@ public class Tail implements  IModel {
 	public void setDirProvider(DirProvider dirProvider) {
 		this.dirProvider = dirProvider;
 	}
-	
+	*/
 	
 	public DirNomenclature getDirNomenclature() {
 		return dirNomenclature;

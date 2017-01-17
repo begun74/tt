@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -243,13 +244,22 @@ public class TTServiceImpl implements Dao {
 		
 		Map<DirNomenclature,DirProvider> hmDN = new LinkedHashMap<DirNomenclature,DirProvider>();
 		
-		for(Tail t: tails)
-			hmDN.put(t.getDirNomenclature(),t.getDirProvider());
+		//for(Tail t: tails)
+		//	hmDN.put(t.getDirNomenclature(),t.getDirProvider());
 		
 		return hmDN;
 	}
 
 
+	public Set<DirNomenclature> tailNomenclatureSet(List<Long> providers, List<Long> genders, List<Long> categories , int p , int perPage) 
+	{
+		Set<DirNomenclature> DNset = new LinkedHashSet<DirNomenclature>();
+		
+		//return dao.getTailsNomenclature(tail_example, criterions, p);
+		return DNset;
+	}
+	
+	
 	@Override
 	public List<Tail> getTailsList(long id_dirNomenclature) {
 		// TODO Auto-generated method stub
@@ -280,9 +290,9 @@ public class TTServiceImpl implements Dao {
 
 
 	@Override
-	public Set<DirNomenclature> getTailsNomenclatureSet(Tail tail_example, Collection<Criterion> criterions, int p) {
+	public Set<DirNomenclature> getTailsNomenclature(Tail tail_example, Collection<Criterion> criterions, int p) {
 		// TODO Auto-generated method stub
-		return dao.getTailsNomenclatureSet(tail_example, criterions, p);
+		return dao.getTailsNomenclature(tail_example, criterions, p);
 	}
 	
 

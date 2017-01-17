@@ -30,8 +30,6 @@
 																	<c:set var="tn_length" value="${fn:length(tail_name)}" />
 																	<h5>${fn:substring(tail_name, 0, 15)}</h5>
 																	<h5>&#160;${fn:substring(tail_name, 15, tn_length) }</h5>
-																	<c:set var="prov_name" value=" ${tail.value.name}" />
-																	<p>${tail.value.name}</p>
 																	<p><spring:message code="article"/>${tail.key.article}</p>
 																	<a href="product-details?id=${tail.key.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i><spring:message code="to.order"/></a>
 																</div>

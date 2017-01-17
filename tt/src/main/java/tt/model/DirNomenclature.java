@@ -71,6 +71,11 @@ public class DirNomenclature implements  IModel {
 	@NotNull
 	private DirGender dirGender;
 	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_id_provider")
+	@NotNull
+	private DirProvider dirProvider;
+	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="dirNomenclature")
 	private Set<Tail> tails;
 	
@@ -132,6 +137,15 @@ public class DirNomenclature implements  IModel {
 
 	public void setDirGender(DirGender dirGender) {
 		this.dirGender = dirGender;
+	}
+
+	
+	public DirProvider getDirProvider() {
+		return dirProvider;
+	}
+
+	public void setDirProvider(DirProvider dirProvider) {
+		this.dirProvider = dirProvider;
 	}
 
 	

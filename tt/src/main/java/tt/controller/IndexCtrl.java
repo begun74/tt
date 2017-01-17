@@ -75,7 +75,8 @@ public class IndexCtrl implements Serializable {
 		model.addObject("mA_search",mA_search);
 		
 		//model.addObject("tails",ttService.getTailsList());
-		model.addObject("tails",ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
+		//model.addObject("tails",ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
+		model.addObject("tails",ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
 		model.addObject("version",appBean.getVersion());
 		model.addObject("providers", ttService.getProviderList());
 		model.addObject("categories", ttService.getNomenclGroupList());
@@ -174,7 +175,7 @@ public class IndexCtrl implements Serializable {
 			
 			model.addObject("nomenclature", dn);
 			model.addObject("tails", ttService.getTailsList(dn.getId()));
-			model.addObject("provider", dn.getTails().iterator().next().getDirProvider());
+			//model.addObject("provider", dn.getTails().iterator().next().getDirProvider());
 			model.addObject("price", dn.getTails().iterator().next().getFirstPrice());
 		}
 		

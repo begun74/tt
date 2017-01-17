@@ -225,7 +225,7 @@ public class ReadExcelFile {
         			tail.setAmountTail(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_amountTail()-1))));
         			tail.setFirstPrice(NumberFormat.getNumberInstance().parse(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_firstPrice()-1) )).doubleValue());
         			tail.setCreate_date(timestamp);
-        			tail.setDirProvider(hP.get(new Integer((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeProvider()-1)))))));
+        			//tail.setDirProvider(hP.get(new Integer((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeProvider()-1)))))));
         			tail.setDirNomenclature( hmNomencl.get(new Long((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeNomencl()-1)))))) );
         			tail.setSize(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_size()-1)).replaceAll("р-р", ""));
         			lTails.add(tail);
