@@ -137,7 +137,6 @@
 																		<tr>
 																			<td >${loop.count}</td>
 																			<td style="cursor:pointer;">${tail.dirNomenclature.name}</td>
-																			<td style="cursor:pointer;">${tail.dirProvider.name}</td>
 																			<td style="cursor:pointer;">${tail.amountTail}</td>
 																			<td style="cursor:pointer;">${tail.firstPrice}</td>
 																			<td style="cursor:pointer;">${tail.size}</td>
@@ -184,14 +183,6 @@
 														         </div>
 														         <div style="width: 25px" class="conleft">
 										                   			<input name="col_firstPrice" id="col_firstPrice" type="text" class="input" value="${sessionBean.mA_loadTail.col_firstPrice}"> 
-														         </div>
-														</div>
-											  			<div class="clearfix">
-														         <div class="lab">
-										                   			<label>Код Поставщика</label>
-														         </div>
-														         <div style="width: 25px" class="conleft">
-										                   			<input name="col_codeProvider" id="col_codeProvider" type="text" class="input" value="${sessionBean.mA_loadTail.col_codeProvider}"> 
 														         </div>
 														</div>
 											  			<div class="clearfix">
@@ -296,7 +287,6 @@
 												<tr>
 													<td >${loop.count}</td>
 													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">(${tail.dirNomenclature.name})</td>
-													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.dirProvider.name}</td>
 													<td style="cursor:pointer;" onclick="$('#amountTail').val('${tail.amountTail}'); $('#firstPrice').val('${tail.firstPrice}');">${tail.amountTail}</td>
 													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.firstPrice}</td>
 													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.size}</td>

@@ -253,10 +253,44 @@ public class TTServiceImpl implements Dao {
 
 	public Set<DirNomenclature> tailNomenclatureSet(List<Long> providers, List<Long> genders, List<Long> categories , int p , int perPage) 
 	{
-		Set<DirNomenclature> DNset = new LinkedHashSet<DirNomenclature>();
+		//Set<DirNomenclature> DNset = new LinkedHashSet<DirNomenclature>();
 		
-		//return dao.getTailsNomenclature(tail_example, criterions, p);
-		return DNset;
+		List<DirProvider> lProvs = new LinkedList<DirProvider>();
+		List<DirNomenclGroup> lNomGroup = new LinkedList<DirNomenclGroup>();
+		//List<DirGender> lGens = new LinkedList<DirGender>();
+		
+		
+		Collection<Criterion> criterions = new LinkedList<Criterion>();
+		Collection<Criterion> criterDN = new LinkedList<Criterion>();
+		
+		for(Long idNomGroup: categories)
+			lNomGroup.add((DirNomenclGroup)dao.getObject(DirNomenclGroup.class, idNomGroup));
+					
+					
+		for(Long idProv: providers)
+			lProvs.add((DirProvider) dao.getObject(DirProvider.class, idProv));
+		
+		for(Long idGndr: genders)
+		{
+			DirGender DG = (DirGender) dao.getObject(DirGender.class, idGndr);
+			criterDN.add( Restrictions.eq("dirGender", DG));
+		}
+		
+		
+		if(!lNomGroup.isEmpty())
+			criterDN.add(Restrictions.in("dirNomenclGroup", lNomGroup));
+		//if(!lGndrs.isEmpty())
+		//	criterDN.add( Restrictions.in("dirGender", lGndrs.toArray()));
+
+		if(!lProvs.isEmpty())
+			criterDN.add( Restrictions.in("dirProvider", lProvs));
+
+		if(!getNomenclatureList(criterDN).isEmpty())
+			criterions.add( Restrictions.in("dirNomenclature", getNomenclatureList(criterDN)) );
+		else
+			return new HashSet();
+		
+		return criterions.size() >0 ? getTailsNomenclature(new Tail(),criterions, p): new HashSet<DirNomenclature>();
 	}
 	
 	

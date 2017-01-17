@@ -25,13 +25,15 @@
 												<div class="col-xs-4">
 														<div class="single-products product-image-wrapper">
 																<div class="productinfo text-center">
-																	<a href="product-details?id=${tail.key.id}"><img class="" src="/pics/products/${tail.key.code}/M/${tail.key.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" /></a>
-																	<c:set var="tail_name" value="${tail.key.name}" />
+																	<a href="product-details?id=${tail.id}"><img class="" src="/pics/products/${tail.code}/M/${tail.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" /></a>
+																	<c:set var="tail_name" value="${tail.name}" />
 																	<c:set var="tn_length" value="${fn:length(tail_name)}" />
 																	<h5>${fn:substring(tail_name, 0, 15)}</h5>
 																	<h5>&#160;${fn:substring(tail_name, 15, tn_length) }</h5>
-																	<p><spring:message code="article"/>${tail.key.article}</p>
-																	<a href="product-details?id=${tail.key.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i><spring:message code="to.order"/></a>
+																	<c:set var="prov_name" value=" ${tail.dirProvider.name}" />
+																	<p>${tail.dirProvider.name}</p>
+																	<p><spring:message code="article"/>&#160;${tail.article}</p>
+																	<a href="product-details?id=${tail.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i><spring:message code="to.order"/></a>
 																</div>
 														</div>
 												</div>
@@ -39,9 +41,9 @@
 						</div>
 
 						<div class="col-md-14">
-							<div class="col-md-4"></div>
- 							<div id="light-pagination" class="pagination col-md-6"></div>
- 							<div class="col-md-4"></div>
+							<div class="col-md-3"></div>
+ 							<div id="light-pagination" class="pagination col-md-8"></div>
+ 							<div class="col-md-3"></div>
 						</div>						
 
 						<input type="hidden" name="itemPerPage" value="${perPage}"/>

@@ -206,8 +206,13 @@ public class DaoImpl implements Dao {
 		for(Tail tail: tails)
 			lDirNomenctls.add(tail.getDirNomenclature().getId());
 		
-		Criteria criteriaDN = getSession().createCriteria(DirNomenclature.class).add(Restrictions.in("id", lDirNomenctls)).addOrder(Order.asc("name"));
-		dirNomSet.addAll(criteriaDN.list());
+		Criteria criteriaDN = getSession().createCriteria(DirNomenclature.class).addOrder(Order.asc("name"));
+		
+		if(lDirNomenctls.size() >0) 
+		{
+			criteriaDN.add(Restrictions.in("id", lDirNomenctls));
+			dirNomSet.addAll(criteriaDN.list());
+		}
 
 		return dirNomSet;
 	}

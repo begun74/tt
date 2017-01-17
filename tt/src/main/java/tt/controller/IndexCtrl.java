@@ -128,7 +128,7 @@ public class IndexCtrl implements Serializable {
 		model.addAttribute("categories", ttService.getNomenclGroupList());
 		model.addAttribute("genders", ttService.getGenderList());
 
-		model.addAttribute("tails", ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
+		model.addAttribute("tails", ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
 		
 		return "index";
 	}

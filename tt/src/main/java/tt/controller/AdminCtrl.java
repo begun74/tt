@@ -108,7 +108,7 @@ public class AdminCtrl {
 			break;
 		}
 		
-		model.addObject("error",adminSessBean.getErrorList());
+		model.addObject("error",adminSessBean.getErrorList().toString().length() > 512 ?adminSessBean.getErrorList().toString().substring(0, 512)+" ...":"");
 		model.addObject("sessionBean",adminSessBean);
 		model.addObject("providers", ttService.getProviderList());
 		
