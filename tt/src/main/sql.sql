@@ -1,6 +1,6 @@
 INSERT INTO tt.user (id_user,name,password) VALUES(nextval('seq_global'),'bvv','pass');
 
--- DROP TABLE "dir_gender", "dir_nomencl_group", "dir_nomencl_group_root", "dir_nomenclature", "dir_provider", "store", "tails", "tt_user";
+-- DROP TABLE "dir_gender", "dir_nomencl_group_root", "dir_nomencl_group",  "dir_nomenclature", "dir_provider", "store", "tails", "tt_user" CASCADE;
 
 SELECT table_name
 FROM information_schema.tables where table_schema='public'
@@ -10,7 +10,7 @@ SELECT * from tt.user;
 
 SELECT nextval('seq_global');
 
-INSERT INTO dir_gender (id_dir_gender, gender) VALUES(nextval('seq_global'),'женский');
+INSERT INTO dir_gender (id_dir_gender, name) VALUES(nextval('seq_global'),'девичий');
 
 
 ALTER TABLE public.tails DROP CONSTRAINT "idProvider";
