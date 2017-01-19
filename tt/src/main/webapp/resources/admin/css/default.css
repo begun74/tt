@@ -229,6 +229,7 @@ ul.mainmenu li ul.submenu li a:hover  { color: #404040; }
 
 .tab tr.odd   { background: #f8f8f8; }
 .tab tr:hover { background: #efefef; }
+.tab tr.selected  { background: #ffffcc; }
 
 .tab th.dragHandle  { padding: 0; width: 10px; }
 .tab td.dragHandle  { padding: 0; width: 10px; cursor: move; background: url(../images/dragHandle.png) 2px 2px no-repeat;} 

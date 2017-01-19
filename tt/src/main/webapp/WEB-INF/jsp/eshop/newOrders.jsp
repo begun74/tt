@@ -73,7 +73,12 @@
 											<td style="cursor:pointer;" onclick="">${order.phone}</td>
 											<td style="cursor:pointer;" onclick="">${order.email}</td>
 											<td style="cursor:pointer;" onclick="">${order.comment}</td>
-											<td class="checkbox"><input name="orderIndex" class="orderIndex" value="${order.id}" type="checkbox"  style="cursor:pointer;" class="checkbox"/></td>
+											<!-- td class="checkbox"><input name="orderIndex" class="orderIndex" value="${order.id}" type="checkbox"  style="cursor:pointer;" class="checkbox"/></td -->
+											<td>
+												<div>
+													 <button type="button" class="printOrder">Печать</button>&nbsp;<button type="button" class="readyOrder">Готов</button>
+												</div>
+											</td>
 											<td class="dragHandle">&nbsp;</td>
 									</tr>
 									</c:forEach>
@@ -140,16 +145,20 @@
   	<script>
   		$(document).ready(function(){
 				
-			/*$("#save").attr("checked","checked");*/
-			
-			$(".orders_tr").focus( function() {
-			    //blurredFrom = event.delegateTarget;
-			    alert('focus');
-				console.log('Focus');
-			}).click( function() {
+			$(".orders_tr").click( function(e) {
 				Order.getOrderItems($(this).attr('value'), $(this).attr('id'));
-				//alert($(this).attr('id'));
-				//console.log('Focus');
+				
+				$(this).addClass('selected').siblings().removeClass("selected");
+				//e.stopPropagation();
+			});
+			
+			
+			$(".printOrder").click( function(e) {
+				confirm('Печатать заказ  № ' +$(".orders_tr").attr('value')+' ?');
+			});
+			
+			$(".readyOrder").click( function(e) {
+				confirm('Заказ № '+$(".orders_tr").attr('value')+' готов? Закрыть?');
 			});
 			
 	    });
