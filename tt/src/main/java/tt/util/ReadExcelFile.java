@@ -204,7 +204,7 @@ public class ReadExcelFile {
 	}
 
 
-	public static Collection<?> processFile(File tmpFile, Tail tail, MA_loadTail mA_loadTail, HashMap<Long,DirProvider> hP, HashMap<Long,DirNomenclature> hmNomencl)  throws Exception {
+	public static Collection<?> processFile(File tmpFile, Tail tail, MA_loadTail mA_loadTail,  HashMap<Long,DirNomenclature> hmNomencl)  throws Exception {
 		// TODO Auto-generated method stub
 		List<Tail>  lTails = new ArrayList<Tail>();
 		
@@ -230,7 +230,8 @@ public class ReadExcelFile {
         			tail.setFirstPrice(NumberFormat.getNumberInstance().parse(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_firstPrice()-1) )).doubleValue());
         			tail.setCreate_date(timestamp);
         			tail.setDirNomenclature( hmNomencl.get(new Long((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeNomencl()-1)))))) );
-        			tail.setSize(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_size()-1)).replaceAll("р-р", ""));
+        			tail.setSize(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_size()-1)).replaceAll("р-р", "").trim());
+        			
         			lTails.add(tail);
         		}
         	

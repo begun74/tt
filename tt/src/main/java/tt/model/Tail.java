@@ -169,8 +169,11 @@ public class Tail implements  IModel {
 	
 	@Override
 	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return ((Tail)o).getId().compareTo(this.id);
+		
+		int cSize = ((Tail)o).getSize().compareTo(this.getSize());
+		int cDN	  = ((Tail)o).getDirNomenclature().compareTo(this.getDirNomenclature());
+		
+		return cSize+cDN;
 	}
 	
 	

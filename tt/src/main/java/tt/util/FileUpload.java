@@ -139,10 +139,6 @@ public class FileUpload {
 					
 					else if(model instanceof Tail)
 					{
-						List<DirProvider> lP = ttService.getProviderList();
-						HashMap<Long,DirProvider> hmProv = new HashMap<Long,DirProvider>();
-						for(DirProvider dp: lP) 
-							hmProv.put(dp.getCode(), dp);
 
 						List<DirNomenclature> lN = ttService.getNomenclatureList();
 						HashMap<Long,DirNomenclature> hmNomencl = new HashMap<Long,DirNomenclature>();
@@ -150,7 +146,7 @@ public class FileUpload {
 							hmNomencl.put(dn.getCode(), dn);
 
 						
-						return ReadExcelFile.processFile(tmpFile,(Tail) model, (MA_loadTail) IMAmodel, hmProv, hmNomencl) ;
+						return ReadExcelFile.processFile(tmpFile,(Tail) model, (MA_loadTail) IMAmodel, hmNomencl) ;
 					}
 				} 
 				finally {
