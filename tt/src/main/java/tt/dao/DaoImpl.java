@@ -11,6 +11,7 @@ import java.util.Set;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
@@ -252,8 +253,10 @@ public class DaoImpl implements Dao {
 
 	@Override
 	public List<tt.model.Order> getOrdersList() {
-		// TODO Auto-generated method stub
-		return getSession().createQuery("from Order order by creation_date").list();
+
+		return getSession().createSQLQuery("select distinct o.* from orders o inner join order_items oi on o.id_orders=oi.fk_id_orders where oi.destruction_date is null").addEntity(tt.model.Order.class).list();
+		
+		//return getSession().createQuery("from Order order by creation_date").list();
 	}
 
 	@Override
@@ -263,6 +266,26 @@ public class DaoImpl implements Dao {
 		//List<OrderItems> orderItems = ((tt.model.Order)getObject(tt.model.Order.class, orderId)).getOrderItems();
 		
 		return orderItems;
+	}
+
+	@Override
+	public tt.model.Order getOrder(Long orderId) {
+		// TODO Auto-generated method stub
+		tt.model.Order order = (tt.model.Order) getSession().createQuery("from Order where id = :orderId").setParameter("orderId", orderId).uniqueResult();
+		order.getOrderItems();
+		return  order;
+	}
+
+	@Override
+	public void saveOrderItems(List<OrderItems> listOI) {
+		// TODO Auto-generated method stub
+		Session sess = getSession();
+				
+		for(OrderItems oi: listOI)
+			sess.saveOrUpdate(oi);
+		
+		
+			
 	}
 
 

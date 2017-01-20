@@ -124,6 +124,9 @@ var Order = {
 			
 			$.each(arrData, function(i) {
 				  if(!(i%numCols)) tRow = $('<tr>');
+				  
+				  var destr_date = arrData[i].destruction_date != null?new Date(arrData[i].destruction_date):"&nbsp;&nbsp;В работе";
+				  
 
 				  tCell = $('<td>').html(arrData[i].code);
 				  tRow.append(tCell);
@@ -137,12 +140,58 @@ var Order = {
 				  tRow.append(tCell);
 				  tCell = $('<td>').html(arrData[i].amount);
 				  tRow.append(tCell);
+				  tCell = $('<td>').html('<input type="checkbox" class="statusOrderItem">'+destr_date+'</input>');
+				  tRow.append(tCell);				  
 
 				  $('.tableDisplayOrderItems').append(tRow);
 			});
 			
 			//alert('row - ' +row);
 			
+		},
+		
+		closeOrder: function(id) {
+			var arrData = {};
+			arrData['id'] = id;
+			
+			$.ajax({
+				type : "GET",
+				url : "closeOrder?id="+id,
+				//timeout : 10000,
+				data : JSON.stringify(arrData),
+				contentType: 'application/json; charset=utf-8',
+				success : function(data) 
+				{
+					//alert('Заказ №' +data['id'] + ' выполнен!')
+					window.location.reload();
+				},
+				error : function(e) {
+					
+					display(e);
+				}
+			});
+		},
+		
+		setReadyOrderItem: function(id_orderItem) {
+			var arrData = {};
+			arrData['id'] = id;
+			
+			$.ajax({
+				type : "GET",
+				url : "closeOrder?id="+id,
+				//timeout : 10000,
+				data : JSON.stringify(arrData),
+				contentType: 'application/json; charset=utf-8',
+				success : function(data) 
+				{
+					//alert('Заказ №' +data['id'] + ' выполнен!')
+					window.location.reload();
+				},
+				error : function(e) {
+					
+					display(e);
+				}
+			});
 		}
 }
 

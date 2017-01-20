@@ -158,9 +158,15 @@
 			});
 			
 			$(".readyOrder").click( function(e) {
-				confirm('Заказ № '+$(".orders_tr").attr('value')+' готов? Закрыть?');
+				if(confirm('Заказ № '+$(".orders_tr").attr('value')+' готов? Закрыть?')) {
+					Order.closeOrder($(".orders_tr").attr('value'));
+					
+				}
 			});
 			
+			$(".statusOrderItem").click( function(e) {
+				alert('statusOrderItem');
+			});
 	    });
 	    
     </script></body>

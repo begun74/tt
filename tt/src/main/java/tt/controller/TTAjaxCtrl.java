@@ -120,7 +120,7 @@ public class TTAjaxCtrl {
 			json_oitem.setModel(orderItem.getDirNomenclature().getModel());
 			json_oitem.setName(orderItem.getDirNomenclature().getName());
 			json_oitem.setSize(orderItem.getSize());
-			
+			json_oitem.setDestruction_date(orderItem.getDestruction_date());
 			
 			json_oitems.add(json_oitem);
 		}
@@ -129,5 +129,22 @@ public class TTAjaxCtrl {
 		return  new ResponseEntity<List<JSON_OrderItems>>(json_oitems,HttpStatus.OK);
 	}	
 	
+	
+	@RequestMapping(value = "/closeOrder{id}", method = RequestMethod.GET)
+	public ResponseEntity<Long>  closeOrder( @RequestParam ("id") long id) 
+	{
+		
+		
+		List<OrderItems> lOrderItems = ttService.getOrderItems(id);
+		
+		for(OrderItems oi : lOrderItems)
+			if(oi.getDestruction_date() == null)  
+				oi.setDestruction_date(new Timestamp(new Date().getTime()));
+		
+		ttService.saveOrderItems(lOrderItems);
+		
+		return  new ResponseEntity<Long>(id,HttpStatus.OK);
+
+	}
 
 }

@@ -328,6 +328,20 @@ public class TTServiceImpl implements Dao {
 		// TODO Auto-generated method stub
 		return dao.getTailsNomenclature(tail_example, criterions, p);
 	}
+
+
+	@Override
+	public Order getOrder(Long orderId) {
+		// TODO Auto-generated method stub
+		return dao.getOrder(orderId);
+	}
+
+
+	@Override
+	public void saveOrderItems(List<OrderItems> listOI) {
+		// TODO Auto-generated method stub
+		dao.saveOrderItems(listOI);
+	}
 	
 
 }

@@ -57,9 +57,11 @@ public interface Dao {
 	
 	
 	public List<OrderItems> getOrderItems(Long order);
+	public void saveOrderItems(List<OrderItems> listOI);
 	
 	public void addOrder(Order order);
-	public List<Order>getOrdersList();
+	public Order getOrder(Long order);
+	public List<Order> getOrdersList();
 	
 	public Object getObject(Class clazz,Long id);
 	public void delObject(Object obj);
