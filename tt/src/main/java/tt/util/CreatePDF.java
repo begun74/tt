@@ -106,7 +106,7 @@ public class CreatePDF {
 		c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 		table.addCell(c1);
 
-		c1 = new PdfPCell(new Phrase("Размеры (Т х Д х Ш)",TIME_ROMAN));
+		c1 = new PdfPCell(new Phrase("Размеры",TIME_ROMAN));
 		c1.setHorizontalAlignment(Element.ALIGN_CENTER);
 		table.addCell(c1);
 
@@ -127,10 +127,10 @@ public class CreatePDF {
 			table.setWidthPercentage(100);
 			table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
-			//table.addCell(new PdfPCell(new Phrase(p.getDirBrand()!=null?p.getDirBrand().getName():"",TIME_ROMAN)));
-			table.addCell(new Phrase(""+oi.getSize()+" "+oi.getAmount()+"",TIME_ROMAN));
-			//table.addCell(new Phrase(""+p.getPrice(),TIME_ROMAN));
-			//table.addCell(new Phrase(""+mapModels.get(p),TIME_ROMAN));
+			table.addCell(new PdfPCell(new Phrase(oi.getDirNomenclature().getDirProvider().getName(),TIME_ROMAN)));
+			table.addCell(new Phrase(""+oi.getSize(),TIME_ROMAN));
+			table.addCell(new Phrase(" ",TIME_ROMAN));
+			table.addCell(new Phrase(" ",TIME_ROMAN));
 		}
 		
 		
