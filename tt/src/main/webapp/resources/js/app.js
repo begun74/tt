@@ -8,6 +8,21 @@ function decrement(obj) {
 	return --obj.value;
 }
 
+var digitMounthArray = {
+		0:'01',
+		1:"02",
+		2:"03",
+		3:"04",
+		4:"05",
+		5:"06",
+		6:"07",
+		7:"08",
+		8:"09",
+		9:"10",
+		10:"11",
+		11:"12"
+}
+
 
 var Product = {
 		id: 0,
@@ -125,8 +140,9 @@ var Order = {
 			$.each(arrData, function(i) {
 				  if(!(i%numCols)) tRow = $('<tr>');
 				  
-				  var destr_date = arrData[i].destruction_date != null?new Date(arrData[i].destruction_date):"&nbsp;&nbsp;В работе";
+				  var destrDate = new Date(arrData[i].destruction_date);
 				  
+				  var destr_date = arrData[i].destruction_date != null?destrDate.getDate() +'.'+ digitMounthArray[destrDate.getMonth()] +'.'+destrDate.getFullYear()+'  '+destrDate.getHours()+":"+destrDate.getMinutes()+":"+destrDate.getSeconds() : "";
 
 				  tCell = $('<td>').html(arrData[i].code);
 				  tRow.append(tCell);
@@ -140,7 +156,12 @@ var Order = {
 				  tRow.append(tCell);
 				  tCell = $('<td>').html(arrData[i].amount);
 				  tRow.append(tCell);
-				  tCell = $('<td>').html('<input type="checkbox" class="statusOrderItem">'+destr_date+'</input>');
+				  
+				  if(arrData[i].destruction_date != null)
+					  tCell = $('<td>').html('<input type="checkbox" checked="checked" class="statusOrderItem" onClick="Order.setReadyOrderItem(this)" id='+arrData[i].id+'>  '+destr_date+'</input>');
+				  else
+					  tCell = $('<td>').html('<input type="checkbox" class="statusOrderItem" onClick="Order.setReadyOrderItem(this)" id='+arrData[i].id+'>  '+destr_date+'</input>');
+				  
 				  tRow.append(tCell);				  
 
 				  $('.tableDisplayOrderItems').append(tRow);
@@ -172,20 +193,30 @@ var Order = {
 			});
 		},
 		
-		setReadyOrderItem: function(id_orderItem) {
+		setReadyOrderItem: function(chekbox) {
+			
+			//alert('status - '+chekbox.checked);
+			
 			var arrData = {};
-			arrData['id'] = id;
+			arrData['id'] = chekbox.id;
 			
 			$.ajax({
 				type : "GET",
-				url : "closeOrder?id="+id,
+				url : "setReadyOrderItem?id="+arrData['id']+"&status="+chekbox.checked,
 				//timeout : 10000,
 				data : JSON.stringify(arrData),
 				contentType: 'application/json; charset=utf-8',
 				success : function(data) 
 				{
 					//alert('Заказ №' +data['id'] + ' выполнен!')
-					window.location.reload();
+					if(chekbox.checked)
+					{
+						var destrDate = new Date(data);
+						var destr_date = data != null?destrDate.getDate() +'.'+ digitMounthArray[destrDate.getMonth()] +'.'+destrDate.getFullYear()+'  '+destrDate.getHours()+":"+destrDate.getMinutes()+":"+destrDate.getSeconds() : "";
+						$(chekbox).html(destr_date);
+					}
+					
+					//alert(destr_date);
 				},
 				error : function(e) {
 					

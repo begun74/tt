@@ -146,5 +146,23 @@ public class TTAjaxCtrl {
 		return  new ResponseEntity<Long>(id,HttpStatus.OK);
 
 	}
+	
+	@RequestMapping(value = "/setReadyOrderItem{id}", method = RequestMethod.GET)
+	public ResponseEntity<Timestamp>  setReadyOrderItem( @RequestParam ("id") long id, @RequestParam ("status") boolean status) 
+	{
+		OrderItems oi = (OrderItems) ttService.getObject(OrderItems.class, id);
+		
+		if(status)
+			oi.setDestruction_date(new Timestamp(new Date().getTime()));
+		else
+			oi.setDestruction_date(null);
+		
+		List<OrderItems> lOrderItems = new ArrayList<OrderItems>(1); 
+		lOrderItems.add(oi);
+		
+		ttService.saveOrderItems(lOrderItems);
+		
+		return  new ResponseEntity<Timestamp>(oi.getDestruction_date() , HttpStatus.OK);
+	}
 
 }
