@@ -208,12 +208,11 @@ var Order = {
 				contentType: 'application/json; charset=utf-8',
 				success : function(data) 
 				{
-					//alert('Заказ №' +data['id'] + ' выполнен!')
 					if(chekbox.checked)
 					{
-						var destrDate = new Date(data);
-						var destr_date = data != null?destrDate.getDate() +'.'+ digitMounthArray[destrDate.getMonth()] +'.'+destrDate.getFullYear()+'  '+destrDate.getHours()+":"+destrDate.getMinutes()+":"+destrDate.getSeconds() : "";
-						$(chekbox).html(destr_date);
+						//var destrDate = new Date(data);
+						//var destr_date = data != null?destrDate.getDate() +'.'+ digitMounthArray[destrDate.getMonth()] +'.'+destrDate.getFullYear()+'  '+destrDate.getHours()+":"+destrDate.getMinutes()+":"+destrDate.getSeconds() : "";
+						//$(chekbox).text(destr_date);
 					}
 					
 					//alert(destr_date);
