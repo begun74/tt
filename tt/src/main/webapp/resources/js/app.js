@@ -225,7 +225,7 @@ var Order = {
 		},
 		
 		printOrder: function(orderId) {
-			
+			alert(orderId);
 		}
 }
 

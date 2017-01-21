@@ -154,7 +154,10 @@
 			
 			
 			$(".printOrder").click( function(e) {
-				confirm('Печатать заказ  № ' +$(".orders_tr").attr('value')+' ?');
+				if(confirm('Печатать заказ  № ' +$(".orders_tr").attr('value')+' ?') )
+				{
+					Order.printOrder($(".orders_tr").attr('value'));
+				}
 			});
 			
 			$(".readyOrder").click( function(e) {

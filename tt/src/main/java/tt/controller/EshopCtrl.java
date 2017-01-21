@@ -57,9 +57,9 @@ public class EshopCtrl {
 		return model;
 	}
 	
-	@RequestMapping(value="printOrder", method = RequestMethod.GET)
+	@RequestMapping(value="printOrder{orderId}", method = RequestMethod.GET)
 	public void  printOrder(HttpServletRequest request, HttpServletResponse response, HttpSession session, 
-				@RequestParam(value = "orderId",   defaultValue = "0") long orderIdt) 
+				@RequestParam(value = "orderId",   defaultValue = "0") long orderId) 
 	{
 		final ServletContext servletContext = request.getSession().getServletContext();
 	    final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
