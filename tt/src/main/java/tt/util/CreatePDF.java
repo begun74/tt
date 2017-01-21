@@ -128,7 +128,7 @@ public class CreatePDF {
 			table.getDefaultCell().setHorizontalAlignment(Element.ALIGN_CENTER);
 			table.getDefaultCell().setVerticalAlignment(Element.ALIGN_MIDDLE);
 			//table.addCell(new PdfPCell(new Phrase(p.getDirBrand()!=null?p.getDirBrand().getName():"",TIME_ROMAN)));
-			//table.addCell(new Phrase(""+p.getThickness()+"x"+p.getLength()+"x"+p.getWeight(),TIME_ROMAN));
+			table.addCell(new Phrase(""+oi.getSize()+" "+oi.getAmount()+"",TIME_ROMAN));
 			//table.addCell(new Phrase(""+p.getPrice(),TIME_ROMAN));
 			//table.addCell(new Phrase(""+mapModels.get(p),TIME_ROMAN));
 		}
