@@ -1,7 +1,11 @@
 package tt.controller;
 
+import java.io.File;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,5 +57,20 @@ public class EshopCtrl {
 		return model;
 	}
 	
+	@RequestMapping(value="printOrder", method = RequestMethod.GET)
+	public void  printOrder(HttpServletRequest request, HttpServletResponse response, HttpSession session, 
+				@RequestParam(value = "orderId",   defaultValue = "0") long orderIdt) 
+	{
+		final ServletContext servletContext = request.getSession().getServletContext();
+	    final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+	    final String temperotyFilePath = tempDirectory.getAbsolutePath();
+	    
+		final String pathToFont =  servletContext.getRealPath("/resources/forRussText/");
+		
+		String fileName = "CommOffer.pdf";
+	    response.setContentType("application/pdf;charset=UTF-8");
+	    response.setHeader("Content-disposition", "attachment; filename="+ fileName);
+	    
+	}
 
 }

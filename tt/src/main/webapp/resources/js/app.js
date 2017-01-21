@@ -222,6 +222,10 @@ var Order = {
 					display(e);
 				}
 			});
+		},
+		
+		printOrder: function(orderId) {
+			
 		}
 }
 
