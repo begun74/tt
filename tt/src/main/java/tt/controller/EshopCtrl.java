@@ -50,7 +50,7 @@ public class EshopCtrl {
 				@RequestParam(value = "act",   defaultValue = "0") String act,
 				@RequestParam(value = "error",   defaultValue = "") String error) 
 	{
-		ModelAndView model = new ModelAndView("eshop/main");
+		ModelAndView model = new ModelAndView("redirect:/eshop?act=1");
 
 		switch (act)
 		{
