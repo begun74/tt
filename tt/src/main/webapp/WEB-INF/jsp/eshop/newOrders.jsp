@@ -67,16 +67,16 @@
 									<tr class="orders_tr" value="${order.id}" id="${loop.index}">
 											<td class="dragHandle">&nbsp;</td>
 											<td>${loop.count}</td>
-											<td style="cursor:pointer;" onclick="">${order.id}</td>
-											<td style="cursor:pointer;" onclick="">${order.creation_date}</td>
-											<td style="cursor:pointer;" onclick="">${order.person_name}</td>											
-											<td style="cursor:pointer;" onclick="">${order.phone}</td>
-											<td style="cursor:pointer;" onclick="">${order.email}</td>
-											<td style="cursor:pointer;" onclick="">${order.comment}</td>
+											<td style="cursor:pointer;" >${order.id}</td>
+											<td style="cursor:pointer;" >${order.creation_date}</td>
+											<td style="cursor:pointer;" >${order.person_name}</td>											
+											<td style="cursor:pointer;" >${order.phone}</td>
+											<td style="cursor:pointer;" >${order.email}</td>
+											<td style="cursor:pointer;" >${order.comment}</td>
 											<!-- td class="checkbox"><input name="orderIndex" class="orderIndex" value="${order.id}" type="checkbox"  style="cursor:pointer;" class="checkbox"/></td -->
 											<td>
-												<div>
-													 <button type="button" class="printOrder">Печать</button>&nbsp;<button type="button" class="readyOrder">Готов</button>
+												<div class="actionDiv" value="${order.id}" >
+													 <button type="button" class="printOrder" >Печать</button>&nbsp;<button type="button" class="readyOrder" >Готов</button>
 												</div>
 											</td>
 											<td class="dragHandle">&nbsp;</td>
@@ -144,25 +144,26 @@
 	<!-- /#main --> 
   	<script>
   		$(document).ready(function(){
+  			var selectTr;
 				
 			$(".orders_tr").click( function(e) {
-				Order.getOrderItems($(this).attr('value'), $(this).attr('id'));
-				
+				selectTr = $(this);
 				$(this).addClass('selected').siblings().removeClass("selected");
+				Order.getOrderItems($(this).attr('value'), $(this).attr('id'));
 				//e.stopPropagation();
 			});
 			
 			
 			$(".printOrder").click( function(e) {
-				if(confirm('Печатать заказ  № ' +$(".orders_tr").attr('value')+' ?') )
-				{
-					Order.printOrder($(".orders_tr").attr('value'));
-				}
+				//$( ".orders_tr" ).trigger( "click" );
+				//if(confirm('Печатать заказ  № ' +$(selectTr).attr('value')+' ?') )
+					Order.printOrder($(selectTr).attr('value'));
 			});
 			
 			$(".readyOrder").click( function(e) {
-				if(confirm('Заказ № '+$(".orders_tr").attr('value')+' готов? Закрыть?')) {
-					Order.closeOrder($(".orders_tr").attr('value'));
+				//$( ".orders_tr" ).trigger( "click" );
+				if(confirm('Заказ № '+$(selectTr).attr('value')+' готов? Закрыть?')) {
+					Order.closeOrder($(selectTr).attr('value'));
 					
 				}
 			});

@@ -262,8 +262,14 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<OrderItems> getOrderItems(Long orderId) {
 		// TODO Auto-generated method stub
-		List<OrderItems> orderItems = (List<OrderItems>) getSession().createQuery("from OrderItems where fk_id_orders = :orderId").setParameter("orderId", orderId).list(); 
-		//List<OrderItems> orderItems = ((tt.model.Order)getObject(tt.model.Order.class, orderId)).getOrderItems();
+		Session sess =  getSession();
+		
+		tt.model.Order order = getOrder(orderId);
+		
+		List<OrderItems> orderItems = (List<OrderItems>)sess.createQuery("from OrderItems where fk_id_orders = :orderId").setParameter("orderId", orderId).list(); 
+
+		for(OrderItems oi: orderItems)
+			oi.setOrder(order);
 		
 		return orderItems;
 	}

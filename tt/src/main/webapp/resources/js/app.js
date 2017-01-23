@@ -225,7 +225,8 @@ var Order = {
 		},
 		
 		printOrder: function(orderId) {
-			alert(orderId);
+			
+			window.location="eshop/printOrder?orderId="+orderId;
 		}
 }
 

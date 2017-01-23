@@ -55,7 +55,7 @@ public class OrderItems implements IModel {
 	private DirNomenclature dirNomenclature;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	//@Fetch(FetchMode.SELECT)
+	//@Fetch(FetchMode.SUBSELECT)
 	@JoinColumn(name = "fk_id_orders", nullable=false)
 	private Order order;
 	
