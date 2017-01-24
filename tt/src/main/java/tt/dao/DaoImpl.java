@@ -254,7 +254,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<tt.model.Order> getOrdersList() {
 
-		return getSession().createSQLQuery("select distinct o.* from orders o inner join order_items oi on o.id_orders=oi.fk_id_orders where oi.destruction_date is null").addEntity(tt.model.Order.class).list();
+		return getSession().createSQLQuery("select distinct o.* from orders o inner join order_items oi on o.id_orders=oi.fk_id_orders where oi.destruction_date is null order by o.creation_date").addEntity(tt.model.Order.class).list();
 		
 		//return getSession().createQuery("from Order order by creation_date").list();
 	}

@@ -32,11 +32,11 @@ import tt.util.FileUpload;
 @RequestMapping(value = {"/eshop"} , method = RequestMethod.GET)
 public class EshopCtrl {
 	
-	@Autowired
-	private AppBean appBean;
+	//@Autowired
+	//private AppBean appBean;
 
-	@Autowired
-	private FileUpload fileUpload;
+	//@Autowired
+	//private FileUpload fileUpload;
 	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
