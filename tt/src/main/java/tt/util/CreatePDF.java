@@ -25,7 +25,7 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 
-import tt.model.Order;
+
 import tt.model.OrderItems;
 
 @Component
@@ -74,8 +74,7 @@ public class CreatePDF {
 		document.addCreator("Test");
 	}
 
-	private static void addTitlePage(Document document)
-			throws DocumentException, IOException {
+	private static void addTitlePage(Document document)	throws DocumentException, IOException {
 
 		Font TIME_ROMAN = new Font(BaseFont.createFont(pathToFont+"/times.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
 		Font TIME_ROMAN_BOLD = new Font(BaseFont.createFont(pathToFont+"/timesbd.ttf", BaseFont.IDENTITY_H, BaseFont.EMBEDDED));
