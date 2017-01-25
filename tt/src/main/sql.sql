@@ -30,3 +30,9 @@ select * from tails;
 
 update tails set destruction_date = now();
 
+select distinct o.* from orders o
+	inner join order_items oi on o.id_orders=oi.fk_id_orders
+	where oi.destruction_date is null
+
+
+update order_items set destruction_date = null where id_order_items=16938

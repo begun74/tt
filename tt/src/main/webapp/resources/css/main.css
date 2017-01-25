@@ -2446,6 +2446,7 @@ h2.title {
 #contact-page 
 .form-control::-moz-placeholder {
   color: #8D8D8D;
+  color: #000000;
 }
 
 #contact-page .form-control {
@@ -2593,3 +2594,4 @@ give gallery's parent container a cursor: pointer.**/
 	width:100%;
 	
 }
+

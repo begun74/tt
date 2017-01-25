@@ -78,13 +78,13 @@
 								<input type="email" name="email" class="form-control control-label" value="${orderForm.phone}" placeholder='<spring:message code="email"/>'/>
 							</div>
 							<div class="col-sm-4 form-check">
-								<input type="text" name="phone" class="form-control control-label"  placeholder='+375 XX XXX-XX-XX'/>
+								<input type="text" name="phone" class="form-control control-label"  maxlength="20" placeholder='+375 XX XXX-XX-XX'/>
 							</div>
 							<div class="col-sm-12 form-check">
 									<label>Комментарий</label>
 							</div>
 							<div class="col-sm-12 form-check">
-									<textarea name="comment" class="form-control"  ></textarea>
+									<textarea name="comment" class="form-control"  maxlength="100"></textarea>
 							</div>
 
 							<div class="text-center">
