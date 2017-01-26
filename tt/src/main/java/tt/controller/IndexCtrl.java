@@ -253,7 +253,7 @@ public class IndexCtrl implements Serializable {
 		model.addObject("orderItems", sessBean.getOrderItems());
 		model.addObject("last_order",order);
 		
-		sendMailService.sendOrder("№"+order.getId()+":   "+order.getPhone()+"  " +order.getPerson_name()+ "  "+order.getEmail());
+		sendMailService.sendOrder("Заказ №"+order.getId(),"№"+order.getId()+":   "+order.getPhone()+"  " +order.getPerson_name()+ "  "+order.getEmail());
 		
 		return model;
 	}

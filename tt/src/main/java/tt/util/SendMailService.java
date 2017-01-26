@@ -29,7 +29,7 @@ public class SendMailService {
 //    public SendMailService () {
     //}
     
-    public boolean sendOrder(String text) {
+    public boolean sendOrder(String subj, String text) {
     	
     	try {
     			SimpleMailMessage message = new SimpleMailMessage();
