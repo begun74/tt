@@ -60,6 +60,9 @@ public class IndexCtrl implements Serializable {
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
 	
 	@Autowired
+	private SendMailService sendMailService;
+	
+	@Autowired
 	MA_search mA_search;
 	
 	@RequestMapping(value = {"/index","/"} , method = RequestMethod.GET)
@@ -250,6 +253,7 @@ public class IndexCtrl implements Serializable {
 		model.addObject("orderItems", sessBean.getOrderItems());
 		model.addObject("last_order",order);
 		
+		sendMailService.sendOrder("№"+order.getId()+":   "+order.getPhone()+"  " +order.getPerson_name()+ "  "+order.getEmail());
 		
 		return model;
 	}
