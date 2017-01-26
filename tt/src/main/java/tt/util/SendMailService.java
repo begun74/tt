@@ -35,7 +35,7 @@ public class SendMailService {
     			SimpleMailMessage message = new SimpleMailMessage();
 				message.setFrom(env.getProperty("fromAddress"));
 				message.setTo(env.getProperty("toAddress"));
-				message.setSubject(env.getProperty("subject"));
+				message.setSubject(subj == null?env.getProperty("subject"):subj);
 				message.setText(env.getProperty("msgBody")+"\n" +text);
 				mailSender.setHost(env.getProperty("spring.mail.host"));
 			    mailSender.setPort(Integer.parseInt(env.getProperty("spring.mail.port")));
