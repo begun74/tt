@@ -34,11 +34,13 @@ public class SendMailService {
     public boolean sendOrder(String subj, String text) {
     	
     	try {
+    		String subject = subj == null?env.getProperty("subject"):subj;
+    		
     		if(new Boolean(env.getProperty("sendOrder.toAddress"))) {
     			SimpleMailMessage message = new SimpleMailMessage();
 				message.setFrom(env.getProperty("fromAddress"));
 				message.setTo(env.getProperty("toAddress"));
-				message.setSubject(subj == null?env.getProperty("subject"):subj);
+				message.setSubject(subject);
 				message.setText(env.getProperty("msgBody")+"\n" +text);
 				mailSender.setHost(env.getProperty("spring.mail.host"));
 			    mailSender.setPort(Integer.parseInt(env.getProperty("spring.mail.port")));
@@ -49,7 +51,7 @@ public class SendMailService {
 			    
 				mailSender.send(message);
 		    	
-				System.out.println("Send new order From: " +env.getProperty("fromAddress") + "   to: "+env.getProperty("toAddress"));
+				System.out.println("Send "+subject+" From: " +env.getProperty("fromAddress") + "   to: "+env.getProperty("toAddress"));
 				
 				return true;
     		}
