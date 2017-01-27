@@ -7,6 +7,7 @@ import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Component
+@PropertySource("classpath:mail.properties")
 public class SendMailService {
 
     @Resource
@@ -26,12 +28,13 @@ public class SendMailService {
     
     private Properties props = System.getProperties();
     
-//    public SendMailService () {
-    //}
+    public SendMailService () {
+    }
     
     public boolean sendOrder(String subj, String text) {
     	
     	try {
+    		if(new Boolean(env.getProperty("sendOrder.toAddress"))) {
     			SimpleMailMessage message = new SimpleMailMessage();
 				message.setFrom(env.getProperty("fromAddress"));
 				message.setTo(env.getProperty("toAddress"));
@@ -43,11 +46,15 @@ public class SendMailService {
 			    mailSender.setUsername(env.getProperty("spring.mail.username"));
 			    mailSender.setPassword(env.getProperty("spring.mail.password"));	
 			    mailSender.setJavaMailProperties(props);
+			    
 				mailSender.send(message);
 		    	
 				System.out.println("Send new order From: " +env.getProperty("fromAddress") + "   to: "+env.getProperty("toAddress"));
 				
 				return true;
+    		}
+    		else
+    			return false;
     	}
     	catch(Exception exc) {
     		System.err.println("ERROR: SendMailService.sendOrder()  ");

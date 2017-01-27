@@ -114,6 +114,8 @@ var Order = {
 			var arrData = {};
 			arrData['id'] = id;
 			
+			$('.tableDisplayOrderItems').empty();
+			
 			$.ajax({
 				type : "GET",
 				url : "getOrderItems?id="+id,
