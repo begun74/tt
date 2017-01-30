@@ -48,13 +48,17 @@ public class SendMailService {
 				message.setSubject(subject+" № "+order.getId());
 				
 				String messBody = " № "+order.getId()+"\n";
+				messBody += "Имя: "+order.getPerson_name()+"\n";
+				messBody += "E-mail: "+order.getEmail()+"\n";
+				messBody += "Телефон: "+order.getPhone()+"\n";
+				
+				messBody += "Примечание:  "+ order.getComment()+"\n\n\n";
 				
 				for(OrderItems oi: order.getOrderItems()) 
-				{
-					messBody = messBody + (oi.getDirNomenclature().getName() +"  ( модель "+oi.getDirNomenclature().getModel()+ " арт. "+oi.getDirNomenclature().getArticle()+")    размер: "+oi.getSize() + "    - "+ oi.getAmount()+"шт. \n");
-				}
+					messBody = messBody + (oi.getDirNomenclature().getName() +" (модель "+oi.getDirNomenclature().getModel()+ " арт. "+oi.getDirNomenclature().getArticle()+")  размер: "+oi.getSize() + "    - "+ oi.getAmount()+"шт. \n");
+
 				
-				message.setText(env.getProperty("msgBody")+"\n"+messBody+"\n");
+				message.setText(env.getProperty("msgBody")+" "+messBody+"\n");
 				
 
     			//MimeMessageHelper helper = new MimeMessageHelper(message, true);
@@ -66,7 +70,7 @@ public class SendMailService {
 			    
 				mailSender.send(message);
 		    	
-				System.out.println("Send "+subject+" From: " +env.getProperty("fromAddress") + "   to: "+env.getProperty("toAddress"));
+				System.out.println("Send "+subject+" № "+order.getId()+" From: " +env.getProperty("fromAddress") + "   to: "+env.getProperty("toAddress"));
 				
 				return true;
     		}
