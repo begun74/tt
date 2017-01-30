@@ -1,6 +1,8 @@
 package tt.controller;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -9,6 +11,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -224,9 +229,15 @@ public class IndexCtrl implements Serializable {
 
 	
 	@RequestMapping(value = {"/createOrder"} , method = RequestMethod.POST)
-	public ModelAndView  createOrder(HttpSession session, @ModelAttribute("orderForm") @Valid  Order order,
+	public ModelAndView  createOrder(HttpSession session, HttpServletRequest request, HttpServletResponse response, @ModelAttribute("orderForm") @Valid  Order order,
 			BindingResult result) 
 	{
+		final ServletContext servletContext = request.getSession().getServletContext();
+	    final File tempDirectory = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+	    final String temperotyFilePath = tempDirectory.getAbsolutePath();
+	    
+		final String pathToFont =  servletContext.getRealPath("/resources/forRussText/");
+
 		ModelAndView model = new ModelAndView("redirect:/cart");
 		
 		if(result.hasErrors())
@@ -249,11 +260,14 @@ public class IndexCtrl implements Serializable {
 		
 		ttService.addOrder(order);
 		
+		sendMailService.sendOrder(order);
+		
 		sessBean.getOrderItems().clear();
 		model.addObject("orderItems", sessBean.getOrderItems());
 		model.addObject("last_order",order);
 		
-		sendMailService.sendOrder("Новый заказ №"+order.getId(),"№"+order.getId()+":   "+order.getPhone()+"  " +order.getPerson_name()+ "  "+order.getEmail());
+		
+		
 		
 		return model;
 	}
