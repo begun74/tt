@@ -63,7 +63,6 @@ public class TTAjaxCtrl {
 	public @ResponseBody List<Tail> productDetail( @RequestParam ("id") long id) 
 	{
 		
-		
 		List<Tail> tails = ttService.getTailsList(id);
 		
 		for(Tail tail: tails)				//!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
