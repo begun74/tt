@@ -157,7 +157,9 @@
 			$(".printOrder").click( function(e) {
 				//$( ".orders_tr" ).trigger( "click" );
 				//if(confirm('Печатать заказ  № ' +$(selectTr).attr('value')+' ?') )
-					Order.printOrder($(selectTr).attr('value'));
+				alert($('.selected').attr('value') +"  "+ $(selectTr).attr('value') );
+				//if(typeof $('.selected').attr('value') != 'undefined')
+					//Order.printOrder($('.selected').attr('value'));
 			});
 			
 			$(".readyOrder").click( function(e) {
