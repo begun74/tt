@@ -28,10 +28,10 @@
 																	<a href="product-details?id=${tail.id}"><img class="" src="/pics/products/${tail.code}/M/${tail.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" /></a>
 																	<c:set var="tail_name" value="${tail.name}" />
 																	<c:set var="tn_length" value="${fn:length(tail_name)}" />
-																	<h5>${fn:substring(tail_name, 0, 15)}</h5>
-																	<h5>&#160;${fn:substring(tail_name, 15, tn_length) }</h5>
+																	<h5 class="text-center_12">${fn:substring(tail_name, 0, 15)}</h5>
+																	<h5 class="text-center_12">&#160;${fn:substring(tail_name, 15, tn_length) }</h5>
 																	<c:set var="prov_name" value=" ${tail.dirProvider.name}" />
-																	<p>${tail.dirProvider.name}</p>
+																	<p  class="text-center_12">${tail.dirProvider.name}</p>
 																	<p><spring:message code="article"/>&#160;${tail.article}</p>
 																	<a href="product-details?id=${tail.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i><spring:message code="to.order"/></a>
 																</div>
