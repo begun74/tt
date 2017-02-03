@@ -50,39 +50,48 @@
 						<div class="carousel-inner">
 							<div class="item active">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3>
-									<h2>Free E-Commerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<!-- <span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3 -->
+									<h2>ОАО «Трикотажторг»</h2>
+									<p>Продукция ведущих трикотажных фабрик Республики Беларусь. </p>
+    								<p>ОАО «Свiтанак»</p>
+    								<p>ОАО «Купалинка»</p>
+    								<p>ОАО «8 Марта»</p>
+    								<p>ОАО «Брестский чулочный комбинат»</p>
+    								<p>ОАО «Бобруйсктрикотаж»</p> 
+    								<p>СООО «Любава-Лис»</p>
+    								<p>ООО «Формэль»</p>
+									<!-- button type="button" class="btn btn-default get">Get it now</button -->
 								</div>
 								<div class="col-sm-6">
 									<img src="resources/images/home/girl1.jpg" class="girl img-responsive" alt="" />
-									<img src="resources/images/home/pricing.png"  class="pricing" alt="" />
+									<!-- img src="resources/images/home/pricing.png"  class="pricing" alt="" / -->
 								</div>
 							</div>
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3>
-									<h2>100% Responsive Design</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<!-- h1><span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3 -->
+									<h2>ОАО «Трикотажторг»</h2>
+									<p>Верхний трикотаж</p>
+									<p>Бельевой трикотаж</p>
+									<p>Чулочно-носочные изделия</p>
+									<!-- button type="button" class="btn btn-default get">Get it now</button -->
 								</div>
 								<div class="col-sm-6">
 									<img src="resources/images/home/girl2.jpg" class="girl img-responsive" alt="" />
-									<img src="resources/images/home/pricing.png"  class="pricing" alt="" />
+									<!-- img src="resources/images/home/pricing.png"  class="pricing" alt="" / -->
 								</div>
 							</div>
 							
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3>
-									<h2>Free Ecommerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<!-- h1><span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3 -->
+									<h2>ОАО «Трикотажторг»</h2>
+									<p>Предлагает взаимовыгодное сотрудничество ИП и частным торговым предприятиям в вопросах закупки товаров лёгкой промышленности отечественного и зарубежного производства.</p>
+									<!-- button type="button" class="btn btn-default get">Get it now</button -->
 								</div>
 								<div class="col-sm-6">
 									<img src="resources/images/home/girl3.jpg" class="girl img-responsive" alt="" />
-									<img src="resources/images/home/pricing.png" class="pricing" alt="" />
+									<!-- img src="resources/images/home/pricing.png"  class="pricing" alt="" / -->
 								</div>
 							</div>
 							
