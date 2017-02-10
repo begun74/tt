@@ -62,6 +62,7 @@
             </ul>        
             <div id="tabs-1"> 
 				<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
+					<form action="" >					
 							<table class="tableOrders tab tab-drag">
 									<c:forEach items="${orders}" var="order" varStatus="loop">
 									<tr class="orders_tr" value="${order.id}" id="${loop.index}">
@@ -83,6 +84,8 @@
 									</tr>
 									</c:forEach>
 							</table>
+						
+					</form>
 				</div>            
             </div>
         </div>
@@ -157,9 +160,9 @@
 			$(".printOrder").click( function(e) {
 				//$( ".orders_tr" ).trigger( "click" );
 				//if(confirm('Печатать заказ  № ' +$(selectTr).attr('value')+' ?') )
-				alert($('.selected').attr('value') +"  "+ $(selectTr).attr('value') );
-				//if(typeof $('.selected').attr('value') != 'undefined')
-					//Order.printOrder($('.selected').attr('value'));
+				//alert($('.selected').attr('value') +"  "+ $(selectTr).attr('value') );
+				if(typeof $('.selected').attr('value') != 'undefined')
+					Order.printOrder($('.selected').attr('value'));
 			});
 			
 			$(".readyOrder").click( function(e) {

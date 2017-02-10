@@ -243,6 +243,40 @@ function isNumberKey(evt)
    return true;
 }
 
+function isPhoneNumberKey(evt)
+{
+	//var flag = true;
+	var charCode = (evt.which) ? evt.which : event.keyCode;
+	//var shiftPressed = (evt.which) ? evt.modifiers & Event.SHIFT_MASK : evt.shiftKey;
+	
+	//alert(shiftPressed);
+	
+	if (charCode > 31 && (charCode == 43 || (charCode >= 48 && charCode <=57) || (charCode >= 96 && charCode <=105) ) )
+		return false;
+	//else if (charCode == 43 )
+		//return true;
+	
+	return false;
+
+	/*
+	var charCode = (evt.which) ? evt.which : event.keyCode;
+	  var shiftPressed = (window.Event) ? e.modifiers & Event.SHIFT_MASK : e.shiftKey;
+
+	  if ((shiftPressed && charCode == 187) || (charCode == 107))
+	    return true;
+
+	  else if ((charCode > 95) && (charCode < 106)) 
+	    return true;
+	  
+	  else if (charCode > 31 && (charCode < 48 || charCode > 57) ) 
+	    return false;
+	  
+	  else 
+	    return true;
+	    */
+	  
+}
+
 function isNumberKeyDouble(evt)
 {
    var charCode = (evt.which) ? evt.which : event.keyCode;

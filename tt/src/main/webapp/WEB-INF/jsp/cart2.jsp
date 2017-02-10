@@ -78,7 +78,7 @@
 								<input type="email" name="email" class="form-control control-label" value="${orderForm.phone}" placeholder='<spring:message code="email"/>'/>
 							</div>
 							<div class="col-sm-4 form-check">
-								<input type="text" name="phone" class="form-control control-label"  maxlength="20" placeholder='+375 XX XXX-XX-XX'/>
+								<input type="text" name="phone" class="form-control control-label phone_input"  maxlength="20" placeholder='+375 XX XXX-XX-XX'/>
 							</div>
 							<div class="col-sm-12 form-check">
 									<label>Комментарий</label>
@@ -189,6 +189,14 @@
     	$(".cart_quantity_input").keypress(function(event) {
     		return isNumberKey(event);
     	});
+    	
+    	
+    	$(".phone_input").keypress(function(event) {
+    		var flag = isPhoneNumberKey(event);
+    		//alert(flag);
+    		return flag;
+    	});
+    	
     	
     	$('#orderForm').submit(function(e){
     		e.preventDefault();
