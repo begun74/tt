@@ -55,7 +55,7 @@
 				                <textarea name="message" id="message" required="required" class="form-control" rows="8" placeholder="<spring:message code="you.message.hear"/>"></textarea>
 				            </div>                        
 				            <div class="form-group col-md-12">
-				                <input type="submit" name="submit" class="btn btn-primary pull-right" value="Submit">
+				                <input type="submit" name="submit" class="btn btn-primary pull-right" value="<spring:message code="submit"/>">
 				            </div>
 				        </form>
 	    			</div>
@@ -68,6 +68,19 @@
 							<p><spring:message code="contact.info.address"/></p>
 							<p><spring:message code="contact.info.phone1"/></p>
 							<p><spring:message code="contact.info.phone2"/></p>
+							
+							<p><h2 class="title text-center"><spring:message code="contact.info.main"/></h2></p>
+							<ul>
+								<li>
+									<p><b><spring:message code="contact.info.boss"/></b>: <spring:message code="contact.info.boss_name"/></p>
+								</li>
+								<li>
+									<p><b><spring:message code="contact.info.mainoper1"/></b>: <spring:message code="contact.info.mainoper1_name"/></p>
+								</li>
+								<li>
+									<p><b><spring:message code="contact.info.mainoper2"/></b>: <spring:message code="contact.info.mainoper2_name"/></p>
+								</li>
+							</ul>
 	    				</address>
 	    				<!-- div class="social-networks">
 	    					<h2 class="title text-center">Social Networking</h2>
