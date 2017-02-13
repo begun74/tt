@@ -22,6 +22,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.context.annotation.Scope;
 
 
@@ -54,8 +55,9 @@ public class Order implements IModel {
 	
 	
 	//@Pattern(regexp="\\(\\d{3}\\)\\d{3}-\\d{4}")
-	@Pattern(regexp="\\+\\d{3}\\s\\d{2,4}\\s\\d{3}-\\d{2}-\\d{2}")
+	//@Pattern(regexp="\\+\\d{3}\\s\\d{2,4}\\s\\d{3}-\\d{2}-\\d{2}")
 	//@NotEmpty (message = "Please enter phone.")
+	//@Pattern(regexp="\\d")
 	private String phone;
 		
 	private String email;

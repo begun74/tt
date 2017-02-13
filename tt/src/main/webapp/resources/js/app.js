@@ -249,14 +249,15 @@ function isPhoneNumberKey(evt)
 	var charCode = (evt.which) ? evt.which : event.keyCode;
 	//var shiftPressed = (evt.which) ? evt.modifiers & Event.SHIFT_MASK : evt.shiftKey;
 	
-	//alert(shiftPressed);
+	//alert(event.keyCode);
 	
-	if (charCode > 31 && (charCode == 43 || (charCode >= 48 && charCode <=57) || (charCode >= 96 && charCode <=105) ) )
-		return false;
-	//else if (charCode == 43 )
-		//return true;
 	
-	return false;
+	
+	
+	if (charCode != 189 && charCode != 43 && charCode > 31 && (charCode < 48 || charCode > 57))
+		        return false;
+	
+	return true;
 
 	/*
 	var charCode = (evt.which) ? evt.which : event.keyCode;
