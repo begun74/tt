@@ -167,22 +167,22 @@ public class FileUpload {
 				File rootFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code);
 				if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
 				
-				System.out.println("rootFolder - "+rootFolder);
+				//System.out.println("rootFolder - "+rootFolder);
 				
 				File largeFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
 				if(!largeFolder.exists() && !largeFolder.mkdirs()) throw new Exception("Can not create largeFolder! ");
 				
-				System.out.println("largeFolder - "+largeFolder);
+				//System.out.println("largeFolder - "+largeFolder);
 				
 				File mediumFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
 				if(!mediumFolder.exists() && !mediumFolder.mkdirs()) throw new Exception("Can not create mediumFolder! ");
 				
-				System.out.println("mediumFolder - "+mediumFolder);
+				//System.out.println("mediumFolder - "+mediumFolder);
 				
 				File smallFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
 				if(!smallFolder.exists() && !smallFolder.mkdirs()) throw new Exception("Can not create smallFolder! ");
 				
-				System.out.println("smallFolder - "+smallFolder);
+				//System.out.println("smallFolder - "+smallFolder);
 				
 			
 				Iterator<String> iter = files.iterator();
@@ -207,24 +207,26 @@ public class FileUpload {
 							
 							BufferedImage img = ImageIO.read(path.toFile());
 							
-							int img_width = img.getWidth();
-							int img_height = img.getHeight();
-							int img_ratio = img_width / img_height ;
+							float img_width = img.getWidth();
+							float img_height = img.getHeight();
+							float img_ratio =  img_height / img_width;
+							
+							System.out.println("img_width - "+ img_width+",   img_height - "+img_height +",    img_ratio - " +(float)img_ratio);
 							
 							
 							ImageIO.write(img, "jpg", new File(largeFolder+File.separator+code+"_L_"+i+".jpg"));
 							
 							int M_width = 390;
-							int L_width = 190;
+							int S_width = 190;
 							
-							int rate = img_width / M_width;
+							int rate = img.getWidth() / M_width;
 							
-							img = scaleImage(img,M_width, M_width*img_ratio);
+							img = scaleImage(img,M_width, (int)(M_width*(float)img_ratio));
 							ImageIO.write(img, "jpg", new File(mediumFolder+File.separator+code+"_M_"+i+".jpg"));
 
-							rate = img_width / L_width;
+							rate = img.getWidth() / S_width;
 							
-							img = scaleImage(img,L_width, L_width*img_ratio);
+							img = scaleImage(img,S_width, (int)(S_width*(float)img_ratio));
 							ImageIO.write(img, "jpg", new File(smallFolder+File.separator+code+"_S_"+i+".jpg"));
 							
 							tempFile.delete();
@@ -274,24 +276,24 @@ public class FileUpload {
 			File rootFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code);
 			if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
 			
-			System.out.println("rootFolder - "+rootFolder);
+			//System.out.println("rootFolder - "+rootFolder);
 			
 			File largeFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
 			if(!largeFolder.exists() && !largeFolder.mkdirs()) throw new Exception("Can not create largeFolder! ");
 
-			System.out.println("largeFolder - "+largeFolder);
+			//System.out.println("largeFolder - "+largeFolder);
 
 			
 			File mediumFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
 			if(!mediumFolder.exists() && !mediumFolder.mkdirs()) throw new Exception("Can not create mediumFolder! ");
 
-			System.out.println("mediumFolder - "+mediumFolder);
+			//System.out.println("mediumFolder - "+mediumFolder);
 
 			
 			File smallFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
 			if(!smallFolder.exists() && !smallFolder.mkdirs()) throw new Exception("Can not create smallFolder! ");
 			
-			System.out.println("smallFolder - "+smallFolder);
+			//System.out.println("smallFolder - "+smallFolder);
 
 
 			for(int i=0; i < files.length; ++i)
