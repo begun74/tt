@@ -204,11 +204,27 @@ public class FileUpload {
 							path = Paths.get(tempFile.toURI());
 							Files.write(path, data);
 							
+							
 							BufferedImage img = ImageIO.read(path.toFile());
+							
+							int img_width = img.getWidth();
+							int img_height = img.getHeight();
+							int img_ratio = img_width / img_height ;
+							
+							
 							ImageIO.write(img, "jpg", new File(largeFolder+File.separator+code+"_L_"+i+".jpg"));
-							img = scaleImage(img,389,582);
+							
+							int M_width = 390;
+							int L_width = 190;
+							
+							int rate = img_width / M_width;
+							
+							img = scaleImage(img,M_width, M_width*img_ratio);
 							ImageIO.write(img, "jpg", new File(mediumFolder+File.separator+code+"_M_"+i+".jpg"));
-							img = scaleImage(img,189,282);
+
+							rate = img_width / L_width;
+							
+							img = scaleImage(img,L_width, L_width*img_ratio);
 							ImageIO.write(img, "jpg", new File(smallFolder+File.separator+code+"_S_"+i+".jpg"));
 							
 							tempFile.delete();
