@@ -1,6 +1,7 @@
 package tt.bean;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -16,11 +17,15 @@ import tt.model.OrderItems;
 
 public class SessionBean {
 	
+	private HashMap<String,String> errorMap = new HashMap<String,String>();
+	
 	private AtomicInteger npp = new AtomicInteger(0);
 	
 	private List<OrderItems> orderItems = new ArrayList<OrderItems>();
 
-	
+	{
+		errorMap.put("ok", "ok ok");
+	}
 
 	public List<OrderItems> getOrderItems() {
 		return orderItems;
@@ -37,7 +42,20 @@ public class SessionBean {
 	public int getNpp() {
 		return npp.incrementAndGet();
 	}
-	
-	
 
+
+
+	public HashMap<String, String> getErrorMap() {
+		return errorMap;
+	}
+
+
+
+	public void setErrorMap(HashMap<String, String> errorMap) {
+		this.errorMap = errorMap;
+	}
+
+
+
+	
 }

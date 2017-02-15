@@ -33,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import tt.bean.AppBean;
 import tt.bean.SessionBean;
+import tt.model.ContactUsMessages;
 import tt.model.DirNomenclature;
 import tt.model.Order;
 import tt.model.OrderItems;
@@ -161,14 +162,31 @@ public class IndexCtrl implements Serializable {
 	}
 
 
-	@RequestMapping(value = {"/contact-us.html"} , method = RequestMethod.GET)
-	public ModelAndView  contact_us(HttpSession session) 
+	@RequestMapping(value = {"/contact-us"} , method = RequestMethod.GET)
+	public ModelAndView  contact_us_GET(HttpSession session, @RequestParam(value = "error",required = false) String error) 
 	{
 		ModelAndView model = new ModelAndView("contact-us");
 		
 		return model;
 	}
 
+	@RequestMapping(value = {"/contactus"} , method = RequestMethod.POST)
+	public ModelAndView  contact_us_POST(HttpSession session, @Valid @ModelAttribute("contactUsMessages") ContactUsMessages contactUsMessages, BindingResult result) 
+	{
+		ModelAndView model = new ModelAndView("redirect:/contact-us");
+		
+		if(result.hasErrors())
+		{
+		
+			sessBean.getErrorMap().put("contactus_error", "contactus_error");
+			return model;
+		}
+		
+		sessBean.getErrorMap().put("contactus_ok", "contactus_ok");
+		return model;
+	}
+	
+	
 	@RequestMapping(value = {"/product-details{id}"} , method = RequestMethod.GET)
 	public ModelAndView  product_details(HttpSession session, @RequestParam(value = "id",   required=false) Long id) 
 	{

@@ -17,6 +17,7 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import tt.model.ContactUsMessages;
 import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclGroupRoot;
@@ -76,6 +77,7 @@ public class HibernateConfiguration {
         sessionBuilder.addAnnotatedClasses(DirGender.class);
         sessionBuilder.addAnnotatedClasses(OrderItems.class);
         sessionBuilder.addAnnotatedClasses(Order.class);
+        sessionBuilder.addAnnotatedClasses(ContactUsMessages.class);
 
         //sessionBuilder.addAnnotatedClasses(DirColor.class);
         //sessionBuilder.addAnnotatedClasses(Request.class);

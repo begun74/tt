@@ -232,6 +232,22 @@ var Order = {
 		}
 }
 
+function clearSessErrors(error_name) {
+
+	$.ajax({
+		type : "GET",
+		url : "clearSessErrors?error_name="+error_name,
+		timeout : 100000,
+		success : function() 
+		{
+			/*$("#compareItems").text(data.allItems);*/
+		},
+		error : function(e) {
+			//alert("ERROR: addToCompare()", e);
+			display(e);
+		}
+	});
+}
 
 function isNumberKey(evt)
 {

@@ -56,6 +56,18 @@ public class TTAjaxCtrl {
 		return  HttpStatus.OK;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/clearSessErrors", method = RequestMethod.GET)
+	public HttpStatus  clearSessErrors(HttpSession session, @RequestParam(value = "error_name",required = false) String error_name) 
+	{
+		if(session.isNew()) return HttpStatus.FORBIDDEN;
+		//System.out.println("clearErrors " +sessBean.getErrorList());
+		if(error_name != null)
+			session.removeAttribute(error_name);
+		//System.out.println("clearErrors " +sessBean.getErrorList());
+		
+		return  HttpStatus.OK;
+	}
 	
 	
 	
