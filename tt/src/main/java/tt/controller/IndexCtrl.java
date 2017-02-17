@@ -175,14 +175,22 @@ public class IndexCtrl implements Serializable {
 	{
 		ModelAndView model = new ModelAndView("redirect:/contact-us");
 		
+		System.out.println("sessBean.getErrorMap() - "+ sessBean.getErrorMap());
+		
+		Timestamp ts = new Timestamp(new Date().getTime());
+		
 		if(result.hasErrors())
 		{
 		
-			sessBean.getErrorMap().put("contactus_error", "contactus_error");
+			sessBean.getErrorMap().put("contactus_error", ts);
+			
+			System.out.println("sessBean.getErrorMap() - "+ sessBean.getErrorMap());
 			return model;
 		}
 		
-		sessBean.getErrorMap().put("contactus_ok", "contactus_ok");
+		sessBean.getErrorMap().put("contactus_ok", ts);
+		
+		System.out.println("sessBean.getErrorMap() - "+ sessBean.getErrorMap());
 		return model;
 	}
 	

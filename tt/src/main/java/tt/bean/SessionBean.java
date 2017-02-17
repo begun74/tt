@@ -2,56 +2,50 @@ package tt.bean;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.WebApplicationContext;
 
 import tt.model.OrderItems;
 
 @Service("sessBean")
-@Scope(value="session", proxyMode=ScopedProxyMode.TARGET_CLASS)
+@Scope( proxyMode=ScopedProxyMode.TARGET_CLASS,value=WebApplicationContext.SCOPE_SESSION)
 
 
 public class SessionBean {
 	
-	private HashMap<String,String> errorMap = new HashMap<String,String>();
+	private LinkedHashMap<String,Object> errorMap = new LinkedHashMap<String,Object>();
 	
 	private AtomicInteger npp = new AtomicInteger(0);
 	
 	private List<OrderItems> orderItems = new ArrayList<OrderItems>();
 
 	{
-		errorMap.put("ok", "ok ok");
+		//errorMap.put("ok", "ok ok");
 	}
 
 	public List<OrderItems> getOrderItems() {
 		return orderItems;
 	}
 
-
-
 	public void setOrderItems(List<OrderItems> orderItems) {
 		this.orderItems = orderItems;
 	}
-
-
 
 	public int getNpp() {
 		return npp.incrementAndGet();
 	}
 
-
-
-	public HashMap<String, String> getErrorMap() {
+	public HashMap<String, Object> getErrorMap() {
 		return errorMap;
 	}
 
-
-
-	public void setErrorMap(HashMap<String, String> errorMap) {
+	public void setErrorMap(LinkedHashMap<String, Object> errorMap) {
 		this.errorMap = errorMap;
 	}
 

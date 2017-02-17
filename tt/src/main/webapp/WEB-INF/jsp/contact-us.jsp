@@ -50,7 +50,11 @@
 			
     	<div class="bg">
 	    	<div class="row">    		
-	    		<div class="col-sm-12">    			   			
+	    		<div class="col-sm-12">    			
+	    		
+	    		<div>
+	    			<h3>${sessionScope.sessBean.errorMap}</h3>
+	    		</div>   			
 				<!-- Error form message -->            
    		            <c:if test="${not empty contactus_error}">
 		            <div class="form-message error"  onclick="clearSessErrors('contactus_error')">
@@ -161,7 +165,7 @@
     <script>
     $(document).ready(function(){
     	
-    	alert(${fn:length(sessionScope.sessBean.errorMap)}) ;
+    	alert(${sessionScope.sessBean.errorMap}) ;
     	
     	
     	

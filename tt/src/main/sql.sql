@@ -26,9 +26,9 @@ where dn.code=10002066039
 
 select count(*) from tails;
 
-select * from tails;
+select * from tails order by fk_id_nomenclature;
 
-update tails set destruction_date = now();
+update tails set destruction_date = null;
 
 select distinct o.* from orders o
 	inner join order_items oi on o.id_orders=oi.fk_id_orders
