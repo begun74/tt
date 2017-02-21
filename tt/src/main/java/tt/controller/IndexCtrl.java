@@ -203,7 +203,7 @@ public class IndexCtrl implements Serializable {
 		//System.out.println(sessBean.getOrders());
 		model.addObject("sessBean", sessBean);
 		
-		if(id != null)
+		try
 		{
 			DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id); 
 			
@@ -211,6 +211,11 @@ public class IndexCtrl implements Serializable {
 			model.addObject("tails", ttService.getTailsList(dn.getId()));
 			//model.addObject("provider", dn.getTails().iterator().next().getDirProvider());
 			model.addObject("price", dn.getTails().iterator().next().getFirstPrice());
+		}
+		catch(Exception exc) {
+			System.out.println("ERROR: IndexCtrl.product_detail()");
+			exc.printStackTrace();
+			return new ModelAndView("redirect:/404");
 		}
 		
 		return model;
@@ -331,6 +336,15 @@ public class IndexCtrl implements Serializable {
 				@RequestParam(value = "error",   defaultValue = "") String error) 
 	{
 		ModelAndView model = new ModelAndView("admin/test2");
+		
+		return model;
+	}
+
+
+	@RequestMapping(value = {"/404"} , method = RequestMethod.GET)
+	public ModelAndView  err404(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView("404");
 		
 		return model;
 	}
