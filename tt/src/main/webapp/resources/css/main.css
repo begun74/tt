@@ -889,10 +889,11 @@ h2.title {
   color: #696763;
 }
 
-
 .productinfo img{
-  width: 200px;
-  height: 400px;
+  /*width: 200px;*/
+  height: 300px;
+  object-fit: contain;
+
 }
 
 .productinfo{

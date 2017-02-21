@@ -219,14 +219,19 @@ public class FileUpload {
 							int M_width = 390;
 							int S_width = 190;
 							
+							int M_height = 582;
+							int S_height = 282;
+							
 							int rate = img.getWidth() / M_width;
 							
-							img = scaleImage(img,M_width, (int)(M_width*(float)img_ratio));
+							//img = scaleImage(img,M_width, (int)(M_width*(float)img_ratio));
+							img = scaleImage(img,(int)(M_height/(float)img_ratio),M_height);
 							ImageIO.write(img, "jpg", new File(mediumFolder+File.separator+code+"_M_"+i+".jpg"));
 
 							rate = img.getWidth() / S_width;
 							
-							img = scaleImage(img,S_width, (int)(S_width*(float)img_ratio));
+							//img = scaleImage(img,S_width, (int)(S_width*(float)img_ratio));
+							img = scaleImage(img,(int)(S_height/(float)img_ratio), S_height);
 							ImageIO.write(img, "jpg", new File(smallFolder+File.separator+code+"_S_"+i+".jpg"));
 							
 							tempFile.delete();
