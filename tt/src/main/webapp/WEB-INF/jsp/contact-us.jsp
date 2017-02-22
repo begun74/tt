@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Contact | E-Shopper</title>
+    <title>ОАО «Трикотажторг»</title>
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="resources/css/prettyPhoto.css" rel="stylesheet">
@@ -165,7 +168,7 @@
     <script>
     $(document).ready(function(){
     	
-    	alert(${sessionScope.sessBean.errorMap}) ;
+    	/*alert(${sessionScope.sessBean.errorMap}) ;*/
     	
     	
     	
