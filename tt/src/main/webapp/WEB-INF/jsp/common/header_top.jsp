@@ -120,9 +120,9 @@
 								<li><a href="index.html" class="active"><spring:message code="home"/></a></li>
 								<li class="dropdown"><a href="#"><spring:message code="shop"/><i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html"><spring:message code="products"/></a></li>
-										<li><a href="product-details.html"><spring:message code="product.details"/></a></li> 
-										<li><a href="checkout.html"><spring:message code="checkout"/></a></li> 
+                                        <li><a href="index"><spring:message code="products"/></a></li>
+										<!-- li><a href="product-details.html"><spring:message code="product.details"/></a></li --> 
+										<!-- li><a href="checkout.html"><spring:message code="checkout"/></a></li --> 
 										<li><a href="cart.html"><spring:message code="cart"/></a></li> 
 										<li><a href="login.html">Login</a></li> 
                                     </ul>
