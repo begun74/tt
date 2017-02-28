@@ -18,9 +18,9 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("bill").password("123").roles("USER");
+        auth.inMemoryAuthentication().withUser("user1").password("123").roles("USER");
         auth.inMemoryAuthentication().withUser("admin").password("123").roles("ADMIN");
-        auth.inMemoryAuthentication().withUser("dba").password("123").roles("ADMIN","DBA");//dba have two roles.
+        //auth.inMemoryAuthentication().withUser("dba").password("123").roles("ADMIN","DBA");//dba have two roles.
         auth.inMemoryAuthentication().withUser("order").password("123").roles("ORDERS");//dba have two roles.
     }
      
@@ -36,7 +36,7 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
       http.authorizeRequests()
         .antMatchers("/", "/loginPage").permitAll() 
         .antMatchers("/admin/**").access("hasRole('ADMIN')")
-        .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
+        //.antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
         .antMatchers("/eshop/**").access("hasRole('ORDERS')")
         .and().formLogin()
         	.successHandler(customAuthenticationSuccessHandler)

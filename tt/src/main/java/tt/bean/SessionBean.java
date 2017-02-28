@@ -8,6 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -25,6 +26,8 @@ public class SessionBean {
 	
 	private List<OrderItems> orderItems = new ArrayList<OrderItems>();
 
+	private User authUser;
+	
 	{
 		//errorMap.put("ok", "ok ok");
 	}
@@ -47,6 +50,14 @@ public class SessionBean {
 
 	public void setErrorMap(LinkedHashMap<String, Object> errorMap) {
 		this.errorMap = errorMap;
+	}
+
+	public User getAuthUser() {
+		return authUser;
+	}
+
+	public void setAuthUser(User authUser) {
+		this.authUser = authUser;
 	}
 
 
