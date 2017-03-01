@@ -25,9 +25,7 @@ import tt.bean.SessionBean;
 @Service
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
-	@Autowired
-	private SessionBean sessionBean;
-
+	
 	
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 	
