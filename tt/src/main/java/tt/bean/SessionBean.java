@@ -1,5 +1,6 @@
 package tt.bean;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -18,8 +19,13 @@ import tt.model.OrderItems;
 @Scope( proxyMode=ScopedProxyMode.TARGET_CLASS,value=WebApplicationContext.SCOPE_SESSION)
 
 
-public class SessionBean {
+public class SessionBean implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3864475801596719257L;
+
 	private LinkedHashMap<String,Object> errorMap = new LinkedHashMap<String,Object>();
 	
 	private AtomicInteger npp = new AtomicInteger(0);
