@@ -4,11 +4,15 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -32,8 +36,13 @@ public class UserRole  implements Serializable {
 	@Column(name="id_user_role")
 	private Long id;
 	
+	@Column(name="name")
 	@NotEmpty (message = "Please enter role name.") 
 	private String role;
+	
+//	@ManyToOne(fetch = FetchType.LAZY)
+	//@JoinColumn(name = "id_user_role", nullable=false)
+	//private User user;
 
 	public Long getId() {
 		return id;
@@ -51,6 +60,15 @@ public class UserRole  implements Serializable {
 		this.role = role;
 	}
 
+/*
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+*/
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

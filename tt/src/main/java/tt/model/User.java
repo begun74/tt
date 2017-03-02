@@ -7,9 +7,12 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -43,7 +46,11 @@ public class User implements Serializable {
 	
 	private boolean enabled;
 	
+	@OneToMany(fetch = FetchType.EAGER)
+	@JoinColumn(name="id_user_role", referencedColumnName="fk_user_role")
 	private Set<UserRole> userRole = new HashSet<UserRole>(0);
+	
+	private Long fk_user_role;
 	
 	public User()	{}
 	
@@ -107,7 +114,13 @@ public class User implements Serializable {
 		this.userRole = userRole;
 	}
 	
-	
+	public Long getFk_user_role() {
+		return fk_user_role;
+	}
+
+	public void setFk_user_role(Long fk_user_role) {
+		this.fk_user_role = fk_user_role;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

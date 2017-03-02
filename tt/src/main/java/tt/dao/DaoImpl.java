@@ -295,18 +295,21 @@ public class DaoImpl implements Dao {
 			
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public User findByUserName(String username) {
 		// TODO Auto-generated method stub
 		List<User> users = new ArrayList<User>();
 		
-		users = sessionFactory.getCurrentSession()
-				.createQuery("from User where name=?")
-				.setParameter(0, username)
+		users = getSession()
+				.createQuery("from User where name = :name")
+				.setParameter("name", username)
 				.list();
 		
-		
-		return users.get(0);
+		if(users.size() > 0)
+			return users.get(0);
+		else
+			return null;
 	}
 
 

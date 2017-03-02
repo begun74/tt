@@ -16,7 +16,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 
 import tt.dao.Dao;
-
+import tt.dao.DaoImpl;
 import tt.model.UserRole;
 
 
@@ -24,12 +24,12 @@ import tt.model.UserRole;
 public class MyUserDetailsService implements UserDetailsService {
 	
 	@Autowired
-	private Dao dao;
+	private DaoImpl dao;
 
 	@Transactional(readOnly=true)
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		// TODO Auto-generated method stub
+
 		tt.model.User user = dao.findByUserName(username);
 		
 		List<GrantedAuthority> authorities =

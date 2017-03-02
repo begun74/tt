@@ -28,6 +28,7 @@ import tt.model.OrderItems;
 import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
+import tt.model.UserRole;
 
 
 
@@ -68,6 +69,7 @@ public class HibernateConfiguration {
         sessionBuilder.addProperties(hibernateProperties());
 
         sessionBuilder.addAnnotatedClasses(User.class);
+        sessionBuilder.addAnnotatedClasses(UserRole.class);
         sessionBuilder.addAnnotatedClasses(DirProvider.class);
         sessionBuilder.addAnnotatedClasses(DirNomenclature.class);
         sessionBuilder.addAnnotatedClasses(Store.class);
