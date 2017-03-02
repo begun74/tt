@@ -67,4 +67,6 @@ public interface Dao {
 	public void delObject(Object obj);
 	
 	
+	User findByUserName(String username);
+	
 }

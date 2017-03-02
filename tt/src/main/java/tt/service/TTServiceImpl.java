@@ -342,6 +342,13 @@ public class TTServiceImpl implements Dao {
 		// TODO Auto-generated method stub
 		dao.saveOrderItems(listOI);
 	}
+
+
+	@Override
+	public User findByUserName(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

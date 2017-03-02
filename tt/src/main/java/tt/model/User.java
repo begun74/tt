@@ -2,6 +2,8 @@ package tt.model;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,7 +17,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "tt_user")
-public class User implements Serializable, IModel{
+public class User implements Serializable {
 
 	/**
 	 * 
@@ -39,12 +41,30 @@ public class User implements Serializable, IModel{
 	@NotEmpty (message = "Please enter password.") 
 	private String password;
 	
+	private boolean enabled;
+	
+	private Set<UserRole> userRole = new HashSet<UserRole>(0);
+	
 	public User()	{}
 	
 	public User(String name,String password)
 	{
 		this.name = name;
 		this.password = password;
+	}
+	
+	public User(String name, String password,
+			boolean enabled, Set<UserRole> userRole) {
+			this.name = name;
+			this.password = password;
+			this.enabled = enabled;
+			this.userRole = userRole;
+	}
+	
+	public User(String name, String password, boolean enabled) {
+		this.name = name;
+		this.password = password;
+		this.enabled = enabled;
 	}
 
 	public Long getId() {
@@ -70,16 +90,32 @@ public class User implements Serializable, IModel{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
+	public Set<UserRole> getUserRole() {
+		return userRole;
+	}
+
+	public void setUserRole(Set<UserRole> userRole) {
+		this.userRole = userRole;
+	}
+	
+	
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name = " + name + "]";
-	}
-
-	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return 0;
 	}
 
 	

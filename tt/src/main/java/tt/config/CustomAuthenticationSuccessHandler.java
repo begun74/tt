@@ -26,7 +26,7 @@ import tt.bean.SessionBean;
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
 	
-	
+
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 	
 	@Override
@@ -57,17 +57,16 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 		        HttpSession session = request.getSession();
 		        User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		        
+		        
 		        session.setAttribute("authUser", authUser);
 		        
-		        //sessionBean.getAuthUser();
-		        //sessionBean.setAuthUser(authUser);
 		 
 		        redirectStrategy.sendRedirect(request, response, targetUrl);
 	}
 
 	
 	 /** Builds the target URL according to the logic defined in the main class Javadoc. */
-    protected String determineTargetUrl(Authentication authentication) {
+    public String determineTargetUrl(Authentication authentication) {
         
     	boolean isUser = false;
         boolean isAdmin = false;
@@ -98,6 +97,25 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         }
     }
  
+    public String determineTargetUrl(String role) {
+        
+        
+        switch(role) 
+        {
+        	case "ROLE_ADMIN": 
+        	return 	"/admin";
+        	
+        	case "ROLE_USER": 
+        	return 	"/";
+        	
+        	default:
+        	return "/eshop";
+        	
+        }
+        
+    }
+
+    
     protected void clearAuthenticationAttributes(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session == null) {

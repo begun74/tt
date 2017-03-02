@@ -33,6 +33,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import tt.bean.AppBean;
 import tt.bean.SessionBean;
+import tt.config.CustomAuthenticationSuccessHandler;
 import tt.model.ContactUsMessages;
 import tt.model.DirNomenclature;
 import tt.model.Order;
@@ -71,6 +72,9 @@ public class IndexCtrl implements Serializable {
 	@Autowired
 	MA_search mA_search;
 	
+	@Autowired
+	CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+	
 	@RequestMapping(value = {"/index","/"} , method = RequestMethod.GET)
 	public ModelAndView  index(HttpSession session, @RequestParam(value = "p", defaultValue = "1") int p, 
 								@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
@@ -97,25 +101,26 @@ public class IndexCtrl implements Serializable {
 	}
 	
 	@RequestMapping(value = {"/login"} , method = RequestMethod.GET)
-	public ModelAndView  login(HttpSession session, @RequestParam(value = "error",required = false) String error,
+	public ModelAndView  login(HttpSession session, HttpServletRequest request, @RequestParam(value = "error",required = false) String error,
 			@RequestParam(value = "logout",	required = false) String logout) 
 	{
 	    
 		ModelAndView model = new ModelAndView("login");
 		if (error != null) {
 			model.addObject("error", "Invalid username or password!");
+			return model;
 		}
-		else {
-			
-			//SecurityContextHolder.
-		}
-
-		if (logout != null) {
+		
+		else if (logout != null) {
 			SecurityContextHolder.clearContext();
 			session.invalidate();
 			model = new ModelAndView("redirect:/admin");
-			
+			return model;
 		}
+		
+		System.out.println(request.isUserInRole("ROLE_USER")+"  "+request.isUserInRole("ROLE_ADMIN"));
+		//else 
+			//customAuthenticationSuccessHandler.determineTargetUrl(authentication)
 		
 		return model;
 	}

@@ -12,6 +12,12 @@ SELECT nextval('seq_global');
 
 INSERT INTO dir_gender (id_dir_gender, name) VALUES(nextval('seq_global'),'девичий');
 
+insert into tt_user_role VALUES(nextval('seq_global'),'ADMIN');
+insert into tt_user_role VALUES(nextval('seq_global'),'USER');
+insert into tt_user_role VALUES(nextval('seq_global'),'ORDERS');
+
+insert into tt_user VALUES(nextval('seq_global'),'admin','123',(select id_user_role from tt_user_role where name ='ADMIN'));
+
 
 ALTER TABLE public.tails DROP CONSTRAINT "idProvider";
 

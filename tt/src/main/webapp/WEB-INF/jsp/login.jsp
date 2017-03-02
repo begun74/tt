@@ -32,13 +32,13 @@
 			<div class="row">
 				<div class="col-sm-4 col-sm-offset-4">
 					<div class="login-form"><!--login form-->
-						<h2>Login to your account</h2>
+						<h2><spring:message code="login.to.your.account"/></h2>
 						<form id="loginform" role="form"  method="post"  class="formBox">
 							<input type="text" name="username"  placeholder="username" />
 							<input type="password" name="password" placeholder="password" />
 							<span>
 								<input type="checkbox" class="checkbox"> 
-								Keep me signed in
+								<spring:message code="keep.me.signed.in"/>
 							</span>
 							<button type="submit" class="btn btn-default">Login</button>
 							

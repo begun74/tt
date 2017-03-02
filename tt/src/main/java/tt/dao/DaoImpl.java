@@ -1,5 +1,6 @@
 package tt.dao;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
@@ -292,6 +293,20 @@ public class DaoImpl implements Dao {
 		
 		
 			
+	}
+
+	@Override
+	public User findByUserName(String username) {
+		// TODO Auto-generated method stub
+		List<User> users = new ArrayList<User>();
+		
+		users = sessionFactory.getCurrentSession()
+				.createQuery("from User where name=?")
+				.setParameter(0, username)
+				.list();
+		
+		
+		return users.get(0);
 	}
 
 

@@ -1,35 +1,45 @@
 package tt.config;
 
+import javax.sql.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 @Configuration
 @EnableWebSecurity
-@Order(2)
-public class SecurityConfig  extends WebSecurityConfigurerAdapter {
-
+@Order(1)
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+	
+	@Autowired
+	DataSource dataSource;
+	
+	@Autowired
+	@Qualifier("userDetailsService")
+	UserDetailsService userDetailsService;
+	
 	@Autowired
 	CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 	
 	{
-		System.out.println("SecurityConfig");
+		
+		System.out.println("WebSecurityConfig");
 	}
 	
-	@Autowired
-    public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication().withUser("user1").password("123").roles("USER");
-        auth.inMemoryAuthentication().withUser("admin").password("123").roles("ADMIN");
-        //auth.inMemoryAuthentication().withUser("dba").password("123").roles("ADMIN","DBA");//dba have two roles.
-        auth.inMemoryAuthentication().withUser("order").password("123").roles("ORDERS");//dba have two roles.
-    }
      
+	@Autowired
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+		auth.userDetailsService(userDetailsService);
+	}	
+	
     @Override
     protected void configure(HttpSecurity http) throws Exception 
     {
@@ -56,5 +66,6 @@ public class SecurityConfig  extends WebSecurityConfigurerAdapter {
         	.exceptionHandling().accessDeniedPage("/403");
   
     }
+	
 
 }
