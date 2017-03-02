@@ -264,7 +264,8 @@
         </plugin>
       </plugins>
     </pluginManagement>
-    <finalName>ROOT</finalName>
+    
+    <finalName>tt</finalName>
   </build>
 
 </project>

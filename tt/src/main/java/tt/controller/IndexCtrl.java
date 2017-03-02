@@ -118,7 +118,7 @@ public class IndexCtrl implements Serializable {
 			return model;
 		}
 		
-		System.out.println(request.isUserInRole("ROLE_USER")+"  "+request.isUserInRole("ROLE_ADMIN"));
+		//System.out.println(request.isUserInRole("ROLE_USER")+"  "+request.isUserInRole("ROLE_ADMIN"));
 		//else 
 			//customAuthenticationSuccessHandler.determineTargetUrl(authentication)
 		
