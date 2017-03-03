@@ -67,7 +67,7 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 	
 	 /** Builds the target URL according to the logic defined in the main class Javadoc. */
     public String determineTargetUrl(Authentication authentication) {
-        
+        /*
     	boolean isUser = false;
         boolean isAdmin = false;
         
@@ -95,6 +95,34 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         } else {
             throw new IllegalStateException();
         }
+        */
+        String role = "";
+        
+    	Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
+    	GrantedAuthority[] GA = new GrantedAuthority[authorities.size()]; 
+    	
+    	if(authorities.size() >0) 
+    	{
+    		authorities.toArray(GA);
+    		role = GA[0].getAuthority();
+    	}
+
+        switch(role) 
+        {
+        	case "ROLE_ADMIN": 
+        	return 	"/admin";
+        	
+        	case "ROLE_USER": 
+        	return 	"/";
+        	
+        	case "ROLE_ORDERS":
+        	return "/eshop";
+        	
+        	default:
+        	return "/login";
+        	
+        }
+    
     }
  
     public String determineTargetUrl(String role) {

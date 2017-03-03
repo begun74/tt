@@ -218,9 +218,9 @@ public class IndexCtrl implements Serializable {
 			model.addObject("price", dn.getTails().iterator().next().getFirstPrice());
 		}
 		catch(Exception exc) {
-			System.out.println("ERROR: IndexCtrl.product_detail()");
+			System.out.println("ERROR: IndexCtrl.product_detail("+id+")");
 			exc.printStackTrace();
-			return new ModelAndView("redirect:/404");
+			return new ModelAndView("redirect:/error404");
 		}
 		
 		return model;
@@ -346,7 +346,7 @@ public class IndexCtrl implements Serializable {
 	}
 
 
-	@RequestMapping(value = {"/404"} , method = RequestMethod.GET)
+	@RequestMapping(value = {"/error404"} , method = RequestMethod.GET)
 	public ModelAndView  err404(HttpSession session) 
 	{
 		ModelAndView model = new ModelAndView("404");
