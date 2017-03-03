@@ -95,6 +95,8 @@ public class IndexCtrl implements Serializable {
 		model.addObject("categories", ttService.getNomenclGroupList());
 		model.addObject("genders", ttService.getGenderList());
 		
+		model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
+		
 		
 		model.addObject("UPLOAD_FILE_PATH", Constants.UPLOAD_FILE_PATH);
 		return model;
@@ -215,7 +217,12 @@ public class IndexCtrl implements Serializable {
 			model.addObject("nomenclature", dn);
 			model.addObject("tails", ttService.getTailsList(dn.getId()));
 			//model.addObject("provider", dn.getTails().iterator().next().getDirProvider());
-			model.addObject("price", dn.getTails().iterator().next().getFirstPrice());
+			
+			if(isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")))
+				model.addObject("price", dn.getTails().iterator().next().getFirstPrice());
+			
+			//model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
+
 		}
 		catch(Exception exc) {
 			System.out.println("ERROR: IndexCtrl.product_detail("+id+")");
@@ -352,6 +359,19 @@ public class IndexCtrl implements Serializable {
 		ModelAndView model = new ModelAndView("404");
 		
 		return model;
+	}
+	
+	protected boolean isShowPrices(org.springframework.security.core.userdetails.User authUser) {
+		
+		try {
+			if(!authUser.getAuthorities().isEmpty())
+				return true;
+			else 
+				return false;
+		}
+		catch(Exception exc) {
+			return false;
+		}
 	}
 
 }

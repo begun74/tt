@@ -25,19 +25,12 @@ import tt.bean.SessionBean;
 @Service
 public class CustomAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
 
-	
 
 	private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
 	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest req, HttpServletResponse resp, Authentication auth)
 			throws IOException, ServletException {
-		// TODO Auto-generated method stub
-		
-		//HttpSession session = req.getSession();
-        //User authUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-       
-        //System.out.println(authUser);
         
         handle( req, resp, auth);
         clearAuthenticationAttributes(req);
@@ -66,37 +59,9 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 
 	
 	 /** Builds the target URL according to the logic defined in the main class Javadoc. */
-    public String determineTargetUrl(Authentication authentication) {
-        /*
-    	boolean isUser = false;
-        boolean isAdmin = false;
-        
-        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        
-        for (GrantedAuthority grantedAuthority : authorities) {
-            if (grantedAuthority.getAuthority().equals("ROLE_ADMIN")) {
-                isAdmin = true;
-                break;
-            }
-            else if (grantedAuthority.getAuthority().equals("ROLE_USER")) {
-            	isUser = true;
-                break;
-            }
-        }
- 
-        if (isAdmin) {
-            return "/admin";
-        } 
-        else if(isUser) {
-        	return "/";
-        }
-        else if (!isAdmin) {
-            return "/eshop";
-        } else {
-            throw new IllegalStateException();
-        }
-        */
-        String role = "";
+    protected String determineTargetUrl(Authentication authentication) {
+
+    	String role = "";
         
     	Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
     	GrantedAuthority[] GA = new GrantedAuthority[authorities.size()]; 
@@ -107,7 +72,15 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
     		role = GA[0].getAuthority();
     	}
 
-        switch(role) 
+    	return determineTargetUrl(role);
+    	
+        
+    
+    }
+ 
+    public String determineTargetUrl(String role) {
+        
+    	switch(role) 
         {
         	case "ROLE_ADMIN": 
         	return 	"/admin";
@@ -120,24 +93,6 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
         	
         	default:
         	return "/login";
-        	
-        }
-    
-    }
- 
-    public String determineTargetUrl(String role) {
-        
-        
-        switch(role) 
-        {
-        	case "ROLE_ADMIN": 
-        	return 	"/admin";
-        	
-        	case "ROLE_USER": 
-        	return 	"/";
-        	
-        	default:
-        	return "/eshop";
         	
         }
         

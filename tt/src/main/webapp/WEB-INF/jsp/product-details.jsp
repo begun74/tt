@@ -125,6 +125,7 @@
 							<div class="product-information"><!--/product-information-->
 								<img src="resources/images/product-details/new.jpg" class="newarrival" alt="" />
 								<h2>${nomenclature.name } (${nomenclature.dirGender.name })</h2>
+								<p><h2><spring:message code="price"/>: ${price}<c:if test="${empty price}"><spring:message code="price.isShow"/></c:if></h2></p>
 								<p><b><spring:message code="model"/></b>: ${nomenclature.model}</p>
 								<p><b><spring:message code="article"/>:  </b>${nomenclature.article} </p>
 								<p>ID: ${nomenclature.code}</p>
