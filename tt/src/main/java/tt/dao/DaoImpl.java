@@ -2,10 +2,12 @@ package tt.dao;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -203,11 +205,15 @@ public class DaoImpl implements Dao {
 		}
 		
 		Set<Long> lDirNomenctls = new HashSet<Long>();
+		Map<Long,Double> fkTailsMap = new HashMap<Long,Double>();
 		
 		List<Tail> tails = criteria.list();
 				
 		for(Tail tail: tails)
+		{
 			lDirNomenctls.add(tail.getDirNomenclature().getId());
+			fkTailsMap.put(tail.getDirNomenclature().getId(), tail.getFirstPrice());
+		}
 		
 		Criteria criteriaDN = getSession().createCriteria(DirNomenclature.class).addOrder(Order.asc("name"));
 		
@@ -215,6 +221,10 @@ public class DaoImpl implements Dao {
 		{
 			criteriaDN.add(Restrictions.in("id", lDirNomenctls));
 			dirNomSet.addAll(criteriaDN.list());
+			
+			for(DirNomenclature dn: dirNomSet)
+				dn.setTempPrice(fkTailsMap.get(dn.getId()));
+				
 		}
 
 		return dirNomSet;

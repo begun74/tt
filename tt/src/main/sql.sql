@@ -12,13 +12,23 @@ SELECT nextval('seq_global');
 
 INSERT INTO dir_gender (id_dir_gender, name) VALUES(nextval('seq_global'),'девичий');
 
+
+-- USER, USER_ROLE
 insert into tt_user_role VALUES(nextval('seq_global'),'ROLE_ADMIN');
 insert into tt_user_role VALUES(nextval('seq_global'),'ROLE_USER');
 insert into tt_user_role VALUES(nextval('seq_global'),'ROLE_ORDERS');
 
-insert into tt_user VALUES(nextval('seq_global'),'bvv','123');
+insert into tt_user VALUES(nextval('seq_global'),'order','123');
 
-insert into user_with_role values((select id_user from tt_user where name ='bvv'),(select id_user_role from tt_user_role where name ='ROLE_ORDERS'))
+insert into user_with_role values((select id_user from tt_user where name ='order'),(select id_user_role from tt_user_role where name ='ROLE_ORDERS'))
+
+insert into user_with_role values((select id_user from tt_user where name ='user'),(select id_user_role from tt_user_role where name ='ROLE_USER'))
+
+select u.*,r.name from tt_user u 
+	inner join user_with_role ur on u.id_user=ur.tt_user_id
+	inner join tt_user_role r on ur.tt_user_role_id= id_user_role;
+-- USER, USER_ROLE
+
 
 
 ALTER TABLE public.tails DROP CONSTRAINT "idProvider";

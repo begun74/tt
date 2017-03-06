@@ -14,6 +14,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.web.csrf.CsrfFilter;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
+import tt.bean.SessionBean;
+
 @Configuration
 @EnableWebSecurity
 @Order(1)
@@ -28,6 +30,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	
 	@Autowired
 	CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+	
+	@Autowired
+	SessionBean sessBean;
+
 	
 	{
 		

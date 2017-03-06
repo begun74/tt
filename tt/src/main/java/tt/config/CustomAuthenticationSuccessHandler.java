@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,7 +31,8 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 	
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest req, HttpServletResponse resp, Authentication auth)
-			throws IOException, ServletException {
+			throws IOException, ServletException 
+	{
         
         handle( req, resp, auth);
         clearAuthenticationAttributes(req);

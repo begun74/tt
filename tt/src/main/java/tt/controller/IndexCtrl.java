@@ -146,6 +146,8 @@ public class IndexCtrl implements Serializable {
 
 		model.addAttribute("tails", ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
 		
+		model.addAttribute("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
+		
 		return "index";
 	}
 	

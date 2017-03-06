@@ -79,6 +79,8 @@ public class DirNomenclature implements  IModel {
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="dirNomenclature")
 	private Set<Tail> tails;
 	
+	private transient double tempPrice;
+	
 	public Long getId() {
 		return id;
 	}
@@ -156,7 +158,16 @@ public class DirNomenclature implements  IModel {
 	public void setTails(Set<Tail> tails) {
 		this.tails = tails;
 	}
+	
 
+
+	public double getTempPrice() {
+		return tempPrice;
+	}
+
+	public void setTempPrice(double tempPrice) {
+		this.tempPrice = tempPrice;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
