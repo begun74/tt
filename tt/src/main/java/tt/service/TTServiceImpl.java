@@ -21,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tt.dao.Dao;
 import tt.dao.DaoImpl;
+import tt.model.ContactUsMessages;
 import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclGroupRoot;
@@ -348,6 +349,20 @@ public class TTServiceImpl implements Dao {
 	public User findByUserName(String username) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+
+	@Override
+	public void addContactUsMessages(ContactUsMessages contactUsMessages) {
+		// TODO Auto-generated method stub
+		dao.addContactUsMessages(contactUsMessages);
+	}
+
+
+	@Override
+	public List<ContactUsMessages> getContactUsMessagesList() {
+		// TODO Auto-generated method stub
+		return dao.getContactUsMessagesList();
 	}
 	
 

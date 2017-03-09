@@ -21,6 +21,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import tt.model.ContactUsMessages;
 import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclGroupRoot;
@@ -320,6 +321,18 @@ public class DaoImpl implements Dao {
 			return users.get(0);
 		else
 			return null;
+	}
+
+	@Override
+	public void addContactUsMessages(ContactUsMessages contactUsMessages) {
+		// TODO Auto-generated method stub
+		getSession().saveOrUpdate(contactUsMessages);
+	}
+
+	@Override
+	public List<ContactUsMessages> getContactUsMessagesList() {
+		// TODO Auto-generated method stub
+		return  getSession().createQuery("from ContactUsMessages").list();
 	}
 
 

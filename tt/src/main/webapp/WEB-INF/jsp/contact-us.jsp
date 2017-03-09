@@ -85,7 +85,7 @@
 	    				<div class="status alert alert-success" style="display: none"></div>
 				    	<form id="main-contact-form" class="contact-form row" name="contact-form" modelAttribute="contactUsMessages" method="post" action="contactus?${_csrf.parameterName}=${_csrf.token}">
 				            <div class="form-group col-md-6">
-				                <input type="text" name="name" class="form-control"  placeholder="<spring:message code="name"/>">
+				                <input type="text" name="name" class="form-control"  required="required" placeholder="<spring:message code="name"/>">
 				            </div>
 				            <div class="form-group col-md-6">
 				                <input type="email" name="email" class="form-control" required="required" placeholder="<spring:message code="email"/>">

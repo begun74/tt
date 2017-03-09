@@ -197,9 +197,12 @@ public class IndexCtrl implements Serializable {
 			return model;
 		}
 		
-		sessBean.getErrorMap().put("contactus_ok", ts);
+		contactUsMessages.setCreation_date(ts);
 		
-		System.out.println("sessBean.getErrorMap() - "+ sessBean.getErrorMap());
+		ttService.addContactUsMessages(contactUsMessages);
+		//sessBean.getErrorMap().put("contactus_ok", ts);
+		
+		//System.out.println("sessBean.getErrorMap() - "+ sessBean.getErrorMap());
 		return model;
 	}
 	

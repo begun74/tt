@@ -58,6 +58,17 @@ public class EshopCtrl {
 				model = new ModelAndView("eshop/newOrders");
 				model.addObject("orders",ttService.getOrdersList());
 			break;
+
+			case "3":
+				model = new ModelAndView("eshop/clientMessages");
+				model.addObject("contactMessages",ttService.getContactUsMessagesList());
+			break;
+
+			case "4":
+				model = new ModelAndView("eshop/newOrders");
+				model.addObject("orders",ttService.getOrdersList());
+			break;
+
 		}
 		
 		return model;

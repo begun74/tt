@@ -1,12 +1,19 @@
 package tt.model;
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+
+@Entity
+@Table(name = "contact_us_messages")
 public class ContactUsMessages implements  IModel{
 
 	/**
@@ -35,6 +42,8 @@ public class ContactUsMessages implements  IModel{
 	
 	@Size(min = 1, message = "Please enter message.")
 	private String message;
+	
+	private Timestamp creation_date;
 	
 	@Override
 	public Long getId() {
@@ -79,6 +88,14 @@ public class ContactUsMessages implements  IModel{
 
 	public void setMessage(String message) {
 		this.message = message;
+	}
+
+	public Timestamp getCreation_date() {
+		return creation_date;
+	}
+
+	public void setCreation_date(Timestamp creation_date) {
+		this.creation_date = creation_date;
 	}
 
 	public static long getSerialversionuid() {

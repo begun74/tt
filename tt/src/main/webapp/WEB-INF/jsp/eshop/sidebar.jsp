@@ -13,14 +13,14 @@
           		<li><a href="eshop?act=2" >Архив заказов</a></li>
           	</ul>
           </li>
-          <li><a href="#" >Клиенты</a>
+          <li><a href="#" >Сообщения посетителей</a>
           	<ul class="submenu">
-          		<li><a href="eshop?act=3" >Управление</a></li>
+          		<li><a href="eshop?act=3" >Просмотреть</a></li>
           	</ul>
           </li>
-          <li><a href="#" >Сообщения</a>
+          <li><a href="#" >Клиенты</a>
           	<ul class="submenu">
-          		<li><a href="eshop?act=4" >Просмотреть</a></li>
+          		<li><a href="eshop?act=4" >Управление</a></li>
           	</ul>
           </li>
         </ul>

@@ -7,6 +7,7 @@ import java.util.Set;
 
 import org.hibernate.criterion.Criterion;
 
+import tt.model.ContactUsMessages;
 import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclGroupRoot;
@@ -62,6 +63,9 @@ public interface Dao {
 	public void addOrder(Order order);
 	public Order getOrder(Long order);
 	public List<Order> getOrdersList();
+	
+	public void addContactUsMessages(ContactUsMessages contactUsMessages);
+	public List<ContactUsMessages> getContactUsMessagesList();
 	
 	public Object getObject(Class clazz,Long id);
 	public void delObject(Object obj);
