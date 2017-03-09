@@ -78,11 +78,8 @@ public class EshopCtrl {
 	    response.setContentType("application/pdf;charset=UTF-8");
 	    response.setHeader("Content-disposition", "attachment; filename="+ fileName);
 	    
-	    File f = new File(fileName);
-	    
 	    
 	    try {
-	    	f.createNewFile();
 	    	CreatePDF.createPDF(temperotyFilePath+"\\"+fileName, pathToFont, ttService.getOrderItems(orderId));
 	        ByteArrayOutputStream baos = new ByteArrayOutputStream();
 	        baos = CreatePDF.convertPDFToByteArrayOutputStream(temperotyFilePath+"\\"+fileName);
