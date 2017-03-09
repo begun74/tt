@@ -13,6 +13,16 @@
           		<li><a href="eshop?act=2" >Архив заказов</a></li>
           	</ul>
           </li>
+          <li><a href="#" >Клиенты</a>
+          	<ul class="submenu">
+          		<li><a href="eshop?act=3" >Управление</a></li>
+          	</ul>
+          </li>
+          <li><a href="#" >Сообщения</a>
+          	<ul class="submenu">
+          		<li><a href="eshop?act=4" >Просмотреть</a></li>
+          	</ul>
+          </li>
         </ul>
         <!-- /.mainmenu -->
 
