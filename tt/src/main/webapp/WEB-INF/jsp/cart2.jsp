@@ -8,7 +8,8 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Продукция ведущих трикотажных фабрик, Верхний трикотаж, Бельевой трикотаж, Чулочно-носочные изделия, трикотаж, трикотаж в РБ">
+    <meta name="keywords" content="Продукция ведущих трикотажных фабрик, Верхний трикотаж, Бельевой трикотаж, Чулочно-носочные изделия" />
     <meta name="author" content="">
     <title>ОАО «Трикотажторг»</title>
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
