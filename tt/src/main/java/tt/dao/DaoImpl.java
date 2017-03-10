@@ -335,6 +335,12 @@ public class DaoImpl implements Dao {
 		return  getSession().createQuery("from ContactUsMessages").list();
 	}
 
+	@Override
+	public void updateTails() {
+		// TODO Auto-generated method stub
+		getSession().createSQLQuery("update tails set destruction_date = now() where destruction_date is null").executeUpdate();
+	}
+
 
 	
 

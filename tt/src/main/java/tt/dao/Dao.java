@@ -70,6 +70,7 @@ public interface Dao {
 	public Object getObject(Class clazz,Long id);
 	public void delObject(Object obj);
 	
+	public void updateTails();
 	
 	User findByUserName(String username);
 	

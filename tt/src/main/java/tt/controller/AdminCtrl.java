@@ -509,12 +509,17 @@ public class AdminCtrl {
 
 	
 	@RequestMapping(value = "addFileTail" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ModelAndView   processFileTail(@ModelAttribute MA_loadTempTail mA_loadTempTail, @RequestParam(value = "act",   defaultValue = "-1", required=true) int act)
+	public ModelAndView   processFileTail(@ModelAttribute MA_loadTempTail mA_loadTempTail, 
+														@RequestParam(value = "act",   defaultValue = "-1", required=true) int act,
+														@RequestParam(value = "update",   required=false) boolean update)
 	{
 		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
 		
 				
 		try {
+			
+				if(update)
+					ttService.updateTails();
 
 					synchronized(this) {
 

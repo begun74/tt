@@ -364,6 +364,13 @@ public class TTServiceImpl implements Dao {
 		// TODO Auto-generated method stub
 		return dao.getContactUsMessagesList();
 	}
+
+
+	@Override
+	public void updateTails() {
+		// TODO Auto-generated method stub
+		dao.updateTails();
+	}
 	
 
 }
