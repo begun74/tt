@@ -144,9 +144,6 @@
 								
 									<span><span><!-- BYN ${price} --></span></span>
 									<select name="sizes" class="sizes">
-										<c:forEach items="${tails}" var="tail" varStatus="loop">
-											<option value="${tail.amountTail}">${tail.size} </option>
-										</c:forEach>
 									</select>
 
 									

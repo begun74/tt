@@ -45,7 +45,10 @@ var Product = {
 						Product.tailsArr = [];
 						for(var i=0;i< data.length; ++i) {
 							$(".size_info").append("<li>"+data[i].size+" - "+data[i].amountTail+" "+Product.localItemName+"</li> ");
-							//Product.tailsArr.push(data[i]);
+							$(".sizes").append($('<option>', {
+							    value: data[i].amountTail,
+							    text: data[i].size
+							}));
 						}
 					},
 					error : function(e) {
