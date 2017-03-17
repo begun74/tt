@@ -391,9 +391,7 @@
     		//alert('res -  ' + res);
     	});
 
-    	
-    	
-    	setInterval(Product.getDetail,15000);
+    	//setInterval(Product.getDetail,15000);
     });
     
 

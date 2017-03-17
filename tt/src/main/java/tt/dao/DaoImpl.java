@@ -253,6 +253,10 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<Tail> getTailsList(long id_dirNomenclature) {
 		// TODO Auto-generated method stub
+		//!========= Statistic per nomenclature ==========
+		getSession().createSQLQuery("insert into statistic_nomencl values (nextval('seq_statistic'),"+id_dirNomenclature+")").executeUpdate();
+		//!========= Statistic per nomenclature ==========
+		
 		return getSession().createQuery("from Tail where fk_id_nomenclature = :id_dirNomenclature and destruction_date is null order by size, amountTail").setParameter("id_dirNomenclature", id_dirNomenclature).list();
 	}
 

@@ -220,7 +220,7 @@ public class IndexCtrl implements Serializable {
 			DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id); 
 			
 			model.addObject("nomenclature", dn);
-			model.addObject("tails", ttService.getTailsList(dn.getId()));
+			//model.addObject("tails", ttService.getTailsList(dn.getId()));
 			//model.addObject("provider", dn.getTails().iterator().next().getDirProvider());
 			
 			if(isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")))

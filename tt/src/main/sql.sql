@@ -51,6 +51,8 @@ update tails set destruction_date = now() where destruction_date is null;
 update tails set destruction_date = null where id_tails >= 17746;
 
 
+delete from tails where id_tails >= 18834;
+
 
 select distinct o.* from orders o
 	inner join order_items oi on o.id_orders=oi.fk_id_orders
