@@ -183,7 +183,7 @@ public class DirNomenclature implements  IModel {
 	@Override
 	public String toString() {
 		return "DirNomenclature [id=" + id + ", code=" + code + ", name=" + name + ", article=" + article + ", model="
-				+ model + ", dirNomenclGroup=" + dirNomenclGroup + ", dirGender=" + dirGender + "]";
+				+ model + ", dirNomenclGroup=" + dirNomenclGroup + ", dirGender=" + dirGender + ", dirProvider=" +dirProvider.getId() + "]";
 	}
 	
 	

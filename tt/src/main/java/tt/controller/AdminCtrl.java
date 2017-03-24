@@ -270,7 +270,7 @@ public class AdminCtrl {
 							
 						}
 						catch(org.springframework.dao.DataIntegrityViolationException dve) {
-							//dve.printStackTrace(); 
+							//System.out.println("DirNomenclature - "+dN);
 							adminSessBean.getErrorList().add(dN.getName()+" уже существует! ");
 						}
 					}
