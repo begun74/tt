@@ -149,8 +149,8 @@
 						    	</form:form>
 							</div>					    
 				    		<div class="col2">
-				    			<div calss="center">
-				    				<img src="resources/images/product-details/ps_111.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="" />
+				    			<div class="div_pn center">
+				    				<img id="photoNomenclature" src="resources/images/product-details/ps_111.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
 				    			</div>
 				    			<form id="addPhotoNomenclForm" class="formBox" role="form"
 							  			enctype="multipart/form-data" 
@@ -319,11 +319,11 @@
 												<tr>
 													<td class="dragHandle">&nbsp;</td>
 													<td>${loop.count}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}');">${dirNomencl.name}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}');">${dirNomencl.code}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}');">${dirNomencl.model}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}');">${dirNomencl.article}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}');">${dirNomencl.dirNomenclGroup.name}(${dirNomencl.dirNomenclGroup.code})</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.name}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.code}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.model}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.article}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.dirNomenclGroup.name}(${dirNomencl.dirNomenclGroup.code})</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
 							         					<a href="javascript:delObject('DirNomenclature', ${dirNomencl.id},'2');" class="ico ico-delete" onclick=""></a>
@@ -353,8 +353,16 @@
   <script>
   		$(document).ready(function(){
 				
+  			
+  			
 			/*$("#save").attr("checked","checked");*/
 	    });
+  		
+  		function viewPhotoNomencl(code) {
+  			$('#photoNomenclature').error(function() {
+  			    $( this ).attr( "src", 'resources/images/products/nopicture.jpg' );
+  		    }).attr('src','/pics/products/'+code+'/S/'+code+'_S_0.jpg');
+  		}
 	    
     </script>
 </div>

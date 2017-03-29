@@ -345,3 +345,11 @@ a:hover.ico   { background-position: 0 0; }
 .modal-window .list-square li { padding-left: 15px; background: url(../images/ico/list-square.gif) 0 6px no-repeat; }
 .modal-window .list-dash li   { padding-left: 15px; background: url(../images/ico/list-dash.gif) 0 6px no-repeat; }
 .modal-window .list-number li { margin-left: 20px; list-style: decimal; }
+
+
+
+.div_pn  {
+    display:block;	
+    width:200px;
+    height:2820px;
+}
