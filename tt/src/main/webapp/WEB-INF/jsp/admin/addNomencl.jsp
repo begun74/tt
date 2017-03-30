@@ -149,9 +149,30 @@
 						    	</form:form>
 							</div>					    
 				    		<div class="col2">
-				    			<div class="div_pn center">
-				    				<img id="photoNomenclature" src="resources/images/product-details/ps_111.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
-				    			</div>
+				    			<table>
+				    				<tr>
+				    				<td>
+					    			<div class="div_pn">
+					    				<img id="photoNomenclature0" src="resources/images/products/nopicture.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
+					    			</div>
+					    			</td>
+					    			<td>
+					    			<div class="div_pn">
+					    				<img id="photoNomenclature1" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
+					    			</div>
+					    			</td>
+					    			<td>
+					    			<div class="div_pn">
+					    				<img id="photoNomenclature2" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
+					    			</div>
+					    			</td>
+					    			<td>
+					    			<div class="div_pn">
+					    				<img id="photoNomenclature3" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
+					    			</div>
+					    			</td>
+					    			</tr>
+				    			</table>
 				    			<form id="addPhotoNomenclForm" class="formBox" role="form"
 							  			enctype="multipart/form-data" 
 							  			action="${pageContext.request.contextPath}/admin/addPhotoNomencl?${_csrf.parameterName}=${_csrf.token}" 
@@ -352,16 +373,27 @@
   <!-- /#main --> 
   <script>
   		$(document).ready(function(){
-				
-  			
-  			
 			/*$("#save").attr("checked","checked");*/
 	    });
   		
   		function viewPhotoNomencl(code) {
-  			$('#photoNomenclature').error(function() {
+  			$('#codeNomencl').val(code);
+  			
+  			$('#photoNomenclature0').error(function() {
   			    $( this ).attr( "src", 'resources/images/products/nopicture.jpg' );
   		    }).attr('src','/pics/products/'+code+'/S/'+code+'_S_0.jpg');
+
+  			$('#photoNomenclature1').error(function() {
+  			    $( this ).attr( "src", 'resources/images/products/blank.jpg' );
+  		    }).attr('src','/pics/products/'+code+'/S/'+code+'_S_1.jpg');
+			
+  			$('#photoNomenclature2').error(function() {
+  			    $( this ).attr( "src", 'resources/images/products/blank.jpg' );
+  		    }).attr('src','/pics/products/'+code+'/S/'+code+'_S_2.jpg');
+
+  			$('#photoNomenclature3').error(function() {
+  			    $( this ).attr( "src", 'resources/images/products/blank.jpg' );
+  		    }).attr('src','/pics/products/'+code+'/S/'+code+'_S_3.jpg');
   		}
 	    
     </script>
