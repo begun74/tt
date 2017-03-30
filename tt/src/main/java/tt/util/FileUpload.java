@@ -343,6 +343,80 @@ public class FileUpload {
 	}
 
 	
+	public void downloadPhoto (long code, MultipartFile file) 
+	{
+		
+		File tempFile = null;
+		
+		try {
+			
+			
+			File rootFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code);
+			if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
+			
+			//System.out.println("rootFolder - "+rootFolder);
+			
+			File largeFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
+			if(!largeFolder.exists() && !largeFolder.mkdirs()) throw new Exception("Can not create largeFolder! ");
+
+			//System.out.println("largeFolder - "+largeFolder);
+
+			
+			File mediumFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
+			if(!mediumFolder.exists() && !mediumFolder.mkdirs()) throw new Exception("Can not create mediumFolder! ");
+
+			//System.out.println("mediumFolder - "+mediumFolder);
+
+			
+			File smallFolder = new File(constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
+			if(!smallFolder.exists() && !smallFolder.mkdirs()) throw new Exception("Can not create smallFolder! ");
+			
+			//System.out.println("smallFolder - "+smallFolder);
+
+			int countFiles = largeFolder.listFiles().length;
+			
+			tempFile = new File(TEMP_FILE_PATH+File.separator+code+".tmp");
+			
+			file.transferTo(tempFile);
+
+			long time = System.currentTimeMillis();
+					
+			Path path = Paths.get(tempFile.toURI());
+			byte[] data = Files.readAllBytes(path);
+					
+			
+					
+			path = Paths.get(tempFile.toURI());
+			Files.write(path, data);
+					
+			BufferedImage img = ImageIO.read(path.toFile());
+			ImageIO.write(img, "jpg", new File(largeFolder+File.separator+code+"_L_"+ countFiles +".jpg"));
+			ImageIO.write(scaleImage(img,389,582), "jpg", new File(mediumFolder+File.separator+code+"_M_"+countFiles+".jpg"));
+			ImageIO.write(scaleImage(img,189,282), "jpg", new File(smallFolder+File.separator+code+"_S_"+countFiles+".jpg"));
+					
+			tempFile.delete();
+					
+			System.out.println("Code - "+code +" :  "+tempFile+" time - " +(System.currentTimeMillis() - time)/1000+ " sec.");
+		}
+		catch(java.io.FileNotFoundException fnf)
+		{
+			fnf.getMessage();
+		}
+		catch(NullPointerException e) {
+			System.out.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+			 System.out.println("Catalog not found - "+tempFile);
+			 e.printStackTrace(System.out);
+			System.out.println("========= ERROR: FileUpload.downloadPhoto ======= \n\n");
+		}
+		catch(Exception e) {
+			System.out.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+			 System.out.println("pathToShare - "+tempFile);
+			 e.printStackTrace(System.out);
+			System.out.println("========= ERROR: FileUpload.downloadPhoto ======= \n\n");
+		}
+		
+	}
+	
 	public BufferedImage scaleImage(BufferedImage img, int targetWidth, int targetHeight) {
 
 	    int type = (img.getTransparency() == Transparency.OPAQUE) ? BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB;

@@ -179,12 +179,12 @@
 							  			method="POST">
 										       
 							      	<div class="clearfix file">
-									         <div class="lab"><label for="file"><spring:message code="load"/> </label></div>
-									         <div class="con"><input type="file" name="photoFile" class="upload-file" id="photoFile" /></div>
+									         <div class="lab">Файл </div>
+									         <div class="con"><input type="file" name="photoFile" class="upload-file" id="photoFile"/></div>
 									</div>
 			        				<div class="clearfix">
 					        				<div class="lab">	
-						        					<button type="submit" class="" onclick="if(photoFile.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
+						        					<button type="submit" class="" id="submitPhoto" onclick="if(photoFile.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
 					        				</div>
 			        				</div>
 									<input type="hidden" name ="codeNomencl" id ="codeNomencl" />
@@ -288,7 +288,7 @@
 							         
 													 <div class="clearfix file">
 										              <div class="lab"><label for="file"><spring:message code="load"/> </label></div>
-										              <div class="con"><input type="file" name="file" class="upload-file" id="file" /></div>
+										              <div class="con"><input type="file" name="file" class="upload-file" id="file"/></div>
 										            </div>
 
 													<div class="clearfix">									        
@@ -305,10 +305,10 @@
 						
 							        				<div class="clearfix">
 								        				<div class="lab">	
-								        					<button type="submit" class="" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
+								        					<button type="submit" class="" onclick="if(file.value.length == 0 ) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
 								        				</div>
 							        				</div>
-							        				
+													        				
 							         <input type="hidden" name ="act" id ="act" value="2"/>
 						</form:form>
 				</div>
@@ -374,10 +374,12 @@
   <script>
   		$(document).ready(function(){
 			/*$("#save").attr("checked","checked");*/
+			$('#submitPhoto').attr('disabled','disabled');
 	    });
   		
   		function viewPhotoNomencl(code) {
   			$('#codeNomencl').val(code);
+			$('#submitPhoto').attr('disabled','');
   			
   			$('#photoNomenclature0').error(function() {
   			    $( this ).attr( "src", 'resources/images/products/nopicture.jpg' );

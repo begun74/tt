@@ -149,7 +149,7 @@ public class AdminCtrl {
 		
 		ModelAndView model = new ModelAndView("redirect:/admin?act=2");
 		
-		fileUpload.downloadPhoto(codeNomencl, photoFile.getOriginalFilename());
+		fileUpload.downloadPhoto(codeNomencl, photoFile);
 
 		//fileUpload.downloadPhoto(System.currentTimeMillis(),"\\\\192.168.0.9\\интернет магазин\\ТОП\\Юбка\\А");
 		
