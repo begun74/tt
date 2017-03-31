@@ -149,30 +149,32 @@
 						    	</form:form>
 							</div>					    
 				    		<div class="col2">
-				    			<table>
-				    				<tr>
-				    				<td>
-					    			<div class="div_pn">
-					    				<img id="photoNomenclature0" src="resources/images/products/nopicture.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
-					    			</div>
-					    			</td>
-					    			<td>
-					    			<div class="div_pn">
-					    				<img id="photoNomenclature1" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
-					    			</div>
-					    			</td>
-					    			<td>
-					    			<div class="div_pn">
-					    				<img id="photoNomenclature2" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
-					    			</div>
-					    			</td>
-					    			<td>
-					    			<div class="div_pn">
-					    				<img id="photoNomenclature3" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
-					    			</div>
-					    			</td>
-					    			</tr>
-				    			</table>
+					    		<div class="div_photo_panel">
+					    			<table>
+					    				<tr>
+					    				<td>
+						    			<div class="div_pn">
+						    				<img id="photoNomenclature0" src="resources/images/products/nopicture.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
+						    			</div>
+						    			</td>
+						    			<td>
+						    			<div class="div_pn">
+						    				<img id="photoNomenclature1" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
+						    			</div>
+						    			</td>
+						    			<td>
+						    			<div class="div_pn">
+						    				<img id="photoNomenclature2" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
+						    			</div>
+						    			</td>
+						    			<td>
+						    			<div class="div_pn">
+						    				<img id="photoNomenclature3" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
+						    			</div>
+						    			</td>
+						    			</tr>
+					    			</table>
+				    			</div>
 				    			<form id="addPhotoNomenclForm" class="formBox" role="form"
 							  			enctype="multipart/form-data" 
 							  			action="${pageContext.request.contextPath}/admin/addPhotoNomencl?${_csrf.parameterName}=${_csrf.token}" 
