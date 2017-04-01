@@ -3,6 +3,7 @@ package tt.controller;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.TreeSet;
@@ -108,7 +109,7 @@ public class AdminCtrl {
 			break;
 		}
 		
-		model.addObject("error",adminSessBean.getErrorList());
+		model.addObject("error",adminSessBean.getErrorList().toString().length() > 512 ?adminSessBean.getErrorList().toString().substring(0, 512)+" ...":adminSessBean.getErrorList());
 		model.addObject("sessionBean",adminSessBean);
 		model.addObject("providers", ttService.getProviderList());
 		
@@ -147,6 +148,8 @@ public class AdminCtrl {
 	{
 		
 		ModelAndView model = new ModelAndView("redirect:/admin?act=2");
+		
+		fileUpload.downloadPhoto(codeNomencl, photoFile);
 
 		//fileUpload.downloadPhoto(System.currentTimeMillis(),"\\\\192.168.0.9\\интернет магазин\\ТОП\\Юбка\\А");
 		
@@ -269,7 +272,7 @@ public class AdminCtrl {
 							
 						}
 						catch(org.springframework.dao.DataIntegrityViolationException dve) {
-							//dve.printStackTrace(); 
+							//System.out.println("DirNomenclature - "+dN);
 							adminSessBean.getErrorList().add(dN.getName()+" уже существует! ");
 						}
 					}
@@ -508,12 +511,17 @@ public class AdminCtrl {
 
 	
 	@RequestMapping(value = "addFileTail" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ModelAndView   processFileTail(@ModelAttribute MA_loadTempTail mA_loadTempTail, @RequestParam(value = "act",   defaultValue = "-1", required=true) int act)
+	public ModelAndView   processFileTail(@ModelAttribute MA_loadTempTail mA_loadTempTail, 
+														@RequestParam(value = "act",   defaultValue = "-1", required=true) int act,
+														@RequestParam(value = "update",   required=false) boolean update)
 	{
 		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
 		
 				
 		try {
+			
+				if(update)
+					ttService.updateTails();
 
 					synchronized(this) {
 
@@ -585,7 +593,7 @@ public class AdminCtrl {
 		adminSessBean.setmA_loadTail(mA_loadTail);
 				
 		try {
-
+					TreeSet<Tail> hsTail = new TreeSet<Tail>();
 					List<Tail> lT = (List<Tail>) fileUpload.process(new Tail(),file, mA_loadTail);
 	
 					for(Tail t: lT) 
@@ -593,12 +601,16 @@ public class AdminCtrl {
 							adminSessBean.getTempListTails().add(t);
 					}
 					
-					
+					//System.out.println("hsTail - " +hsTail);
 	
 		}
 		catch (java.lang.NumberFormatException nfe) {
 			nfe.printStackTrace();
 			adminSessBean.addError(nfe.getMessage());
+		}
+		catch (java.text.ParseException pex) {
+			pex.printStackTrace();
+			adminSessBean.addError("java.text.ParseException !");
 		}
 		catch (Exception e) {
 					// TODO Auto-generated catch block

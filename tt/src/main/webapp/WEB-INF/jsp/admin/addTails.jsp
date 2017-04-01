@@ -137,7 +137,6 @@
 																		<tr>
 																			<td >${loop.count}</td>
 																			<td style="cursor:pointer;">${tail.dirNomenclature.name}</td>
-																			<td style="cursor:pointer;">${tail.dirProvider.name}</td>
 																			<td style="cursor:pointer;">${tail.amountTail}</td>
 																			<td style="cursor:pointer;">${tail.firstPrice}</td>
 																			<td style="cursor:pointer;">${tail.size}</td>
@@ -155,9 +154,8 @@
 	
 															<div class="tab-action">
 										        				<div class="clearfix">
-											        				<div class="lab">	
 											        					<button type="submit" class="" onclick="" >Обработать</button>
-											        				</div>
+											        					<label><input name="update" id="update" type="checkbox" class="checkbox" checked="checked" />удалить старые остатки</label>
 										        				</div>
 									        				</div>
 									      <input type="hidden" name ="act" id ="act" value="3"/>
@@ -184,14 +182,6 @@
 														         </div>
 														         <div style="width: 25px" class="conleft">
 										                   			<input name="col_firstPrice" id="col_firstPrice" type="text" class="input" value="${sessionBean.mA_loadTail.col_firstPrice}"> 
-														         </div>
-														</div>
-											  			<div class="clearfix">
-														         <div class="lab">
-										                   			<label>Код Поставщика</label>
-														         </div>
-														         <div style="width: 25px" class="conleft">
-										                   			<input name="col_codeProvider" id="col_codeProvider" type="text" class="input" value="${sessionBean.mA_loadTail.col_codeProvider}"> 
 														         </div>
 														</div>
 											  			<div class="clearfix">
@@ -280,7 +270,7 @@
 	 				    			<table class="tab" border="0">
 						    				<tr align="center">
 								    				<th width="5%">№п/п</th>
-								    				<th width="28%">Наименование</th>
+								    				<th width="18%">Наименование</th>
 								    				<th width="23%">Поставщик</th>
 								    				<th width="5%">Кол-во</th>
 								    				<th width="7%">Первая цена</th>
@@ -295,8 +285,7 @@
 											<c:forEach items="${tails}" var="tail" varStatus="loop">
 												<tr>
 													<td >${loop.count}</td>
-													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">(${tail.dirNomenclature.name})</td>
-													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.dirProvider.name}</td>
+													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.dirNomenclature.name}</td>
 													<td style="cursor:pointer;" onclick="$('#amountTail').val('${tail.amountTail}'); $('#firstPrice').val('${tail.firstPrice}');">${tail.amountTail}</td>
 													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.firstPrice}</td>
 													<td style="cursor:pointer;" onclick="$('#firstPrice').val('${tail.firstPrice}'); $('#amountTail').val('${tail.amountTail}');">${tail.size}</td>

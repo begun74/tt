@@ -6,6 +6,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -20,12 +21,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tt.dao.Dao;
 import tt.dao.DaoImpl;
+import tt.model.ContactUsMessages;
 import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Order;
+import tt.model.OrderItems;
 import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
@@ -173,15 +176,21 @@ public class TTServiceImpl implements Dao {
 	}
 
 	
-	public List<Tail> getTailsList(List<Long> providers, List<Long> genders) {
+	public List<Tail> getTailsList(List<Long> providers, List<Long> genders,  List<Long> categories, int p) {
 		// TODO Auto-generated method stub
 		List<DirProvider> lProvs = new LinkedList<DirProvider>();
-		List<DirGender> lGndrs = new LinkedList<DirGender>();
+		List<DirNomenclGroup> lNomGroup = new LinkedList<DirNomenclGroup>();
+		List<DirGender> lGens = new LinkedList<DirGender>();
+		
 		
 		Tail tail = new Tail();
 		Collection<Criterion> criterions = new LinkedList<Criterion>();
 		Collection<Criterion> criterDN = new LinkedList<Criterion>();
 		
+		for(Long idNomGroup: categories)
+			lNomGroup.add((DirNomenclGroup)dao.getObject(DirNomenclGroup.class, idNomGroup));
+					
+					
 		for(Long idProv: providers)
 			lProvs.add((DirProvider) dao.getObject(DirProvider.class, idProv));
 		
@@ -189,10 +198,11 @@ public class TTServiceImpl implements Dao {
 		{
 			DirGender DG = (DirGender) dao.getObject(DirGender.class, idGndr);
 			criterDN.add( Restrictions.eq("dirGender", DG));
-			
-			//lGndrs.add((DirGender) dao.getObject(DirGender.class, idGndr));
 		}
 		
+		
+		if(!lNomGroup.isEmpty())
+			criterDN.add(Restrictions.in("dirNomenclGroup", lNomGroup));
 		//if(!lGndrs.isEmpty())
 		//	criterDN.add( Restrictions.in("dirGender", lGndrs.toArray()));
 
@@ -201,16 +211,17 @@ public class TTServiceImpl implements Dao {
 
 		if(!getNomenclatureList(criterDN).isEmpty())
 			criterions.add( Restrictions.in("dirNomenclature", getNomenclatureList(criterDN)) );
+		else
+			return new LinkedList<Tail>();
 		
-		
-		return criterions.size() >0 ? getTailsList(tail,criterions): new LinkedList<Tail>();
+		return criterions.size() >0 ? getTailsList(tail,criterions, p): new LinkedList<Tail>();
 	}
 
 
 	@Override
-	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions) {
+	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions, int p) {
 		// TODO Auto-generated method stub
-		return dao.getTailsList(tail_example, criterions);
+		return dao.getTailsList(tail_example, criterions, p);
 	}
 
 
@@ -228,18 +239,62 @@ public class TTServiceImpl implements Dao {
 	}
 	
 	
-	public Map<DirNomenclature,DirProvider> tailSetNomenclature(List<Long> providers, List<Long> genders) 
+	public Map<DirNomenclature,DirProvider> tailSetNomenclature(List<Long> providers, List<Long> genders, List<Long> categories , int p , int perPage) 
 	{
-		List<Tail> tails = getTailsList(providers, genders);
+		List<Tail> tails = getTailsList(providers, genders, categories, p);
+		
 		Map<DirNomenclature,DirProvider> hmDN = new LinkedHashMap<DirNomenclature,DirProvider>();
 		
-		for(Tail t: tails)
-			hmDN.put(t.getDirNomenclature(),t.getDirProvider());
+		//for(Tail t: tails)
+		//	hmDN.put(t.getDirNomenclature(),t.getDirProvider());
 		
 		return hmDN;
 	}
 
 
+	public Set<DirNomenclature> tailNomenclatureSet(List<Long> providers, List<Long> genders, List<Long> categories , int p , int perPage) 
+	{
+		//Set<DirNomenclature> DNset = new LinkedHashSet<DirNomenclature>();
+		
+		List<DirProvider> lProvs = new LinkedList<DirProvider>();
+		List<DirNomenclGroup> lNomGroup = new LinkedList<DirNomenclGroup>();
+		//List<DirGender> lGens = new LinkedList<DirGender>();
+		
+		
+		Collection<Criterion> criterions = new LinkedList<Criterion>();
+		Collection<Criterion> criterDN = new LinkedList<Criterion>();
+		
+		for(Long idNomGroup: categories)
+			lNomGroup.add((DirNomenclGroup)dao.getObject(DirNomenclGroup.class, idNomGroup));
+					
+					
+		for(Long idProv: providers)
+			lProvs.add((DirProvider) dao.getObject(DirProvider.class, idProv));
+		
+		for(Long idGndr: genders)
+		{
+			DirGender DG = (DirGender) dao.getObject(DirGender.class, idGndr);
+			criterDN.add( Restrictions.eq("dirGender", DG));
+		}
+		
+		
+		if(!lNomGroup.isEmpty())
+			criterDN.add(Restrictions.in("dirNomenclGroup", lNomGroup));
+		//if(!lGndrs.isEmpty())
+		//	criterDN.add( Restrictions.in("dirGender", lGndrs.toArray()));
+
+		if(!lProvs.isEmpty())
+			criterDN.add( Restrictions.in("dirProvider", lProvs));
+
+		if(!getNomenclatureList(criterDN).isEmpty())
+			criterions.add( Restrictions.in("dirNomenclature", getNomenclatureList(criterDN)) );
+		else
+			return new HashSet();
+		
+		return criterions.size() >0 ? getTailsNomenclature(new Tail(),criterions, p): new HashSet<DirNomenclature>();
+	}
+	
+	
 	@Override
 	public List<Tail> getTailsList(long id_dirNomenclature) {
 		// TODO Auto-generated method stub
@@ -247,10 +302,74 @@ public class TTServiceImpl implements Dao {
 	}
 
 
+
 	@Override
 	public void addOrder(Order order) {
 		// TODO Auto-generated method stub
 		dao.addOrder(order);
+	}
+
+
+	@Override
+	public List<Order> getOrdersList() {
+		// TODO Auto-generated method stub
+		return dao.getOrdersList();
+	}
+
+
+	@Override
+	public List<OrderItems> getOrderItems(Long orderId) {
+		// TODO Auto-generated method stub
+		return dao.getOrderItems(orderId);
+	}
+
+
+	@Override
+	public Set<DirNomenclature> getTailsNomenclature(Tail tail_example, Collection<Criterion> criterions, int p) {
+		// TODO Auto-generated method stub
+		return dao.getTailsNomenclature(tail_example, criterions, p);
+	}
+
+
+	@Override
+	public Order getOrder(Long orderId) {
+		// TODO Auto-generated method stub
+		return dao.getOrder(orderId);
+	}
+
+
+	@Override
+	public void saveOrderItems(List<OrderItems> listOI) {
+		// TODO Auto-generated method stub
+		dao.saveOrderItems(listOI);
+	}
+
+
+	@Override
+	public User findByUserName(String username) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void addContactUsMessages(ContactUsMessages contactUsMessages) {
+		// TODO Auto-generated method stub
+		dao.addContactUsMessages(contactUsMessages);
+	}
+
+
+	@Override
+	public List<ContactUsMessages> getContactUsMessagesList() {
+		// TODO Auto-generated method stub
+		return dao.getContactUsMessagesList();
+	}
+
+
+	@Override
+	public void updateTails() {
+		// TODO Auto-generated method stub
+		dao.updateTails();
 	}
 	
 

@@ -13,15 +13,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.StringTokenizer;
 
-import javax.annotation.Resource;
-
+import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import tt.model.DirGender;
@@ -35,7 +35,6 @@ import tt.modelattribute.MA_loadNomenclGroup;
 import tt.modelattribute.MA_loadNomenclGroupRoot;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
-import tt.service.TTServiceImpl;
 import tt.util.autoLoad.MainAutoLoad;
 
 @Service
@@ -56,7 +55,10 @@ public class ReadExcelFile {
         return workbook;
     }
 	
-
+    public static Cell setCellTypeToString(Cell cell) {
+    	cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+    	return cell;
+    }
 	
 	public  static List<?> processFile(File tmpFile, DirProvider dirProvider, MA_loadProvider mA_loadProvider) throws IOException {
 		
@@ -66,7 +68,8 @@ public class ReadExcelFile {
         Sheet firstSheet = workbook.getSheetAt(0);  
         Iterator<Row> rowIterator = firstSheet.iterator();
         DataFormatter df = new DataFormatter();
-		
+        FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
+        
 		
 		int row_ = 0;
         while(rowIterator.hasNext() )
@@ -78,12 +81,13 @@ public class ReadExcelFile {
         			try {
 		        		dirProvider = new DirProvider();
 		        	
-		        		dirProvider.setName(df.formatCellValue(tmp.getCell(mA_loadProvider.getCol_name()-1)));
-		        		dirProvider.setCode(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadProvider.getCol_code()-1)) ) );
+		        		dirProvider.setName(df.formatCellValue( setCellTypeToString(tmp.getCell(mA_loadProvider.getCol_name()-1)) ));
+		        		//HSSFCell cell = (HSSFCell) tmp.getCell(mA_loadProvider.getCol_code()-1);
+		        		//cell.setCellType(HSSFCell.CELL_TYPE_STRING);
+		        		dirProvider.setCode(Long.parseLong(df.formatCellValue( setCellTypeToString(tmp.getCell(mA_loadProvider.getCol_code()-1))) ) );
 		        	
 			        	lProvs.add(dirProvider);
-        			}
-		    		catch (java.lang.NumberFormatException nfe) {
+        			} catch (java.lang.NumberFormatException nfe) {
 						//nfe.printStackTrace();
 						throw new java.lang.NumberFormatException("("+(row_+1) +") Ошибка формата данных !");
 						
@@ -100,7 +104,8 @@ public class ReadExcelFile {
 	}
 
 	
-	public  static List<?> processFile(File tmpFile, DirNomenclature dirNomenclature, MA_loadNomencl mA_loadNomencl, HashMap<Long,DirNomenclGroup> hmNomenclGroup, HashMap<String,DirGender> hmDGen) throws Exception{
+	public  static List<?> processFile(File tmpFile, DirNomenclature dirNomenclature, MA_loadNomencl mA_loadNomencl, HashMap<Long,DirNomenclGroup> hmNomenclGroup, HashMap<String,DirGender> hmDGen,
+											HashMap<Long,DirProvider> hmDProv) throws Exception{
 		
 		List<DirNomenclature>  lNomencls = new ArrayList<DirNomenclature>();
 		
@@ -121,17 +126,17 @@ public class ReadExcelFile {
         		if(row_ >= mA_loadNomencl.getRow()-1) {
         			dirNomenclature = new DirNomenclature();
 	        	
-        			dirNomenclature.setName(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_name()-1)));
-        			dirNomenclature.setCode(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_code()-1)) ) );
-        			dirNomenclature.setArticle(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_article()-1)));
-        			dirNomenclature.setDirNomenclGroup(hmNomenclGroup.get(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_codeNomenclGroup()-1)) ) ) );
-        			dirNomenclature.setDirGender(hmDGen.get(df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_gender()-1)).toLowerCase() ) );
-        			
+        			dirNomenclature.setName(df.formatCellValue( tmp.getCell(mA_loadNomencl.getCol_name()-1)).trim());
+        			dirNomenclature.setModel(df.formatCellValue( tmp.getCell(mA_loadNomencl.getCol_model()-1)).trim());
+        			dirNomenclature.setCode(Long.parseLong(df.formatCellValue( setCellTypeToString(tmp.getCell(mA_loadNomencl.getCol_code()-1))).trim() ) );
+        			dirNomenclature.setArticle(df.formatCellValue( tmp.getCell(mA_loadNomencl.getCol_article()-1)).trim());
+        			dirNomenclature.setDirNomenclGroup(hmNomenclGroup.get(Long.parseLong(df.formatCellValue( tmp.getCell(mA_loadNomencl.getCol_codeNomenclGroup()-1)).trim() ) ) );
+        			dirNomenclature.setDirGender(hmDGen.get(df.formatCellValue( tmp.getCell(mA_loadNomencl.getCol_gender()-1)).toLowerCase().trim() ) );
+        			dirNomenclature.setDirProvider(hmDProv.get(new Long((df.formatCellValue( setCellTypeToString(tmp.getCell((mA_loadNomencl.getCol_codeProvider()-1))))))));
+
         			String path = df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_pathToImage()-1)).trim();
         			//System.out.println(path);
 
-        			//if(path.length() >0)
-        			//	hmPollPaths.put(dirNomenclature.getCode(), Constants.IMAGES_SERVER +File.separator+path.substring(3).replace('\\', '/')); //Добавляем файл в список на загрузку
 
         			if(path.length() >0)
         			{
@@ -139,7 +144,10 @@ public class ReadExcelFile {
         				StringTokenizer st = new StringTokenizer(path,";");
         				List<String> files = new ArrayList<String>();
         				while (st.hasMoreTokens()) {
-        					files.add(Constants.IMAGES_SERVER +File.separator+st.nextToken().substring(3).replace('\\', '/'));
+        					
+        					String file = st.nextToken();
+        					//System.out.println("file - "+file);
+        					files.add(Constants.IMAGES_SERVER +File.separator+file.substring(3).replace('\\', '/'));
         				}
         				
         				hmPollPaths.put(dirNomenclature.getCode(),files);
@@ -154,7 +162,7 @@ public class ReadExcelFile {
         	
         	++row_;
         }
-        
+        System.out.println(hmPollPaths);
         MainAutoLoad.startPhotoFileService2(hmPollPaths);
         
 		return lNomencls;
@@ -181,7 +189,7 @@ public class ReadExcelFile {
         			dirNomenclGroup = new DirNomenclGroup();
 	        	
         			dirNomenclGroup.setName(df.formatCellValue(tmp.getCell(mA_loadNomenclGroup.getCol_name()-1)));
-        			dirNomenclGroup.setCode(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomenclGroup.getCol_code()-1)) ) );
+        			dirNomenclGroup.setCode(Long.parseLong(df.formatCellValue( setCellTypeToString(tmp.getCell(mA_loadNomenclGroup.getCol_code()-1))) ) );
         			dirNomenclGroup.setDirNomenclGroupRoot(hmNomenclGroupRoot.get(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomenclGroup.getCol_codeNomenclGroupRoot()-1)) )) );
         			
 		        	lNomencls.add(dirNomenclGroup);
@@ -196,7 +204,7 @@ public class ReadExcelFile {
 	}
 
 
-	public static Collection<?> processFile(File tmpFile, Tail tail, MA_loadTail mA_loadTail, HashMap<Integer,DirProvider> hP, HashMap<Long,DirNomenclature> hmNomencl)  throws Exception {
+	public static Collection<?> processFile(File tmpFile, Tail tail, MA_loadTail mA_loadTail,  HashMap<Long,DirNomenclature> hmNomencl)  throws Exception {
 		// TODO Auto-generated method stub
 		List<Tail>  lTails = new ArrayList<Tail>();
 		
@@ -218,12 +226,12 @@ public class ReadExcelFile {
         		if(row_ >= mA_loadTail.getRow()-1) {
         			tail = new Tail();
         			tail.setIndex(index++);
-        			tail.setAmountTail(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_amountTail()-1))));
+        			tail.setAmountTail(Integer.parseInt(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_amountTail()-1)) ));
         			tail.setFirstPrice(NumberFormat.getNumberInstance().parse(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_firstPrice()-1) )).doubleValue());
         			tail.setCreate_date(timestamp);
-        			tail.setDirProvider(hP.get(new Integer((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeProvider()-1)))))));
         			tail.setDirNomenclature( hmNomencl.get(new Long((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeNomencl()-1)))))) );
-        			tail.setSize(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_size()-1)).replaceAll("р-р", ""));
+        			tail.setSize(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_size()-1)).replaceAll("р-р", "").trim());
+        			
         			lTails.add(tail);
         		}
         	
@@ -255,7 +263,7 @@ public class ReadExcelFile {
         			dirNomenclGroupRoot = new DirNomenclGroupRoot();
 	        	
         			dirNomenclGroupRoot.setName(df.formatCellValue(tmp.getCell(mA_loadNomenclGroupRoot.getCol_name()-1)));
-        			dirNomenclGroupRoot.setCode(Long.parseLong(df.formatCellValue(tmp.getCell(mA_loadNomenclGroupRoot.getCol_code()-1)) ) );
+        			dirNomenclGroupRoot.setCode(Long.parseLong(df.formatCellValue( setCellTypeToString(tmp.getCell(mA_loadNomenclGroupRoot.getCol_code()-1))) ) );
         			
 		        	lNomencls.add(dirNomenclGroupRoot);
         		}

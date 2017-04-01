@@ -10,8 +10,8 @@
 					<div class="col-sm-6">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
-								<li><a href="#"><i class="fa fa-phone"></i> +2 95 01 88 821</a></li>
-								<li><a href="#"><i class="fa fa-envelope"></i> info@domain.com</a></li>
+								<li><a href="#"><i class="fa fa-phone"></i> (+375 17) 292-45-90</a></li>
+								<li><a href="#"><i class="fa fa-envelope"></i> office@trikotag.by</a></li>
 							</ul>
 						</div>
 					</div>
@@ -65,8 +65,8 @@
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 								<ul class="">
-									<li class="dropdown"><a class="dropdown-toggle " data-toggle="dropdown" href="#"><spring:message code="cart"/>(<c:out value="${fn:length(sessBean.orders)}"/>)</a>
-										<ul class="dropdown-menu">
+									<li class="dropdown"><a href="cart"><spring:message code="cart"/>  <span class="badge"><c:out value="${fn:length(sessionScope.sessBean.orderItems)}"/></span></a>
+										<!-- ul class="dropdown-menu">
 											<li>
 							                        <div class="row">
 							                            <div class="col-xs-4 col-sm-4 no-margin text-center">
@@ -90,12 +90,12 @@
 							                        </div>
 							                </li>
 											
-										</ul>
+										</ul -->
 					                </li>
 									<!-- li><a href="login"><i class="fa fa-user"></i>Account</a></li -->
 									<!-- li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li -->
 									<!-- li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Checkout</a></li -->
-									<li><a href="login"><i class="fa fa-lock"></i> Login</a></li>
+									<li><a href="login"><i class="fa fa-lock"></i> Login</a>  <c:if test="${fn:length(sessionScope.authUser.username) >0}" ><c:out value="(${sessionScope.authUser.username})"/></c:if></li>
 					                
 					            </ul>							
 					</div>
@@ -120,9 +120,9 @@
 								<li><a href="index.html" class="active"><spring:message code="home"/></a></li>
 								<li class="dropdown"><a href="#"><spring:message code="shop"/><i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
-                                        <li><a href="shop.html"><spring:message code="products"/></a></li>
-										<li><a href="product-details.html"><spring:message code="product.details"/></a></li> 
-										<li><a href="checkout.html"><spring:message code="checkout"/></a></li> 
+                                        <li><a href="index"><spring:message code="products"/></a></li>
+										<!-- li><a href="product-details.html"><spring:message code="product.details"/></a></li --> 
+										<!-- li><a href="checkout.html"><spring:message code="checkout"/></a></li --> 
 										<li><a href="cart.html"><spring:message code="cart"/></a></li> 
 										<li><a href="login.html">Login</a></li> 
                                     </ul>
@@ -134,7 +134,12 @@
                                     </ul>
                                 </li --> 
 								<!-- li><a href="404.html">404</a></li -->
-								<li><a href="contact-us.html"><spring:message code="contacts"/></a></li>
+								<li><a href="contact-us.html" ><spring:message code="our.shops"/></a></li>
+								<li class="dropdown"><a href="contact-us.html"><spring:message code="contacts"/><i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="contact-us.html"><spring:message code="our.shops"/></a></li>
+                                    </ul>
+								</li>
 							</ul>
 						</div>
 					</div>

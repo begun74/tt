@@ -149,8 +149,31 @@
 						    	</form:form>
 							</div>					    
 				    		<div class="col2">
-				    			<div calss="center">
-				    				<img src="resources/images/product-details/ps_111.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="" />
+					    		<div class="div_photo_panel">
+					    			<table>
+					    				<tr>
+					    				<td>
+						    			<div class="div_pn">
+						    				<img id="photoNomenclature0" src="resources/images/products/nopicture.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
+						    			</div>
+						    			</td>
+						    			<td>
+						    			<div class="div_pn">
+						    				<img id="photoNomenclature1" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
+						    			</div>
+						    			</td>
+						    			<td>
+						    			<div class="div_pn">
+						    				<img id="photoNomenclature2" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
+						    			</div>
+						    			</td>
+						    			<td>
+						    			<div class="div_pn">
+						    				<img id="photoNomenclature3" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
+						    			</div>
+						    			</td>
+						    			</tr>
+					    			</table>
 				    			</div>
 				    			<form id="addPhotoNomenclForm" class="formBox" role="form"
 							  			enctype="multipart/form-data" 
@@ -158,12 +181,12 @@
 							  			method="POST">
 										       
 							      	<div class="clearfix file">
-									         <div class="lab"><label for="file"><spring:message code="load"/> </label></div>
-									         <div class="con"><input type="file" name="photoFile" class="upload-file" id="photoFile" /></div>
+									         <div class="lab">Файл </div>
+									         <div class="con"><input type="file" name="photoFile" class="upload-file" id="photoFile"/></div>
 									</div>
 			        				<div class="clearfix">
 					        				<div class="lab">	
-						        					<button type="submit" class="" onclick="if(photoFile.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
+						        					<button type="submit" class="" id="submitPhoto" onclick="if(photoFile.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
 					        				</div>
 			        				</div>
 									<input type="hidden" name ="codeNomencl" id ="codeNomencl" />
@@ -210,6 +233,14 @@
 													 </div>
 										  			<div class="clearfix">
 													         <div class="lab">
+											                    <label>Модель</label> 
+													         </div>
+													         <div  style="width: 25px" class="conleft" >
+																<input name="col_model" id="col_model" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_model}">										         
+													         </div>
+													 </div>
+										  			<div class="clearfix">
+													         <div class="lab">
 									                   			<label>Код НомГруппы</label>
 													         </div>
 													         <div style="width: 25px" class="conleft">
@@ -234,6 +265,14 @@
 													</div>
 										  			<div class="clearfix">
 													         <div class="lab">
+									                   			<label>Код Поставщика</label>
+													         </div>
+													         <div style="width: 25px" class="conleft">
+									                   			<input name="col_codeProvider" id="col_codeProvider" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_codeProvider}"> 
+													         </div>
+													</div>
+										  			<div class="clearfix">
+													         <div class="lab">
 									                   			<label>Путь к картинкам</label>
 													         </div>
 													         <div style="width: 25px" class="conleft">
@@ -251,7 +290,7 @@
 							         
 													 <div class="clearfix file">
 										              <div class="lab"><label for="file"><spring:message code="load"/> </label></div>
-										              <div class="con"><input type="file" name="file" class="upload-file" id="file" /></div>
+										              <div class="con"><input type="file" name="file" class="upload-file" id="file"/></div>
 										            </div>
 
 													<div class="clearfix">									        
@@ -268,10 +307,10 @@
 						
 							        				<div class="clearfix">
 								        				<div class="lab">	
-								        					<button type="submit" class="" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
+								        					<button type="submit" class="" onclick="if(file.value.length == 0 ) {alert('Выберите файл!'); return false};" ><spring:message code="load"/></button>
 								        				</div>
 							        				</div>
-							        				
+													        				
 							         <input type="hidden" name ="act" id ="act" value="2"/>
 						</form:form>
 				</div>
@@ -303,10 +342,11 @@
 												<tr>
 													<td class="dragHandle">&nbsp;</td>
 													<td>${loop.count}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}');">${dirNomencl.name}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}');">${dirNomencl.code}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}');">${dirNomencl.article}</td>
-													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}');">${dirNomencl.dirNomenclGroup.name}(${dirNomencl.dirNomenclGroup.code})</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.name}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.code}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.model}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.article}</td>
+													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.dirNomenclGroup.name}(${dirNomencl.dirNomenclGroup.code})</td>
 							         				<td>
 							         					<!-- a href="javascript:editBrand(${dirProvider.id});" class="ico ico-edit" onclick=""></a -->
 							         					<a href="javascript:delObject('DirNomenclature', ${dirNomencl.id},'2');" class="ico ico-delete" onclick=""></a>
@@ -335,11 +375,33 @@
   <!-- /#main --> 
   <script>
   		$(document).ready(function(){
-				
 			/*$("#save").attr("checked","checked");*/
+			$('#submitPhoto').attr('disabled','disabled');
 	    });
+  		
+  		function viewPhotoNomencl(code) {
+  			$('#codeNomencl').val(code);
+			$('#submitPhoto').attr('disabled','');
+  			
+  			$('#photoNomenclature0').error(function() {
+  			    $( this ).attr( "src", 'resources/images/products/nopicture.jpg' );
+  		    }).attr('src','/pics/products/'+code+'/S/'+code+'_S_0.jpg');
+
+  			$('#photoNomenclature1').error(function() {
+  			    $( this ).attr( "src", 'resources/images/products/blank.jpg' );
+  		    }).attr('src','/pics/products/'+code+'/S/'+code+'_S_1.jpg');
+			
+  			$('#photoNomenclature2').error(function() {
+  			    $( this ).attr( "src", 'resources/images/products/blank.jpg' );
+  		    }).attr('src','/pics/products/'+code+'/S/'+code+'_S_2.jpg');
+
+  			$('#photoNomenclature3').error(function() {
+  			    $( this ).attr( "src", 'resources/images/products/blank.jpg' );
+  		    }).attr('src','/pics/products/'+code+'/S/'+code+'_S_3.jpg');
+  		}
 	    
     </script>
+</div>
 </body>
 
 </html>

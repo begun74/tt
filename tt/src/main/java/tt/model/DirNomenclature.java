@@ -18,7 +18,8 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
-
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -57,6 +58,8 @@ public class DirNomenclature implements  IModel {
 	@NotEmpty (message = "Please enter article.") 
 	private String article;
 	
+	@NotEmpty (message = "Please enter model.") 
+	private String model;
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_dir_nomencl_group")
@@ -68,8 +71,15 @@ public class DirNomenclature implements  IModel {
 	@NotNull
 	private DirGender dirGender;
 	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_id_provider")
+	@NotNull
+	private DirProvider dirProvider;
+	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="dirNomenclature")
 	private Set<Tail> tails;
+	
+	private transient double tempPrice;
 	
 	public Long getId() {
 		return id;
@@ -105,6 +115,15 @@ public class DirNomenclature implements  IModel {
 	}
 
 
+	public String getModel() {
+		return model;
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+
 	public DirNomenclGroup getDirNomenclGroup() {
 		return dirNomenclGroup;
 	}
@@ -123,6 +142,15 @@ public class DirNomenclature implements  IModel {
 	}
 
 	
+	public DirProvider getDirProvider() {
+		return dirProvider;
+	}
+
+	public void setDirProvider(DirProvider dirProvider) {
+		this.dirProvider = dirProvider;
+	}
+
+	
 	public Set<Tail> getTails() {
 		return tails;
 	}
@@ -130,7 +158,16 @@ public class DirNomenclature implements  IModel {
 	public void setTails(Set<Tail> tails) {
 		this.tails = tails;
 	}
+	
 
+
+	public double getTempPrice() {
+		return tempPrice;
+	}
+
+	public void setTempPrice(double tempPrice) {
+		this.tempPrice = tempPrice;
+	}
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
@@ -141,6 +178,12 @@ public class DirNomenclature implements  IModel {
 	@Override
 	public int compareTo(Object o) {
 		return ( ((DirNomenclature)o).getCode().compareTo(this.getCode()) );
+	}
+
+	@Override
+	public String toString() {
+		return "DirNomenclature [id=" + id + ", code=" + code + ", name=" + name + ", article=" + article + ", model="
+				+ model + ", dirNomenclGroup=" + dirNomenclGroup + ", dirGender=" + dirGender + ", dirProvider=" +dirProvider.getId() + "]";
 	}
 	
 	

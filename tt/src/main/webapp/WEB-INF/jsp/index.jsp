@@ -9,9 +9,11 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="одежда весна 2017 | Продукция ведущих трикотажных фабрик | Верхний трикотаж | Бельевой трикотаж | Чулочно-носочные изделия | трикотаж | трикотаж в РБ">
+    <meta name="keywords" content="одежда весна 2017 | Продукция ведущих трикотажных фабрик | Верхний трикотаж | Бельевой трикотаж | Чулочно-носочные изделия | трикотаж | трикотаж в РБ" />
+    <meta name="robots" content="all" />
     <meta name="author" content="">
-    <title>Home | E-Shopper</title>
+    <title>ОАО «Трикотажторг»</title>
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="resources/css/prettyPhoto.css" rel="stylesheet">
@@ -40,6 +42,7 @@
 		<div class="content">
 			<div class="row">
 				<div class="col-sm-12">
+
 					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">
 							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
@@ -50,39 +53,48 @@
 						<div class="carousel-inner">
 							<div class="item active">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3>
-									<h2>Free E-Commerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<!-- <span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3 -->
+									<h2>ОАО «Трикотажторг»</h2>
+									<p>Продукция ведущих трикотажных фабрик Республики Беларусь. </p>
+    								<p>ОАО «Свiтанак»</p>
+    								<p>ОАО «Купалинка»</p>
+    								<p>ОАО «8 Марта»</p>
+    								<p>ОАО «Брестский чулочный комбинат»</p>
+    								<p>ОАО «Бобруйсктрикотаж»</p> 
+    								<p>СООО «Любава-Лис»</p>
+    								<p>ООО «Формэль»</p>
+									<!-- button type="button" class="btn btn-default get">Get it now</button -->
 								</div>
 								<div class="col-sm-6">
 									<img src="resources/images/home/girl1.jpg" class="girl img-responsive" alt="" />
-									<img src="resources/images/home/pricing.png"  class="pricing" alt="" />
+									<!-- img src="resources/images/home/pricing.png"  class="pricing" alt="" / -->
 								</div>
 							</div>
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3>
-									<h2>100% Responsive Design</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<!-- h1><span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3 -->
+									<h2>ОАО «Трикотажторг»</h2>
+									<p>Верхний трикотаж</p>
+									<p>Бельевой трикотаж</p>
+									<p>Чулочно-носочные изделия</p>
+									<!-- button type="button" class="btn btn-default get">Get it now</button -->
 								</div>
 								<div class="col-sm-6">
 									<img src="resources/images/home/girl2.jpg" class="girl img-responsive" alt="" />
-									<img src="resources/images/home/pricing.png"  class="pricing" alt="" />
+									<!-- img src="resources/images/home/pricing.png"  class="pricing" alt="" / -->
 								</div>
 							</div>
 							
 							<div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3>
-									<h2>Free Ecommerce Template</h2>
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-									<button type="button" class="btn btn-default get">Get it now</button>
+									<!-- h1><span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3 -->
+									<h2>ОАО «Трикотажторг»</h2>
+									<p>Предлагает взаимовыгодное сотрудничество ИП и частным торговым предприятиям в вопросах закупки товаров лёгкой промышленности отечественного и зарубежного производства.</p>
+									<!-- button type="button" class="btn btn-default get">Get it now</button -->
 								</div>
 								<div class="col-sm-6">
 									<img src="resources/images/home/girl3.jpg" class="girl img-responsive" alt="" />
-									<img src="resources/images/home/pricing.png" class="pricing" alt="" />
+									<!-- img src="resources/images/home/pricing.png"  class="pricing" alt="" / -->
 								</div>
 							</div>
 							
@@ -95,6 +107,7 @@
 							<i class="fa fa-angle-right"></i>
 						</a>
 					</div>
+
 					
 				</div>
 			</div>
@@ -111,7 +124,7 @@
 				</div>
 				<div class="col-sm-9 padding-right">
 					<!-- content -->
-					<%@include file="common/content2.jsp" %>
+					<%@include file="common/content3.jsp" %>
 					<!-- content -->
 				</div>
 				
@@ -139,8 +152,12 @@
 	    $(function() {
 				var pns = ${mA_search.pn};
 				var pns_get ='';
+				
 				var gndrs = ${mA_search.gndr};
 				var gndrs_get ='';
+				
+				var cats = ${mA_search.cat};
+				var cats_get ='';
 							
 				for (var item in pns) {
 	                $('#pn_'+pns[item]).attr("checked","checked");
@@ -152,6 +169,11 @@
 	                gndrs_get += '&gndr='+gndrs[item];
 	            }
 
+				for(var item in cats) {
+					$('#cat_'+cats[item]).attr("checked","checked");
+					cats_get += '&cat='+cats[item];
+				}
+				
 		        $('#light-pagination').pagination({
 		            items: ${allItems},
 		            itemsOnPage: ${perPage},
@@ -159,7 +181,7 @@
 		            prevText:"<<",
 		            nextText:">>",
 		            hrefTextPrefix: "?p=",
-		            hrefTextSuffix: pns_get+gndrs_get,
+		            hrefTextSuffix: pns_get+gndrs_get+cats_get,
 		            currentPage: ${p}
 		        });
 				

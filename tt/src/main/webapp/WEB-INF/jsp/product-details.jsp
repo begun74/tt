@@ -6,9 +6,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="одежда весна 2017 | Продукция ведущих трикотажных фабрик | Верхний трикотаж | Бельевой трикотаж | Чулочно-носочные изделия | трикотаж | трикотаж в РБ">
+    <meta name="keywords" content="одежда весна 2017 | Продукция ведущих трикотажных фабрик | Верхний трикотаж | Бельевой трикотаж | Чулочно-носочные изделия | трикотаж | трикотаж в РБ" />
     <meta name="author" content="">
-    <title>Product Details | E-Shopper</title>
+    <title>ОАО «Трикотажторг»</title>
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
     <link href="resources/css/font-awesome.min.css" rel="stylesheet">
     <link href="resources/css/prettyPhoto.css" rel="stylesheet">
@@ -34,18 +35,35 @@
 	
 	<section>
 		<div class="container">
+		
+			<div id="bs-example-modal-sm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="">
+			  <div class="modal-dialog modal-sm" role="document">
+			    <div class="modal-content">
+				    <div class="modal-header">
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					</div>
+			    	<div class="modal-body text-center">
+			      		<h2><spring:message code="add.to.backet"/>. <a href="cart"><spring:message code="cart"/></h2></a>
+      				</div>
+      				<div class="modal-footer">
+				        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="close"/></button>
+				    </div>
+			    </div>
+			  </div>
+			</div>
+			
 			<div class="row">
 				
+							
 				
 				<div class="col-sm-12 padding-right">
 					<div class="product-details"><!--product-details-->
 						<div class="col-sm-5">
 						<br/>
 							<div>
-								<img  id="img_01" src="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" />
+								<img  id="img_01" src="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" />
 							</div>
 
-							
 
 							<div id="similar-product" class="carousel slide" data-ride="carousel">
 							    
@@ -53,19 +71,19 @@
 								<div id="gal1">
 									<div class="carousel-inner">							
 										<div class="item active">
-											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg">
-											   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_0.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
+											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg">
+											   		<img id="img_01" width="30%" height="30%" src="/pics/products/${nomenclature.code}/S/${nomenclature.code}_S_0.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
 											</a>
-											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_1.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_1.jpg">
-										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_1.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
+											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_1.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_1.jpg">
+										   		<img id="img_01" width="30%" height="30%" src="/pics/products/${nomenclature.code}/S/${nomenclature.code}_S_1.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
 											</a>
 										</div>
 										<div class="item">
-											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_2.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_2.jpg">
-										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_2.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"/>
+											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_2.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_2.jpg">
+										   		<img id="img_01" width="30%" height="30%" src="/pics/products/${nomenclature.code}/S/${nomenclature.code}_S_2.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"/>
 											</a>
-											<a href="#" data-image="resources/images/products/${nomenclature.code}/M/${nomenclature.code}_M_3.jpg" data-zoom-image="resources/images/products/${nomenclature.code}/L/${nomenclature.code}_L_3.jpg">
-										   		<img id="img_01" width="30%" height="30%" src="resources/images/products/${nomenclature.code}/S/${nomenclature.code}_S_3.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"/>
+											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_3.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_3.jpg">
+										   		<img id="img_01" width="30%" height="30%" src="/pics/products/${nomenclature.code}/S/${nomenclature.code}_S_3.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"/>
 											</a>
 											
 										</div>
@@ -108,8 +126,10 @@
 							<div class="product-information"><!--/product-information-->
 								<img src="resources/images/product-details/new.jpg" class="newarrival" alt="" />
 								<h2>${nomenclature.name } (${nomenclature.dirGender.name })</h2>
+								<p><h2><spring:message code="price"/>: ${price}<c:if test="${empty price}"><a href="login"><spring:message code="price.isShow"/></a></c:if></h2></p>
+								<p><b><spring:message code="model"/></b>: ${nomenclature.model}</p>
 								<p><b><spring:message code="article"/>:  </b>${nomenclature.article} </p>
-								<p>Web ID: ${nomenclature.code}</p>
+								<p>ID: ${nomenclature.code}</p>
 								<img src="resources/images/product-details/rating.png" alt="" />
 								<!-- p><b>Availability:</b> In Stock</p -->
 								<!-- p><b>Condition:</b> New</p -->
@@ -122,11 +142,8 @@
 								<!-- a href=""><img src="resources/images/product-details/share.png" class="share img-responsive"  alt="" /></a -->
 								
 								
-									<span><span>BYN ${price}</span></span>
+									<span><span><!-- BYN ${price} --></span></span>
 									<select name="sizes" class="sizes">
-										<c:forEach items="${tails}" var="tail" varStatus="loop">
-											<option value="${tail.amountTail}">${tail.size} </option>
-										</c:forEach>
 									</select>
 
 									
@@ -139,7 +156,7 @@
 									</label>
 
 									<div class="text-center">
-										<button type="button" class="btn btn-fefault cart" href="#">
+										<button type="button" class="btn btn-default cart " href="#" data-toggle="modal" data-target=".bs-example-modal-sm">
 											<i class="fa fa-shopping-cart"></i>
 											<spring:message code="to.order"/>
 										</button>
@@ -340,7 +357,7 @@
 
 		Product.id = ${nomenclature.id};
     	Product.getDetail();
-    	
+    	Product.localItemName = '<spring:message code="items"/>';
 
     	$(".cart_quantity_up").click(function () {
 			var val = $(".cart_quantity_input").val();
@@ -365,11 +382,13 @@
     	});
 
     	$(".cart").click(function() {
-    		//alert(${nomenclature.id});
-    		Product.toOrder($( ".sizes option:selected" ).text(),$( ".cart_quantity_input" ).val());
+    		var res = Product.toOrder($( ".sizes option:selected" ).text(),$( ".cart_quantity_input" ).val());
+			
+    		$('.badge').text(res); //в header_top.jsp class='badge' Корзина - кол-во покупок
+    		//alert('res -  ' + res);
     	});
 
-    	setInterval(Product.getDetail,15000);
+    	//setInterval(Product.getDetail,15000);
     });
     
 

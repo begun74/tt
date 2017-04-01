@@ -229,6 +229,7 @@ ul.mainmenu li ul.submenu li a:hover  { color: #404040; }
 
 .tab tr.odd   { background: #f8f8f8; }
 .tab tr:hover { background: #efefef; }
+.tab tr.selected  { background: #ffffcc; }
 
 .tab th.dragHandle  { padding: 0; width: 10px; }
 .tab td.dragHandle  { padding: 0; width: 10px; cursor: move; background: url(../images/dragHandle.png) 2px 2px no-repeat;} 
@@ -344,3 +345,18 @@ a:hover.ico   { background-position: 0 0; }
 .modal-window .list-square li { padding-left: 15px; background: url(../images/ico/list-square.gif) 0 6px no-repeat; }
 .modal-window .list-dash li   { padding-left: 15px; background: url(../images/ico/list-dash.gif) 0 6px no-repeat; }
 .modal-window .list-number li { margin-left: 20px; list-style: decimal; }
+
+
+
+.div_pn  {
+    display:block;	
+    width:200px;
+    height:282px;
+}
+
+.div_photo_panel  {
+	overflow-x: scroll; 
+	overflow-y: hidden;
+	height:310px; 
+	width:100%;
+}

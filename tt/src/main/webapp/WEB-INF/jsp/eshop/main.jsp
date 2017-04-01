@@ -98,8 +98,8 @@
     </div>
     <!-- /#content -->
 	<!-- Sidebar -->
-	        <!-- >%@include file="sidebar.jsp" % -->
-	<!-- /#sidebar-wrapper -->    
+	        <%@include file="sidebar.jsp" %>
+	<!-- /#sidebar-wrapper -->
 	        
 	<!-- #footer -->
     <div id="footer">

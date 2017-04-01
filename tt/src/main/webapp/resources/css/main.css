@@ -306,11 +306,11 @@ ul.sub-menu {
   padding-left: 0;
 }
 
-.dropdown:hover .dropdown-menu {
+/*.dropdown:hover .dropdown-menu {
     display: block;
     margin-top: 0; // remove the gap so it doesn't close
  }
- 
+ */
  
  
 
@@ -855,7 +855,7 @@ h2.title {
 .product-image-wrapper{
 	border:1px solid #F7F7F5;
 	overflow: hidden;
-	margin-bottom:30px;
+	margin-bottom:50px;
 }
 
 .single-products {
@@ -890,7 +890,10 @@ h2.title {
 }
 
 .productinfo img{
-  width: 100%;
+  /*width: 200px;*/
+  height: 300px;
+  object-fit: contain;
+
 }
 
 .productinfo{
@@ -2445,6 +2448,7 @@ h2.title {
 #contact-page 
 .form-control::-moz-placeholder {
   color: #8D8D8D;
+  color: #000000;
 }
 
 #contact-page .form-control {
@@ -2571,16 +2575,25 @@ give gallery's parent container a cursor: pointer.**/
 .DivName {cursor: pointer}
 }
 
-/*
-img.pic1 {
-	width: 150px;
-	height: 226px;
-}
-*/
+
 
 /*set a border on the images to prevent shifting*/
 #gallery_01 img {
     border: 2px solid white;
 }
 
+.add_product_alert {
+	/*display: inline-block;
+	position: relative; */
+	display: none;
+}
+
+.backet_info {
+
+	overflow-y:scroll; 
+	overflow-x: none; 
+	height:500px; 
+	width:100%;
+	
+}
 

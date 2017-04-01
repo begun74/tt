@@ -114,8 +114,12 @@ public class FileUpload {
 						for(DirGender dG: lDGen) 
 							hmDGen.put(dG.getName(), dG);
 
+						List<DirProvider> lDProv = ttService.getProviderList();
+						HashMap<Long,DirProvider> hmDProv = new HashMap<Long,DirProvider>();
+						for(DirProvider dP: lDProv)
+							hmDProv.put(dP.getCode(),dP);
 
-						return ReadExcelFile.processFile(tmpFile,(DirNomenclature) model, (MA_loadNomencl) IMAmodel, hmNomenclGroup, hmDGen) ;
+						return ReadExcelFile.processFile(tmpFile,(DirNomenclature) model, (MA_loadNomencl) IMAmodel, hmNomenclGroup, hmDGen, hmDProv) ;
 					}
 
 					else if(model instanceof DirNomenclGroup)
@@ -134,10 +138,6 @@ public class FileUpload {
 					
 					else if(model instanceof Tail)
 					{
-						List<DirProvider> lP = ttService.getProviderList();
-						HashMap<Integer,DirProvider> hmProv = new HashMap<Integer,DirProvider>();
-						for(DirProvider dp: lP) 
-							hmProv.put(dp.getCode(), dp);
 
 						List<DirNomenclature> lN = ttService.getNomenclatureList();
 						HashMap<Long,DirNomenclature> hmNomencl = new HashMap<Long,DirNomenclature>();
@@ -145,7 +145,7 @@ public class FileUpload {
 							hmNomencl.put(dn.getCode(), dn);
 
 						
-						return ReadExcelFile.processFile(tmpFile,(Tail) model, (MA_loadTail) IMAmodel, hmProv, hmNomencl) ;
+						return ReadExcelFile.processFile(tmpFile,(Tail) model, (MA_loadTail) IMAmodel, hmNomencl) ;
 					}
 				} 
 				finally {
@@ -166,14 +166,22 @@ public class FileUpload {
 				File rootFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code);
 				if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
 				
+				//System.out.println("rootFolder - "+rootFolder);
+				
 				File largeFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
 				if(!largeFolder.exists() && !largeFolder.mkdirs()) throw new Exception("Can not create largeFolder! ");
+				
+				//System.out.println("largeFolder - "+largeFolder);
 				
 				File mediumFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
 				if(!mediumFolder.exists() && !mediumFolder.mkdirs()) throw new Exception("Can not create mediumFolder! ");
 				
+				//System.out.println("mediumFolder - "+mediumFolder);
+				
 				File smallFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
 				if(!smallFolder.exists() && !smallFolder.mkdirs()) throw new Exception("Can not create smallFolder! ");
+				
+				//System.out.println("smallFolder - "+smallFolder);
 				
 			
 				Iterator<String> iter = files.iterator();
@@ -195,10 +203,35 @@ public class FileUpload {
 							path = Paths.get(tempFile.toURI());
 							Files.write(path, data);
 							
+							
 							BufferedImage img = ImageIO.read(path.toFile());
+							
+							float img_width = img.getWidth();
+							float img_height = img.getHeight();
+							float img_ratio =  img_height / img_width;
+							
+							System.out.println("img_width - "+ img_width+",   img_height - "+img_height +",    img_ratio - " +(float)img_ratio);
+							
+							
 							ImageIO.write(img, "jpg", new File(largeFolder+File.separator+code+"_L_"+i+".jpg"));
-							ImageIO.write(scaleImage(img,389,582), "jpg", new File(mediumFolder+File.separator+code+"_M_"+i+".jpg"));
-							ImageIO.write(scaleImage(img,189,282), "jpg", new File(smallFolder+File.separator+code+"_S_"+i+".jpg"));
+							
+							int M_width = 390;
+							int S_width = 190;
+							
+							int M_height = 582;
+							int S_height = 282;
+							
+							int rate = img.getWidth() / M_width;
+							
+							//img = scaleImage(img,M_width, (int)(M_width*(float)img_ratio));
+							img = scaleImage(img,(int)(M_height/(float)img_ratio),M_height);
+							ImageIO.write(img, "jpg", new File(mediumFolder+File.separator+code+"_M_"+i+".jpg"));
+
+							rate = img.getWidth() / S_width;
+							
+							//img = scaleImage(img,S_width, (int)(S_width*(float)img_ratio));
+							img = scaleImage(img,(int)(S_height/(float)img_ratio), S_height);
+							ImageIO.write(img, "jpg", new File(smallFolder+File.separator+code+"_S_"+i+".jpg"));
 							
 							tempFile.delete();
 							
@@ -249,13 +282,21 @@ public class FileUpload {
 			
 			File largeFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
 			if(!largeFolder.exists() && !largeFolder.mkdirs()) throw new Exception("Can not create largeFolder! ");
+
+			//System.out.println("largeFolder - "+largeFolder);
+
 			
 			File mediumFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
 			if(!mediumFolder.exists() && !mediumFolder.mkdirs()) throw new Exception("Can not create mediumFolder! ");
+
+			//System.out.println("mediumFolder - "+mediumFolder);
+
 			
 			File smallFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
 			if(!smallFolder.exists() && !smallFolder.mkdirs()) throw new Exception("Can not create smallFolder! ");
 			
+			//System.out.println("smallFolder - "+smallFolder);
+
 
 			for(int i=0; i < files.length; ++i)
 			{
@@ -299,6 +340,80 @@ public class FileUpload {
 	}
 
 	
+	public void downloadPhoto (long code, MultipartFile file) 
+	{
+		
+		File tempFile = null;
+		
+		try {
+			
+			
+			File rootFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code);
+			if(!rootFolder.exists() && !rootFolder.mkdirs()) throw new Exception("Can not create rootFolder! ");
+			
+			//System.out.println("rootFolder - "+rootFolder);
+			
+			File largeFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
+			if(!largeFolder.exists() && !largeFolder.mkdirs()) throw new Exception("Can not create largeFolder! ");
+
+			//System.out.println("largeFolder - "+largeFolder);
+
+			
+			File mediumFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
+			if(!mediumFolder.exists() && !mediumFolder.mkdirs()) throw new Exception("Can not create mediumFolder! ");
+
+			//System.out.println("mediumFolder - "+mediumFolder);
+
+			
+			File smallFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
+			if(!smallFolder.exists() && !smallFolder.mkdirs()) throw new Exception("Can not create smallFolder! ");
+			
+			//System.out.println("smallFolder - "+smallFolder);
+
+			int countFiles = largeFolder.listFiles().length;
+			
+			tempFile = new File(TEMP_FILE_PATH+File.separator+code+".tmp");
+			
+			file.transferTo(tempFile);
+
+			long time = System.currentTimeMillis();
+					
+			Path path = Paths.get(tempFile.toURI());
+			byte[] data = Files.readAllBytes(path);
+					
+			
+					
+			path = Paths.get(tempFile.toURI());
+			Files.write(path, data);
+					
+			BufferedImage img = ImageIO.read(path.toFile());
+			ImageIO.write(img, "jpg", new File(largeFolder+File.separator+code+"_L_"+ countFiles +".jpg"));
+			ImageIO.write(scaleImage(img,389,582), "jpg", new File(mediumFolder+File.separator+code+"_M_"+countFiles+".jpg"));
+			ImageIO.write(scaleImage(img,189,282), "jpg", new File(smallFolder+File.separator+code+"_S_"+countFiles+".jpg"));
+					
+			tempFile.delete();
+					
+			System.out.println("Code - "+code +" :  "+tempFile+" time - " +(System.currentTimeMillis() - time)/1000+ " sec.");
+		}
+		catch(java.io.FileNotFoundException fnf)
+		{
+			fnf.getMessage();
+		}
+		catch(NullPointerException e) {
+			System.out.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+			 System.out.println("Catalog not found - "+tempFile);
+			 e.printStackTrace(System.out);
+			System.out.println("========= ERROR: FileUpload.downloadPhoto ======= \n\n");
+		}
+		catch(Exception e) {
+			System.out.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+			 System.out.println("pathToShare - "+tempFile);
+			 e.printStackTrace(System.out);
+			System.out.println("========= ERROR: FileUpload.downloadPhoto ======= \n\n");
+		}
+		
+	}
+	
 	public BufferedImage scaleImage(BufferedImage img, int targetWidth, int targetHeight) {
 
 	    int type = (img.getTransparency() == Transparency.OPAQUE) ? BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB;
@@ -317,12 +432,16 @@ public class FileUpload {
 	            w /= 2;
 	            w = (w < targetWidth) ? targetWidth : w;
 	        }
-
+	        else if(w < targetWidth)
+	        	targetWidth = w;
+	        
 	        if (h > targetHeight) {
 	            h /= 2;
 	            h = (h < targetHeight) ? targetHeight : h;
 	        }
-
+	        else if(h < targetHeight)
+	        	targetHeight = h;
+	        
 	        if (scratchImage == null) {
 	            scratchImage = new BufferedImage(w, h, type);
 	            g2 = scratchImage.createGraphics();

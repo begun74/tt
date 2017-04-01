@@ -17,15 +17,18 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import tt.model.ContactUsMessages;
 import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
 import tt.model.DirNomenclGroupRoot;
 import tt.model.DirNomenclature;
 import tt.model.DirProvider;
 import tt.model.Order;
+import tt.model.OrderItems;
 import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
+import tt.model.UserRole;
 
 
 
@@ -66,6 +69,7 @@ public class HibernateConfiguration {
         sessionBuilder.addProperties(hibernateProperties());
 
         sessionBuilder.addAnnotatedClasses(User.class);
+        sessionBuilder.addAnnotatedClasses(UserRole.class);
         sessionBuilder.addAnnotatedClasses(DirProvider.class);
         sessionBuilder.addAnnotatedClasses(DirNomenclature.class);
         sessionBuilder.addAnnotatedClasses(Store.class);
@@ -73,7 +77,9 @@ public class HibernateConfiguration {
         sessionBuilder.addAnnotatedClasses(DirNomenclGroup.class);
         sessionBuilder.addAnnotatedClasses(DirNomenclGroupRoot.class);
         sessionBuilder.addAnnotatedClasses(DirGender.class);
+        sessionBuilder.addAnnotatedClasses(OrderItems.class);
         sessionBuilder.addAnnotatedClasses(Order.class);
+        sessionBuilder.addAnnotatedClasses(ContactUsMessages.class);
 
         //sessionBuilder.addAnnotatedClasses(DirColor.class);
         //sessionBuilder.addAnnotatedClasses(Request.class);

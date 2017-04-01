@@ -24,6 +24,8 @@ public class MA_search implements Serializable {
 	
 	List<Long> gndr = new ArrayList<Long>();
 	
+	List<Long> cat = new ArrayList<Long>();//Category
+	
 
 	
 	public List<Long> getPn() {
@@ -50,8 +52,19 @@ public class MA_search implements Serializable {
 	}
 
 
-
 	
+	public List<Long> getCat() {
+		return cat;
+	}
+
+
+
+	public void setCat(List<Long> cat) {
+		this.cat = cat;
+	}
+
+
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
@@ -60,8 +73,12 @@ public class MA_search implements Serializable {
 
 	@Override
 	public String toString() {
-		return "MA_search [pn=" + pn + ", gndr=" + gndr + "]";
+		return "MA_search [pn=" + pn + ", gndr=" + gndr + ", cat=" + cat + "]";
 	}
+
+
+
+	
 
 	
 }

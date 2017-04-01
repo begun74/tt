@@ -238,9 +238,10 @@
 
 									<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
 										<table class="tab tab-drag">
-											<c:forEach items="${dirProviders}" var="dirProvider">
+											<c:forEach items="${dirProviders}" var="dirProvider" varStatus="loop">
 												<tr>
 													<td class="dragHandle">&nbsp;</td>
+													<td>${loop.count}</td>
 													<td style="cursor:pointer;" onclick="$('#name').val('${dirProvider.name}'); $('#code').val('${dirProvider.code}');">(${dirProvider.id}) ${dirProvider.name}</td>
 													<td style="cursor:pointer;" onclick="$('#name').val('${dirProvider.name}'); $('#code').val('${dirProvider.code}');">${dirProvider.code}</td>
 							         				<td>

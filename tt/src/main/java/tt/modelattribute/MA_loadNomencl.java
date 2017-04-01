@@ -21,6 +21,8 @@ public class MA_loadNomencl  implements IMAmodel {
 	private int col_codeNomenclGroup=4;
 	private int col_gender=5;
 	private int col_pathToImage=6;
+	private int col_model=7;
+	private int col_codeProvider = 8; //Код поставщика
 	
 	private transient  boolean save;
 	private boolean autoload;
@@ -63,6 +65,14 @@ public class MA_loadNomencl  implements IMAmodel {
 	}
 	
 	
+	public int getCol_model() {
+		return col_model;
+	}
+
+	public void setCol_model(int col_model) {
+		this.col_model = col_model;
+	}
+
 	public int getCol_codeNomenclGroup() {
 		return col_codeNomenclGroup;
 	}
@@ -89,7 +99,17 @@ public class MA_loadNomencl  implements IMAmodel {
 		this.col_pathToImage = col_pathToImage;
 	}
 
+	
 
+	public int getCol_codeProvider() {
+		return col_codeProvider;
+	}
+
+	public void setCol_codeProvider(int col_codeProvider) {
+		this.col_codeProvider = col_codeProvider;
+	}
+
+	
 	public boolean isSave() {
 		return save;
 	}

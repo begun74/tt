@@ -5,7 +5,7 @@
 http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
          id="WebApp_ID" version="2.5">
 
-    <display-name>it</display-name>
+    <display-name>tt_site</display-name>
     
    <!--
 		- Location of the XML file that defines the root application context.
@@ -39,4 +39,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 -->
+
+	<error-page> 
+	  <error-code>404</error-code> 
+	  <location>/error404</location>
+	</error-page>
+	
+	
 </web-app>

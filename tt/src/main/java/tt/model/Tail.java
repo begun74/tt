@@ -16,6 +16,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 
 @Entity
 @Table(name = "tails")
@@ -53,13 +56,15 @@ public class Tail implements  IModel {
 
 	private String size;
 
+	/*
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_provider")
 	@NotNull
 	private DirProvider dirProvider;
-
+*/
 	
 	@ManyToOne(fetch = FetchType.EAGER)
+	//@Fetch(FetchMode.SELECT)
 	@JoinColumn(name = "fk_id_nomenclature", nullable=false)
 	@NotNull
 	private DirNomenclature dirNomenclature;
@@ -121,7 +126,7 @@ public class Tail implements  IModel {
 		this.destruction_date = destruction_date;
 	}
 
-
+/*
 	public DirProvider getDirProvider() {
 		return dirProvider;
 	}
@@ -129,7 +134,7 @@ public class Tail implements  IModel {
 	public void setDirProvider(DirProvider dirProvider) {
 		this.dirProvider = dirProvider;
 	}
-	
+	*/
 	
 	public DirNomenclature getDirNomenclature() {
 		return dirNomenclature;
@@ -164,8 +169,11 @@ public class Tail implements  IModel {
 	
 	@Override
 	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		return ((Tail)o).getId().compareTo(this.id);
+		
+		int cSize = ((Tail)o).getSize().compareTo(this.getSize());
+		int cDN	  = ((Tail)o).getDirNomenclature().compareTo(this.getDirNomenclature());
+		
+		return cSize+cDN;
 	}
 	
 	

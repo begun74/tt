@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,6 +19,9 @@ public class MainAutoLoad {
 	private static ScheduledExecutorService service ;
 	private static ExecutorService photoFileService ;
 
+	
+	//@Autowired
+	//private static FileHandler fileHandler;
 	
 	public static void startAutoLoad(List<Handler> pool)
 	{

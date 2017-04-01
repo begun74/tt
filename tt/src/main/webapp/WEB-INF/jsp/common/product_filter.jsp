@@ -30,31 +30,31 @@
 								</div><!--/brands_products-->
 		
 								<!-- Категория -->
-								<!-- div class="brands_products">
+								<div class="brands_products">
 									<h2><spring:message code="category"/></h2>
-									<div class="panel-group category-products" id="accordian" style="overflow-y:scroll; overflow-x: none; height:200px;">
+									<div class="brands-name" id="accordian" style="overflow-y:scroll; overflow-x: none; height:200px;">
 										<ul class="nav nav-pills nav-stacked">
 											<c:forEach items="${categories}" var="category" varStatus="loop"> 
-													<li class="checkbox"><label><input type="checkbox" />${category.name}</label></li>
+													<li class="checkbox"><a><label><input type="checkbox" name="cat" id="cat_${category.id}" value="${category.id}"/>${category.name}</label></a></li>
 											</c:forEach>
 										</ul>
 									</div>
-								</div -->
+								</div>
 								<!--/Категория-->
 							
-								
-								<div class="price-range"><!--price-range-->
+								<!--price-range-->
+								<!-- div class="price-range">
 									<h2><spring:message code="price.range"/></h2>
 									<div class="well text-center">
 										 <input type="text" class="span2" value="" data-slider-min="0" data-slider-max="200" data-slider-step="5" data-slider-value="[0,45]" id="sl2"><br />
 										 <b class="pull-left">BYN 0</b> <b class="pull-right">BYN 60</b>
 									</div>
-								</div><!--/price-range-->
+								</div --><!--/price-range-->
 								
 								<div class="well text-center">
 								
 									<button type="submit" class="btn"><spring:message code="show"/></button>
-									<button type="reset" class="btn btn-fefault"><spring:message code="reset"/></button>
+									<!-- button type="reset" class="btn btn-fefault"><spring:message code="reset"/></button -->
 								</div>
 						</form>
 						
