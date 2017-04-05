@@ -38,6 +38,10 @@
 	<%@include file="common/header_top.jsp" %>
 	<!-- header_top -->
 		
+	<!-- header_top -->
+	<%@include file="common/slider_reklama.jsp" %>
+	<!-- header_top -->
+
 	<section id="slider"><!--slider-->
 		<div class="content">
 			<div class="row">
