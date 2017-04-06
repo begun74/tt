@@ -20,13 +20,13 @@
 							<div class="item active">
 								<div class="col-sm-10 slider_reklama">
 									<!-- <span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3 -->
-									<h2>Внимание! Акция во всех магазинах ОАО "Трикотажторг"! Скидка 15% !</h2>
+									<h2>Внимание! Акция во всех магазинах ОАО "Трикотажторг"! Скидка от 15% до 25% !</h2>
 									<a href="action" class="btn btn-default get"><spring:message code="read.more"/></a>
 								</div>
 							</div>
 							<div class="item">
 								<div class="col-sm-10 slider_reklama">
-									<h2>Внимание! Акция во всех магазинах ОАО "Трикотажторг"! Скидка 15% !</h2>
+									<h2>Внимание! Акция во всех магазинах ОАО "Трикотажторг"! Скидка от 15% до 25% !</h2>
 									<a href="action" class="btn btn-default get"><spring:message code="read.more"/></a>
 									<!-- h2>&nbsp</h2 -->
 								</div>

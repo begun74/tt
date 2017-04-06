@@ -53,12 +53,14 @@
 				<div class="col-sm-9 padding-right">
 					<!-- content -->
 					<h2>Акция "День скидок"</h2> 
-					<p><b>в магазинах ОАО Трикотажторг с предоставлениям покупателям скидки с розничной цены товара в размере 15%</b></p>
+					<p><b>в магазинах ОАО Трикотажторг с предоставлениям покупателям скидки с розничной цены товара в размере 15%.</b></p>
 					<p><span>В магазине №1 Г.Минск, ул. Платонова,30/2 акция будет проходит 11,18,26 и 27 апреля.</span></p>	
 					<p>В магазине №2 г.Жодино, ул. Д.Сырокваши, 4-21 акция будет проходит 6,20 и 21 апреля.</p>
 					<p>В магазине №3 Г.Солигорск, ул. Ленина,55 акция будет проходит 11,14 и 21 апреля.</p>
 					<p>В магазине №4 г.Вилейка, ул.Красноармейская,55 акция будет проходит 7,20 и 27 апреля.</p>
 					<p>В магазине №5 г.Гомель, ул.Интернациональная,13 акция будет проходит 14,21 и 28 апреля.</p>
+					<h2>&nbsp</h2>
+					<p>Данный приказ не распространяется на товары, реализуемые по другим акциям, а также на товары на которые установлена торговая надбавка в размере 15% и меньше.</p>
 					<h2>&nbsp</h2>
 					<!-- content -->
 				</div>
@@ -83,45 +85,6 @@
     <script src="resources/js/jquery.simplePagination.js"></script>
     <script src="resources/js/bootstrap-hover-dropdown.min.js"></script>
     
-    <script>
-	    $(function() {
-				var pns = ${mA_search.pn};
-				var pns_get ='';
-				
-				var gndrs = ${mA_search.gndr};
-				var gndrs_get ='';
-				
-				var cats = ${mA_search.cat};
-				var cats_get ='';
-							
-				for (var item in pns) {
-	                $('#pn_'+pns[item]).attr("checked","checked");
-	                pns_get += '&pn='+pns[item];
-	            }
-	
-				for (var item in gndrs) {
-	                $('#gndr_'+gndrs[item]).attr("checked","checked");
-	                gndrs_get += '&gndr='+gndrs[item];
-	            }
 
-				for(var item in cats) {
-					$('#cat_'+cats[item]).attr("checked","checked");
-					cats_get += '&cat='+cats[item];
-				}
-				
-		        $('#light-pagination').pagination({
-		            items: ${allItems},
-		            itemsOnPage: ${perPage},
-		            cssStyle: 'light-theme',
-		            prevText:"<<",
-		            nextText:">>",
-		            hrefTextPrefix: "?p=",
-		            hrefTextSuffix: pns_get+gndrs_get+cats_get,
-		            currentPage: ${p}
-		        });
-				
-	    });
-	    
-    </script>
 </body>
 </html>
