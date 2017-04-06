@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
 encoding//src/main/resources=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/checkout.jsp=UTF-8
+encoding//src/main/webapp/WEB-INF/jsp/common/action.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/contact-us.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/contact-us_old.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/jsp/shop.jsp=UTF-8

@@ -127,6 +127,14 @@ public class IndexCtrl implements Serializable {
 		return model;
 	}
 	
+	@RequestMapping(value = {"/action"} , method = RequestMethod.GET)
+	public ModelAndView  action(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView("common/action");
+		//System.out.println(""+ttService.getUserList());
+		
+		return model;
+	}
 	
 	@RequestMapping(value = {"/search"} , method = RequestMethod.GET)
 	public String  searchGet(HttpSession session, @ModelAttribute("mA_search") MA_search mA_search, Model model, @RequestParam(value = "p", defaultValue = "1") int p, 
