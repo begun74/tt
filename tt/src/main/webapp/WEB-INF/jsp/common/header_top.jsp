@@ -134,11 +134,8 @@
                                     </ul>
                                 </li --> 
 								<!-- li><a href="404.html">404</a></li -->
-								<li><a href="contact-us.html" ><spring:message code="our.shops"/></a></li>
-								<li class="dropdown"><a href="contact-us.html"><spring:message code="contacts"/><i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="contact-us.html"><spring:message code="our.shops"/></a></li>
-                                    </ul>
+								<li><a href="our_shops" ><spring:message code="our.shops"/></a></li>
+								<li class="dropdown"><a href="contact-us.html"><spring:message code="contacts"/></a></ul>
 								</li>
 							</ul>
 						</div>
