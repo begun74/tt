@@ -2606,10 +2606,10 @@ give gallery's parent container a cursor: pointer.**/
 	color: red;
 }
 
-.div_200_282  {
+.div_h200_w282  {
     display:block;	
-    width:200px;
-    height:282px;
+    height:200px;
+    width:282px;
 }
 
 .div_photo_panel  {
