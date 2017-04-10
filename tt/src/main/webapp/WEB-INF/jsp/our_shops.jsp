@@ -68,7 +68,7 @@
 							<img alt="" class="div_h200_w282" src="resources/images/shop/shop1.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
-					
+					<h3>&nbsp</h3>
 					<div>
 						<div class="col-sm-9 padding-right">
 							<p><b>Магазин № 2 «Трикотаж»</b>
@@ -83,7 +83,7 @@
 							<img alt="" class="div_h200_w282" src="resources/images/shop/shop2.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
-
+					<h3>&nbsp</h3>
 					<div>
 						<div class="col-sm-9 padding-right">
 							<p><b>Магазин № 3 «Трикотаж»</b>
@@ -98,7 +98,7 @@
 							<img alt="" class="div_h200_w282" src="resources/images/shop/shop3.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
-
+					<h3>&nbsp</h3>
 					<div>
 						<div class="col-sm-9 padding-right">
 							<p><b>Магазин № 4 «Трикотаж»</b>
@@ -113,6 +113,7 @@
 							<img alt="" class="div_h200_w282" src="resources/images/shop/shop4.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
+					<h3>&nbsp</h3>
 					<div>
 						<div class="col-sm-9 padding-right">
 							<p><b>Магазин № 5 «Трикотаж»</b>
@@ -127,7 +128,7 @@
 							<img alt="" class="div_h200_w282" src="resources/images/shop/shop5.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
-					<h2>&nbsp</h2>
+					<h3>&nbsp</h3>
 				</div>
 				
 				
