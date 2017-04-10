@@ -64,7 +64,7 @@
 							<p>суббота: с 10.00 до 18.00</p>
 							<p>воскресенье — выходной день</p>
 						</div>
-						<div class="col-sm-3 padding-right">
+						<div class="col-sm-3 padding-right div_200_282">
 							<img alt="" src="resources/images/shop/shop1.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
@@ -79,7 +79,7 @@
 							<p>суббота: с 10.00 до 18.00</p>
 							<p>воскресенье — выходной день</p>
 						</div>
-						<div class="col-sm-3 padding-right">
+						<div class="col-sm-3 padding-right div_200_282">
 							<img alt="" src="resources/images/shop/shop2.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
@@ -94,7 +94,7 @@
 							<p>суббота: с 10.00 до 18.00</p>
 							<p>воскресенье: с 10.00 до 16.00</p>
 						</div>
-						<div class="col-sm-3 padding-right">
+						<div class="col-sm-3 padding-right div_200_282">
 							<img alt="" src="resources/images/shop/shop3.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
@@ -109,7 +109,7 @@
 							<p>суббота: с 10.00 до 18.00</p>
 							<p>воскресенье: с 10.00 до 16.00</p>
 						</div>
-						<div class="col-sm-3 padding-right">
+						<div class="col-sm-3 padding-right div_200_282">
 							<img alt="" src="resources/images/shop/shop4.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
@@ -123,7 +123,7 @@
 							<p>суббота: с 10.00 до 18.00</p>
 							<p>воскресенье: с 10.00 до 16.00</p>
 						</div>
-						<div class="col-sm-3 padding-right">
+						<div class="col-sm-3 padding-right div_200_282">
 							<img alt="" src="resources/images/shop/shop5.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>

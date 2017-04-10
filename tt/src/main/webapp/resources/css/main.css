@@ -2601,3 +2601,20 @@ give gallery's parent container a cursor: pointer.**/
 	color:red;
 	align: center;
 }
+
+.red_span {
+	color: red;
+}
+
+.div_200_282  {
+    display:block;	
+    width:200px;
+    height:282px;
+}
+
+.div_photo_panel  {
+	overflow-x: scroll; 
+	overflow-y: hidden;
+	height:310px; 
+	width:100%;
+}
