@@ -51,7 +51,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 padding-center">
-					<div style="align:center; background:red"><h3>Наши магазины</h3></div>
+					<div style="text-align:center;"><h3>Наши магазины</h3></div>
 				</div>
 				<div class="col-sm-12 padding-right">
 					<div>
