@@ -154,21 +154,25 @@
 					    				<tr>
 					    				<td>
 						    			<div class="div_pn">
-						    				<img id="photoNomenclature0" src="resources/images/products/nopicture.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
+						    				<div id="btn-delete0" class="btn-delete"><img src="resources/admin/images/ico/delete.png" alt="X"/></div>
+						    				<img id="photoNomenclature0" src="resources/images/products/nopicture.jpg" class="share img-responsive"  onerror="$('#btn-delete0').hide();this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
 						    			</div>
 						    			</td>
 						    			<td>
 						    			<div class="div_pn">
+						    				<div id="btn-delete1" class="btn-delete"><img src="resources/admin/images/ico/delete.png" alt="X"/></div>
 						    				<img id="photoNomenclature1" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/blank.jpg';" alt="" />
 						    			</div>
 						    			</td>
 						    			<td>
 						    			<div class="div_pn">
+						    				<div id="btn-delete2" class="btn-delete"><img src="resources/admin/images/ico/delete.png" alt="X"/></div>
 						    				<img id="photoNomenclature2" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/blank.jpg';" alt="" />
 						    			</div>
 						    			</td>
 						    			<td>
 						    			<div class="div_pn">
+						    				<div id="btn-delete3" class="btn-delete"><img src="resources/admin/images/ico/delete.png" alt="X"/></div>
 						    				<img id="photoNomenclature3" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/blank.jpg';" alt="" />
 						    			</div>
 						    			</td>

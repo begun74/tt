@@ -349,7 +349,7 @@ a:hover.ico   { background-position: 0 0; }
 
 
 .div_pn  {
-    display:block;	
+    display: block;	
     width:200px;
     height:282px;
 }
@@ -359,4 +359,11 @@ a:hover.ico   { background-position: 0 0; }
 	overflow-y: hidden;
 	height:310px; 
 	width:100%;
+}
+
+.btn-delete {
+   cursor: pointer;
+   position: relative;
+   left: 120px;
+   top: 2px;
 }
