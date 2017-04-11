@@ -154,6 +154,16 @@ public class IndexCtrl implements Serializable {
 		return model;
 	}
 
+	@RequestMapping(value = {"/about_company"} , method = RequestMethod.GET)
+	public ModelAndView  about_company(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView("about_company");
+		//System.out.println(""+ttService.getUserList());
+		
+		return model;
+	}
+
+	
 	@RequestMapping(value = {"/search"} , method = RequestMethod.GET)
 	public String  searchGet(HttpSession session, @ModelAttribute("mA_search") MA_search mA_search, Model model, @RequestParam(value = "p", defaultValue = "1") int p, 
 								@RequestParam(value = "perPage", defaultValue = "9") int perPage) 

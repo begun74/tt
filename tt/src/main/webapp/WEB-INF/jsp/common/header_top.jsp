@@ -137,6 +137,7 @@
 								<li><a href="our_shops" ><spring:message code="our.shops"/></a></li>
 								<li class="dropdown"><a href="contact-us.html"><spring:message code="contacts"/></a>
 								<li><a href="vacancies" ><spring:message code="info.vacancies"/></a></li>
+								<li><a href="about_company" ><spring:message code="about.company"/></a></li>
 								</ul>
 								
 								</li>
