@@ -2,7 +2,15 @@
 
 function delObject(clazz,id,act)
 {
-	if(confirm('Delete record?'))location.href='admin/delObject?id='+id+'&clazz='+clazz+'&act='+act;
+	if(confirm('Удалить запись?'))location.href='admin/delObject?id='+id+'&clazz='+clazz+'&act='+act;
+}
+
+function delPhotoFile(code, file_number)
+{
+	if(confirm('Удалить фото?'))
+	{
+		$('#photoNomenclature'+file_number).remove();
+	}
 }
 
 function checkAllCols(amount){
