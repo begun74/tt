@@ -26,8 +26,8 @@
 							</div>
 							<div class="item">
 								<div class="col-sm-10 slider_reklama">
-									<h2>Расширенная распродажа ! Скидка до 25% для взрослых и до 20% на товары для детей и подростков!</h2>
-									<a href="action" class="btn btn-default get"><spring:message code="read.more"/></a>
+									<h2> Акция "Расширенная распродажа"* во всех магазинах ОАО "Трикотажторг"! С 4 по 30 апреля!</h2>
+									<a href="action#2" class="btn btn-default get"><spring:message code="read.more"/></a>
 									<!-- h2>&nbsp</h2 -->
 								</div>
 							</div>

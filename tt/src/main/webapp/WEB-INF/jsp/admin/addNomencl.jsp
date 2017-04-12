@@ -152,26 +152,47 @@
 					    		<div class="div_photo_panel">
 					    			<table>
 					    				<tr>
-					    				<td>
+						    				<td>
+								    			<div id="div_pn0" class="div_pn">
+								    			</div>
+							    			</td>
+						    				<td>
+								    			<div id="div_pn1" class="div_pn">
+								    			</div>
+							    			</td>
+						    				<td>
+								    			<div id="div_pn2" class="div_pn">
+								    			</div>
+							    			</td>
+						    				<td>
+								    			<div id="div_pn3" class="div_pn">
+								    			</div>
+							    			</td>
+						    			
+						    			<!-- td>
 						    			<div class="div_pn">
-						    				<img id="photoNomenclature0" src="resources/images/products/nopicture.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
-						    			</div>
-						    			</td>
-						    			<td>
-						    			<div class="div_pn">
+											<div id="btn-delete1" class="btn-delete">
+											    <a><img title="Удалить" src="resources/admin/images/ico/delete.png"></a>
+											</div>
 						    				<img id="photoNomenclature1" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/blank.jpg';" alt="" />
 						    			</div>
 						    			</td>
 						    			<td>
 						    			<div class="div_pn">
+											<div id="btn-delete2" class="btn-delete">
+											    <a><img title="Удалить" src="resources/admin/images/ico/delete.png"></a>
+											</div>
 						    				<img id="photoNomenclature2" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/blank.jpg';" alt="" />
 						    			</div>
 						    			</td>
 						    			<td>
 						    			<div class="div_pn">
+											<div id="btn-delete3" class="btn-delete">
+											    <a><img title="Удалить" src="resources/admin/images/ico/delete.png"></a>
+											</div>
 						    				<img id="photoNomenclature3" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/blank.jpg';" alt="" />
 						    			</div>
-						    			</td>
+						    			</td -->
 						    			</tr>
 					    			</table>
 				    			</div>
@@ -380,11 +401,44 @@
 	    });
   		
   		function viewPhotoNomencl(code) {
+  			
   			$('#codeNomencl').val(code);
 			$('#submitPhoto').attr('disabled','');
   			
+			for(var i=0; i<4 ;i++) {
+				//---- Clear div ---
+				$('#div_pn'+i).html("");
+				
+				//---- Add photo ---
+				$('<img/>', {
+					
+					id: 'photoNomenclature'+i,
+					src:    '/pics/products/'+code+'/S/'+code+'_S_'+i+'.jpg',
+					alt: '',
+					error:  function(e){
+						  //$( this ).attr( "src", 'resources/images/products/nopicture.jpg' );
+					} 
+					  
+				}).appendTo($('#div_pn'+i));
+				
+				$('<img/>', {
+					
+					src:    'resources/admin/images/ico/delete.png',
+					alt: ''
+					  
+				}).appendTo($('#div_pn'+i));
+				
+
+			}
+  						
+  		}
+  		
+  		
+  		
+  		function f1() {
   			$('#photoNomenclature0').error(function() {
   			    $( this ).attr( "src", 'resources/images/products/nopicture.jpg' );
+  			    
   		    }).attr('src','/pics/products/'+code+'/S/'+code+'_S_0.jpg');
 
   			$('#photoNomenclature1').error(function() {
@@ -398,8 +452,14 @@
   			$('#photoNomenclature3').error(function() {
   			    $( this ).attr( "src", 'resources/images/products/blank.jpg' );
   		    }).attr('src','/pics/products/'+code+'/S/'+code+'_S_3.jpg');
+  			
+  			$('#btn-delete0 a').attr('href','javascript:delPhotoFile('+code+',0)');
+  			$('#btn-delete1 a').attr('href','javascript:delPhotoFile('+code+',1)');
+  			$('#btn-delete2 a').attr('href','javascript:delPhotoFile('+code+',2)');
+  			$('#btn-delete3 a').attr('href','javascript:delPhotoFile('+code+',3)');
+
   		}
-	    
+
     </script>
 </div>
 </body>

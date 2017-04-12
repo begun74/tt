@@ -31,65 +31,41 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="resources/resources/images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="resources/resources/images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="resources/resources/images/ico/apple-touch-icon-57-precomposed.png">
+    
+    <style>
+      p { text-indent: 25px; }
+    </style>
 </head><!--/head-->
 
 <body>
 	<!-- header_top -->
-	<%@include file="header_top.jsp" %>
+	<%@include file="common/header_top.jsp" %>
 	<!-- header_top -->
 		
-	<!-- header_top -->
-	<%@include file="slider_reklama.jsp" %>
-	<!-- header_top -->
+	<!-- slider_reklama -->
+	<%@include file="common/slider_reklama.jsp" %>
+	<!-- slider_reklama -->
 
-	
-	<section>
+	<!-- slider_main -->
+	<!-- %@include file="common/slider_main.jsp" % -->
+	<!-- slider_main -->
+
+
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
-				</div>
-				<div id="1" class="col-sm-9 padding-right">
-					<!-- content -->
-					<h2>Акция "День скидок" <span class="red_span">*</span></h2> 
-					<p><b>в магазинах ОАО Трикотажторг с предоставлениям покупателям скидки с розничной цены товара в размере 15%.</b></p>
-					<p><span>В магазине №1 Г.Минск, ул. Платонова,30/2 акция будет проходит 11,18,26 и 27 апреля.</span></p>	
-					<p>В магазине №2 г.Жодино, ул. Д.Сырокваши, 4-21 акция будет проходит 6,20 и 21 апреля.</p>
-					<p>В магазине №3 Г.Солигорск, ул. Ленина,55 акция будет проходит 11,14 и 21 апреля.</p>
-					<p>В магазине №4 г.Вилейка, ул.Красноармейская,55 акция будет проходит 7,20 и 27 апреля.</p>
-					<p>В магазине №5 г.Гомель, ул.Интернациональная,13 акция будет проходит 14,21 и 28 апреля.</p>
-					<p><span class="red_span">*</span>Данная акция не распространяется на товары, реализуемые по другим акциям, а также на товары на которые установлена торговая надбавка в размере 15% и меньше.</p>
-					<h2>&nbsp</h2>
-					<!-- content -->
-				</div>
-				
-								
-				<div class="col-sm-3">
-				</div>
-				<div id="2" class="col-sm-9 padding-right">
-					<!-- content -->
-					<h2>Акция "Расширенная распродажа" <span class="red_span">*</span></h2> 
-					<p><b>С 04.04.2017  по 30.04.2017 проводится  расширенная  распродажа товаров в магазинах «Трикотаж» №1,2,3,4,5.</b></p>
-					<ul>
-						<p>На период проведения  распродажи действует  скидка с розничной цены на товары, участвующие в акции:</p>
-						<li>-  в размере 25%  на товары для взрослых</li>
-						<li>-  в размере 20%  на товары для детей и подростков</li>
-					</ul>
-					
-					<p><span class="red_span">*</span>Данная акция не распространяется на товары, реализуемые по другим акциям, а  также товары, на которые установлена торговая надбавка в размере 15% и меньше.</p>
-					<h2>&nbsp</h2>
-					<!-- content -->
-				</div>
-				
+				<section>
+					<div class="col-sm-12 padding-right">
+							<h3 style="text-align:center;"><spring:message code="about.company"/></h3>
+							<p><spring:message code="about.company.text"/></p>
+						<h3>&nbsp</h3>
+					</div>
+				</section>
 			</div>
 		</div>
-	</section>
-	
 	<!-- footer -->
-	<%@include file="footer.jsp" %>
+	<%@include file="common/footer.jsp" %>
 	<!-- footer -->
-	
 
-  
     <script src="resources/js/jquery.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/jquery.scrollUp.min.js"></script>
@@ -98,7 +74,6 @@
     <script src="resources/js/main.js"></script>
     <script src="resources/js/jquery.simplePagination.js"></script>
     <script src="resources/js/bootstrap-hover-dropdown.min.js"></script>
-    
 
 </body>
 </html>

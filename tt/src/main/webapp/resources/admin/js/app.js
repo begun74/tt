@@ -2,7 +2,33 @@
 
 function delObject(clazz,id,act)
 {
-	if(confirm('Delete record?'))location.href='admin/delObject?id='+id+'&clazz='+clazz+'&act='+act;
+	if(confirm('Удалить запись?'))location.href='admin/delObject?id='+id+'&clazz='+clazz+'&act='+act;
+}
+
+function delPhotoFile(code, file_number)
+{
+	if(confirm('Удалить фото?'))
+	{
+		//$('#photoNomenclature'+file_number).hide();
+		
+		
+		$('<img/>', {
+			
+			id: 'photoNomenclature'+file_number,
+			src:    '/pics/products/'+code+'/S/'+code+'_S_'+file_number+'.jpg',
+			error:  function(e){
+				  $( this ).attr( "src", 'resources/images/products/nopicture.jpg' );
+				  $('#btn-delete'+file_number).hide();
+			}
+			  
+		}).appendTo($('div_pn'));
+
+		//alert('show');
+		
+		//$('#photoNomenclature'+file_number).show();
+		//$('#btn-delete'+file_number).show();
+
+	}
 }
 
 function checkAllCols(amount){

@@ -50,16 +50,85 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12 padding-right">
-					<h3>Наши магазины</h3>
-					<p>Магазин №2 г.Жодино, ул. Д.Сырокваши, 4-21.</p>
-					<p>Магазин №3 Г.Солигорск, ул. Ленина,55.</p>
-					<p>Магазин №4 г.Вилейка, ул.Красноармейская,55.</p>
-					<p>Магазин №5 г.Гомель, ул.Интернациональная,13.</p>
-					<h2>&nbsp</h2>
+				<div class="col-sm-12 padding-center">
+					<div style="text-align:center;"><h3>Наши магазины</h3></div>
 				</div>
-				<div class="col-sm-9 padding-right">
-
+				<div class="col-sm-12 padding-right">
+					<div>
+						<div class="col-sm-9 padding-right">
+							<p><b>Магазин № 1 «Трикотаж»</b>
+							<p>Адрес: г. Минск, ул. Платонова, д. 30</p>
+							<p>Тел.: (017) 292-39-11</p>
+							<p>Режим работы:</p>
+							<p>понедельник - пятница: с 10.00 до 19.00</p>
+							<p>суббота: с 10.00 до 18.00</p>
+							<p>воскресенье — выходной день</p>
+						</div>
+						<div class="col-sm-3 padding-right">
+							<img alt="" class="div_h200_w282" src="resources/images/shop/shop1_1.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
+						</div>
+					</div>
+					<h3>&nbsp</h3>
+					<div>
+						<div class="col-sm-9 padding-right">
+							<p><b>Магазин № 2 «Трикотаж»</b>
+							<p>Адрес:222160,  г. Жодино, ул. Сырокваша, д. 4</p>
+							<p>Тел.: (01775)  3-37-52</p>
+							<p>Режим работы:</p>
+							<p>понедельник - пятница: с 10.00 до 19.00</p>
+							<p>суббота: с 10.00 до 18.00</p>
+							<p>воскресенье — выходной день</p>
+						</div>
+						<div class="col-sm-3 padding-right">
+							<img alt="" class="div_h200_w282" src="resources/images/shop/shop2_2.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
+						</div>
+					</div>
+					<h3>&nbsp</h3>
+					<div>
+						<div class="col-sm-9 padding-right">
+							<p><b>Магазин № 3 «Трикотаж»</b>
+							<p>Адрес: г. Солигорск, ул. Ленина, д. 55</p>
+							<p>Тел.: (210) 4-63-06</p>
+							<p>Режим работы:</p>
+							<p>понедельник - пятница: с 10.00 до 19.00</p>
+							<p>суббота: с 10.00 до 18.00</p>
+							<p>воскресенье: с 10.00 до 16.00</p>
+						</div>
+						<div class="col-sm-3 padding-right">
+							<img alt="" class="div_h200_w282" src="resources/images/shop/shop3_3.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
+						</div>
+					</div>
+					<h3>&nbsp</h3>
+					<div>
+						<div class="col-sm-9 padding-right">
+							<p><b>Магазин № 4 «Трикотаж»</b>
+							<p>Адрес: г. Вилейка, ул. Красноармейская, д. 55</p>
+							<p>Тел.: (271) 5-47-84</p>
+							<p>Режим работы:</p>
+							<p>понедельник - пятница: с 10.00 до 19.00</p>
+							<p>суббота: с 10.00 до 18.00</p>
+							<p>воскресенье: с 10.00 до 16.00</p>
+						</div>
+						<div class="col-sm-3 padding-right div_200_282">
+							<img alt="" class="div_h200_w282" src="resources/images/shop/shop4_4.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
+						</div>
+					</div>
+					<h3>&nbsp</h3>
+					<div>
+						<div class="col-sm-9 padding-right">
+							<p><b>Магазин № 5 «Трикотаж»</b>
+							<p>Адрес: г. Гомель, ул. Интернациональная, д. 13</p>
+							<p>Тел.: (232) 74-79-30</p>
+							<p>Режим работы:</p>
+							<p>понедельник - пятница: с 10.00 до 19.00</p>
+							<p>суббота: с 10.00 до 18.00</p>
+							<p>воскресенье: с 10.00 до 16.00</p>
+						</div>
+						<div class="col-sm-3 padding-right div_200_282">
+							<img alt="" class="div_h200_w282" src="resources/images/shop/shop5_5.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
+						</div>
+					</div>
+					<h3>&nbsp</h3>
 				</div>
 				
 				
@@ -81,3 +150,4 @@
     <script src="resources/js/bootstrap-hover-dropdown.min.js"></script>
 
 </body>
+</html>
