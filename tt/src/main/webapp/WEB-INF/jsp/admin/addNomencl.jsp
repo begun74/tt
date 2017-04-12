@@ -406,7 +406,10 @@
 			$('#submitPhoto').attr('disabled','');
   			
 			for(var i=0; i<4 ;i++) {
+				//---- Clear div ---
+				$('#div_pn'+i).html("");
 				
+				//---- Add photo ---
 				$('<img/>', {
 					
 					id: 'photoNomenclature'+i,
@@ -417,6 +420,14 @@
 					} 
 					  
 				}).appendTo($('#div_pn'+i));
+				
+				$('<img/>', {
+					
+					src:    'resources/admin/images/ico/delete.png',
+					alt: ''
+					  
+				}).appendTo($('#div_pn'+i));
+				
 
 			}
   						
