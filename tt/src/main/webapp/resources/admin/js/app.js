@@ -9,7 +9,8 @@ function delPhotoFile(code, file_number)
 {
 	if(confirm('Удалить фото?'))
 	{
-		$('#photoNomenclature'+file_number).remove();
+		$('#photoNomenclature'+file_number).hide();
+		$('#btn-delete'+file_number).hide();
 	}
 }
 

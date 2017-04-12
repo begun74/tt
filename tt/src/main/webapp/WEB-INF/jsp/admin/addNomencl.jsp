@@ -155,7 +155,7 @@
 					    				<td>
 						    			<div class="div_pn">
 											<div id="btn-delete0" class="btn-delete">
-											    <a><img title="Delete" src="resources/admin/images/ico/delete.png"></a>
+											    <a><img title="Удалить" src="resources/admin/images/ico/delete.png"></a>
 											</div>
 						    				<img id="photoNomenclature0" src="resources/images/products/nopicture.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" alt="NO IMAGE" />
 						    			</div>
@@ -163,7 +163,7 @@
 						    			<td>
 						    			<div class="div_pn">
 											<div id="btn-delete1" class="btn-delete">
-											    <a><img title="Delete" src="resources/admin/images/ico/delete.png"></a>
+											    <a><img title="Удалить" src="resources/admin/images/ico/delete.png"></a>
 											</div>
 						    				<img id="photoNomenclature1" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/blank.jpg';" alt="" />
 						    			</div>
@@ -171,7 +171,7 @@
 						    			<td>
 						    			<div class="div_pn">
 											<div id="btn-delete2" class="btn-delete">
-											    <a><img title="Delete" src="resources/admin/images/ico/delete.png"></a>
+											    <a><img title="Удалить" src="resources/admin/images/ico/delete.png"></a>
 											</div>
 						    				<img id="photoNomenclature2" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/blank.jpg';" alt="" />
 						    			</div>
@@ -179,7 +179,7 @@
 						    			<td>
 						    			<div class="div_pn">
 											<div id="btn-delete3" class="btn-delete">
-											    <a><img title="Delete" src="resources/admin/images/ico/delete.png"></a>
+											    <a><img title="Удалить" src="resources/admin/images/ico/delete.png"></a>
 											</div>
 						    				<img id="photoNomenclature3" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/blank.jpg';" alt="" />
 						    			</div>
@@ -395,6 +395,17 @@
   			$('#codeNomencl').val(code);
 			$('#submitPhoto').attr('disabled','');
   			
+			for(var i=0; i<4 ;i++) {
+	  			$('#photoNomenclature'+i).error(function() {
+	  			    $( this ).attr( "src", 'resources/images/products/nopicture.jpg' );
+	  		    }).attr('src','/pics/products/'+code+'/S/'+code+'_S_'+i+'.jpg');
+				
+	  			$('#btn-delete'+i+' a').attr('href','javascript:delPhotoFile('+code+','+i+')');
+			}
+			
+  		}
+
+  		function f1(){
   			$('#photoNomenclature0').error(function() {
   			    $( this ).attr( "src", 'resources/images/products/nopicture.jpg' );
   		    }).attr('src','/pics/products/'+code+'/S/'+code+'_S_0.jpg');
@@ -415,8 +426,8 @@
   			$('#btn-delete1 a').attr('href','javascript:delPhotoFile('+code+',1)');
   			$('#btn-delete2 a').attr('href','javascript:delPhotoFile('+code+',2)');
   			$('#btn-delete3 a').attr('href','javascript:delPhotoFile('+code+',3)');
+
   		}
-	    
     </script>
 </div>
 </body>
