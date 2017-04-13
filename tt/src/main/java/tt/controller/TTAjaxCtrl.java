@@ -28,6 +28,7 @@ import tt.model.Order;
 import tt.model.OrderItems;
 import tt.model.Tail;
 import tt.service.TTServiceImpl;
+import tt.util.FileUpload;
 
 
 @Controller
@@ -42,6 +43,10 @@ public class TTAjaxCtrl {
 	
 	@Autowired
 	private TTServiceImpl ttService;  //Service which will do all data retrieval/manipulation work
+	
+	@Autowired
+	private FileUpload fileUpload;
+
 	
 
 	@ResponseBody
@@ -62,10 +67,22 @@ public class TTAjaxCtrl {
 			@RequestParam(value = "code",required = true) Long code, 
 				@RequestParam(value = "file_number",required = true) int file_number) 
 	{
-		if(session.isNew()) return new ResponseEntity<String>("FORBIDDEN",HttpStatus.FORBIDDEN);
-		System.out.println("Delete photo file:  code " +code +",  file_number  " +file_number);
+		ResponseEntity<String> OK_Resp = new ResponseEntity<String>("OK",HttpStatus.OK);
+		ResponseEntity<String> ERR_Resp = new ResponseEntity<String>("ERR",HttpStatus.FORBIDDEN);
 		
-		return  new ResponseEntity<String>("OK",HttpStatus.OK);
+		if(session.isNew()) return new ResponseEntity<String>("FORBIDDEN",HttpStatus.FORBIDDEN);
+		
+		if(fileUpload.deletePhoto(code,file_number)) 
+		{
+			System.out.println("Delete photo file:  code " +code +",  file_number  " +file_number);
+			return OK_Resp;
+		}
+		else
+		{
+			System.out.println("!! ERROR: Delete photo file:  code " +code +",  file_number  " +file_number);
+			return ERR_Resp;
+		}
+		
 	}
 
 	@ResponseBody

@@ -414,6 +414,19 @@ public class FileUpload {
 		
 	}
 	
+	public boolean deletePhoto(Long code, int file_number) {
+		
+		File largeFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"L");
+
+		File mediumFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"M");
+		
+		File smallFolder = new File(Constants.UPLOAD_FILE_PATH+File.separator+code+File.separator+"S");
+		
+		return new File(largeFolder+File.separator+code+"_L_"+ file_number +".jpg").delete() && 
+					new File(mediumFolder+File.separator+code+"_M_"+file_number+".jpg").delete() && 
+							new File(smallFolder+File.separator+code+"_S_"+file_number+".jpg").delete();
+	}
+	
 	public BufferedImage scaleImage(BufferedImage img, int targetWidth, int targetHeight) {
 
 	    int type = (img.getTransparency() == Transparency.OPAQUE) ? BufferedImage.TYPE_INT_RGB : BufferedImage.TYPE_INT_ARGB;
