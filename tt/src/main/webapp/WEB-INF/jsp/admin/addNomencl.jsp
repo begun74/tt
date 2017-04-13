@@ -168,31 +168,6 @@
 								    			<div id="div_pn3" class="div_pn">
 								    			</div>
 							    			</td>
-						    			
-						    			<!-- td>
-						    			<div class="div_pn">
-											<div id="btn-delete1" class="btn-delete">
-											    <a><img title="Удалить" src="resources/admin/images/ico/delete.png"></a>
-											</div>
-						    				<img id="photoNomenclature1" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/blank.jpg';" alt="" />
-						    			</div>
-						    			</td>
-						    			<!-- td>
-						    			<div class="div_pn">
-											<div id="btn-delete2" class="btn-delete">
-											    <a><img title="Удалить" src="resources/admin/images/ico/delete.png"></a>
-											</div>
-						    				<img id="photoNomenclature2" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/blank.jpg';" alt="" />
-						    			</div>
-						    			</td>
-						    			<td>
-						    			<div class="div_pn">
-											<div id="btn-delete3" class="btn-delete">
-											    <a><img title="Удалить" src="resources/admin/images/ico/delete.png"></a>
-											</div>
-						    				<img id="photoNomenclature3" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/blank.jpg';" alt="" />
-						    			</div>
-						    			</td -->
 						    			</tr>
 					    			</table>
 				    			</div>

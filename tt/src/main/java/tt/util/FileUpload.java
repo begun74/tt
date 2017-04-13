@@ -397,6 +397,8 @@ public class FileUpload {
 		}
 		catch(java.io.FileNotFoundException fnf)
 		{
+			System.out.println("\n========= ERROR: FileUpload.downloadPhoto =======");
+			fnf.printStackTrace(System.out);
 			fnf.getMessage();
 		}
 		catch(NullPointerException e) {
