@@ -154,18 +154,22 @@
 					    				<tr>
 						    				<td>
 								    			<div id="div_pn0" class="div_pn">
+								    				<div id="btn-delete0" class="btn-delete"></div>
 								    			</div>
 							    			</td>
 						    				<td>
 								    			<div id="div_pn1" class="div_pn">
+								    				<div id="btn-delete1" class="btn-delete"></div>
 								    			</div>
 							    			</td>
 						    				<td>
 								    			<div id="div_pn2" class="div_pn">
+								    				<div id="btn-delete2" class="btn-delete"></div>
 								    			</div>
 							    			</td>
 						    				<td>
 								    			<div id="div_pn3" class="div_pn">
+								    				<div id="btn-delete3" class="btn-delete"></div>
 								    			</div>
 							    			</td>
 						    			
@@ -416,19 +420,19 @@
 					src:    '/pics/products/'+code+'/S/'+code+'_S_'+i+'.jpg',
 					alt: '',
 					error:  function(e){
-						  //$( this ).attr( "src", 'resources/images/products/nopicture.jpg' );
+						  //$( this ).attr( "src", 'resources/images/products/blank.jpg' );
 					} 
 					  
 				}).appendTo($('#div_pn'+i));
+				
 				
 				$('<img/>', {
 					
 					src: 'resources/admin/images/ico/delete.png',
 					alt: ''
 					  
-				}).appendTo($('#div_pn'+i));
+				}).appendTo($('#btn-delete'+i));
 				
-
 			}
   						
   		}

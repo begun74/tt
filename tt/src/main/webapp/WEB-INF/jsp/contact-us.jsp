@@ -110,6 +110,8 @@
 							<p><spring:message code="contact.info.address"/></p>
 							<p><spring:message code="contact.info.phone1"/></p>
 							<p><spring:message code="contact.info.phone2"/></p>
+							<p><spring:message code="contact.info.email"/></p>
+							<h2>&nbsp</h2>
 							
 							<p><h2 class="title text-center"><spring:message code="contact.info.main"/></h2></p>
 							<ul>

@@ -364,12 +364,11 @@ a:hover.ico   { background-position: 0 0; }
 }
 
 .div_pn .btn-delete {
+	background: gray;
 	position: absolute;
     cursor: pointer;
     top: 2px;
     left: 2px;
-	z-index: 100;
-	opacity: 0.7;
 }
 
 .photoimage {
