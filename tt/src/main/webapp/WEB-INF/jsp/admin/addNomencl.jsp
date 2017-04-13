@@ -404,11 +404,11 @@
   			
   			$('#codeNomencl').val(code);
 			$('#submitPhoto').attr('disabled','');
-  			
+  			var error_load_photo = false;
 			for(var i=0; i<4 ;i++) {
 				//---- Clear div ---
 				$('#div_pn'+i).html("");
-				$('#div_pn'+i).prepend("<div id='btn-delete"+i+"' class='btn-delete'><a href='javascript:delPhotoFile("+code+","+i+")''><img src='resources/admin/images/ico/delete.png' /></a></div>");
+				//$('#div_pn'+i).prepend("<div id='btn-delete"+i+"' class='btn-delete'><a href='javascript:delPhotoFile("+code+","+i+")''><img src='resources/admin/images/ico/delete.png' /></a></div>");
 				
 				//---- Add photo ---
 				$('<img/>', {
@@ -418,22 +418,18 @@
 					alt: '',
 					error:  function(e){
 						  //$( this ).attr( "src", 'resources/images/products/blank.jpg' );
-						  $('#btn-delete'+i).remove();
+						error_load_photo = true;
 					} 
 					  
 				}).appendTo($('#div_pn'+i));
 				
-				/*
-				$('<img/>', {
-					
-					src: 'resources/admin/images/ico/delete.png',
-					title: "Удалить",
-					alt: ''
-					  
-				}).wrap($('<a>',{
-					href: 'javascript:delPhotoFile('+code+','+i+')'
-				})).prependTo($('#btn-delete'+i));
-				*/
+				if(!error_load_photo) 
+				{
+					//alert(error_load_photo);
+					$('#div_pn'+i).append("<div id='btn-delete"+i+"' class='btn-delete'><a href='javascript:delPhotoFile("+code+","+i+")''><img src='resources/admin/images/ico/delete.png' /></a></div>");
+				}
+
+				
 			}
   						
   		}

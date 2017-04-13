@@ -1,4 +1,7 @@
 
+
+var errAjax = 'Error connect to AJAX server!';
+
 function increment(obj, value) {
 	
 	alert(obj+'  '+value);

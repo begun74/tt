@@ -1,4 +1,4 @@
-
+var errAjax = 'Error connect to AJAX server!';
 
 function delObject(clazz,id,act)
 {
@@ -9,24 +9,23 @@ function delPhotoFile(code, file_number)
 {
 	if(confirm('Удалить фото?'))
 	{
-		//$('#photoNomenclature'+file_number).hide();
 		
-		
-		$('<img/>', {
-			
-			id: 'photoNomenclature'+file_number,
-			src:    '/pics/products/'+code+'/S/'+code+'_S_'+file_number+'.jpg',
-			error:  function(e){
-				  $( this ).attr( "src", 'resources/images/products/nopicture.jpg' );
-				  $('#btn-delete'+file_number).hide();
+		$.ajax({
+			type : "GET",
+			url : "delPhotoFile?code="+code+"&file_number="+file_number,
+			success : function(data) 
+			{
+				if(data === 'OK')
+				{
+					$('#photoNomenclature'+file_number).hide();
+					$('#btn-delete'+file_number).hide();
+				}
+			},
+			error : function(e) {
+				alert(errAjax);
+				display(e);
 			}
-			  
-		}).appendTo($('div_pn'));
-
-		//alert('show');
-		
-		//$('#photoNomenclature'+file_number).show();
-		//$('#btn-delete'+file_number).show();
+		});
 
 	}
 }

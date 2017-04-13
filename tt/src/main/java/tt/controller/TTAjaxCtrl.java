@@ -57,6 +57,18 @@ public class TTAjaxCtrl {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value = "/delPhotoFile", method = RequestMethod.GET)
+	public ResponseEntity<String>  delPhotoFile(HttpSession session, 
+			@RequestParam(value = "code",required = true) Long code, 
+				@RequestParam(value = "file_number",required = true) int file_number) 
+	{
+		if(session.isNew()) return new ResponseEntity<String>("FORBIDDEN",HttpStatus.FORBIDDEN);
+		System.out.println("Delete photo file:  code " +code +",  file_number  " +file_number);
+		
+		return  new ResponseEntity<String>("OK",HttpStatus.OK);
+	}
+
+	@ResponseBody
 	@RequestMapping(value = "/clearSessErrors", method = RequestMethod.GET)
 	public HttpStatus  clearSessErrors(HttpSession session, @RequestParam(value = "error_name",required = false) String error_name) 
 	{

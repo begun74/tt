@@ -364,7 +364,7 @@ a:hover.ico   { background-position: 0 0; }
 }
 
 .div_pn .btn-delete {
-	background: gray;
+	
 	position: absolute;
     cursor: pointer;
     top: 2px;
