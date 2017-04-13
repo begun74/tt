@@ -423,7 +423,7 @@
 				
 				$('<img/>', {
 					
-					src:    'resources/admin/images/ico/delete.png',
+					src: 'resources/admin/images/ico/delete.png',
 					alt: ''
 					  
 				}).appendTo($('#div_pn'+i));
