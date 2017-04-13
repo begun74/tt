@@ -17,12 +17,12 @@ function delPhotoFile(code, file_number)
 			{
 				if(data === 'OK')
 				{
-					 $('#div_pn'+file_number).css('display', 'none');
-                     $('#btn-delete'+file_number).css('display', 'none');
+					$('#photoNomenclature'+file_number).remove();
+					$('#btn-delete'+file_number).remove();
 				}
 			},
 			error : function(e) {
-				//alert('ERROR to delete file - '+code +'('+file_number+')' );
+				alert('ERROR to delete file - '+code +'('+file_number+')' );
 				display(e);
 			}
 		});

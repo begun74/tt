@@ -399,10 +399,7 @@
 				}).appendTo($('#div_pn'+i));
 				
 				if(!error_load_photo) 
-				{
-					//alert(error_load_photo);
 					$('#div_pn'+i).append("<div id='btn-delete"+i+"' class='btn-delete'><a href='javascript:delPhotoFile("+code+","+i+")''><img src='resources/admin/images/ico/delete.png' /></a></div>");
-				}
 
 				
 			}
