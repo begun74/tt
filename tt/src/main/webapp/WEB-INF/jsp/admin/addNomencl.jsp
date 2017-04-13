@@ -154,22 +154,18 @@
 					    				<tr>
 						    				<td>
 								    			<div id="div_pn0" class="div_pn">
-								    				<div id="btn-delete0" class="btn-delete"></div>
 								    			</div>
 							    			</td>
 						    				<td>
 								    			<div id="div_pn1" class="div_pn">
-								    				<div id="btn-delete1" class="btn-delete"></div>
 								    			</div>
 							    			</td>
 						    				<td>
 								    			<div id="div_pn2" class="div_pn">
-								    				<div id="btn-delete2" class="btn-delete"></div>
 								    			</div>
 							    			</td>
 						    				<td>
 								    			<div id="div_pn3" class="div_pn">
-								    				<div id="btn-delete3" class="btn-delete"></div>
 								    			</div>
 							    			</td>
 						    			
@@ -181,7 +177,7 @@
 						    				<img id="photoNomenclature1" src="resources/images/products/blank.jpg" class="share img-responsive"  onerror="this.onerror=null;this.src='resources/images/products/blank.jpg';" alt="" />
 						    			</div>
 						    			</td>
-						    			<td>
+						    			<!-- td>
 						    			<div class="div_pn">
 											<div id="btn-delete2" class="btn-delete">
 											    <a><img title="Удалить" src="resources/admin/images/ico/delete.png"></a>
@@ -412,27 +408,32 @@
 			for(var i=0; i<4 ;i++) {
 				//---- Clear div ---
 				$('#div_pn'+i).html("");
+				$('#div_pn'+i).prepend("<div id='btn-delete"+i+"' class='btn-delete'><a href='javascript:delPhotoFile("+code+","+i+")''><img src='resources/admin/images/ico/delete.png' /></a></div>");
 				
 				//---- Add photo ---
 				$('<img/>', {
 					
-					id: 'photoNomenclature'+i,
-					src:    '/pics/products/'+code+'/S/'+code+'_S_'+i+'.jpg',
+					id:  'photoNomenclature'+i,
+					src: '/pics/products/'+code+'/S/'+code+'_S_'+i+'.jpg',
 					alt: '',
 					error:  function(e){
 						  //$( this ).attr( "src", 'resources/images/products/blank.jpg' );
+						  $('#btn-delete'+i).remove();
 					} 
 					  
 				}).appendTo($('#div_pn'+i));
 				
-				
+				/*
 				$('<img/>', {
 					
 					src: 'resources/admin/images/ico/delete.png',
+					title: "Удалить",
 					alt: ''
 					  
-				}).appendTo($('#btn-delete'+i));
-				
+				}).wrap($('<a>',{
+					href: 'javascript:delPhotoFile('+code+','+i+')'
+				})).prependTo($('#btn-delete'+i));
+				*/
 			}
   						
   		}
