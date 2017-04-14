@@ -384,7 +384,11 @@
   			var error_load_photo = false;
   			
 			for(var i=0; i<4 ;i++) {
-				var div_btn_delete = "<div id='btn-delete"+i+"' class='btn-delete'><a href='javascript:delPhotoFile("+code+","+i+")''><img src='resources/admin/images/ico/delete.png' /></a></div>";
+				var div_btn_delete = "<div id='btn-delete"+i+"' class='btn-delete'>\
+										<a href='javascript:delPhotoFile("+code+","+i+")''>\
+											<img src='resources/admin/images/ico/delete.png' />\
+										</a>\
+									</div>";
 				var img_photo = '<img id="photoNomenclature'+i+' src="/pics/products/'+code+'/S/'+code+'_S_'+i+'.jpg" alt="" onerror="" />';
 				var imgPhoto = document.createElement("img");
 					imgPhoto.setAttribute("id", 'photoNomenclature'+i);
@@ -394,10 +398,12 @@
 					
 				//---- Clear div ---
 				$('#div_pn'+i).html("");
-				$('#div_pn'+i).prepend("<div id='btn-delete"+i+"' class='btn-delete'><a href='javascript:delPhotoFile("+code+","+i+")''><img src='resources/admin/images/ico/delete.png' /></a></div>");
 				
 				//---- Add photo ---
 				document.getElementById('div_pn'+i).appendChild(imgPhoto);
+
+				$('#div_pn'+i).append(div_btn_delete);
+				$('#div_pn'+i).append('<div class="div_close_img" ></div>')
 				/*				
 				$('<img/>', {
 					

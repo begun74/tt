@@ -372,10 +372,10 @@ a:hover.ico   { background-position: 0 0; }
 }
 
 .div_close_img {
-	background: lightgray;
+	background: green;
 	position: absolute;
     cursor: pointer;
-    top: 0px;
+    top: 50px;
     left: 0px;
 	
 }
