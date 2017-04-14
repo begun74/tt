@@ -380,28 +380,43 @@
   			
   			$('#codeNomencl').val(code);
 			$('#submitPhoto').attr('disabled','');
+			
   			var error_load_photo = false;
+  			
 			for(var i=0; i<4 ;i++) {
+				var div_btn_delete = "<div id='btn-delete"+i+"' class='btn-delete'><a href='javascript:delPhotoFile("+code+","+i+")''><img src='resources/admin/images/ico/delete.png' /></a></div>";
+				var img_photo = '<img id="photoNomenclature'+i+' src="/pics/products/'+code+'/S/'+code+'_S_'+i+'.jpg" alt="" onerror="" />';
+				var imgPhoto = document.createElement("img");
+					imgPhoto.setAttribute("id", 'photoNomenclature'+i);
+					imgPhoto.setAttribute("src", '/pics/products/'+code+'/S/'+code+'_S_'+i+'.jpg');
+					imgPhoto.setAttribute("alt", "");
+					imgPhoto.setAttribute("onerror", "this.src='resources/images/products/blank.jpg'");
+					
 				//---- Clear div ---
 				$('#div_pn'+i).html("");
-				//$('#div_pn'+i).prepend("<div id='btn-delete"+i+"' class='btn-delete'><a href='javascript:delPhotoFile("+code+","+i+")''><img src='resources/admin/images/ico/delete.png' /></a></div>");
+				$('#div_pn'+i).prepend("<div id='btn-delete"+i+"' class='btn-delete'><a href='javascript:delPhotoFile("+code+","+i+")''><img src='resources/admin/images/ico/delete.png' /></a></div>");
 				
 				//---- Add photo ---
+				document.getElementById('div_pn'+i).appendChild(imgPhoto);
+				/*				
 				$('<img/>', {
 					
 					id:  'photoNomenclature'+i,
 					src: '/pics/products/'+code+'/S/'+code+'_S_'+i+'.jpg',
 					alt: '',
 					error:  function(e){
-						  //$( this ).attr( "src", 'resources/images/products/blank.jpg' );
+						$( this ).attr( "src", '' );
 						error_load_photo = true;
 					} 
 					  
 				}).appendTo($('#div_pn'+i));
+				*/
+				//$('#div_pn'+i).append(img_photo);
 				
-				if(!error_load_photo) 
-					$('#div_pn'+i).append("<div id='btn-delete"+i+"' class='btn-delete'><a href='javascript:delPhotoFile("+code+","+i+")''><img src='resources/admin/images/ico/delete.png' /></a></div>");
-
+				//if(!error_load_photo) 
+				//	$('#div_pn'+i).prepend(div_btn_delete);
+				
+					div_btn_delete = null;
 				
 			}
   						

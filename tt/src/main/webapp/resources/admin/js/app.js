@@ -17,8 +17,9 @@ function delPhotoFile(code, file_number)
 			{
 				if(data === 'OK')
 				{
-					$('#photoNomenclature'+file_number).remove();
-					$('#btn-delete'+file_number).remove();
+					//$('#div_pn'+file_number).append('<div class="div_close_img" ></div>')
+					$('#photoNomenclature'+file_number).fadeOut('slow');
+					$('#btn-delete'+file_number).fadeOut('slow');
 				}
 			},
 		});

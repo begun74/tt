@@ -371,6 +371,15 @@ a:hover.ico   { background-position: 0 0; }
     left: 2px;
 }
 
+.div_close_img {
+	background: lightgray;
+	position: absolute;
+    cursor: pointer;
+    top: 0px;
+    left: 0px;
+	
+}
+
 /*
 img {
     position: absolute;
