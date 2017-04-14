@@ -380,8 +380,8 @@ a:hover.ico   { background-position: 0 0; }
 	
 }
 
-/*
-img {
+
+.div_pn > img {
     position: absolute;
     margin: auto;
     top: 0;
@@ -389,4 +389,3 @@ img {
     right: 0;
     bottom: 0;
 }
-*/

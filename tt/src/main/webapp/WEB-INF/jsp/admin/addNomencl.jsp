@@ -390,7 +390,7 @@
 					imgPhoto.setAttribute("id", 'photoNomenclature'+i);
 					imgPhoto.setAttribute("src", '/pics/products/'+code+'/S/'+code+'_S_'+i+'.jpg');
 					imgPhoto.setAttribute("alt", "");
-					imgPhoto.setAttribute("onerror", "this.src='resources/images/products/blank.jpg'");
+					imgPhoto.setAttribute("onerror", "this.src='resources/images/products/nopicture.jpg'");
 					
 				//---- Clear div ---
 				$('#div_pn'+i).html("");
