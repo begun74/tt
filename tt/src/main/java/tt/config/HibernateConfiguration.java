@@ -81,11 +81,6 @@ public class HibernateConfiguration {
         sessionBuilder.addAnnotatedClasses(Order.class);
         sessionBuilder.addAnnotatedClasses(ContactUsMessages.class);
 
-        //sessionBuilder.addAnnotatedClasses(DirColor.class);
-        //sessionBuilder.addAnnotatedClasses(Request.class);
-        //sessionBuilder.addAnnotatedClasses(Particleboard.class);
-        //sessionBuilder.addAnnotatedClasses(PartType.class);
-        
         return sessionBuilder.buildSessionFactory();
     }
     

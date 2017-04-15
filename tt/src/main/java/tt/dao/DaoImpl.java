@@ -21,6 +21,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import tt.annotation.Loggable;
 import tt.model.ContactUsMessages;
 import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
@@ -250,6 +251,7 @@ public class DaoImpl implements Dao {
 		return new LinkedList<DirNomenclature>(criteria.list());
 	}
 
+	
 	@Override
 	public List<Tail> getTailsList(long id_dirNomenclature) {
 		// TODO Auto-generated method stub
@@ -260,6 +262,14 @@ public class DaoImpl implements Dao {
 		return getSession().createQuery("from Tail where fk_id_nomenclature = :id_dirNomenclature and destruction_date is null order by size, amountTail").setParameter("id_dirNomenclature", id_dirNomenclature).list();
 	}
 
+	public List<Tail> getTailsList(long id_dirNomenclature, String ip_address) {
+		// TODO Auto-generated method stub
+		//!========= Statistic per nomenclature ==========
+		getSession().createSQLQuery("insert into statistic_nomencl (id_statistic_nomencl, id_dir_nomenclature, ip_address) values (nextval('seq_statistic'),"+id_dirNomenclature+",'"+ip_address+"')").executeUpdate();
+		//!========= Statistic per nomenclature ==========
+		
+		return getSession().createQuery("from Tail where fk_id_nomenclature = :id_dirNomenclature and destruction_date is null order by size, amountTail").setParameter("id_dirNomenclature", id_dirNomenclature).list();
+	}
 
 	@Override
 	public void addOrder(tt.model.Order order) {

@@ -43,7 +43,7 @@
 				        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					</div>
 			    	<div class="modal-body text-center">
-			      		<h2><spring:message code="add.to.backet"/>. <a href="cart"><spring:message code="cart"/></h2></a>
+			      		<h2><spring:message code="add.to.backet"/>. <a href="cart"><spring:message code="cart"/></a></h2>
       				</div>
       				<div class="modal-footer">
 				        <button type="button" class="btn btn-default" data-dismiss="modal"><spring:message code="close"/></button>
@@ -165,137 +165,14 @@
 							</div><!--/product-information-->
 						</div>
 					
-					<div class="col-sm-12 category-tab shop-details-tab"><!--category-tab-->
-							<div class="col-sm-12">
-								<ul class="nav nav-tabs">
-									<!-- li><a href="#details" data-toggle="tab">Details</a></li>
-									<li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
-									<li><a href="#tag" data-toggle="tab">Tag</a></li -->
-									<li class="active"><a href="#reviews" data-toggle="tab"><spring:message code="reviews"/></a></li>
-								</ul>
-							</div>
-							
-							<div class="tab-pane fade active in" id="reviews" >
-								<div class="col-sm-12">
-									<ul>
-										<li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-										<li><a href=""><i class="fa fa-clock-o"></i>12:41</a></li>
-										<li><a href=""><i class="fa fa-calendar-o"></i>31.12.2016</a></li>
-									</ul>
-									<p></p>
-									<p><b><spring:message code="write.your.review"/></b></p>
-									
-									<form action="#">
-										<span>
-											<input type="text" placeholder='<spring:message code="name"/>'/>
-											<input type="email" placeholder='<spring:message code="email"/>'/>
-										</span>
-										<textarea name="" ></textarea>
-										<!-- b>Rating: </b> <img src="resources/images/product-details/rating.png" alt="" / -->
-										<button type="button" class="btn btn-default pull-right">
-											<spring:message code="submit"/>
-										</button>
-									</form>
-								</div>
-							</div>
-							
-						</div>
-					</div><!--/category-tab-->
-					
-					<!--recommended_items-->
-					<!-- div class="recommended_items">
-						<h2 class="title text-center">recommended items</h2>
-						
-						<div id="recommended-item-carousel" class="carousel slide" data-ride="carousel">
-							<div class="carousel-inner">
-								<div class="item active">	
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="resources/images/home/recommend1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="resources/images/home/recommend2.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="resources/images/home/recommend3.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="item">	
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="resources/images/home/recommend1.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="resources/images/home/recommend2.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-4">
-										<div class="product-image-wrapper">
-											<div class="single-products">
-												<div class="productinfo text-center">
-													<img src="resources/images/home/recommend3.jpg" alt="" />
-													<h2>$56</h2>
-													<p>Easy Polo Black Edition</p>
-													<button type="button" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</button>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							 <a class="left recommended-item-control" href="#recommended-item-carousel" data-slide="prev">
-								<i class="fa fa-angle-left"></i>
-							  </a>
-							  <a class="right recommended-item-control" href="#recommended-item-carousel" data-slide="next">
-								<i class="fa fa-angle-right"></i>
-							  </a>			
-						</div>
-					</div --><!--/recommended_items-->
-					
-				</div>
+				</div><!-- product-details -->
+
+
 			</div>
+	<!-- recommended -->
+	<%@include file="common/recommended.jsp" %>
+	<!-- footer -->
+			
 		</div>
 	</section>
 	

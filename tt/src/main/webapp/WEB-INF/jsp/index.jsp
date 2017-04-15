@@ -39,11 +39,11 @@
 	<!-- header_top -->
 		
 	<!-- slider_reklama -->
-	<%@include file="common/slider_reklama.jsp" %>
+	<%@include file="advert/slider_reklama.jsp" %>
 	<!-- slider_reklama -->
 
 	<!-- slider_main -->
-	<!-- %@include file="common/slider_main.jsp" % -->
+	<!-- %@include file="advert/slider_main.jsp" % -->
 	<!-- slider_main -->
 	
 	<section>

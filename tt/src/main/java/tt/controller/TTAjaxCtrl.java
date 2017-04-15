@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,10 +104,10 @@ public class TTAjaxCtrl {
 	
 	
 	@RequestMapping(value = "/productDetail{id}", method = RequestMethod.GET)
-	public @ResponseBody List<Tail> productDetail( @RequestParam ("id") long id) 
+	public @ResponseBody List<Tail> productDetail( HttpServletRequest req, @RequestParam ("id") long id) 
 	{
-		
-		List<Tail> tails = ttService.getTailsList(id);
+		//req.getRemoteAddr();
+		List<Tail> tails = ttService.getTailsList(id, req.getRemoteAddr());
 		
 		for(Tail tail: tails)				//!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
 			tail.setDirNomenclature(null);  //   вываливается в Exception

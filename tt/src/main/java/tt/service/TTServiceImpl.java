@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tt.annotation.Loggable;
 import tt.dao.Dao;
 import tt.dao.DaoImpl;
 import tt.model.ContactUsMessages;
@@ -120,7 +121,7 @@ public class TTServiceImpl implements Dao {
 		return dao.getStoreBySerVerUID(serialVersionUID);
 	}
 
-
+	@Loggable
 	@Override
 	public List<Tail> getTailsList() {
 		// TODO Auto-generated method stub
@@ -294,13 +295,19 @@ public class TTServiceImpl implements Dao {
 		return criterions.size() >0 ? getTailsNomenclature(new Tail(),criterions, p): new HashSet<DirNomenclature>();
 	}
 	
-	
+	//@Loggable
 	@Override
 	public List<Tail> getTailsList(long id_dirNomenclature) {
 		// TODO Auto-generated method stub
 		return dao.getTailsList(id_dirNomenclature);
 	}
 
+	//@Loggable
+	public List<Tail> getTailsList(long id_dirNomenclature, String ip_address) {
+		// TODO Auto-generated method stub
+		System.out.println("From - " +ip_address);
+		return dao.getTailsList(id_dirNomenclature,ip_address);
+	}
 
 
 	@Override
@@ -372,5 +379,7 @@ public class TTServiceImpl implements Dao {
 		dao.updateTails();
 	}
 	
-
+	public void test() {
+		System.out.println("=====  test() =====");
+	}
 }

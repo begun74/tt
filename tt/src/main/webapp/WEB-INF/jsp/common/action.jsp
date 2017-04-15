@@ -39,7 +39,7 @@
 	<!-- header_top -->
 		
 	<!-- header_top -->
-	<%@include file="slider_reklama.jsp" %>
+	<%@include file="../advert/slider_reklama.jsp" %>
 	<!-- header_top -->
 
 	
