@@ -129,7 +129,7 @@
 								<p><h2><spring:message code="price"/>: ${price}<c:if test="${empty price}"><a href="login"><spring:message code="price.isShow"/></a></c:if></h2></p>
 								<p><b><spring:message code="model"/></b>: ${nomenclature.model}</p>
 								<p><b><spring:message code="article"/>:  </b>${nomenclature.article} </p>
-								<p>ID: ${nomenclature.code}</p>
+								<p><spring:message code="code"/>: ${nomenclature.code}</p>
 								<img src="resources/images/product-details/rating.png" alt="" />
 								<!-- p><b>Availability:</b> In Stock</p -->
 								<!-- p><b>Condition:</b> New</p -->
@@ -170,7 +170,7 @@
 
 			</div>
 	<!-- recommended -->
-	<%@include file="common/recommended.jsp" %>
+	<!-- %@include file="common/recommended.jsp" % -->
 	<!-- footer -->
 			
 		</div>

@@ -305,7 +305,7 @@ public class TTServiceImpl implements Dao {
 	//@Loggable
 	public List<Tail> getTailsList(long id_dirNomenclature, String ip_address) {
 		// TODO Auto-generated method stub
-		System.out.println("From - " +ip_address);
+		//System.out.println("From - " +ip_address);
 		return dao.getTailsList(id_dirNomenclature,ip_address);
 	}
 

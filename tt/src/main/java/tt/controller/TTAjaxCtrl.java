@@ -50,7 +50,8 @@ public class TTAjaxCtrl {
 	@Autowired
 	private FileUpload fileUpload;
 
-	
+	@Autowired(required = true)
+	private HttpServletRequest  request;	
 
 	@ResponseBody
 	@RequestMapping(value = "/clearErrors", method = RequestMethod.GET)
@@ -104,10 +105,15 @@ public class TTAjaxCtrl {
 	
 	
 	@RequestMapping(value = "/productDetail{id}", method = RequestMethod.GET)
-	public @ResponseBody List<Tail> productDetail( HttpServletRequest req, @RequestParam ("id") long id) 
+	public @ResponseBody List<Tail> productDetail( @RequestParam ("id") long id) 
 	{
-		//req.getRemoteAddr();
-		List<Tail> tails = ttService.getTailsList(id, req.getRemoteAddr());
+		
+		//Enumeration en = request.getHeaderNames();
+		
+		//while(en.hasMoreElements()) {
+		//	System.out.println(en.nextElement()+" :  "+request.getHeader(en.nextElement().toString()));
+		//}
+	    List<Tail> tails = ttService.getTailsList(id, request.getRemoteAddr());
 		
 		for(Tail tail: tails)				//!! Нужно чтобы не было зацикливания т.к. в DirNomenclature есть Tail, а в Tail есть DirNomenclature и так по кругу
 			tail.setDirNomenclature(null);  //   вываливается в Exception

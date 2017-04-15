@@ -38,9 +38,9 @@
 	<%@include file="common/header_top.jsp" %>
 	<!-- header_top -->
 		
-	<!-- slider_reklama -->
-	<%@include file="advert/slider_reklama.jsp" %>
-	<!-- slider_reklama -->
+	<!-- advert -->
+	<%@include file="advert/advert_main.jsp" %>
+	<!-- advert -->
 
 	<!-- slider_main -->
 	<!-- %@include file="advert/slider_main.jsp" % -->
