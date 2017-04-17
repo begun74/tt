@@ -55,7 +55,8 @@
 				</div>
 				<div class="col-sm-12 padding-right">
 					<div>
-						<div class="col-sm-9 padding-right">
+						<div class="col-sm-2 "></div>
+						<div class="col-sm-6 ">
 							<p><b>Магазин № 1 «Трикотаж»</b>
 							<p>Адрес: г. Минск, ул. Платонова, д. 30</p>
 							<p>Тел.: (017) 292-39-11</p>
@@ -64,13 +65,14 @@
 							<p>суббота: с 10.00 до 18.00</p>
 							<p>воскресенье — выходной день</p>
 						</div>
-						<div class="col-sm-3 padding-right">
+						<div class="col-sm-4 padding-right">
 							<img alt="" class="div_h200_w282" src="resources/images/shop/shop1_1.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
 					<h3>&nbsp</h3>
 					<div>
-						<div class="col-sm-9 padding-right">
+						<div class="col-sm-2 "></div>
+						<div class="col-sm-6 padding-right">
 							<p><b>Магазин № 2 «Трикотаж»</b>
 							<p>Адрес:222160,  г. Жодино, ул. Сырокваша, д. 4</p>
 							<p>Тел.: (01775)  3-37-52</p>
@@ -79,13 +81,14 @@
 							<p>суббота: с 10.00 до 18.00</p>
 							<p>воскресенье — выходной день</p>
 						</div>
-						<div class="col-sm-3 padding-right">
+						<div class="col-sm-4 padding-right">
 							<img alt="" class="div_h200_w282" src="resources/images/shop/shop2_2.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
 					<h3>&nbsp</h3>
 					<div>
-						<div class="col-sm-9 padding-right">
+						<div class="col-sm-2 "></div>
+						<div class="col-sm-6 padding-right">
 							<p><b>Магазин № 3 «Трикотаж»</b>
 							<p>Адрес: г. Солигорск, ул. Ленина, д. 55</p>
 							<p>Тел.: (210) 4-63-06</p>
@@ -94,13 +97,14 @@
 							<p>суббота: с 10.00 до 18.00</p>
 							<p>воскресенье: с 10.00 до 16.00</p>
 						</div>
-						<div class="col-sm-3 padding-right">
+						<div class="col-sm-4 padding-right">
 							<img alt="" class="div_h200_w282" src="resources/images/shop/shop3_3.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
 					<h3>&nbsp</h3>
 					<div>
-						<div class="col-sm-9 padding-right">
+						<div class="col-sm-2 "></div>
+						<div class="col-sm-6 padding-right">
 							<p><b>Магазин № 4 «Трикотаж»</b>
 							<p>Адрес: г. Вилейка, ул. Красноармейская, д. 55</p>
 							<p>Тел.: (271) 5-47-84</p>
@@ -109,13 +113,14 @@
 							<p>суббота: с 10.00 до 18.00</p>
 							<p>воскресенье: с 10.00 до 16.00</p>
 						</div>
-						<div class="col-sm-3 padding-right div_200_282">
+						<div class="col-sm-4 padding-right div_200_282">
 							<img alt="" class="div_h200_w282" src="resources/images/shop/shop4_4.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
 					<h3>&nbsp</h3>
 					<div>
-						<div class="col-sm-9 padding-right">
+						<div class="col-sm-2 "></div>
+						<div class="col-sm-6 padding-right">
 							<p><b>Магазин № 5 «Трикотаж»</b>
 							<p>Адрес: г. Гомель, ул. Интернациональная, д. 13</p>
 							<p>Тел.: (232) 74-79-30</p>

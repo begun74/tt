@@ -58,9 +58,9 @@
 								</div>
 						</form>
 						
-						
-						<div class="shipping text-center"><!--shipping-->
+						<!--shipping-->
+						<!-- div class="shipping text-center">
 							<img src="resources/images/home/shipping.jpg" alt="" />
-						</div><!--/shipping-->
+						</div --> 
 					
 					</div>
