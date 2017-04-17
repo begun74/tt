@@ -35,6 +35,7 @@ import tt.model.Tail;
 import tt.model.User;
 
 
+
 @Service("ttService")
 @Transactional()
 public class TTServiceImpl implements Dao {

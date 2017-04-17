@@ -19,6 +19,7 @@ import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
 
+
 public interface Dao {
 	
 	public List<User> getUserList();
