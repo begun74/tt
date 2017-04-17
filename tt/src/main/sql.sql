@@ -1,4 +1,4 @@
-INSERT INTO tt.user (id_user,name,password) VALUES(nextval('seq_global'),'bvv','pass');
+﻿INSERT INTO tt.user (id_user,name,password) VALUES(nextval('seq_global'),'bvv','pass');
 
 -- DROP TABLE "dir_gender", "dir_nomencl_group_root", "dir_nomencl_group",  "dir_nomenclature", "dir_provider", "store", "tails", "tt_user" CASCADE;
 
@@ -10,7 +10,7 @@ SELECT * from tt.user;
 
 SELECT nextval('seq_global');
 
-INSERT INTO dir_gender (id_dir_gender, name) VALUES(nextval('seq_global'),'�������');
+INSERT INTO dir_gender (id_dir_gender, name) VALUES(nextval('seq_global'),'девичий');
 
 
 -- USER, USER_ROLE
@@ -60,3 +60,32 @@ select distinct o.* from orders o
 
 
 update order_items set destruction_date = null where id_order_items=16938
+
+
+-- Выборка популярной номенклатуры за всё время с учётом наличием номенклатуры в остатках --
+--
+
+select distinct xxx.count_sn , dn.id_dir_nomenclature,  dn.name, dn.code 
+	from dir_nomenclature dn
+	inner join 
+	(
+		select count(sn.id_dir_nomenclature) as count_sn, sn.id_dir_nomenclature as id_sn from statistic_nomencl sn 
+		inner join dir_nomenclature dn on sn.id_dir_nomenclature = dn.id_dir_nomenclature
+		group by sn.id_dir_nomenclature
+	) as xxx on xxx.id_sn = dn.id_dir_nomenclature
+	inner join 
+	(
+		select t.fk_id_nomenclature as tail_dn from tails t where t.destruction_date is null
+	)as yyy on yyy.tail_dn = dn.id_dir_nomenclature
+order by 1 desc
+
+--			
+-- Выборка популярной номенклатуры за всё время с учётом наличием номенклатуры в остатках --
+
+
+select t.*, dn.code , dn.name
+	from tails t 
+	inner join dir_nomenclature dn on t.fk_id_nomenclature = dn.id_dir_nomenclature
+	where  t.destruction_date is null and dn.code = 10002077692
+
+update tails t set destruction_date = null where t.fk_id_nomenclature = 34231
