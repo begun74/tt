@@ -18,7 +18,7 @@
 								<div class="product-image-wrapper">
 									<div class="single-products">
 										<div class="productinfo text-center">
-											<a href="product-details?id=${pop_dn.id}"><img class="" src="/pics/products/${pop_dn.code}/S/${pop_dn.code}_S_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" alt=""/></a>
+											<a href="product-details?id=${pop_dn.id}"><img class=""  width="50%" height="50%" src="/pics/products/${pop_dn.code}/S/${pop_dn.code}_S_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" alt=""/></a>
 										</div>
 									</div>
 								</div>

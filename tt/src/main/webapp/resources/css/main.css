@@ -896,6 +896,13 @@ h2.title {
 
 }
 
+.productinfo .popNomencl{
+  width: 100px;
+  height: 250px;
+  object-fit: contain;
+
+}
+
 .productinfo{
  position:relative;
 }

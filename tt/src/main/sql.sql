@@ -65,20 +65,21 @@ update order_items set destruction_date = null where id_order_items=16938
 -- Выборка популярной номенклатуры за всё время с учётом наличием номенклатуры в остатках --
 --
 
-select distinct xxx.count_sn , dn.id_dir_nomenclature,  dn.name, dn.code 
+select distinct xxx.count_sn , dn.* 
 	from dir_nomenclature dn
 	inner join 
 	(
 		select count(sn.id_dir_nomenclature) as count_sn, sn.id_dir_nomenclature as id_sn from statistic_nomencl sn 
 		inner join dir_nomenclature dn on sn.id_dir_nomenclature = dn.id_dir_nomenclature
 		group by sn.id_dir_nomenclature
+		order by 1 desc
 	) as xxx on xxx.id_sn = dn.id_dir_nomenclature
 	inner join 
 	(
 		select t.fk_id_nomenclature as tail_dn from tails t where t.destruction_date is null
 	)as yyy on yyy.tail_dn = dn.id_dir_nomenclature
 order by 1 desc
-limit 10
+limit 4
 
 --			
 -- Выборка популярной номенклатуры за всё время с учётом наличием номенклатуры в остатках --
@@ -86,7 +87,7 @@ limit 10
 
 -- Для проверки выборки популярной номенклатуры --
 --
-select t.*, dn.code , dn.name
+select t.*
 	from tails t 
 	inner join dir_nomenclature dn on t.fk_id_nomenclature = dn.id_dir_nomenclature
 	where  t.destruction_date is null and dn.code = 10002077692
@@ -94,3 +95,9 @@ select t.*, dn.code , dn.name
 update tails t set destruction_date = null where t.fk_id_nomenclature = 34231
 --
 -- Для проверки выборки популярной номенклатуры --
+
+delete from statistic_nomencl where id_statistic_nomencl in
+(
+select sn.id_statistic_nomencl from statistic_nomencl sn 
+		inner join dir_nomenclature dn on sn.id_dir_nomenclature = dn.id_dir_nomenclature and sn.id_dir_nomenclature=34303 and date(sn.creation_date)='2017-04-15'
+		)
