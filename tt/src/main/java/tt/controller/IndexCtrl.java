@@ -260,6 +260,7 @@ public class IndexCtrl implements Serializable {
 			model.addObject("nomenclature", dn);
 			model.addObject("popNomencl", popNomencl);
 			//!-- model.addObject("tails", ttService.getTailsList(dn.getId()));
+			model.addObject("provider",dn.getDirProvider());
 			//model.addObject("provider", dn.getTails().iterator().next().getDirProvider());
 			
 			if(isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")))

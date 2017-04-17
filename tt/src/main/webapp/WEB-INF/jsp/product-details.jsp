@@ -125,15 +125,16 @@
 						<div class="col-sm-7">
 							<div class="product-information"><!--/product-information-->
 								<img src="resources/images/product-details/new.jpg" class="newarrival" alt="" />
-								<h2>${nomenclature.name } (${nomenclature.dirGender.name })</h2>
-								<p><h2><spring:message code="price"/>: ${price}<c:if test="${empty price}"><a href="login"><spring:message code="price.isShow"/></a></c:if></h2></p>
+								<h2>${nomenclature.name }</h2>
+								<p><h2><spring:message code="price"/>: ${price}<c:if test="${empty price}"><a href="login"><spring:message code="price.isShow"/></a></h2></c:if></p>
 								<p><b><spring:message code="model"/></b>: ${nomenclature.model}</p>
 								<p><b><spring:message code="article"/>:  </b>${nomenclature.article} </p>
 								<p><spring:message code="code"/>: ${nomenclature.code}</p>
-								<img src="resources/images/product-details/rating.png" alt="" />
 								<!-- p><b>Availability:</b> In Stock</p -->
 								<!-- p><b>Condition:</b> New</p -->
 								<p><b><spring:message code="brand.name"/>:  </b>${provider.name} </p>
+								<!-- p><img src="resources/images/product-details/rating.png" alt="" /></p -->
+								<p><h3>&nbsp</h3></p>
 								<p><b><spring:message code="size"/>:  </b></p>
 								
 								<div class="size_info"></div>

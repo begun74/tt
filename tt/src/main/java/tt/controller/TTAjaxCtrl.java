@@ -1,5 +1,6 @@
 package tt.controller;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,8 +36,14 @@ import tt.util.FileUpload;
 
 @Controller
 @Scope("session")
-public class TTAjaxCtrl {
+public class TTAjaxCtrl  implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1356148162750126473L;
+
+
 	@Autowired
 	AdminSessionBean adminSessBean;
 	
