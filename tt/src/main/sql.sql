@@ -78,14 +78,19 @@ select distinct xxx.count_sn , dn.id_dir_nomenclature,  dn.name, dn.code
 		select t.fk_id_nomenclature as tail_dn from tails t where t.destruction_date is null
 	)as yyy on yyy.tail_dn = dn.id_dir_nomenclature
 order by 1 desc
+limit 10
 
 --			
 -- Выборка популярной номенклатуры за всё время с учётом наличием номенклатуры в остатках --
 
 
+-- Для проверки выборки популярной номенклатуры --
+--
 select t.*, dn.code , dn.name
 	from tails t 
 	inner join dir_nomenclature dn on t.fk_id_nomenclature = dn.id_dir_nomenclature
 	where  t.destruction_date is null and dn.code = 10002077692
 
 update tails t set destruction_date = null where t.fk_id_nomenclature = 34231
+--
+-- Для проверки выборки популярной номенклатуры --

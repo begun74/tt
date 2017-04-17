@@ -169,9 +169,9 @@
 
 
 			</div>
-	<!-- recommended -->
-	<!-- %@include file="common/recommended.jsp" % -->
-	<!-- footer -->
+			<!-- recommended -->
+			<%@include file="common/recommended.jsp" %>
+			<!-- footer -->
 			
 		</div>
 	</section>

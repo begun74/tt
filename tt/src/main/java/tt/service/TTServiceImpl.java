@@ -379,7 +379,17 @@ public class TTServiceImpl implements Dao {
 		dao.updateTails();
 	}
 	
+
+
+	@Override
+	public List<DirNomenclature> getPopularDirNomenclature() {
+		// TODO Auto-generated method stub
+		return dao.getPopularDirNomenclature();
+	}
+	
+	
 	public void test() {
 		System.out.println("=====  test() =====");
 	}
+	
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import javax.annotation.Resource;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -19,6 +20,8 @@ import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Repository;
 
 import tt.annotation.Loggable;
@@ -35,9 +38,14 @@ import tt.model.User;
 
 
 
-
+@PropertySource("classpath:sql.properties")
 @Repository("dao")
 public class DaoImpl implements Dao {
+	
+	
+    @Resource
+    private Environment env;
+
 	
 	@Autowired
     private SessionFactory sessionFactory;
@@ -353,6 +361,31 @@ public class DaoImpl implements Dao {
 	public void updateTails() {
 		// TODO Auto-generated method stub
 		getSession().createSQLQuery("update tails set destruction_date = now() where destruction_date is null").executeUpdate();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<DirNomenclature> getPopularDirNomenclature() {
+		// TODO Auto-generated method stub
+		List<DirNomenclature> listPopDN = new ArrayList<DirNomenclature>();
+		/* String sql = "select distinct xxx.count_sn , dn.* "+ 
+							"from dir_nomenclature dn "+
+							"inner join "+
+							"( "+
+							"	select count(sn.id_dir_nomenclature) as count_sn, sn.id_dir_nomenclature as id_sn from statistic_nomencl sn "+ 
+							"	inner join dir_nomenclature dn on sn.id_dir_nomenclature = dn.id_dir_nomenclature "+
+							"	group by sn.id_dir_nomenclature "+
+							") as xxx on xxx.id_sn = dn.id_dir_nomenclature "+
+							"inner join "+
+							"( "+
+							"	select t.fk_id_nomenclature as tail_dn from tails t where t.destruction_date is null "+
+							")as yyy on yyy.tail_dn = dn.id_dir_nomenclature "+
+						"order by 1 desc "+
+						"limit 4"; */
+		String selectPopNomenlature = env.getProperty("selectPopNomenlature");
+		listPopDN = getSession().createSQLQuery(selectPopNomenlature).addEntity(DirNomenclature.class).list();
+		
+		return listPopDN;
 	}
 
 
