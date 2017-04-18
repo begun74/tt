@@ -336,7 +336,7 @@
 									<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
 										<table class="tab tab-drag">
 											<c:forEach items="${dirNomencls}" var="dirNomencl" varStatus="loop">
-												<tr>
+												<tr class="table_row">
 													<td class="dragHandle">&nbsp;</td>
 													<td>${loop.count}</td>
 													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.name}</td>
@@ -372,9 +372,18 @@
   <!-- /#main --> 
   <script>
   		$(document).ready(function(){
+  			
 			/*$("#save").attr("checked","checked");*/
 			$('#submitPhoto').attr('disabled','disabled');
+			
+			
+			/*  Выделяем строку в таблице */
+			$( ".table_row" ).click(function() {
+				$(this).addClass("selected").siblings().removeClass("selected");
+			});
 	    });
+
+  		
   		
   		function viewPhotoNomencl(code) {
   			

@@ -43,7 +43,7 @@
 	<!-- header_top -->
 
 	
-	<section>
+	<article>
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-3">
@@ -93,7 +93,7 @@
 				</div>				
 			</div>
 		</div>
-	</section>
+	</article>
 	
 	<!-- footer -->
 	<%@include file="footer.jsp" %>

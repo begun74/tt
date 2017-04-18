@@ -4,7 +4,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 
-
+<article>
 					<div class="left-sidebar">
 						<form  method="GET" name="mA_search" action="${pageContext.request.contextPath}/search">
 								<div class="brands_products"><!-- genders -->
@@ -64,3 +64,4 @@
 						</div --> 
 					
 					</div>
+</article>
