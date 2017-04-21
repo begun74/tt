@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import tt.annotation.CheckAccess;
 import tt.bean.AppBean;
 import tt.bean.SessionBean;
 import tt.config.CustomAuthenticationSuccessHandler;
@@ -101,6 +102,7 @@ public class IndexCtrl implements Serializable {
 		model.addObject("UPLOAD_FILE_PATH", Constants.UPLOAD_FILE_PATH);
 		return model;
 	}
+	
 	
 	@RequestMapping(value = {"/login"} , method = RequestMethod.GET)
 	public ModelAndView  login(HttpSession session, HttpServletRequest request, @RequestParam(value = "error",required = false) String error,

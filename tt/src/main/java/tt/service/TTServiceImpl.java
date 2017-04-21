@@ -19,6 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tt.annotation.CheckAccess;
 import tt.annotation.Loggable;
 import tt.dao.Dao;
 import tt.dao.DaoImpl;
@@ -71,7 +72,7 @@ public class TTServiceImpl implements Dao {
 
 
 
-
+	@CheckAccess
 	@Override
 	public Object getObject(Class clazz, Long id) {
 		// TODO Auto-generated method stub
@@ -122,7 +123,7 @@ public class TTServiceImpl implements Dao {
 		return dao.getStoreBySerVerUID(serialVersionUID);
 	}
 
-	@Loggable
+	//@Loggable
 	@Override
 	public List<Tail> getTailsList() {
 		// TODO Auto-generated method stub
