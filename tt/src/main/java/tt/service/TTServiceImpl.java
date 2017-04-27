@@ -72,7 +72,7 @@ public class TTServiceImpl implements Dao {
 
 
 
-	@CheckAccess
+	//@CheckAccess
 	@Override
 	public Object getObject(Class clazz, Long id) {
 		// TODO Auto-generated method stub

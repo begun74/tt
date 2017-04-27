@@ -321,3 +321,9 @@ function isNumberValue(value)
 
    return true;
 }
+
+
+function processSearchText(text) {
+	alert('processSearchText! - ' +text);
+	
+}

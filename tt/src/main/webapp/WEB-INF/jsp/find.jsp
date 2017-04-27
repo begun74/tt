@@ -34,24 +34,52 @@
 </head><!--/head-->
 
 <body>
-
 	<!-- header_top -->
 	<%@include file="common/header_top.jsp" %>
 	<!-- header_top -->
 		
-	<!-- slider_reklama -->
-	<%@include file="advert/advert_main.jsp" %>
-	<!-- slider_reklama -->
-
+	
+	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12 padding-center">
-					<div style="text-align:center;"><h3>По вопросам трудоустройства обращайтесь по телефону в отдел кадров - 2-99-59-52 либо по телефону/факс 292-45-90 (приёмная).</h3></div>
+				<div class="col-sm-9 padding-right">
+					<!-- content -->
+					<%@include file="common/content3.jsp" %>
+					<!-- content -->
 				</div>
+				
+				
 			</div>
 		</div>
+	</section>
+	
+	<!-- footer -->
+	<%@include file="common/footer.jsp" %>
+	<!-- footer -->
+	
 
+  
+    <script src="resources/js/app.js"></script>
+    <script src="resources/js/jquery.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/jquery.scrollUp.min.js"></script>
+	<script src="resources/js/price-range.js"></script>
+    <script src="resources/js/jquery.prettyPhoto.js"></script>
+    <script src="resources/js/main.js"></script>
+    <script src="resources/js/jquery.simplePagination.js"></script>
+    <script src="resources/js/bootstrap-hover-dropdown.min.js"></script>
+    
+    <script>
 
-					
+        $(document).ready(function(){
+	        $(".search_text").keypress(function(event) {
+	        	if ( event.which == 13 ) 
+	        	{
+	        		processSearchText($(this).val());
+	        	}
+	        });
+        });
+
+    </script>
 </body>
 </html>

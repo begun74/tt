@@ -189,6 +189,12 @@ public class IndexCtrl implements Serializable {
 		return "index";
 	}
 	
+	@RequestMapping(value = {"/find"} , method = RequestMethod.GET)
+	public String  find(HttpSession session, @RequestParam(value = "text", defaultValue = "9") String text) 
+	{
+		
+		return "find";
+	}
 	
 	@RequestMapping(value = {"/showMessage"} , method = RequestMethod.GET)
 	public ModelAndView  messageUrl(HttpSession session) 

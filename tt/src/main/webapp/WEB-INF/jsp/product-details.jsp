@@ -266,6 +266,14 @@
     		//alert('res -  ' + res);
     	});
 
+        $(".search_text").keypress(function(event) {
+        	if ( event.which == 13 ) 
+        	{
+        		processSearchText($(this).val());
+        	}
+        });
+    	
+    	
     	//setInterval(Product.getDetail,15000);
     });
     
