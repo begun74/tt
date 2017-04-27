@@ -324,6 +324,6 @@ function isNumberValue(value)
 
 
 function processSearchText(text) {
-	alert('processSearchText! - ' +text);
-	
+	//alert('processSearchText! - ' +text);
+	window.location="find?text="+text;
 }
