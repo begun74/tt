@@ -190,7 +190,7 @@ public class IndexCtrl implements Serializable {
 	}
 	
 	@RequestMapping(value = {"/find"} , method = RequestMethod.GET)
-	public String  find(HttpSession session, @RequestParam(value = "text", defaultValue = "9") String text) 
+	public String  find(HttpSession session, @RequestParam(value = "text",required = true) String text) 
 	{
 		
 		return "find";
