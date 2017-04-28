@@ -393,5 +393,12 @@ public class TTServiceImpl implements Dao {
 	public void test() {
 		System.out.println("=====  test() =====");
 	}
+
+
+	@Override
+	public List<Tail> findByText(String text) {
+		// TODO Auto-generated method stub
+		return dao.findByText(text);
+	}
 	
 }

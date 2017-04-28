@@ -41,15 +41,16 @@
 	
 	<section>
 		<div class="container">
-			<div class="row">
-				<div class="col-sm-9 padding-right">
-					<!-- content -->
-					<%@include file="common/content3.jsp" %>
-					<!-- content -->
+				<div class="col-sm-12 find_panel">
+					<h3><spring:message code="find.text"/>:&#160;&#160;'${findText}'</h3>
+				</div>			
+				<div class="row">
+					<div class="col-sm-10 padding-right">
+						<!-- content -->
+						<%@include file="common/content3.jsp" %>
+						<!-- content -->
+					</div>
 				</div>
-				
-				
-			</div>
 		</div>
 	</section>
 	

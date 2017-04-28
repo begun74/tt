@@ -144,7 +144,7 @@
 					</div>
 					<div class="col-sm-3">
 						<div class="search_box pull-right">
-							<input type="text" class="search_text" placeholder="<spring:message code="search"/>"/>
+							<input type="text" class="search_text" value="${findText}" placeholder="<spring:message code="search"/>"/>
 						</div>
 					</div>
 				</div>

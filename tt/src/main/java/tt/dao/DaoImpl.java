@@ -376,6 +376,32 @@ public class DaoImpl implements Dao {
 		return listPopDN;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Tail> findByText(String text) {
+		// TODO Auto-generated method stub
+		List<Tail> tails = new ArrayList<Tail>();
+		String sql1 = env.getProperty("sql1");
+		
+		long code;
+		
+		try {
+			code = new Long(text);
+		}
+		catch(NumberFormatException nex) {
+			code = 0;
+		}
+		
+		tails = getSession().createSQLQuery(sql1).addEntity(DirNomenclature.class)
+									.setParameter("model", "%"+text+"%")
+									.setParameter("code", code )
+									.setParameter("article", "%"+text+"%" )
+									.setParameter("name", ("%"+text+"%").toUpperCase() )
+									.list();
+		
+		return tails;
+	}
+
 
 	
 

@@ -2625,3 +2625,10 @@ give gallery's parent container a cursor: pointer.**/
 	height:310px; 
 	width:100%;
 }
+
+.find_panel {
+	border: 1px ridge ;
+	/*border-radius: 0;*/
+	
+	background: #FE980F;
+}

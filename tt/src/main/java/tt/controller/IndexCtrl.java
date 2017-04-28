@@ -190,10 +190,16 @@ public class IndexCtrl implements Serializable {
 	}
 	
 	@RequestMapping(value = {"/find"} , method = RequestMethod.GET)
-	public String  find(HttpSession session, @RequestParam(value = "text",required = true) String text) 
+	public ModelAndView  find(HttpSession session, @RequestParam(value = "text",required = true) String text, @RequestParam(value = "p", defaultValue = "1") int p, 
+			@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
 	{
+		ModelAndView model = new ModelAndView("find");
 		
-		return "find";
+		model.addObject("tails", ttService.findByText(text) );
+		model.addObject("findText",text);
+		model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
+		
+		return model;
 	}
 	
 	@RequestMapping(value = {"/showMessage"} , method = RequestMethod.GET)
