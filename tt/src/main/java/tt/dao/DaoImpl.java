@@ -381,7 +381,7 @@ public class DaoImpl implements Dao {
 	public List<Tail> findByText(String text) {
 		// TODO Auto-generated method stub
 		List<Tail> tails = new ArrayList<Tail>();
-		String sql1 = env.getProperty("sql1");
+		String sql1 = env.getProperty("sql_1");
 		
 		long code;
 		
