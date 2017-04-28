@@ -194,7 +194,7 @@ public class IndexCtrl implements Serializable {
 			@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
 	{
 		ModelAndView model = new ModelAndView("find");
-		
+		model.addObject("mA_search", mA_search);
 		model.addObject("tails", ttService.findByText(text) );
 		model.addObject("findText",text);
 		model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));

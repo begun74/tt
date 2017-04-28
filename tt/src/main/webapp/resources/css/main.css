@@ -18,8 +18,8 @@ ul li {
 }
 
 a:hover {
-outline: none;
-text-decoration:none;
+	outline: none;
+	text-decoration:none;
 }
 
 a:focus {
@@ -2627,8 +2627,11 @@ give gallery's parent container a cursor: pointer.**/
 }
 
 .find_panel {
-	border: 1px ridge ;
-	/*border-radius: 0;*/
-	
-	background: #FE980F;
+	border: 1px solid ;
+	border-radius: 3px;
+	background: #ffad33;
 }
+
+#light_pagination {
+	display: table;
+	margin: 0 auto;}

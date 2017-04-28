@@ -41,11 +41,18 @@
 							</c:forEach>
 						</div>
 
-						<div class="col-md-14">
+						<!-- div class="col-md-14">
 							<div class="col-md-3"></div>
  							<div id="light-pagination" class="pagination col-md-8"></div>
  							<div class="col-md-3"></div>
-						</div>						
+						</div -->						
+
+						<div id="light_pagination" class="col-md-14" >
+						
+							<div id="light-pagination" class="col-md-12" ></div>
+						
+						</div>
+						
 
 						<input type="hidden" name="itemPerPage" value="${perPage}"/>
 						<input type="hidden" name="itemStart" value="${start}"/>

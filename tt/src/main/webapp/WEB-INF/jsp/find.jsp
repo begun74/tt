@@ -44,8 +44,9 @@
 				<div class="col-sm-12 find_panel">
 					<h3><spring:message code="find.text"/>:&#160;&#160;'${findText}'</h3>
 				</div>			
+				<div class="col-sm-12"><p/></div>
 				<div class="row">
-					<div class="col-sm-10 padding-right">
+					<div class="col-sm-12">
 						<!-- content -->
 						<%@include file="common/content3.jsp" %>
 						<!-- content -->
@@ -71,6 +72,50 @@
     <script src="resources/js/bootstrap-hover-dropdown.min.js"></script>
     
     <script>
+    $(function() {
+    
+    	var findText = '&text=${findText}';
+    	
+    
+		var pns = ${mA_search.pn};
+		var pns_get ='';
+		
+		var gndrs = ${mA_search.gndr};
+		var gndrs_get ='';
+		
+		var cats = ${mA_search.cat};
+		var cats_get ='';
+					
+		for (var item in pns) {
+            $('#pn_'+pns[item]).attr("checked","checked");
+            pns_get += '&pn='+pns[item];
+        }
+
+		for (var item in gndrs) {
+            $('#gndr_'+gndrs[item]).attr("checked","checked");
+            gndrs_get += '&gndr='+gndrs[item];
+        }
+
+		for(var item in cats) {
+			$('#cat_'+cats[item]).attr("checked","checked");
+			cats_get += '&cat='+cats[item];
+		}
+		
+		
+		
+        $('#light-pagination').pagination({
+            items: ${allItems},
+            itemsOnPage: ${perPage},
+            cssStyle: 'light-theme',
+            prevText:"<<",
+            nextText:">>",
+            hrefTextPrefix: "?p=",
+            hrefTextSuffix: pns_get+gndrs_get+cats_get+findText,
+            currentPage: ${p}
+        });
+
+        
+});
 
         $(document).ready(function(){
 	        $(".search_text").keypress(function(event) {
