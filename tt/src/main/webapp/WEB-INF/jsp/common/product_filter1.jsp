@@ -12,7 +12,7 @@
 									<h4><spring:message code="sex.attribute"/></h4>
 									<c:forEach items="${genders}" var="gender" varStatus="loop"> 
 										<div class="div_Fitem">
-											<em><label class="checkbox"><input type="checkbox" name="gndr" id="gndr_${gender.id}" value="${gender.id}"/>${gender.name}</label></em>
+											<em><label class="checkbox cursor"><input type="checkbox" name="gndr" id="gndr_${gender.id}" value="${gender.id}"/>${gender.name}</label></em>
 										</div>
 									</c:forEach>
 								</div><!--/genders-->
@@ -22,7 +22,7 @@
 									<div class="div_Fitem" style="overflow-y:scroll; overflow-x: none; height:300px;">
 										<c:forEach items="${providers}" var="provider" varStatus="loop"> 
 											<div class="div_Fitem">
-												<em><label class="checkbox"><input type="checkbox" name="pn" id="pn_${provider.id}" value="${provider.id}"/>${provider.name}</label></em>
+												<em><label class="checkbox cursor"><input type="checkbox" name="pn" id="pn_${provider.id}" value="${provider.id}"/>${provider.name}</label></em>
 											</div>
 										</c:forEach>
 									</div>
