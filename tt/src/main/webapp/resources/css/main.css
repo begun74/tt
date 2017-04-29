@@ -2633,4 +2633,27 @@ give gallery's parent container a cursor: pointer.**/
 
 #light_pagination {
 	display: table;
-	margin: 0 auto;}
+	margin: 0 auto;
+}
+.div_bkgr {
+	
+	background-color: #ffffff;
+	margin: 10px;
+	/*border: 1px solid ;
+	border-radius: 3px;*/
+}
+
+.div_bkgr h4{
+	text-align: center;
+}
+
+.div_bkgr .div_Fitem {
+	margin: 10px;
+	border: 0px solid ;
+	border-radius: 3px;
+	
+}
+
+.cursor {
+	
+}

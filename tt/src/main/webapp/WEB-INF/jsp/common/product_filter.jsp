@@ -41,7 +41,7 @@
 									</div>
 								</div>
 								<!--/Категория-->
-							
+
 								<!--price-range-->
 								<!-- div class="price-range">
 									<h2><spring:message code="price.range"/></h2>
@@ -54,7 +54,6 @@
 								<div class="well text-center">
 								
 									<button type="submit" class="btn"><spring:message code="show"/></button>
-									<!-- button type="reset" class="btn btn-fefault"><spring:message code="reset"/></button -->
 								</div>
 						</form>
 						

@@ -12,6 +12,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.hibernate.Hibernate;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
@@ -44,6 +46,7 @@ public class TTServiceImpl implements Dao {
 	@Autowired
 	private DaoImpl dao;
 	
+	private  static  final  Log  LOG  =  LogFactory.getLog(TTServiceImpl.class);
 	
 	public List<User> getUserList() {
 		// TODO Auto-generated method stub
@@ -84,6 +87,7 @@ public class TTServiceImpl implements Dao {
 	public void delObject(Object obj) {
 		// TODO Auto-generated method stub
 		dao.delObject(obj);
+		LOG.info(this.getClass() +".delObject('"+obj+"')");
 	}
 
 
@@ -396,8 +400,10 @@ public class TTServiceImpl implements Dao {
 
 
 	@Override
+	@Transactional(readOnly=true)
 	public List<Tail> findByText(String text) {
 		// TODO Auto-generated method stub
+		LOG.info(this.getClass() +".findByText('"+text+"')");
 		return dao.findByText(text);
 	}
 	
