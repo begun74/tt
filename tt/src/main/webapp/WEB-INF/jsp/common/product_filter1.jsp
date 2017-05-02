@@ -19,7 +19,7 @@
 								</div><!--/genders-->
 							
 								<div class="row div_bkgr border1px"><!--brands_products-->
-									<div class="div_name "><h4><spring:message code="provider"/></h4></div>
+									<div class="div_name "><h4><spring:message code="provider"/> <span class="badge">42</span></h4></div>
 									<div class="row div_Fitem" style="overflow-y:scroll; overflow-x: none; height:200px;">
 										<c:forEach items="${providers}" var="provider" varStatus="loop"> 
 											<div class="div_Fitem">

@@ -31,11 +31,13 @@ public class SessionBean implements Serializable {
 	private AtomicInteger npp = new AtomicInteger(0);
 	
 	private List<OrderItems> orderItems = new ArrayList<OrderItems>();
+	
+	private HashMap mapProductFilter = new HashMap();
 
 	private User authUser;
 	
 	{
-		//errorMap.put("ok", "ok ok");
+		mapProductFilter.put("category", 11);
 	}
 
 	public List<OrderItems> getOrderItems() {
@@ -64,6 +66,14 @@ public class SessionBean implements Serializable {
 
 	public void setAuthUser(User authUser) {
 		this.authUser = authUser;
+	}
+
+	public HashMap getMapProductFilter() {
+		return mapProductFilter;
+	}
+
+	public void setMapProductFilter(HashMap mapProductFilter) {
+		this.mapProductFilter = mapProductFilter;
 	}
 
 

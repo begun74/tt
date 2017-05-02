@@ -186,6 +186,8 @@ public class IndexCtrl implements Serializable {
 		
 		model.addAttribute("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
 		
+		model.addAttribute("sessBean", sessBean);
+		
 		return "index";
 	}
 	
