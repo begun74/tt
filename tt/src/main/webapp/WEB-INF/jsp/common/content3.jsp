@@ -21,6 +21,11 @@
 						
 						
 						<div class="features_items"><!--features_items-->
+							<c:if test="${allItems eq 0}">
+								<div class="col-xs-12">
+									<h3><p class="text-center"><spring:message code="not.found"/></p></h3>
+								</div>
+							</c:if>
 							<c:forEach items="${tails}" var="tail" varStatus="loop"  begin="${start}" end="${stop}">
 												<div class="col-xs-4">
 														<div class="single-products product-image-wrapper">

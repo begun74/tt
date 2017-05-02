@@ -12,6 +12,8 @@ SELECT nextval('seq_global');
 
 INSERT INTO dir_gender (id_dir_gender, name) VALUES(nextval('seq_global'),'девичий');
 
+select * from dir_provider order by name;
+
 
 -- USER, USER_ROLE
 insert into tt_user_role VALUES(nextval('seq_global'),'ROLE_ADMIN');
@@ -101,3 +103,21 @@ delete from statistic_nomencl where id_statistic_nomencl in
 select sn.id_statistic_nomencl from statistic_nomencl sn 
 		inner join dir_nomenclature dn on sn.id_dir_nomenclature = dn.id_dir_nomenclature and sn.id_dir_nomenclature=34303 and date(sn.creation_date)='2017-04-15'
 		)
+
+select distinct xxx.* from tails t 
+	inner join 
+	(
+		select dn.*, dp.code as dp_code, dp.name as dp_name from dir_nomenclature dn 
+		inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider
+		where model like '%0002074803%' or dn.code= 0002074803 or dp.name like '%8 МАРТА%'
+	) as xxx on xxx.id_dir_nomenclature = t.fk_id_nomenclature
+	where t.destruction_date is null
+
+select * from dir_provider dp
+	inner join
+	(
+		select distinct dn.fk_id_provider from tails t
+		inner join dir_nomenclature dn on dn.id_dir_nomenclature=t.fk_id_nomenclature
+		where t.destruction_date is null
+	)as xxx on xxx.fk_id_provider=dp.id_dir_provider
+	order by name

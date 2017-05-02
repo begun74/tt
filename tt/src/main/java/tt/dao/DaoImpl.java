@@ -13,6 +13,7 @@ import java.util.Set;
 import javax.annotation.Resource;
 
 import org.hibernate.Criteria;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -70,7 +71,9 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<DirProvider> getProviderList() {
 		// TODO Auto-generated method stub
-		return getSession().createSQLQuery("select * from dir_provider order by code,name").addEntity(DirProvider.class).list();
+		String sqlDirProvider = env.getProperty("sqlDirProvider");
+		//return getSession().createSQLQuery("select * from dir_provider order by name").addEntity(DirProvider.class).list();
+		return getSession().createSQLQuery(sqlDirProvider).addEntity(DirProvider.class).list();
 	}
 
 	@Override
@@ -151,7 +154,10 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<DirNomenclGroup> getNomenclGroupList() {
 		// TODO Auto-generated method stub
-		return getSession().createQuery("from DirNomenclGroup order by name").list();
+		String sqlCategory = env.getProperty("sqlCategory");
+		
+		//return getSession().createQuery("from DirNomenclGroup order by name").list();
+		return  getSession().createSQLQuery(sqlCategory).addEntity(DirNomenclGroup.class).list();
 	}
 
 	@Override

@@ -63,7 +63,9 @@ public class TTServiceImpl implements Dao {
 	@Override
 	public List<DirProvider> getProviderList() {
 		// TODO Auto-generated method stub
-		return dao.getProviderList();
+		List<DirProvider> list = dao.getProviderList();
+		
+		return list;
 	}
 
 

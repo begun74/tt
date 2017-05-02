@@ -19,8 +19,8 @@
 								</div><!--/genders-->
 							
 								<div class="row div_bkgr border1px"><!--brands_products-->
-									<div class="div_name"><h4><spring:message code="provider"/></h4></div>
-									<div class="row div_Fitem" style="overflow-y:scroll; overflow-x: none; height:300px;">
+									<div class="div_name "><h4><spring:message code="provider"/></h4></div>
+									<div class="row div_Fitem" style="overflow-y:scroll; overflow-x: none; height:200px;">
 										<c:forEach items="${providers}" var="provider" varStatus="loop"> 
 											<div class="div_Fitem">
 												<em><label class="checkbox cursor"><input class="ch_provider" type="checkbox" name="pn" id="pn_${provider.id}" value="${provider.id}"/>${provider.name}</label></em>
@@ -33,7 +33,7 @@
 								<!-- Категория -->
 								<div class="row div_bkgr border1px">
 									<div class="div_name"><h4><spring:message code="category"/></h4></div>
-									<div class="row div_Fitem" style="overflow-y:scroll; overflow-x: none; height:300px;">
+									<div class="row div_Fitem" style="overflow-y:scroll; overflow-x: none; height:200px;">
 										<c:forEach items="${categories}" var="category" varStatus="loop"> 
 											<div class="div_Fitem">
 													<em><label class="checkbox cursor"><input type="checkbox" class="ch_category" name="cat" id="cat_${category.id}" value="${category.id}"/>${category.name}</label></em>
