@@ -2647,6 +2647,12 @@ give gallery's parent container a cursor: pointer.**/
 	text-align: center;
 }
 
+.div_name {
+	background-color: #ffbd5b;
+	margin: 5px;
+	border-radius: 3px;
+}
+
 .div_bkgr .div_Fitem {
 	margin: 10px;
 	border: 0px solid ;
@@ -2656,4 +2662,9 @@ give gallery's parent container a cursor: pointer.**/
 
 .cursor {
 	cursor: pointer;
+}
+
+.border1px {
+	border: 1px solid ;
+	border-radius: 3px;
 }

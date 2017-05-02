@@ -128,8 +128,20 @@
 	        		processSearchText($(this).val());
 	        	}
 	        });
-        });
+			
+	        $("#ch_provider_btn").click(function() {
+	        	$('.ch_provider').attr("checked",null);
+	        });
 
-    </script>
+	        $("#ch_category_btn").click(function() {
+	        	$('.ch_category').attr("checked",null);
+	        });
+
+	        $("#ch_gender_btn").click(function() {
+	        	$('.ch_gender').attr("checked",null);
+	        });
+	        
+        });
+	</script>
 </body>
 </html>

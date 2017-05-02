@@ -8,57 +8,42 @@
 					<div class="left-sidebar">
 						<form  method="GET" name="mA_search" action="${pageContext.request.contextPath}/search">
 						
-								<div class="row div_bkgr"><!-- genders -->
-									<h4><spring:message code="sex.attribute"/></h4>
+								<div class="row div_bkgr border1px"><!-- genders -->
+									<div class="div_name"><h4><spring:message code="sex.attribute"/></h4></div>
 									<c:forEach items="${genders}" var="gender" varStatus="loop"> 
 										<div class="div_Fitem">
-											<em><label class="checkbox cursor"><input type="checkbox" name="gndr" id="gndr_${gender.id}" value="${gender.id}"/>${gender.name}</label></em>
+											<em><label class="checkbox cursor"><input class="ch_gender" type="checkbox" name="gndr" id="gndr_${gender.id}" value="${gender.id}"/>${gender.name}</label></em>
 										</div>
 									</c:forEach>
+									<div class="row div_Fitem"><button type="button" id="ch_gender_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button></div>
 								</div><!--/genders-->
 							
-								<div class="row div_bkgr"><!--brands_products-->
-									<h4><spring:message code="provider"/></h4>
-									<div class="div_Fitem" style="overflow-y:scroll; overflow-x: none; height:300px;">
+								<div class="row div_bkgr border1px"><!--brands_products-->
+									<div class="div_name"><h4><spring:message code="provider"/></h4></div>
+									<div class="row div_Fitem" style="overflow-y:scroll; overflow-x: none; height:300px;">
 										<c:forEach items="${providers}" var="provider" varStatus="loop"> 
 											<div class="div_Fitem">
-												<em><label class="checkbox cursor"><input type="checkbox" name="pn" id="pn_${provider.id}" value="${provider.id}"/>${provider.name}</label></em>
+												<em><label class="checkbox cursor"><input class="ch_provider" type="checkbox" name="pn" id="pn_${provider.id}" value="${provider.id}"/>${provider.name}</label></em>
 											</div>
 										</c:forEach>
 									</div>
+									<div class="row div_Fitem"><button type="button" id="ch_provider_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button></div>
 								</div><!--/brands_products-->
 		
 								<!-- Категория -->
-								<div class="brands_products div_bkgr">
-									<div class="row" >
-										<div class="col-md-8"><h3><spring:message code="category"/></h3></div>
-										<div class="col-md-4"><spring:message code="reset"/></div>
-									</div> 
-									<div class="brands-name" id="accordian" style="overflow-y:scroll; overflow-x: none; height:200px;">
-										<ul class="nav nav-pills nav-stacked">
-											<c:forEach items="${categories}" var="category" varStatus="loop"> 
-													<li class="checkbox"><a><label><input type="checkbox" name="cat" id="cat_${category.id}" value="${category.id}"/>${category.name}</label></a></li>
-											</c:forEach>
-										</ul>
+								<div class="row div_bkgr border1px">
+									<div class="div_name"><h4><spring:message code="category"/></h4></div>
+									<div class="row div_Fitem" style="overflow-y:scroll; overflow-x: none; height:300px;">
+										<c:forEach items="${categories}" var="category" varStatus="loop"> 
+											<div class="div_Fitem">
+													<em><label class="checkbox cursor"><input type="checkbox" class="ch_category" name="cat" id="cat_${category.id}" value="${category.id}"/>${category.name}</label></em>
+											</div>
+										</c:forEach>
 									</div>
+									<div class="row div_Fitem"><button type="button" id="ch_category_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button></div>
 								</div>
 								<!--/Категория-->
 
-								<div class="brands_products div_bkgr">
-									<div class="row" >
-										<div class="col-md-4"><spring:message code="reset"/></div>
-										<div class="col-md-8"><h5><spring:message code="category"/></h5></div>
-									</div> 
-									<div style="overflow-y:scroll; overflow-x: none; height:200px;">
-											<c:forEach items="${categories}" var="category" varStatus="loop"> 
-												<div class="brands-name">
-													<label><input type="checkbox" name="cat" id="cat_${category.id}" value="${category.id}"/>${category.name}</label>
-												</div>
-											</c:forEach>
-									</div>
-								</div>
-
-							
 								<!--price-range-->
 								<!-- div class="price-range">
 									<h2><spring:message code="price.range"/></h2>
@@ -69,9 +54,7 @@
 								</div --><!--/price-range-->
 								
 								<div class="well text-center">
-								
-									<button type="submit" class="btn"><spring:message code="show"/></button>
-									<button type="reset" class="btn btn-fefault"><spring:message code="reset"/></button>
+									<button type="submit" class="btn btn-default"><spring:message code="show"/></button>
 								</div>
 						</form>
 						
