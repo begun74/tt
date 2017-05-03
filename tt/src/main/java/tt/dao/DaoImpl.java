@@ -1,5 +1,6 @@
 package tt.dao;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -409,6 +410,36 @@ public class DaoImpl implements Dao {
 									.list();
 		
 		return tails;
+	}
+
+	@Override
+	public BigInteger countGender(Long id_dir_gender) {
+		// TODO Auto-generated method stub
+		String sqlCountDirGender = env.getProperty("sqlCountDirGender");
+		
+		BigInteger res = (BigInteger)getSession().createSQLQuery(sqlCountDirGender).setParameter("id_dir_gender", id_dir_gender).uniqueResult();
+		//((BigInteger)getSession().createSQLQuery(sqlCountDirGender).setParameter("id_dir_gender", id_dir_gender).uniqueResult())
+		return res;
+	}
+
+	@Override
+	public BigInteger countCategory(Long id_dir_nomencl_group) {
+		// TODO Auto-generated method stub
+		String sqlCountCategory = env.getProperty("sqlCountCategory");
+		
+		BigInteger res = (BigInteger)getSession().createSQLQuery(sqlCountCategory).setParameter("id_dir_nomencl_group", id_dir_nomencl_group).uniqueResult();
+		//((BigInteger)getSession().createSQLQuery(sqlCountDirGender).setParameter("id_dir_gender", id_dir_gender).uniqueResult())
+		return res;
+	}
+
+	@Override
+	public BigInteger countProvider(Long id_dir_provider) {
+		// TODO Auto-generated method stub
+		String sqlCountProvider = env.getProperty("sqlCountProvider");
+		
+		BigInteger res = (BigInteger)getSession().createSQLQuery(sqlCountProvider).setParameter("id_dir_provider", id_dir_provider).uniqueResult();
+		//((BigInteger)getSession().createSQLQuery(sqlCountDirGender).setParameter("id_dir_gender", id_dir_gender).uniqueResult())
+		return res;
 	}
 
 

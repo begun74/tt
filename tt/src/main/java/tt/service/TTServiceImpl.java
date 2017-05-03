@@ -408,5 +408,26 @@ public class TTServiceImpl implements Dao {
 		LOG.info(this.getClass() +".findByText('"+text+"')");
 		return dao.findByText(text);
 	}
+
+
+	@Override
+	public BigInteger countGender(Long id_gender) {
+		// TODO Auto-generated method stub
+		return dao.countGender(id_gender);
+	}
+
+
+	@Override
+	public BigInteger countCategory(Long id_dir_nomencl_group) {
+		// TODO Auto-generated method stub
+		return dao.countCategory(id_dir_nomencl_group);
+	}
+
+
+	@Override
+	public BigInteger countProvider(Long id_dir_provider) {
+		// TODO Auto-generated method stub
+		return dao.countProvider(id_dir_provider);
+	}
 	
 }

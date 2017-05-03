@@ -77,4 +77,8 @@ public interface Dao {
 	
 	User findByUserName(String username);
 	
+	public BigInteger countGender(Long id_gender);
+	public BigInteger countCategory(Long id_category);
+	public BigInteger countProvider(Long id_provider);
+	
 }

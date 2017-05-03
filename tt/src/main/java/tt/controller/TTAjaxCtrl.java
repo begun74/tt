@@ -220,5 +220,42 @@ public class TTAjaxCtrl  implements Serializable {
 		
 		return  new ResponseEntity<Timestamp>(oi.getDestruction_date() , HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/countGender{id}", method = RequestMethod.GET)
+	public ResponseEntity<Integer>  countGender(HttpSession session, @RequestParam ("id") long id) 
+	{
+		
+		if(session.isNew()) return new ResponseEntity<Integer>(0,HttpStatus.FORBIDDEN);		
+		
+		int count = ttService.countGender(id).intValue();
+		
+		return  new ResponseEntity<Integer>(count,HttpStatus.OK);
 
+	}
+
+
+	@RequestMapping(value = "/countCategory{id}", method = RequestMethod.GET)
+	public ResponseEntity<Integer>  countCategory(HttpSession session, @RequestParam ("id") long id) 
+	{
+		
+		if(session.isNew()) return new ResponseEntity<Integer>(0,HttpStatus.FORBIDDEN);		
+		
+		int count = ttService.countCategory(id).intValue();
+		
+		return  new ResponseEntity<Integer>(count,HttpStatus.OK);
+
+	}
+
+	@RequestMapping(value = "/countProvider{id}", method = RequestMethod.GET)
+	public ResponseEntity<Integer>  countProvider(HttpSession session, @RequestParam ("id") long id) 
+	{
+		
+		if(session.isNew()) return new ResponseEntity<Integer>(0,HttpStatus.FORBIDDEN);		
+		
+		int count = ttService.countProvider(id).intValue();
+		
+		return  new ResponseEntity<Integer>(count,HttpStatus.OK);
+
+	}
+	
 }

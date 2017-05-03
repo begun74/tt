@@ -113,6 +113,16 @@ select distinct xxx.* from tails t
 	) as xxx on xxx.id_dir_nomenclature = t.fk_id_nomenclature
 	where t.destruction_date is null
 
+select * from dir_nomencl_group dng
+	inner join
+	(
+		select distinct dng.id_dir_nomencl_group from tails t
+		inner join dir_nomenclature dn on dn.id_dir_nomenclature=t.fk_id_nomenclature
+		inner join dir_nomencl_group dng on dng.id_dir_nomencl_group=dn.fk_id_dir_nomencl_group
+		where t.destruction_date is null
+	)as xxx on dng.id_dir_nomencl_group=xxx.id_dir_nomencl_group
+	order by name
+
 select * from dir_provider dp
 	inner join
 	(
@@ -121,3 +131,38 @@ select * from dir_provider dp
 		where t.destruction_date is null
 	)as xxx on xxx.fk_id_provider=dp.id_dir_provider
 	order by name
+
+select * from dir_nomencl_group dng 
+					inner join 
+					( 
+						select distinct dng.id_dir_nomencl_group from tails t 
+						inner join dir_nomenclature dn on dn.id_dir_nomenclature=t.fk_id_nomenclature 
+						inner join dir_nomencl_group dng on dng.id_dir_nomencl_group=dn.fk_id_dir_nomencl_group 
+						where t.destruction_date is null 
+					)as xxx on dng.id_dir_nomencl_group=xxx.id_dir_nomencl_group 
+				order by name
+
+select * from dir_gender
+	group by id_dir_gender
+
+
+
+select count(*) from dir_gender dg
+		inner join
+		(
+			select distinct dg.*, dn.* from dir_nomenclature dn
+				inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
+				inner join dir_gender dg on dn.fk_dir_gender = dg.id_dir_gender and dg.id_dir_gender=58
+				where t.destruction_date is null 
+		)as xxx on xxx.id_dir_gender = dg.id_dir_gender
+
+
+select count(*) from dir_nomencl_group dng
+		inner join
+		(
+			select distinct dng.*, dn.* from dir_nomenclature dn
+				inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
+				inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group and dng.id_dir_nomencl_group = 2760
+				where t.destruction_date is null 
+		)as xxx on xxx.id_dir_nomencl_group = dng.id_dir_nomencl_group
+
