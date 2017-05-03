@@ -166,3 +166,13 @@ select count(*) from dir_nomencl_group dng
 				where t.destruction_date is null 
 		)as xxx on xxx.id_dir_nomencl_group = dng.id_dir_nomencl_group
 
+
+select count(*) from dir_provider dp
+		inner join
+		(
+			select distinct dp.*, dn.* from dir_nomenclature dn
+				inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
+				inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider and dp.id_dir_provider = 14264
+				where t.destruction_date is null 
+		)as xxx on xxx.id_dir_provider = dp.id_dir_provider
+
