@@ -255,6 +255,47 @@ function clearSessErrors(error_name) {
 	});
 }
 
+
+function countsPerProdustsFilter(countName, tooltip) {
+    /*          var $el = $(this);
+    if( $el.data( "fetched" ) === undefined ) {
+        $el.data( "fetched", true );
+        $el.attr( "data-original-title", "<img src='images/wait.gif'/>" ).tooltip( "show" );
+        $.ajax(
+            {
+                url: "ajax/tooltip_data.php",
+                data:                                   {
+                        lookup_id: $el.attr("lookup_id")
+                    },
+                success:
+                    function( response ) {
+                        $el.attr( "data-original-title", response );
+                        if( $( "#" + $el.attr( "aria-describedby" ) ).is( ":visible" ) ) {
+                            $el.tooltip( "show" );
+                        }
+                    },
+                dataType: "html"
+            }
+            );
+    } else {
+        $(this).tooltip( "show" );
+    } */
+
+
+	$.ajax(
+            {
+                url: countName+"?id="+tooltip.attr("lookup_id"),
+                success:
+                    function( response ) {
+                		tooltip.attr( "data-original-title", response );
+                		tooltip.tooltip( "show" );
+                    },
+                dataType: "html"
+            }
+	);
+	
+}
+
 function isNumberKey(evt)
 {
    var charCode = (evt.which) ? evt.which : event.keyCode;

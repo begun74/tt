@@ -151,22 +151,7 @@
 	                ).on(
 	                {
 	                	click: function() {
-	                    	var $el = $(this);
-	                    	
-                            $el.data( "fetched", true );
-                    		$.ajax(
-                                    {
-                                        url: "countProvider?id="+$el.attr("lookup_id"),
-                                        success:
-                                            function( response ) {
-                                                $el.attr( "data-original-title", response );
-                                                $el.tooltip( "show" );
-                                            },
-                                        dataType: "html"
-                                    }
-							);
-                            
-
+	                		countsPerProdustsFilter('countProvider',$(this));                            
 	                	},
 	                    mouseleave: function() {
 	                            $(this).tooltip( "hide" );
@@ -183,22 +168,7 @@
 	                ).on(
 	                {
 	                	click: function() {
-	                    	var $el = $(this);
-	                    	
-                            $el.data( "fetched", true );
-                    		$.ajax(
-                                    {
-                                        url: "countCategory?id="+$el.attr("lookup_id"),
-                                        success:
-                                            function( response ) {
-                                                $el.attr( "data-original-title", response );
-                                                $el.tooltip( "show" );
-                                            },
-                                        dataType: "html"
-                                    }
-							);
-                            
-
+	                		countsPerProdustsFilter('countCategory',$(this));
 	                	},
 	                    mouseleave: function() {
 	                            $(this).tooltip( "hide" );
@@ -215,45 +185,7 @@
 	                {
 	                    click:
 	                        function() {
-	                    	var $el = $(this);
-	                    	
-                            $el.data( "fetched", true );
-                    		
-                    		$.ajax(
-	                                    {
-	                                        url: "countGender?id="+$el.attr("lookup_id"),
-	                                        success:
-	                                            function( response ) {
-	                                                $el.attr( "data-original-title", response );
-	                                                $el.tooltip( "show" );
-	                                            },
-	                                        dataType: "html"
-	                                    }
-							);
-	                    	
-	                  /*          var $el = $(this);
-	                            if( $el.data( "fetched" ) === undefined ) {
-	                                $el.data( "fetched", true );
-	                                $el.attr( "data-original-title", "<img src='images/wait.gif'/>" ).tooltip( "show" );
-	                                $.ajax(
-	                                    {
-	                                        url: "ajax/tooltip_data.php",
-	                                        data:                                   {
-	                                                lookup_id: $el.attr("lookup_id")
-	                                            },
-	                                        success:
-	                                            function( response ) {
-	                                                $el.attr( "data-original-title", response );
-	                                                if( $( "#" + $el.attr( "aria-describedby" ) ).is( ":visible" ) ) {
-	                                                    $el.tooltip( "show" );
-	                                                }
-	                                            },
-	                                        dataType: "html"
-	                                    }
-	                                    );
-	                            } else {
-	                                $(this).tooltip( "show" );
-	                            } */
+	                			countsPerProdustsFilter('countGender',$(this));
 	                        },
 	                    mouseleave:
 	                        function() {
