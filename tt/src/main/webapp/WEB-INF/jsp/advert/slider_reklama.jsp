@@ -19,10 +19,12 @@
 						
 						<div class="carousel-inner">
 							<div class="item active">
-								<div class="col-sm-10 slider_reklama text-center">
+								<div class="col-sm-6 slider_reklama text-center">
 									<h2>Акция "День скидок" во всех магазинах ОАО "Трикотажторг"!</h2>
 									
 									<p class="text-left"><a href="action#1" class="btn btn-default get"><spring:message code="read.more"/></a></p>
+								</div>
+								<div class="col-sm-4">
 								</div>
 							</div>
 							<div class="item">
