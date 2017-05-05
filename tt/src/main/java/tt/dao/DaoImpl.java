@@ -73,8 +73,8 @@ public class DaoImpl implements Dao {
 	public List<DirProvider> getProviderList() {
 		// TODO Auto-generated method stub
 		String sqlDirProvider = env.getProperty("sqlDirProvider");
-		//return getSession().createSQLQuery("select * from dir_provider order by name").addEntity(DirProvider.class).list();
-		return getSession().createSQLQuery(sqlDirProvider).addEntity(DirProvider.class).list();
+		return getSession().createSQLQuery("select * from dir_provider order by name").addEntity(DirProvider.class).list();
+		//return getSession().createSQLQuery(sqlDirProvider).addEntity(DirProvider.class).list();
 	}
 
 	@Override
@@ -157,8 +157,8 @@ public class DaoImpl implements Dao {
 		// TODO Auto-generated method stub
 		String sqlCategory = env.getProperty("sqlCategory");
 		
-		//return getSession().createQuery("from DirNomenclGroup order by name").list();
-		return  getSession().createSQLQuery(sqlCategory).addEntity(DirNomenclGroup.class).list();
+		return getSession().createQuery("from DirNomenclGroup order by name").list();
+		//return  getSession().createSQLQuery(sqlCategory).addEntity(DirNomenclGroup.class).list();
 	}
 
 	@Override

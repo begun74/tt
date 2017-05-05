@@ -2637,7 +2637,21 @@ give gallery's parent container a cursor: pointer.**/
 }
 .div_bkgr {
 	
-	background-color: #ffffff;
+	background-color: #FFF;
+	margin: 10px;
+	/*border: 1px solid ;
+	border-radius: 3px;*/
+}
+
+.div_bkgr_gray {
+	background-color: #c0c0c0;
+	margin: 10px;
+	/*border: 1px solid ;
+	border-radius: 3px;*/
+}
+
+.div_bkgr_red{
+	background-color: #ff0000;
 	margin: 10px;
 	/*border: 1px solid ;
 	border-radius: 3px;*/

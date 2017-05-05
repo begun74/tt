@@ -19,8 +19,11 @@
     <link href="${pageContext.request.contextPath}/resources/admin/css/wysiwyg.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="${pageContext.request.contextPath}/resources/admin/css/fancybox-1.3.1.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="${pageContext.request.contextPath}/resources/admin/css/visualize.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="screen" />
 
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/admin/js/jquery-1.4.2.min.js"></script>   
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/admin/js/jquery-1.4.2.min.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+	   
     <script type="text/javascript" src="${pageContext.request.contextPath}/resources/admin/js/jquery.dimensions.min.js"></script>
     
     <!-- // Tabs // -->
@@ -74,7 +77,7 @@
 				<!-- breadcrumbs -->
 		        <div class="breadcrumbs">
 		          <ul>
-		            <li class="home"><a href="index">На главную</a></li>
+		            <li class="home"><a href="${pageContext.request.contextPath}/index">На главную</a></li>
 		          </ul>
 		        </div>
 		        <!-- /breadcrumbs -->
@@ -91,13 +94,53 @@
         <!-- /box -->
         
         <!-- /box -->
-        <div class="box"><h3>Adverts</h3>
-        </div>
-        <!-- /box -->
+        <div class="box">
+			<ul class="breadcrumb">
+			  	<li class="breadcrumb-item active">Контент сайта</li>
+				<li class="breadcrumb-item">Реклама/Акции</li>
+			</ul>        
+		<div id="tabs" class="box">
+            <ul class="bookmarks">
+		            <li><a href="#tabs-1">Реклама/Акции</a></li>
+            </ul>
+   		            <!-- Error form message -->            
+   		            <c:if test="${not empty error}">
+		            <div class="form-message error"  onclick="clearErrors()">
+		              <p>Ошибка :</p>
+		              <ul>
+		                <li>"${error}"</li>
+		              </ul>
+		            </div>
+		            </c:if>
+            
+            <div class="box-content"> 
+	            <div id="tabs-1">  
+	              	<div class="form-cols">
+					    		<div class="col1">
+					    		<div>
+					    			<form id="addAdvert" class="formBox" role="form"
+								  			enctype="multipart/form-data" 
+								  			action="${pageContext.request.contextPath}/admin/content/addAdvert?${_csrf.parameterName}=${_csrf.token}" 
+								  			method="POST">
+											       
+								      	<div class="clearfix file">
+										         <div class="lab">Файл </div>
+										         <div class="con"><input type="file" name="photoFile" class="upload-file" id="photoFile"/></div>
+										</div>
+									</form>				    		
+								</div>
+								</div>
+					</div>	
+				</div>    
+			</div>        
+		</div><!-- /tabs -->
+		
+        </div><!-- /box -->
     
-
+	</div><!-- /main -->	
     </div>
     <!-- /#content -->
+    
 	<!-- Sidebar -->
 	        <%@include file="../sidebar.jsp" %>
 	<!-- /#sidebar-wrapper -->    

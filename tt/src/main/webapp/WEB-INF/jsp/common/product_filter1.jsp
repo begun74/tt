@@ -33,7 +33,7 @@
 								<!-- Категория -->
 								<div class="row div_bkgr border1px">
 									<div class="div_name"><h4><spring:message code="category"/></h4></div>
-									<div class="row div_Fitem" style="overflow-y:scroll; overflow-x: none; height:200px;">
+									<div class="row div_Fitem" style="overflow-y:scroll; overflow-x: hidden; height:200px;">
 										<c:forEach items="${categories}" var="category" varStatus="loop"> 
 											<div class="div_Fitem">
 													<em><label class="checkbox cursor countCategory" data-toggle="tooltip" data-placement="left" lookup_id="${category.id}"><input type="checkbox" class="ch_category" name="cat" id="cat_${category.id}" value="${category.id}"/>${category.name}</label></em>

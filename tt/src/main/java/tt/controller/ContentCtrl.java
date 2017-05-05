@@ -45,7 +45,7 @@ public class ContentCtrl {
 		switch (act)
 		{
 			case "1":
-				model = new ModelAndView("admin/addProvider");
+				model = new ModelAndView("admin/content/adverts");
 			break;
 		}
 		
