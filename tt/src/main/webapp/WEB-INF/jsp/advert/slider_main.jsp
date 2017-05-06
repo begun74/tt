@@ -33,7 +33,7 @@
 									<!-- button type="button" class="btn btn-default get">Get it now</button -->
 								</div>
 								<div class="col-sm-6">
-									<img src="resources/images/akciyabig.png" class="img-responsive" alt="" />
+									<img src="resources/images/home/girl1.jpg" class="girl img-responsive" alt="" />
 									<!-- img src="resources/images/home/pricing.png"  class="pricing" alt="" / -->
 								</div>
 							</div>

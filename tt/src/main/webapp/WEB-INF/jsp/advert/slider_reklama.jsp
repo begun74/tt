@@ -19,24 +19,32 @@
 						
 						<div class="carousel-inner">
 							<div class="item active">
-								<div class="col-sm-6 slider_reklama text-center">
-									<h2>Акция "День скидок" во всех магазинах ОАО "Трикотажторг"!</h2>
-									
-									<p class="text-left"><a href="action#1" class="btn btn-default get"><spring:message code="read.more"/></a></p>
-								</div>
-								<div class="col-sm-4">
-								</div>
-							</div>
-							<div class="item">
-								<div class="col-sm-10 slider_reklama text-center">
-									<h2>С 02 мая  по 30 июня 2017г. Акция ОАО"Купалинка". Скидка -50% с розничной цены на товары, участвующие в акции.</h2>
-									<p class="text-left"><a href="action#1" class="btn btn-default get"><spring:message code="read.more"/></a></p>
+								<div class="col-sm-10 slider_reklama" >
+										
+										<div class="col-xs-10 col-sm-10 text-center">
+											<div class="positionBottomRight_0 border1px">1</div>
+											<h2>Акция "День скидок" во всех магазинах ОАО "Трикотажторг"!</h2>
+											<p class="text-left"><a href="action#1" class="btn btn-default get"><spring:message code="read.more"/></a></p>
+											<!-- img src="resources/images/akciya.png" class="positionBottomRight_0 " alt="" / -->
+										</div>
 								</div>
 							</div>
 							<div class="item">
-								<div class="col-sm-10 slider_reklama text-center">
-									<h2>С 03 мая 2017г. Акция ЗАО"Калинка". Распродажа женского ассортимента. Скидка -35%, -50%, -70% от розничной цены на модели, участвующие в акции.</h2>
-									<p class="text-left"><a href="action#1" class="btn btn-default get"><spring:message code="read.more"/></a></p>
+								<div class="col-sm-3  text-right">
+									<img src="resources/images/akciya.png" class="" alt="" />
+								</div>
+								<div class="col-sm-7 slider_reklama text-center">
+									<h3>С 02 мая  по 30 июня 2017г. Акция ОАО"Купалинка". Скидка -50% с розничной цены на товары, участвующие в акции.</h3>
+									<p class="text-left"><a href="action#2" class="btn btn-default get"><spring:message code="read.more"/></a></p>
+								</div>
+							</div>
+							<div class="item">
+								<div class="col-sm-3  text-right">
+									<img src="resources/images/akciya.png" class="" alt="" />
+								</div>
+								<div class="col-sm-7 slider_reklama text-center">
+									<h3>С 03 мая 2017г. Акция ЗАО"Калинка". Распродажа женского ассортимента. Скидка -35%, -50%, -70% от розничной цены на модели, участвующие в акции.</h3>
+									<p class="text-left"><a href="action#3" class="btn btn-default get"><spring:message code="read.more"/></a></p>
 								</div>
 							</div>
 						</div>
