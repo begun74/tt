@@ -123,9 +123,24 @@
 								  			action="${pageContext.request.contextPath}/admin/content/addAdvert?${_csrf.parameterName}=${_csrf.token}" 
 								  			method="POST">
 											       
-								      	<div class="clearfix file">
-										         <div class="lab">Файл </div>
-										         <div class="con"><input type="file" name="photoFile" class="upload-file" id="photoFile"/></div>
+										<div class="clearfix">
+										         <div class="lab">
+						                   			<label>Название</label>
+										         </div>
+										         <div class="con">
+						                   			<input name="name" id="name" type="textarea" class="input" value="" > 
+										         </div>
+										</div>
+							  			<div class="clearfix">
+										         <div class="lab">
+								                    <label>Текст акции</label> 
+										         </div>
+										         <div class="con">
+													<input name="text" id="text" type="textarea" class="input" value="" >										         
+										         </div>
+										</div>										
+										<div>
+											<button type="submit" class=""><spring:message code="label.button.add"/></button>
 										</div>
 									</form>				    		
 								</div>
