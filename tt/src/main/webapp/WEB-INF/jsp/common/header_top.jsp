@@ -19,7 +19,7 @@
 						<div class="col-sm-6">
 							<div class="contactinfo">
 								<ul class="nav nav-pills">
-									<li><a href="#"><i class="fa"></i>$ 1.886</a></li>
+									<li><a href="#"><i class="fa"></i><span>$ 1.886</span></a></li>
 								</ul>
 							</div>
 						</div>
