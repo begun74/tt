@@ -179,7 +179,15 @@
 	    $('#main-contact-form').submit(function(e){
 			this.submit();
 			//$('#bs-example-modal-sm').modal('show');
-		})
+		});
+
+        $(".search_text").keypress(function(event) {
+        	if ( event.which == 13 ) 
+        	{
+        		processSearchText($(this).val());
+        	}
+        });
+
     });
     </script>
 </body>
