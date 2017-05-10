@@ -21,15 +21,15 @@
 							<div class="item active">
 								<div class="col-sm-10 slider_reklama" >
 										
-										<div class="col-xs-3 col-sm-3 ">
+										<div class="col-sm-3 ">
 											<img src="resources/images/akciya.png" class="" alt="" />
 										</div>
-										<div class="col-xs-6 col-sm-6 text-center ">
+										<div class="col-sm-6 text-center ">
 											<!-- div class="positionBottomRight_0 border1px"></div -->
 											<h2>Акция "День скидок" во всех магазинах ОАО "Трикотажторг"!</h2>
 											<p class="text-left"><a href="action#1" class="btn btn-default get"><spring:message code="read.more"/></a></p>
 										</div>
-										<div class="col-xs-3 col-sm-3 ">
+										<div class="col-sm-3 ">
 											<img src="resources/images/akciya.png" class="" alt="" />
 										</div>
 								</div>
