@@ -40,7 +40,7 @@
 	<!-- header_top -->
 		
 	<!-- slider_reklama -->
-	<%@include file="advert/advert_main.jsp" %>
+	<%@include file="advert/advert_main2.jsp" %>
 	<!-- slider_reklama -->
 
 		<div class="container">

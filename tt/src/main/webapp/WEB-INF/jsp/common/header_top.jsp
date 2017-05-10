@@ -16,6 +16,13 @@
 						</div>
 					</div>
 					<div class="col-sm-6">
+						<div class="col-sm-6">
+							<div class="contactinfo">
+								<ul class="nav nav-pills">
+									<li><a href="#"><i class="fa"></i>$ 1.886</a></li>
+								</ul>
+							</div>
+						</div>
 						<div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
