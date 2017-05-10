@@ -12,12 +12,12 @@
 
 					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
 						<ol class="carousel-indicators">
-							<li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+							<!-- li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
 							<li data-target="#slider-carousel" data-slide-to="1"></li>
-							<li data-target="#slider-carousel" data-slide-to="2"></li>
+							<li data-target="#slider-carousel" data-slide-to="2"></li -->
 						</ol>
 						
-						<div class="carousel-inner">
+						<div class="carousel-inner" style="height: 320px;">
 							<div class="item active">
 								<div class="col-sm-6">
 									<!-- <span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3 -->
@@ -33,13 +33,12 @@
 									<!-- button type="button" class="btn btn-default get">Get it now</button -->
 								</div>
 								<div class="col-sm-6">
-									<img src="resources/images/home/girl1.jpg" class="girl img-responsive" alt="" />
-									<!-- img src="resources/images/home/pricing.png"  class="pricing" alt="" / -->
+									<!-- img src="resources/images/home/girl1.jpg" class="girl img-responsive" alt="" / -->
+									<img src="resources/images/pimgpsh_fullsize_distr.jpg"  class="pricing" alt="" />
 								</div>
 							</div>
 							<div class="item">
 								<div class="col-sm-6">
-									<!-- h1><span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3 -->
 									<h2>ОАО «Трикотажторг»</h2>
 									<p>Верхний трикотаж</p>
 									<p>Бельевой трикотаж</p>
@@ -47,21 +46,20 @@
 									<!-- button type="button" class="btn btn-default get">Get it now</button -->
 								</div>
 								<div class="col-sm-6">
-									<img src="resources/images/home/girl2.jpg" class="girl img-responsive" alt="" />
-									<!-- img src="resources/images/home/pricing.png"  class="pricing" alt="" / -->
+									<!-- img src="resources/images/home/girl2.jpg" class="girl img-responsive" alt="" / -->
+									<img src="resources/images/pimgpsh_fullsize_distr.jpg"  class="pricing" alt="" />
 								</div>
 							</div>
 							
 							<div class="item">
 								<div class="col-sm-6">
-									<!-- h1><span>E</span>-SHOPPER  </h1><h3>ver. ${version}</h3 -->
 									<h2>ОАО «Трикотажторг»</h2>
 									<p>Предлагает взаимовыгодное сотрудничество ИП и частным торговым предприятиям в вопросах закупки товаров лёгкой промышленности отечественного и зарубежного производства.</p>
 									<!-- button type="button" class="btn btn-default get">Get it now</button -->
 								</div>
 								<div class="col-sm-6">
-									<img src="resources/images/home/girl3.jpg" class="girl img-responsive" alt="" />
-									<!-- img src="resources/images/home/pricing.png"  class="pricing" alt="" / -->
+									<!-- img src="resources/images/home/girl3.jpg" class="girl img-responsive" alt="" / -->
+									<img src="resources/images/pimgpsh_fullsize_distr.jpg"  class="pricing" alt="" />
 								</div>
 							</div>
 							

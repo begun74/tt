@@ -6,10 +6,10 @@
 
 <section id="advert">
 		<!-- slider_reklama -->
-		<%@include file="slider_reklama.jsp" %>
+		<!-- %@include file="slider_reklama.jsp" % -->
 		<!-- slider_reklama -->
 	
 		<!-- slider_main -->
-		<!-- %@include file="slider_main.jsp" % -->
+		<%@include file="slider_main.jsp" %>
 		<!-- slider_main -->
 </section>
