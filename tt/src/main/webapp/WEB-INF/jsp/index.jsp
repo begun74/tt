@@ -39,7 +39,7 @@
 	<!-- header_top -->
 		
 	<!-- advert -->
-	<%@include file="advert/advert_main.jsp" %>
+	<%@include file="advert/advert_main2.jsp" %>
 	<!-- advert -->
 
 	<!-- slider_main -->

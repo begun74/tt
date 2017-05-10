@@ -4,7 +4,6 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<!DOCTYPE html>
 	<section id="slider"><!--slider-->
 		<div class="content " style="height: 200px;">
 			<div class="row ">

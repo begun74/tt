@@ -121,6 +121,16 @@
     <script src="resources/js/jquery.simplePagination.js"></script>
     <script src="resources/js/bootstrap-hover-dropdown.min.js"></script>
     
+    <script>
+	    $(document).ready(function(){
+	        $(".search_text").keypress(function(event) {
+	        	if ( event.which == 13 ) 
+	        	{
+	        		processSearchText($(this).val());
+	        	}
+	        });
+	    });    
+    </script>
 
 </body>
 </html>
