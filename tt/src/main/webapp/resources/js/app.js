@@ -5,6 +5,8 @@ var errAjax = 'Error connect to AJAX server!';
 $(document).ready(function(){
 	getCurrency("http://www.nbrb.by/API/ExRates/Rates/840?ParamMode=1",$('#usd_840'),'$ ');
 	getCurrency("http://www.nbrb.by/API/ExRates/Rates/978?ParamMode=1",$('#eur_978'),'€ ');
+	
+	gismeteoWeather();
 })
 
 /* Gismeteo Informer (begin) */
