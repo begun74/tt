@@ -131,8 +131,6 @@
 	        });
 			
 	    	
-	        //gismeteoWeather();
-
 	        $("#ch_provider_btn").click(function() {
 	        	$('.ch_provider').attr("checked",null);
 	        });
