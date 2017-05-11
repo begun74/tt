@@ -49,7 +49,7 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-sm-3 col-xs-3">
 					<!-- product_filter -->
 					<%@include file="common/product_filter1.jsp" %>
 					<!-- product_filter -->
