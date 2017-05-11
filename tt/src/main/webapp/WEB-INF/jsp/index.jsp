@@ -73,6 +73,7 @@
   
     <script src="resources/js/jquery.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/jquery.cookie.js"></script>
 	<script src="resources/js/jquery.scrollUp.min.js"></script>
 	<script src="resources/js/price-range.js"></script>
     <script src="resources/js/jquery.prettyPhoto.js"></script>
@@ -130,7 +131,7 @@
 	        });
 			
 	    	
-			
+	        gismeteoWeather();
 
 	        $("#ch_provider_btn").click(function() {
 	        	$('.ch_provider').attr("checked",null);
@@ -200,5 +201,7 @@
         
         
 	</script>
+	
+	<!-- Gismeteo Informer (finish) -->
 </body>
 </html>

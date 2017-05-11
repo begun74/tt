@@ -3,20 +3,49 @@
 var errAjax = 'Error connect to AJAX server!';
 
 $(document).ready(function(){
-	getCurrency("http://www.nbrb.by/API/ExRates/Rates/840?ParamMode=1",$('.usd_840'),'$ ');
-	getCurrency("http://www.nbrb.by/API/ExRates/Rates/978?ParamMode=1",$('.eur_978'),'€ ');
+	getCurrency("http://www.nbrb.by/API/ExRates/Rates/840?ParamMode=1",$('#usd_840'),'$ ');
+	getCurrency("http://www.nbrb.by/API/ExRates/Rates/978?ParamMode=1",$('#eur_978'),'€ ');
 })
 
+/* Gismeteo Informer (begin) */
+var gismeteoWeather = function() {
+    	var
+		    d = this.document,
+		    o = this.navigator.userAgent.match(/MSIE (6|7|8)/) ? true : false,
+		    s = d.createElement('script');
+
+			s.src  = 'https://www.gismeteo.by/informers/simple/install/';
+			s.type = 'text/javascript';
+			s[(o ? 'defer' : 'async')] = true;
+			s[(o ? 'onreadystatechange' : 'onload')] = function() {
+					    try {new GmI({
+					        slug : 'd4e91d48c850d2242f9e2b659b2b0b26',
+					        type : '88x31-1',
+					        city : '4248',
+					        lang : 'ru'
+					    })} catch (e) {}
+			}
+
+		d.body.appendChild(s);
+}
 
 var getCurrency = function(url_, currency, text) {
 	
 	var arrData = {};
-	
+	var cookie_ = $.cookie(currency.attr('id'));
 
 	$.get(url_, function(data) 
 	{
-			currency.html(text+data['Cur_OfficialRate']);
-			currency.attr('title',data['Cur_Name']);
+			//alert('1  ' + currency.attr('id')+'  '+cookie_);
+		$.cookie(currency.attr('id'),data);
+		//alert(cookie_['Cur_Name']);
+		//$.cookie('currency_usd',data['Cur_OfficialRate']);
+	}).done(function(data) {
+	   // alert( "2" );
+		currency.html(text+data['Cur_OfficialRate']);
+		currency.attr('title',data['Cur_Name']);
+	}).fail(function() {
+	    //alert( "3" );
 	});
 }
 
