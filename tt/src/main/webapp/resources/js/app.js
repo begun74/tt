@@ -2,6 +2,24 @@
 
 var errAjax = 'Error connect to AJAX server!';
 
+$(document).ready(function(){
+	getCurrency("http://www.nbrb.by/API/ExRates/Rates/840?ParamMode=1",$('.usd_840'),'$ ');
+	getCurrency("http://www.nbrb.by/API/ExRates/Rates/978?ParamMode=1",$('.eur_978'),'€ ');
+})
+
+
+var getCurrency = function(url_, currency, text) {
+	
+	var arrData = {};
+	
+
+	$.get(url_, function(data) 
+	{
+			currency.html(text+data['Cur_OfficialRate']);
+			currency.attr('title',data['Cur_Name']);
+	});
+}
+
 function increment(obj, value) {
 	
 	alert(obj+'  '+value);
@@ -368,3 +386,6 @@ function processSearchText(text) {
 	//alert('processSearchText! - ' +text);
 	window.location="find?text="+text;
 }
+
+
+

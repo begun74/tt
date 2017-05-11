@@ -51,6 +51,13 @@
 			</div>
 		</div>
 
+	<div class="col-sm-12">
+		<!-- footer -->
+		<%@include file="common/footer.jsp" %>
+		<!-- footer -->
+	</div>
+
+    <script src="resources/js/app.js"></script>
 
 					
 </body>

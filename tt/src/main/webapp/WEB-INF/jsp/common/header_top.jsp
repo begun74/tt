@@ -19,7 +19,8 @@
 						<div class="col-sm-6">
 							<div class="contactinfo">
 								<ul class="nav nav-pills">
-									<li><a href="#"><i class="fa"></i><span>$ 1.886</span></a></li>
+									<li><a href="http://www.nbrb.by"><i class="fa usd_840"></i></a></li>
+									<li><a href="http://www.nbrb.by"><i class="fa eur_978"></i></a></li>
 								</ul>
 							</div>
 						</div>

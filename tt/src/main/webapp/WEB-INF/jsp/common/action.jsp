@@ -112,7 +112,6 @@
 	
 
   
-    <script src="resources/js/app.js"></script>
     <script src="resources/js/jquery.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/jquery.scrollUp.min.js"></script>
@@ -121,6 +120,7 @@
     <script src="resources/js/main.js"></script>
     <script src="resources/js/jquery.simplePagination.js"></script>
     <script src="resources/js/bootstrap-hover-dropdown.min.js"></script>
+    <script src="resources/js/app.js"></script>
     
     <script>
 	    $(document).ready(function(){
