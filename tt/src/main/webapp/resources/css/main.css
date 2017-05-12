@@ -2662,6 +2662,8 @@ give gallery's parent container a cursor: pointer.**/
 }
 
 .div_name {
+	text-align: right;
+	padding-right: 5px;
 	background-color: #ffbd5b;
 	margin: 5px;
 	border-radius: 3px;

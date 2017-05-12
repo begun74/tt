@@ -8,6 +8,7 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8">
+    <!-- meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="одежда весна 2017 | Продукция ведущих трикотажных фабрик | Верхний трикотаж | Бельевой трикотаж | Чулочно-носочные изделия | трикотаж | трикотаж в РБ">
     <meta name="keywords" content="одежда весна 2017 | Продукция ведущих трикотажных фабрик | Верхний трикотаж | Бельевой трикотаж | Чулочно-носочные изделия | трикотаж | трикотаж в РБ" />
@@ -49,7 +50,7 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3 col-xs-3">
+				<div class="col-sm-3 col-xs-4">
 					<!-- product_filter -->
 					<%@include file="common/product_filter1.jsp" %>
 					<!-- product_filter -->
@@ -143,7 +144,25 @@
 	        	$('.ch_gender').attr("checked",null);
 	        });
 	        
-	        //$('[data-toggle="tooltip"]').tooltip();
+	        $("#ch_type_btn").click(function() {
+	        	$('.ch_type').attr("checked",null);
+	        });
+
+	        $( ".countType" ).tooltip(
+	                {
+	                    html: true,
+	                    trigger: "manual"
+	                }
+	                ).on(
+	                {
+	                	click: function() {
+	                		countsPerProdustsFilter('countType',$(this));                            
+	                	},
+	                    mouseleave: function() {
+	                            $(this).tooltip( "hide" );
+	                    }
+
+	                });
 
 	        $( ".countProvider" ).tooltip(
 	                {

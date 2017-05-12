@@ -15,15 +15,13 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-6">
-						<div class="col-sm-6">
-							<div class="contactinfo">
+					<div class="pull-center">
 								<ul class="nav nav-pills">
 									<li><a href="http://www.nbrb.by"><i id="usd_840" class="fa"></i></a></li>
 									<li><a href="http://www.nbrb.by"><i id="eur_978" class="fa"></i></a></li>
 									<li>
 										<!-- Gismeteo Informer (begin) -->
-										<div id="GMI_88x31-1_ru" class="gm-info">
+										<div id="GMI_88x31-1_ru" class="gm-info pull-center " style="margin: 3px;">
 										    <div style="position:relative;width:88px;height:31px;border:solid 1px;background:#F5F5F5;border-color:#EAEAEA #E4E4E4 #DDDDDD #E6E6E6;border-radius:4px;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;">
 										        <a style="font:11px/13px Arial,Verdana,sans-serif;text-align:center;text-overflow:ellipsis;text-decoration:none;display:block;overflow:hidden;margin:2px 3px;color:#0678CD;" href="https://gismeteo.by/weather-minsk-4248/">Минск</a>
 										        <a style="font:9px/11px Tahoma,Arial,sans-serif;letter-spacing:0.5px;text-align:center;text-decoration:none;position:absolute;bottom:3px;left:0;width:100%;color:#333;" href="https://gismeteo.by"><span style="color:#0099FF;">Gis</span>meteo</a>
@@ -31,10 +29,8 @@
 										</div>
 									</li>
 								</ul>
-								
-							</div>
 						</div>
-						<div class="social-icons pull-right">
+						<!-- div class="social-icons pull-right">
 							<ul class="nav navbar-nav">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -42,7 +38,7 @@
 								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
 								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 							</ul>
-						</div>
+						</div -->
 					</div>
 				</div>
 			</div>

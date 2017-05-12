@@ -42,6 +42,7 @@ public interface Dao {
 	public void addNomenclGroup(DirNomenclGroup dirNomenclGroup);
 
 	public List<DirNomenclGroupRoot> getNomenclGroupRootList();
+	public List<DirNomenclGroupRoot> getNomenclGroupRootListInTails();
 	public void addNomenclGroupRoot(DirNomenclGroupRoot dirNomenclGroupRoot);
 
 	public List<DirGender> getGenderList();
@@ -80,5 +81,6 @@ public interface Dao {
 	public BigInteger countGender(Long id_gender);
 	public BigInteger countCategory(Long id_category);
 	public BigInteger countProvider(Long id_provider);
+	public BigInteger countType(Long id_type);
 	
 }

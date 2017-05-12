@@ -177,6 +177,11 @@ public class TTServiceImpl implements Dao {
 		return dao.getNomenclGroupRootList();
 	}
 
+	@Override
+	public List<DirNomenclGroupRoot> getNomenclGroupRootListInTails() {
+		// TODO Auto-generated method stub
+		return dao.getNomenclGroupRootListInTails();
+	}
 
 	@Override
 	public void addNomenclGroupRoot(DirNomenclGroupRoot dirNomenclGroupRoot) {
@@ -429,5 +434,13 @@ public class TTServiceImpl implements Dao {
 		// TODO Auto-generated method stub
 		return dao.countProvider(id_dir_provider);
 	}
-	
+
+
+	@Override
+	public BigInteger countType(Long id_dir_nomencl_group_root) {
+		// TODO Auto-generated method stub
+		return dao.countType(id_dir_nomencl_group_root);
+	}
+
+
 }

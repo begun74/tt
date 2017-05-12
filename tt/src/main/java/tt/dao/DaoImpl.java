@@ -179,6 +179,15 @@ public class DaoImpl implements Dao {
 		return getSession().createQuery("from DirNomenclGroupRoot order by name").list();
 	}
 
+
+	@Override
+	public List<DirNomenclGroupRoot> getNomenclGroupRootListInTails() {
+		// TODO Auto-generated method stub
+		String sqlNomenclGroupRootListInTails = env.getProperty("sqlNomenclGroupRootListInTails");
+		
+		return getSession().createSQLQuery(sqlNomenclGroupRootListInTails).addEntity(DirNomenclGroupRoot.class).list();
+	}
+
 	@Override
 	public void addNomenclGroupRoot(DirNomenclGroupRoot dirNomenclGroupRoot) {
 		// TODO Auto-generated method stub
@@ -442,6 +451,14 @@ public class DaoImpl implements Dao {
 		return res;
 	}
 
+	@Override
+	public BigInteger countType(Long id_dir_nomencl_group_root) {
+		// TODO Auto-generated method stub
+		String sqlCountType = env.getProperty("sqlCountType");
+		
+		BigInteger res = (BigInteger)getSession().createSQLQuery(sqlCountType).setParameter("id_dir_nomencl_group_root", id_dir_nomencl_group_root).uniqueResult();
+		return res;
+	}
 
 	
 

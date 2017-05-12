@@ -95,6 +95,7 @@ public class IndexCtrl implements Serializable {
 		model.addObject("providers", ttService.getProviderList());
 		model.addObject("categories", ttService.getNomenclGroupList());
 		model.addObject("genders", ttService.getGenderList());
+		model.addObject("types", ttService.getNomenclGroupRootListInTails());
 		
 		model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
 		
@@ -181,6 +182,7 @@ public class IndexCtrl implements Serializable {
 		model.addAttribute("providers", ttService.getProviderList());
 		model.addAttribute("categories", ttService.getNomenclGroupList());
 		model.addAttribute("genders", ttService.getGenderList());
+		model.addAttribute("types", ttService.getNomenclGroupRootListInTails());
 
 		model.addAttribute("tails", ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
 		

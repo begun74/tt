@@ -142,6 +142,18 @@ select * from dir_nomencl_group dng
 					)as xxx on dng.id_dir_nomencl_group=xxx.id_dir_nomencl_group 
 				order by name
 
+select * from dir_nomencl_group_root dngr 
+					inner join 
+					( 
+						select distinct dngr.id_dir_nomencl_group_root from tails t 
+						inner join dir_nomenclature dn on dn.id_dir_nomenclature = t.fk_id_nomenclature 
+						inner join dir_nomencl_group dng on dng.id_dir_nomencl_group = dn.fk_id_dir_nomencl_group
+						inner join dir_nomencl_group_root dngr on dngr.id_dir_nomencl_group_root = dng.fk_dir_nomencl_group_root
+						where t.destruction_date is null 
+					)as xxx on dngr.id_dir_nomencl_group_root = xxx.id_dir_nomencl_group_root 
+				order by name
+
+
 select * from dir_gender
 	group by id_dir_gender
 
@@ -167,6 +179,17 @@ select count(*) from dir_nomencl_group dng
 		)as xxx on xxx.id_dir_nomencl_group = dng.id_dir_nomencl_group
 
 
+select count(*) from dir_nomencl_group_root dngr
+		inner join
+		(
+			select distinct dngr.*, dn.* from dir_nomenclature dn
+				inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
+				inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group
+				inner join dir_nomencl_group_root dngr on dng.fk_dir_nomencl_group_root = dngr.id_dir_nomencl_group_root and dngr.id_dir_nomencl_group_root = 1698
+				where t.destruction_date is null 
+		)as xxx on xxx.id_dir_nomencl_group_root = dngr.id_dir_nomencl_group_root
+
+
 select count(*) from dir_provider dp
 		inner join
 		(
@@ -175,4 +198,5 @@ select count(*) from dir_provider dp
 				inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider and dp.id_dir_provider = 14264
 				where t.destruction_date is null 
 		)as xxx on xxx.id_dir_provider = dp.id_dir_provider
+
 

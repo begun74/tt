@@ -8,8 +8,25 @@
 					<div class="left-sidebar">
 						<form  method="GET" name="mA_search" action="${pageContext.request.contextPath}/search">
 						
+								<!--type-->
+								<!-- div class="row div_bkgr border1px">
+									<div class="div_name"><spring:message code="type"/></div>
+									<c:forEach items="${types}" var="type" varStatus="loop"> 
+
+										<c:set var="type_name" value="${type.name}"/>
+										<c:if test="${not empty type.diff_name}" >
+											<c:set var="type_name" value="${type.diff_name}"/>
+										</c:if>
+
+										<div class="div_Fitem">
+											<em><label class="checkbox cursor countType" data-toggle="tooltip" data-placement="left" lookup_id="${type.id}" title="${type_name}"><input class="ch_type" type="checkbox" name="type" id="type_${type.id}" value="${type.id}"/>${type_name}</label></em>
+										</div>
+									</c:forEach>
+									<div class="row div_Fitem"><button type="button" id="ch_type_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button></div>
+								</div><!--/type-->
+
 								<div class="row div_bkgr border1px"><!-- genders -->
-									<div class="div_name"><h4><spring:message code="sex.attribute"/></h4></div>
+									<div class="div_name"><spring:message code="sex.attribute"/></div>
 									<c:forEach items="${genders}" var="gender" varStatus="loop"> 
 										<div class="div_Fitem">
 											<em><label class="checkbox cursor countGender" data-toggle="tooltip" data-placement="left" lookup_id="${gender.id}" title="${gender.name}"><input class="ch_gender" type="checkbox" name="gndr" id="gndr_${gender.id}" value="${gender.id}"/>${gender.name}</label></em>
@@ -19,7 +36,7 @@
 								</div><!--/genders-->
 							
 								<div class="row div_bkgr border1px"><!--brands_products-->
-									<div class="div_name "><h4><spring:message code="provider"/></h4></div>
+									<div class="div_name "><spring:message code="provider"/></div>
 									<div class="row div_Fitem" style="overflow-y:scroll; overflow-x: none; height:200px;">
 										<c:forEach items="${providers}" var="provider" varStatus="loop"> 
 											<div class="div_Fitem">
@@ -32,7 +49,7 @@
 		
 								<!-- Категория -->
 								<div class="row div_bkgr border1px">
-									<div class="div_name"><h4><spring:message code="category"/></h4></div>
+									<div class="div_name"><spring:message code="category"/></div>
 									<div class="row div_Fitem" style="overflow-y:scroll; overflow-x: hidden; height:200px;">
 										<c:forEach items="${categories}" var="category" varStatus="loop"> 
 											<div class="div_Fitem">

@@ -257,5 +257,17 @@ public class TTAjaxCtrl  implements Serializable {
 		return  new ResponseEntity<Integer>(count,HttpStatus.OK);
 
 	}
-	
+
+	@RequestMapping(value = "/countType{id}", method = RequestMethod.GET)
+	public ResponseEntity<Integer>  countType(HttpSession session, @RequestParam ("id") long id) 
+	{
+		
+		if(session.isNew()) return new ResponseEntity<Integer>(0,HttpStatus.FORBIDDEN);		
+		
+		int count = ttService.countType(id).intValue();
+		
+		return  new ResponseEntity<Integer>(count,HttpStatus.OK);
+
+	}
+
 }

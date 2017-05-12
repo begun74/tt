@@ -42,6 +42,7 @@ public class DirNomenclGroupRoot implements IModel {
 	@NotEmpty (message = "Please enter name.") 
 	private String name;
 	
+	private String diff_name;
 	
 	@Override
 	public Long getId() {
@@ -72,6 +73,14 @@ public class DirNomenclGroupRoot implements IModel {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getDiff_name() {
+		return diff_name;
+	}
+
+	public void setDiff_name(String diff_name) {
+		this.diff_name = diff_name;
 	}
 
 	public static long getSerialversionuid() {
