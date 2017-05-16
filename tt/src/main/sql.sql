@@ -215,3 +215,9 @@ select distinct dn.*, t.firstPrice from dir_nomenclature dn
 		and dp.id_dir_provider in(14264)
 
 select nextval('seq_statistic')
+
+select nextval('seq_global')
+
+ALTER SEQUENCE seq_global RESTART WITH 64705;
+
+ALTER SEQUENCE seq_statistic RESTART WITH 1655;
