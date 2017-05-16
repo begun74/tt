@@ -200,3 +200,15 @@ select count(*) from dir_provider dp
 		)as xxx on xxx.id_dir_provider = dp.id_dir_provider
 
 
+
+-- ============  search by ... ============= --
+
+
+select distinct dn.* from dir_nomenclature dn
+		inner join dir_gender dg on dg.id_dir_gender = dn.fk_dir_gender 
+		inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider 
+		inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
+		where t.destruction_date is null 
+		and dg.id_dir_gender in (58,56)
+		and dp.id_dir_provider in(14264)
+

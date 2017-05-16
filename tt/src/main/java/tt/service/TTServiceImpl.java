@@ -308,6 +308,8 @@ public class TTServiceImpl implements Dao {
 		return criterions.size() >0 ? getTailsNomenclature(new Tail(),criterions, p): new HashSet<DirNomenclature>();
 	}
 	
+	
+	
 	//@Loggable
 	@Override
 	public List<Tail> getTailsList(long id_dirNomenclature) {
@@ -440,6 +442,13 @@ public class TTServiceImpl implements Dao {
 	public BigInteger countType(Long id_dir_nomencl_group_root) {
 		// TODO Auto-generated method stub
 		return dao.countType(id_dir_nomencl_group_root);
+	}
+
+
+	@Override
+	public Set<DirNomenclature> getNomenclInTails(List<Long> providers, List<Long> genders, List<Long> categories , int p) {
+		// TODO Auto-generated method stub
+		return dao.getNomenclInTails(providers, genders, categories , p);
 	}
 
 

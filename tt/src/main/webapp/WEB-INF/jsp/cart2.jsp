@@ -147,6 +147,7 @@
 
 
     <script src="resources/js/jquery.js"></script>
+	<script src="resources/js/jquery.cookie.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/jquery.scrollUp.min.js"></script>
     <script src="resources/js/jquery.prettyPhoto.js"></script>

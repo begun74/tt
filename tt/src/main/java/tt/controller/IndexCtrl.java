@@ -90,7 +90,10 @@ public class IndexCtrl implements Serializable {
 		
 		//model.addObject("tails",ttService.getTailsList());
 		//model.addObject("tails",ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
-		model.addObject("tails",ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
+		//model.addObject("tails",ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
+		
+		model.addObject("tails",ttService.getNomenclInTails(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p ));
+		
 		model.addObject("version",appBean.getVersion());
 		model.addObject("providers", ttService.getProviderList());
 		model.addObject("categories", ttService.getNomenclGroupList());
@@ -184,7 +187,9 @@ public class IndexCtrl implements Serializable {
 		model.addAttribute("genders", ttService.getGenderList());
 		model.addAttribute("types", ttService.getNomenclGroupRootListInTails());
 
-		model.addAttribute("tails", ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
+		//model.addAttribute("tails", ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
+		
+		model.addAttribute("tails",ttService.getNomenclInTails(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p ));
 		
 		model.addAttribute("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
 		

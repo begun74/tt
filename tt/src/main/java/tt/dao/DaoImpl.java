@@ -2,6 +2,7 @@ package tt.dao;
 
 import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -258,7 +259,34 @@ public class DaoImpl implements Dao {
 	}
 
 
-	
+	@Override
+	public Set<DirNomenclature> getNomenclInTails(List<Long> providers, List<Long> genders, List<Long> categories , int p) {
+
+		LinkedHashSet<DirNomenclature> dirNomSet = new LinkedHashSet<DirNomenclature>();
+		
+		String sqlNomeclatureInTails = env.getProperty("sqlNomeclatureInTails");
+		
+		//System.out.println(providers.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)"));
+		//System.out.println(genders.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)"));
+		//System.out.println(categories.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)"));
+		
+		if(providers.size() >0)
+			sqlNomeclatureInTails += " and dp.id_dir_provider in "+providers.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		if(genders.size() >0)
+			sqlNomeclatureInTails += " and dg.id_dir_gender in "+genders.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		if(categories.size() >0)
+			sqlNomeclatureInTails += " and dng.id_dir_nomencl_group in "+categories.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+
+		//System.out.println((getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class)));
+		List<DirNomenclature> listDN = getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class).list();
+		
+		
+		
+		dirNomSet.addAll(listDN);
+
+		return dirNomSet;
+	}
+
 	@Override
 	public DirGender getGenderByName(String name) {
 		// TODO Auto-generated method stub

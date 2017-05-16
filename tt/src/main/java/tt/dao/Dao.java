@@ -35,6 +35,7 @@ public interface Dao {
 	public List<DirNomenclature> getNomenclatureList(Collection<Criterion> criterions);
 	public void addNomenclature(DirNomenclature dirNomenclature);
 	public Set<DirNomenclature> getTailsNomenclature(Tail tail_example, Collection<Criterion> criterions ,int p);
+	public Set<DirNomenclature> getNomenclInTails(List<Long> providers, List<Long> genders, List<Long> categories , int p);
 	public List<DirNomenclature> getPopularDirNomenclature();
 
 
@@ -78,6 +79,7 @@ public interface Dao {
 	
 	User findByUserName(String username);
 	
+	//================== AJAX request ===================
 	public BigInteger countGender(Long id_gender);
 	public BigInteger countCategory(Long id_category);
 	public BigInteger countProvider(Long id_provider);
