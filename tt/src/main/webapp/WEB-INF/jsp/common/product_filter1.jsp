@@ -10,7 +10,7 @@
 						
 								<!--type-->
 								<div class="row div_bkgr border1px">
-									<div class="div_name"><spring:message code="type"/></div>
+									<div class="div_name"><spring:message code="nomencl.group2"/></div>
 									<c:forEach items="${types}" var="type" varStatus="loop"> 
 
 										<c:set var="type_name" value="${type.name}"/>
