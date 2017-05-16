@@ -9,7 +9,7 @@
 						<form  method="GET" name="mA_search" action="${pageContext.request.contextPath}/search">
 						
 								<!--type-->
-								<!-- div class="row div_bkgr border1px">
+								<div class="row div_bkgr border1px">
 									<div class="div_name"><spring:message code="type"/></div>
 									<c:forEach items="${types}" var="type" varStatus="loop"> 
 

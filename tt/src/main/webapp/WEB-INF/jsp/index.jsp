@@ -94,6 +94,9 @@
 				var cats = ${mA_search.cat};
 				var cats_get ='';
 							
+				var types = ${mA_search.type};
+				var types_get ='';
+
 				for (var item in pns) {
 	                $('#pn_'+pns[item]).attr("checked","checked");
 	                pns_get += '&pn='+pns[item];
@@ -109,14 +112,19 @@
 					cats_get += '&cat='+cats[item];
 				}
 				
-		        $('#light-pagination').pagination({
+				for(var item in types) {
+					$('#type_'+types[item]).attr("checked","checked");
+					types_get += '&type='+types[item];
+				}
+
+				$('#light-pagination').pagination({
 		            items: ${allItems},
 		            itemsOnPage: ${perPage},
 		            cssStyle: 'light-theme',
 		            prevText:"<<",
 		            nextText:">>",
 		            hrefTextPrefix: "?p=",
-		            hrefTextSuffix: pns_get+gndrs_get+cats_get,
+		            hrefTextSuffix: pns_get+gndrs_get+cats_get+types_get,
 		            currentPage: ${p}
 		        });
 

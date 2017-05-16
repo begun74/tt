@@ -26,7 +26,7 @@ public class MA_search implements Serializable {
 	
 	List<Long> cat = new ArrayList<Long>();//Category
 	
-
+	List<Long> type = new ArrayList<Long>();//Type бельевой, верхний, чулочно-носочный
 	
 	public List<Long> getPn() {
 		return pn;
@@ -61,6 +61,18 @@ public class MA_search implements Serializable {
 
 	public void setCat(List<Long> cat) {
 		this.cat = cat;
+	}
+
+
+
+	public List<Long> getType() {
+		return type;
+	}
+
+
+
+	public void setType(List<Long> type) {
+		this.type = type;
 	}
 
 

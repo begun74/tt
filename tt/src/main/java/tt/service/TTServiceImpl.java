@@ -446,9 +446,9 @@ public class TTServiceImpl implements Dao {
 
 
 	@Override
-	public Set<DirNomenclature> getNomenclInTails(List<Long> providers, List<Long> genders, List<Long> categories , int p) {
+	public Set<DirNomenclature> getNomenclInTails(List<Long> types, List<Long> providers, List<Long> genders, List<Long> categories , int p) {
 		// TODO Auto-generated method stub
-		return dao.getNomenclInTails(providers, genders, categories , p);
+		return dao.getNomenclInTails(types, providers, genders, categories , p);
 	}
 
 
