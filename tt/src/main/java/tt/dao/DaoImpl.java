@@ -278,11 +278,16 @@ public class DaoImpl implements Dao {
 			sqlNomeclatureInTails += " and dng.id_dir_nomencl_group in "+categories.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
 
 		//System.out.println((getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class)));
-		List<DirNomenclature> listDN = getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class).list();
+		List<Object[]> tmpList = getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class).addScalar("firstprice").list();
+		
+		for(Object[] item: tmpList)
+		{
+			((DirNomenclature)item[0]).setTempPrice((Double)item[1]);
+			dirNomSet.add((DirNomenclature)item[0]);
+		}
 		
 		
-		
-		dirNomSet.addAll(listDN);
+		//dirNomSet.addAll(listDN);
 
 		return dirNomSet;
 	}
