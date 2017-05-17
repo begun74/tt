@@ -162,7 +162,7 @@ public class ReadExcelFile {
         	
         	++row_;
         }
-        System.out.println(hmPollPaths);
+        //System.out.println(hmPollPaths);
         MainAutoLoad.startPhotoFileService2(hmPollPaths);
         
 		return lNomencls;
