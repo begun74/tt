@@ -210,7 +210,7 @@ public class FileUpload {
 							float img_height = img.getHeight();
 							float img_ratio =  img_height / img_width;
 							
-							System.out.println("img_width - "+ img_width+",   img_height - "+img_height +",    img_ratio - " +(float)img_ratio);
+							//System.out.println("img_width - "+ img_width+",   img_height - "+img_height +",    img_ratio - " +(float)img_ratio);
 							
 							
 							ImageIO.write(img, "jpg", new File(largeFolder+File.separator+code+"_L_"+i+".jpg"));

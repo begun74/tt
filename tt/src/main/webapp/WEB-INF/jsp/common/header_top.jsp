@@ -129,7 +129,7 @@
 								<span class="icon-bar"></span>
 							</button>
 						</div>
-						<div class="mainmenu pull-left">
+						<div class="mainmenu pull-right">
 							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html" class="active"><spring:message code="home"/></a></li>
 								<!-- li class="dropdown"><a href="#"><spring:message code="shop"/><i class="fa fa-angle-down"></i></a>

@@ -446,13 +446,13 @@ public class DaoImpl implements Dao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Tail> findByText(String text) {
+	public List<DirNomenclature> findByText(String text) {
 		// TODO Auto-generated method stub
-		List<Tail> tails = new ArrayList<Tail>();
+		List<DirNomenclature> tails = new ArrayList<DirNomenclature>();
 		
 		if(text.trim().length() ==0)	return tails;
 		
-		String sql1 = env.getProperty("sql_1");
+		String sql_1 = env.getProperty("sql_1");
 		
 		long code;
 		
@@ -463,12 +463,19 @@ public class DaoImpl implements Dao {
 			code = 0;
 		}
 		
-		tails = getSession().createSQLQuery(sql1).addEntity(DirNomenclature.class)
+		List<Object[]> tmpList = getSession().createSQLQuery(sql_1).addEntity(DirNomenclature.class).addScalar("firstPrice")
 									.setParameter("model", "%"+text+"%")
 									.setParameter("code", code )
 									.setParameter("article", "%"+text+"%" )
 									.setParameter("name", ("%"+text+"%").toUpperCase() )
 									.list();
+		
+		for(Object[] item: tmpList)
+		{
+			((DirNomenclature)item[0]).setTempPrice((Double)item[1]);
+			tails.add( (DirNomenclature)item[0] );
+			
+		}
 		
 		return tails;
 	}

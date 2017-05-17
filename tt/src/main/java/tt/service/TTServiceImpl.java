@@ -421,7 +421,7 @@ public class TTServiceImpl implements Dao {
 
 	@Override
 	@Transactional(readOnly=true)
-	public List<Tail> findByText(String text) {
+	public List<DirNomenclature> findByText(String text) {
 		// TODO Auto-generated method stub
 		LOG.info(this.getClass() +".findByText('"+text+"')");
 		return dao.findByText(text);
