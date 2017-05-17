@@ -98,7 +98,9 @@ public class IndexCtrl implements Serializable {
 		//model.addObject("providers", ttService.getProviderList());
 		model.addObject("providers", ttService.getProviderListInTails());
 		
-		model.addObject("categories", ttService.getNomenclGroupList());
+		//model.addObject("categories", ttService.getNomenclGroupList());
+		model.addObject("categories", ttService.getNomenclGroupListInTails());
+		
 		model.addObject("genders", ttService.getGenderList());
 		model.addObject("types", ttService.getNomenclGroupRootListInTails());
 		
@@ -187,7 +189,9 @@ public class IndexCtrl implements Serializable {
 		//model.addAttribute("providers", ttService.getProviderList());
 		model.addAttribute("providers", ttService.getProviderListInTails());
 		
-		model.addAttribute("categories", ttService.getNomenclGroupList());
+		//model.addAttribute("categories", ttService.getNomenclGroupList());
+		model.addAttribute("categories", ttService.getNomenclGroupListInTails());
+
 		model.addAttribute("genders", ttService.getGenderList());
 		model.addAttribute("types", ttService.getNomenclGroupRootListInTails());
 

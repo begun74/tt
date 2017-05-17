@@ -166,8 +166,16 @@ public class DaoImpl implements Dao {
 		String sqlCategory = env.getProperty("sqlCategory");
 		
 		return getSession().createQuery("from DirNomenclGroup order by name").list();
-		//return  getSession().createSQLQuery(sqlCategory).addEntity(DirNomenclGroup.class).list();
 	}
+
+	@Override
+	public List<DirNomenclGroup> getNomenclGroupListInTails() {
+		// TODO Auto-generated method stub
+		String sqlCategoryInTails = env.getProperty("sqlCategoryInTails");
+		
+		return  getSession().createSQLQuery(sqlCategoryInTails).addEntity(DirNomenclGroup.class).list();
+	}
+
 
 	@Override
 	public void addNomenclGroup(DirNomenclGroup dirNomenclGroup) {
@@ -504,12 +512,6 @@ public class DaoImpl implements Dao {
 		return res;
 	}
 
-
-	@Override
-	public List<DirNomenclGroup> getNomenclGroupListInTails() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	
 

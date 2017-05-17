@@ -163,6 +163,11 @@ public class TTServiceImpl implements Dao {
 		return dao.getNomenclGroupList();
 	}
 
+	@Override
+	public List<DirNomenclGroup> getNomenclGroupListInTails() {
+		// TODO Auto-generated method stub
+		return dao.getNomenclGroupListInTails();
+	}
 
 	@Override
 	public void addNomenclGroup(DirNomenclGroup dirNomenclGroup) {
@@ -455,13 +460,6 @@ public class TTServiceImpl implements Dao {
 	public Set<DirNomenclature> getNomenclInTails(List<Long> types, List<Long> providers, List<Long> genders, List<Long> categories , int p) {
 		// TODO Auto-generated method stub
 		return dao.getNomenclInTails(types, providers, genders, categories , p);
-	}
-
-
-	@Override
-	public List<DirNomenclGroup> getNomenclGroupListInTails() {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 
