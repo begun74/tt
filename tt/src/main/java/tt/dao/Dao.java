@@ -27,6 +27,7 @@ public interface Dao {
 
 
 	public List<DirProvider> getProviderList();
+	public List<DirProvider> getProviderListInTails();
 	public void addProvider(DirProvider dirProvider);
 	public DirProvider getProviderByCode(Integer code);
 	
@@ -40,6 +41,7 @@ public interface Dao {
 
 
 	public List<DirNomenclGroup> getNomenclGroupList();
+	public List<DirNomenclGroup> getNomenclGroupListInTails();
 	public void addNomenclGroup(DirNomenclGroup dirNomenclGroup);
 
 	public List<DirNomenclGroupRoot> getNomenclGroupRootList();

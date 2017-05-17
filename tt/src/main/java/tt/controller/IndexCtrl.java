@@ -95,7 +95,9 @@ public class IndexCtrl implements Serializable {
 		model.addObject("tails",ttService.getNomenclInTails(mA_search.getType(),mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p ));
 		
 		model.addObject("version",appBean.getVersion());
-		model.addObject("providers", ttService.getProviderList());
+		//model.addObject("providers", ttService.getProviderList());
+		model.addObject("providers", ttService.getProviderListInTails());
+		
 		model.addObject("categories", ttService.getNomenclGroupList());
 		model.addObject("genders", ttService.getGenderList());
 		model.addObject("types", ttService.getNomenclGroupRootListInTails());
@@ -182,7 +184,9 @@ public class IndexCtrl implements Serializable {
 		
 		model.addAttribute("mA_search", mA_search);
 		
-		model.addAttribute("providers", ttService.getProviderList());
+		//model.addAttribute("providers", ttService.getProviderList());
+		model.addAttribute("providers", ttService.getProviderListInTails());
+		
 		model.addAttribute("categories", ttService.getNomenclGroupList());
 		model.addAttribute("genders", ttService.getGenderList());
 		model.addAttribute("types", ttService.getNomenclGroupRootListInTails());

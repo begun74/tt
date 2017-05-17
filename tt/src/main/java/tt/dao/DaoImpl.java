@@ -79,6 +79,13 @@ public class DaoImpl implements Dao {
 	}
 
 	@Override
+	public List<DirProvider> getProviderListInTails() {
+		// TODO Auto-generated method stub
+		String sqlDirProviderInTails = env.getProperty("sqlDirProviderInTails");
+		return getSession().createSQLQuery(sqlDirProviderInTails).addEntity(DirProvider.class).list();
+	}
+
+	@Override
 	public void addProvider(DirProvider dirProvider) {
 		// TODO Auto-generated method stub
 		getSession().saveOrUpdate(dirProvider);
@@ -495,6 +502,13 @@ public class DaoImpl implements Dao {
 		
 		BigInteger res = (BigInteger)getSession().createSQLQuery(sqlCountType).setParameter("id_dir_nomencl_group_root", id_dir_nomencl_group_root).uniqueResult();
 		return res;
+	}
+
+
+	@Override
+	public List<DirNomenclGroup> getNomenclGroupListInTails() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	
