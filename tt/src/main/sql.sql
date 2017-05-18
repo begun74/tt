@@ -204,7 +204,7 @@ select count(*) from dir_provider dp
 -- ============  search by ... ============= --
 
 
-select distinct dn.*, t.firstPrice from dir_nomenclature dn
+select distinct dn.*, t.firstPrice, dngr.sorting from dir_nomenclature dn
 		inner join dir_gender dg on dg.id_dir_gender = dn.fk_dir_gender 
 		inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider
 		inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group 
@@ -213,11 +213,6 @@ select distinct dn.*, t.firstPrice from dir_nomenclature dn
 		where t.destruction_date is null 
 		and dg.id_dir_gender in (58,56)
 		and dp.id_dir_provider in(14264)
-
+		order by dngr.sorting, dn.name
+		
 select nextval('seq_statistic')
-
-select nextval('seq_global')
-
-ALTER SEQUENCE seq_global RESTART WITH 64705;
-
-ALTER SEQUENCE seq_statistic RESTART WITH 1655;
