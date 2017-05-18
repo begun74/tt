@@ -231,6 +231,9 @@ public class ReadExcelFile {
         			tail.setCreate_date(timestamp);
         			tail.setDirNomenclature( hmNomencl.get(new Long((df.formatCellValue(tmp.getCell((mA_loadTail.getCol_codeNomencl()-1)))))) );
         			tail.setSize(df.formatCellValue(tmp.getCell(mA_loadTail.getCol_size()-1)).replaceAll("р-р", "").trim());
+        			tail.setNds( new Integer(df.formatCellValue(tmp.getCell(mA_loadTail.getNds()-1))) );
+        			tail.setNadb_opt( new Integer(df.formatCellValue(tmp.getCell(mA_loadTail.getNadb_opt()-1))) );
+        			tail.setNadb_rozn( new Integer(df.formatCellValue(tmp.getCell(mA_loadTail.getNadb_rozn()-1))) );
         			
         			lTails.add(tail);
         		}

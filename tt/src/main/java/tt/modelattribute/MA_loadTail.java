@@ -19,7 +19,13 @@ public class MA_loadTail implements IMAmodel {
 	private int col_codeNomencl = 4; //Код номенклатуры
 	private int col_size=6;
 
+	private int nds=0; //НДС
+	private int nadb_opt=0; //Надбавка оптовая
+	private int nadb_rozn=0; //Надбавка розничная
+	private int rozn_price=0; //Розничная цена
+	
 	private transient boolean save;
+	private transient boolean deleteOldTails;
 	private boolean autoload;
 
 
@@ -71,6 +77,16 @@ public class MA_loadTail implements IMAmodel {
 	public void setSave(boolean save) {
 		this.save = save;
 	}
+	
+	
+
+	public boolean isDeleteOldTails() {
+		return deleteOldTails;
+	}
+
+	public void setDeleteOldTails(boolean deleteOldTails) {
+		this.deleteOldTails = deleteOldTails;
+	}
 
 	public boolean isAutoload() {
 		return autoload;
@@ -80,15 +96,6 @@ public class MA_loadTail implements IMAmodel {
 		this.autoload = autoload;
 	}
 	
-/*
-	public int getCol_codeProvider() {
-		return col_codeProvider;
-	}
-
-	public void setCol_codeProvider(int col_codeProvider) {
-		this.col_codeProvider = col_codeProvider;
-	}
-*/
 	public int getCol_codeNomencl() {
 		return col_codeNomencl;
 	}
@@ -97,6 +104,38 @@ public class MA_loadTail implements IMAmodel {
 		this.col_codeNomencl = col_codeNomencl;
 	}
 
+
+	public int getNds() {
+		return nds;
+	}
+
+	public void setNds(int nds) {
+		this.nds = nds;
+	}
+
+	public int getNadb_opt() {
+		return nadb_opt;
+	}
+
+	public void setNadb_opt(int nadb_opt) {
+		this.nadb_opt = nadb_opt;
+	}
+
+	public int getNadb_rozn() {
+		return nadb_rozn;
+	}
+
+	public void setNadb_rozn(int nadb_rozn) {
+		this.nadb_rozn = nadb_rozn;
+	}
+
+	public int getRozn_price() {
+		return rozn_price;
+	}
+
+	public void setRozn_price(int rozn_price) {
+		this.rozn_price = rozn_price;
+	}
 
 	@Override
 	public long getSerialversionuid() {

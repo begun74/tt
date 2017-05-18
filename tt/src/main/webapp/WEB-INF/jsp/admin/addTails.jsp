@@ -155,7 +155,7 @@
 															<div class="tab-action">
 										        				<div class="clearfix">
 											        					<button type="submit" class="" onclick="" >Обработать</button>
-											        					<label><input name="update" id="update" type="checkbox" class="checkbox" checked="checked" />удалить старые остатки</label>
+											        					<label><input name="deleteOldTails" id="deleteOldTails" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadTail.deleteOldTails == true}">checked="checked" </c:if> />удалить старые остатки</label>
 										        				</div>
 									        				</div>
 									      <input type="hidden" name ="act" id ="act" value="3"/>
@@ -209,7 +209,32 @@
 																        	<input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadTail.row}" >
 																        </div>
 														</div>
-								         
+														<!--   ==============  -->								         
+														<div class="clearfix">									        
+																        <div class="lab">
+																        	<label>НДС</label>
+																        </div>
+																        <div style="width: 25px" class="conleft">
+																        	<input name="nds" id="nds" type="text" class="input" value="${sessionBean.mA_loadTail.nds}" >
+																        </div>
+														</div>
+														<div class="clearfix">									        
+																        <div class="lab">
+																        	<label>Надбавка опт.</label>
+																        </div>
+																        <div style="width: 25px" class="conleft">
+																        	<input name="nadb_opt" id="nadb_opt" type="text" class="input" value="${sessionBean.mA_loadTail.nadb_opt}" >
+																        </div>
+														</div>
+														<div class="clearfix">									        
+																        <div class="lab">
+																        	<label>Надбавка розница</label>
+																        </div>
+																        <div style="width: 25px" class="conleft">
+																        	<input name="nadb_rozn" id="nadb_rozn" type="text" class="input" value="${sessionBean.mA_loadTail.nadb_rozn}" >
+																        </div>
+														</div>
+														
 														 <div class="clearfix file">
 											              <div class="lab"><label for="file"><spring:message code="load"/> </label></div>
 											              <div class="con"><input type="file" name="file" class="upload-file" id="file" /></div>

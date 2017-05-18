@@ -515,14 +515,16 @@ public class AdminCtrl {
 	@RequestMapping(value = "addFileTail" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFileTail(@ModelAttribute MA_loadTempTail mA_loadTempTail, 
 														@RequestParam(value = "act",   defaultValue = "-1", required=true) int act,
-														@RequestParam(value = "update",   required=false) boolean update)
+														@RequestParam(value = "deleteOldTails",   required=false) boolean deleteOldTails)
 	{
 		ModelAndView model = new ModelAndView("redirect:/admin?act="+act);
 		
 				
 		try {
-			
-				if(update)
+				adminSessBean.getmA_loadTail().setDeleteOldTails(deleteOldTails);
+				appBean.addToMapStore(adminSessBean.getmA_loadTail());
+
+				if(deleteOldTails)
 					ttService.updateTails();
 
 					synchronized(this) {

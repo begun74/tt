@@ -56,6 +56,22 @@ public class Tail implements  IModel {
 
 	private String size;
 
+	//@NotNull
+	@Column(name="nds")
+	private Integer nds; //НДС
+
+	//@NotNull
+	@Column(name="nadb_opt")
+	private Integer nadb_opt; //Надбавка оптовая
+
+	//@NotNull
+	@Column(name="nadb_rozn")
+	private Integer nadb_rozn; //Надбавка розничная
+
+	//@NotNull
+	@Column(name="rozn_price")
+	private Double rozn_price;  //Розничная цена
+	
 	/*
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_provider")
@@ -155,6 +171,42 @@ public class Tail implements  IModel {
 	
 
 
+
+
+	
+	public int getNds() {
+		return nds;
+	}
+
+	public void setNds(int nds) {
+		this.nds = nds;
+	}
+
+	public int getNadb_opt() {
+		return nadb_opt;
+	}
+
+	public void setNadb_opt(int nadb_opt) {
+		this.nadb_opt = nadb_opt;
+	}
+
+	public int getNadb_rozn() {
+		return nadb_rozn;
+	}
+
+	public void setNadb_rozn(int nadb_rozn) {
+		this.nadb_rozn = nadb_rozn;
+	}
+
+	public double getRozn_price() {
+		return rozn_price;
+	}
+
+	public void setRozn_price(double rozn_price) {
+		this.rozn_price = rozn_price;
+	}
+
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
