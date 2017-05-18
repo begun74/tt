@@ -23,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import tt.annotation.CheckAccess;
 import tt.annotation.Loggable;
+import tt.annotation.ProcessTail;
 import tt.dao.Dao;
 import tt.dao.DaoImpl;
 import tt.model.ContactUsMessages;
@@ -142,7 +143,7 @@ public class TTServiceImpl implements Dao {
 		return dao.getTailsList();
 	}
 
-
+	@ProcessTail
 	@Override
 	public void addTail(Tail tail) {
 		// TODO Auto-generated method stub

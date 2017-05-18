@@ -215,7 +215,9 @@ public class Tail implements  IModel {
 	
 	@Override
 	public String toString() {
-		return "Tail [id=" + id + ", amountTail=" + amountTail + ", firstPrice=" + firstPrice + "]";
+		return "Tail [id=" + id + ", amountTail=" + amountTail + ", firstPrice=" + firstPrice + ", create_date="
+				+ create_date + ", destruction_date=" + destruction_date + ", size=" + size + ", nds=" + nds
+				+ ", nadb_opt=" + nadb_opt + ", nadb_rozn=" + nadb_rozn + ", rozn_price=" + rozn_price + "]";
 	}
 	
 	
