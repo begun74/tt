@@ -521,6 +521,7 @@ public class AdminCtrl {
 		
 				
 		try {
+				//Сохраняем "галку" deleteOldTails
 				adminSessBean.getmA_loadTail().setDeleteOldTails(deleteOldTails);
 				appBean.addToMapStore(adminSessBean.getmA_loadTail());
 
