@@ -75,12 +75,6 @@ public class Tail implements  IModel {
 	@NotNull
 	@Column(name="opt_price")
 	private Double opt_price;  //Оптовая цена
-	/*
-	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "fk_id_provider")
-	@NotNull
-	private DirProvider dirProvider;
-*/
 	
 	@ManyToOne(fetch = FetchType.EAGER)
 	//@Fetch(FetchMode.SELECT)

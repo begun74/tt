@@ -43,12 +43,12 @@
 																			<c:set var="title_price" value="Цена оптовая" />
 																		</c:if>
 																		
-																		<h3 title="${title_price}">${price} руб.</h3>(${tail.tempPrice})
+																		<h3 title="${title_price}">${price} руб.</h3>
 																		
 																	</p>
 																	<c:set var="prov_name" value=" ${tail.dirProvider.name}" />
 																	<p  class="text-center_12">${tail.dirProvider.name}</p>
-																	<p><spring:message code="article"/>&#160;${tail.article}</p>
+																	<!-- p><spring:message code="article"/>&#160;${tail.article}</p -->
 																	<a href="product-details?id=${tail.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i><spring:message code="to.order"/></a>
 																</div>
 														</div>

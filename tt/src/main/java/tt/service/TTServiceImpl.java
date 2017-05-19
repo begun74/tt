@@ -143,7 +143,7 @@ public class TTServiceImpl implements Dao {
 		return dao.getTailsList();
 	}
 
-	@ProcessTail
+	@ProcessTail //Обработка остатков для расчета опт и розничной цены
 	@Override
 	public void addTail(Tail tail) {
 		// TODO Auto-generated method stub
