@@ -281,9 +281,6 @@ public class DaoImpl implements Dao {
 		
 		String sqlNomeclatureInTails = env.getProperty("sqlNomeclatureInTails");
 		
-		//System.out.println(providers.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)"));
-		//System.out.println(genders.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)"));
-		//System.out.println(categories.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)"));
 		
 		if(providers.size() >0)
 			sqlNomeclatureInTails += " and dp.id_dir_provider in "+providers.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
@@ -297,11 +294,19 @@ public class DaoImpl implements Dao {
 		sqlNomeclatureInTails += " order by dngr.sorting, dn.name";
 		
 		//System.out.println((getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class)));
-		List<Object[]> tmpList = getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class).addScalar("firstprice").list();
+		List<Object[]> tmpList = getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class)
+											.addScalar("firstprice")
+											.addScalar("opt_price")
+											.addScalar("rozn_price")
+											.list();
 		
 		for(Object[] item: tmpList)
 		{
-			((DirNomenclature)item[0]).setTempPrice((Double)item[1]);
+			//Устанавливаем
+			((DirNomenclature)item[0]).setTempPrice((Double)item[1]); //Первая цена 
+			((DirNomenclature)item[0]).setOpt_price((Double)item[2]); //Оптовая
+			((DirNomenclature)item[0]).setRozn_price((Double)item[3]); //Розничная цена
+			
 			dirNomSet.add((DirNomenclature)item[0]);
 		}
 		

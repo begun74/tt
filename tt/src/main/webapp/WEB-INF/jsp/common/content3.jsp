@@ -35,7 +35,15 @@
 																	<c:set var="tn_length" value="${fn:length(tail_name)}" />
 																	<h5 class="text-center_12">${fn:substring(tail_name, 0, 15)}</h5>
 																	<h5 class="text-center_12">&#160;${fn:substring(tail_name, 15, tn_length) }</h5>
-																	<p><c:if test="${isShowPrices}"><h3 title="Цены указаны без НДС">${tail.tempPrice} руб.</h3></c:if></p>
+																	<p>
+																		<c:set var="price" value="${tail.rozn_price}" />
+																		<c:if test="${isShowPrices}">
+																			<c:set var="price" value="${tail.opt_price}" />
+																		</c:if>
+																		
+																		<h3 title="Цены указаны без НДС">${price} руб.</h3>(${tail.tempPrice})
+																		
+																	</p>
 																	<c:set var="prov_name" value=" ${tail.dirProvider.name}" />
 																	<p  class="text-center_12">${tail.dirProvider.name}</p>
 																	<p><spring:message code="article"/>&#160;${tail.article}</p>

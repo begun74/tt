@@ -11,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
@@ -26,6 +28,9 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
 @Table(name = "dir_nomenclature")
+@NamedQueries({ 
+	//@NamedQuery(name = "DirNomenclature.findByidWithTails", query="select  distinct  dс  from  DirNomenclature  dс  where  dc.id_dir_nomenclature  =  :id") 
+}  )
 public class DirNomenclature implements  IModel {
 
 	/**
@@ -79,6 +84,8 @@ public class DirNomenclature implements  IModel {
 	private Set<Tail> tails;
 	
 	private transient double tempPrice;
+	private transient double rozn_price;
+	private transient double opt_price;
 	
 	public Long getId() {
 		return id;
@@ -167,6 +174,23 @@ public class DirNomenclature implements  IModel {
 	public void setTempPrice(double tempPrice) {
 		this.tempPrice = tempPrice;
 	}
+
+	public double getRozn_price() {
+		return rozn_price;
+	}
+
+	public void setRozn_price(double rozn_price) {
+		this.rozn_price = rozn_price;
+	}
+
+	public double getOpt_price() {
+		return opt_price;
+	}
+
+	public void setOpt_price(double opt_price) {
+		this.opt_price = opt_price;
+	}
+
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

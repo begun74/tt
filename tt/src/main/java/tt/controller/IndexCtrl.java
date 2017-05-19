@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
@@ -39,6 +40,7 @@ import tt.model.ContactUsMessages;
 import tt.model.DirNomenclature;
 import tt.model.Order;
 import tt.model.OrderItems;
+import tt.model.Tail;
 import tt.model.User;
 import tt.modelattribute.MA_search;
 import tt.service.TTServiceImpl;
@@ -294,8 +296,34 @@ public class IndexCtrl implements Serializable {
 			model.addObject("provider",dn.getDirProvider());
 			//model.addObject("provider", dn.getTails().iterator().next().getDirProvider());
 			
+			Iterator<Tail> iter = dn.getTails().iterator();
+			
+			while(iter.hasNext())
+			{
+				synchronized (iter) {
+					if(iter.next().getDestruction_date() != null)
+						iter.remove();
+				}
+			}
+			
+			Tail tail = dn.getTails().iterator().next();
+			
+			model.addObject("firstprice", tail.getFirstPrice());
+
 			if(isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")))
-				model.addObject("price", dn.getTails().iterator().next().getFirstPrice());
+			{
+				//System.out.println("dn.getTails() - " +dn.getTails());
+				
+				
+				//System.out.println("dn.getTails() - " +dn.getTails());
+				
+				
+				//model.addObject("price", tail.getFirstPrice());
+				model.addObject("price", tail.getOpt_price());
+				
+			}
+			else
+				model.addObject("price", tail.getRozn_price());
 			
 			//model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
 

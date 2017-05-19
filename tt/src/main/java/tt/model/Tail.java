@@ -68,10 +68,13 @@ public class Tail implements  IModel {
 	@Column(name="nadb_rozn")
 	private Integer nadb_rozn; //Надбавка розничная
 
-	//@NotNull
+	@NotNull
 	@Column(name="rozn_price")
 	private Double rozn_price;  //Розничная цена
 	
+	@NotNull
+	@Column(name="opt_price")
+	private Double opt_price;  //Оптовая цена
 	/*
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_provider")
@@ -170,57 +173,61 @@ public class Tail implements  IModel {
 	}
 	
 
-
-
-
-	
-	public int getNds() {
+	public Integer getNds() {
 		return nds;
 	}
 
-	public void setNds(int nds) {
+	public void setNds(Integer nds) {
 		this.nds = nds;
 	}
 
-	public int getNadb_opt() {
+	public Integer getNadb_opt() {
 		return nadb_opt;
 	}
 
-	public void setNadb_opt(int nadb_opt) {
+	public void setNadb_opt(Integer nadb_opt) {
 		this.nadb_opt = nadb_opt;
 	}
 
-	public int getNadb_rozn() {
+	public Integer getNadb_rozn() {
 		return nadb_rozn;
 	}
 
-	public void setNadb_rozn(int nadb_rozn) {
+	public void setNadb_rozn(Integer nadb_rozn) {
 		this.nadb_rozn = nadb_rozn;
 	}
 
-	public double getRozn_price() {
+	public Double getRozn_price() {
 		return rozn_price;
 	}
 
-	public void setRozn_price(double rozn_price) {
+	public void setRozn_price(Double rozn_price) {
 		this.rozn_price = rozn_price;
 	}
 
-	
+	public Double getOpt_price() {
+		return opt_price;
+	}
+
+	public void setOpt_price(Double opt_price) {
+		this.opt_price = opt_price;
+	}
+
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
 	
 	
 	
+	
+	
 	@Override
 	public String toString() {
 		return "Tail [id=" + id + ", amountTail=" + amountTail + ", firstPrice=" + firstPrice + ", create_date="
-				+ create_date + ", destruction_date=" + destruction_date + ", size=" + size + ", nds=" + nds
-				+ ", nadb_opt=" + nadb_opt + ", nadb_rozn=" + nadb_rozn + ", rozn_price=" + rozn_price + "]";
+				+ create_date + ", destruction_date=" + destruction_date + ", size=" + size + ", rozn_price="
+				+ rozn_price + ", opt_price=" + opt_price + "]";
 	}
-	
-	
+
 	@Override
 	public int compareTo(Object o) {
 		
