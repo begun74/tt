@@ -37,11 +37,13 @@
 																	<h5 class="text-center_12">&#160;${fn:substring(tail_name, 15, tn_length) }</h5>
 																	<p>
 																		<c:set var="price" value="${tail.rozn_price}" />
+																		<c:set var="title_price" value="Цена для розницы" />
 																		<c:if test="${isShowPrices}">
 																			<c:set var="price" value="${tail.opt_price}" />
+																			<c:set var="title_price" value="Цена оптовая" />
 																		</c:if>
 																		
-																		<h3 title="Цены указаны без НДС">${price} руб.</h3>(${tail.tempPrice})
+																		<h3 title="${title_price}">${price} руб.</h3>(${tail.tempPrice})
 																		
 																	</p>
 																	<c:set var="prov_name" value=" ${tail.dirProvider.name}" />
