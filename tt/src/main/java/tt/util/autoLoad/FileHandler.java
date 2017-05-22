@@ -57,6 +57,7 @@ public class FileHandler implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		try {
+			
 			//fileUpload.downloadPhoto(code.longValue(), pathToShare);
 			fileUpload.downloadPhoto(code.longValue(), listPaths);
 		}

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
@@ -27,7 +28,7 @@ public class MainAutoLoad {
 	{
 		service = Executors.newScheduledThreadPool(pool.size());
 		for(Handler handler: pool)
-			service.scheduleWithFixedDelay(handler, 1, 5, TimeUnit.SECONDS);
+			service.scheduleWithFixedDelay(handler, 5, 5, TimeUnit.SECONDS);
 		
 		
 	}
@@ -47,11 +48,13 @@ public class MainAutoLoad {
 	}
 
 	public static void startPhotoFileService2(HashMap<Long,List<String>> hmPhotoFile) 
-	{
-		photoFileService = Executors.newCachedThreadPool();
-		
+	{	
+		//Загрузка фото
+		//photoFileService = Executors.newCachedThreadPool();
+		photoFileService = Executors.newScheduledThreadPool(5);
 		for(Long code : hmPhotoFile.keySet())
-			photoFileService.execute(new FileHandler(code, hmPhotoFile.get(code)));
+			//photoFileService.execute(new FileHandler(code, hmPhotoFile.get(code)));
+			((ScheduledExecutorService) photoFileService).scheduleWithFixedDelay(new FileHandler(code, hmPhotoFile.get(code)), 5, 5, TimeUnit.SECONDS);
 	}
 
 	
