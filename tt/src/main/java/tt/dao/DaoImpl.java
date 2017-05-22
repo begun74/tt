@@ -273,6 +273,19 @@ public class DaoImpl implements Dao {
 		return dirNomSet;
 	}
 
+	@Override
+	public Set<DirNomenclature> getNomenclInTails_(List<Long> types, List<Long> providers, List<Long> genders,
+			List<Long> categories, int p) {
+			// TODO Auto-generated method stub
+			
+			LinkedHashSet<DirNomenclature> dirNomSet = new LinkedHashSet<DirNomenclature>();
+
+			Criteria criteria  = getSession().createCriteria(DirNomenclature.class);
+			
+		return (Set<DirNomenclature>) criteria.list();
+	}
+
+
 
 	@Override
 	public Set<DirNomenclature> getNomenclInTails(List<Long> types,List<Long> providers, List<Long> genders, List<Long> categories , int p) {
@@ -291,7 +304,7 @@ public class DaoImpl implements Dao {
 		if(types.size() >0)
 			sqlNomeclatureInTails += " and dngr.id_dir_nomencl_group_root in "+types.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
 
-		sqlNomeclatureInTails += " order by dngr.sorting, dn.name";
+		sqlNomeclatureInTails += " order by dp.sorting, dngr.sorting, dn.name";
 		
 		//System.out.println((getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class)));
 		List<Object[]> tmpList = getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class)

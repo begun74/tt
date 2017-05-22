@@ -27,7 +27,7 @@
 								</div>
 							</c:if>
 							<c:forEach items="${tails}" var="tail" varStatus="loop"  begin="${start}" end="${stop}">
-												<div class="col-xs-4">
+												<div class="col-sm-4 col-xs-8">
 														<div class="single-products product-image-wrapper">
 																<div class="productinfo text-center">
 																	<a href="product-details?id=${tail.id}"><img class="" src="/pics/products/${tail.code}/M/${tail.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" alt=""/></a>
@@ -35,15 +35,16 @@
 																	<c:set var="tn_length" value="${fn:length(tail_name)}" />
 																	<h5 class="text-center_12">${fn:substring(tail_name, 0, 15)}</h5>
 																	<h5 class="text-center_12">&#160;${fn:substring(tail_name, 15, tn_length) }</h5>
+																	<p><spring:message code="model"/>&#160;${tail.model}</p>
 																	<p>
 																		<c:set var="price" value="${tail.rozn_price}" />
-																		<c:set var="title_price" value="Цена для розницы" />
+																		<c:set var="title_price"><spring:message code="retail.price"/></c:set>
 																		<c:if test="${isShowPrices}">
 																			<c:set var="price" value="${tail.opt_price}" />
-																			<c:set var="title_price" value="Цена оптовая" />
+																			<c:set var="title_price"><spring:message code="trade.price"/></c:set>
 																		</c:if>
-																		
-																		<h3 title="${title_price}">${price} руб.</h3>
+																		<h4>${title_price}</h4>
+																		<h4 title="${title_price}">${price} руб.</h4>
 																		
 																	</p>
 																	<c:set var="prov_name" value=" ${tail.dirProvider.name}" />

@@ -37,6 +37,7 @@ public interface Dao {
 	public void addNomenclature(DirNomenclature dirNomenclature);
 	public Set<DirNomenclature> getTailsNomenclature(Tail tail_example, Collection<Criterion> criterions ,int p);
 	public Set<DirNomenclature> getNomenclInTails(List<Long> types, List<Long> providers, List<Long> genders, List<Long> categories , int p);
+	public Set<DirNomenclature> getNomenclInTails_(List<Long> types, List<Long> providers, List<Long> genders, List<Long> categories , int p);
 	public List<DirNomenclature> getPopularDirNomenclature();
 
 
