@@ -482,6 +482,8 @@ public class DaoImpl implements Dao {
 		}
 		
 		List<Object[]> tmpList = getSession().createSQLQuery(sql_1).addEntity(DirNomenclature.class).addScalar("firstPrice")
+									.addScalar("opt_price")
+									.addScalar("rozn_price")
 									.setParameter("model", "%"+text+"%")
 									.setParameter("code", code )
 									.setParameter("article", "%"+text+"%" )
@@ -490,7 +492,11 @@ public class DaoImpl implements Dao {
 		
 		for(Object[] item: tmpList)
 		{
-			((DirNomenclature)item[0]).setTempPrice((Double)item[1]);
+			//Устанавливаем
+			((DirNomenclature)item[0]).setTempPrice((Double)item[1]); //Первая цена 
+			((DirNomenclature)item[0]).setOpt_price((Double)item[2]); //Оптовая
+			((DirNomenclature)item[0]).setRozn_price((Double)item[3]); //Розничная цена
+			
 			tails.add( (DirNomenclature)item[0] );
 			
 		}

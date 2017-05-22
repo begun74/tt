@@ -33,7 +33,14 @@
 
 	<section id="cart_items">
 		<div class="container">
-			
+			<div class="row">
+				<div class="col-sm-2 col-xs-2"></div>
+				<div class="col-sm-10 col-xs-10">
+					<p class="text-center">Данный товар вы можите преобрести в одном из наших розничных <a href="our_shops">магазинов</a>. 
+					По всем интересующим вопросам и по наличию товара звоните по телефонам наших <a href="our_shops">магазинов</a></p>
+				</div>
+			</div>
+			<hr/>
 			<div id="bs-example-modal-sm" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="">
 			  <div class="modal-dialog modal-sm" role="document">
 			    <div class="modal-content">
@@ -67,10 +74,34 @@
 	        </c:if>
 
 			<section id="do_order">			
-			<div class="">
+			<div class="row jumbotron">
 					<form:form method="post" modelAttribute ="orderForm" id="orderForm"  
 								action="createOrder">
-							<div class="col-sm-4 form-check">
+							<div class="form-group row">
+							      <label for="inputEmail3" class="col-sm-2 text-right vertical-align"><spring:message code="name"/></label>
+							      <div class="col-sm-4">
+							        <input type="text" name="person_name" class="form-control" id="inputEmail3" placeholder="<spring:message code="name"/>">
+							      </div>
+							</div>								
+							<div class="form-group row">
+							      <label for="inputEmail3" class="col-sm-2 text-right"><spring:message code="email"/></label>
+							      <div class="col-sm-4">
+							        <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="<spring:message code="email"/>">
+							      </div>
+							</div>								
+							<div class="form-group row">
+							      <label for="inputEmail3" class="col-sm-2 text-right"><spring:message code="phone"/></label>
+							      <div class="col-sm-4">
+							        <input type="text" name="phone" class="form-control" id="inputEmail3" placeholder="+375 XX XXX-XX-XX">
+							      </div>
+							</div>								
+							<div class="form-group row">
+							      <label for="inputEmail3" class="col-sm-2 text-right"><spring:message code="comment"/></label>
+							      <div class="col-sm-4">
+							        <textarea name="comment" class="form-control"  maxlength="100"></textarea>
+							      </div>
+							</div>								
+							<!-- div class="col-sm-4 form-check form-group">
 								<input type="text" name="person_name" class="form-control control-label" placeholder='<spring:message code="name"/>'/>
 							</div>
 							<div class="col-sm-4">
@@ -84,12 +115,14 @@
 							</div>
 							<div class="col-sm-12 form-check">
 									<textarea name="comment" class="form-control"  maxlength="100"></textarea>
-							</div>
+							</div -->
 
-							<div class="text-center">
-								<button type="submit" class="btn btn-default submit_order" >
-												<spring:message code="submit"/>
-								</button>
+							<div class="row">
+								<div class="text-center" style="margin-bottom:15px">
+									<button type="submit" class="btn btn-default submit_order" >
+													<spring:message code="submit"/>
+									</button>
+								</div>
 							</div>
 					</form:form>			
 			</div>
@@ -135,6 +168,7 @@
 				</div>
 			</div>
 		</div>
+		
 	</section> <!--/#cart_items-->
 
 

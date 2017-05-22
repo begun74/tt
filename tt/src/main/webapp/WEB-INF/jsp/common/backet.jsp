@@ -3,6 +3,8 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
+
+
 	<div class="basket">
             
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
