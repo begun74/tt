@@ -223,7 +223,7 @@ public class AdminCtrl {
 	
 
 	@RequestMapping(value = "addFileNomencl" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-	public ModelAndView   processFileProvider( @ModelAttribute  MultipartFile file,
+	public ModelAndView   processFileNomencl( @ModelAttribute  MultipartFile file,
 										@Valid MA_loadNomencl mA_loadNomencl ,
 										BindingResult result,
 										@RequestParam(value = "act",   defaultValue = "-1", required=true) int act) 

@@ -2,6 +2,7 @@ package tt.util.autoLoad;
 
 
 import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
@@ -17,12 +18,12 @@ import tt.util.*;
 
 @Service
 @Scope("request")
-public class FileHandler implements Runnable {
+public class FileHandler implements Callable<Long> {
 	
 	private String pathToShare;
 	private Long code;
 	private List<String> listPaths;
-	private Thread thread;
+	//private Thread thread;
 	
 	//@Autowired
 	private FileUpload fileUpload = new FileUpload();
@@ -32,17 +33,17 @@ public class FileHandler implements Runnable {
 	
 	public FileHandler(Long code,String pathToShare) 
 	{
-		thread = new Thread(this, "FileHandler(Long code,String pathToShare)");
-		thread.setPriority(1);
+		//thread = new Thread(this, "FileHandler(Long code,String pathToShare)");
+		//thread.setPriority(1);
 		this.pathToShare = pathToShare;
 		this.code = code;
 	}
 
 	public FileHandler(Long code,List<String> listPaths) 
 	{
-		thread = new Thread(this, "FileHandler(Long code,List<String> listPaths)");
-		thread.setPriority(1);
-		thread.setName("FileHandler "+code);
+		//thread = new Thread(this, "FileHandler(Long code,List<String> listPaths)");
+		//thread.setPriority(1);
+		//thread.setName("FileHandler "+code);
 		this.listPaths = listPaths;
 		this.code = code;
 	}
@@ -59,13 +60,14 @@ public class FileHandler implements Runnable {
 		this.code = code;
 	}
 	
+	/*
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
 		try {
 			//Thread.currentThread().setName("FileHandler "+code);
 			//Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
-			TimeUnit.SECONDS.sleep(1);
+			TimeUnit.MILLISECONDS.sleep(100);
 			System.out.println(thread.getName());
 			//System.out.println("Thread.currentThread() - "+Thread.currentThread().getPriority() +"");
 			//fileUpload.downloadPhoto(code.longValue(), pathToShare);
@@ -77,7 +79,7 @@ public class FileHandler implements Runnable {
 			e.printStackTrace();
 		}
 	}
-
+*/
 	
 	@PostConstruct
 	void init(){
@@ -88,5 +90,29 @@ public class FileHandler implements Runnable {
 	@PreDestroy
 	void destr() {
 		System.out.println("FileHandler destr " );
+	}
+
+	@Override
+	public Long call() {
+		// TODO Auto-generated method stub
+		
+			try {
+				//Thread.currentThread().setName("FileHandler "+code);
+				Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
+				//System.out.println(thread.getName());
+				//System.out.println("Thread.currentThread() - "+Thread.currentThread().getPriority() +"");
+				//fileUpload.downloadPhoto(code.longValue(), pathToShare);
+				fileUpload.downloadPhoto(code.longValue(), listPaths);
+				
+				TimeUnit.MILLISECONDS.sleep(10);
+				return code;
+			}
+			catch(Exception e)
+			{
+				System.out.println("FileHandler - "+e.getMessage());
+				e.printStackTrace();
+				return null;
+			}
+			
 	}   
 }

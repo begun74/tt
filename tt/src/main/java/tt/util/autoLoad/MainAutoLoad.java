@@ -2,8 +2,10 @@ package tt.util.autoLoad;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.TimeUnit;
@@ -49,11 +51,24 @@ public class MainAutoLoad {
 	public static void startPhotoFileService2(HashMap<Long,List<String>> hmPhotoFile) 
 	{	
 		//Загрузка фото
-		photoFileService = Executors.newCachedThreadPool();
+		photoFileService = Executors.newFixedThreadPool(3);
+		Future<Long> future = null;
 		
 		for(Long code : hmPhotoFile.keySet())
 		{
-			photoFileService.execute(new FileHandler(code, hmPhotoFile.get(code)));
+			future = photoFileService.submit(new FileHandler(code, hmPhotoFile.get(code)));
+			try {
+				future.get();
+			} catch (InterruptedException | ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		if(future.isDone())
+		{
+			stopPhotoFileService();
+			System.out.println("startPhotoFileService2.isDown() - " + future.isDone());
 		}
 	}
 
@@ -62,7 +77,7 @@ public class MainAutoLoad {
 	{
 		try {
 			System.out.println("=========== stopPhotoFileService =========");
-			photoFileService.awaitTermination(10, TimeUnit.SECONDS);
+			photoFileService.awaitTermination(3, TimeUnit.SECONDS);
 			System.out.println("=========== stopped ! =========");
 		} catch (InterruptedException e) {
 			photoFileService.shutdownNow();
