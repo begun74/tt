@@ -20,7 +20,6 @@ public class MainAutoLoad {
 	private static ScheduledExecutorService service ;
 	private static ExecutorService photoFileService ;
 
-	
 	//@Autowired
 	//private static FileHandler fileHandler;
 	
@@ -41,20 +40,21 @@ public class MainAutoLoad {
 	
 	public static void startPhotoFileService(HashMap<Long,String> hmPhotoFile) 
 	{
-		photoFileService = Executors.newCachedThreadPool();
+		photoFileService = Executors.newSingleThreadExecutor();
 		
 		for(Long code : hmPhotoFile.keySet())
-			photoFileService.execute(new FileHandler(code, hmPhotoFile.get(code)));
+			photoFileService.submit(new FileHandler(code, hmPhotoFile.get(code)));
 	}
 
 	public static void startPhotoFileService2(HashMap<Long,List<String>> hmPhotoFile) 
 	{	
 		//Загрузка фото
-		//photoFileService = Executors.newCachedThreadPool();
-		photoFileService = Executors.newScheduledThreadPool(5);
+		photoFileService = Executors.newCachedThreadPool();
+		
 		for(Long code : hmPhotoFile.keySet())
-			//photoFileService.execute(new FileHandler(code, hmPhotoFile.get(code)));
-			((ScheduledExecutorService) photoFileService).scheduleWithFixedDelay(new FileHandler(code, hmPhotoFile.get(code)), 5, 5, TimeUnit.SECONDS);
+		{
+			photoFileService.execute(new FileHandler(code, hmPhotoFile.get(code)));
+		}
 	}
 
 	

@@ -2,6 +2,7 @@ package tt.util.autoLoad;
 
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -21,7 +22,7 @@ public class FileHandler implements Runnable {
 	private String pathToShare;
 	private Long code;
 	private List<String> listPaths;
-	
+	private Thread thread;
 	
 	//@Autowired
 	private FileUpload fileUpload = new FileUpload();
@@ -31,12 +32,17 @@ public class FileHandler implements Runnable {
 	
 	public FileHandler(Long code,String pathToShare) 
 	{
+		thread = new Thread(this, "FileHandler(Long code,String pathToShare)");
+		thread.setPriority(1);
 		this.pathToShare = pathToShare;
 		this.code = code;
 	}
 
 	public FileHandler(Long code,List<String> listPaths) 
 	{
+		thread = new Thread(this, "FileHandler(Long code,List<String> listPaths)");
+		thread.setPriority(1);
+		thread.setName("FileHandler "+code);
 		this.listPaths = listPaths;
 		this.code = code;
 	}
@@ -57,7 +63,11 @@ public class FileHandler implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		try {
-			
+			//Thread.currentThread().setName("FileHandler "+code);
+			//Thread.currentThread().setPriority(Thread.MIN_PRIORITY);
+			TimeUnit.SECONDS.sleep(1);
+			System.out.println(thread.getName());
+			//System.out.println("Thread.currentThread() - "+Thread.currentThread().getPriority() +"");
 			//fileUpload.downloadPhoto(code.longValue(), pathToShare);
 			fileUpload.downloadPhoto(code.longValue(), listPaths);
 		}
