@@ -82,7 +82,7 @@ public class DirNomenclature implements  IModel {
 	private DirProvider dirProvider;
 	
 	@OneToMany(cascade=CascadeType.ALL, fetch = FetchType.EAGER, mappedBy="dirNomenclature")
-	@OrderBy("size ASC")
+	@OrderBy("id DESC")
 	private Set<Tail> tails;
 	
 	private transient double tempPrice;

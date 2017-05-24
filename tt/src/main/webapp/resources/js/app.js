@@ -99,7 +99,8 @@ var Product = {
 							$(".size_info").append("<li>"+data[i].size+" - "+data[i].amountTail+" "+Product.localItemName+"</li> ");
 							$(".sizes").append($('<option>', {
 							    value: data[i].amountTail,
-							    text: data[i].size
+							    text: data[i].size,
+							    id: data[i].id
 							}));
 						}
 					},
@@ -136,6 +137,31 @@ var Product = {
 				return jqXHR.responseText;
 		},
 
+		toOrder2: function(id_tails, amount) {
+
+			var arrData = {};
+			arrData['id'] = Product.id;
+			
+			
+			var jqXHR = $.ajax({
+				type : "GET",
+				url : "toOrder2?id_tails="+id_tails+"&amount="+amount,
+				//timeout : 10000,
+				async: false,
+				dataType: 'json',
+				data : JSON.stringify(arrData),
+				contentType: 'application/json; charset=utf-8',
+				success : function(data) {
+					
+				},
+				error : function(e) {
+					display(e);
+				}
+			});
+			
+			return jqXHR.responseText;
+		},
+		
 		delOrder: function(id) {
 
 			var data = {};

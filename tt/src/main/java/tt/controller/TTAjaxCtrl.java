@@ -140,7 +140,23 @@ public class TTAjaxCtrl  implements Serializable {
 		orderItem.setAmount(amount);
 		orderItem.setSize(size);
 		orderItem.setCreate_date(new Timestamp(new Date().getTime()));
-		orderItem.setDirNomenclature((DirNomenclature)ttService.getObject(DirNomenclature.class, id));
+		
+		DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id);
+		//System.out.println("dn.getTails() - " +dn.getTails());
+		
+		Tail firstTail = (Tail)dn.getTails().iterator().next();
+		//System.out.println("firstTail - " + firstTail);
+		
+		//boolean isShowPrices = isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser"));
+		
+		//if(isShowPrices)
+		dn.setOpt_price(firstTail.getOpt_price());
+		//else 
+		dn.setRozn_price(firstTail.getRozn_price());
+
+		dn.setTempPrice(firstTail.getFirstPrice());
+		
+		orderItem.setDirNomenclature(dn);
 		orderItem.setNpp(sessBean.getNpp());
 		
 		sessBean.getOrderItems().add(orderItem);
@@ -151,6 +167,47 @@ public class TTAjaxCtrl  implements Serializable {
 		return  new ResponseEntity<Integer>(sessBean.getOrderItems().size(),HttpStatus.OK);
 	}
 
+	@RequestMapping(value = "/toOrder2{id}", method = RequestMethod.GET)
+	public ResponseEntity<Integer> toOrder2(HttpSession session, @RequestParam ("id_tails") long id_tails, @RequestParam ("amount") int amount) 
+	{
+		//System.out.println("session.isNew() - " +session.isNew());
+		if(session.isNew()) return new ResponseEntity<Integer>(0,HttpStatus.FORBIDDEN);
+		
+		Tail tail = (Tail)ttService.getObject(Tail.class, id_tails);
+		
+		OrderItems orderItem = new OrderItems();
+		orderItem.setAmount(amount);
+		orderItem.setTail(tail);
+		//orderItem.setSize(size);
+		orderItem.setCreate_date(new Timestamp(new Date().getTime()));
+
+		
+		
+		//DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id);
+		//System.out.println("dn.getTails() - " +dn.getTails());
+		
+		//Tail firstTail = (Tail)dn.getTails().iterator().next();
+		//System.out.println("firstTail - " + firstTail);
+		
+		//boolean isShowPrices = isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser"));
+		
+		//if(isShowPrices)
+		//dn.setOpt_price(firstTail.getOpt_price());
+		//else 
+		//dn.setRozn_price(firstTail.getRozn_price());
+
+		//dn.setTempPrice(firstTail.getFirstPrice());
+		
+		orderItem.setDirNomenclature(tail.getDirNomenclature());
+		orderItem.setNpp(sessBean.getNpp());
+		
+		sessBean.getOrderItems().add(orderItem);
+		session.setAttribute("sessBean", sessBean);
+		
+		//System.out.println("toOrder  - "+id+"  "+size+"   "+amount);
+		
+		return  new ResponseEntity<Integer>(sessBean.getOrderItems().size(),HttpStatus.OK);
+	}
 	
 	@RequestMapping(value = "/getOrderItems{id}", method = RequestMethod.GET)
 	public ResponseEntity<List<JSON_OrderItems>> getOrderItems( @RequestParam ("id") long id) 
@@ -268,6 +325,20 @@ public class TTAjaxCtrl  implements Serializable {
 		
 		return  new ResponseEntity<Integer>(count,HttpStatus.OK);
 
+	}
+
+	
+	protected boolean isShowPrices(org.springframework.security.core.userdetails.User authUser) {
+		
+		try {
+			if(!authUser.getAuthorities().isEmpty())
+				return true;
+			else 
+				return false;
+		}
+		catch(Exception exc) {
+			return false;
+		}
 	}
 
 }

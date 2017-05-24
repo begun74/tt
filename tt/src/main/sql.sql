@@ -46,7 +46,9 @@ where dn.code=10002066039
 
 select count(*) from tails;
 
-select * from tails order by create_date, id_tails;
+select * from tails t
+	inner join dir_nomenclature dn on dn.id_dir_nomenclature=t.fk_id_nomenclature
+	where id_tails=95849 order by create_date, id_tails;
 
 update tails set destruction_date = now() where destruction_date is null;
 

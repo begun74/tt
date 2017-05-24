@@ -32,7 +32,7 @@
 	<%@include file="common/header_top.jsp" %>
 
 	<section id="cart_items">
-		<div class="container">
+		<div class="container table-container">
 			<div class="row">
 				<div class="col-sm-2 col-xs-2"></div>
 				<div class="col-sm-10 col-xs-10">
@@ -97,7 +97,7 @@
 							</div>								
 							<div class="form-group row">
 							      <label for="inputEmail3" class="col-sm-2 text-right"><spring:message code="comment"/></label>
-							      <div class="col-sm-4">
+							      <div class="col-sm-8">
 							        <textarea name="comment" class="form-control"  maxlength="100"></textarea>
 							      </div>
 							</div>								
@@ -130,24 +130,67 @@
 			
 			<div class="col-sm-12"></div>
 			
-			<div class="table-responsive cart_info">
+				<!-- div class="table-responsive cart_info">
 				<table class="table table-condensed">
 						<tr class="cart_menu">
 							<td class="image"></td>
 							<td class="description"><spring:message code="name2"/></td>
 							<td class="quantity"><spring:message code="quantity"/></td>
-							<!-- td class="total"><spring:message code="total"/></td -->
+							<td class="quantity"><spring:message code="price"/></td>
+							
 							<td></td>
 						</tr>
-				</table>
-				<div class="backet_info">
+				</table -->
+				<div class="row cart_info cart_menu">
+					<div class="col-sm-12 text-center">
+						<div class="col-sm-3 text-center"><spring:message code="name2"/></div>
+						<div class="col-sm-3 text-center"><spring:message code="quantity"/></div>
+						<div class="col-sm-3 text-center"><spring:message code="price"/></div>
+						<div class="col-sm-3 text-center"><spring:message code="delete"/></div>
+					</div>
+				</div>				
+
+				<div class="backet_info col-sm-12">
+					
+					<table  width="100%">
+							<c:forEach items="${orderItems}" var="orderItem" varStatus="loop">
+							<tr width="100%">
+								<td width="33%">
+									<div class="text-center">
+										<a href="product-details?id=${orderItem.tail.dirNomenclature.id}"><img src="/pics/products/${orderItem.tail.dirNomenclature.code}/S/${orderItem.tail.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"></a>
+										<p>${orderItem.tail.dirNomenclature.name}</p>
+										<p><b><spring:message code="model"/></b>: ${orderItem.tail.dirNomenclature.model}</p>
+										<p><b><spring:message code="size"/></b>: ${orderItem.size}</p>
+									</div>
+								</td>
+								<td width="23%">
+										<div class="cart_quantity_button text-center " style="">
+											<a class="cart_quantity_up text-center" href="#quantity"> + </a>
+											<input class="cart_quantity_input" id="quantity" type="text" name="quantity" value="${orderItem.amount}" autocomplete="off" size="2">
+											<a class="cart_quantity_down" href="#quantity"> - </a>
+										</div>
+								</td>
+								<td width="23%">
+									<div class="text-center ">
+										<p class="align-middle">${orderItem.dirNomenclature.tempPrice} / ${orderItem.dirNomenclature.opt_price} / ${orderItem.dirNomenclature.rozn_price}</p>
+									</div>
+								</td>
+								<td width="23%">
+									<div class="text-center ">
+										<a class="cart_quantity_delete" href="delOrder?npp=${orderItem.npp}"><i class="fa fa-times"></i></a>
+									</div>
+								</td>					
+							</tr>
+							</c:forEach>					
+					</table>
+					
+				</div>
+				<!-- div class="backet_info">
 				<table width="100%">
 							<c:forEach items="${orderItems}" var="orderItem" varStatus="loop">
 							<tr>
 								<td class="cart_product">
 									<a href="product-details?id=${orderItem.dirNomenclature.id}"><img src="/pics/products/${orderItem.dirNomenclature.code}/S/${orderItem.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"></a>
-								</td>
-								<td class="cart_description">
 									<h4>${orderItem.dirNomenclature.name}</h4>
 									<p><b><spring:message code="model"/></b>: ${orderItem.dirNomenclature.model}</p>
 									<p><b><spring:message code="size"/></b>: ${orderItem.size}</p>
@@ -167,6 +210,14 @@
 				</table>
 				</div>
 			</div>
+			
+							<div class="form-group row">
+							      <label for="inputEmail3" class="col-sm-2 text-left">Итого :</label>
+							      <div class="col-sm-10">
+							        <label for="inputEmail3" class="col-sm-2 text-right">0.0</label>
+							      </div>
+							</div -->								
+			
 		</div>
 		
 	</section> <!--/#cart_items-->

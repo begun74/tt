@@ -54,6 +54,11 @@ public class OrderItems implements IModel {
 	@NotNull
 	private DirNomenclature dirNomenclature;
 
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_id_tails", nullable=false)
+	@NotNull
+	private Tail tail;
+
 	@ManyToOne(fetch = FetchType.LAZY)
 	//@Fetch(FetchMode.SUBSELECT)
 	@JoinColumn(name = "fk_id_orders", nullable=false)
@@ -128,6 +133,14 @@ public class OrderItems implements IModel {
 	}
 
 	
+	public Tail getTail() {
+		return tail;
+	}
+
+	public void setTail(Tail tail) {
+		this.tail = tail;
+	}
+
 	public Order getOrder() {
 		return order;
 	}

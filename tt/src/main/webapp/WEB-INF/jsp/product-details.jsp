@@ -263,7 +263,9 @@
     	});
 
     	$(".cart").click(function() {
-    		var res = Product.toOrder($( ".sizes option:selected" ).text(),$( ".cart_quantity_input" ).val());
+    		//var res = Product.toOrder($( ".sizes option:selected" ).text(),$( ".cart_quantity_input" ).val());
+    		//alert($( ".sizes option:selected" ).attr('id'),$( ".cart_quantity_input" ).val());
+    		var res = Product.toOrder2($( ".sizes option:selected" ).attr('id'),$( ".cart_quantity_input" ).val());
 			
     		$('.badge').text(res); //в header_top.jsp class='badge' Корзина - кол-во покупок
     		//alert('res -  ' + res);
