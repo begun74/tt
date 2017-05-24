@@ -156,7 +156,7 @@ public class TTAjaxCtrl  implements Serializable {
 
 		dn.setTempPrice(firstTail.getFirstPrice());
 		
-		orderItem.setDirNomenclature(dn);
+		orderItem.getTail().setDirNomenclature(dn);
 		orderItem.setNpp(sessBean.getNpp());
 		
 		sessBean.getOrderItems().add(orderItem);
@@ -198,7 +198,7 @@ public class TTAjaxCtrl  implements Serializable {
 
 		//dn.setTempPrice(firstTail.getFirstPrice());
 		
-		orderItem.setDirNomenclature(tail.getDirNomenclature());
+		//orderItem.setDirNomenclature(tail.getDirNomenclature());
 		orderItem.setNpp(sessBean.getNpp());
 		
 		sessBean.getOrderItems().add(orderItem);
@@ -227,11 +227,11 @@ public class TTAjaxCtrl  implements Serializable {
 			JSON_OrderItems json_oitem = new JSON_OrderItems();
 			json_oitem.setId(orderItem.getId());
 			json_oitem.setAmount(orderItem.getAmount());
-			json_oitem.setArticle(orderItem.getDirNomenclature().getArticle());
-			json_oitem.setCode(orderItem.getDirNomenclature().getCode());
+			json_oitem.setArticle(orderItem.getTail().getDirNomenclature().getArticle());
+			json_oitem.setCode(orderItem.getTail().getDirNomenclature().getCode());
 			json_oitem.setCreate_date(orderItem.getCreate_date());
-			json_oitem.setModel(orderItem.getDirNomenclature().getModel());
-			json_oitem.setName(orderItem.getDirNomenclature().getName());
+			json_oitem.setModel(orderItem.getTail().getDirNomenclature().getModel());
+			json_oitem.setName(orderItem.getTail().getDirNomenclature().getName());
 			json_oitem.setSize(orderItem.getSize());
 			json_oitem.setDestruction_date(orderItem.getDestruction_date());
 			

@@ -160,7 +160,7 @@
 										<a href="product-details?id=${orderItem.tail.dirNomenclature.id}"><img src="/pics/products/${orderItem.tail.dirNomenclature.code}/S/${orderItem.tail.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"></a>
 										<p>${orderItem.tail.dirNomenclature.name}</p>
 										<p><b><spring:message code="model"/></b>: ${orderItem.tail.dirNomenclature.model}</p>
-										<p><b><spring:message code="size"/></b>: ${orderItem.size}</p>
+										<p><b><spring:message code="size"/></b>: ${orderItem.tail.size}</p>
 									</div>
 								</td>
 								<td width="23%">
@@ -172,7 +172,7 @@
 								</td>
 								<td width="23%">
 									<div class="text-center ">
-										<p class="align-middle">${orderItem.dirNomenclature.tempPrice} / ${orderItem.dirNomenclature.opt_price} / ${orderItem.dirNomenclature.rozn_price}</p>
+										<p class="align-middle">${orderItem.tail.dirNomenclature.tempPrice} / ${orderItem.tail.dirNomenclature.opt_price} / ${orderItem.tail.dirNomenclature.rozn_price}</p>
 									</div>
 								</td>
 								<td width="23%">
@@ -190,9 +190,9 @@
 							<c:forEach items="${orderItems}" var="orderItem" varStatus="loop">
 							<tr>
 								<td class="cart_product">
-									<a href="product-details?id=${orderItem.dirNomenclature.id}"><img src="/pics/products/${orderItem.dirNomenclature.code}/S/${orderItem.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"></a>
-									<h4>${orderItem.dirNomenclature.name}</h4>
-									<p><b><spring:message code="model"/></b>: ${orderItem.dirNomenclature.model}</p>
+									<a href="product-details?id=${orderItem.tail.dirNomenclature.id}"><img src="/pics/products/${orderItem.tail.dirNomenclature.code}/S/${orderItem.tail.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"></a>
+									<h4>${orderItem.tail.dirNomenclature.name}</h4>
+									<p><b><spring:message code="model"/></b>: ${orderItem.tail.dirNomenclature.model}</p>
 									<p><b><spring:message code="size"/></b>: ${orderItem.size}</p>
 								</td>
 								<td class="cart_quantity">

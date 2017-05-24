@@ -48,12 +48,12 @@ public class OrderItems implements IModel {
 	private Timestamp create_date;
 	
 	private Timestamp destruction_date;
-
+/*
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_dir_nomenclature", nullable=false)
 	@NotNull
 	private DirNomenclature dirNomenclature;
-
+*/
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_tails", nullable=false)
 	@NotNull
@@ -122,7 +122,7 @@ public class OrderItems implements IModel {
 		this.destruction_date = destruction_date;
 	}
 
-	
+/*	
 	
 	public DirNomenclature getDirNomenclature() {
 		return dirNomenclature;
@@ -131,7 +131,7 @@ public class OrderItems implements IModel {
 	public void setDirNomenclature(DirNomenclature dirNomenclature) {
 		this.dirNomenclature = dirNomenclature;
 	}
-
+*/
 	
 	public Tail getTail() {
 		return tail;
@@ -167,8 +167,9 @@ public class OrderItems implements IModel {
 	@Override
 	public String toString() {
 		return "OrderItems [id=" + id + ", size=" + size + ", amount=" + amount + ", create_date=" + create_date
-				+ ", destruction_date=" + destruction_date + ", dirNomenclature=" + dirNomenclature +"]";
+				+ ", destruction_date=" + destruction_date + ", order=" + order + "]";
 	}
+
 
 
 	
