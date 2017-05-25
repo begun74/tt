@@ -130,6 +130,7 @@ public class ReadExcelFile {
         			dirNomenclature.setModel(df.formatCellValue( tmp.getCell(mA_loadNomencl.getCol_model()-1)).trim());
         			dirNomenclature.setCode(Long.parseLong(df.formatCellValue( setCellTypeToString(tmp.getCell(mA_loadNomencl.getCol_code()-1))).trim() ) );
         			dirNomenclature.setArticle(df.formatCellValue( tmp.getCell(mA_loadNomencl.getCol_article()-1)).trim());
+        			dirNomenclature.setComposition(df.formatCellValue( tmp.getCell(mA_loadNomencl.getCol_composition()-1)).trim());
         			dirNomenclature.setDirNomenclGroup(hmNomenclGroup.get(Long.parseLong(df.formatCellValue( tmp.getCell(mA_loadNomencl.getCol_codeNomenclGroup()-1)).trim() ) ) );
         			dirNomenclature.setDirGender(hmDGen.get(df.formatCellValue( tmp.getCell(mA_loadNomencl.getCol_gender()-1)).toLowerCase().trim() ) );
         			dirNomenclature.setDirProvider(hmDProv.get(new Long((df.formatCellValue( setCellTypeToString(tmp.getCell((mA_loadNomencl.getCol_codeProvider()-1))))))));

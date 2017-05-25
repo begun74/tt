@@ -246,10 +246,18 @@
 													</div>
 										  			<div class="clearfix">
 													         <div class="lab">
-									                   			<label><spring:message code="article"/></label>
+									                   			<label>Артикул</label>
 													         </div>
 													         <div style="width: 25px" class="conleft">
 									                   			<input name="col_article" id="col_article" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_article}"> 
+													         </div>
+													</div>
+										  			<div class="clearfix">
+													         <div class="lab">
+									                   			<label>Состав</label>
+													         </div>
+													         <div style="width: 25px" class="conleft">
+									                   			<input name="col_composition" id="col_composition" type="text" class="input" value="${sessionBean.mA_loadNomencl.col_composition}"> 
 													         </div>
 													</div>
 										  			<div class="clearfix">

@@ -131,7 +131,7 @@
 						</div>
 						<div class="mainmenu pull-right">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html" class="active"><spring:message code="home"/></a></li>
+								<li><a href="index.html"><spring:message code="home"/></a></li>
 								<!-- li class="dropdown"><a href="#"><spring:message code="shop"/><i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="index"><spring:message code="products"/></a></li>
@@ -147,6 +147,7 @@
                                 </li --> 
 								<!-- li><a href="404.html">404</a></li -->
 								<li><a href="our_shops" ><spring:message code="our.shops"/></a></li>
+								<li><a href="index" ><spring:message code="buy.in.bulk"/></a></li>
 								<li class="dropdown"><a href="contact-us.html"><spring:message code="contacts"/></a>
 								<li><a href="vacancies" ><spring:message code="info.vacancies"/></a></li>
 								<li><a href="action" ><spring:message code="action1"/></a></li>

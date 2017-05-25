@@ -30,19 +30,34 @@
 	<section id="form"><!--form-->
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-4 col-sm-offset-4">
+				<div class="col-sm-4 col-sm-offset-4 text-center">
 					<div class="login-form"><!--login form-->
 						<h2><spring:message code="login.to.your.account"/></h2>
-						<form id="loginform" role="form"  method="post"  class="formBox">
-							<input type="text" name="username"  placeholder="username" />
-							<input type="password" name="password" placeholder="password" />
-							<span>
-								<input type="checkbox" class="checkbox"> 
-								<spring:message code="keep.me.signed.in"/>
-							</span>
-							<button type="submit" class="btn btn-default">Login</button>
-							
-							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+						<form id="loginform" method="post"  class="">
+			   		            <!-- Error form message -->            
+			   		            <c:if test="${not empty error}">
+			   		            <div class="form-group alert">
+						              <ul>
+						                <li><p><h4><spring:message code="login.error"/></h4></p></li>
+						              </ul>
+					            </div>
+					            </c:if>
+						
+			   		            <div class="form-group">
+										<input type="text" name="username"  placeholder="username" />
+								</div>
+								
+								<div class="form-group">
+										<input type="password" name="password" placeholder="password" />
+								</div>
+								<span>
+									<input type="checkbox" class="checkbox"> 
+									<spring:message code="keep.me.signed.in"/>
+								</span>
+
+								<button type="submit" class="btn btn-default">Login</button>
+								
+								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
 						</form>
 					</div><!--/login form-->
 				</div>

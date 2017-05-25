@@ -23,6 +23,7 @@ public class MA_loadNomencl  implements IMAmodel {
 	private int col_pathToImage=6;
 	private int col_model=7;
 	private int col_codeProvider = 8; //Код поставщика
+	private int col_composition = 0; //Состав
 	
 	private transient  boolean save;
 	private boolean autoload;
@@ -109,7 +110,14 @@ public class MA_loadNomencl  implements IMAmodel {
 		this.col_codeProvider = col_codeProvider;
 	}
 
-	
+	public int getCol_composition() {
+		return col_composition;
+	}
+
+	public void setCol_composition(int col_composition) {
+		this.col_composition = col_composition;
+	}
+
 	public boolean isSave() {
 		return save;
 	}

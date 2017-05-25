@@ -122,7 +122,14 @@ public class IndexCtrl implements Serializable {
 			@RequestParam(value = "logout",	required = false) String logout) 
 	{
 	    
+
 		ModelAndView model = new ModelAndView("login");
+
+		org.springframework.security.core.userdetails.User authUser = ( (org.springframework.security.core.userdetails.User) session.getAttribute("authUser"));
+		
+		if(authUser != null && !authUser.getAuthorities().isEmpty()) 
+			System.out.println(authUser.getUsername()+" - "+authUser.getAuthorities());
+		
 		if (error != null) {
 			model.addObject("error", "Invalid username or password!");
 			return model;
@@ -135,9 +142,11 @@ public class IndexCtrl implements Serializable {
 			return model;
 		}
 		
-		//System.out.println(request.isUserInRole("ROLE_USER")+"  "+request.isUserInRole("ROLE_ADMIN"));
-		//else 
-			//customAuthenticationSuccessHandler.determineTargetUrl(authentication)
+		else
+		{
+			
+			
+		}
 		
 		return model;
 	}
@@ -416,9 +425,6 @@ public class IndexCtrl implements Serializable {
 		model.addObject("orderItems", sessBean.getOrderItems());
 		model.addObject("last_order",order);
 		
-		
-		
-		
 		return model;
 	}
 	
@@ -432,13 +438,6 @@ public class IndexCtrl implements Serializable {
 		return model;
 	}
 
-	@RequestMapping(value = {"/login.html"} , method = RequestMethod.GET)
-	public ModelAndView  login(HttpSession session) 
-	{
-		ModelAndView model = new ModelAndView("login");
-		
-		return model;
-	}
 
 	@RequestMapping(value = {"/shop.html"} , method = RequestMethod.GET)
 	public ModelAndView  shop(HttpSession session) 
