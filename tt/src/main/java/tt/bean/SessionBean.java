@@ -36,6 +36,9 @@ public class SessionBean implements Serializable {
 
 	private User authUser;
 	
+	private double totalPriceOrderItems = 0;
+	
+	private int totalAmountOrderItems = 0;
 	{
 		mapProductFilter.put("category", 11);
 	}
@@ -74,6 +77,24 @@ public class SessionBean implements Serializable {
 
 	public void setMapProductFilter(HashMap mapProductFilter) {
 		this.mapProductFilter = mapProductFilter;
+	}
+
+	public double getTotalPriceOrderItems() {
+		totalPriceOrderItems = 0;
+		
+		for(OrderItems oi: orderItems)
+			totalPriceOrderItems += oi.getPrice()*oi.getAmount();
+		
+		return totalPriceOrderItems;
+	}
+
+	public int getTotalAmountOrderItems() {
+		totalAmountOrderItems = 0;
+		
+		for(OrderItems oi: orderItems)
+			totalAmountOrderItems += oi.getAmount();
+		
+		return totalAmountOrderItems;
 	}
 
 

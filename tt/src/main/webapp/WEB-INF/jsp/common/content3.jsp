@@ -30,11 +30,12 @@
 												<div class="col-sm-4 col-xs-8">
 														<div class="single-products product-image-wrapper">
 																<div class="productinfo text-center">
-																	<a href="product-details?id=${tail.id}"><img class="" src="/pics/products/${tail.code}/M/${tail.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" alt=""/></a>
 																	<c:set var="tail_name" value="${tail.name}" />
 																	<c:set var="tn_length" value="${fn:length(tail_name)}" />
-																	<h5 class="text-center_12">${fn:substring(tail_name, 0, 15)}</h5>
-																	<h5 class="text-center_12">&#160;${fn:substring(tail_name, 15, tn_length) }</h5>
+																	<a href="product-details?id=${tail.id}"><img class="" title="${tail_name}" src="/pics/products/${tail.code}/M/${tail.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" alt=""/></a>
+																	<!-- h5 class="text-center_12">${fn:substring(tail_name, 0, 15)}</h5>
+																	<h5 class="text-center_12">&#160;${fn:substring(tail_name, 15, tn_length) }</h5 -->
+																	<h5 class="text-center_12">${tail.shortName}</h5>
 																	<p><spring:message code="model"/>&#160;${tail.model}</p>
 																	<p>
 																		<c:set var="price" value="${tail.rozn_price}" />

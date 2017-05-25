@@ -2598,7 +2598,7 @@ give gallery's parent container a cursor: pointer.**/
 .backet_info {
 
 	overflow-y:scroll; 
-	overflow-x: none; 
+	overflow-x: hide; 
 	height:500px; 
 	width:100%;
 	

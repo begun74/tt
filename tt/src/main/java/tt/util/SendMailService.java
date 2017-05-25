@@ -55,7 +55,7 @@ public class SendMailService {
 				messBody += "Примечание:  "+ order.getComment()+"\n\n\n";
 				
 				for(OrderItems oi: order.getOrderItems()) 
-					messBody = messBody + (oi.getDirNomenclature().getName() +" (модель "+oi.getDirNomenclature().getModel()+ " арт. "+oi.getDirNomenclature().getArticle()+")  размер: "+oi.getSize() + "    - "+ oi.getAmount()+"шт. \n");
+					messBody = messBody + (oi.getTail().getDirNomenclature().getName() +" (модель "+oi.getTail().getDirNomenclature().getModel()+ " арт. "+oi.getTail().getDirNomenclature().getArticle()+")  размер: "+oi.getTail().getSize() + "    - "+ oi.getAmount()+"шт. \n");
 
 				
 				message.setText(env.getProperty("msgBody")+" "+messBody+"\n");

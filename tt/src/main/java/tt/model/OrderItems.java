@@ -39,15 +39,17 @@ public class OrderItems implements IModel {
 	private long id;
 	
 	@NotNull
-	private String size;
-	
-	@NotNull
 	private int amount;
 
 	@NotNull
 	private Timestamp create_date;
 	
 	private Timestamp destruction_date;
+	
+	@NotNull
+	@Column(name="price")
+	private double price;  //цена
+	
 /*
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_dir_nomenclature", nullable=false)
@@ -84,7 +86,7 @@ public class OrderItems implements IModel {
 	}
 
 
-	
+	/*
 	public String getSize() {
 		return size;
 	}
@@ -92,7 +94,7 @@ public class OrderItems implements IModel {
 	public void setSize(String size) {
 		this.size = size;
 	}
-
+*/
 	public int getAmount() {
 		return amount;
 	}
@@ -121,18 +123,16 @@ public class OrderItems implements IModel {
 	public void setDestruction_date(Timestamp destruction_date) {
 		this.destruction_date = destruction_date;
 	}
-
-/*	
 	
-	public DirNomenclature getDirNomenclature() {
-		return dirNomenclature;
+
+	public double getPrice() {
+		return price;
 	}
 
-	public void setDirNomenclature(DirNomenclature dirNomenclature) {
-		this.dirNomenclature = dirNomenclature;
+	public void setPrice(double price) {
+		this.price = price;
 	}
-*/
-	
+
 	public Tail getTail() {
 		return tail;
 	}
@@ -166,10 +166,9 @@ public class OrderItems implements IModel {
 
 	@Override
 	public String toString() {
-		return "OrderItems [id=" + id + ", size=" + size + ", amount=" + amount + ", create_date=" + create_date
-				+ ", destruction_date=" + destruction_date + ", order=" + order + "]";
+		return "OrderItems [id=" + id + ", amount=" + amount + ", create_date=" + create_date + ", destruction_date="
+				+ destruction_date + ", price=" + price + ", order=" + order + "]";
 	}
-
 
 
 	

@@ -151,9 +151,9 @@ public class CreatePDF {
 		
 		for(OrderItems oi:  orderItems)
 		{
-			table.addCell(new PdfPCell(new Phrase(oi.getDirNomenclature().getName(),TIME_ROMAN)));
-			table.addCell(new PdfPCell(new Phrase(oi.getDirNomenclature().getDirProvider().getName(),TIME_ROMAN)));
-			table.addCell(new Phrase(""+oi.getSize(),TIME_ROMAN));
+			table.addCell(new PdfPCell(new Phrase(oi.getTail().getDirNomenclature().getName(),TIME_ROMAN)));
+			table.addCell(new PdfPCell(new Phrase(oi.getTail().getDirNomenclature().getDirProvider().getName(),TIME_ROMAN)));
+			table.addCell(new Phrase(""+oi.getTail().getSize(),TIME_ROMAN));
 			table.addCell(new Phrase(" "+oi.getAmount(),TIME_ROMAN));
 			table.addCell(new Phrase(" ",TIME_ROMAN));
 		}

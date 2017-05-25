@@ -134,11 +134,11 @@ public class TTAjaxCtrl  implements Serializable {
 	public ResponseEntity<Integer> toOrder(HttpSession session, @RequestParam ("id") long id, @RequestParam ("size") String size, @RequestParam ("amount") int amount) 
 	{
 		//System.out.println("session.isNew() - " +session.isNew());
-		if(session.isNew()) return new ResponseEntity<Integer>(0,HttpStatus.FORBIDDEN);
+		if(session.isNew()) return new ResponseEntity<Integer>(0,HttpStatus.FORBIDDEN);//
 		
 		OrderItems orderItem = new OrderItems();
 		orderItem.setAmount(amount);
-		orderItem.setSize(size);
+		//orderItem.setSize(size);
 		orderItem.setCreate_date(new Timestamp(new Date().getTime()));
 		
 		DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id);
@@ -181,7 +181,12 @@ public class TTAjaxCtrl  implements Serializable {
 		//orderItem.setSize(size);
 		orderItem.setCreate_date(new Timestamp(new Date().getTime()));
 
+		boolean isShowPrices = isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser"));
 		
+		if(isShowPrices)
+			orderItem.setPrice(tail.getOpt_price());
+		else
+			orderItem.setPrice(tail.getRozn_price());
 		
 		//DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id);
 		//System.out.println("dn.getTails() - " +dn.getTails());
@@ -189,7 +194,6 @@ public class TTAjaxCtrl  implements Serializable {
 		//Tail firstTail = (Tail)dn.getTails().iterator().next();
 		//System.out.println("firstTail - " + firstTail);
 		
-		//boolean isShowPrices = isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser"));
 		
 		//if(isShowPrices)
 		//dn.setOpt_price(firstTail.getOpt_price());
@@ -232,7 +236,7 @@ public class TTAjaxCtrl  implements Serializable {
 			json_oitem.setCreate_date(orderItem.getCreate_date());
 			json_oitem.setModel(orderItem.getTail().getDirNomenclature().getModel());
 			json_oitem.setName(orderItem.getTail().getDirNomenclature().getName());
-			json_oitem.setSize(orderItem.getSize());
+			json_oitem.setSize(orderItem.getTail().getSize());
 			json_oitem.setDestruction_date(orderItem.getDestruction_date());
 			
 			json_oitems.add(json_oitem);

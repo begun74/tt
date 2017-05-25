@@ -150,9 +150,9 @@
 									
 									<label><spring:message code="quantity"/>:
 										<div class="cart_quantity_button">
-											<a class="cart_quantity_up" maxval="1" href="#"> + </a>
-											<input class="cart_quantity_input" type="text" name="quantity" value="1"  autocomplete="off" size="2">
-											<a class="cart_quantity_down" href="#"> - </a>
+											<a class="cart_quantity_up" maxval="1" href="#quantity"> + </a>
+											<input class="cart_quantity_input" id="quantity" type="text" name="quantity" value="1"  autocomplete="off" size="2">
+											<a class="cart_quantity_down" href="#quantity"> - </a>
 										</div>
 									</label>
 
@@ -264,7 +264,6 @@
 
     	$(".cart").click(function() {
     		//var res = Product.toOrder($( ".sizes option:selected" ).text(),$( ".cart_quantity_input" ).val());
-    		//alert($( ".sizes option:selected" ).attr('id'),$( ".cart_quantity_input" ).val());
     		var res = Product.toOrder2($( ".sizes option:selected" ).attr('id'),$( ".cart_quantity_input" ).val());
 			
     		$('.badge').text(res); //в header_top.jsp class='badge' Корзина - кол-во покупок

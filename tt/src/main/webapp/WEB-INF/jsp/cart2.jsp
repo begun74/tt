@@ -141,12 +141,12 @@
 							<td></td>
 						</tr>
 				</table -->
-				<div class="row cart_info cart_menu">
-					<div class="col-sm-12 text-center">
-						<div class="col-sm-3 text-center"><spring:message code="name2"/></div>
-						<div class="col-sm-3 text-center"><spring:message code="quantity"/></div>
-						<div class="col-sm-3 text-center"><spring:message code="price"/></div>
-						<div class="col-sm-3 text-center"><spring:message code="delete"/></div>
+				<div class="row">
+					<div class="col-sm-12 text-center border1px" style="heigt: 90px; border: dotted 2px 3">
+						<div class="col-sm-3 text-center"><h4><spring:message code="name2"/></h4></div>
+						<div class="col-sm-3 text-center"><h4><spring:message code="quantity"/></h4></div>
+						<div class="col-sm-3 text-center"><h4><spring:message code="price"/></h4></div>
+						<div class="col-sm-3 text-center"></div>
 					</div>
 				</div>				
 
@@ -163,19 +163,19 @@
 										<p><b><spring:message code="size"/></b>: ${orderItem.tail.size}</p>
 									</div>
 								</td>
-								<td width="23%">
+								<td width="20%">
 										<div class="cart_quantity_button text-center " style="">
 											<a class="cart_quantity_up text-center" href="#quantity"> + </a>
 											<input class="cart_quantity_input" id="quantity" type="text" name="quantity" value="${orderItem.amount}" autocomplete="off" size="2">
 											<a class="cart_quantity_down" href="#quantity"> - </a>
 										</div>
 								</td>
-								<td width="23%">
+								<td width="25%">
 									<div class="text-center ">
-										<p class="align-middle">${orderItem.tail.dirNomenclature.tempPrice} / ${orderItem.tail.dirNomenclature.opt_price} / ${orderItem.tail.dirNomenclature.rozn_price}</p>
+										<p class="align-middle">${orderItem.price}</p>
 									</div>
 								</td>
-								<td width="23%">
+								<td width="22%">
 									<div class="text-center ">
 										<a class="cart_quantity_delete" href="delOrder?npp=${orderItem.npp}"><i class="fa fa-times"></i></a>
 									</div>
@@ -193,7 +193,7 @@
 									<a href="product-details?id=${orderItem.tail.dirNomenclature.id}"><img src="/pics/products/${orderItem.tail.dirNomenclature.code}/S/${orderItem.tail.dirNomenclature.code}_S_0.jpg" alt="" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"></a>
 									<h4>${orderItem.tail.dirNomenclature.name}</h4>
 									<p><b><spring:message code="model"/></b>: ${orderItem.tail.dirNomenclature.model}</p>
-									<p><b><spring:message code="size"/></b>: ${orderItem.size}</p>
+									<p><b><spring:message code="size"/></b>: ${orderItem.tail.size}</p>
 								</td>
 								<td class="cart_quantity">
 									<div class="cart_quantity_button">
@@ -209,14 +209,15 @@
 							</c:forEach>
 				</table>
 				</div>
-			</div>
+			</div -->
 			
-							<div class="form-group row">
-							      <label for="inputEmail3" class="col-sm-2 text-left">Итого :</label>
-							      <div class="col-sm-10">
-							        <label for="inputEmail3" class="col-sm-2 text-right">0.0</label>
+							<div class="row">
+								<div class="col-sm-12 border1px" style="margin:15px">
+							      <div class="col-sm-8 text-right">
+							        <h4><b><spring:message code="total"/> : </b>${sessBean.totalPriceOrderItems} руб.</h4>
 							      </div>
-							</div -->								
+							    </div>
+							</div>								
 			
 		</div>
 		
