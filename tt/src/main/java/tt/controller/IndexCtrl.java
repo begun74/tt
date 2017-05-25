@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -59,6 +61,7 @@ public class IndexCtrl implements Serializable {
 	 */
 	private static final long serialVersionUID = -904284592001974037L;
 	
+	private  static  final  Log  LOG  =  LogFactory.getLog(IndexCtrl.class);
 
 	@Autowired
 	private AppBean appBean;
@@ -403,7 +406,7 @@ public class IndexCtrl implements Serializable {
 		
 		
 		order.setOrderItems(sessBean.getOrderItems());
-		System.out.println("Order - "+order);
+		//System.out.println("Order - "+order);
 		
 		ttService.addOrder(order);
 		

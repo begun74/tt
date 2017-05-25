@@ -1,6 +1,8 @@
 package tt.bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -84,6 +86,8 @@ public class SessionBean implements Serializable {
 		
 		for(OrderItems oi: orderItems)
 			totalPriceOrderItems += oi.getPrice()*oi.getAmount();
+		
+		totalPriceOrderItems = new BigDecimal(totalPriceOrderItems).setScale(2, RoundingMode.HALF_UP).doubleValue();
 		
 		return totalPriceOrderItems;
 	}

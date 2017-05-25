@@ -129,7 +129,7 @@ public class TTAjaxCtrl  implements Serializable {
 		return  tails;
 	}
 	
-	
+/*	
 	@RequestMapping(value = "/toOrder{id}", method = RequestMethod.GET)
 	public ResponseEntity<Integer> toOrder(HttpSession session, @RequestParam ("id") long id, @RequestParam ("size") String size, @RequestParam ("amount") int amount) 
 	{
@@ -166,7 +166,7 @@ public class TTAjaxCtrl  implements Serializable {
 		
 		return  new ResponseEntity<Integer>(sessBean.getOrderItems().size(),HttpStatus.OK);
 	}
-
+*/
 	@RequestMapping(value = "/toOrder2{id}", method = RequestMethod.GET)
 	public ResponseEntity<Integer> toOrder2(HttpSession session, @RequestParam ("id_tails") long id_tails, @RequestParam ("amount") int amount) 
 	{

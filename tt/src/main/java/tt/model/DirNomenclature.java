@@ -88,7 +88,6 @@ public class DirNomenclature implements  IModel {
 	private transient double tempPrice;
 	private transient double rozn_price;
 	private transient double opt_price;
-	private transient String shortName;
 	
 	public Long getId() {
 		return id;
@@ -193,15 +192,6 @@ public class DirNomenclature implements  IModel {
 	public void setOpt_price(double opt_price) {
 		this.opt_price = opt_price;
 	}
-
-
-	public String getShortName() {
-		String[] result = name.split("\\s");
-		shortName = result[0];
-		
-		return shortName;
-	}
-
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;

@@ -6,6 +6,8 @@ import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import javax.mail.internet.MimeMessage;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.PropertySource;
@@ -18,6 +20,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import tt.controller.IndexCtrl;
 import tt.model.Order;
 import tt.model.OrderItems;
 
@@ -32,6 +35,9 @@ public class SendMailService {
     private JavaMailSenderImpl mailSender = new JavaMailSenderImpl();  
     
     private Properties props = System.getProperties();
+    
+	private  static  final  Log  LOG  =  LogFactory.getLog(SendMailService.class);
+
     
     public SendMailService () {
     	
@@ -70,7 +76,7 @@ public class SendMailService {
 			    
 				mailSender.send(message);
 		    	
-				System.out.println("Send "+subject+" № "+order.getId()+" From: " +env.getProperty("fromAddress") + "   to: "+env.getProperty("toAddress"));
+				LOG.info("Send "+subject+" № "+order.getId()+" From: " +env.getProperty("fromAddress") + "   to: "+env.getProperty("toAddress"));
 				
 				return true;
     		}
