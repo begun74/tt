@@ -165,14 +165,15 @@
 								</td>
 								<td width="20%">
 										<div class="cart_quantity_button text-center " style="">
-											<a class="cart_quantity_up text-center" href="#quantity"> + </a>
+											<!-- a class="cart_quantity_up text-center" href="#quantity"> + </a>
 											<input class="cart_quantity_input" id="quantity" type="text" name="quantity" value="${orderItem.amount}" autocomplete="off" size="2">
-											<a class="cart_quantity_down" href="#quantity"> - </a>
+											<a class="cart_quantity_down" href="#quantity"> - </a -->
+											<p><h4>${orderItem.amount} <spring:message code="items"/></h4></p>
 										</div>
 								</td>
 								<td width="25%">
 									<div class="text-center ">
-										<p class="align-middle">${orderItem.price}</p>
+										<p class="align-middle"><h4>${orderItem.price} руб.</h4></p>
 									</div>
 								</td>
 								<td width="22%">

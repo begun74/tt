@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.context.WebApplicationContext;
 
 import tt.model.OrderItems;
+import tt.util.RoundPrice;
 
 @Service("sessBean")
 @Scope( proxyMode=ScopedProxyMode.TARGET_CLASS,value=WebApplicationContext.SCOPE_SESSION)
@@ -87,7 +88,7 @@ public class SessionBean implements Serializable {
 		for(OrderItems oi: orderItems)
 			totalPriceOrderItems += oi.getPrice()*oi.getAmount();
 		
-		totalPriceOrderItems = new BigDecimal(totalPriceOrderItems).setScale(2, RoundingMode.HALF_UP).doubleValue();
+		totalPriceOrderItems = RoundPrice.round_HALF_UP(totalPriceOrderItems);
 		
 		return totalPriceOrderItems;
 	}

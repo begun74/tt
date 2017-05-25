@@ -60,9 +60,21 @@ public class SendMailService {
 				
 				messBody += "Примечание:  "+ order.getComment()+"\n\n\n";
 				
-				for(OrderItems oi: order.getOrderItems()) 
-					messBody = messBody + (oi.getTail().getDirNomenclature().getName() +" (модель "+oi.getTail().getDirNomenclature().getModel()+ " арт. "+oi.getTail().getDirNomenclature().getArticle()+")  размер: "+oi.getTail().getSize() + "    - "+ oi.getAmount()+"шт. \n");
-
+				double totalPrice = 0;
+				int items = 0;
+				
+				for(OrderItems oi: order.getOrderItems())
+				{
+					messBody = messBody + (oi.getTail().getDirNomenclature().getName() +
+											" (модель "+oi.getTail().getDirNomenclature().getModel()+ " арт. " + 
+											oi.getTail().getDirNomenclature().getArticle()+")  \n размер - " +
+											oi.getTail().getSize() + " - "+ oi.getAmount()+"шт. цена - "+oi.getPrice()+" руб.\n");
+					
+					totalPrice += RoundPrice.round_HALF_UP(oi.getPrice()*oi.getAmount());
+					items += oi.getAmount();
+				}
+				
+				messBody += "\nВсего: " + totalPrice+ " руб.   " +items +" шт.";
 				
 				message.setText(env.getProperty("msgBody")+" "+messBody+"\n");
 				
