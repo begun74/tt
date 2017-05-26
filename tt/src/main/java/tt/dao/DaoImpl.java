@@ -497,7 +497,8 @@ public class DaoImpl implements Dao {
 									.setParameter("model", "%"+text+"%")
 									.setParameter("code", code )
 									.setParameter("article", "%"+text+"%" )
-									.setParameter("name", ("%"+text+"%").toUpperCase() )
+									.setParameter("name", ("%"+text+"%").toUpperCase())
+									.setParameter("composition", ("%"+text+"%").toLowerCase() )
 									.list();
 		
 		for(Object[] item: tmpList)

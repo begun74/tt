@@ -42,7 +42,7 @@ ALTER TABLE public.tails
 
 select * from dir_nomenclature dn
 inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
-where dn.code=10002066039
+where dn.code=10002076234
 
 select count(*) from tails;
 
@@ -106,12 +106,12 @@ select sn.id_statistic_nomencl from statistic_nomencl sn
 		inner join dir_nomenclature dn on sn.id_dir_nomenclature = dn.id_dir_nomenclature and sn.id_dir_nomenclature=34303 and date(sn.creation_date)='2017-04-15'
 		)
 
-select distinct xxx.* from tails t 
+select distinct xxx.*, t.firstPrice, t.opt_price, t.rozn_price from tails t 
 	inner join 
 	(
 		select dn.*, dp.code as dp_code, dp.name as dp_name from dir_nomenclature dn 
 		inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider
-		where model like '%0002074803%' or dn.code= 0002074803 or dp.name like '%8 МАРТА%'
+		where model like '%хлопок%' or dn.code= 0002074803 or dp.name like '%хлопок%' or dn.composition like '%хлопок%'
 	) as xxx on xxx.id_dir_nomenclature = t.fk_id_nomenclature
 	where t.destruction_date is null
 
@@ -220,4 +220,6 @@ select distinct dn.*, t.firstPrice, dngr.sorting, dp.sorting from dir_nomenclatu
 		
 select nextval('seq_statistic')
 
-select * from dir_nomenclature dn where id_dir_nomenclature = 100305
+select * from dir_nomenclature dn where composition is not null
+	where code = 10002076234
+	and composition is not null
