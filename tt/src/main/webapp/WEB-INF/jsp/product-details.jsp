@@ -133,6 +133,9 @@
 								<!-- p><b>Availability:</b> In Stock</p -->
 								<!-- p><b>Condition:</b> New</p -->
 								<p><b><spring:message code="brand.name"/>:  </b>${provider.name} </p>
+								<c:if test="${not empty nomenclature.composition}">
+									<p><b><spring:message code="composition"/>:  </b>${nomenclature.composition}</p>
+								</c:if>
 								<!-- p><img src="resources/images/product-details/rating.png" alt="" /></p -->
 								<p><h3>&nbsp</h3></p>
 								<p><b><spring:message code="size"/>:  </b></p>

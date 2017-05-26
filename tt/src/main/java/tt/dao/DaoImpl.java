@@ -20,6 +20,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
+import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -112,8 +113,26 @@ public class DaoImpl implements Dao {
 
 	@Override
 	public void addNomenclature(DirNomenclature dirNomenclature) {
-		// TODO Auto-generated method stub
-		getSession().saveOrUpdate(dirNomenclature);
+		
+		// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		//Во избежании ERROR: duplicate key value violates unique constraint "dir_nomenclature_code_name_key"
+		//Уникальные поля code, name
+		//ищем существующие записи
+		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		
+		DirNomenclature dN_old = new DirNomenclature();
+		dN_old.setCode(dirNomenclature.getCode());
+		dN_old.setName(dirNomenclature.getName());
+		
+		dN_old = (DirNomenclature) getSession().createCriteria(DirNomenclature.class).add(Example.create(dN_old)).uniqueResult();
+		
+		dN_old.setArticle(dirNomenclature.getArticle());
+		dN_old.setComposition(dirNomenclature.getComposition());
+		dN_old.setModel(dirNomenclature.getModel());
+		
+		
+		getSession().saveOrUpdate(dN_old);
+		
 	}
 
 
@@ -128,13 +147,6 @@ public class DaoImpl implements Dao {
 		// TODO Auto-generated method stub
 		getSession().saveOrUpdate(store);
 	}
-
-	/* @Override
-	public Store getStore(long id) {
-		// TODO Auto-generated method stub
-		return (Store) getSession().get(Store.class, id);
-	}
-	*/
 
 	@Override
 	public Store getStoreBySerVerUID(Long serialVersionUID) {
@@ -226,8 +238,6 @@ public class DaoImpl implements Dao {
 
 		
 		lTail = criteria.createCriteria("dirNomenclature").addOrder(Order.asc("name")).list();
-		//criteria.setFirstResult(p-1);
-		//criteria.setMaxResults(p*9);
 		
 
 			

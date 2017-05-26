@@ -264,19 +264,20 @@ public class AdminCtrl {
 		
 					for(DirNomenclature dN: sP) 
 					{
-						try {
-							ttService.addNomenclature(dN);
-							
-						}
-						catch(org.springframework.dao.DataIntegrityViolationException dve) {
-							System.out.println("DirNomenclature - "+dN);
-							adminSessBean.getErrorList().add(dN.getName()+" уже существует! ");
-						}
-						catch (Exception e) {
-							
-							e.printStackTrace();
-							throw new Exception();
-						}
+								try {
+									//System.out.println("======= dN.getComposition() - "+dN.getComposition());
+									ttService.addNomenclature(dN);
+								}
+								catch(org.springframework.dao.DataIntegrityViolationException dve) {
+									//System.out.println("DirNomenclature - "+dN);
+									adminSessBean.getErrorList().add(dN.getName()+" уже существует! ");
+								}
+						
+								catch (Exception e) {
+									
+									e.printStackTrace();
+									throw new Exception();
+								}
 					}
 
 

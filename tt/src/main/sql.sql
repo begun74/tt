@@ -220,4 +220,4 @@ select distinct dn.*, t.firstPrice, dngr.sorting, dp.sorting from dir_nomenclatu
 		
 select nextval('seq_statistic')
 
-select 
+select * from dir_nomenclature dn where id_dir_nomenclature = 100305
