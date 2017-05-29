@@ -2,6 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 
 						<c:set var="perPage" value="${param.perPage}"/>
@@ -21,6 +22,10 @@
 						
 						
 						<div class="features_items"><!--features_items-->
+							<div class="col-xs-12 text-center">
+								<p>Остатки товара на <fmt:formatDate pattern = "dd-MM-yyyy" dateStyle = "long" timeStyle = "long" value="${tails.iterator().next().tails.iterator().next().create_date}" />.</p>
+								<hr/>
+							</div>
 							<c:if test="${allItems eq 0}">
 								<div class="col-xs-12">
 									<h3><p class="text-center"><spring:message code="not.found"/></p></h3>
