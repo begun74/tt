@@ -23,7 +23,7 @@
 						
 						<div class="features_items"><!--features_items-->
 							<div class="col-xs-12 text-center">
-								<p>Остатки товара на <fmt:formatDate pattern = "dd-MM-yyyy"  value="${tails.iterator().next().tails.iterator().next().create_date}" />.</p>
+								<p><spring:message code="remains.of.goods.on"/> <fmt:formatDate pattern = "dd-MM-yyyy"  value="${tails.iterator().next().tails.iterator().next().create_date}" />.</p>
 								<hr/>
 							</div>
 							<c:if test="${allItems eq 0}">
