@@ -119,19 +119,28 @@ public class DaoImpl implements Dao {
 		//Уникальные поля code, name
 		//ищем существующие записи
 		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-		
 		DirNomenclature dN_old = new DirNomenclature();
 		dN_old.setCode(dirNomenclature.getCode());
 		dN_old.setName(dirNomenclature.getName());
 		
 		dN_old = (DirNomenclature) getSession().createCriteria(DirNomenclature.class).add(Example.create(dN_old)).uniqueResult();
 		
-		dN_old.setArticle(dirNomenclature.getArticle());
-		dN_old.setComposition(dirNomenclature.getComposition());
-		dN_old.setModel(dirNomenclature.getModel());
+		try {
+			dN_old.setArticle(dirNomenclature.getArticle());
+			dN_old.setComposition(dirNomenclature.getComposition());
+			dN_old.setModel(dirNomenclature.getModel());
+
+			getSession().saveOrUpdate(dN_old);
+			
+		}
+		catch(java.lang.NullPointerException nexc)
+		{
+			getSession().saveOrUpdate(dirNomenclature);
+			
+		}
 		
 		
-		getSession().saveOrUpdate(dN_old);
+		
 		
 	}
 
