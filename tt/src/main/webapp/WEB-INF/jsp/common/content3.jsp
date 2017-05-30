@@ -22,8 +22,10 @@
 						
 						
 						<div class="features_items"><!--features_items-->
-							<div class="col-xs-12 text-center">
-								<p><spring:message code="remains.of.goods.on"/> <fmt:formatDate pattern = "dd-MM-yyyy"  value="${tails.iterator().next().tails.iterator().next().create_date}" />.</p>
+							<div class="col-xs-12 text-left">
+								<c:if test="${allItems gt 0}">
+									<p><spring:message code="remains.of.goods.on"/> <fmt:formatDate pattern = "dd-MM-yyyy"  value="${tails.iterator().next().tails.iterator().next().create_date}" />.</p>
+								</c:if>
 								<hr/>
 							</div>
 							<c:if test="${allItems eq 0}">
