@@ -7,7 +7,7 @@
 		<div class="header_top"><!--header_top-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-4 col-xs-4">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
 								<li><a href="#"><i class="fa fa-phone"></i> (+375 17) 292-45-90</a></li>
@@ -15,7 +15,11 @@
 							</ul>
 						</div>
 					</div>
-					<div class="pull-center">
+					<div class="col-sm-4 col-xs-2" >
+						<h5>Сайт находится в разработке</h5>
+					</div>					
+					
+					<div class="col-sm-4 col-xs-4">
 								<ul class="nav nav-pills">
 									<li><a href="http://www.nbrb.by"><i id="usd_840" class="fa"></i></a></li>
 									<li><a href="http://www.nbrb.by"><i id="eur_978" class="fa"></i></a></li>
@@ -29,16 +33,8 @@
 										</div>
 									</li>
 								</ul>
-						</div>
-						<!-- div class="social-icons pull-right">
-							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-								<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-								<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-							</ul>
-						</div -->
+					</div>
+					
 					</div>
 				</div>
 			</div>
@@ -147,7 +143,7 @@
                                 </li --> 
 								<!-- li><a href="404.html">404</a></li -->
 								<li><a href="our_shops" ><spring:message code="our.shops"/></a></li>
-								<li><a href="index" ><spring:message code="buy.in.bulk"/></a></li>
+								<li><a href="cooperation" ><spring:message code="buy.in.bulk"/></a></li>
 								<li class="dropdown"><a href="contact-us.html"><spring:message code="contacts"/></a>
 								<li><a href="vacancies" ><spring:message code="info.vacancies"/></a></li>
 								<li><a href="action" ><spring:message code="action1"/></a></li>

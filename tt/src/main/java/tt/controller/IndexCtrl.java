@@ -429,6 +429,14 @@ public class IndexCtrl implements Serializable {
 	}
 	
 	
+	@RequestMapping(value = {"/cooperation"} , method = RequestMethod.GET)
+	public ModelAndView  cooperation(HttpSession session) 
+	{
+		ModelAndView model = new ModelAndView("cooperation");
+		
+		return model;
+	}
+
 	
 	@RequestMapping(value = {"/checkout.html"} , method = RequestMethod.GET)
 	public ModelAndView  checkout(HttpSession session) 
