@@ -20,15 +20,16 @@ insert into tt_user_role VALUES(nextval('seq_global'),'ROLE_ADMIN');
 insert into tt_user_role VALUES(nextval('seq_global'),'ROLE_USER');
 insert into tt_user_role VALUES(nextval('seq_global'),'ROLE_ORDERS');
 
-insert into tt_user VALUES(nextval('seq_global'),'order','123');
+insert into tt_user VALUES(nextval('seq_global'),'трикотаж','трикотаж033');
+insert into user_with_role values((select id_user from tt_user where name ='трикотаж'),(select id_user_role from tt_user_role where name ='ROLE_USER'))
 
 insert into user_with_role values((select id_user from tt_user where name ='order'),(select id_user_role from tt_user_role where name ='ROLE_ORDERS'))
 
-insert into user_with_role values((select id_user from tt_user where name ='user'),(select id_user_role from tt_user_role where name ='ROLE_USER'))
+
 
 select u.*,r.name from tt_user u 
 	inner join user_with_role ur on u.id_user=ur.tt_user_id
-	inner join tt_user_role r on ur.tt_user_role_id= id_user_role;
+	inner join tt_user_role r on ur.tt_user_role_id= id_user_role; 
 -- USER, USER_ROLE
 
 
@@ -223,3 +224,85 @@ select nextval('seq_statistic')
 select * from dir_nomenclature dn where composition is not null
 	where code = 10002076234
 	and composition is not null
+
+
+
+--====================== OAuth2 ==============
+
+drop table if exists oauth_client_details;
+create table oauth_client_details (
+  client_id VARCHAR(255) PRIMARY KEY,
+  resource_ids VARCHAR(255),
+  client_secret VARCHAR(255),
+  scope VARCHAR(255),
+  authorized_grant_types VARCHAR(255),
+  web_server_redirect_uri VARCHAR(255),
+  authorities VARCHAR(255),
+  access_token_validity INTEGER,
+  refresh_token_validity INTEGER,
+  additional_information VARCHAR(4096),
+  autoapprove VARCHAR(255)
+);	
+
+
+drop table if exists oauth_client_token;
+create table oauth_client_token (
+  token_id VARCHAR(255),
+  token BYTEA,
+  authentication_id VARCHAR(255) PRIMARY KEY,
+  user_name VARCHAR(255),
+  client_id VARCHAR(255)
+);
+
+
+drop table if exists oauth_access_token;
+create table oauth_access_token (
+  token_id VARCHAR(255),
+  token BYTEA,
+  authentication_id VARCHAR(255) PRIMARY KEY,
+  user_name VARCHAR(255),
+  client_id VARCHAR(255),
+  authentication BYTEA,
+  refresh_token VARCHAR(255)
+);
+
+
+--
+
+drop table if exists oauth_refresh_token;
+create table oauth_refresh_token (
+  token_id VARCHAR(255),
+  token BYTEA,
+  authentication BYTEA
+);
+ 
+drop table if exists oauth_code;
+create table oauth_code (
+  code VARCHAR(255), 
+  authentication BYTEA
+);
+ 
+drop table if exists oauth_approvals;
+create table oauth_approvals (
+    userId VARCHAR(255),
+    clientId VARCHAR(255),
+    scope VARCHAR(255),
+    status VARCHAR(10),
+    expiresAt TIMESTAMP,
+    lastModifiedAt TIMESTAMP
+);
+ 
+drop table if exists ClientDetails;
+create table ClientDetails (
+  appId VARCHAR(255) PRIMARY KEY,
+  resourceIds VARCHAR(255),
+  appSecret VARCHAR(255),
+  scope VARCHAR(255),
+  grantTypes VARCHAR(255),
+  redirectUrl VARCHAR(255),
+  authorities VARCHAR(255),
+  access_token_validity INTEGER,
+  refresh_token_validity INTEGER,
+  additionalInformation VARCHAR(4096),
+  autoApproveScopes VARCHAR(255)
+);
