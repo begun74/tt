@@ -127,7 +127,7 @@
 						</div>
 						<div class="mainmenu pull-right">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="index.html"><spring:message code="home"/></a></li>
+								<li><a href="index.html"><spring:message code="goods"/></a></li>
 								<!-- li class="dropdown"><a href="#"><spring:message code="shop"/><i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="index"><spring:message code="products"/></a></li>
