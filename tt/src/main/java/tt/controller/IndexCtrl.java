@@ -189,7 +189,7 @@ public class IndexCtrl implements Serializable {
 
 	
 	@RequestMapping(value = {"/search"} , method = RequestMethod.GET)
-	public String  searchGet(HttpSession session, @ModelAttribute("mA_search") MA_search mA_search, Model model, @RequestParam(value = "p", defaultValue = "1") int p, 
+	public String  searchGet(HttpSession session, @ModelAttribute("product_filter") MA_search mA_search, Model model, @RequestParam(value = "p", defaultValue = "1") int p, 
 								@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
 	{
 		 //mIndex = session.getAttribute("mIndex") == null?new MIndex():(MIndex)session.getAttribute("mIndex");

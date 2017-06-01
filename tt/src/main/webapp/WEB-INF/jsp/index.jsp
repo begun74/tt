@@ -23,6 +23,7 @@
 	<link href="resources/css/main.css" rel="stylesheet">
 	<link href="resources/css/responsive.css" rel="stylesheet">
 	<link href="resources/css/simplePagination.css" rel="stylesheet">
+	<link href="resources/css/bootstrap-select.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -74,6 +75,7 @@
   
     <script src="resources/js/jquery.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/bootstrap-select.min.js"></script>
 	<script src="resources/js/jquery.cookie.js"></script>
 	<script src="resources/js/jquery.scrollUp.min.js"></script>
 	<script src="resources/js/price-range.js"></script>
@@ -85,6 +87,11 @@
     
     <script>
 	    $(function() {
+	    	
+				var sortby = ${mA_search.sortby};
+				
+				
+	    	
 				var pns = ${mA_search.pn};
 				var pns_get ='';
 				
@@ -156,6 +163,7 @@
 	        	$('.ch_type').attr("checked",null);
 	        });
 
+	        
 	        $( ".countType" ).tooltip(
 	                {
 	                    html: true,

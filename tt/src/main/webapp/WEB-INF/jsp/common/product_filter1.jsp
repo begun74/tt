@@ -5,8 +5,17 @@
 
 
 <article>
+
+<!-- Small modal -->
+<!-- button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button -->
+
+					<div class="modal " id="productFilterWait" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+					    <div class="modal-content text-center" style="margin: 0 auto; opacity: 1;">
+					    	<img alt="" src="${pageContext.request.contextPath}/resources/images/WAITING3.gif">
+					    </div>
+					</div>		
 					<div class="left-sidebar">
-						<form  method="GET" name="mA_search" action="${pageContext.request.contextPath}/search">
+						<form  method="GET" name="product_filter" action="${pageContext.request.contextPath}/search">
 						
 								<!--type-->
 								<div class="row div_bkgr border1px">
@@ -22,17 +31,38 @@
 											<em><label class="checkbox cursor countType" data-toggle="tooltip" data-placement="left" lookup_id="${type.id}" title="${type_name}"><input class="ch_type" type="checkbox" name="type" id="type_${type.id}" value="${type.id}"/>${type_name}</label></em>
 										</div>
 									</c:forEach>
-									<div class="row div_Fitem"><button type="button" id="ch_type_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button></div>
+									<!-- >div class="row div_Fitem"><button type="button" id="ch_type_btn" class="btn btn-default btn-xs waiting"><spring:message code="checkbox.off"/></button></div -->
+									<div class="row div_Fitem">
+										<div class="col-sm-12">
+											<div class="col-sm-4 text-left">
+												<button type="button" id="ch_type_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button>
+											</div>
+											<div class="col-sm-8 text-right">
+												<button type="submit" class="btn btn-warning btn-xs  waiting border1px"><spring:message code="show"/></button>
+											</div>
+										</div>
+									</div>
+
 								</div><!--/type-->
 
 								<div class="row div_bkgr border1px"><!-- genders -->
 									<div class="div_name"><spring:message code="sex.attribute"/></div>
 									<c:forEach items="${genders}" var="gender" varStatus="loop"> 
 										<div class="div_Fitem">
-											<em><label class="checkbox cursor countGender" data-toggle="tooltip" data-placement="left" lookup_id="${gender.id}" title="${gender.name}"><input class="ch_gender" type="checkbox" name="gndr" id="gndr_${gender.id}" value="${gender.id}"/>${gender.name}</label></em>
+											<em><label class="checkbox cursor countGender" data-toggle="tooltip" data-placement="left" lookup_id="${gender.id}" title="${gender.name}"><input class="ch_gender" type="checkbox" name="gndr" id="gndr_${gender.id}" value="${gender.id}" />${gender.name}</label></em>
 										</div>
 									</c:forEach>
-									<div class="row div_Fitem"><button type="button" id="ch_gender_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button></div>
+									<!-- div class="row div_Fitem"><button type="button" id="ch_gender_btn" class="btn btn-default btn-xs waiting"><spring:message code="checkbox.off"/></button></div -->
+									<div class="row div_Fitem">
+										<div class="col-sm-12">
+											<div class="col-sm-4 text-left">
+												<button type="button" id="ch_gender_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button>
+											</div>
+											<div class="col-sm-8 text-right">
+												<button type="submit" class="btn btn-warning btn-xs  waiting"><spring:message code="show"/></button>
+											</div>
+										</div>
+									</div>
 								</div><!--/genders-->
 							
 								<div class="row div_bkgr border1px"><!--brands_products-->
@@ -44,7 +74,20 @@
 											</div>
 										</c:forEach>
 									</div>
-									<div class="row div_Fitem"><button type="button" id="ch_provider_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button></div>
+									<!-- div class="row div_Fitem">
+										<button type="button" id="ch_provider_btn" class="btn btn-default btn-xs waiting"><spring:message code="checkbox.off"/></button>
+										<button type="submit" class="btn btn-default btn-xs"><spring:message code="show"/></button>
+									</div -->
+									<div class="row div_Fitem">
+										<div class="col-sm-12">
+											<div class="col-sm-4 text-left">
+												<button type="button" id="ch_provider_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button>
+											</div>
+											<div class="col-sm-8 text-right">
+												<button type="submit" class="btn btn-warning btn-xs  waiting"><spring:message code="show"/></button>
+											</div>
+										</div>
+									</div>
 								</div><!--/brands_products-->
 		
 								<!-- Категория -->
@@ -57,7 +100,16 @@
 											</div>
 										</c:forEach>
 									</div>
-									<div class="row div_Fitem"><button type="button" id="ch_category_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button></div>
+									<div class="row div_Fitem">
+										<div class="col-sm-12">
+											<div class="col-sm-4 text-left">
+												<button type="button" id="ch_category_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button>
+											</div>
+											<div class="col-sm-8 text-right">
+												<button type="submit" class="btn btn-warning btn-xs  waiting"><spring:message code="show"/></button>
+											</div>
+										</div>
+									</div>
 								</div>
 								<!--/Категория-->
 
@@ -70,9 +122,9 @@
 									</div>
 								</div --><!--/price-range-->
 								
-								<div class="well text-center">
+								<!-- div class="well text-center">
 									<button type="submit" class="btn btn-default"><spring:message code="show"/></button>
-								</div>
+								</div -->
 						</form>
 						
 						<!--shipping-->

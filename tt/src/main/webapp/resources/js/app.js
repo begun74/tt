@@ -7,6 +7,19 @@ $(document).ready(function(){
 	getCurrency("http://www.nbrb.by/API/ExRates/Rates/978?ParamMode=1",$('#eur_978'),'€ ');
 	
 	gismeteoWeather();
+	
+	
+    $(".waiting").click(function() {
+    	/*setTimeout(function() {
+    		$('#productFilterWait').modal('show');}
+		,700);
+    	*/
+    	$('#productFilterWait').modal('show');
+    	setTimeout(function() {
+		        	document.product_filter.submit();}
+    	,300);
+    });
+
 })
 
 /* Gismeteo Informer (begin) */

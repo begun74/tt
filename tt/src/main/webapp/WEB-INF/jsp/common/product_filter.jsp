@@ -12,7 +12,7 @@
 									<div class="brands-name" >
 										<ul class="nav nav-pills nav-stacked">
 											<c:forEach items="${genders}" var="gender" varStatus="loop"> 
-												<li class="checkbox"><a><label><input type="checkbox" name="gndr" id="gndr_${gender.id}" value="${gender.id}"/>${gender.name}</label></a></li>
+												<li class="checkbox"><a><label><input type="checkbox" name="gndr" id="gndr_${gender.id}" value="${gender.id}" onClick="alert('!')"/>${gender.name}</label></a></li>
 											</c:forEach>
 										</ul>
 									</div>
@@ -52,7 +52,6 @@
 								</div --><!--/price-range-->
 								
 								<div class="well text-center">
-								
 									<button type="submit" class="btn"><spring:message code="show"/></button>
 								</div>
 						</form>

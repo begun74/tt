@@ -22,12 +22,21 @@
 						
 						
 						<div class="features_items"><!--features_items-->
-							<div class="col-xs-12 text-left">
+						
+							<div class="row">
 								<c:if test="${allItems gt 0}">
-									<p><spring:message code="remains.of.goods.on"/> <fmt:formatDate pattern = "dd-MM-yyyy"  value="${tails.iterator().next().tails.iterator().next().create_date}" />.</p>
+									<div class="col-xs-6 text-left">
+										<p><spring:message code="remains.of.goods.on"/> <fmt:formatDate pattern = "dd-MM-yyyy"  value="${tails.iterator().next().tails.iterator().next().create_date}" />.</p>
+									</div>
+									<div class="col-sm-6 text-right"> 
+										<a href="">по наименованию</a>
+										<p></p>
+										<a href="">по цене</a>
+									</div>
 								</c:if>
-								<hr/>
 							</div>
+								<hr/>
+
 							<c:if test="${allItems eq 0}">
 								<div class="col-xs-12">
 									<h3><p class="text-center"><spring:message code="not.found"/></p></h3>
@@ -82,3 +91,4 @@
 
 						<input type="hidden" name="itemPerPage" value="${perPage}"/>
 						<input type="hidden" name="itemStart" value="${start}"/>
+						<input type="hidden" name="sortby" value="dn.name"/>
