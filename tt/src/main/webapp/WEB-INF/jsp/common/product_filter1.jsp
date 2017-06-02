@@ -125,6 +125,9 @@
 								<!-- div class="well text-center">
 									<button type="submit" class="btn btn-default"><spring:message code="show"/></button>
 								</div -->
+								
+							<input type="hidden" name="sortby" id="sortby" value='${mA_search.sortby}'/>
+	
 						</form>
 						
 						<!--shipping-->

@@ -28,7 +28,7 @@ public class MA_search implements Serializable {
 	
 	List<Long> type = new ArrayList<Long>();//Type бельевой, верхний, чулочно-носочный
 	
-	private String sortby = "dn.name";
+	private String sortby = "name";
 	
 	public List<Long> getPn() {
 		return pn;
@@ -78,12 +78,10 @@ public class MA_search implements Serializable {
 	}
 
 
-
+	
 	public String getSortby() {
 		return sortby;
 	}
-
-
 
 	public void setSortby(String sortby) {
 		this.sortby = sortby;

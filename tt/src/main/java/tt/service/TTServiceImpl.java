@@ -37,6 +37,7 @@ import tt.model.OrderItems;
 import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
+import tt.modelattribute.MA_search;
 
 
 
@@ -458,9 +459,9 @@ public class TTServiceImpl implements Dao {
 
 
 	@Override
-	public Set<DirNomenclature> getNomenclInTails(List<Long> types, List<Long> providers, List<Long> genders, List<Long> categories , int p) {
+	public Set<DirNomenclature> getNomenclInTails(MA_search MA_search , int p) {
 		// TODO Auto-generated method stub
-		return dao.getNomenclInTails(types, providers, genders, categories , p);
+		return dao.getNomenclInTails(MA_search , p);
 	}
 
 	@Override

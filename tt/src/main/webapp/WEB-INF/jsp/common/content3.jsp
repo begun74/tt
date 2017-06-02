@@ -29,9 +29,9 @@
 										<p><spring:message code="remains.of.goods.on"/> <fmt:formatDate pattern = "dd-MM-yyyy"  value="${tails.iterator().next().tails.iterator().next().create_date}" />.</p>
 									</div>
 									<div class="col-sm-6 text-right"> 
-										<a href="">по наименованию</a>
-										<p></p>
-										<a href="">по цене</a>
+										<a id="name" href=""  class="waiting sortby" >по наименованию</a>
+										
+										<a id="price" href=""  class="waiting sortby" >по цене</a>
 									</div>
 								</c:if>
 							</div>
@@ -91,4 +91,4 @@
 
 						<input type="hidden" name="itemPerPage" value="${perPage}"/>
 						<input type="hidden" name="itemStart" value="${start}"/>
-						<input type="hidden" name="sortby" value="dn.name"/>
+						

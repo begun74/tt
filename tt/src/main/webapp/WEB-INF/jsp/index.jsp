@@ -88,9 +88,23 @@
     <script>
 	    $(function() {
 	    	
-				var sortby = ${mA_search.sortby};
+	    		
+		        $(".sortby").attr('href',
+		        	function() {
+		        		var href = $(this).attr('id');
+		        		return document.URL+"&sortby="+$(this).attr('id');
+		        	}
+		        );
 				
 				
+			    $(".sortby").click(function() {
+			    	$("#sortby").val($(this).attr('id'));
+	    		});
+				
+				
+				
+	    		
+				/* var sortby = ${mA_search.sortby}; */
 	    	
 				var pns = ${mA_search.pn};
 				var pns_get ='';

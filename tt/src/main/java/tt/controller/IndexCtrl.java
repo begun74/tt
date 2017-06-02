@@ -1,16 +1,15 @@
 package tt.controller;
 
-import java.io.ByteArrayOutputStream;
+
 import java.io.File;
-import java.io.OutputStream;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -20,10 +19,10 @@ import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.Hibernate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +33,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import tt.annotation.CheckAccess;
+
 import tt.bean.AppBean;
 import tt.bean.SessionBean;
 import tt.config.CustomAuthenticationSuccessHandler;
@@ -97,7 +96,7 @@ public class IndexCtrl implements Serializable {
 		//model.addObject("tails",ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
 		//model.addObject("tails",ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
 		
-		model.addObject("tails",ttService.getNomenclInTails(mA_search.getType(),mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p ));
+		model.addObject("tails",ttService.getNomenclInTails(mA_search, p ));
 		
 		model.addObject("version",appBean.getVersion());
 		//model.addObject("providers", ttService.getProviderList());
@@ -189,7 +188,8 @@ public class IndexCtrl implements Serializable {
 
 	
 	@RequestMapping(value = {"/search"} , method = RequestMethod.GET)
-	public String  searchGet(HttpSession session, @ModelAttribute("product_filter") MA_search mA_search, Model model, @RequestParam(value = "p", defaultValue = "1") int p, 
+	public String  searchGet(HttpSession session, @ModelAttribute("product_filter") MA_search mA_search, Model model, 
+								@RequestParam(value = "p", defaultValue = "1") int p, 
 								@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
 	{
 		 //mIndex = session.getAttribute("mIndex") == null?new MIndex():(MIndex)session.getAttribute("mIndex");
@@ -211,7 +211,7 @@ public class IndexCtrl implements Serializable {
 
 		//model.addAttribute("tails", ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
 		
-		model.addAttribute("tails",ttService.getNomenclInTails(mA_search.getType(), mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p ));
+		model.addAttribute("tails",ttService.getNomenclInTails(mA_search, p ));
 		
 		model.addAttribute("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
 		

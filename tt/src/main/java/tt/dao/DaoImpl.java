@@ -40,6 +40,7 @@ import tt.model.OrderItems;
 import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
+import tt.modelattribute.MA_search;
 
 
 
@@ -307,21 +308,21 @@ public class DaoImpl implements Dao {
 
 
 	@Override
-	public Set<DirNomenclature> getNomenclInTails(List<Long> types,List<Long> providers, List<Long> genders, List<Long> categories , int p) {
+	public Set<DirNomenclature> getNomenclInTails(MA_search MA_search , int p) {
 
 		LinkedHashSet<DirNomenclature> dirNomSet = new LinkedHashSet<DirNomenclature>();
 		
 		String sqlNomeclatureInTails = env.getProperty("sqlNomeclatureInTails");
 		
 		
-		if(providers.size() >0)
-			sqlNomeclatureInTails += " and dp.id_dir_provider in "+providers.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
-		if(genders.size() >0)
-			sqlNomeclatureInTails += " and dg.id_dir_gender in "+genders.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
-		if(categories.size() >0)
-			sqlNomeclatureInTails += " and dng.id_dir_nomencl_group in "+categories.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
-		if(types.size() >0)
-			sqlNomeclatureInTails += " and dngr.id_dir_nomencl_group_root in "+types.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		if(MA_search.getPn().size() >0)
+			sqlNomeclatureInTails += " and dp.id_dir_provider in "+MA_search.getPn().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		if(MA_search.getGndr().size() >0)
+			sqlNomeclatureInTails += " and dg.id_dir_gender in "+MA_search.getGndr().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		if(MA_search.getCat().size() >0)
+			sqlNomeclatureInTails += " and dng.id_dir_nomencl_group in "+MA_search.getCat().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		if(MA_search.getType().size() >0)
+			sqlNomeclatureInTails += " and dngr.id_dir_nomencl_group_root in "+MA_search.getType().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
 
 		sqlNomeclatureInTails += " order by dp.sorting, dngr.sorting, dn.name";
 		

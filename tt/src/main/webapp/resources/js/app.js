@@ -17,10 +17,11 @@ $(document).ready(function(){
     	$('#productFilterWait').modal('show');
     	setTimeout(function() {
 		        	document.product_filter.submit();}
-    	,300);
+    	,100);
     });
-
+    
 })
+
 
 /* Gismeteo Informer (begin) */
 var gismeteoWeather = function() {
