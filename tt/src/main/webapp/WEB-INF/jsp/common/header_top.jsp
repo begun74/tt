@@ -7,7 +7,7 @@
 		<div class="header_top"><!--header_top-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-4 col-xs-4">
+					<div class="col-sm-5 col-xs-5">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
 								<li><a href="#"><i class="fa fa-phone"></i> (+375 17) 292-45-90</a></li>
@@ -15,11 +15,11 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-4 col-xs-2" >
+					<div class="col-md-2 col-sm-2" >
 						<h5>Сайт находится в разработке</h5>
 					</div>					
 					
-					<div class="col-sm-4 col-xs-4">
+					<div class="col-md-5 col-sm-5">
 								<ul class="nav nav-pills">
 									<li><a href="http://www.nbrb.by"><i id="usd_840" class="fa"></i></a></li>
 									<li><a href="http://www.nbrb.by"><i id="eur_978" class="fa"></i></a></li>

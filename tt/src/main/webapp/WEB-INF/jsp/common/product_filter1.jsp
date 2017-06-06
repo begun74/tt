@@ -33,14 +33,12 @@
 										</c:forEach>
 									<!-- >div class="row div_Fitem"><button type="button" id="ch_type_btn" class="btn btn-default btn-xs waiting"><spring:message code="checkbox.off"/></button></div -->
 										<div class="row div_Fitem">
-											<div class="col-sm-12">
-												<div class="col-sm-4 col-xs-7 text-left">
+												<div class="col-sm-6 text-left">
 													<button type="button" id="ch_type_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button>
 												</div>
-												<div class="col-sm-8 col-xs-5 text-right">
+												<div class="col-sm-6 text-right">
 													<button type="submit" class="btn btn-warning btn-xs  waiting border1px"><spring:message code="show"/></button>
 												</div>
-											</div>
 										</div>
 
 								</div><!--/type-->
@@ -54,14 +52,12 @@
 									</c:forEach>
 									<!-- div class="row div_Fitem"><button type="button" id="ch_gender_btn" class="btn btn-default btn-xs waiting"><spring:message code="checkbox.off"/></button></div -->
 									<div class="row div_Fitem">
-										<div class="col-sm-12">
-											<div class="col-sm-4 text-left">
+											<div class="col-sm-6 text-left">
 												<button type="button" id="ch_gender_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button>
 											</div>
-											<div class="col-sm-8 text-right">
+											<div class="col-sm-6 text-right">
 												<button type="submit" class="btn btn-warning btn-xs  waiting"><spring:message code="show"/></button>
 											</div>
-										</div>
 									</div>
 								</div><!--/genders-->
 							
@@ -79,14 +75,12 @@
 										<button type="submit" class="btn btn-default btn-xs"><spring:message code="show"/></button>
 									</div -->
 									<div class="row div_Fitem">
-										<div class="col-sm-12">
-											<div class="col-sm-4 text-left">
+											<div class="col-sm-6 text-left">
 												<button type="button" id="ch_provider_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button>
 											</div>
-											<div class="col-sm-8 text-right">
+											<div class="col-sm-6 text-right">
 												<button type="submit" class="btn btn-warning btn-xs  waiting"><spring:message code="show"/></button>
 											</div>
-										</div>
 									</div>
 								</div><!--/brands_products-->
 		
@@ -101,14 +95,12 @@
 										</c:forEach>
 									</div>
 									<div class="row div_Fitem">
-										<div class="col-sm-12">
-											<div class="col-sm-4 text-left">
+											<div class="col-sm-6 text-left">
 												<button type="button" id="ch_category_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button>
 											</div>
-											<div class="col-sm-8 text-right">
+											<div class="col-sm-6 text-right">
 												<button type="submit" class="btn btn-warning btn-xs  waiting"><spring:message code="show"/></button>
 											</div>
-										</div>
 									</div>
 								</div>
 								<!--/Категория-->

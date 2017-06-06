@@ -306,3 +306,14 @@ create table ClientDetails (
   additionalInformation VARCHAR(4096),
   autoApproveScopes VARCHAR(255)
 );
+
+select distinct dn.*, t.firstPrice , dngr.sorting, t.opt_price, t.rozn_price, dp.sorting   
+	from dir_nomenclature dn 
+	inner join dir_gender dg on dg.id_dir_gender = dn.fk_dir_gender 
+	inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider 
+	inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group 
+	inner join dir_nomencl_group_root dngr on dng.fk_dir_nomencl_group_root = dngr.id_dir_nomencl_group_root 
+	inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature 
+	where t.destruction_date is null and dg.id_dir_gender in (56) 
+	and dngr.id_dir_nomencl_group_root in (8158) 
+	order by t.firstPrice asc , dp.sorting, dngr.sorting
