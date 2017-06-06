@@ -196,6 +196,9 @@ public class IndexCtrl implements Serializable {
 		//session.setAttribute("mA_search", mA_search);
 		this.mA_search = mA_search;
 		
+		//if(this.mA_search.isAsc() != mA_search.isAsc())
+			//this.mA_search.setAsc(mA_search.isAsc());
+		
 		model.addAttribute("version",appBean.getVersion());
 		
 		model.addAttribute("mA_search", mA_search);

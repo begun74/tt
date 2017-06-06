@@ -88,24 +88,37 @@
     <script>
 	    $(function() {
 	    	
-	    		
+	    		/*
 		        $(".sortby").attr('href',
 		        	function() {
 		        		var href = $(this).attr('id');
 		        		return document.URL+"&sortby="+$(this).attr('id');
 		        	}
 		        );
+				*/
 				
+				var asc_inv = ${mA_search.asc};
 				
 			    $(".sortby").click(function() {
 			    	$("#sortby").val($(this).attr('id'));
+			    	
+			    	asc_inv = !asc_inv;
+			    	
+			    	$("#asc").val(asc_inv);
+			    	//alert(asc_inv)
+			    	
 	    		});
 				
 				
 				
 	    		
-				/* var sortby = ${mA_search.sortby}; */
-	    	
+				var sortby_ = ${mA_search.sortby}; 
+				var	sortby_get = '&sortby='+sortby_;
+
+				//var asc_ = ${mA_search.asc}; 
+				var	asc_get = '&asc='+${mA_search.asc};
+				
+
 				var pns = ${mA_search.pn};
 				var pns_get ='';
 				
@@ -145,7 +158,7 @@
 		            prevText:"<<",
 		            nextText:">>",
 		            hrefTextPrefix: "?p=",
-		            hrefTextSuffix: pns_get+gndrs_get+cats_get+types_get,
+		            hrefTextSuffix: pns_get + gndrs_get + cats_get + types_get + sortby_get + asc_get,
 		            currentPage: ${p}
 		        });
 

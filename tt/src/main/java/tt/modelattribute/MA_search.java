@@ -28,7 +28,9 @@ public class MA_search implements Serializable {
 	
 	List<Long> type = new ArrayList<Long>();//Type бельевой, верхний, чулочно-носочный
 	
-	private String sortby = "name";
+	int sortby = 0;
+	
+	private boolean asc = true;
 	
 	public List<Long> getPn() {
 		return pn;
@@ -79,14 +81,24 @@ public class MA_search implements Serializable {
 
 
 	
-	public String getSortby() {
+	public int getSortby() {
 		return sortby;
 	}
 
-	public void setSortby(String sortby) {
+	public void setSortby(int sortby) {
 		this.sortby = sortby;
 	}
 
+
+	public boolean isAsc() {
+		return asc;
+	}
+
+
+
+	public void setAsc(boolean asc) {
+		this.asc = asc;
+	}
 
 
 	public static long getSerialversionuid() {

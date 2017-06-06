@@ -127,6 +127,7 @@
 								</div -->
 								
 							<input type="hidden" name="sortby" id="sortby" value='${mA_search.sortby}'/>
+							<input type="hidden" name="asc" id="asc" value='${mA_search.asc}'/>
 	
 						</form>
 						

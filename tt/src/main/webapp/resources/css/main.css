@@ -2688,11 +2688,9 @@ give gallery's parent container a cursor: pointer.**/
 	background-color: transparent;
   	background-image: url(../images/akciya.png);
   	background-color: transparent;
-  	/*background-repeat: repeat;*/	
 	position: absolute; 
 	bottom: 0px; 
 	right: 0px;
-	/*opacity: 0.7;*/
 }
 
 
@@ -2700,4 +2698,9 @@ give gallery's parent container a cursor: pointer.**/
 	
 	list-style-type: square; /* Маркеры в виде квадрата */
     /* list-style-position: outside;  Маркеры размещаются за пределами текстового блока */
-    color: #000080; /* Цвет текста списка */}
+    color: #000080; /* Цвет текста списка */
+}
+
+.font20px {
+	font: 18px/1.5 Arial,sans-serif;
+}

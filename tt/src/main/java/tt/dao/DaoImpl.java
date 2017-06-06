@@ -314,6 +314,15 @@ public class DaoImpl implements Dao {
 		
 		String sqlNomeclatureInTails = env.getProperty("sqlNomeclatureInTails");
 		
+		//System.out.println("MA_search.isAsc() - "+MA_search.isAsc());
+		
+		HashMap<Integer, String> sortby_hs = new HashMap<Integer, String>();
+		
+		sortby_hs.put(0, "dn.name");
+		sortby_hs.put(1, "t.firstPrice");
+		
+				
+		String asc = MA_search.isAsc()?" asc ":" desc ";
 		
 		if(MA_search.getPn().size() >0)
 			sqlNomeclatureInTails += " and dp.id_dir_provider in "+MA_search.getPn().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
@@ -324,7 +333,9 @@ public class DaoImpl implements Dao {
 		if(MA_search.getType().size() >0)
 			sqlNomeclatureInTails += " and dngr.id_dir_nomencl_group_root in "+MA_search.getType().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
 
-		sqlNomeclatureInTails += " order by dp.sorting, dngr.sorting, dn.name";
+		sqlNomeclatureInTails += " order by "+sortby_hs.get(MA_search.getSortby()) + asc +", dp.sorting, dngr.sorting";
+		
+		
 		
 		//System.out.println((getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class)));
 		List<Object[]> tmpList = getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class)

@@ -28,10 +28,16 @@
 									<div class="col-xs-6 text-left">
 										<p><spring:message code="remains.of.goods.on"/> <fmt:formatDate pattern = "dd-MM-yyyy"  value="${tails.iterator().next().tails.iterator().next().create_date}" />.</p>
 									</div>
-									<div class="col-sm-6 text-right"> 
-										<a id="name" href=""  class="waiting sortby" >по наименованию</a>
+									<div class="col-sm-6 text-right font20px"> 
+										<c:if test="${mA_search.sortby eq 0 }">
+											<a id="0" href=""  class="waiting sortby" ><span class="label label-success"><spring:message code="by.name"/></span></a>
+											<a id="1" href=""  class="waiting sortby" ><span class="label label-default"><spring:message code="by.price"/></span></a>
+										</c:if>
+										<c:if test="${mA_search.sortby eq 1 }">
+											<a id="0" href=""  class="waiting sortby" ><span class="label label-default"><spring:message code="by.name"/></span></a>
+											<a id="1" href=""  class="waiting sortby" ><span class="label label-success"><spring:message code="by.price"/></span></a>
+										</c:if>
 										
-										<a id="price" href=""  class="waiting sortby" >по цене</a>
 									</div>
 								</c:if>
 							</div>
