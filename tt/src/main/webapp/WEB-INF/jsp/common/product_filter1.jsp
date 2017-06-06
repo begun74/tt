@@ -19,29 +19,29 @@
 						
 								<!--type-->
 								<div class="row div_bkgr border1px">
-									<div class="div_name"><spring:message code="nomencl.group2"/></div>
-									<c:forEach items="${types}" var="type" varStatus="loop"> 
-
-										<c:set var="type_name" value="${type.name}"/>
-										<c:if test="${not empty type.diff_name}" >
-											<c:set var="type_name" value="${type.diff_name}"/>
-										</c:if>
-
-										<div class="div_Fitem">
-											<em><label class="checkbox cursor countType" data-toggle="tooltip" data-placement="left" lookup_id="${type.id}" title="${type_name}"><input class="ch_type" type="checkbox" name="type" id="type_${type.id}" value="${type.id}"/>${type_name}</label></em>
-										</div>
-									</c:forEach>
+										<div class="div_name"><spring:message code="nomencl.group2"/></div>
+										<c:forEach items="${types}" var="type" varStatus="loop"> 
+	
+											<c:set var="type_name" value="${type.name}"/>
+											<c:if test="${not empty type.diff_name}" >
+												<c:set var="type_name" value="${type.diff_name}"/>
+											</c:if>
+	
+											<div class="div_Fitem">
+												<em><label class="checkbox cursor countType" data-toggle="tooltip" data-placement="left" lookup_id="${type.id}" title="${type_name}"><input class="ch_type" type="checkbox" name="type" id="type_${type.id}" value="${type.id}"/>${type_name}</label></em>
+											</div>
+										</c:forEach>
 									<!-- >div class="row div_Fitem"><button type="button" id="ch_type_btn" class="btn btn-default btn-xs waiting"><spring:message code="checkbox.off"/></button></div -->
-									<div class="row div_Fitem">
-										<div class="col-sm-12">
-											<div class="col-sm-4 text-left">
-												<button type="button" id="ch_type_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button>
-											</div>
-											<div class="col-sm-8 text-right">
-												<button type="submit" class="btn btn-warning btn-xs  waiting border1px"><spring:message code="show"/></button>
+										<div class="row div_Fitem">
+											<div class="col-sm-12">
+												<div class="col-sm-4 col-xs-7 text-left">
+													<button type="button" id="ch_type_btn" class="btn btn-default btn-xs"><spring:message code="checkbox.off"/></button>
+												</div>
+												<div class="col-sm-8 col-xs-5 text-right">
+													<button type="submit" class="btn btn-warning btn-xs  waiting border1px"><spring:message code="show"/></button>
+												</div>
 											</div>
 										</div>
-									</div>
 
 								</div><!--/type-->
 
