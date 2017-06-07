@@ -158,10 +158,10 @@
 					<div class="col-sm-4 text-center " >
 						<h5>Сайт находится в разработке</h5>
 					</div>					
-					<div class="col-sm-4 text-right">
+					<div class="col-sm-3 text-right">
 						<p>Designed by <span><a target="_blank" href="http://www.trikotag.by">BVV</a></span></p>
 					</div>
-					
+					<div  class="col-sm-1"><img src="https://mc.yandex.ru/watch/44908546" style="position:absolute; left:-9999px;" alt="" /></div>
 				</div>
 			</div>
 		</div>

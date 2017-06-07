@@ -27,6 +27,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -79,6 +80,16 @@ public class IndexCtrl implements Serializable {
 	
 	@Autowired
 	CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
+	
+	@ExceptionHandler(Exception.class) 
+    public ModelAndView handleExceptions(HttpServletRequest req, Exception anExc) {
+		ModelAndView model = new ModelAndView("redirect:/index");
+		
+		
+        anExc.printStackTrace(); // do something better than this ;)
+        
+        return model;
+    }
 	
 	@RequestMapping(value = {"/index","/"} , method = RequestMethod.GET)
 	public ModelAndView  index(HttpSession session, @RequestParam(value = "p", defaultValue = "1") int p, 

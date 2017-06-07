@@ -497,7 +497,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<DirNomenclature> findByText(String text) {
 		// TODO Auto-generated method stub
-		List<DirNomenclature> tails = new ArrayList<DirNomenclature>();
+		List<DirNomenclature> tails = new LinkedList<DirNomenclature>();
 		
 		if(text.trim().length() ==0)	return tails;
 		
@@ -512,7 +512,8 @@ public class DaoImpl implements Dao {
 			code = 0;
 		}
 		
-		List<Object[]> tmpList = getSession().createSQLQuery(sql_1).addEntity(DirNomenclature.class).addScalar("firstPrice")
+		List<Object[]> tmpList = getSession().createSQLQuery(sql_1).addEntity(DirNomenclature.class)
+									.addScalar("firstPrice")
 									.addScalar("opt_price")
 									.addScalar("rozn_price")
 									.setParameter("model", "%"+text+"%")

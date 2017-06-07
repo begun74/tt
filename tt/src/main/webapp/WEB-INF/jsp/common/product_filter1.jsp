@@ -10,7 +10,7 @@
 <!-- button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button -->
 
 					<div class="modal " id="productFilterWait" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-					    <div class="modal-content text-center" style="margin: 0 auto; opacity: 1;">
+					    <div class="modal-content text-center" >
 					    	<img alt="" src="${pageContext.request.contextPath}/resources/images/WAITING3.gif">
 					    </div>
 					</div>		

@@ -262,6 +262,5 @@
         
 	</script>
 	
-	<!-- Gismeteo Informer (finish) -->
 </body>
 </html>

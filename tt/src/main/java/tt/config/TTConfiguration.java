@@ -118,7 +118,7 @@ public class TTConfiguration  extends WebMvcConfigurerAdapter {
 		return resolver;
     }
     
-    //@Override
+    @Override
     public void addInterceptors(InterceptorRegistry registry) {
 		LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
 		//interceptor.setParamName("wlocale");
