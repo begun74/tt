@@ -2626,6 +2626,40 @@ give gallery's parent container a cursor: pointer.**/
 	width:100%;
 }
 
+
+
+.main_container {
+  /*background-color: red;*/
+  overflow: hidden;
+  width: 500px;
+}
+
+
+.main_inner {
+  overflow: hidden;
+  width: 2000px;
+}
+
+.child {
+  float: left;
+  /*background-color: blue;*/
+  width: 70px;
+  height: 100px;
+}
+
+.child img
+{
+  max-width:100%; 
+  max-height:100%;
+  margin:auto;
+  
+  display:block;
+}
+
+
+
+
+
 .find_panel {
 	border: 1px solid ;
 	background: #ffad33;
@@ -2645,7 +2679,7 @@ give gallery's parent container a cursor: pointer.**/
 
 .div_bkgr_gray {
 	background-color: #c0c0c0;
-	margin: 10px;
+	margin: 3px auto;
 	/*border: 1px solid ;
 	border-radius: 3px;*/
 }
