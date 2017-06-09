@@ -120,11 +120,12 @@
 			</div>
 			<div class="row">
 			
-							<div id="similar-product" class="carousel slide data-ride="carousel">
+							<div id="similar-product" class="carousel slide col-md-4 col-sm-4" data-ride="carousel">
 							    
 								
-								<div id="gal1" class="row carousel-inner">
-										<div class="item active  col-md-2 col-sm-2">
+								<div id="gal1">
+									<div class="carousel-inner">							
+										<div class="item active">
 											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg">
 											   		<img id="img_01" width="40%" height="40%" src="/pics/products/${nomenclature.code}/S/${nomenclature.code}_S_0.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
 											</a>
@@ -132,7 +133,7 @@
 										   		<img id="img_01" width="40%" height="40%" src="/pics/products/${nomenclature.code}/S/${nomenclature.code}_S_1.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
 											</a>
 										</div>
-										<div class="item  col-md-2 col-sm-2">
+										<div class="item ">
 											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_2.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_2.jpg">
 										   		<img id="img_01" width="40%" height="40%" src="/pics/products/${nomenclature.code}/S/${nomenclature.code}_S_2.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"/>
 											</a>
@@ -141,6 +142,9 @@
 											</a>
 											
 										</div>
+										
+									</div>
+								
 								</div>
 
 								  <!-- Controls -->
