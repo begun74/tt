@@ -1,6 +1,7 @@
 package tt.dao;
 
 import java.math.BigInteger;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -130,9 +131,10 @@ public class DaoImpl implements Dao {
 			dN_old.setArticle(dirNomenclature.getArticle());
 			dN_old.setComposition(dirNomenclature.getComposition());
 			dN_old.setModel(dirNomenclature.getModel());
+			
+			dN_old.setAccess_date( new Timestamp(new java.util.Date().getTime() )); // Обновляем дату последней загрузки этой номенклатуры
 
 			getSession().saveOrUpdate(dN_old);
-			
 		}
 		catch(java.lang.NullPointerException nexc)
 		{

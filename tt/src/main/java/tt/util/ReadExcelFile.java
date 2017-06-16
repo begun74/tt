@@ -109,6 +109,8 @@ public class ReadExcelFile {
 		
 		List<DirNomenclature>  lNomencls = new ArrayList<DirNomenclature>();
 		
+		Timestamp access_date = new Timestamp(new Date().getTime());
+		
 		Workbook workbook = getWorkbook(tmpFile);
         Sheet firstSheet = workbook.getSheetAt(0);  
         Iterator<Row> rowIterator = firstSheet.iterator();
@@ -137,6 +139,8 @@ public class ReadExcelFile {
         			dirNomenclature.setDirNomenclGroup(hmNomenclGroup.get(Long.parseLong(df.formatCellValue( tmp.getCell(mA_loadNomencl.getCol_codeNomenclGroup()-1)).trim() ) ) );
         			dirNomenclature.setDirGender(hmDGen.get(df.formatCellValue( tmp.getCell(mA_loadNomencl.getCol_gender()-1)).toLowerCase().trim() ) );
         			dirNomenclature.setDirProvider(hmDProv.get(new Long((df.formatCellValue( setCellTypeToString(tmp.getCell((mA_loadNomencl.getCol_codeProvider()-1))))))));
+        			dirNomenclature.setAccess_date(access_date);
+        			
 
         			String path = df.formatCellValue(tmp.getCell(mA_loadNomencl.getCol_pathToImage()-1)).trim();
         			//System.out.println(path);

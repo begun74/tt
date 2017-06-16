@@ -41,9 +41,9 @@ ALTER TABLE public.tails
       REFERENCES public.dir_provider (id_dir_provider) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-select * from dir_nomenclature dn
+select distinct dn.* from dir_nomenclature dn
 inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
-where dn.code=10002076234
+where dn.code=10002076656
 
 select count(*) from tails;
 

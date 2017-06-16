@@ -117,15 +117,40 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12 col-md-12">
-						<div class="mainmenu navbar-header">
-							<ul class="nav navbar-nav">
+						<!-- div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+						</div -->
+						<div class="mainmenu pull-center">
+							<ul class="nav navbar-nav collapse navbar-collapse">
 								<li><a href="index.html"><spring:message code="goods"/></a></li>
+								<!-- li class="dropdown"><a href="#"><spring:message code="shop"/><i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="index"><spring:message code="products"/></a></li>
+										<li><a href="cart.html"><spring:message code="cart"/></a></li> 
+										<li><a href="login.html">Login</a></li> 
+                                    </ul>
+                                </li --> 
+								<!-- li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                    <ul role="menu" class="sub-menu">
+                                        <li><a href="blog.html">Blog List</a></li>
+										<li><a href="blog-single.html">Blog Single</a></li>
+                                    </ul>
+                                </li --> 
+								<!-- li><a href="404.html">404</a></li -->
 								<li><a href="our_shops" ><spring:message code="our.shops"/></a></li>
 								<li><a href="cooperation" ><spring:message code="buy.in.bulk"/></a></li>
-								<li><a href="contact-us.html"><spring:message code="contacts"/></a>
+								<li class="dropdown"><a href="contact-us.html"><spring:message code="contacts"/></a>
 								<li><a href="vacancies" ><spring:message code="info.vacancies"/></a></li>
 								<li><a href="action" ><spring:message code="action1"/></a></li>
 								<li><a href="about_company" ><spring:message code="about.company"/></a></li>
+								</ul>
+								
+								</li>
 							</ul>
 						</div>
 					</div>

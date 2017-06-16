@@ -1,6 +1,7 @@
 package tt.model;
 
 
+import java.util.Date;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -68,6 +69,9 @@ public class DirNomenclature implements  IModel {
 	private String model;
 	
 	private String composition;//Состав. 
+	
+	@NotNull (message = "Please enter access_date.") 
+	private Date access_date ;
 	
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_id_dir_nomencl_group")
@@ -141,6 +145,14 @@ public class DirNomenclature implements  IModel {
 
 	public void setComposition(String composition) {
 		this.composition = composition;
+	}
+
+	public Date getAccess_date() {
+		return access_date;
+	}
+
+	public void setAccess_date(Date access_date) {
+		this.access_date = access_date;
 	}
 
 	public DirNomenclGroup getDirNomenclGroup() {
