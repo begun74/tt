@@ -363,6 +363,68 @@ public class IndexCtrl implements Serializable {
 		return model;
 	}
 	
+
+	@RequestMapping(value = {"/product-details2{id}"} , method = RequestMethod.GET)
+	public ModelAndView  product_details2(HttpSession session, @RequestParam(value = "id",   required=false) Long id) 
+	{
+		ModelAndView model = new ModelAndView("product-details2");
+		
+		//System.out.println(sessBean.getOrders());
+		model.addObject("sessBean", sessBean);
+		
+		try
+		{
+			DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id); 
+			
+			List<DirNomenclature> popNomencl = ttService.getPopularDirNomenclature();
+			
+			model.addObject("nomenclature", dn);
+			model.addObject("popNomencl", popNomencl);
+			//!-- model.addObject("tails", ttService.getTailsList(dn.getId()));
+			model.addObject("provider",dn.getDirProvider());
+			//model.addObject("provider", dn.getTails().iterator().next().getDirProvider());
+			
+			Iterator<Tail> iter = dn.getTails().iterator();
+			
+			while(iter.hasNext())
+			{
+				synchronized (iter) {
+					if(iter.next().getDestruction_date() != null)
+						iter.remove();
+				}
+			}
+			
+			Tail tail = dn.getTails().iterator().next();
+			
+			model.addObject("firstprice", tail.getFirstPrice());
+
+			if(isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")))
+			{
+				//System.out.println("dn.getTails() - " +dn.getTails());
+				
+				
+				//System.out.println("dn.getTails() - " +dn.getTails());
+				
+				
+				//model.addObject("price", tail.getFirstPrice());
+				model.addObject("price", tail.getOpt_price());
+				
+			}
+			else
+				model.addObject("price", tail.getRozn_price());
+			
+			//model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
+
+		}
+		catch(Exception exc) {
+			System.out.println("ERROR: IndexCtrl.product_detail("+id+")");
+			exc.printStackTrace();
+			return new ModelAndView("redirect:/error404");
+		}
+		
+		return model;
+	}
+	
 	
 	@RequestMapping(value = "/delOrder{npp}", method = RequestMethod.GET)
 	public ModelAndView delOrder(HttpSession session, @RequestParam ("npp") int npp) 

@@ -2628,25 +2628,25 @@ give gallery's parent container a cursor: pointer.**/
 
 
 
-.main_container {
-  /*background-color: red;*/
+#container {
+  background-color: red;
   overflow: hidden;
-  width: 500px;
+  width: 200px;
 }
 
-
-.main_inner {
+#gal1 {
   overflow: hidden;
   width: 2000px;
 }
 
 .child {
   float: left;
-  /*background-color: blue;*/
-  width: 70px;
-  height: 100px;
+  background-color: blue;
+  width: 50px;
+  height: 50px;
 }
 
+/*
 .child img
 {
   max-width:100%; 
@@ -2655,7 +2655,7 @@ give gallery's parent container a cursor: pointer.**/
   
   display:block;
 }
-
+*/
 
 
 
