@@ -101,6 +101,40 @@ update tails t set destruction_date = null where t.fk_id_nomenclature = 34231
 --
 -- Для проверки выборки популярной номенклатуры --
 
+select distinct xxx.count_sn , dn.* \
+			from dir_nomenclature dn \
+					inner join \
+					(\
+						select count(sn.id_dir_nomenclature) as count_sn, sn.id_dir_nomenclature as id_sn from statistic_nomencl sn \
+						inner join dir_nomenclature dn on sn.id_dir_nomenclature = dn.id_dir_nomenclature \
+						group by sn.id_dir_nomenclature \
+					) as xxx on xxx.id_sn = dn.id_dir_nomenclature \
+					inner join \
+					( \
+						select t.fk_id_nomenclature as tail_dn from tails t where t.destruction_date is null \
+					)as yyy on yyy.tail_dn = dn.id_dir_nomenclature \
+				order by 1 desc \
+				limit 4
+
+select distinct  dp.name, dn.* 
+			from dir_nomenclature dn 
+			inner join 
+			( 
+					select t.fk_id_nomenclature as tail_dn from tails t where t.destruction_date is null
+			)as yyy on yyy.tail_dn = dn.id_dir_nomenclature 
+			inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider where dp.id_dir_provider in (select  dn.fk_id_provider from dir_nomenclature dn where dn.id_dir_nomenclature = 14395)
+			order by 1 desc 
+			OFFSET random()
+			limit 100
+
+
+			select  dn.fk_id_provider from dir_nomenclature dn where dn.id_dir_nomenclature = 20295
+
+select distinct dn.* 
+		from dir_provider dp 
+		inner join
+
+
 delete from statistic_nomencl where id_statistic_nomencl in
 (
 select sn.id_statistic_nomencl from statistic_nomencl sn 

@@ -40,6 +40,7 @@ public interface Dao {
 	public Set<DirNomenclature> getNomenclInTails(MA_search mA_search , int p);
 	public Set<DirNomenclature> getNomenclInTails_(List<Long> types, List<Long> providers, List<Long> genders, List<Long> categories , int p);
 	public List<DirNomenclature> getPopularDirNomenclature();
+	public List<DirNomenclature> getNomenclOfProvider(Long id_dir_provider);
 
 
 	public List<DirNomenclGroup> getNomenclGroupList();

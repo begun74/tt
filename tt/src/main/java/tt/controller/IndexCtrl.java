@@ -314,7 +314,8 @@ public class IndexCtrl implements Serializable {
 		{
 			DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id); 
 			
-			List<DirNomenclature> popNomencl = ttService.getPopularDirNomenclature();
+			//List<DirNomenclature> popNomencl = ttService.getPopularDirNomenclature();
+			List<DirNomenclature> popNomencl = ttService.getNomenclOfProvider(id);
 			
 			model.addObject("nomenclature", dn);
 			model.addObject("popNomencl", popNomencl);

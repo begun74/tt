@@ -578,6 +578,17 @@ public class DaoImpl implements Dao {
 		return res;
 	}
 
+	@Override
+	public List<DirNomenclature> getNomenclOfProvider(Long id_dir_nomenclature) {
+		// TODO Auto-generated method stub
+		List<DirNomenclature> listDNofProv = new ArrayList<DirNomenclature>();
+		String selectNomenclOfProvider = env.getProperty("selectNomenclOfProvider");
+		listDNofProv = getSession().createSQLQuery(selectNomenclOfProvider).addEntity(DirNomenclature.class).setParameter("id_dir_nomenclature", id_dir_nomenclature).list();
+		
+		return listDNofProv;
+
+	}
+
 
 	
 

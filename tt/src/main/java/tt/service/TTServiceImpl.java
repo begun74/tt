@@ -470,4 +470,11 @@ public class TTServiceImpl implements Dao {
 		return dao.getNomenclInTails_(types, providers, genders, categories , p);
 	}
 
+
+	@Override
+	public List<DirNomenclature> getNomenclOfProvider(Long id_dir_nomenclature) {
+		// TODO Auto-generated method stub
+		return dao.getNomenclOfProvider(id_dir_nomenclature);
+	}
+
 }
