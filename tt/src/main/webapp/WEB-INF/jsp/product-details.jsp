@@ -54,20 +54,29 @@
 			
 			<div class="row">
 				
-							
-				
 				<div class="row padding-right">
-					<div class="product-details"><!--product-details-->
-						<div class="col-md-6 col-sm-6">
-						<br/>
+					<div class=""><!--product-details-->
+
+						<div id="container" class="col-md-6 col-sm-6">
 							<div>
 								<img  id="img_01" src="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture.jpg';" />
 							</div>
-
-						<div class="col-md-1 col-sm-1">
+			
+							<div id="gal1" class="horizontal">
+								<ul class="nav nav-pills">
+								<c:forEach var="i" begin="0" end="3">
+									<li>
+										<div id="borderLayout" class="border1px child ">
+											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_${i}.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_${i}.jpg">
+											   		<img id="img_01" src="/pics/products/${nomenclature.code}/S/${nomenclature.code}_S_${i}.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; this.parentNode.parentNode.classList.remove('border1px'); //this.style.display='none'"/>
+											</a>
+										</div>
+									</li>							
+								</c:forEach>
+								</ul>
+							</div>
 						</div>
 
-						</div>
 						<div class="col-md-5 col-sm-5 product-information">
 							
 								<img src="resources/images/product-details/new.jpg" class="newarrival" alt="" />
@@ -99,9 +108,9 @@
 									
 									<label><spring:message code="quantity"/>:
 										<div class="cart_quantity_button">
-											<a class="cart_quantity_up" maxval="1" href="#quantity"> + </a>
+											<a class="cart_quantity_down" href="#"> - </a>
 											<input class="cart_quantity_input" id="quantity" type="text" name="quantity" value="1"  autocomplete="off" size="2">
-											<a class="cart_quantity_down" href="#quantity"> - </a>
+											<a class="cart_quantity_up" maxval="1" href="#"> + </a>
 										</div>
 									</label>
 
@@ -118,43 +127,6 @@
 
 
 			</div>
-			<div class="row">
-			
-							<div id="similar-product" class="carousel slide col-md-4 col-sm-4" data-ride="carousel">
-							    
-								
-								<div id="gal1">
-									<div class="carousel-inner " style="height: 300px">							
-										<div class="item active">
-											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_0.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_0.jpg">
-											   		<img id="img_01" width="40%" height="40%" src="/pics/products/${nomenclature.code}/S/${nomenclature.code}_S_0.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
-											</a>
-											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_1.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_1.jpg">
-										   		<img id="img_01" width="40%" height="40%" src="/pics/products/${nomenclature.code}/S/${nomenclature.code}_S_1.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg'; //this.style.display='none'"/>
-											</a>
-										</div>
-										<div class="item ">
-											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_2.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_2.jpg">
-										   		<img id="img_01" width="40%" height="40%" src="/pics/products/${nomenclature.code}/S/${nomenclature.code}_S_2.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"/>
-											</a>
-											<a href="#" data-image="/pics/products/${nomenclature.code}/M/${nomenclature.code}_M_3.jpg" data-zoom-image="/pics/products/${nomenclature.code}/L/${nomenclature.code}_L_3.jpg">
-										   		<img id="img_01" width="40%" height="40%" src="/pics/products/${nomenclature.code}/S/${nomenclature.code}_S_3.jpg" onError="this.onerror=null;this.src='resources/images/products/blank.jpg';"/>
-											</a>
-											
-										</div>
-										
-									</div>
-								
-								</div>
-
-								  <!-- Controls -->
-								  <a class="left item-control" href="#similar-product" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								  </a>
-								  <a class="right item-control" href="#similar-product" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								  </a>
-							</div>
 			
 			</div>
 			
