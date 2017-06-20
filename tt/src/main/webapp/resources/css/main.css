@@ -889,10 +889,17 @@ h2.title {
   color: #696763;
 }
 
+.productinfo .provider_name{
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #696763;
+}
+
 .productinfo img{
-  /*width: 200px;*/
-  height: 300px;
-  object-fit: contain;
+  width: 160px;
+  height: 238px;
+  /*object-fit: contain;*/
 
 }
 
@@ -2736,4 +2743,10 @@ give gallery's parent container a cursor: pointer.**/
 
 .font20px {
 	font: 18px/1.5 Arial,sans-serif;
+}
+
+.img_wrapper {
+	
+	width: 70px;
+  height: 100px;
 }

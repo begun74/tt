@@ -48,15 +48,18 @@
 									<h3><p class="text-center"><spring:message code="not.found"/></p></h3>
 								</div>
 							</c:if>
+							
 							<c:forEach items="${tails}" var="tail" varStatus="loop"  begin="${start}" end="${stop}">
 												<c:set var="tail_name" value="${tail.name}" />
 												<c:set var="tn_length" value="${fn:length(tail_name)}" />
 												<c:set var="arr_tail_name" value="${fn:split(tail.name,' ')}"/>
 												
 												<div class="col-sm-4 col-xs-8">
-														<div class="single-products product-image-wrapper">
-																<div class="productinfo text-center" title="${tail_name}" >
-																	<a href="product-details?id=${tail.id}"><img class="" src="/pics/products/${tail.code}/M/${tail.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" alt=""/></a>
+														<div class="single-products product-image-wrapper ">
+																<div class="productinfo text-center " title="${tail_name}" >
+																	<a href="product-details?id=${tail.id}">
+																		<img class="" src="/pics/products/${tail.code}/M/${tail.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" alt=""/>
+																	</a>
 																	<!-- h5 class="text-center_12">${fn:substring(tail_name, 0, 15)}</h5>
 																	<h5 class="text-center_12">&#160;${fn:substring(tail_name, 15, tn_length) }</h5 -->
 																	<h5 class="text-center_12">${fn:toUpperCase(arr_tail_name[0])}</h5>
@@ -73,13 +76,15 @@
 																		
 																	</p>
 																	<c:set var="prov_name" value=" ${tail.dirProvider.name}" />
-																	<p  class="text-center_12">${tail.dirProvider.name}</p>
+																	<p  class="provider_name">${tail.dirProvider.name}</p>
 																	<!-- p><spring:message code="article"/>&#160;${tail.article}</p -->
 																	<a href="product-details?id=${tail.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i><spring:message code="to.order"/></a>
 																</div>
 														</div>
 												</div>
 							</c:forEach>
+							
+							
 						</div>
 
 						<!-- div class="col-md-14">
@@ -89,9 +94,7 @@
 						</div -->						
 
 						<div id="light_pagination" class="col-md-14" >
-						
 							<div id="light-pagination" class="col-md-12" ></div>
-						
 						</div>
 						
 

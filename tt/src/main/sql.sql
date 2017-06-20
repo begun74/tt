@@ -122,11 +122,27 @@ select distinct  dp.name, dn.*
 			( 
 					select t.fk_id_nomenclature as tail_dn from tails t where t.destruction_date is null
 			)as yyy on yyy.tail_dn = dn.id_dir_nomenclature 
-			inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider where dp.id_dir_provider in (select  dn.fk_id_provider from dir_nomenclature dn where dn.id_dir_nomenclature = 14395)
+			inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider where dp.id_dir_provider in (select  dn.fk_id_provider from dir_nomenclature dn where dn.id_dir_nomenclature = 20295)
 			order by 1 desc 
-			OFFSET random()
-			limit 100
+			OFFSET random()*5
+			limit 10
+select xxx.name, dn.* from dir_nomenclature dn 
+		inner join 
+		(
+		select distinct dp.name, dn.id_dir_nomenclature 
+			from dir_nomenclature dn 
+			inner join 
+			( 
+					select t.fk_id_nomenclature as tail_dn from tails t where t.destruction_date is null
+			)as yyy on yyy.tail_dn = dn.id_dir_nomenclature 	
+			inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider where dp.id_dir_provider in (select  dn.fk_id_provider from dir_nomenclature dn where dn.id_dir_nomenclature = 20295)
+			OFFSET random()*11
+		)as xxx on xxx.id_dir_nomenclature = dn.id_dir_nomenclature 
+		order by code
+OFFSET random()*11
+		
 
+SELECT random() FROM generate_series(1, 10);
 
 			select  dn.fk_id_provider from dir_nomenclature dn where dn.id_dir_nomenclature = 20295
 
