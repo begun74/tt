@@ -899,7 +899,7 @@ h2.title {
 .productinfo img{
   width: 160px;
   height: 238px;
-  /*object-fit: contain;*/
+  object-fit: contain;
 
 }
 
@@ -2747,6 +2747,6 @@ give gallery's parent container a cursor: pointer.**/
 
 .img_wrapper {
 	
-	width: 70px;
+	/*width: 70px;*/
   height: 100px;
 }
