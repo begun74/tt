@@ -41,9 +41,9 @@ ALTER TABLE public.tails
       REFERENCES public.dir_provider (id_dir_provider) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION;
 
-select * from dir_nomenclature dn
+select distinct dn.* from dir_nomenclature dn
 inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
-where dn.code=10002076234
+where dn.code=10002076656
 
 select count(*) from tails;
 
@@ -100,6 +100,56 @@ select t.*
 update tails t set destruction_date = null where t.fk_id_nomenclature = 34231
 --
 -- Для проверки выборки популярной номенклатуры --
+
+select distinct xxx.count_sn , dn.* \
+			from dir_nomenclature dn \
+					inner join \
+					(\
+						select count(sn.id_dir_nomenclature) as count_sn, sn.id_dir_nomenclature as id_sn from statistic_nomencl sn \
+						inner join dir_nomenclature dn on sn.id_dir_nomenclature = dn.id_dir_nomenclature \
+						group by sn.id_dir_nomenclature \
+					) as xxx on xxx.id_sn = dn.id_dir_nomenclature \
+					inner join \
+					( \
+						select t.fk_id_nomenclature as tail_dn from tails t where t.destruction_date is null \
+					)as yyy on yyy.tail_dn = dn.id_dir_nomenclature \
+				order by 1 desc \
+				limit 4
+
+select distinct  dp.name, dn.* 
+			from dir_nomenclature dn 
+			inner join 
+			( 
+					select t.fk_id_nomenclature as tail_dn from tails t where t.destruction_date is null
+			)as yyy on yyy.tail_dn = dn.id_dir_nomenclature 
+			inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider where dp.id_dir_provider in (select  dn.fk_id_provider from dir_nomenclature dn where dn.id_dir_nomenclature = 20295)
+			order by 1 desc 
+			OFFSET random()*5
+			limit 10
+select xxx.name, dn.* from dir_nomenclature dn 
+		inner join 
+		(
+		select distinct dp.name, dn.id_dir_nomenclature 
+			from dir_nomenclature dn 
+			inner join 
+			( 
+					select t.fk_id_nomenclature as tail_dn from tails t where t.destruction_date is null
+			)as yyy on yyy.tail_dn = dn.id_dir_nomenclature 	
+			inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider where dp.id_dir_provider in (select  dn.fk_id_provider from dir_nomenclature dn where dn.id_dir_nomenclature = 20295)
+			OFFSET random()*11
+		)as xxx on xxx.id_dir_nomenclature = dn.id_dir_nomenclature 
+		order by code
+OFFSET random()*11
+		
+
+SELECT random() FROM generate_series(1, 10);
+
+			select  dn.fk_id_provider from dir_nomenclature dn where dn.id_dir_nomenclature = 20295
+
+select distinct dn.* 
+		from dir_provider dp 
+		inner join
+
 
 delete from statistic_nomencl where id_statistic_nomencl in
 (
@@ -306,3 +356,14 @@ create table ClientDetails (
   additionalInformation VARCHAR(4096),
   autoApproveScopes VARCHAR(255)
 );
+
+select distinct dn.*, t.firstPrice , dngr.sorting, t.opt_price, t.rozn_price, dp.sorting   
+	from dir_nomenclature dn 
+	inner join dir_gender dg on dg.id_dir_gender = dn.fk_dir_gender 
+	inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider 
+	inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group 
+	inner join dir_nomencl_group_root dngr on dng.fk_dir_nomencl_group_root = dngr.id_dir_nomencl_group_root 
+	inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature 
+	where t.destruction_date is null and dg.id_dir_gender in (56) 
+	and dngr.id_dir_nomencl_group_root in (8158) 
+	order by t.firstPrice asc , dp.sorting, dngr.sorting

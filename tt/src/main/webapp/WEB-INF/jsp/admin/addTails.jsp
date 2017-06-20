@@ -111,23 +111,135 @@
 		            </div>
 		            </c:if>
             		
-					<div class="form-cols cols2v1">
+					<div class="formBox">
+
+							<form:form id="addTempFileTail" class="formBox" role="form"  
+								  			enctype="multipart/form-data" 
+								  			action="${pageContext.request.contextPath}/admin/addTempFileTail?${_csrf.parameterName}=${_csrf.token}#tabs-1" 
+								  			method="POST">
+		   									<div class="cols4">            
+												<div class="col1">
+											  			<div class="clearfix">
+														         <div class="lab">
+												                    <label>Количество</label> 
+														         </div>
+														         <div  style="width: 25px" class="conleft" >
+																	<input name="col_amountTail" id="col_amountTail" type="text" class="input" value="${sessionBean.mA_loadTail.col_amountTail}">										         
+														         </div>
+														 </div>
+											  			<div class="clearfix">
+														         <div class="lab">
+										                   			<label>Первая Цена</label>
+														         </div>
+														         <div style="width: 25px" class="conleft">
+										                   			<input name="col_firstPrice" id="col_firstPrice" type="text" class="input" value="${sessionBean.mA_loadTail.col_firstPrice}"> 
+														         </div>
+														</div>
+												</div>
+												<div class="col2">
+												
+											  			<div class="clearfix">
+														         <div class="lab">
+										                   			<label>Код Номенкл.</label>
+														         </div>
+														         <div style="width: 25px" class="conleft">
+										                   			<input name="col_codeNomencl" id="col_codeNomencl" type="text" class="input" value="${sessionBean.mA_loadTail.col_codeNomencl}"> 
+														         </div>
+														</div>
+											  			<div class="clearfix">
+														         <div class="lab">
+										                   			<label>Размер</label>
+														         </div>
+														         <div style="width: 25px" class="conleft">
+										                   			<input name="col_size" id="col_size" type="text" class="input" value="${sessionBean.mA_loadTail.col_size}"> 
+														         </div>
+														</div>
+												</div>
+												<div class="col3">
+														<div class="clearfix">									        
+																        <div class="lab">
+																        	<label>Нач. строка</label>
+																        </div>
+																        <div style="width: 25px" class="conleft">
+																        	<input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadTail.row}" >
+																        </div>
+														</div>
+														<div class="clearfix">									        
+																        <div class="lab">
+																        	<label>НДС</label>
+																        </div>
+																        <div style="width: 25px" class="conleft">
+																        	<input name="nds" id="nds" type="text" class="input" value="${sessionBean.mA_loadTail.nds}" >
+																        </div>
+														</div>
+												</div>
+												<div class="col4">
+														<div class="clearfix">									        
+																        <div class="lab">
+																        	<label>Надбавка опт.</label>
+																        </div>
+																        <div style="width: 25px" class="conleft">
+																        	<input name="nadb_opt" id="nadb_opt" type="text" class="input" value="${sessionBean.mA_loadTail.nadb_opt}" >
+																        </div>
+														</div>
+														<div class="clearfix">									        
+																        <div class="lab">
+																        	<label>Надбавка розница</label>
+																        </div>
+																        <div style="width: 25px" class="conleft">
+																        	<input name="nadb_rozn" id="nadb_rozn" type="text" class="input" value="${sessionBean.mA_loadTail.nadb_rozn}" >
+																        </div>
+														</div>
+												</div>
+
+												
+														<div class="clearfix file">
+											              <div class="lab"><label for="file"><spring:message code="load"/> </label></div>
+											              <div class="con"><input type="file" name="file" class="upload-file" id="file" /></div>
+											            </div>
+	
+														<div class="clearfix">									        
+															<div class="lab">
+															   	<label><input name="save" id="save" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadTail.save == true}">checked="checked" </c:if>  >Сохранить настройки</label>
+															</div>
+														</div>
+	
+														<div class="clearfix">									        
+															<div class="lab">
+															   	<label><input name="autoload" id="autoload" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadTail.autoload == true}">checked="checked"</c:if>  >Автозагрузка</label>
+															</div>
+														</div>
+														
+								        				<div class="clearfix">
+									        				<div class="lab">	
+									        					<button type="submit" style="width:130px;" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="admin.load.info.from.file"/></button>
+									        				</div>
+									        				<div class="lab">
+									        					<img alt="" src="resources/images/down.png"/>
+									        				</div>
+								        				</div>
+
+											</div>
+								        				
+								         <input type="hidden" name ="act" id ="act" value="3"/>
+							</form:form>
+
 		   				<div class="col1">
 		   						<form id="addTempFileTail" class="formBox" role="form"  
 									  			enctype="multipart/form-data" 
 									  			action="${pageContext.request.contextPath}/admin/addFileTail?${_csrf.parameterName}=${_csrf.token}#tabs-1" 
 									  			method="POST">
+									  	<fieldset>
 						 				    			<table class="tab" border="0">
 										    				<tr align="center">
 											    				<th width="5%">№п/п</th>
-											    				<th width="30%">Наименование</th>
-											    				<th width="23%">Поставщик</th>
+											    				<th width="35%">Наименование</th>
 											    				<th width="5%">Кол-во</th>
 											    				<th width="5%">Первая цена</th>
-											    				<th width="12%">Размер</th>
+											    				<th width="37%">Размер</th>
 											    				<th width="22%">Дата загрузки</th>
-											    				<th width="4%" class="checkbox"><input type="checkbox" name="" class="check-all" onclick='checkboxAny($(this).attr("checked"),"tailIndex");'/></th>
-											    				<th width="2%">Action</th>
+											    				<th width="4%" class="checkbox"><input type="checkbox" name="" id="tailIndx" class="check-all" onclick='checkboxAny($(this).attr("checked"),"tailIndex");'/></th>
+											    				<th width="2%"><label for="tailIndx" style="cursor: pointer;">Выделить всё</label></th>
 										    				</tr>
 										    			</table>
 						
@@ -152,115 +264,15 @@
 																</table>
 															</div>
 	
-															<div class="tab-action">
-										        				<div class="clearfix">
-											        					<button type="submit" class="" onclick="" >Обработать</button>
+									        				<div class="clearfix">
+											        					<button type="submit" class="" onclick="" >Загрузить</button>
 											        					<label><input name="deleteOldTails" id="deleteOldTails" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadTail.deleteOldTails == true}">checked="checked" </c:if> />удалить старые остатки</label>
-										        				</div>
 									        				</div>
+									      </fieldset>
 									      <input type="hidden" name ="act" id ="act" value="3"/>
+									      
 		   				       </form>
 						</div>
-
-		   				<div class="col2">            
-							<form:form id="addTempFileTail" class="formBox" role="form"  
-								  			enctype="multipart/form-data" 
-								  			action="${pageContext.request.contextPath}/admin/addTempFileTail?${_csrf.parameterName}=${_csrf.token}#tabs-1" 
-								  			method="POST">
-							
-											  			<div class="clearfix">
-														         <div class="lab">
-												                    <label>Количество</label> 
-														         </div>
-														         <div  style="width: 25px" class="conleft" >
-																	<input name="col_amountTail" id="col_amountTail" type="text" class="input" value="${sessionBean.mA_loadTail.col_amountTail}">										         
-														         </div>
-														 </div>
-											  			<div class="clearfix">
-														         <div class="lab">
-										                   			<label>Первая Цена</label>
-														         </div>
-														         <div style="width: 25px" class="conleft">
-										                   			<input name="col_firstPrice" id="col_firstPrice" type="text" class="input" value="${sessionBean.mA_loadTail.col_firstPrice}"> 
-														         </div>
-														</div>
-											  			<div class="clearfix">
-														         <div class="lab">
-										                   			<label>Код Номенкл.</label>
-														         </div>
-														         <div style="width: 25px" class="conleft">
-										                   			<input name="col_codeNomencl" id="col_codeNomencl" type="text" class="input" value="${sessionBean.mA_loadTail.col_codeNomencl}"> 
-														         </div>
-														</div>
-											  			<div class="clearfix">
-														         <div class="lab">
-										                   			<label>Размер</label>
-														         </div>
-														         <div style="width: 25px" class="conleft">
-										                   			<input name="col_size" id="col_size" type="text" class="input" value="${sessionBean.mA_loadTail.col_size}"> 
-														         </div>
-														</div>
-														
-														<div class="clearfix">									        
-																        <div class="lab">
-																        	<label>Начальная строка</label>
-																        </div>
-																        <div style="width: 25px" class="conleft">
-																        	<input name="row" id="row" type="text" class="input" value="${sessionBean.mA_loadTail.row}" >
-																        </div>
-														</div>
-														<!--   ==============  -->								         
-														<div class="clearfix">									        
-																        <div class="lab">
-																        	<label>НДС</label>
-																        </div>
-																        <div style="width: 25px" class="conleft">
-																        	<input name="nds" id="nds" type="text" class="input" value="${sessionBean.mA_loadTail.nds}" >
-																        </div>
-														</div>
-														<div class="clearfix">									        
-																        <div class="lab">
-																        	<label>Надбавка опт.</label>
-																        </div>
-																        <div style="width: 25px" class="conleft">
-																        	<input name="nadb_opt" id="nadb_opt" type="text" class="input" value="${sessionBean.mA_loadTail.nadb_opt}" >
-																        </div>
-														</div>
-														<div class="clearfix">									        
-																        <div class="lab">
-																        	<label>Надбавка розница</label>
-																        </div>
-																        <div style="width: 25px" class="conleft">
-																        	<input name="nadb_rozn" id="nadb_rozn" type="text" class="input" value="${sessionBean.mA_loadTail.nadb_rozn}" >
-																        </div>
-														</div>
-														
-														 <div class="clearfix file">
-											              <div class="lab"><label for="file"><spring:message code="load"/> </label></div>
-											              <div class="con"><input type="file" name="file" class="upload-file" id="file" /></div>
-											            </div>
-	
-														<div class="clearfix">									        
-															<div class="lab">
-															   	<label><input name="save" id="save" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadTail.save == true}">checked="checked" </c:if>  >Сохранить</label>
-															</div>
-														</div>
-	
-														<div class="clearfix">									        
-															<div class="lab">
-															   	<label><input name="autoload" id="autoload" type="checkbox" class="checkbox" <c:if test="${sessionBean.mA_loadTail.autoload == true}">checked="checked"</c:if>  >Автозагрузка</label>
-															</div>
-														</div>
-														</br>
-								        				<div class="clearfix">
-									        				<div class="lab">	
-									        					<button type="submit" style="width:130px;" onclick="if(file.value.length == 0) {alert('Выберите файл!'); return false};" ><spring:message code="admin.load.info.from.file"/></button>
-									        				</div>
-								        				</div>
-								        				
-								         <input type="hidden" name ="act" id ="act" value="3"/>
-							</form:form>
-					</div>
 
 				</div>
 
@@ -292,16 +304,16 @@
         
         <!-- /box -->
         <div class="box">
+        				<h4>Текущие остатки</h4>
 	 				    			<table class="tab" border="0">
 						    				<tr align="center">
 								    				<th width="5%">№п/п</th>
-								    				<th width="18%">Наименование</th>
-								    				<th width="23%">Поставщик</th>
+								    				<th width="35%">Наименование</th>
 								    				<th width="5%">Кол-во</th>
-								    				<th width="7%">Первая цена</th>
-								    				<th width="12%">Размер</th>
+								    				<th width="5%">Первая цена</th>
+								    				<th width="37%">Размер</th>
 								    				<th width="22%">Дата загрузки</th>
-								    				<th width="5%">Action</th>
+								    				<th width="4%">Удалить</th>
 						    				</tr>
 					    			</table>
 

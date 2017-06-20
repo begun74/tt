@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <!-- meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--  meta name="viewport" content="width=device-width, initial-scale=1.0" -->
     <meta name="description" content="одежда весна 2017 | Продукция ведущих трикотажных фабрик | Верхний трикотаж | Бельевой трикотаж | Чулочно-носочные изделия | трикотаж | трикотаж в РБ">
     <meta name="keywords" content="одежда весна 2017 | Продукция ведущих трикотажных фабрик | Верхний трикотаж | Бельевой трикотаж | Чулочно-носочные изделия | трикотаж | трикотаж в РБ" />
     <meta name="robots" content="all" />
@@ -23,6 +23,7 @@
 	<link href="resources/css/main.css" rel="stylesheet">
 	<link href="resources/css/responsive.css" rel="stylesheet">
 	<link href="resources/css/simplePagination.css" rel="stylesheet">
+	<link href="resources/css/bootstrap-select.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -50,12 +51,12 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3 col-xs-4">
+				<div class="col-sm-4 col-md-3">
 					<!-- product_filter -->
 					<%@include file="common/product_filter1.jsp" %>
 					<!-- product_filter -->
 				</div>
-				<div class="col-sm-9 padding-right">
+				<div class="col-sm-8 col-md-9">
 					<!-- content -->
 					<%@include file="common/content3.jsp" %>
 					<!-- content -->
@@ -74,6 +75,7 @@
   
     <script src="resources/js/jquery.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/bootstrap-select.min.js"></script>
 	<script src="resources/js/jquery.cookie.js"></script>
 	<script src="resources/js/jquery.scrollUp.min.js"></script>
 	<script src="resources/js/price-range.js"></script>
@@ -85,6 +87,25 @@
     
     <script>
 	    $(function() {
+	    	
+				var asc_inv = ${mA_search.asc};
+				
+			    $(".sortby").click(function() {
+			    	$("#sortby").val($(this).attr('id'));
+			    	asc_inv = !asc_inv;
+			    	$("#asc").val(asc_inv);
+			    	
+	    		});
+				
+				
+				
+	    		
+				var sortby_ = ${mA_search.sortby}; 
+				var	sortby_get = '&sortby='+sortby_;
+
+				var	asc_get = '&asc='+${mA_search.asc};
+				
+
 				var pns = ${mA_search.pn};
 				var pns_get ='';
 				
@@ -124,7 +145,7 @@
 		            prevText:"<<",
 		            nextText:">>",
 		            hrefTextPrefix: "?p=",
-		            hrefTextSuffix: pns_get+gndrs_get+cats_get+types_get,
+		            hrefTextSuffix: pns_get + gndrs_get + cats_get + types_get + sortby_get + asc_get,
 		            currentPage: ${p}
 		        });
 
@@ -156,6 +177,7 @@
 	        	$('.ch_type').attr("checked",null);
 	        });
 
+	        
 	        $( ".countType" ).tooltip(
 	                {
 	                    html: true,
@@ -227,6 +249,5 @@
         
 	</script>
 	
-	<!-- Gismeteo Informer (finish) -->
 </body>
 </html>

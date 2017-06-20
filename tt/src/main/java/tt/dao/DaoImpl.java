@@ -1,6 +1,7 @@
 package tt.dao;
 
 import java.math.BigInteger;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -40,6 +41,7 @@ import tt.model.OrderItems;
 import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
+import tt.modelattribute.MA_search;
 
 
 
@@ -129,9 +131,10 @@ public class DaoImpl implements Dao {
 			dN_old.setArticle(dirNomenclature.getArticle());
 			dN_old.setComposition(dirNomenclature.getComposition());
 			dN_old.setModel(dirNomenclature.getModel());
+			
+			dN_old.setAccess_date( new Timestamp(new java.util.Date().getTime() )); // Обновляем дату последней загрузки этой номенклатуры
 
 			getSession().saveOrUpdate(dN_old);
-			
 		}
 		catch(java.lang.NullPointerException nexc)
 		{
@@ -307,23 +310,34 @@ public class DaoImpl implements Dao {
 
 
 	@Override
-	public Set<DirNomenclature> getNomenclInTails(List<Long> types,List<Long> providers, List<Long> genders, List<Long> categories , int p) {
+	public Set<DirNomenclature> getNomenclInTails(MA_search MA_search , int p) {
 
 		LinkedHashSet<DirNomenclature> dirNomSet = new LinkedHashSet<DirNomenclature>();
 		
 		String sqlNomeclatureInTails = env.getProperty("sqlNomeclatureInTails");
 		
+		//System.out.println("MA_search.isAsc() - "+MA_search.isAsc());
 		
-		if(providers.size() >0)
-			sqlNomeclatureInTails += " and dp.id_dir_provider in "+providers.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
-		if(genders.size() >0)
-			sqlNomeclatureInTails += " and dg.id_dir_gender in "+genders.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
-		if(categories.size() >0)
-			sqlNomeclatureInTails += " and dng.id_dir_nomencl_group in "+categories.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
-		if(types.size() >0)
-			sqlNomeclatureInTails += " and dngr.id_dir_nomencl_group_root in "+types.toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		HashMap<Integer, String> sortby_hs = new HashMap<Integer, String>();
+		
+		sortby_hs.put(0, "dn.name");
+		sortby_hs.put(1, "t.firstPrice");
+		
+				
+		String asc = MA_search.isAsc()?" asc ":" desc ";
+		
+		if(MA_search.getPn().size() >0)
+			sqlNomeclatureInTails += " and dp.id_dir_provider in "+MA_search.getPn().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		if(MA_search.getGndr().size() >0)
+			sqlNomeclatureInTails += " and dg.id_dir_gender in "+MA_search.getGndr().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		if(MA_search.getCat().size() >0)
+			sqlNomeclatureInTails += " and dng.id_dir_nomencl_group in "+MA_search.getCat().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		if(MA_search.getType().size() >0)
+			sqlNomeclatureInTails += " and dngr.id_dir_nomencl_group_root in "+MA_search.getType().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
 
-		sqlNomeclatureInTails += " order by dp.sorting, dngr.sorting, dn.name";
+		sqlNomeclatureInTails += " order by "+sortby_hs.get(MA_search.getSortby()) + asc +", dp.sorting, dngr.sorting";
+		
+		
 		
 		//System.out.println((getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class)));
 		List<Object[]> tmpList = getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class)
@@ -485,7 +499,7 @@ public class DaoImpl implements Dao {
 	@Override
 	public List<DirNomenclature> findByText(String text) {
 		// TODO Auto-generated method stub
-		List<DirNomenclature> tails = new ArrayList<DirNomenclature>();
+		List<DirNomenclature> tails = new LinkedList<DirNomenclature>();
 		
 		if(text.trim().length() ==0)	return tails;
 		
@@ -500,7 +514,8 @@ public class DaoImpl implements Dao {
 			code = 0;
 		}
 		
-		List<Object[]> tmpList = getSession().createSQLQuery(sql_1).addEntity(DirNomenclature.class).addScalar("firstPrice")
+		List<Object[]> tmpList = getSession().createSQLQuery(sql_1).addEntity(DirNomenclature.class)
+									.addScalar("firstPrice")
 									.addScalar("opt_price")
 									.addScalar("rozn_price")
 									.setParameter("model", "%"+text+"%")
@@ -561,6 +576,17 @@ public class DaoImpl implements Dao {
 		
 		BigInteger res = (BigInteger)getSession().createSQLQuery(sqlCountType).setParameter("id_dir_nomencl_group_root", id_dir_nomencl_group_root).uniqueResult();
 		return res;
+	}
+
+	@Override
+	public List<DirNomenclature> getNomenclOfProvider(Long id_dir_nomenclature) {
+		// TODO Auto-generated method stub
+		List<DirNomenclature> listDNofProv = new ArrayList<DirNomenclature>();
+		String selectNomenclOfProvider = env.getProperty("selectNomenclOfProvider");
+		listDNofProv = getSession().createSQLQuery(selectNomenclOfProvider).addEntity(DirNomenclature.class).setParameter("id_dir_nomenclature", id_dir_nomenclature).list();
+		
+		return listDNofProv;
+
 	}
 
 

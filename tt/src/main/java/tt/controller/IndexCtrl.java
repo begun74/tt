@@ -1,16 +1,15 @@
 package tt.controller;
 
-import java.io.ByteArrayOutputStream;
+
 import java.io.File;
-import java.io.OutputStream;
+
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Collections;
+
 import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
@@ -20,21 +19,22 @@ import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.hibernate.Hibernate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.http.HttpStatus;
+
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import tt.annotation.CheckAccess;
+
 import tt.bean.AppBean;
 import tt.bean.SessionBean;
 import tt.config.CustomAuthenticationSuccessHandler;
@@ -81,6 +81,16 @@ public class IndexCtrl implements Serializable {
 	@Autowired
 	CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler;
 	
+	@ExceptionHandler(Exception.class) 
+    public ModelAndView handleExceptions(HttpServletRequest req, Exception anExc) {
+		ModelAndView model = new ModelAndView("redirect:/index");
+		
+		
+        anExc.printStackTrace(); // do something better than this ;)
+        
+        return model;
+    }
+	
 	@RequestMapping(value = {"/index","/"} , method = RequestMethod.GET)
 	public ModelAndView  index(HttpSession session, @RequestParam(value = "p", defaultValue = "1") int p, 
 								@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
@@ -97,7 +107,7 @@ public class IndexCtrl implements Serializable {
 		//model.addObject("tails",ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
 		//model.addObject("tails",ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
 		
-		model.addObject("tails",ttService.getNomenclInTails(mA_search.getType(),mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p ));
+		model.addObject("tails",ttService.getNomenclInTails(mA_search, p ));
 		
 		model.addObject("version",appBean.getVersion());
 		//model.addObject("providers", ttService.getProviderList());
@@ -189,12 +199,16 @@ public class IndexCtrl implements Serializable {
 
 	
 	@RequestMapping(value = {"/search"} , method = RequestMethod.GET)
-	public String  searchGet(HttpSession session, @ModelAttribute("mA_search") MA_search mA_search, Model model, @RequestParam(value = "p", defaultValue = "1") int p, 
+	public String  searchGet(HttpSession session, @ModelAttribute("product_filter") MA_search mA_search, Model model, 
+								@RequestParam(value = "p", defaultValue = "1") int p, 
 								@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
 	{
 		 //mIndex = session.getAttribute("mIndex") == null?new MIndex():(MIndex)session.getAttribute("mIndex");
 		//session.setAttribute("mA_search", mA_search);
 		this.mA_search = mA_search;
+		
+		//if(this.mA_search.isAsc() != mA_search.isAsc())
+			//this.mA_search.setAsc(mA_search.isAsc());
 		
 		model.addAttribute("version",appBean.getVersion());
 		
@@ -211,7 +225,7 @@ public class IndexCtrl implements Serializable {
 
 		//model.addAttribute("tails", ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
 		
-		model.addAttribute("tails",ttService.getNomenclInTails(mA_search.getType(), mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p ));
+		model.addAttribute("tails",ttService.getNomenclInTails(mA_search, p ));
 		
 		model.addAttribute("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
 		
@@ -292,6 +306,69 @@ public class IndexCtrl implements Serializable {
 	public ModelAndView  product_details(HttpSession session, @RequestParam(value = "id",   required=false) Long id) 
 	{
 		ModelAndView model = new ModelAndView("product-details");
+		
+		//System.out.println(sessBean.getOrders());
+		model.addObject("sessBean", sessBean);
+		
+		try
+		{
+			DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id); 
+			
+			//List<DirNomenclature> popNomencl = ttService.getPopularDirNomenclature();
+			List<DirNomenclature> popNomencl = ttService.getNomenclOfProvider(id);
+			
+			model.addObject("nomenclature", dn);
+			model.addObject("popNomencl", popNomencl);
+			//!-- model.addObject("tails", ttService.getTailsList(dn.getId()));
+			model.addObject("provider",dn.getDirProvider());
+			//model.addObject("provider", dn.getTails().iterator().next().getDirProvider());
+			
+			Iterator<Tail> iter = dn.getTails().iterator();
+			
+			while(iter.hasNext())
+			{
+				synchronized (iter) {
+					if(iter.next().getDestruction_date() != null)
+						iter.remove();
+				}
+			}
+			
+			Tail tail = dn.getTails().iterator().next();
+			
+			model.addObject("firstprice", tail.getFirstPrice());
+
+			if(isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")))
+			{
+				//System.out.println("dn.getTails() - " +dn.getTails());
+				
+				
+				//System.out.println("dn.getTails() - " +dn.getTails());
+				
+				
+				//model.addObject("price", tail.getFirstPrice());
+				model.addObject("price", tail.getOpt_price());
+				
+			}
+			else
+				model.addObject("price", tail.getRozn_price());
+			
+			//model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
+
+		}
+		catch(Exception exc) {
+			System.out.println("ERROR: IndexCtrl.product_detail("+id+")");
+			exc.printStackTrace();
+			return new ModelAndView("redirect:/error404");
+		}
+		
+		return model;
+	}
+	
+
+	@RequestMapping(value = {"/product-details2{id}"} , method = RequestMethod.GET)
+	public ModelAndView  product_details2(HttpSession session, @RequestParam(value = "id",   required=false) Long id) 
+	{
+		ModelAndView model = new ModelAndView("product-details2");
 		
 		//System.out.println(sessBean.getOrders());
 		model.addObject("sessBean", sessBean);

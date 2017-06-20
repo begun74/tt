@@ -889,9 +889,16 @@ h2.title {
   color: #696763;
 }
 
+.productinfo .provider_name{
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #696763;
+}
+
 .productinfo img{
-  /*width: 200px;*/
-  height: 300px;
+  width: 160px;
+  height: 238px;
   object-fit: contain;
 
 }
@@ -1162,7 +1169,7 @@ h2.title {
 **************************/
 
 .product-details{
-	overflow:hidden;
+	overflow: hidden;
 }
 
 
@@ -2626,6 +2633,39 @@ give gallery's parent container a cursor: pointer.**/
 	width:100%;
 }
 
+
+
+#container {
+  /*background-color: red;*/
+  overflow: hidden;
+}
+
+#gal1 {
+  overflow: auto;
+  float: left; 
+  /*width: 200px;*/
+  margin-top: 20px;
+}
+
+.child {
+  
+  /*background-color: blue;*/
+  width: 70px;
+  height: 100px;
+}
+
+
+.child img
+{
+  max-width:100%; 
+  max-height:100%;
+  margin:auto;
+  float: left; 
+}
+
+
+
+
 .find_panel {
 	border: 1px solid ;
 	background: #ffad33;
@@ -2637,7 +2677,7 @@ give gallery's parent container a cursor: pointer.**/
 }
 .div_bkgr {
 	
-	background-color: #FFF;
+	background-color: white;
 	margin: 10px;
 	/*border: 1px solid ;
 	border-radius: 3px;*/
@@ -2645,7 +2685,7 @@ give gallery's parent container a cursor: pointer.**/
 
 .div_bkgr_gray {
 	background-color: #c0c0c0;
-	margin: 10px;
+	margin: 3px auto;
 	/*border: 1px solid ;
 	border-radius: 3px;*/
 }
@@ -2670,7 +2710,7 @@ give gallery's parent container a cursor: pointer.**/
 }
 
 .div_bkgr .div_Fitem {
-	margin: 10px;
+	margin: 5px;
 	border: 0px solid ;
 	border-radius: 3px;
 }
@@ -2688,11 +2728,9 @@ give gallery's parent container a cursor: pointer.**/
 	background-color: transparent;
   	background-image: url(../images/akciya.png);
   	background-color: transparent;
-  	/*background-repeat: repeat;*/	
 	position: absolute; 
 	bottom: 0px; 
 	right: 0px;
-	/*opacity: 0.7;*/
 }
 
 
@@ -2700,4 +2738,15 @@ give gallery's parent container a cursor: pointer.**/
 	
 	list-style-type: square; /* Маркеры в виде квадрата */
     /* list-style-position: outside;  Маркеры размещаются за пределами текстового блока */
-    color: #000080; /* Цвет текста списка */}
+    color: #000080; /* Цвет текста списка */
+}
+
+.font20px {
+	font: 18px/1.5 Arial,sans-serif;
+}
+
+.img_wrapper {
+	
+	/*width: 70px;*/
+  height: 100px;
+}

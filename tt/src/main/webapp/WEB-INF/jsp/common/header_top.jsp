@@ -7,7 +7,7 @@
 		<div class="header_top"><!--header_top-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-4 col-xs-4">
+					<div class="col-sm-5 col-xs-5">
 						<div class="contactinfo">
 							<ul class="nav nav-pills">
 								<li><a href="#"><i class="fa fa-phone"></i> (+375 17) 292-45-90</a></li>
@@ -15,11 +15,11 @@
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-4 col-xs-2" >
-						<h5>Сайт находится в разработке</h5>
+					<div class="col-md-2 col-sm-2" >
+						<!-- h5>Сайт находится в разработке</h5 -->
 					</div>					
 					
-					<div class="col-sm-4 col-xs-4">
+					<div class="col-md-5 col-sm-5">
 								<ul class="nav nav-pills">
 									<li><a href="http://www.nbrb.by"><i id="usd_840" class="fa"></i></a></li>
 									<li><a href="http://www.nbrb.by"><i id="eur_978" class="fa"></i></a></li>
@@ -116,50 +116,29 @@
 		<div class="header-bottom"><!--header-bottom-->
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-9">
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-						</div>
-						<div class="mainmenu pull-right">
-							<ul class="nav navbar-nav collapse navbar-collapse">
+					<div class="col-sm-12 col-md-12">
+						<div class="mainmenu navbar-header">
+							<ul class="nav navbar-nav">
 								<li><a href="index.html"><spring:message code="goods"/></a></li>
-								<!-- li class="dropdown"><a href="#"><spring:message code="shop"/><i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="index"><spring:message code="products"/></a></li>
-										<li><a href="cart.html"><spring:message code="cart"/></a></li> 
-										<li><a href="login.html">Login</a></li> 
-                                    </ul>
-                                </li --> 
-								<!-- li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="blog.html">Blog List</a></li>
-										<li><a href="blog-single.html">Blog Single</a></li>
-                                    </ul>
-                                </li --> 
-								<!-- li><a href="404.html">404</a></li -->
 								<li><a href="our_shops" ><spring:message code="our.shops"/></a></li>
 								<li><a href="cooperation" ><spring:message code="buy.in.bulk"/></a></li>
-								<li class="dropdown"><a href="contact-us.html"><spring:message code="contacts"/></a>
+								<li><a href="contact-us.html"><spring:message code="contacts"/></a>
 								<li><a href="vacancies" ><spring:message code="info.vacancies"/></a></li>
 								<li><a href="action" ><spring:message code="action1"/></a></li>
 								<li><a href="about_company" ><spring:message code="about.company"/></a></li>
-								</ul>
-								
-								</li>
 							</ul>
 						</div>
 					</div>
-					<div class="col-sm-3">
-						<div class="search_box pull-right">
-							<input type="text" class="search_text" value="${findText}" placeholder="<spring:message code="search"/>"/>
-						</div>
-					</div>
 				</div>
+
+				<div class="row">
+						<div class="col-sm-12">
+							<div class="search_box pull-right">
+								<input type="text" class="search_text" value="${findText}" placeholder="<spring:message code="search"/>"/>
+							</div>
+						</div>
+				</div>
+				
 			</div>
 		</div><!--/header-bottom-->
 	</header><!--/header-->

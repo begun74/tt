@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- meta name="viewport" content="width=device-width, initial-scale=1.0" -->
     <meta name="author" content="">
     <title>ОАО «Трикотажторг»</title>
     <link href="resources/css/bootstrap.min.css" rel="stylesheet">
@@ -74,7 +74,6 @@
 	        </c:if>
 
 			<section id="do_order">			
-			<div class="row jumbotron">
 					<form:form method="post" modelAttribute ="orderForm" id="orderForm"  
 								action="createOrder">
 							<div class="form-group row">
@@ -101,21 +100,6 @@
 							        <textarea name="comment" class="form-control"  maxlength="100"></textarea>
 							      </div>
 							</div>								
-							<!-- div class="col-sm-4 form-check form-group">
-								<input type="text" name="person_name" class="form-control control-label" placeholder='<spring:message code="name"/>'/>
-							</div>
-							<div class="col-sm-4">
-								<input type="email" name="email" class="form-control control-label" value="${orderForm.phone}" placeholder='<spring:message code="email"/>'/>
-							</div>
-							<div class="col-sm-4 form-check">
-								<input type="text" name="phone" class="form-control control-label phone_input"  maxlength="20" placeholder='+375 XX XXX-XX-XX'/>
-							</div>
-							<div class="col-sm-12 form-check">
-									<label>Комментарий</label>
-							</div>
-							<div class="col-sm-12 form-check">
-									<textarea name="comment" class="form-control"  maxlength="100"></textarea>
-							</div -->
 
 							<div class="row">
 								<div class="text-center" style="margin-bottom:15px">
@@ -125,7 +109,6 @@
 								</div>
 							</div>
 					</form:form>			
-			</div>
 			</section>
 			
 			<div class="col-sm-12"></div>
