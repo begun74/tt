@@ -22,6 +22,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tt.model.DirGender;
@@ -36,11 +37,13 @@ import tt.modelattribute.MA_loadNomenclGroupRoot;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
 import tt.util.autoLoad.MainAutoLoad;
+import tt.util.autoLoad.ProcessFiles;
 
 @Service
 public class ReadExcelFile {
 	
-	
+	@Autowired
+	private static ProcessFiles processFiles;
 		
     private static Workbook getWorkbook(File tmpFile) throws IOException {
         
@@ -171,7 +174,9 @@ public class ReadExcelFile {
         	++row_;
         }
         //System.out.println(hmPollPaths);
-        MainAutoLoad.startPhotoFileService2(hmPollPaths);
+        //MainAutoLoad.startPhotoFileService2(hmPollPaths);
+        
+        processFiles.startPhotoFileService2(hmPollPaths);
         
 		return lNomencls;
 		
