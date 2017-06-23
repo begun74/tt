@@ -119,7 +119,7 @@ public class DaoImpl implements Dao {
 		// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		//Во избежании ERROR: duplicate key value violates unique constraint "dir_nomenclature_code_name_key"
 		//Уникальные поля code, name
-		//ищем существующие записи
+		//ищем существующюю запись
 		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		DirNomenclature dN_old = new DirNomenclature();
 		dN_old.setCode(dirNomenclature.getCode());
