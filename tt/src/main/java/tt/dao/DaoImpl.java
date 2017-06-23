@@ -131,6 +131,7 @@ public class DaoImpl implements Dao {
 			dN_old.setArticle(dirNomenclature.getArticle());
 			dN_old.setComposition(dirNomenclature.getComposition());
 			dN_old.setModel(dirNomenclature.getModel());
+			dN_old.setDirGender(dirNomenclature.getDirGender());
 			
 			dN_old.setAccess_date( new Timestamp(new java.util.Date().getTime() )); // Обновляем дату последней загрузки этой номенклатуры
 
