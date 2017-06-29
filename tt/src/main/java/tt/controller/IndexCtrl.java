@@ -339,21 +339,15 @@ public class IndexCtrl implements Serializable {
 
 			if(isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")))
 			{
-				//System.out.println("dn.getTails() - " +dn.getTails());
-				
-				
-				//System.out.println("dn.getTails() - " +dn.getTails());
-				
-				
 				//model.addObject("price", tail.getFirstPrice());
 				model.addObject("price", tail.getOpt_price());
-				
 			}
 			else
 				model.addObject("price", tail.getRozn_price());
 			
-			//model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
-
+		}
+		catch(java.util.NoSuchElementException nsee) {
+			System.out.println("ERROR: IndexCtrl.product_detail("+id+")");
 		}
 		catch(Exception exc) {
 			System.out.println("ERROR: IndexCtrl.product_detail("+id+")");

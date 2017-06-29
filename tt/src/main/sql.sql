@@ -14,6 +14,7 @@ INSERT INTO dir_gender (id_dir_gender, name) VALUES(nextval('seq_global'),'де�
 
 select * from dir_provider order by name;
 
+select * from dir_nomenclature where code = 10002079268
 
 -- USER, USER_ROLE
 insert into tt_user_role VALUES(nextval('seq_global'),'ROLE_ADMIN');
@@ -138,7 +139,7 @@ select xxx.name, dn.* from dir_nomenclature dn
 			inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider where dp.id_dir_provider in (select  dn.fk_id_provider from dir_nomenclature dn where dn.id_dir_nomenclature = 20295)
 			OFFSET random()*11
 		)as xxx on xxx.id_dir_nomenclature = dn.id_dir_nomenclature 
-		order by code
+		
 OFFSET random()*11
 		
 
