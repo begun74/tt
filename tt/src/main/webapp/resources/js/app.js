@@ -14,11 +14,15 @@ $(document).ready(function(){
 		,700);
     	*/
     	$('#productFilterWait').modal('show');
-    	setTimeout(function() {
-		        	document.product_filter.submit();}
-    	,100);
+    	document.product_filter.submit();
     });
     
+    
+    $("#selectperp").change(function() {
+    	$('#productFilterWait').modal('show');
+    	document.product_filter.p_p.value = this.value; 
+    	document.product_filter.submit();
+    });
 });
 
 

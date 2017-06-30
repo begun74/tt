@@ -98,8 +98,9 @@
 	    		});
 				
 				
-				
-	    		
+			    var p_p = ${mA_search.p_p};
+			    var p_p_get = '&p_p='+p_p;
+			    
 				var sortby_ = ${mA_search.sortby}; 
 				var	sortby_get = '&sortby='+sortby_;
 
@@ -145,7 +146,7 @@
 		            prevText:"<<",
 		            nextText:">>",
 		            hrefTextPrefix: "?p=",
-		            hrefTextSuffix: pns_get + gndrs_get + cats_get + types_get + sortby_get + asc_get,
+		            hrefTextSuffix: pns_get + gndrs_get + cats_get + types_get + sortby_get + asc_get + p_p_get,
 		            currentPage: ${p}
 		        });
 

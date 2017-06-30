@@ -95,7 +95,7 @@ public class IndexCtrl implements Serializable {
 	@RequestMapping(value = {"/search","/index","/"} , method = RequestMethod.GET)
 	public String  searchGet(HttpSession session, @ModelAttribute("product_filter") MA_search mA_search, Model model, 
 								@RequestParam(value = "p", defaultValue = "1") int p, 
-								@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
+								@RequestParam(value = "perPage", defaultValue = "8") int perPage) 
 	{
 		 //mIndex = session.getAttribute("mIndex") == null?new MIndex():(MIndex)session.getAttribute("mIndex");
 		//session.setAttribute("mA_search", mA_search);
@@ -119,7 +119,7 @@ public class IndexCtrl implements Serializable {
 
 		//model.addAttribute("tails", ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
 		
-		Object[] resultNomInTails = ttService.getNomenclInTails(mA_search, p , perPage);
+		Object[] resultNomInTails = ttService.getNomenclInTails(mA_search, p , mA_search.getP_p());
 		
 		model.addAttribute("allItems",resultNomInTails[0]);
 		model.addAttribute("tails",resultNomInTails[1]);

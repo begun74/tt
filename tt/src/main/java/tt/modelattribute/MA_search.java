@@ -28,9 +28,14 @@ public class MA_search implements Serializable {
 	
 	List<Long> type = new ArrayList<Long>();//Type бельевой, верхний, чулочно-носочный
 	
+	int p_p = 9;
+	
 	int sortby = 0;
 	
+	
 	private boolean asc = true;
+	
+	
 	
 	public List<Long> getPn() {
 		return pn;
@@ -80,7 +85,17 @@ public class MA_search implements Serializable {
 	}
 
 
-	
+
+	public int getP_p() {
+		return p_p;
+	}
+
+	public void setP_p(int p_p) {
+		this.p_p = p_p;
+	}
+
+
+
 	public int getSortby() {
 		return sortby;
 	}
@@ -88,6 +103,7 @@ public class MA_search implements Serializable {
 	public void setSortby(int sortby) {
 		this.sortby = sortby;
 	}
+
 
 
 	public boolean isAsc() {
@@ -109,8 +125,13 @@ public class MA_search implements Serializable {
 
 	@Override
 	public String toString() {
-		return "MA_search [pn=" + pn + ", gndr=" + gndr + ", cat=" + cat + ", type=" + type + "]";
+		return "MA_search [pn=" + pn + ", gndr=" + gndr + ", cat=" + cat + ", type=" + type + ", sortby=" + sortby
+				+ ", asc=" + asc + "]";
 	}
+
+
+
+	
 
 
 

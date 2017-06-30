@@ -5,7 +5,8 @@
 <%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 
-						<c:set var="perPage" value="${9}"/>
+						<c:set var="perPage" value="${param.p_p}"/>
+
 
 						<c:set var="p" value="${param.p}"/>
 						<c:if test="${empty param.p}" >
@@ -18,7 +19,11 @@
 						
 						
 						<div class="features_items"><!--features_items-->
-						
+							<div class="row">
+									<div class="col-sm-12 col-xs-12 text-right">
+									</div> 
+							</div>
+
 							<div class="row">
 								<c:if test="${allItems gt 0}">
 									<div class="col-xs-6 text-left">
@@ -33,6 +38,12 @@
 											<a id="0" href=""  class="waiting sortby" ><span class="label label-default"><spring:message code="by.name"/></span></a>
 											<a id="1" href=""  class="waiting sortby" ><span class="label label-success"><spring:message code="by.price"/></span></a>
 										</c:if>
+										<select id="selectperp" class="selectpicker service-small" style="font: 10px" data-width="55px" name="${mA_search.p_p}" >
+        										<option value="" ></option>
+        										<option value="4" <c:if test="${mA_search.p_p eq 4 }">selected</c:if> >4</option>
+        										<option value="6" <c:if test="${mA_search.p_p eq 6 }">selected</c:if> >6</option>
+        										<option value="9" <c:if test="${mA_search.p_p eq 9 }">selected</c:if> >9</option>
+										</select>
 										
 									</div>
 								</c:if>
@@ -94,6 +105,3 @@
 						</div>
 						
 
-						<input type="hidden" name="itemPerPage" value="${perPage}"/>
-						<input type="hidden" name="itemStart" value="${start}"/>
-						
