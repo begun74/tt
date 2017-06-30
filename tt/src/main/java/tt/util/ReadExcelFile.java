@@ -22,6 +22,7 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tt.model.DirGender;
@@ -40,7 +41,8 @@ import tt.util.autoLoad.MainAutoLoad;
 @Service
 public class ReadExcelFile {
 	
-	
+	@Autowired
+	private static MainAutoLoad MainAutoLoad;
 		
     private static Workbook getWorkbook(File tmpFile) throws IOException {
         
@@ -75,7 +77,6 @@ public class ReadExcelFile {
         while(rowIterator.hasNext() )
         {
         	Row tmp = rowIterator.next();
-        	
         	
         		if(row_ >= mA_loadProvider.getRow()) {
         			try {
