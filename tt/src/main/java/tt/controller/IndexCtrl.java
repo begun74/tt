@@ -107,7 +107,7 @@ public class IndexCtrl implements Serializable {
 		//model.addObject("tails",ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
 		//model.addObject("tails",ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
 		
-		model.addObject("tails",ttService.getNomenclInTails(mA_search, p ));
+		model.addObject("tails",ttService.getNomenclInTails(mA_search, p , perPage));
 		
 		model.addObject("version",appBean.getVersion());
 		//model.addObject("providers", ttService.getProviderList());
@@ -225,7 +225,7 @@ public class IndexCtrl implements Serializable {
 
 		//model.addAttribute("tails", ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
 		
-		model.addAttribute("tails",ttService.getNomenclInTails(mA_search, p ));
+		model.addAttribute("tails",ttService.getNomenclInTails(mA_search, p , perPage));
 		
 		model.addAttribute("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
 		

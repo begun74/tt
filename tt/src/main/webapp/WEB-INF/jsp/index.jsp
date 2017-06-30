@@ -58,7 +58,7 @@
 				</div>
 				<div class="col-sm-8 col-md-9">
 					<!-- content -->
-					<%@include file="common/content3.jsp" %>
+					<%@include file="common/content4.jsp" %>
 					<!-- content -->
 				</div>
 				
