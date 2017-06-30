@@ -12,6 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import javax.annotation.Resource;
 
@@ -48,6 +49,8 @@ import tt.modelattribute.MA_search;
 @PropertySource("classpath:sql.properties")
 @Repository("dao")
 public class DaoImpl implements Dao {
+	
+	
 	
 	
     @Resource
@@ -119,7 +122,7 @@ public class DaoImpl implements Dao {
 		// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		//Во избежании ERROR: duplicate key value violates unique constraint "dir_nomenclature_code_name_key"
 		//Уникальные поля code, name
-		//ищем существующие записи
+		//ищем существующюю запись
 		//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 		DirNomenclature dN_old = new DirNomenclature();
 		dN_old.setCode(dirNomenclature.getCode());
@@ -131,6 +134,7 @@ public class DaoImpl implements Dao {
 			dN_old.setArticle(dirNomenclature.getArticle());
 			dN_old.setComposition(dirNomenclature.getComposition());
 			dN_old.setModel(dirNomenclature.getModel());
+			dN_old.setDirGender(dirNomenclature.getDirGender());
 			
 			dN_old.setAccess_date( new Timestamp(new java.util.Date().getTime() )); // Обновляем дату последней загрузки этой номенклатуры
 
@@ -295,6 +299,7 @@ public class DaoImpl implements Dao {
 		return dirNomSet;
 	}
 
+/*	
 	@Override
 	public Set<DirNomenclature> getNomenclInTails_(List<Long> types, List<Long> providers, List<Long> genders,
 			List<Long> categories, int p) {
@@ -306,15 +311,18 @@ public class DaoImpl implements Dao {
 			
 		return (Set<DirNomenclature>) criteria.list();
 	}
-
+*/
 
 
 	@Override
-	public Set<DirNomenclature> getNomenclInTails(MA_search MA_search , int p) {
+	public Object[] getNomenclInTails(MA_search MA_search , int p, int itemOnPage) {
 
+		
+		
 		LinkedHashSet<DirNomenclature> dirNomSet = new LinkedHashSet<DirNomenclature>();
 		
 		String sqlNomeclatureInTails = env.getProperty("sqlNomeclatureInTails");
+		String sqlNomeclatureInTails_count = env.getProperty("sqlNomeclatureInTails_count");
 		
 		//System.out.println("MA_search.isAsc() - "+MA_search.isAsc());
 		
@@ -327,13 +335,25 @@ public class DaoImpl implements Dao {
 		String asc = MA_search.isAsc()?" asc ":" desc ";
 		
 		if(MA_search.getPn().size() >0)
+		{
 			sqlNomeclatureInTails += " and dp.id_dir_provider in "+MA_search.getPn().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+			sqlNomeclatureInTails_count += " and dp.id_dir_provider in "+MA_search.getPn().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		}
 		if(MA_search.getGndr().size() >0)
+		{
 			sqlNomeclatureInTails += " and dg.id_dir_gender in "+MA_search.getGndr().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+			sqlNomeclatureInTails_count += " and dg.id_dir_gender in "+MA_search.getGndr().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		}
 		if(MA_search.getCat().size() >0)
+		{
 			sqlNomeclatureInTails += " and dng.id_dir_nomencl_group in "+MA_search.getCat().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+			sqlNomeclatureInTails_count += " and dng.id_dir_nomencl_group in "+MA_search.getCat().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		}
 		if(MA_search.getType().size() >0)
+		{
 			sqlNomeclatureInTails += " and dngr.id_dir_nomencl_group_root in "+MA_search.getType().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+			sqlNomeclatureInTails_count += " and dngr.id_dir_nomencl_group_root in "+MA_search.getType().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
+		}
 
 		sqlNomeclatureInTails += " order by "+sortby_hs.get(MA_search.getSortby()) + asc +", dp.sorting, dngr.sorting";
 		
@@ -344,7 +364,14 @@ public class DaoImpl implements Dao {
 											.addScalar("firstprice")
 											.addScalar("opt_price")
 											.addScalar("rozn_price")
+											.setFirstResult(p*itemOnPage-itemOnPage)
+											.setMaxResults(itemOnPage)
 											.list();
+		
+		long count = ((BigInteger) getSession().createSQLQuery(sqlNomeclatureInTails_count).uniqueResult()).longValue();
+		
+		//System.out.println("count - " +count);
+		
 		
 		for(Object[] item: tmpList)
 		{
@@ -356,10 +383,9 @@ public class DaoImpl implements Dao {
 			dirNomSet.add((DirNomenclature)item[0]);
 		}
 		
-		
-		//dirNomSet.addAll(listDN);
+		Object[] result = {count, dirNomSet};
 
-		return dirNomSet;
+		return result;
 	}
 
 	@Override

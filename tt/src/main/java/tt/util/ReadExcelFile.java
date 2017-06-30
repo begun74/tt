@@ -37,6 +37,7 @@ import tt.modelattribute.MA_loadNomenclGroupRoot;
 import tt.modelattribute.MA_loadProvider;
 import tt.modelattribute.MA_loadTail;
 import tt.util.autoLoad.MainAutoLoad;
+import tt.util.autoLoad.ProcessFiles;
 
 @Service
 public class ReadExcelFile {
@@ -172,7 +173,9 @@ public class ReadExcelFile {
         	++row_;
         }
         //System.out.println(hmPollPaths);
-        MainAutoLoad.startPhotoFileService2(hmPollPaths);
+        //MainAutoLoad.startPhotoFileService2(hmPollPaths);
+        
+        processFiles.startPhotoFileService2(hmPollPaths);
         
 		return lNomencls;
 		

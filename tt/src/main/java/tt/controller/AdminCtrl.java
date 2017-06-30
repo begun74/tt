@@ -39,6 +39,7 @@ import tt.service.TTServiceImpl;
 import tt.util.FileUpload;
 import tt.util.autoLoad.Handler;
 import tt.util.autoLoad.MainAutoLoad;
+import tt.util.autoLoad.ProcessFiles;
 
 
 
@@ -50,6 +51,10 @@ public class AdminCtrl {
 	
 	@Autowired
 	private AppBean appBean;
+	
+	@Autowired
+	private ProcessFiles processFiles;
+	
 
 	@Autowired
 	private FileUpload fileUpload;

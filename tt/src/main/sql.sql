@@ -1,6 +1,8 @@
 ﻿INSERT INTO tt.user (id_user,name,password) VALUES(nextval('seq_global'),'bvv','pass');
 
--- DROP TABLE "dir_gender", "dir_nomencl_group_root", "dir_nomencl_group",  "dir_nomenclature", "dir_provider", "store", "tails", "tt_user" CASCADE;
+-- DROP TABLE "dir_gender", "dir_nomencl_group_root", "dir_nomencl_group",  "dir_nomenclature", "dir_provider", "store", "tails", "tt_user" ,"tt_user_role" ,"user_with_role" ,"contact_us_messages" ,"dir_advert_campaign" CASCADE;
+
+-- DROP TABLE tt.*;
 
 SELECT table_name
 FROM information_schema.tables where table_schema='public'
@@ -14,6 +16,7 @@ INSERT INTO dir_gender (id_dir_gender, name) VALUES(nextval('seq_global'),'де�
 
 select * from dir_provider order by name;
 
+select * from dir_nomenclature where code = 10002079268
 
 -- USER, USER_ROLE
 insert into tt_user_role VALUES(nextval('seq_global'),'ROLE_ADMIN');
@@ -138,7 +141,7 @@ select xxx.name, dn.* from dir_nomenclature dn
 			inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider where dp.id_dir_provider in (select  dn.fk_id_provider from dir_nomenclature dn where dn.id_dir_nomenclature = 20295)
 			OFFSET random()*11
 		)as xxx on xxx.id_dir_nomenclature = dn.id_dir_nomenclature 
-		order by code
+		
 OFFSET random()*11
 		
 
@@ -275,6 +278,35 @@ select * from dir_nomenclature dn where composition is not null
 	where code = 10002076234
 	and composition is not null
 
+--======================= SELECT OFFSET LIMIT ==========================
+
+select count(*)  
+	from dir_nomenclature dn 
+	inner join dir_gender dg on dg.id_dir_gender = dn.fk_dir_gender 
+	inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider 
+	inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group 
+	inner join dir_nomencl_group_root dngr on dng.fk_dir_nomencl_group_root = dngr.id_dir_nomencl_group_root 
+	inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature 
+	where t.destruction_date is null 
+	group by t.firstPrice , dp.sorting, dngr.sorting
+	order by t.firstPrice desc , dp.sorting, dngr.sorting
+
+select count(dn.*)  from dir_nomenclature dn 
+	inner join dir_gender dg on dg.id_dir_gender = dn.fk_dir_gender 
+	inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider 
+	inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group 
+	inner join dir_nomencl_group_root dngr on dng.fk_dir_nomencl_group_root = dngr.id_dir_nomencl_group_root 
+	inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature 
+	where t.destruction_date is null
+
+
+select count(*)  from dir_nomenclature dn 
+	inner join dir_gender dg on dg.id_dir_gender = dn.fk_dir_gender 
+	inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider 
+	inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group 
+	inner join dir_nomencl_group_root dngr on dng.fk_dir_nomencl_group_root = dngr.id_dir_nomencl_group_root 
+	inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature 
+	where t.destruction_date is null
 
 
 --====================== OAuth2 ==============
