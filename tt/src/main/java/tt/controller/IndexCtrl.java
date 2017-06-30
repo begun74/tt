@@ -91,6 +91,62 @@ public class IndexCtrl implements Serializable {
         return model;
     }
 	
+	
+	@RequestMapping(value = {"/search","/index","/"} , method = RequestMethod.GET)
+	public String  searchGet(HttpSession session, @ModelAttribute("product_filter") MA_search mA_search, Model model, 
+								@RequestParam(value = "p", defaultValue = "1") int p, 
+								@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
+	{
+		 //mIndex = session.getAttribute("mIndex") == null?new MIndex():(MIndex)session.getAttribute("mIndex");
+		//session.setAttribute("mA_search", mA_search);
+		this.mA_search = mA_search;
+		
+		//if(this.mA_search.isAsc() != mA_search.isAsc())
+			//this.mA_search.setAsc(mA_search.isAsc());
+		
+		model.addAttribute("version",appBean.getVersion());
+		
+		model.addAttribute("mA_search", mA_search);
+		
+		//model.addAttribute("providers", ttService.getProviderList());
+		model.addAttribute("providers", ttService.getProviderListInTails());
+		
+		//model.addAttribute("categories", ttService.getNomenclGroupList());
+		model.addAttribute("categories", ttService.getNomenclGroupListInTails());
+
+		model.addAttribute("genders", ttService.getGenderList());
+		model.addAttribute("types", ttService.getNomenclGroupRootListInTails());
+
+		//model.addAttribute("tails", ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
+		
+		Object[] resultNomInTails = ttService.getNomenclInTails(mA_search, p , perPage);
+		
+		model.addAttribute("allItems",resultNomInTails[0]);
+		model.addAttribute("tails",resultNomInTails[1]);
+		
+		
+		
+		model.addAttribute("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
+		
+		model.addAttribute("sessBean", sessBean);
+		
+		return "index";
+	}
+	
+	@RequestMapping(value = {"/find"} , method = RequestMethod.GET)
+	public ModelAndView  find(HttpSession session, @RequestParam(value = "text",required = true) String text, @RequestParam(value = "p", defaultValue = "1") int p, 
+			@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
+	{
+		ModelAndView model = new ModelAndView("find");
+		model.addObject("mA_search", mA_search);
+		model.addObject("tails", ttService.findByText(text) );
+		model.addObject("findText",text);
+		model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
+		
+		return model;
+	}
+
+/*	
 	@RequestMapping(value = {"/index","/"} , method = RequestMethod.GET)
 	public ModelAndView  index(HttpSession session, @RequestParam(value = "p", defaultValue = "1") int p, 
 								@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
@@ -125,7 +181,7 @@ public class IndexCtrl implements Serializable {
 		model.addObject("UPLOAD_FILE_PATH", Constants.UPLOAD_FILE_PATH);
 		return model;
 	}
-	
+	*/
 	
 	@RequestMapping(value = {"/login"} , method = RequestMethod.GET)
 	public ModelAndView  login(HttpSession session, HttpServletRequest request, @RequestParam(value = "error",required = false) String error,
@@ -197,55 +253,6 @@ public class IndexCtrl implements Serializable {
 		return model;
 	}
 
-	
-	@RequestMapping(value = {"/search"} , method = RequestMethod.GET)
-	public String  searchGet(HttpSession session, @ModelAttribute("product_filter") MA_search mA_search, Model model, 
-								@RequestParam(value = "p", defaultValue = "1") int p, 
-								@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
-	{
-		 //mIndex = session.getAttribute("mIndex") == null?new MIndex():(MIndex)session.getAttribute("mIndex");
-		//session.setAttribute("mA_search", mA_search);
-		this.mA_search = mA_search;
-		
-		//if(this.mA_search.isAsc() != mA_search.isAsc())
-			//this.mA_search.setAsc(mA_search.isAsc());
-		
-		model.addAttribute("version",appBean.getVersion());
-		
-		model.addAttribute("mA_search", mA_search);
-		
-		//model.addAttribute("providers", ttService.getProviderList());
-		model.addAttribute("providers", ttService.getProviderListInTails());
-		
-		//model.addAttribute("categories", ttService.getNomenclGroupList());
-		model.addAttribute("categories", ttService.getNomenclGroupListInTails());
-
-		model.addAttribute("genders", ttService.getGenderList());
-		model.addAttribute("types", ttService.getNomenclGroupRootListInTails());
-
-		//model.addAttribute("tails", ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
-		
-		model.addAttribute("tails",ttService.getNomenclInTails(mA_search, p , perPage));
-		
-		model.addAttribute("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
-		
-		model.addAttribute("sessBean", sessBean);
-		
-		return "index";
-	}
-	
-	@RequestMapping(value = {"/find"} , method = RequestMethod.GET)
-	public ModelAndView  find(HttpSession session, @RequestParam(value = "text",required = true) String text, @RequestParam(value = "p", defaultValue = "1") int p, 
-			@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
-	{
-		ModelAndView model = new ModelAndView("find");
-		model.addObject("mA_search", mA_search);
-		model.addObject("tails", ttService.findByText(text) );
-		model.addObject("findText",text);
-		model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
-		
-		return model;
-	}
 	
 	@RequestMapping(value = {"/showMessage"} , method = RequestMethod.GET)
 	public ModelAndView  messageUrl(HttpSession session) 

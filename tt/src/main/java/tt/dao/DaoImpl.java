@@ -51,6 +51,8 @@ import tt.modelattribute.MA_search;
 public class DaoImpl implements Dao {
 	
 	
+	
+	
     @Resource
     private Environment env;
 
@@ -313,8 +315,10 @@ public class DaoImpl implements Dao {
 
 
 	@Override
-	public Set<DirNomenclature> getNomenclInTails(MA_search MA_search , int p, int itemOnPage) {
+	public Object[] getNomenclInTails(MA_search MA_search , int p, int itemOnPage) {
 
+		
+		
 		LinkedHashSet<DirNomenclature> dirNomSet = new LinkedHashSet<DirNomenclature>();
 		
 		String sqlNomeclatureInTails = env.getProperty("sqlNomeclatureInTails");
@@ -366,7 +370,7 @@ public class DaoImpl implements Dao {
 		
 		long count = ((BigInteger) getSession().createSQLQuery(sqlNomeclatureInTails_count).uniqueResult()).longValue();
 		
-		System.out.println("count - " +count);
+		//System.out.println("count - " +count);
 		
 		
 		for(Object[] item: tmpList)
@@ -379,8 +383,9 @@ public class DaoImpl implements Dao {
 			dirNomSet.add((DirNomenclature)item[0]);
 		}
 		
+		Object[] result = {count, dirNomSet};
 
-		return dirNomSet;
+		return result;
 	}
 
 	@Override

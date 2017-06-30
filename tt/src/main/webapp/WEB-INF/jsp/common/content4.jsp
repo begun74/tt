@@ -5,17 +5,13 @@
 <%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 
-						<c:set var="perPage" value="${param.perPage}"/>
-						<c:if test="${empty param.perPage}" >
-							<c:set var="perPage" value="9"/>
-						</c:if>
+						<c:set var="perPage" value="${9}"/>
 
 						<c:set var="p" value="${param.p}"/>
 						<c:if test="${empty param.p}" >
 							<c:set var="p" value="1"/>
 						</c:if>
 						
-						<c:set var="allItems" value="${fn:length(tails)}"/>
 						<c:set var="start" value="${0}"/>
 						<c:set var="stop" value="${perPage-1}"/>
 						
