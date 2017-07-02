@@ -8,11 +8,13 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 
 
 @Component
 @Scope("session")
+@SessionAttributes("MA_search")
 public class MA_search implements Serializable {
 
 	/**

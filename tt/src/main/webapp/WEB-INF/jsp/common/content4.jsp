@@ -38,11 +38,14 @@
 											<a id="0" href=""  class="waiting sortby" ><span class="label label-default"><spring:message code="by.name"/></span></a>
 											<a id="1" href=""  class="waiting sortby" ><span class="label label-success"><spring:message code="by.price"/></span></a>
 										</c:if>
-										<select id="selectperp" class="selectpicker service-small" style="font: 10px" data-width="55px" name="${mA_search.p_p}" >
+										<select id="selectperp" class="selectpicker service-small" style="font-size: 10px" data-width="55px" name="${mA_search.p_p}" >
+											<optgroup>
         										<option value="" ></option>
-        										<option value="4" <c:if test="${mA_search.p_p eq 4 }">selected</c:if> >4</option>
+        										<option value="4" class="service-small" <c:if test="${mA_search.p_p eq 4 }">selected</c:if> >4</option>
         										<option value="6" <c:if test="${mA_search.p_p eq 6 }">selected</c:if> >6</option>
         										<option value="9" <c:if test="${mA_search.p_p eq 9 }">selected</c:if> >9</option>
+        										<option value="15" <c:if test="${mA_search.p_p eq 15 }">selected</c:if> >15</option>
+        									</optgroup>
 										</select>
 										
 									</div>
@@ -100,8 +103,21 @@
  							<div class="col-md-3"></div>
 						</div -->						
 
-						<div id="light_pagination" class="col-md-14" >
-							<div id="light-pagination" class="col-md-12" ></div>
+						<div id="light_pagination" class="row" >
+							<div id="light-pagination" class="col-xs-10" ></div>
+							<div class="col-xs-2 span12">
+										<label for="selectperp" >Show per</label>
+										<select id="selectperp" class="" style="font-size: 15px; width: 50px" name="${mA_search.p_p}" >
+											<optgroup>
+        										<option value="" ></option>
+        										<option value="4" <c:if test="${mA_search.p_p eq 4 }">selected</c:if> >4</option>
+        										<option value="6" <c:if test="${mA_search.p_p eq 6 }">selected</c:if> >6</option>
+        										<option value="9" <c:if test="${mA_search.p_p eq 9 }">selected</c:if> >9</option>
+        										<option value="15" <c:if test="${mA_search.p_p eq 15 }">selected</c:if> >15</option>
+        									</optgroup>
+										</select>
+										
+							</div>
 						</div>
 						
 
