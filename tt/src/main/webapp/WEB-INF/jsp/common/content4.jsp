@@ -5,7 +5,7 @@
 <%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 
-						<c:set var="perPage" value="${param.p_p}"/>
+						<c:set var="perPage" value="${mA_search.p_p}"/>
 
 
 						<c:set var="p" value="${param.p}"/>
@@ -38,16 +38,6 @@
 											<a id="0" href=""  class="waiting sortby" ><span class="label label-default"><spring:message code="by.name"/></span></a>
 											<a id="1" href=""  class="waiting sortby" ><span class="label label-success"><spring:message code="by.price"/></span></a>
 										</c:if>
-										<select id="selectperp" class="selectpicker service-small" style="font-size: 10px" data-width="55px" name="${mA_search.p_p}" >
-											<optgroup>
-        										<option value="" ></option>
-        										<option value="4" class="service-small" <c:if test="${mA_search.p_p eq 4 }">selected</c:if> >4</option>
-        										<option value="6" <c:if test="${mA_search.p_p eq 6 }">selected</c:if> >6</option>
-        										<option value="9" <c:if test="${mA_search.p_p eq 9 }">selected</c:if> >9</option>
-        										<option value="15" <c:if test="${mA_search.p_p eq 15 }">selected</c:if> >15</option>
-        									</optgroup>
-										</select>
-										
 									</div>
 								</c:if>
 							</div>
@@ -64,7 +54,7 @@
 												<c:set var="tn_length" value="${fn:length(tail_name)}" />
 												<c:set var="arr_tail_name" value="${fn:split(tail.name,' ')}"/>
 												
-												<div class="col-sm-4 col-xs-4">
+												<div class="col-sm-4 col-md-4">
 														<div class="single-products product-image-wrapper ">
 																<div class="productinfo text-center" title="${tail_name}" >
 																	<a href="product-details?id=${tail.id}">
@@ -103,21 +93,20 @@
  							<div class="col-md-3"></div>
 						</div -->						
 
-						<div id="light_pagination" class="row" >
-							<div id="light-pagination" class="col-xs-10" ></div>
-							<div class="col-xs-2 span12">
-										<label for="selectperp" >Show per</label>
-										<select id="selectperp" class="" style="font-size: 15px; width: 50px" name="${mA_search.p_p}" >
-											<optgroup>
-        										<option value="" ></option>
-        										<option value="4" <c:if test="${mA_search.p_p eq 4 }">selected</c:if> >4</option>
-        										<option value="6" <c:if test="${mA_search.p_p eq 6 }">selected</c:if> >6</option>
-        										<option value="9" <c:if test="${mA_search.p_p eq 9 }">selected</c:if> >9</option>
-        										<option value="15" <c:if test="${mA_search.p_p eq 15 }">selected</c:if> >15</option>
-        									</optgroup>
-										</select>
-										
+						<div class="form-group">
+							<div class="col-sm-10 col-md-9" >
+									<div id="light-pagination" ></div>
 							</div>
-						</div>
-						
-
+							<div class="col-sm-2 col-md-3" >
+											<select id="selectperp" class="selectperp" style="font-size: 12px; width: 50px; border:1px solid #F7F7F5;" data-width="75px" name="${mA_search.p_p}" >
+												<optgroup>
+	        										<option value="9" <c:if test="${mA_search.p_p eq 9 }">selected</c:if> >9</option>
+	        										<option value="15" <c:if test="${mA_search.p_p eq 15 }">selected</c:if> >15</option>
+	        										<option value="20" <c:if test="${mA_search.p_p eq 20 }">selected</c:if> >20</option>
+	        									</optgroup>
+											</select>
+											<label for="selectperp">
+												<span><spring:message code="per.page"/></span>
+											</label>
+							</div>
+						</div>						

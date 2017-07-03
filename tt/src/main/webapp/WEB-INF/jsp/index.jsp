@@ -49,14 +49,14 @@
 	<!-- slider_main -->
 	
 	<section>
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row">
-				<div class="col-xs-3 col-sm-3 col-md-3">
+				<div class="col-sm-4 col-md-3">
 					<!-- product_filter -->
 					<%@include file="common/product_filter1.jsp" %>
 					<!-- product_filter -->
 				</div>
-				<div class="col-xs-9 col-sm-9 col-md-9">
+				<div class="col-sm-8 col-md-9">
 					<!-- content -->
 					<%@include file="common/content4.jsp" %>
 					<!-- content -->

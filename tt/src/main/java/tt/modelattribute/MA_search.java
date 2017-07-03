@@ -124,18 +124,14 @@ public class MA_search implements Serializable {
 	}
 
 
-
 	@Override
 	public String toString() {
-		return "MA_search [pn=" + pn + ", gndr=" + gndr + ", cat=" + cat + ", type=" + type + ", sortby=" + sortby
-				+ ", asc=" + asc + "]";
+		return "MA_search [pn=" + pn + ", gndr=" + gndr + ", cat=" + cat + ", type=" + type + ", p_p=" + p_p
+				+ ", sortby=" + sortby + ", asc=" + asc + "]";
 	}
 
 
 
 	
-
-
-
 	
 }
