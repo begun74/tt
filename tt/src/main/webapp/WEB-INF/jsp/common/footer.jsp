@@ -149,6 +149,7 @@
 			</div>
 		</div -->
 		
+		<div style="height: 150px"></div>
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row display-table">

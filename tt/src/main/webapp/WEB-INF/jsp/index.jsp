@@ -51,7 +51,7 @@
 	<section>
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-sm-3 col-md-3">
+				<div class="col-xs-3 col-sm-3 col-md-3">
 					<!-- product_filter -->
 					<%@include file="common/product_filter1.jsp" %>
 					<!-- product_filter -->

@@ -64,7 +64,7 @@
 												<c:set var="tn_length" value="${fn:length(tail_name)}" />
 												<c:set var="arr_tail_name" value="${fn:split(tail.name,' ')}"/>
 												
-												<div class="col-sm-4 col-xs-8">
+												<div class="col-sm-4 col-xs-4">
 														<div class="single-products product-image-wrapper ">
 																<div class="productinfo text-center" title="${tail_name}" >
 																	<a href="product-details?id=${tail.id}">
