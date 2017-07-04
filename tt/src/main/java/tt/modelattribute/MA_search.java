@@ -30,9 +30,9 @@ public class MA_search implements Serializable {
 	
 	List<Long> type = new ArrayList<Long>();//Type бельевой, верхний, чулочно-носочный
 	
-	int p_p = 9;
+	private int p_p = 9;
 	
-	int sortby = 0;
+	private int sortby = 0;
 	
 	
 	private boolean asc = true;

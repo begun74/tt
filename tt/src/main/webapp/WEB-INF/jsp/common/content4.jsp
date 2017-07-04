@@ -29,7 +29,18 @@
 									<div class="col-xs-6 text-left">
 										<p><spring:message code="remains.of.goods.on"/> <fmt:formatDate pattern = "dd-MM-yyyy"  value="${tails.iterator().next().tails.iterator().next().create_date}" />.</p>
 									</div>
-									<div class="col-sm-6 text-right font20px"> 
+									
+									<div class="col-sm-6 text-right ">
+										<c:if test="${mA_search.sortby eq 0 }">
+											<label for="sort.by.name" class="cursor"><input type="radio" id="sort.by.name" name="sortby" class="sortby" style="color:green" value="0" checked="checked"/><spring:message code="by.name"/></label>
+											<label for="sort.by.price" class="cursor"><input type="radio" id="sort.by.price" name="sortby" class="sortby" value="1"/><spring:message code="by.price"/></label>
+										</c:if>
+										<c:if test="${mA_search.sortby eq 1 }">
+											<label for="sort.by.name" class="cursor"><input type="radio" id="sort.by.name" name="sortby" class="sortby" value="0"/><spring:message code="by.name"/></label>
+											<label for="sort.by.price" class="cursor"><input type="radio" id="sort.by.price" name="sortby" class="sortby" style="font-color:green" value="1" checked="checked"/><spring:message code="by.price"/></label>
+										</c:if>
+									</div>
+									<!-- div class="col-sm-6 text-right font20px"> 
 										<c:if test="${mA_search.sortby eq 0 }">
 											<a id="0" href=""  class="waiting sortby" ><span class="label label-success"><spring:message code="by.name"/></span></a>
 											<a id="1" href=""  class="waiting sortby" ><span class="label label-default"><spring:message code="by.price"/></span></a>
@@ -38,7 +49,7 @@
 											<a id="0" href=""  class="waiting sortby" ><span class="label label-default"><spring:message code="by.name"/></span></a>
 											<a id="1" href=""  class="waiting sortby" ><span class="label label-success"><spring:message code="by.price"/></span></a>
 										</c:if>
-									</div>
+									</div -->
 								</c:if>
 							</div>
 								<hr/>

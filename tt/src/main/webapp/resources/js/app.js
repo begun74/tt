@@ -7,22 +7,30 @@ $(document).ready(function(){
 	getCurrency("https://www.nbrb.by/API/ExRates/Rates/978?ParamMode=1",$('#eur_978'),'€ ');
 	
 	gismeteoWeather();
-	
+	/*
     $(".waiting").click(function() {
-    	/*setTimeout(function() {
-    		$('#productFilterWait').modal('show');}
-		,700);
-    	*/
     	$('#productFilterWait').modal('show');
     	document.product_filter.submit();
     });
-    
+    */
     
     $("#selectperp").change(function() {
     	$('#productFilterWait').modal('show');
     	document.product_filter.p_p.value = this.value; 
     	document.product_filter.submit();
     });
+    
+	//$(".sortby").click(function() {
+    	//$("#sortby").val($(this).attr('id'));
+    	//document.product_filter.sortby.value = $(this).val(); 
+    	//alert('document.product_filter.sortby.value - '+document.product_filter.sortby.value);
+    	//asc_inv = !asc_inv;
+    	//$("#asc").val(asc_inv);
+    	
+	//});
+
+    
+    
 });
 
 

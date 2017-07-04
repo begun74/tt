@@ -87,12 +87,16 @@
 	    $(function() {
 	    	
 				var asc_inv = ${mA_search.asc};
+				//var sortby = ${mA_search.sortby};
 				
-			    $(".sortby").click(function() {
-			    	$("#sortby").val($(this).attr('id'));
+				
+				$(".sortby").click(function() {
+					document.product_filter.sortby.value = $(this).val(); 
 			    	asc_inv = !asc_inv;
 			    	$("#asc").val(asc_inv);
 			    	
+			    	$('#productFilterWait').modal('show');
+			    	document.product_filter.submit();
 	    		});
 				
 				
@@ -144,7 +148,7 @@
 		            prevText:"<<",
 		            nextText:">>",
 		            hrefTextPrefix: "?p=",
-		            hrefTextSuffix: pns_get + gndrs_get + cats_get + types_get + sortby_get + asc_get + p_p_get,
+		            hrefTextSuffix: pns_get + gndrs_get + cats_get + types_get + asc_get + p_p_get, //+ sortby_get
 		            currentPage: ${p}
 		        });
 
