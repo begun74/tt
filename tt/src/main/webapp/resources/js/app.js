@@ -20,14 +20,12 @@ $(document).ready(function(){
     	document.product_filter.submit();
     });
     
-	//$(".sortby").click(function() {
-    	//$("#sortby").val($(this).attr('id'));
-    	//document.product_filter.sortby.value = $(this).val(); 
-    	//alert('document.product_filter.sortby.value - '+document.product_filter.sortby.value);
-    	//asc_inv = !asc_inv;
-    	//$("#asc").val(asc_inv);
+	$("#sortby").change(function() {
+    	$('#productFilterWait').modal('show');
+    	document.product_filter.sortby.value = this.value;
+    	document.product_filter.submit();
     	
-	//});
+	});
 
     
     

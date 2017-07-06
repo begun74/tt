@@ -110,10 +110,27 @@ public class DaoImpl implements Dao {
 		return getSession().get(clazz, id);
 	}
 
+	
+	
+	
 	@Override
 	public List<DirNomenclature> getNomenclatureList() {
 		// TODO Auto-generated method stub
 		return getSession().createSQLQuery("select * from dir_nomenclature order by name").addEntity(DirNomenclature.class).list();
+	}
+	
+	
+	@Override
+	public Object[] getNomenclatureList(int p, int itemOnPage) {
+		// TODO Auto-generated method stub
+		Object[] result = {null,null};
+		result[0] = ((BigInteger )getSession().createSQLQuery("select count(dn.*) from dir_nomenclature dn").uniqueResult()).longValue();
+		result[1] = (List<DirNomenclature>)getSession().createSQLQuery("select * from dir_nomenclature order by name").addEntity(DirNomenclature.class)
+								.setFirstResult(p*itemOnPage-itemOnPage)
+								.setMaxResults(itemOnPage)
+								.list();
+		
+		return result;
 	}
 
 	@Override

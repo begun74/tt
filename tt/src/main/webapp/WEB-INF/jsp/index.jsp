@@ -89,8 +89,8 @@
 				var asc_inv = ${mA_search.asc};
 				//var sortby = ${mA_search.sortby};
 				
-				
-				$(".sortby").click(function() {
+				/*
+				$("#sortby").click(function() {alert("sortby");
 					document.product_filter.sortby.value = $(this).val(); 
 			    	asc_inv = !asc_inv;
 			    	$("#asc").val(asc_inv);
@@ -98,7 +98,7 @@
 			    	$('#productFilterWait').modal('show');
 			    	document.product_filter.submit();
 	    		});
-				
+				*/
 				
 			    var p_p = ${mA_search.p_p};
 			    var p_p_get = '&p_p='+p_p;
@@ -156,6 +156,8 @@
 	    });
 
         $(document).ready(function(){
+        	
+        	
 	        $(".search_text").keypress(function(event) {
 	        	if ( event.which == 13 ) 
 	        	{

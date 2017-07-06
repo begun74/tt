@@ -278,6 +278,10 @@ select * from dir_nomenclature dn where composition is not null
 	where code = 10002076234
 	and composition is not null
 
+
+select count(dn.*) from dir_nomenclature dn 
+	order by name
+
 --======================= SELECT OFFSET LIMIT ==========================
 
 select count(*)  

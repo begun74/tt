@@ -24,10 +24,11 @@
     <link href="resources/admin/css/wysiwyg.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="resources/admin/css/fancybox-1.3.1.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="resources/admin/css/visualize.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="resources/css/simplePagination.css" rel="stylesheet" type="text/css">
 
 	<script type="text/javascript" src="resources/admin/js/jquery-1.4.2.min.js"></script>   
     <script type="text/javascript" src="resources/admin/js/jquery.dimensions.min.js"></script>
-    
+    <script type="text/javascript" src="resources/js/jquery.simplePagination.js"></script>
     <!-- // Tabs // -->
     <script type="text/javascript" src="resources/admin/js/ui.core.js"></script>
     <script type="text/javascript" src="resources/admin/js/jquery.ui.tabs.min.js"></script>
@@ -333,6 +334,18 @@
         
         <!-- /box -->
         <div class="box">
+								<c:set var="p_p" value="20"/>
+								<c:if test="${empty param.p_p}" >
+									<c:set var="p" value="20"/>
+								</c:if>
+	
+	
+								<c:set var="p" value="${param.p}"/>
+								<c:if test="${empty param.p}" >
+									<c:set var="p" value="1"/>
+								</c:if>
+						
+						  
  				    			<table class="tab" border="0">
 				    				<tr align="center">
 					    				<th width="54%"><spring:message code="name2"/></th>
@@ -341,12 +354,12 @@
 				    				</tr>
 				    			</table>
 
-									<div align="center" style="overflow-y:scroll; overflow-x: none; height:400px; width:100%;">
+									<div align="center" style="overflow-y:scroll; overflow-x: none; height:200px; width:100%;">
 										<table class="tab tab-drag">
-											<c:forEach items="${dirNomencls}" var="dirNomencl" varStatus="loop">
+											<c:forEach items="${dirNomencls}" var="dirNomencl" varStatus="loop" >
 												<tr class="table_row">
 													<td class="dragHandle">&nbsp;</td>
-													<td>${loop.count}</td>
+													<td>${loop.count+(p*p_p-p_p)}</td>
 													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.name}</td>
 													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.code}</td>
 													<td style="cursor:pointer;" onclick="$('#name').val('${dirNomencl.name}'); $('#code').val('${dirNomencl.code}'); $('#article').val('${dirNomencl.article}'); viewPhotoNomencl('${dirNomencl.code}');">${dirNomencl.model}</td>
@@ -360,6 +373,7 @@
 											</c:forEach>
 										</table>
 									</div>
+									<div id="light-pagination" class="" style="margin: 5px"></div>
         </div>
         <!-- /box -->
     
@@ -389,6 +403,18 @@
 			$( ".table_row" ).click(function() {
 				$(this).addClass("selected").siblings().removeClass("selected");
 			});
+			
+			
+			$('#light-pagination').pagination({
+	            items: ${allItems},
+	            itemsOnPage: ${p_p},
+	            cssStyle: 'light-theme',
+	            prevText:"<<",
+	            nextText:">>",
+	            hrefTextPrefix: "?act=2&p_p=20&p=",
+	            currentPage: ${p}
+	        });
+
 	    });
 
   		

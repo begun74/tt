@@ -30,7 +30,13 @@
 										<p><spring:message code="remains.of.goods.on"/> <fmt:formatDate pattern = "dd-MM-yyyy"  value="${tails.iterator().next().tails.iterator().next().create_date}" />.</p>
 									</div>
 									
-									<div class="col-sm-6 text-right ">
+									<!-- -div class="col-sm-6 text-right ">
+										<select id="sortby" name="sortby" style="font-size: 12px; width: 150px; border:1px solid #F7F7F5;">
+											<option value="0" <c:if test="${mA_search.sortby eq 0 }">selected</c:if> ><spring:message code="by.name"/></option>
+											<option value="1" <c:if test="${mA_search.sortby eq 1 }">selected</c:if> ><spring:message code="by.price"/></option>
+										</select>
+									</div -->
+									<div class="col-sm-6 text-right font20px"> 
 										<c:if test="${mA_search.sortby eq 0 }">
 											<label for="sort.by.name" class="cursor"><input type="radio" id="sort.by.name" name="sortby" class="sortby" style="color:green" value="0" checked="checked"/><spring:message code="by.name"/></label>
 											<label for="sort.by.price" class="cursor"><input type="radio" id="sort.by.price" name="sortby" class="sortby" value="1"/><spring:message code="by.price"/></label>
@@ -39,8 +45,7 @@
 											<label for="sort.by.name" class="cursor"><input type="radio" id="sort.by.name" name="sortby" class="sortby" value="0"/><spring:message code="by.name"/></label>
 											<label for="sort.by.price" class="cursor"><input type="radio" id="sort.by.price" name="sortby" class="sortby" style="font-color:green" value="1" checked="checked"/><spring:message code="by.price"/></label>
 										</c:if>
-									</div>
-									<!-- div class="col-sm-6 text-right font20px"> 
+										<!-- 
 										<c:if test="${mA_search.sortby eq 0 }">
 											<a id="0" href=""  class="waiting sortby" ><span class="label label-success"><spring:message code="by.name"/></span></a>
 											<a id="1" href=""  class="waiting sortby" ><span class="label label-default"><spring:message code="by.price"/></span></a>
@@ -49,7 +54,8 @@
 											<a id="0" href=""  class="waiting sortby" ><span class="label label-default"><spring:message code="by.name"/></span></a>
 											<a id="1" href=""  class="waiting sortby" ><span class="label label-success"><spring:message code="by.price"/></span></a>
 										</c:if>
-									</div -->
+										-->
+									</div>
 								</c:if>
 							</div>
 								<hr/>
@@ -105,8 +111,8 @@
 						</div -->						
 
 						<div class="form-group">
-							<div class="col-sm-10 col-md-9" >
-									<div id="light-pagination" ></div>
+							<div class="col-sm-10 col-md-9 text-center" >
+									<div id="light-pagination" class="text-center" ></div>
 							</div>
 							<div class="col-sm-2 col-md-3" >
 											<select id="selectperp" class="selectperp" style="font-size: 12px; width: 50px; border:1px solid #F7F7F5;" data-width="75px" name="${mA_search.p_p}" >

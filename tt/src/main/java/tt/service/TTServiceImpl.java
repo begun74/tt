@@ -100,11 +100,16 @@ public class TTServiceImpl implements Dao {
 		LOG.info(this.getClass() +".delObject('"+obj+"')");
 	}
 
-
 	@Override
 	public List<DirNomenclature> getNomenclatureList() {
 		// TODO Auto-generated method stub
 		return dao.getNomenclatureList();
+	}
+
+	@Override
+	public Object[] getNomenclatureList(int p, int itemOnPage) {
+		// TODO Auto-generated method stub
+		return dao.getNomenclatureList(p,itemOnPage);
 	}
 
 

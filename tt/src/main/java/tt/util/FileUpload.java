@@ -139,7 +139,7 @@ public class FileUpload {
 					else if(model instanceof Tail)
 					{
 
-						List<DirNomenclature> lN = ttService.getNomenclatureList();
+						List<DirNomenclature> lN = (List<DirNomenclature>)ttService.getNomenclatureList();
 						HashMap<Long,DirNomenclature> hmNomencl = new HashMap<Long,DirNomenclature>();
 						for(DirNomenclature dn: lN) 
 							hmNomencl.put(dn.getCode(), dn);

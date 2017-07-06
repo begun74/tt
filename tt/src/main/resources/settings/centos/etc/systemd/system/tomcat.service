@@ -13,16 +13,31 @@ Environment=CATALINA_BASE=/opt/tomcat
 ### Default
 ### Environment='CATALINA_OPTS=-Xms768M  -Xmx1024M -server -XX:+UseParallelGC -XX:ParallelGCThreads=8'
 
-Environment='CATALINA_OPTS= -Xloggc:$CATALINA_HOME/logs/gc.log -XX:+PrintHeapAtGC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:-HeapDumpOnOutOfMemoryError'
+Environment='CATALINA_OPTS= -Xloggc:$CATALINA_HOME/logs/gc.log -XX:+PrintHeapAtGC -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -XX:-HeapDumpOnOutOfMemoryError -XX:+PrintTenuringDistribution'
+
+#Environment='CATALINA_OPTS= -Xloggc:$CATALINA_HOME/logs/gc.log'
 
 ### Default
 #### Environment='JAVA_OPTS=-Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom'
 
 Environment='JAVA_OPTS= -server -Djava.awt.headless=true -Djava.security.egd=file:/dev/./urandom \
-					-Xms512M  -Xmx768M \
-					-XX:PermSize=256M  -XX:MaxPermSize=256M \ 
-					-XX:+UseParallelGC -XX:ParallelGCThreads=4 -XX:MaxGCPauseMillis=200 \
-					-XX:GCTimeRatio=19'
+                                        -Xms512M  -Xmx1512M -Xss512k \
+ 					-XX:+UseParallelGC -XX:ParallelGCThreads=4 -XX:+UseParallelOldGC \
+                                        -XX:SurvivorRatio=90 -XX:TargetSurvivorRatio=90 -XX:MaxTenuringThreshold=1 -XX:+AggressiveOpts'
+
+#                                        -XX:SurvivorRatio=8 -XX:TargetSurvivorRatio=90 -XX:MaxTenuringThresh$
+
+
+
+
+#					-XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCApplicationStoppedTime \
+#					-XX:+PrintGCApplicationConcurrentTime -verbose:gc'
+
+#					-XX:+UseConcMarkSweepGC -XX:+UseParNewGC
+#					-Xms512M  -Xmx1512M \
+#					-XX:PermSize=256M  -XX:MaxPermSize=256M \ 
+#					-XX:+UseParallelGC -XX:ParallelGCThreads=4 -XX:GCTimeRatio=1 -XX:MaxGCPauseMillis=200'
+##-XX:GCTimeRatio=19'
 
 ExecStart=/opt/tomcat/bin/startup.sh
 ExecStop=/bin/kill -15 $MAINPID

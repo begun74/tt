@@ -71,7 +71,9 @@ public class AdminCtrl {
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView  manage(HttpSession session, 
 				@RequestParam(value = "act",   defaultValue = "0") String act,
-				@RequestParam(value = "error",   defaultValue = "") String error) 
+				@RequestParam(value = "error",   defaultValue = "") String error,
+				@RequestParam(value = "p", defaultValue = "1") int p,
+				@RequestParam(value = "p_p", defaultValue = "10") int perPage) 
 	{
 		ModelAndView model = new ModelAndView("admin/main");
 		
@@ -85,8 +87,10 @@ public class AdminCtrl {
 			break;
 
 			case "2":
+				Object[] nomencList = ttService.getNomenclatureList(p,perPage);
 				model = new ModelAndView("admin/addNomencl");
-				model.addObject("dirNomencls", ttService.getNomenclatureList());
+				model.addObject("dirNomencls", nomencList[1]);
+				model.addObject("allItems", nomencList[0]);
 			break;
 
 			case "3":

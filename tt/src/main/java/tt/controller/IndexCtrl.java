@@ -96,12 +96,7 @@ public class IndexCtrl implements Serializable {
 	public String  searchGet(HttpSession session, @ModelAttribute("product_filter") MA_search mA_search, Model model, 
 								@RequestParam(value = "p", defaultValue = "1") int p) 
 	{
-		//this.mA_search = session.getAttribute("mA_search") == null?mA_search:(MA_search)session.getAttribute("mA_search");
-		//session.setAttribute("mA_search", this.mA_search);
 		this.mA_search = mA_search;
-		
-		//if(this.mA_search.isAsc() != mA_search.isAsc())
-			//this.mA_search.setAsc(mA_search.isAsc());
 		
 		model.addAttribute("version",appBean.getVersion());
 		
@@ -116,13 +111,11 @@ public class IndexCtrl implements Serializable {
 		model.addAttribute("genders", ttService.getGenderList());
 		model.addAttribute("types", ttService.getNomenclGroupRootListInTails());
 
-		//model.addAttribute("tails", ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage) );
 		
 		Object[] resultNomInTails = ttService.getNomenclInTails(this.mA_search, p , mA_search.getP_p());
 		
 		model.addAttribute("allItems",resultNomInTails[0]);
 		model.addAttribute("tails",resultNomInTails[1]);
-		
 		
 		
 		model.addAttribute("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
