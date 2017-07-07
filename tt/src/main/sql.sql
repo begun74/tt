@@ -50,6 +50,8 @@ where dn.code=10002076656
 
 select count(*) from tails;
 
+select * from tails t where t.destruction_date is null order by create_date desc
+
 select * from tails t
 	inner join dir_nomenclature dn on dn.id_dir_nomenclature=t.fk_id_nomenclature
 	where id_tails=95849 order by create_date, id_tails;

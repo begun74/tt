@@ -67,14 +67,14 @@ public class AppBean implements Serializable {
 			try {
 				mapStore.put(s.getSerialVersionUID(), bytesToObject(s.getBytearray()));
 			} catch (ClassNotFoundException | IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e.getMessage();
 			}
 		}
 		
+		
 		//listProviders = ttService.getProviderList();
 		//System.out.println("mapStore - "+mapStore);
-		//System.out.println("AppBean @PostConstruct ");
+		System.out.println("\n========= AppBean INIT() =========\n");
 	}
 	
 	
@@ -168,7 +168,7 @@ public class AppBean implements Serializable {
 
 	@PreDestroy
 	void destr() {
-		System.out.println("AppBean @PreDestroy ");
+		System.out.println("\n========= AppBean DESTROY() =========\n");
 	}
 
 

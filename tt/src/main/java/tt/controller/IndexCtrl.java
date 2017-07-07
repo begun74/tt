@@ -116,11 +116,14 @@ public class IndexCtrl implements Serializable {
 		
 		model.addAttribute("allItems",resultNomInTails[0]);
 		model.addAttribute("tails",resultNomInTails[1]);
+		model.addAttribute("maxDateInTails",resultNomInTails[2]);
 		
 		
 		model.addAttribute("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
 		
 		model.addAttribute("sessBean", sessBean);
+		
+		System.gc();
 		
 		return "index";
 	}

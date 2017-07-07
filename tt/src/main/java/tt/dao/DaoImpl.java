@@ -340,7 +340,7 @@ public class DaoImpl implements Dao {
 		
 		String sqlNomeclatureInTails = env.getProperty("sqlNomeclatureInTails");
 		String sqlNomeclatureInTails_count = env.getProperty("sqlNomeclatureInTails_count");
-		
+		String sqlMaxCreateDateTails = env.getProperty("sqlMaxCreateDateTails");
 		//System.out.println("MA_search.isAsc() - "+MA_search.isAsc());
 		
 		HashMap<Integer, String> sortby_hs = new HashMap<Integer, String>();
@@ -387,6 +387,7 @@ public class DaoImpl implements Dao {
 		
 		long count = ((BigInteger) getSession().createSQLQuery(sqlNomeclatureInTails_count).uniqueResult()).longValue();
 		
+		Timestamp maxDateInTails = (Timestamp) getSession().createSQLQuery(sqlMaxCreateDateTails).uniqueResult();
 		//System.out.println("count - " +count);
 		
 		
@@ -400,7 +401,7 @@ public class DaoImpl implements Dao {
 			dirNomSet.add((DirNomenclature)item[0]);
 		}
 		
-		Object[] result = {count, dirNomSet};
+		Object[] result = {count, dirNomSet, maxDateInTails};
 
 		return result;
 	}

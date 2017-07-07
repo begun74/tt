@@ -24,6 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
 import tt.annotation.CheckAccess;
 import tt.annotation.Loggable;
 import tt.annotation.ProcessTail;
+import tt.bean.AppBean;
 import tt.dao.Dao;
 import tt.dao.DaoImpl;
 import tt.model.ContactUsMessages;
@@ -47,6 +48,7 @@ public class TTServiceImpl implements Dao {
 
 	@Autowired
 	private DaoImpl dao;
+	
 	
 	private  static  final  Log  LOG  =  LogFactory.getLog(TTServiceImpl.class);
 	

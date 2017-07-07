@@ -86,8 +86,8 @@
     <script>
 	    $(function() {
 	    	
-				var asc_inv = ${mA_search.asc};
-				//var sortby = ${mA_search.sortby};
+				//var asc_inv = !${mA_search.asc};
+				document.product_filter.asc.value = !${mA_search.asc}; 
 				
 				/*
 				$("#sortby").click(function() {alert("sortby");

@@ -20,13 +20,19 @@ $(document).ready(function(){
     	document.product_filter.submit();
     });
     
-	$("#sortby").change(function() {
+	$("#sortbyName").click(function() {
     	$('#productFilterWait').modal('show');
-    	document.product_filter.sortby.value = this.value;
+    	document.product_filter.sortby.value = "0";
     	document.product_filter.submit();
     	
 	});
 
+	$("#sortbyPrice").click(function() {
+    	$('#productFilterWait').modal('show');
+    	document.product_filter.sortby.value = "1";
+    	document.product_filter.submit();
+    	
+	});
     
     
 });

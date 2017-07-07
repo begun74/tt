@@ -27,7 +27,7 @@
 							<div class="row">
 								<c:if test="${allItems gt 0}">
 									<div class="col-xs-6 text-left">
-										<p><spring:message code="remains.of.goods.on"/> <fmt:formatDate pattern = "dd-MM-yyyy"  value="${tails.iterator().next().tails.iterator().next().create_date}" />.</p>
+										<p><spring:message code="remains.of.goods.on"/> <fmt:formatDate pattern = "dd-MM-yyyy"  value="${maxDateInTails}" />.</p>
 									</div>
 									
 									<!-- -div class="col-sm-6 text-right ">
@@ -36,7 +36,8 @@
 											<option value="1" <c:if test="${mA_search.sortby eq 1 }">selected</c:if> ><spring:message code="by.price"/></option>
 										</select>
 									</div -->
-									<div class="col-sm-6 text-right font20px"> 
+									<div class="col-sm-6 text-right font20px">
+										<!--  
 										<c:if test="${mA_search.sortby eq 0 }">
 											<label for="sort.by.name" class="cursor"><input type="radio" id="sort.by.name" name="sortby" class="sortby" style="color:green" value="0" checked="checked"/><spring:message code="by.name"/></label>
 											<label for="sort.by.price" class="cursor"><input type="radio" id="sort.by.price" name="sortby" class="sortby" value="1"/><spring:message code="by.price"/></label>
@@ -45,16 +46,17 @@
 											<label for="sort.by.name" class="cursor"><input type="radio" id="sort.by.name" name="sortby" class="sortby" value="0"/><spring:message code="by.name"/></label>
 											<label for="sort.by.price" class="cursor"><input type="radio" id="sort.by.price" name="sortby" class="sortby" style="font-color:green" value="1" checked="checked"/><spring:message code="by.price"/></label>
 										</c:if>
-										<!-- 
+										 -->
+										 
 										<c:if test="${mA_search.sortby eq 0 }">
-											<a id="0" href=""  class="waiting sortby" ><span class="label label-success"><spring:message code="by.name"/></span></a>
-											<a id="1" href=""  class="waiting sortby" ><span class="label label-default"><spring:message code="by.price"/></span></a>
+											<span id="sortbyName" class="sortby cursor label label-success" value="0"><spring:message code="by.name"/></span>
+											<span id="sortbyPrice" class="sortby cursor label label-default" value="1"><spring:message code="by.price"/></span>
 										</c:if>
 										<c:if test="${mA_search.sortby eq 1 }">
-											<a id="0" href=""  class="waiting sortby" ><span class="label label-default"><spring:message code="by.name"/></span></a>
-											<a id="1" href=""  class="waiting sortby" ><span class="label label-success"><spring:message code="by.price"/></span></a>
+											<span id="sortbyName" class="sortby cursor label label-default" value="0"><spring:message code="by.name"/></span>
+											<span id="sortbyPrice" class="sortby cursor label label-success" value="1"><spring:message code="by.price"/></span>
 										</c:if>
-										-->
+										
 									</div>
 								</c:if>
 							</div>
