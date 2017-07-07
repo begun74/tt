@@ -345,4 +345,12 @@ public class TTAjaxCtrl  implements Serializable {
 		}
 	}
 
+	@Override
+	public String toString() {
+		return "TTAjaxCtrl []";
+	}
+	
+	
+	
+
 }

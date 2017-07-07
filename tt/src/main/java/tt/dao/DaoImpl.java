@@ -541,7 +541,7 @@ public class DaoImpl implements Dao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<DirNomenclature> findByText(String text) {
+	public List<DirNomenclature> findByText(String text, int p, int p_p) {
 		// TODO Auto-generated method stub
 		List<DirNomenclature> tails = new LinkedList<DirNomenclature>();
 		

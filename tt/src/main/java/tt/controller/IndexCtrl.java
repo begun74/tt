@@ -102,10 +102,8 @@ public class IndexCtrl implements Serializable {
 		
 		model.addAttribute("mA_search", this.mA_search);
 		
-		//model.addAttribute("providers", ttService.getProviderList());
 		model.addAttribute("providers", ttService.getProviderListInTails());
 		
-		//model.addAttribute("categories", ttService.getNomenclGroupList());
 		model.addAttribute("categories", ttService.getNomenclGroupListInTails());
 
 		model.addAttribute("genders", ttService.getGenderList());
@@ -129,12 +127,13 @@ public class IndexCtrl implements Serializable {
 	}
 	
 	@RequestMapping(value = {"/find"} , method = RequestMethod.GET)
-	public ModelAndView  find(HttpSession session, @RequestParam(value = "text",required = true) String text, @RequestParam(value = "p", defaultValue = "1") int p, 
-			@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
+	public ModelAndView  find(HttpSession session, @RequestParam(value = "text",required = true) String text, 
+			@RequestParam(value = "p", defaultValue = "1") int p, 
+			@RequestParam(value = "p_p", defaultValue = "9") int p_p) 
 	{
 		ModelAndView model = new ModelAndView("find");
 		model.addObject("mA_search", mA_search);
-		model.addObject("tails", ttService.findByText(text) );
+		model.addObject("tails", ttService.findByText(text, p, p_p) );
 		model.addObject("findText",text);
 		model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
 		

@@ -144,11 +144,11 @@
 				$('#light-pagination').pagination({
 		            items: ${allItems},
 		            itemsOnPage: ${perPage},
-		            cssStyle: 'light-theme',
+		            cssStyle: 'light-theme waiting',
 		            prevText:"<<",
 		            nextText:">>",
 		            hrefTextPrefix: "?p=",
-		            hrefTextSuffix: pns_get + gndrs_get + cats_get + types_get + asc_get + p_p_get, //+ sortby_get
+		            hrefTextSuffix: pns_get + gndrs_get + cats_get + types_get + asc_get + p_p_get + sortby_get,
 		            currentPage: ${p}
 		        });
 

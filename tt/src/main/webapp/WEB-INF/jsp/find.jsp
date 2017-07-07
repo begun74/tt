@@ -48,7 +48,7 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<!-- content -->
-						<%@include file="common/content3.jsp" %>
+						<%@include file="common/content_find.jsp" %>
 						<!-- content -->
 					</div>
 				</div>
@@ -74,8 +74,16 @@
     
     <script>
     $(function() {
+	    var p_p = 10;
+	    var p_p_get = '&p_p='+p_p;
+	    
+		var sortby_ = 0; 
+		var	sortby_get = '&sortby='+sortby_;
+
+		var	asc_get = '&asc='+${mA_search.asc};
+
     
-    	var findText = '&text=${findText}';
+    	var findText = '&text=${findText}'+p_p_get+sortby_get+asc_get;
     	
     
 		

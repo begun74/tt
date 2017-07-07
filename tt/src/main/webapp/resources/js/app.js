@@ -2,90 +2,94 @@
 
 var errAjax = 'Error connect to AJAX server!';
 
-$(document).ready(function(){
-	getCurrency("https://www.nbrb.by/API/ExRates/Rates/840?ParamMode=1",$('#usd_840'),'$ ');
-	getCurrency("https://www.nbrb.by/API/ExRates/Rates/978?ParamMode=1",$('#eur_978'),'€ ');
-	
-	gismeteoWeather();
-	/*
-    $(".waiting").click(function() {
-    	$('#productFilterWait').modal('show');
-    	document.product_filter.submit();
-    });
-    */
-    
-    $("#selectperp").change(function() {
-    	$('#productFilterWait').modal('show');
-    	document.product_filter.p_p.value = this.value; 
-    	document.product_filter.submit();
-    });
-    
-	$("#sortbyName").click(function() {
-    	$('#productFilterWait').modal('show');
-    	document.product_filter.sortby.value = "0";
-    	document.product_filter.submit();
-    	
-	});
-
-	$("#sortbyPrice").click(function() {
-    	$('#productFilterWait').modal('show');
-    	document.product_filter.sortby.value = "1";
-    	document.product_filter.submit();
-    	
-	});
-    
-    
-});
-
-
 (function (d, w, c) {
-	        (w[c] = w[c] || []).push(function() {
-	            try {
-	                w.yaCounter44908546 = new Ya.Metrika({
-	                    id:44908546,
-	                    clickmap:true,
-	                    trackLinks:true,
-	                    accurateTrackBounce:true
-	                });
-	            } catch(e) { }
-	        });
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter44908546 = new Ya.Metrika({
+                id:44908546,
+                clickmap:true,
+                trackLinks:true,
+                accurateTrackBounce:true
+            });
+        } catch(e) { }
+    });
 
-	        var n = d.getElementsByTagName("script")[0],
-	            s = d.createElement("script"),
-	            f = function () { n.parentNode.insertBefore(s, n); };
-	        s.type = "text/javascript";
-	        s.async = true;
-	        s.src = "https://mc.yandex.ru/metrika/watch.js";
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = "https://mc.yandex.ru/metrika/watch.js";
 
-	        if (w.opera == "[object Opera]") {
-	            d.addEventListener("DOMContentLoaded", f, false);
-	        } else { f(); }
-   })(document, window, "yandex_metrika_callbacks");
-	
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+
 /*	<noscript><div><img src="https://mc.yandex.ru/watch/44908546" style="position:absolute; left:-9999px;" alt="" /></div></noscript> */
 
 
 /* Gismeteo Informer (begin) */
 var gismeteoWeather = function() {
-    	var
-		    d = this.document,
-		    o = this.navigator.userAgent.match(/MSIE (6|7|8)/) ? true : false,
-		    s = d.createElement('script');
+var
+    d = this.document,
+    o = this.navigator.userAgent.match(/MSIE (6|7|8)/) ? true : false,
+    s = d.createElement('script');
 
-			s.src  = 'https://www.gismeteo.by/informers/simple/install/';
-			s.type = 'text/javascript';
-			s[(o ? 'defer' : 'async')] = true;
-			s[(o ? 'onreadystatechange' : 'onload')] = function() {
-					    try {new GmI({
-					        slug : 'd4e91d48c850d2242f9e2b659b2b0b26',
-					        type : '88x31-1',
-					        city : '4248',
-					        lang : 'ru'
-					    })} catch (e) {}
-			}
+	s.src  = 'https://www.gismeteo.by/informers/simple/install/';
+	s.type = 'text/javascript';
+	s[(o ? 'defer' : 'async')] = true;
+	s[(o ? 'onreadystatechange' : 'onload')] = function() {
+			    try {new GmI({
+			        slug : 'd4e91d48c850d2242f9e2b659b2b0b26',
+			        type : '88x31-1',
+			        city : '4248',
+			        lang : 'ru'
+			    })} catch (e) {}
+	}
 
-		d.body.appendChild(s);
+d.body.appendChild(s);
 }
+
+
+$(document).ready(function(){
+	getCurrency("https://www.nbrb.by/API/ExRates/Rates/840?ParamMode=1",$('#usd_840'),'$ ');
+	getCurrency("https://www.nbrb.by/API/ExRates/Rates/978?ParamMode=1",$('#eur_978'),'€ ');
+	
+	gismeteoWeather();
+	
+    $(".waiting").click(function() {
+    	$('#productFilterWait').modal('show');
+    	document.product_filter.submit();
+    });
+    
+    
+    $("#selectperp").change(function() {
+    	document.product_filter.p_p.value = this.value; 
+    	form_submit('product_filter');
+    });
+    
+	$("#sortbyName").click(function() {
+    	document.product_filter.sortby.value = "0";
+    	form_submit('product_filter');
+	});
+
+	$("#sortbyPrice").click(function() {
+    	document.product_filter.sortby.value = "1";
+    	form_submit('product_filter');
+	});
+    
+    
+});
+
+function form_submit(form) {
+
+	$('#productFilterWait').modal('show');
+	document.forms[form].submit();
+
+}
+
+
 
 var getCurrency = function(url_, currency, text) {
 	
