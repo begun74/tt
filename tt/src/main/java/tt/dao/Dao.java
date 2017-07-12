@@ -58,6 +58,7 @@ public interface Dao {
 
 	
 	public void addTail(Tail tail);
+	public void addTails(Collection<Tail> tails);
 	public List<Tail> getTailsList();
 	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions, int p );
 	public List<Tail> getTailsList(long id_dirNomenclature);

@@ -274,7 +274,13 @@ select distinct dn.*, t.firstPrice, dngr.sorting, dp.sorting from dir_nomenclatu
 		and dg.id_dir_gender in (58,56)
 		and dp.id_dir_provider in(14264)
 		
+
+select distinct max(t.create_date) from tails t 
+		where t.destruction_date is null 
+
+
 select nextval('seq_statistic')
+
 
 select * from dir_nomenclature dn where composition is not null
 	where code = 10002076234

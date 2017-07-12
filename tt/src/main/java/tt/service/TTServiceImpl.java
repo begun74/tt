@@ -157,6 +157,13 @@ public class TTServiceImpl implements Dao {
 		// TODO Auto-generated method stub
 		dao.addTail(tail);
 	}
+	
+	@Override
+	public void addTails(Collection<Tail> tails) {
+		// TODO Auto-generated method stub
+		dao.addTails(tails);
+	}
+
 
 
 	@Override
@@ -484,5 +491,7 @@ public class TTServiceImpl implements Dao {
 		// TODO Auto-generated method stub
 		return dao.getNomenclOfProvider(id_dir_nomenclature);
 	}
+
+
 
 }

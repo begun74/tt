@@ -198,6 +198,16 @@ public class DaoImpl implements Dao {
 		// TODO Auto-generated method stub
 		getSession().saveOrUpdate(tail);
 	}
+	
+	@Override
+	public void addTails(Collection<Tail> tails) {
+		// TODO Auto-generated method stub
+		Session sess = getSession();
+		for(Tail tail: tails)
+			sess.saveOrUpdate(tail);
+		
+	}
+
 
 	@Override
 	public DirProvider getProviderByCode(Integer code) {
@@ -632,6 +642,7 @@ public class DaoImpl implements Dao {
 		return listDNofProv;
 
 	}
+
 
 
 	
