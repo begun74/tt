@@ -72,6 +72,11 @@
 												<c:set var="tail_name" value="${tail.name}" />
 												<c:set var="tn_length" value="${fn:length(tail_name)}" />
 												<c:set var="arr_tail_name" value="${fn:split(tail.name,' ')}"/>
+
+												<c:set var="provider_name" value=" ${tail.dirProvider.name}" />
+												<c:if test="${not empty tail.dirProvider.short_name}">
+															<c:set var="provider_name" value=" ${tail.dirProvider.short_name}" />
+												</c:if>
 												
 												<div class="col-sm-4 col-md-4">
 														<div class="single-products product-image-wrapper ">
@@ -94,8 +99,8 @@
 																		<h4 title="${title_price}">${price} руб.</h4>
 																		
 																	</p>
-																	<c:set var="prov_name" value=" ${tail.dirProvider.name}" />
-																	<p  class="provider_name">${tail.dirProvider.name}</p>
+																	<!-- p  class="provider_name">${fn:substring(tail.dirProvider.name, 0, 26)}</p -->
+																	<p  class="provider_name">${provider_name}</p>
 																	<!-- p><spring:message code="article"/>&#160;${tail.article}</p -->
 																	<a href="product-details?id=${tail.id}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i><spring:message code="to.order"/></a>
 																</div>
