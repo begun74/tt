@@ -604,8 +604,8 @@ public class DaoImpl implements Dao {
 		if(text.trim().length() == 0)	
 			return result;
 		
-		String sql_1 = env.getProperty("sql_1");
-		String sql_1_count = env.getProperty("sql_1_count");
+		String sql_find = env.getProperty("sql_find");
+		String sql_find_count = env.getProperty("sql_find_count");
 		
 		long code;
 		
@@ -616,14 +616,15 @@ public class DaoImpl implements Dao {
 			code = 0;
 		}
 		
-		count = ((BigInteger)getSession().createSQLQuery(sql_1_count)
+		count = ((BigInteger)getSession().createSQLQuery(sql_find_count)
 							.setParameter("model", "%"+text+"%")
 							.setParameter("code", code )
 							.setParameter("article", "%"+text+"%" )
 							.setParameter("name", ("%"+text+"%").toUpperCase())
 							.setParameter("composition", ("%"+text+"%").toLowerCase() ).uniqueResult()).longValue();
 		
-		List<Object[]> tmpList = getSession().createSQLQuery(sql_1).addEntity(DirNomenclature.class)
+		@SuppressWarnings("unchecked")
+		List<Object[]> tmpList = getSession().createSQLQuery(sql_find).addEntity(DirNomenclature.class)
 									.addScalar("firstPrice")
 									.addScalar("opt_price")
 									.addScalar("rozn_price")

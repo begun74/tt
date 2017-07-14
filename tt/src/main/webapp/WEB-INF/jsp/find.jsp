@@ -34,6 +34,12 @@
 </head><!--/head-->
 
 <body>
+	<div class="modal " id="waiting" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	    <div class="modal-content text-center" >
+	    	<img alt="" src="${pageContext.request.contextPath}/resources/images/WAITING3.gif">
+	    </div>
+	</div>		
+
 	<!-- header_top -->
 	<%@include file="common/header_top.jsp" %>
 	<!-- header_top -->
@@ -74,7 +80,6 @@
     
     <script>
     $(function() {
-	    //var p_p = 9;
 	    var p_p_get = '&p_p='+$('#selectperp').val();
 	    
 		//var sortby_ = 0; 
@@ -83,9 +88,7 @@
 		//var	asc_get = '&asc='+${mA_search.asc};
 
     
-    	var findText = '&text=${findText}';
-    	
-    
+    	//var findText = '&text=${findText}';
 		
         $('#light-pagination').pagination({
             items: ${allItems},
@@ -94,7 +97,7 @@
             prevText:"<<",
             nextText:">>",
             hrefTextPrefix: "?p=",
-            hrefTextSuffix: findText + p_p_get,
+            hrefTextSuffix: '&text=${findText}' + p_p_get,
             currentPage: ${p}
         });
 
@@ -108,18 +111,16 @@
         
         
         $("#selectperp").change(function() {
+        	$('#waiting').modal('show');
         	window.location.href = 'find?text=${findText}&p_p='+ $('#selectperp').val();
         });
         
     	$("#sortbyName").click(function() {
-    		//alert('sortbyName');
-        	//document.product_filter.sortby.value = "0";
-        	//form_submit('product_filter');
+        	$('#waiting').modal('show');
     	});
 
     	$("#sortbyPrice").click(function() {
-        	//document.product_filter.sortby.value = "1";
-        	//form_submit('product_filter');
+        	$('#waiting').modal('show');
     	});
 
         

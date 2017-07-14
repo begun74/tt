@@ -162,6 +162,7 @@ select sn.id_statistic_nomencl from statistic_nomencl sn
 		inner join dir_nomenclature dn on sn.id_dir_nomenclature = dn.id_dir_nomenclature and sn.id_dir_nomenclature=34303 and date(sn.creation_date)='2017-04-15'
 		)
 
+--=================  findTailByText  =====================
 select distinct xxx.*, t.firstPrice, t.opt_price, t.rozn_price from tails t 
 	inner join 
 	(
@@ -170,6 +171,18 @@ select distinct xxx.*, t.firstPrice, t.opt_price, t.rozn_price from tails t
 		where model like '%хлопок%' or dn.code= 0002074803 or dp.name like '%хлопок%' or dn.composition like '%хлопок%'
 	) as xxx on xxx.id_dir_nomenclature = t.fk_id_nomenclature
 	where t.destruction_date is null
+
+
+select distinct count(distinct xxx) from tails t 
+	inner join 
+	(
+		select dn.id_dir_nomenclature from dir_nomenclature dn 
+		inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider
+		where model like '%хлопок%' or dn.code= 0002074803 or dp.name like '%хлопок%' or dn.composition like '%хлопок%'
+	) as xxx on xxx.id_dir_nomenclature = t.fk_id_nomenclature
+	where t.destruction_date is null
+
+--=================  findTailByText  =====================
 
 select * from dir_nomencl_group dng
 	inner join
