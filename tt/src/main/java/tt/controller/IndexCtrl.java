@@ -311,18 +311,28 @@ public class IndexCtrl implements Serializable {
 		//System.out.println(sessBean.getOrders());
 		model.addObject("sessBean", sessBean);
 		
+		long time = System.currentTimeMillis();
+		
 		try
 		{
 			DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id); 
 			
+			
+			System.out.println("ttService.getObject(DirNomenclature.class, id) - "+(System.currentTimeMillis() - time) );
+			time = System.currentTimeMillis();
+			
 			//List<DirNomenclature> popNomencl = ttService.getPopularDirNomenclature();
 			List<DirNomenclature> popNomencl = ttService.getNomenclOfProvider(id);
-			
+
+			System.out.println("ttService.getNomenclOfProvider(id) - "+ (System.currentTimeMillis() - time) );
+			time = System.currentTimeMillis();
+
 			model.addObject("nomenclature", dn);
 			model.addObject("popNomencl", popNomencl);
 			//!-- model.addObject("tails", ttService.getTailsList(dn.getId()));
 			model.addObject("provider",dn.getDirProvider());
 			//model.addObject("provider", dn.getTails().iterator().next().getDirProvider());
+
 			
 			Iterator<Tail> iter = dn.getTails().iterator();
 			
@@ -333,7 +343,9 @@ public class IndexCtrl implements Serializable {
 						iter.remove();
 				}
 			}
-			
+
+			System.out.println("dn.getTails().iterator() - "+ (System.currentTimeMillis() - time) );
+
 			Tail tail = dn.getTails().iterator().next();
 			
 			model.addObject("firstprice", tail.getFirstPrice());
@@ -359,7 +371,7 @@ public class IndexCtrl implements Serializable {
 		return model;
 	}
 	
-
+/*
 	@RequestMapping(value = {"/product-details2{id}"} , method = RequestMethod.GET)
 	public ModelAndView  product_details2(HttpSession session, @RequestParam(value = "id",   required=false) Long id) 
 	{
@@ -420,7 +432,7 @@ public class IndexCtrl implements Serializable {
 		
 		return model;
 	}
-	
+	*/
 	
 	@RequestMapping(value = "/delOrder{npp}", method = RequestMethod.GET)
 	public ModelAndView delOrder(HttpSession session, @RequestParam ("npp") int npp) 

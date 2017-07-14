@@ -74,22 +74,22 @@
     
     <script>
     $(function() {
-	    var p_p = 10;
+	    var p_p = 9;
 	    var p_p_get = '&p_p='+p_p;
 	    
-		var sortby_ = 0; 
-		var	sortby_get = '&sortby='+sortby_;
+		//var sortby_ = 0; 
+		//var	sortby_get = '&sortby='+sortby_;
 
-		var	asc_get = '&asc='+${mA_search.asc};
+		//var	asc_get = '&asc='+${mA_search.asc};
 
     
-    	var findText = '&text=${findText}'+p_p_get+sortby_get+asc_get;
+    	var findText = '&text=${findText}';
     	
     
 		
         $('#light-pagination').pagination({
-            items: ${allItems},
-            itemsOnPage: ${perPage},
+            items: ${fn:length(tails)},
+            itemsOnPage: p_p,
             cssStyle: 'light-theme',
             prevText:"<<",
             nextText:">>",
@@ -98,17 +98,26 @@
             currentPage: ${p}
         });
 
+
+        $(".search_text").keypress(function(event) {
+        	if ( event.which == 13 ) 
+        	{
+        		processSearchText($(this).val());
+        	}
+        });
         
 	});
 
+    /*
         $(document).ready(function(){
 	        $(".search_text").keypress(function(event) {
 	        	if ( event.which == 13 ) 
-	        	{
+	        	{alert('search_text');
 	        		processSearchText($(this).val());
 	        	}
 	        });
         });
+    */
 
     </script>
 </body>
