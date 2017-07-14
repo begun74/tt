@@ -100,8 +100,8 @@
 	    		});
 				*/
 				
-			    var p_p = ${mA_search.p_p};
-			    var p_p_get = '&p_p='+p_p;
+			    //var p_p = ${mA_search.p_p};
+			    var p_p_get = '&p_p='+${p_p};
 			    
 				var sortby_ = ${mA_search.sortby}; 
 				var	sortby_get = '&sortby='+sortby_;
@@ -143,7 +143,7 @@
 
 				$('#light-pagination').pagination({
 		            items: ${allItems},
-		            itemsOnPage: ${perPage},
+		            itemsOnPage: ${p_p},
 		            cssStyle: 'light-theme waiting',
 		            prevText:"<<",
 		            nextText:">>",
@@ -151,6 +151,24 @@
 		            hrefTextSuffix: pns_get + gndrs_get + cats_get + types_get + asc_get + p_p_get + sortby_get,
 		            currentPage: ${p}
 		        });
+				
+
+				$("#selectperp").change(function() {
+			    	document.product_filter.p_p.value = this.value; 
+			    	form_submit('product_filter');
+			    });
+			    
+				$("#sortbyName").click(function() {
+			    	document.product_filter.sortby.value = "0";
+			    	form_submit('product_filter');
+				});
+
+				$("#sortbyPrice").click(function() {
+			    	document.product_filter.sortby.value = "1";
+			    	form_submit('product_filter');
+				});
+			    
+
 
 		        
 	    });

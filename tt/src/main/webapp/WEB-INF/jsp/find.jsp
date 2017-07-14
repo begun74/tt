@@ -42,7 +42,7 @@
 	<section>
 		<div class="container">
 				<div class="col-sm-12 find_panel">
-					<h3><spring:message code="find.text"/>(${fn:length(tails)}):&#160;&#160;'${findText}' </h3>
+					<h3><spring:message code="find.text"/>(${allItems}):&#160;&#160;'${findText}' </h3>
 				</div>			
 				<div class="col-sm-12"><p/></div>
 				<div class="row">
@@ -74,8 +74,8 @@
     
     <script>
     $(function() {
-	    var p_p = 9;
-	    var p_p_get = '&p_p='+p_p;
+	    //var p_p = 9;
+	    var p_p_get = '&p_p='+$('#selectperp').val();
 	    
 		//var sortby_ = 0; 
 		//var	sortby_get = '&sortby='+sortby_;
@@ -88,13 +88,13 @@
     
 		
         $('#light-pagination').pagination({
-            items: ${fn:length(tails)},
-            itemsOnPage: p_p,
+            items: ${allItems},
+            itemsOnPage: ${p_p},
             cssStyle: 'light-theme',
             prevText:"<<",
             nextText:">>",
             hrefTextPrefix: "?p=",
-            hrefTextSuffix: findText,
+            hrefTextSuffix: findText + p_p_get,
             currentPage: ${p}
         });
 
@@ -106,18 +106,25 @@
         	}
         });
         
+        
+        $("#selectperp").change(function() {
+        	window.location.href = 'find?text=${findText}&p_p='+ $('#selectperp').val();
+        });
+        
+    	$("#sortbyName").click(function() {
+    		//alert('sortbyName');
+        	//document.product_filter.sortby.value = "0";
+        	//form_submit('product_filter');
+    	});
+
+    	$("#sortbyPrice").click(function() {
+        	//document.product_filter.sortby.value = "1";
+        	//form_submit('product_filter');
+    	});
+
+        
 	});
 
-    /*
-        $(document).ready(function(){
-	        $(".search_text").keypress(function(event) {
-	        	if ( event.which == 13 ) 
-	        	{alert('search_text');
-	        		processSearchText($(this).val());
-	        	}
-	        });
-        });
-    */
 
     </script>
 </body>

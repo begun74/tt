@@ -551,7 +551,7 @@ public class DaoImpl implements Dao {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<DirNomenclature> findByText(String text, int p, int p_p) {
+	public List<DirNomenclature> findTailsByText(String text) {
 		// TODO Auto-generated method stub
 		List<DirNomenclature> tails = new LinkedList<DirNomenclature>();
 		
@@ -592,6 +592,67 @@ public class DaoImpl implements Dao {
 		
 		return tails;
 	}
+
+	@Override
+	public Object[] findTailsByText(String text, int p, int p_p) {
+		// TODO Auto-generated method stub
+		
+		List<DirNomenclature> tails = new LinkedList<DirNomenclature>();
+		long count = 0;
+		Object[] result = {count, tails};
+
+		if(text.trim().length() == 0)	
+			return result;
+		
+		String sql_1 = env.getProperty("sql_1");
+		String sql_1_count = env.getProperty("sql_1_count");
+		
+		long code;
+		
+		try {
+			code = new Long(text);
+		}
+		catch(NumberFormatException nex) {
+			code = 0;
+		}
+		
+		count = ((BigInteger)getSession().createSQLQuery(sql_1_count)
+							.setParameter("model", "%"+text+"%")
+							.setParameter("code", code )
+							.setParameter("article", "%"+text+"%" )
+							.setParameter("name", ("%"+text+"%").toUpperCase())
+							.setParameter("composition", ("%"+text+"%").toLowerCase() ).uniqueResult()).longValue();
+		
+		List<Object[]> tmpList = getSession().createSQLQuery(sql_1).addEntity(DirNomenclature.class)
+									.addScalar("firstPrice")
+									.addScalar("opt_price")
+									.addScalar("rozn_price")
+									.setParameter("model", "%"+text+"%")
+									.setParameter("code", code )
+									.setParameter("article", "%"+text+"%" )
+									.setParameter("name", ("%"+text+"%").toUpperCase())
+									.setParameter("composition", ("%"+text+"%").toLowerCase() )
+									.setFirstResult(p*p_p-p_p)
+									.setMaxResults(p_p)
+									.list();
+		
+		for(Object[] item: tmpList)
+		{
+			//Устанавливаем
+			((DirNomenclature)item[0]).setTempPrice((Double)item[1]); //Первая цена 
+			((DirNomenclature)item[0]).setOpt_price((Double)item[2]); //Оптовая
+			((DirNomenclature)item[0]).setRozn_price((Double)item[3]); //Розничная цена
+			
+			tails.add( (DirNomenclature)item[0] );
+			
+		}
+		
+		result[0] = count;
+		result[1] = tails;
+		
+		return result;
+	}
+
 
 	@Override
 	public BigInteger countGender(Long id_dir_gender) {

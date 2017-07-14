@@ -62,7 +62,8 @@ public interface Dao {
 	public List<Tail> getTailsList();
 	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions, int p );
 	public List<Tail> getTailsList(long id_dirNomenclature);
-	public List<DirNomenclature> findByText(String text,int p, int p_p);
+	public List<DirNomenclature> findTailsByText(String text);
+	public Object [] findTailsByText(String text,int p, int p_p);
 
 	public List<Store> getStoreList();
 	public void addStore(Store store);

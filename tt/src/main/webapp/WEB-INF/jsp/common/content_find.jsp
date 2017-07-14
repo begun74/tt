@@ -16,9 +16,6 @@
 							<c:set var="p" value="1"/>
 						</c:if>
 						
-						<c:set var="start" value="${0}"/>
-						<c:set var="stop" value="${perPage-1}"/>
-						
 						
 						
 						<div class="features_items"><!--features_items-->
@@ -99,11 +96,11 @@
 									<div id="light-pagination" class="text-center" ></div>
 							</div>
 							<div class="col-sm-2 col-md-3" >
-											<select id="selectperp" class="selectperp" style="font-size: 12px; width: 50px; border:1px solid #F7F7F5;" data-width="75px" name="${mA_search.p_p}" >
+											<select id="selectperp" class="selectperp" style="font-size: 12px; width: 50px; border:1px solid #F7F7F5;" data-width="75px" name="${p_p}" >
 												<optgroup>
-	        										<option value="9" <c:if test="${mA_search.p_p eq 9 }">selected</c:if> >9</option>
-	        										<option value="15" <c:if test="${mA_search.p_p eq 15 }">selected</c:if> >15</option>
-	        										<option value="20" <c:if test="${mA_search.p_p eq 20 }">selected</c:if> >20</option>
+	        										<option value="9" <c:if test="${p_p eq 9 }">selected</c:if> >9</option>
+	        										<option value="15" <c:if test="${p_p eq 15 }">selected</c:if> >15</option>
+	        										<option value="20" <c:if test="${p_p eq 20 }">selected</c:if> >20</option>
 	        									</optgroup>
 											</select>
 											<label for="selectperp">

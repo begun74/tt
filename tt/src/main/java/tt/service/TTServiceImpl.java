@@ -437,12 +437,18 @@ public class TTServiceImpl implements Dao {
 
 	@Override
 	@Transactional(readOnly=true)
-	public List<DirNomenclature> findByText(String text, int p, int p_p) {
+	public List<DirNomenclature> findTailsByText(String text) {
 		// TODO Auto-generated method stub
 		LOG.info(this.getClass() +".findByText('"+text+"')");
-		return dao.findByText(text, p, p_p);
+		return dao.findTailsByText(text);
 	}
 
+	@Override
+	@Transactional(readOnly=true)
+	public Object[] findTailsByText(String text, int p, int p_p) {
+		// TODO Auto-generated method stub
+		return dao.findTailsByText(text, p, p_p);
+	}
 
 	@Override
 	public BigInteger countGender(Long id_gender) {
@@ -491,6 +497,8 @@ public class TTServiceImpl implements Dao {
 		// TODO Auto-generated method stub
 		return dao.getNomenclOfProvider(id_dir_nomenclature);
 	}
+
+
 
 
 

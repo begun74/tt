@@ -131,9 +131,12 @@ public class IndexCtrl implements Serializable {
 			@RequestParam(value = "p", defaultValue = "1") int p, 
 			@RequestParam(value = "p_p", defaultValue = "9") int p_p) 
 	{
+
+		Object[] result = ttService.findTailsByText(text, p, p_p);
 		ModelAndView model = new ModelAndView("find");
-		model.addObject("mA_search", mA_search);
-		model.addObject("tails", ttService.findByText(text, p, p_p) );
+		//model.addObject("mA_search", mA_search);
+		model.addObject("allItems", result[0] );
+		model.addObject("tails", result[1] );
 		model.addObject("findText",text);
 		model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
 		

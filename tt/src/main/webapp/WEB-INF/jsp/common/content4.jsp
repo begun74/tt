@@ -5,8 +5,10 @@
 <%@taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
 
-						<c:set var="perPage" value="${mA_search.p_p}"/>
-
+						<c:set var="p_p" value="${mA_search.p_p}"/>
+						<c:if test="${empty p_p}" >
+							<c:set var="p_p" value="9"/>
+						</c:if>
 
 						<c:set var="p" value="${param.p}"/>
 						<c:if test="${empty param.p}" >
@@ -30,24 +32,7 @@
 										<p><spring:message code="remains.of.goods.on"/> <fmt:formatDate pattern = "dd-MM-yyyy"  value="${maxDateInTails}" />.</p>
 									</div>
 									
-									<!-- -div class="col-sm-6 text-right ">
-										<select id="sortby" name="sortby" style="font-size: 12px; width: 150px; border:1px solid #F7F7F5;">
-											<option value="0" <c:if test="${mA_search.sortby eq 0 }">selected</c:if> ><spring:message code="by.name"/></option>
-											<option value="1" <c:if test="${mA_search.sortby eq 1 }">selected</c:if> ><spring:message code="by.price"/></option>
-										</select>
-									</div -->
 									<div class="col-sm-6 text-right font20px">
-										<!--  
-										<c:if test="${mA_search.sortby eq 0 }">
-											<label for="sort.by.name" class="cursor"><input type="radio" id="sort.by.name" name="sortby" class="sortby" style="color:green" value="0" checked="checked"/><spring:message code="by.name"/></label>
-											<label for="sort.by.price" class="cursor"><input type="radio" id="sort.by.price" name="sortby" class="sortby" value="1"/><spring:message code="by.price"/></label>
-										</c:if>
-										<c:if test="${mA_search.sortby eq 1 }">
-											<label for="sort.by.name" class="cursor"><input type="radio" id="sort.by.name" name="sortby" class="sortby" value="0"/><spring:message code="by.name"/></label>
-											<label for="sort.by.price" class="cursor"><input type="radio" id="sort.by.price" name="sortby" class="sortby" style="font-color:green" value="1" checked="checked"/><spring:message code="by.price"/></label>
-										</c:if>
-										 -->
-										 
 										<c:if test="${mA_search.sortby eq 0 }">
 											<span id="sortbyName" class="sortby cursor label label-success" value="0"><spring:message code="by.name"/></span>
 											<span id="sortbyPrice" class="sortby cursor label label-default" value="1"><spring:message code="by.price"/></span>
@@ -68,7 +53,7 @@
 								</div>
 							</c:if>
 							
-							<c:forEach items="${tails}" var="tail" varStatus="loop"  begin="${start}" end="${stop}">
+							<c:forEach items="${tails}" var="tail" varStatus="loop"  begin="${start}" end="${p_p}">
 												<c:set var="tail_name" value="${tail.name}" />
 												<c:set var="tn_length" value="${fn:length(tail_name)}" />
 												<c:set var="arr_tail_name" value="${fn:split(tail.name,' ')}"/>

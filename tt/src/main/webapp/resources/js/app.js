@@ -64,21 +64,6 @@ $(document).ready(function(){
     });
     
     
-    $("#selectperp").change(function() {
-    	document.product_filter.p_p.value = this.value; 
-    	form_submit('product_filter');
-    });
-    
-	$("#sortbyName").click(function() {
-    	document.product_filter.sortby.value = "0";
-    	form_submit('product_filter');
-	});
-
-	$("#sortbyPrice").click(function() {
-    	document.product_filter.sortby.value = "1";
-    	form_submit('product_filter');
-	});
-    
     
 });
 
