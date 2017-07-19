@@ -63,9 +63,10 @@
 															<c:set var="provider_name" value=" ${tail.dirProvider.short_name}" />
 												</c:if>
 												
-												<div class="col-sm-4 col-md-4">
-														<div class="single-products product-image-wrapper ">
-																<div class="productinfo text-center" title="${tail_name}" >
+												<div class="col-sm-4 col-md-4 ">
+														<div class=" product-image-wrapper">
+																	<img src="resources/images/label/new.png" class="newarrival_right" alt="" />
+																<div class="single-products productinfo text-center " title="${tail_name}" >
 																	<a href="product-details?id=${tail.id}">
 																		<img class="" src="/pics/products/${tail.code}/M/${tail.code}_M_0.jpg" onError="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';" alt=""/>
 																	</a>

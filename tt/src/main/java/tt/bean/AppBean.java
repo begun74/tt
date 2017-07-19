@@ -31,6 +31,7 @@ public class AppBean implements Serializable {
 	 */
 	private static final long serialVersionUID = 7749935089438907692L;
 	
+	
 	@Resource
     private Environment env;
 	
@@ -59,6 +60,8 @@ public class AppBean implements Serializable {
 	@PostConstruct
 	void init() {
 		
+		
+
 		Iterator<Store> iterStore = ttService.getStoreList().iterator();
 		
 		while(iterStore.hasNext())

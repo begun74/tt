@@ -321,13 +321,13 @@ public class IndexCtrl implements Serializable {
 			DirNomenclature dn = (DirNomenclature)ttService.getObject(DirNomenclature.class, id); 
 			
 			
-			System.out.println("ttService.getObject(DirNomenclature.class, id) - "+(System.currentTimeMillis() - time) );
+			//System.out.println("ttService.getObject(DirNomenclature.class, id) - "+(System.currentTimeMillis() - time) );
 			time = System.currentTimeMillis();
 			
 			//List<DirNomenclature> popNomencl = ttService.getPopularDirNomenclature();
 			List<DirNomenclature> popNomencl = ttService.getNomenclOfProvider(id);
 
-			System.out.println("ttService.getNomenclOfProvider(id) - "+ (System.currentTimeMillis() - time) );
+			//System.out.println("ttService.getNomenclOfProvider(id) - "+ (System.currentTimeMillis() - time) );
 			time = System.currentTimeMillis();
 
 			model.addObject("nomenclature", dn);
@@ -347,7 +347,7 @@ public class IndexCtrl implements Serializable {
 				}
 			}
 
-			System.out.println("dn.getTails().iterator() - "+ (System.currentTimeMillis() - time) );
+			//System.out.println("dn.getTails().iterator() - "+ (System.currentTimeMillis() - time) );
 
 			Tail tail = dn.getTails().iterator().next();
 			

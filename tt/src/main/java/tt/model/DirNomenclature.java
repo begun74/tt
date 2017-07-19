@@ -96,6 +96,8 @@ public class DirNomenclature implements  IModel {
 	private transient double rozn_price;
 	private transient double opt_price;
 	
+	private transient boolean isNewInTails;
+	
 	public Long getId() {
 		return id;
 	}
@@ -153,6 +155,14 @@ public class DirNomenclature implements  IModel {
 
 	public void setAccess_date(Date access_date) {
 		this.access_date = access_date;
+	}
+
+	public boolean isNewInTails() {
+		return isNewInTails;
+	}
+
+	public void setNewInTails(boolean isNewInTails) {
+		this.isNewInTails = isNewInTails;
 	}
 
 	public DirNomenclGroup getDirNomenclGroup() {

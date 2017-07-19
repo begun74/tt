@@ -1248,9 +1248,17 @@ h2.title {
 }
 
 .newarrival{
-	position:absolute;
+	position: absolute;
 	top:0;
 	left:0
+}
+
+.newarrival_right{
+	position: absolute;
+	top:0;
+	right:0;
+	width: 64px;
+	height: 30px;
 }
 
 .product-information h2 {
