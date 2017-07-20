@@ -157,6 +157,7 @@
     <script src="resources/js/jquery.elevatezoom.js"></script>
     <script src="resources/js/main.js"></script>
     <script src="resources/js/app.js"></script>
+    <script src="resources/js/jivosite.js"></script>
     
     <script>
     $('#img_01').elevateZoom({

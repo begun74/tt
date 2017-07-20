@@ -82,6 +82,7 @@
     <script src="resources/js/jquery.simplePagination.js"></script>
     <script src="resources/js/bootstrap-hover-dropdown.min.js"></script>
     <script src="resources/js/app.js"></script>
+    <script src="resources/js/jivosite.js"></script>
     
     <script>
 	    $(function() {
