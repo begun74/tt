@@ -2775,3 +2775,8 @@ give gallery's parent container a cursor: pointer.**/
 	display: none ;
 }
 
+.selectedBadges {
+	background-color: #0000ff; 
+	float:right;	
+}
+

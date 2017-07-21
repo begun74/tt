@@ -164,8 +164,12 @@
 				
 				$(".selectedBadges").mouseover(function() {
 					var selItems = $( ".selected_chkb" );
+					var div = $(".selectedItems" );
+					
+					div.append('<div style="height: 20px; width: 100%; background-color: #d9d9ff; padding-left: 5px;"><b><spring:message code="search.by"/></b></div><p/>');
+					
 					for(var i=0;i< selItems.length; ++i)
-							$(".selectedItems" ).append('<p>'+selItems[i].nextSibling.nodeValue +'</p>');
+							div.append('<p>'+selItems[i].nextSibling.nodeValue +'</p>');
 						
 					$( "#"+$(this).attr('for') ).show();
 				});

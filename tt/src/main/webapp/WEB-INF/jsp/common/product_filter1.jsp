@@ -20,12 +20,11 @@
 								<!--type-->
 								<div class="row div_bkgr border1px">
 										<div class="div_name">
-											<spring:message code="nomencl.group2"/><span id="badgeType" for="selectedTypes" class="badge cursor border1px selectedBadges" style=" float:right"></span>
+											<spring:message code="nomencl.group2"/><span id="badgeType" for="selectedTypes" class="badge cursor border1px selectedBadges" ></span>
 										</div>
 
 										<div id="selectedTypes" class="div_name_2 selectedItems border1px" >
-											<div style="heigth: 20px; background-color: #ffbd5b;"></div>
-											<div class="selectedItemsText"></div>
+											
 										</div>
 
 										<c:forEach items="${types}" var="type" varStatus="loop"> 
