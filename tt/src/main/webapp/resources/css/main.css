@@ -2710,6 +2710,7 @@ give gallery's parent container a cursor: pointer.**/
 }
 
 .div_name {
+	position: relative; 
 	text-align: left;
 	padding-left: 25px;
 	background-color: #ffbd5b;
@@ -2758,3 +2759,19 @@ give gallery's parent container a cursor: pointer.**/
 	/*width: 70px;*/
   height: 100px;
 }
+
+.div_name_2 {
+	position: absolute; 
+	width: 90%;
+	text-align: left;
+	padding-left: 5px;
+	background-color: #fff;
+	margin: 5px;
+	border-radius: 3px;
+	z-index: 2; 
+}
+
+.selectedItems{ 
+	display: none ;
+}
+

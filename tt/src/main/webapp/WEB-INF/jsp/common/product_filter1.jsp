@@ -19,7 +19,15 @@
 						
 								<!--type-->
 								<div class="row div_bkgr border1px">
-										<div class="div_name"><spring:message code="nomencl.group2"/></div>
+										<div class="div_name">
+											<spring:message code="nomencl.group2"/><span id="badgeType" for="selectedTypes" class="badge cursor border1px selectedBadges" style=" float:right"></span>
+										</div>
+
+										<div id="selectedTypes" class="div_name_2 selectedItems border1px" >
+											<div style="heigth: 20px; background-color: #ffbd5b;"></div>
+											<div class="selectedItemsText"></div>
+										</div>
+
 										<c:forEach items="${types}" var="type" varStatus="loop"> 
 	
 											<c:set var="type_name" value="${type.name}"/>
@@ -44,7 +52,13 @@
 								</div><!--/type-->
 
 								<div class="row div_bkgr border1px"><!-- genders -->
-									<div class="div_name"><spring:message code="sex.attribute"/></div>
+									<div class="div_name">
+										<spring:message code="sex.attribute"/><span id="badgeGender" for="selectedGender" class="badge cursor border1px selectedBadges" style=" float:right"></span>
+									</div>
+
+									<div id="selectedGender" class="div_name_2 selectedItems border1px" >
+									</div>
+
 									<c:forEach items="${genders}" var="gender" varStatus="loop"> 
 										<div class="div_Fitem">
 											<em><label class="checkbox cursor countGender" data-toggle="tooltip" data-placement="left" lookup_id="${gender.id}" title="${gender.name}"><input class="ch_gender" type="checkbox" name="gndr" id="gndr_${gender.id}" value="${gender.id}" />${gender.name}</label></em>
@@ -62,7 +76,13 @@
 								</div><!--/genders-->
 							
 								<div class="row div_bkgr border1px"><!--brands_products-->
-									<div class="div_name "><spring:message code="provider"/></div>
+									<div class="div_name ">
+										<spring:message code="provider"/><span id="badgeProvider" for="selectedProv" class="badge cursor border1px selectedBadges" style=" float:right"></span>
+										
+									</div>
+									<div id="selectedProv" class="div_name_2 selectedItems border1px" >
+									</div>
+
 									<div class="row div_Fitem" style="overflow-y:scroll; overflow-x: none; height:200px;">
 										<c:forEach items="${providers}" var="provider" varStatus="loop"> 
 											<div class="div_Fitem">
@@ -86,7 +106,11 @@
 		
 								<!-- Категория -->
 								<div class="row div_bkgr border1px">
-									<div class="div_name"><spring:message code="category"/></div>
+									<div class="div_name">
+										<spring:message code="category"/><span id="badgeCategory" for="selectedCat" class="badge cursor border1px selectedBadges" style=" float:right"></span>
+									</div>
+									<div id="selectedCat" class="div_name_2 selectedItems border1px" >
+									</div>
 									<div class="row div_Fitem" style="overflow-y:scroll; overflow-x: hidden; height:200px;">
 										<c:forEach items="${categories}" var="category" varStatus="loop"> 
 											<div class="div_Fitem">

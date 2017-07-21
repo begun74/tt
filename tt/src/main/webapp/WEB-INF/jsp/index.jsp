@@ -20,10 +20,10 @@
     <link href="resources/css/prettyPhoto.css" rel="stylesheet">
     <link href="resources/css/price-range.css" rel="stylesheet">
     <link href="resources/css/animate.css" rel="stylesheet">
-	<link href="resources/css/main.css" rel="stylesheet">
 	<link href="resources/css/responsive.css" rel="stylesheet">
 	<link href="resources/css/simplePagination.css" rel="stylesheet">
 	<link href="resources/css/bootstrap-select.min.css" rel="stylesheet">
+	<link href="resources/css/main.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -87,19 +87,7 @@
     <script>
 	    $(function() {
 	    	
-				//var asc_inv = !${mA_search.asc};
 				document.product_filter.asc.value = !${mA_search.asc}; 
-				
-				/*
-				$("#sortby").click(function() {alert("sortby");
-					document.product_filter.sortby.value = $(this).val(); 
-			    	asc_inv = !asc_inv;
-			    	$("#asc").val(asc_inv);
-			    	
-			    	$('#productFilterWait').modal('show');
-			    	document.product_filter.submit();
-	    		});
-				*/
 				
 			    //var p_p = ${mA_search.p_p};
 			    var p_p_get = '&p_p='+${p_p};
@@ -124,21 +112,25 @@
 
 				for (var item in pns) {
 	                $('#pn_'+pns[item]).attr("checked","checked");
+	                $('#pn_'+pns[item]).addClass("selected_chkb");
 	                pns_get += '&pn='+pns[item];
 	            }
 	
 				for (var item in gndrs) {
 	                $('#gndr_'+gndrs[item]).attr("checked","checked");
+	                $('#gndr_'+gndrs[item]).addClass("selected_chkb");
 	                gndrs_get += '&gndr='+gndrs[item];
 	            }
 
 				for(var item in cats) {
 					$('#cat_'+cats[item]).attr("checked","checked");
+					$('#cat_'+cats[item]).addClass("selected_chkb");
 					cats_get += '&cat='+cats[item];
 				}
 				
 				for(var item in types) {
 					$('#type_'+types[item]).attr("checked","checked");
+					$('#type_'+types[item]).addClass("selected_chkb");
 					types_get += '&type='+types[item];
 				}
 
@@ -169,9 +161,32 @@
 			    	form_submit('product_filter');
 				});
 			    
+				
+				$(".selectedBadges").mouseover(function() {
+					var selItems = $( ".selected_chkb" );
+					for(var i=0;i< selItems.length; ++i)
+							$(".selectedItems" ).append('<p>'+selItems[i].nextSibling.nodeValue +'</p>');
+						
+					$( "#"+$(this).attr('for') ).show();
+				});
+				$(".selectedBadges").mouseout(function() {
+					$( ".selectedItems" ).html("");
+					$( ".selectedItems" ).hide();
+				});
 
+				
+				if(${mA_search.type.size() gt 0})
+					$("#badgeType").html(${mA_search.type.size()});
 
+				if(${mA_search.pn.size() gt 0})
+					$("#badgeProvider").html(${mA_search.pn.size()});
 		        
+				if(${mA_search.cat.size() gt 0})
+					$("#badgeCategory").html(${mA_search.cat.size()});
+
+				if(${mA_search.gndr.size() gt 0})
+					$("#badgeGender").html(${mA_search.gndr.size()});
+
 	    });
 
         $(document).ready(function(){

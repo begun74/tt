@@ -334,6 +334,25 @@ select count(*)  from dir_nomenclature dn
 	where t.destruction_date is null
 
 
+--=================== Difftails ==============
+
+
+select dn.* from dir_nomenclature dn 
+		inner join
+		(
+		select distinct dn.id_dir_nomenclature from dir_nomenclature dn 
+			inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group
+			inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
+			where date(t.destruction_date) is null
+		EXCEPT 
+		select distinct  dn.id_dir_nomenclature from dir_nomenclature dn 
+			inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group
+			inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
+			where date(t.destruction_date) = (select date(max(destruction_date)) from tails)
+		)as xxx on xxx.id_dir_nomenclature = dn.id_dir_nomenclature
+
+
+
 --====================== OAuth2 ==============
 
 drop table if exists oauth_client_details;
