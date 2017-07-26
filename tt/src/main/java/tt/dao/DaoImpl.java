@@ -343,8 +343,7 @@ public class DaoImpl implements Dao {
 
 	@Override
 	public Object[] getNomenclInTails(MA_search MA_search , int p, int itemOnPage) {
-
-		
+	
 		
 		LinkedHashSet<DirNomenclature> dirNomSet = new LinkedHashSet<DirNomenclature>();
 		
@@ -391,6 +390,7 @@ public class DaoImpl implements Dao {
 											.addScalar("firstprice")
 											.addScalar("opt_price")
 											.addScalar("rozn_price")
+											.addScalar("newItem")
 											.setFirstResult(p*itemOnPage-itemOnPage)
 											.setMaxResults(itemOnPage)
 											.list();
@@ -407,6 +407,7 @@ public class DaoImpl implements Dao {
 			((DirNomenclature)item[0]).setTempPrice((Double)item[1]); //Первая цена 
 			((DirNomenclature)item[0]).setOpt_price((Double)item[2]); //Оптовая
 			((DirNomenclature)item[0]).setRozn_price((Double)item[3]); //Розничная цена
+			((DirNomenclature)item[0]).setDiffOfTails(((BigInteger)item[4])); //Обозначает новая ли это номенклатура (разница между текущей и предыдущей загрузкой)
 			
 			dirNomSet.add((DirNomenclature)item[0]);
 		}

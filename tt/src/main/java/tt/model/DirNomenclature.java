@@ -1,6 +1,7 @@
 package tt.model;
 
 
+import java.math.BigInteger;
 import java.util.Date;
 import java.util.Set;
 
@@ -96,7 +97,7 @@ public class DirNomenclature implements  IModel {
 	private transient double rozn_price;
 	private transient double opt_price;
 	
-	private transient boolean isNewInTails;
+	private transient BigInteger diffOfTails;
 	
 	public Long getId() {
 		return id;
@@ -157,12 +158,14 @@ public class DirNomenclature implements  IModel {
 		this.access_date = access_date;
 	}
 
-	public boolean isNewInTails() {
-		return isNewInTails;
+
+
+	public BigInteger getDiffOfTails() {
+		return diffOfTails;
 	}
 
-	public void setNewInTails(boolean isNewInTails) {
-		this.isNewInTails = isNewInTails;
+	public void setDiffOfTails(BigInteger diffOfTails) {
+		this.diffOfTails = diffOfTails;
 	}
 
 	public DirNomenclGroup getDirNomenclGroup() {

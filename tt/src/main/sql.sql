@@ -337,21 +337,23 @@ select count(*)  from dir_nomenclature dn
 --=================== Difftails ============== >>>
 
 insert into diff_of_tails (
-	select nextval('seq_global'), xxx.now_create_date, dn.id_dir_nomenclature from dir_nomenclature dn 
+	select nextval('seq_global'), now(),dn.id_dir_nomenclature from dir_nomenclature dn 
 		inner join
 		(
-		select distinct dn.id_dir_nomenclature, t.create_date as now_create_date from dir_nomenclature dn 
+		select distinct dn.id_dir_nomenclature from dir_nomenclature dn 
 			inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group
 			inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
-			where date(t.destruction_date) is null
+			where date(t.destruction_date) is null and t.create_date = (select distinct max(create_date) from tails)
 		EXCEPT 
-		select distinct  dn.id_dir_nomenclature, t.create_date as now_create_date from dir_nomenclature dn 
+		select distinct  dn.id_dir_nomenclature from dir_nomenclature dn 
 			inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group
 			inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
-			where date(t.destruction_date) = (select date(max(destruction_date)) from tails) order by 2
+			where date(t.destruction_date) = (select date(max(destruction_date)) from tails) 
 		)as xxx on xxx.id_dir_nomenclature = dn.id_dir_nomenclature
-	order by 1
+	order by 2
 )
+
+update tails set destruction_date = '2017-07-24 03:34:38.16-04' where create_date='2017-07-21 07:10:36.782-04'
 
 select count(t.*) from tails t
 
@@ -361,37 +363,66 @@ select distinct date(max(destruction_date)) from tails t order by 1
 
 select * from tails where destruction_date is null
 
-select count(* from tails where destruction_date is null
-
-select diffOfTails()
 
 
-CREATE OR REPLACE FUNCTION diffOfTails() 
-    RETURNS void AS $$
+CREATE OR REPLACE FUNCTION diffOfTails()  
+	RETURNS TABLE (now_create_date timestamp, fk_dir_nomenclature bigint )  AS $$
+	    DECLARE
+		maxDestrDate timestamp;
+		maxCreateDate timestamp;
 	BEGIN
 
-	insert into diff_of_tails (
-		select nextval('seq_global'), xxx.now_create_date, dn.id_dir_nomenclature from dir_nomenclature dn 
-			inner join
-			(
-				select distinct dn.id_dir_nomenclature, t.create_date as now_create_date from dir_nomenclature dn 
-					inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group
-					inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
-					where date(t.destruction_date) is null
-				EXCEPT 
-				select distinct  dn.id_dir_nomenclature, t.create_date as now_create_date from dir_nomenclature dn 
-					inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group
-					inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
-					where date(t.destruction_date) = (select date(max(destruction_date)) from tails)
-			)as xxx on xxx.id_dir_nomenclature = dn.id_dir_nomenclature
-	);
-	
-	return 'ok';	
+			delete from diff_of_tails; --=== clear diff_of_tails
+			
+			select distinct max(destruction_date) from tails t into maxDestrDate;
+			select distinct max(create_date) from tails t into maxCreateDate where date(t.destruction_date) is null;
+			
+			insert into diff_of_tails (
+				select nextval('seq_global'), maxCreateDate, dn.id_dir_nomenclature from dir_nomenclature dn 
+					inner join
+					(
+						select distinct dn.id_dir_nomenclature from dir_nomenclature dn 
+							inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group
+							inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
+							where date(t.destruction_date) is null and t.create_date = maxCreateDate
+						EXCEPT 
+						select distinct  dn.id_dir_nomenclature from dir_nomenclature dn 
+							inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group
+							inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature
+							where (t.destruction_date) = maxDestrDate
+					)as xxx on xxx.id_dir_nomenclature = dn.id_dir_nomenclature
+			);
+
+			RETURN QUERY select maxCreateDate,count(dot.*) from diff_of_tails dot where dot.now_create_date = maxCreateDate;
+
 	END;
 $$ LANGUAGE plpgsql;
 
-DROP FUNCTION diffOfTails()
+select diffOfTails()
+
+DROP FUNCTION diffOfTails();
+
+delete from diff_of_tails;
+
+select * from diff_of_tails
+
 --<<< =================== Difftails ==============
+
+
+-- >>>>> ================= sqlNomeclatureInTails =============
+
+select distinct dn.*, t.firstPrice , dngr.sorting, t.opt_price, t.rozn_price, dp.sorting, dot.id_diff_of_tails as newItem from dir_nomenclature dn 
+								inner join dir_gender dg on dg.id_dir_gender = dn.fk_dir_gender 
+								inner join dir_provider dp on dn.fk_id_provider = dp.id_dir_provider 
+								inner join dir_nomencl_group dng on dn.fk_id_dir_nomencl_group = dng.id_dir_nomencl_group 
+								inner join dir_nomencl_group_root dngr on dng.fk_dir_nomencl_group_root = dngr.id_dir_nomencl_group_root 
+								inner join tails t on dn.id_dir_nomenclature=t.fk_id_nomenclature 
+								left join diff_of_tails dot on dot.fk_dir_nomenclature = dn.id_dir_nomenclature 
+								where t.destruction_date is null
+								order by newItem
+
+
+
 
 
 --====================== OAuth2 ==============
