@@ -66,7 +66,7 @@
 												<div class="col-sm-4 col-md-4 ">
 														<div class=" product-image-wrapper">
 																<c:if test="${not empty tail.diffOfTails}">
-																	<img src="resources/images/label/new.png" class="newarrival_right" alt="" />
+																	<img src="resources/images/label/novinka_0.png" class="newarrival_right" alt="" />
 																</c:if>
 																<div class="single-products productinfo text-center " title="${tail_name}" >
 																	<a href="product-details?id=${tail.id}">
