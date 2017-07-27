@@ -72,6 +72,7 @@ public class MA_loadNomenclGroupRoot implements IMAmodel {
 		return "MA_loadNomenclGroupRoot [row=" + row + ", col_name=" + col_name + ", col_code=" + col_code
 				+ ", autoload=" + autoload + "]";
 	}
+
 	
 	
 	

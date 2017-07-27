@@ -84,9 +84,11 @@ public class MA_loadNomenclGroup implements IMAmodel {
 
 	@Override
 	public String toString() {
-		return "MA_loadNomenclGroup [row=" + row + ", col_name=" + col_name + ", col_code=" + col_code + ", autoload="
-				+ autoload + "]";
+		return "MA_loadNomenclGroup [row=" + row + ", col_name=" + col_name + ", col_code=" + col_code
+				+ ", col_codeNomenclGroupRoot=" + col_codeNomenclGroupRoot + ", autoload=" + autoload + "]";
 	}
+
+
 
 	
 }
