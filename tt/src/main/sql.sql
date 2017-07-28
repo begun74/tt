@@ -337,7 +337,7 @@ select count(*)  from dir_nomenclature dn
 --=================== Difftails ============== >>>
 
 insert into diff_of_tails (
-	select nextval('seq_global'), now(),dn.id_dir_nomenclature from dir_nomenclature dn 
+	select dn.* from dir_nomenclature dn 
 		inner join
 		(
 		select distinct dn.id_dir_nomenclature from dir_nomenclature dn 
@@ -359,7 +359,7 @@ select count(t.*) from tails t
 
 select * from diff_of_tails order by 3
 
-select distinct date(max(destruction_date)) from tails t order by 1
+select distinct date((create_date)) from tails t order by 1
 
 select * from tails where destruction_date is null
 

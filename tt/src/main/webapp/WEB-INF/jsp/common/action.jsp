@@ -67,7 +67,7 @@
 				<div id="2" class="col-sm-9 padding-right">
 					<!-- content -->
 					<h2>Акция ОАО"Купалинка" <span class="red_span">*</span></h2> 
-					<p>С 02 мая  по 31 июля 2017г. Акция ОАО"Купалинка" в <a href="our_shops">магазинах</a> «Трикотаж» №1,2,3,4,5. Скидка -50% с розничной цены на товары, участвующие в акции.</p>
+					<p>С 02 мая  по 31 августа 2017г. Акция ОАО"Купалинка" в <a href="our_shops">магазинах</a> «Трикотаж» №1,2,3,4,5. Скидка -50% с розничной цены на товары, участвующие в акции.</p>
 					<p class="text-left"><a href="search?pn=14264" class="btn btn-default get"><spring:message code="show"/></a></p>
 					<!-- content -->
 				</div>
