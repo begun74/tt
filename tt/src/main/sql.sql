@@ -337,7 +337,7 @@ select count(*)  from dir_nomenclature dn
 --=================== Difftails ============== >>>
 
 insert into diff_of_tails (
-	select dn.* from dir_nomenclature dn 
+	select nextval('seq_global'), now(),dn.id_dir_nomenclature from dir_nomenclature dn 
 		inner join
 		(
 		select distinct dn.id_dir_nomenclature from dir_nomenclature dn 
@@ -393,7 +393,7 @@ CREATE OR REPLACE FUNCTION diffOfTails()
 					)as xxx on xxx.id_dir_nomenclature = dn.id_dir_nomenclature
 			);
 
-			RETURN QUERY select maxCreateDate,count(dot.*) from diff_of_tails dot where dot.now_create_date = maxCreateDate;
+			RETURN QUERY select maxCreateDate,count(dot.*) from diff_of_tails dot where dot.max_create_date = maxCreateDate;
 
 	END;
 $$ LANGUAGE plpgsql;

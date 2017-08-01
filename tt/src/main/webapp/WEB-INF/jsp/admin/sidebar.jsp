@@ -20,11 +20,11 @@
 			  <li><a href="${pageContext.request.contextPath}/admin?act=6" >НоменклГруппаРодитель</li>
             </ul>
           </li>
-          <li><a href="#"><spring:message code="admin.load.info.from.file"/></a>
+          <!-- li><a href="#"><spring:message code="admin.load.info.from.file"/></a>
             <ul class="submenu">
               <li><a href="${pageContext.request.contextPath}/admin?act=3" ><spring:message code="load.tails"/></a></li>          
             </ul>
-          </li>
+          </li -->
           <li><a href="#" ><spring:message code="admin.view.orders"/></a>
           	<ul class="submenu">
           		<li><a href="${pageContext.request.contextPath}/admin?act=6" ><spring:message code="all.orders"/></a></li>

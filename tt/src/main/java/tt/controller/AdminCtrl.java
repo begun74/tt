@@ -94,9 +94,9 @@ public class AdminCtrl {
 			break;
 
 			case "3":
-				model = new ModelAndView("admin/addTails");
-				model.addObject("tempTails", adminSessBean.getTempListTails());
-				model.addObject("tails", ttService.getTailsList());
+				//model = new ModelAndView("admin/addTails");
+				//model.addObject("tempTails", adminSessBean.getTempListTails());
+				//model.addObject("tails", ttService.getTailsList());
 			break;
 
 			case "4":
