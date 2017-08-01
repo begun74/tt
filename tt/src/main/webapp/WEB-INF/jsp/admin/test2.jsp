@@ -439,7 +439,8 @@
             <div class="col2">
               <div class="clearfix error">
                 <div class="lab"><label for="input-two">Two cols input <span>*</span></label></div>
-			          <div class="con"><input type="text" class="input datepicker" value="" name="" id="input-two" /></div><!-- // class datepicker switch on jQuery date picker -->
+			          <div class="con">
+			          	<input type="text" class="input datepicker" value="" name="" id="input-two" /></div><!-- // class datepicker switch on jQuery date picker -->
 			        </div>
               <div class="clearfix">
                 <div class="lab"><label>Two cols select</label></div>
