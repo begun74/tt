@@ -10,15 +10,15 @@
 				<div class="col-sm-12">
 
 					<div id="slider-carousel" class="carousel slide" data-ride="carousel">
-						<c:if test="${advCamp_slider gt 0}">
-							<c:forEach items="${advCamp_slider}" var="advCamp" varStatus="loop">
+						<c:if test="${fn:length(advCamps_slider) gt 0}">
+							<c:forEach items="${advCamps_slider}" var="advCamp" varStatus="loop">
 								<ol class="carousel-indicators">
 									<li data-target="#slider-carousel" data-slide-to="${loop.count}" <c:if test="${loop.count eq 1}" >class='active'</c:if>></li>
 								</ol>
 							</c:forEach>						
 
 							<div class="carousel-inner">
-								<c:forEach items="${advCamp_slider}" var="advCamp" varStatus="loop">
+								<c:forEach items="${advCamps_slider}" var="advCamp" varStatus="loop">
 									<div <c:if test="${loop.count eq 1}" >class='item active'</c:if> >
 										<div class="col-sm-10 slider_reklama" >
 												
