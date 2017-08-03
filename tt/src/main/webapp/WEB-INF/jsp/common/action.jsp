@@ -39,17 +39,16 @@
 	<!-- header_top -->
 		
 	<!-- header_top -->
-	<%@include file="../advert/slider_reklama.jsp" %>
+	<%@include file="../advert/slider_reklama2.jsp" %>
 	<!-- header_top -->
 
 	
 	<article>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
+				<!-- div class="col-sm-3">
 				</div>
 				<div id="1" class="col-sm-9 padding-right">
-					<!-- content -->
 					<h2>Акция "День скидок" <span class="red_span">*</span></h2> 
 					<p>в <a href="our_shops">магазинах</a> ОАО Трикотажторг с предоставлениям покупателям скидки с розничной цены товара в размере 15%.</p>
 					<p><span>В магазине №1 Г.Минск, ул. Платонова,30/2 акция будет проходит 11.07.2017, 27.07.2017.</span></p>	
@@ -58,37 +57,36 @@
 					<p>В магазине №4 г.Вилейка, ул.Красноармейская,55 акция будет проходит 13.07.2017, 20.07.2017, 27.07.2017.</p>
 					<p>В магазине №5 г.Гомель, ул.Интернациональная,13 акция будет проходит  13.07.2017, 20.07.2017, 27.07.2017.</p>
 					<h2>&nbsp</h2>
-					<!-- content -->
 				</div>
 				
 								
 				<div class="col-sm-3">
 				</div>
 				<div id="2" class="col-sm-9 padding-right">
-					<!-- content -->
 					<h2>Акция ОАО"Купалинка" <span class="red_span">*</span></h2> 
 					<p>С 02 мая  по 31 августа 2017г. Акция ОАО"Купалинка" в <a href="our_shops">магазинах</a> «Трикотаж» №1,2,3,4,5. Скидка -50% с розничной цены на товары, участвующие в акции.</p>
 					<p class="text-left"><a href="search?pn=14264" class="btn btn-default get"><spring:message code="show"/></a></p>
-					<!-- content -->
 				</div>
 
 				<div class="col-sm-3">
 				</div>
 				<div id="3" class="col-sm-9 padding-right">
-					<!-- content -->
 					<h2>Акция ЗАО"Калинка" <span class="red_span">*</span></h2> 
 					<p>С 03 мая 2017г. Акция ЗАО"Калинка". Распродажа женского ассортимента в <a href="our_shops">магазинах</a> «Трикотаж» №1,2,3,4,5. Скидка -35%, -50%, -70% от розничной цены на модели, участвующие в акции. </p>
 					<p class="text-left"><a href="search?pn=18858" class="btn btn-default get"><spring:message code="show"/></a></p>					
-					<!-- ul>
-						<p>На период проведения  распродажи действует  скидка с розничной цены на товары, участвующие в акции:</p>
-						<li>-  в размере 25%  на товары для взрослых</li>
-						<li>-  в размере 20%  на товары для детей и подростков</li>
-					</ul -->
-					<!-- content -->
-				</div>
+				</div -->
 
-				<div class="col-sm-3">
-				</div>
+				<c:forEach items="${advCamps}" var="advCamp" varStatus="loop" >
+					<div class="col-sm-3">
+					</div>
+					<div id="${loop.count }" class="col-sm-9 padding-right">
+					
+						<h2>${advCamp.name} <span class="red_span">*</span></h2>
+						<p>${advCamp.text} </p>
+					</div>
+				</c:forEach>
+				
+				
 				<div class="col-sm-9  padding-right">
 					<h2>&nbsp</h2>
 					<p><span class="red_span">*</span>Данная акция не распространяется на товары, реализуемые по другим акциям, а  также товары, на которые установлена торговая надбавка в размере 15% и меньше.</p>

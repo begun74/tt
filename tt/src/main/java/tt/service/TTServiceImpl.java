@@ -39,6 +39,7 @@ import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
 import tt.modelattribute.MA_search;
+import tt.model.AdvertisingCampaign;
 
 
 
@@ -64,6 +65,19 @@ public class TTServiceImpl implements Dao {
 	}
 
 
+	@Override
+	public List<AdvertisingCampaign> getAdvCampList() {
+		// TODO Auto-generated method stub
+		return dao.getAdvCampList();
+	}
+
+	@Override
+	public List<AdvertisingCampaign> getAdvCampList(boolean active) {
+		// TODO Auto-generated method stub
+		return dao.getAdvCampList(active);
+	}
+
+	
 	@Override
 	public List<DirProvider> getProviderList() {
 		// TODO Auto-generated method stub

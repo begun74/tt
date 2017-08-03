@@ -20,7 +20,6 @@ import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Example;
 import org.hibernate.criterion.Order;
@@ -43,6 +42,7 @@ import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
 import tt.modelattribute.MA_search;
+import tt.model.AdvertisingCampaign;
 
 
 
@@ -65,6 +65,18 @@ public class DaoImpl implements Dao {
         return sessionFactory.getCurrentSession();
     }
 
+	@Override
+	public List<AdvertisingCampaign> getAdvCampList() {
+		// TODO Auto-generated method stub
+		return getSession().createSQLQuery("select * from advert_campaign order by active desc, fromdate, todate").addEntity(AdvertisingCampaign.class).list();
+	}
+
+	@Override
+	public List<AdvertisingCampaign> getAdvCampList(boolean active) {
+		// TODO Auto-generated method stub
+		return getSession().createSQLQuery("select * from advert_campaign where active = :active order by fromdate, todate").addEntity(AdvertisingCampaign.class).setParameter("active", active).list();
+	}
+	
 	@SuppressWarnings("unchecked")
 	public List<User> getUserList() {
 		// TODO Auto-generated method stub
@@ -326,20 +338,6 @@ public class DaoImpl implements Dao {
 		return dirNomSet;
 	}
 
-/*	
-	@Override
-	public Set<DirNomenclature> getNomenclInTails_(List<Long> types, List<Long> providers, List<Long> genders,
-			List<Long> categories, int p) {
-			// TODO Auto-generated method stub
-			
-			LinkedHashSet<DirNomenclature> dirNomSet = new LinkedHashSet<DirNomenclature>();
-
-			Criteria criteria  = getSession().createCriteria(DirNomenclature.class);
-			
-		return (Set<DirNomenclature>) criteria.list();
-	}
-*/
-
 
 	@Override
 	public Object[] getNomenclInTails(MA_search MA_search , int p, int itemOnPage) {
@@ -381,7 +379,7 @@ public class DaoImpl implements Dao {
 			sqlNomeclatureInTails_count += " and dngr.id_dir_nomencl_group_root in "+MA_search.getType().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
 		}
 
-		sqlNomeclatureInTails += " order by newItem, "+sortby_hs.get(MA_search.getSortby()) + asc +", dp.sorting, dngr.sorting";
+		sqlNomeclatureInTails += " order by "+sortby_hs.get(MA_search.getSortby()) + asc +", dp.sorting, dngr.sorting";
 		
 		
 		

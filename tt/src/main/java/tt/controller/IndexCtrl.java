@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 
 import java.util.Date;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -47,6 +48,7 @@ import tt.model.User;
 import tt.modelattribute.MA_search;
 import tt.service.TTServiceImpl;
 import tt.util.*;
+import tt.model.AdvertisingCampaign;
 
 
 
@@ -143,42 +145,7 @@ public class IndexCtrl implements Serializable {
 		return model;
 	}
 
-/*	
-	@RequestMapping(value = {"/index","/"} , method = RequestMethod.GET)
-	public ModelAndView  index(HttpSession session, @RequestParam(value = "p", defaultValue = "1") int p, 
-								@RequestParam(value = "perPage", defaultValue = "9") int perPage) 
-	{
-		ModelAndView model = new ModelAndView("index");
-		User user = new User();
-		user.setName("name "+user.getId());
-		user.setPassword("pass "+user.getId());
-		
-		
-		model.addObject("mA_search",mA_search);
-		
-		//model.addObject("tails",ttService.getTailsList());
-		//model.addObject("tails",ttService.tailSetNomenclature(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
-		//model.addObject("tails",ttService.tailNomenclatureSet(mA_search.getPn(), mA_search.getGndr(), mA_search.getCat(), p , perPage));
-		
-		model.addObject("tails",ttService.getNomenclInTails(mA_search, p , perPage));
-		
-		model.addObject("version",appBean.getVersion());
-		//model.addObject("providers", ttService.getProviderList());
-		model.addObject("providers", ttService.getProviderListInTails());
-		
-		//model.addObject("categories", ttService.getNomenclGroupList());
-		model.addObject("categories", ttService.getNomenclGroupListInTails());
-		
-		model.addObject("genders", ttService.getGenderList());
-		model.addObject("types", ttService.getNomenclGroupRootListInTails());
-		
-		model.addObject("isShowPrices", isShowPrices((org.springframework.security.core.userdetails.User)session.getAttribute("authUser")));
-		
-		
-		model.addObject("UPLOAD_FILE_PATH", Constants.UPLOAD_FILE_PATH);
-		return model;
-	}
-	*/
+
 	
 	@RequestMapping(value = {"/login"} , method = RequestMethod.GET)
 	public ModelAndView  login(HttpSession session, HttpServletRequest request, @RequestParam(value = "error",required = false) String error,
@@ -218,6 +185,20 @@ public class IndexCtrl implements Serializable {
 	public ModelAndView  action(HttpSession session) 
 	{
 		ModelAndView model = new ModelAndView("common/action");
+		
+		List<AdvertisingCampaign> advCamps = ttService.getAdvCampList(true);
+		List<AdvertisingCampaign> listAC_slider = new LinkedList<AdvertisingCampaign>();
+		
+		
+		
+		for(AdvertisingCampaign advCamp: advCamps)
+			if(advCamp.getText_to_slider() != null)
+				listAC_slider.add(advCamp);
+		
+		model.addObject("advCamps_slider", listAC_slider);
+
+		model.addObject("advCamps", advCamps); //list AdvCamps
+		
 		//System.out.println(""+ttService.getUserList());
 		
 		return model;

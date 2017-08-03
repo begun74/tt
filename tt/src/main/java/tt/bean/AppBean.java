@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -16,14 +17,17 @@ import javax.annotation.PreDestroy;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 import tt.model.*;
 import tt.modelattribute.IMAmodel;
 import tt.service.TTServiceImpl;
+import tt.model.AdvertisingCampaign;
 
 @Component(value = "appBean")
+@Scope("application")
 public class AppBean implements Serializable {
 
 	/**
@@ -41,6 +45,7 @@ public class AppBean implements Serializable {
 	private HashMap<Long,Object> mapStore = new HashMap<Long,Object>();
 	
 	private List<DirProvider> listProviders = new ArrayList<DirProvider>();
+	
 	
 	private double version = 1.1;
 	

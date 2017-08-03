@@ -2,7 +2,6 @@ package tt.dao;
 
 import java.math.BigInteger;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 
@@ -20,9 +19,14 @@ import tt.model.Store;
 import tt.model.Tail;
 import tt.model.User;
 import tt.modelattribute.MA_search;
+import tt.model.AdvertisingCampaign;
 
 
 public interface Dao {
+	
+	public List<AdvertisingCampaign> getAdvCampList();
+	public List<AdvertisingCampaign> getAdvCampList(boolean active);
+
 	
 	public List<User> getUserList();
 	public void addUser(User user);

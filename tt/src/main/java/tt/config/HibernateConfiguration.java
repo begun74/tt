@@ -17,6 +17,7 @@ import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBuilder;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import tt.model.AdvertisingCampaign;
 import tt.model.ContactUsMessages;
 import tt.model.DirGender;
 import tt.model.DirNomenclGroup;
@@ -80,7 +81,8 @@ public class HibernateConfiguration {
         sessionBuilder.addAnnotatedClasses(OrderItems.class);
         sessionBuilder.addAnnotatedClasses(Order.class);
         sessionBuilder.addAnnotatedClasses(ContactUsMessages.class);
-
+        sessionBuilder.addAnnotatedClasses(AdvertisingCampaign.class);
+        
         return sessionBuilder.buildSessionFactory();
     }
     
