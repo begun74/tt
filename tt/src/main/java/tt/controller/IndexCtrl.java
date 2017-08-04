@@ -192,7 +192,7 @@ public class IndexCtrl implements Serializable {
 		
 		
 		for(AdvertisingCampaign advCamp: advCamps)
-			if(advCamp.getText_to_slider() != null)
+			if(advCamp.getText_to_slider() != null && advCamp.getText_to_slider().trim().length() >0)
 				listAC_slider.add(advCamp);
 		
 		model.addObject("advCamps_slider", listAC_slider);
