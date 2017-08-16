@@ -32,16 +32,30 @@
 										<p><spring:message code="remains.of.goods.on"/> <fmt:formatDate pattern = "dd-MM-yyyy"  value="${maxDateInTails}" />.</p>
 									</div>
 									
-									<div class="col-sm-6 text-right font20px">
-										<c:if test="${mA_search.sortby eq 0 }">
-											<span id="sortbyName" class="sortby cursor label label-success" value="0"><spring:message code="by.name"/></span>
-											<span id="sortbyPrice" class="sortby cursor label label-default" value="1"><spring:message code="by.price"/></span>
-										</c:if>
-										<c:if test="${mA_search.sortby eq 1 }">
-											<span id="sortbyName" class="sortby cursor label label-default" value="0"><spring:message code="by.name"/></span>
-											<span id="sortbyPrice" class="sortby cursor label label-success" value="1"><spring:message code="by.price"/></span>
-										</c:if>
-										
+									
+									<div class="col-sm-6 font20px dropdown">
+												<div class="cursor dropdown-toggle" type="button" data-toggle="dropdown">Сортировать
+  													<span class="caret"></span>
+  												</div>
+												<ul class="cursor dropdown-menu">
+														<c:if test="${mA_search.sortby eq 0 }">
+															<li role="presentation">
+																<div id="sortbyName" class="sortby cursor" value="0"><span class="caret"></span><spring:message code="by.name"/></div>
+															</li>
+															<li role="presentation">
+																<div id="sortbyPrice" class="sortby cursor" value="1"><spring:message code="by.price"/></div>
+															</li>
+														</c:if>
+														<c:if test="${mA_search.sortby eq 1 }">
+															<li role="presentation">
+																<div id="sortbyName" class="sortby cursor" value="0"><spring:message code="by.name"/></div>
+															</li>
+															<li role="presentation">
+																<div id="sortbyPrice" class="sortby cursor" value="1"><span class="caret"></span><spring:message code="by.price"/></div>
+															</li>
+														</c:if>
+
+												</ul>
 									</div>
 								</c:if>
 							</div>

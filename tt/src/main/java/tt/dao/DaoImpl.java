@@ -379,8 +379,8 @@ public class DaoImpl implements Dao {
 			sqlNomeclatureInTails_count += " and dngr.id_dir_nomencl_group_root in "+MA_search.getType().toString().replaceAll("\\[", "\\(").replaceAll("\\]", "\\)");
 		}
 
-		sqlNomeclatureInTails += " order by "+sortby_hs.get(MA_search.getSortby()) + asc +", dp.sorting, dngr.sorting";
-		
+		//sqlNomeclatureInTails += " order by "+sortby_hs.get(MA_search.getSortby()) + asc +", dp.sorting, dngr.sorting";
+		sqlNomeclatureInTails += " order by newItem , "+sortby_hs.get(MA_search.getSortby()) + asc +", dp.sorting, dngr.sorting";
 		
 		
 		//System.out.println((getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class)));
