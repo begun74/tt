@@ -32,7 +32,7 @@ public class MA_search implements Serializable {
 	
 	private int p_p = 9;
 	
-	private int sortby = 0;
+	private int sortby = 2;
 	
 	
 	private boolean asc = true;

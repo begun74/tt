@@ -87,7 +87,7 @@
     <script>
 	    $(function() {
 	    	
-				document.product_filter.asc.value = !${mA_search.asc}; 
+				//document.product_filter.asc.value = !${mA_search.asc}; 
 				
 			    //var p_p = ${mA_search.p_p};
 			    var p_p_get = '&p_p='+${p_p};
@@ -151,6 +151,7 @@
 			    	form_submit('product_filter');
 			    });
 			    
+			/*
 				$("#sortbyName").click(function() {
 			    	document.product_filter.sortby.value = "0";
 			    	form_submit('product_filter');
@@ -160,7 +161,13 @@
 			    	document.product_filter.sortby.value = "1";
 			    	form_submit('product_filter');
 				});
-			    
+			*/	    
+				$(".selectpicker").change(function() {
+			    	document.product_filter.sortby.value = $(this).val();
+			    	form_submit('product_filter');
+				});
+				
+				
 				
 				$(".selectedBadges").mouseover(function() {
 					var selItems = $( ".selected_chkb" );

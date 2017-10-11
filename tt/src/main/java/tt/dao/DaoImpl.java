@@ -354,6 +354,7 @@ public class DaoImpl implements Dao {
 		
 		sortby_hs.put(0, "dn.name");
 		sortby_hs.put(1, "t.firstPrice");
+		sortby_hs.put(2, "newItem, dn.name");
 		
 				
 		String asc = MA_search.isAsc()?" asc ":" desc ";
@@ -380,10 +381,11 @@ public class DaoImpl implements Dao {
 		}
 
 		//sqlNomeclatureInTails += " order by "+sortby_hs.get(MA_search.getSortby()) + asc +", dp.sorting, dngr.sorting";
-		sqlNomeclatureInTails += " order by newItem , "+sortby_hs.get(MA_search.getSortby()) + asc +", dp.sorting, dngr.sorting";
+		sqlNomeclatureInTails += " order by "+sortby_hs.get(MA_search.getSortby()) + asc +", dp.sorting, dngr.sorting";
 		
 		
 		//System.out.println((getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class)));
+		@SuppressWarnings("unchecked")
 		List<Object[]> tmpList = getSession().createSQLQuery(sqlNomeclatureInTails).addEntity("dn",DirNomenclature.class)
 											.addScalar("firstprice")
 											.addScalar("opt_price")

@@ -33,30 +33,14 @@
 									</div>
 									
 									
-									<div class="col-sm-6 font20px dropdown">
-												<div class="cursor dropdown-toggle" type="button" data-toggle="dropdown">Сортировать
-  													<span class="caret"></span>
-  												</div>
-												<ul class="cursor dropdown-menu">
-														<c:if test="${mA_search.sortby eq 0 }">
-															<li role="presentation">
-																<div id="sortbyName" class="sortby cursor" value="0"><span class="caret"></span><spring:message code="by.name"/></div>
-															</li>
-															<li role="presentation">
-																<div id="sortbyPrice" class="sortby cursor" value="1"><spring:message code="by.price"/></div>
-															</li>
-														</c:if>
-														<c:if test="${mA_search.sortby eq 1 }">
-															<li role="presentation">
-																<div id="sortbyName" class="sortby cursor" value="0"><spring:message code="by.name"/></div>
-															</li>
-															<li role="presentation">
-																<div id="sortbyPrice" class="sortby cursor" value="1"><span class="caret"></span><spring:message code="by.price"/></div>
-															</li>
-														</c:if>
+									<div class="col-sm-6 font20px text-right">
+										<select id="sortby" class="selectpicker show-tick">
+										  <option value="2" <c:if test="${mA_search.sortby eq 2 }">selected</c:if>><spring:message code="by.new"/></option>
+										  <option value="0" <c:if test="${mA_search.sortby eq 0 }">selected</c:if>><spring:message code="by.name"/></option>
+										  <option value="1" <c:if test="${mA_search.sortby eq 1 }">selected</c:if>><spring:message code="by.price"/></option>
+										</select>
+									</div>										
 
-												</ul>
-									</div>
 								</c:if>
 							</div>
 								<hr/>
