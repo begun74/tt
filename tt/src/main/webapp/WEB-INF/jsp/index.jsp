@@ -24,6 +24,7 @@
 	<link href="resources/css/simplePagination.css" rel="stylesheet">
 	<link href="resources/css/bootstrap-select.min.css" rel="stylesheet">
 	<link href="resources/css/main.css" rel="stylesheet">
+	<link href="resources/css/slideWindow.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -36,6 +37,8 @@
 </head><!--/head-->
 
 <body>
+
+
 	<!-- header_top -->
 	<%@include file="common/header_top.jsp" %>
 	<!-- header_top -->
@@ -50,6 +53,8 @@
 	
 	<section>
 		<div class="container">
+
+		
 			<div class="row">
 				<div class="col-sm-4 col-md-3">
 					<!-- product_filter -->
@@ -61,15 +66,23 @@
 					<%@include file="common/content4.jsp" %>
 					<!-- content -->
 				</div>
+
 			</div>
+
+
+			<%@include file="common/suggestions.jsp" %>
+			
 		</div>
+
+
 	</section>
+
+	
 	
 	<!-- footer -->
 	<%@include file="common/footer.jsp" %>
 	<!-- footer -->
 	
-
   
     <script src="resources/js/jquery.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
@@ -85,6 +98,10 @@
     <script src="resources/js/jivosite.js"></script>
     
     <script>
+    
+		$(function() {
+		});
+
 	    $(function() {
 	    	
 				//document.product_filter.asc.value = !${mA_search.asc}; 
@@ -198,6 +215,13 @@
 				if(${mA_search.gndr.size() gt 0})
 					$("#badgeGender").html(${mA_search.gndr.size()});
 
+				
+				$(".suggestions").click(function(){
+				    //$(this).fadeOut();
+				    $(this).slideToggle(200);
+				});
+	       			
+				$('.carouselExampleSlidesOnly').carousel()
 	    });
 
         $(document).ready(function(){
@@ -294,10 +318,20 @@
 	                        }
 	                }
 	                );
+	       		
+	       		
+
+	       		
         });
         
         
 	</script>
+
+	<script style="text/css">
+
+	</script>
 	
 </body>
+
+
 </html>

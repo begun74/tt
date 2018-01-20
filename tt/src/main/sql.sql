@@ -515,3 +515,105 @@ select distinct dn.*, t.firstPrice , dngr.sorting, t.opt_price, t.rozn_price, dp
 	where t.destruction_date is null and dg.id_dir_gender in (56) 
 	and dngr.id_dir_nomencl_group_root in (8158) 
 	order by t.firstPrice asc , dp.sorting, dngr.sorting
+
+
+--============  CREATE TABLE tails_history  ===========
+
+CREATE TABLE tails_history
+(
+  id_tails bigint NOT NULL,
+  amounttail bigint NOT NULL,
+  firstprice double precision NOT NULL DEFAULT 0.0,
+  create_date timestamp with time zone NOT NULL DEFAULT now(),
+  fk_id_provider bigint,
+  fk_id_nomenclature bigint,
+  size character varying,
+  destruction_date timestamp without time zone,
+  nds smallint,
+  nadb_opt smallint,
+  nadb_rozn smallint,
+  rozn_price double precision NOT NULL DEFAULT 0,
+  opt_price double precision NOT NULL DEFAULT 0,
+  CONSTRAINT tails_his_pkey PRIMARY KEY (id_tails),
+  CONSTRAINT "idNomencl" FOREIGN KEY (fk_id_nomenclature)
+      REFERENCES dir_nomenclature (id_dir_nomenclature) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT "idProvider" FOREIGN KEY (fk_id_provider)
+      REFERENCES dir_provider (id_dir_provider) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE tails_history
+  OWNER TO postgres;
+
+-- Index: "fki_idNomencl"
+
+-- DROP INDEX "fki_idNomencl";
+
+CREATE INDEX "fki_idNomencl_tails_history"
+  ON tails_history
+  USING btree
+  (fk_id_nomenclature);
+
+-- Index: tails_create_date_idx
+
+-- DROP INDEX tails_create_date_idx;
+
+CREATE INDEX tails_history_create_date_idx
+  ON tails_history
+  USING btree
+  (create_date);
+
+-- Index: tails_destruction_date_idx
+
+-- DROP INDEX tails_destruction_date_idx;
+
+CREATE INDEX tails_history_destruction_date_idx
+  ON tails_history
+  USING btree
+  (destruction_date);
+
+-- Index: tails_id_tails_idx
+
+-- DROP INDEX tails_id_tails_idx;
+
+CREATE INDEX tails_history_id_tails_idx
+  ON tails_history
+  USING btree
+  (id_tails);
+
+--============  CREATE TABLE tails_history  ===========
+
+
+
+insert into tails_history  
+(
+	select * from tails where date(create_date) not in (select distinct date(create_date) from tails order by 1 desc limit 3)
+)
+
+
+select distinct date(create_date) from tails_history order by 1 desc limit 3
+
+delete from tails where date(create_date) not in (select distinct date(create_date) from tails order by 1 desc limit 3);
+--delete from tails_history;
+
+
+
+CREATE OR REPLACE FUNCTION moveTailsToHistory(int default 3)  RETURNS BOOLEAN AS $$
+	DECLARE passed BOOLEAN;
+	BEGIN
+
+			insert into tails_history  
+			(
+				select * from tails where date(create_date) not in (select distinct date(create_date) from tails order by 1 desc limit $1)
+			);
+
+			delete from tails where date(create_date) not in (select distinct date(create_date) from tails order by 1 desc limit $1);
+
+			RETURN passed;
+	END;
+$$ LANGUAGE plpgsql;
+
+select moveTailsToHistory(2)

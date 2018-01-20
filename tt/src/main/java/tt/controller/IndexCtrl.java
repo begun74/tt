@@ -123,6 +123,19 @@ public class IndexCtrl implements Serializable {
 		
 		model.addAttribute("sessBean", sessBean);
 		
+		
+		List<AdvertisingCampaign> advCamps = ttService.getAdvCampList(true);
+		List<AdvertisingCampaign> listAC_slider = new LinkedList<AdvertisingCampaign>();
+		
+		
+		
+		for(AdvertisingCampaign advCamp: advCamps)
+			if(advCamp.getText_to_slider() != null && advCamp.getText_to_slider().trim().length() >0)
+				listAC_slider.add(advCamp);
+		
+		model.addAttribute("advCamps_slider", listAC_slider);
+
+		
 		System.gc();
 		
 		return "index";

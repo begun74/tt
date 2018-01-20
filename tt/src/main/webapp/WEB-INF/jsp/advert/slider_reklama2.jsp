@@ -39,42 +39,6 @@
 									</div>
 						</c:if>
 						
-						<!-- div class="carousel-inner">
-							<div class="item active">
-								<div class="col-sm-10 slider_reklama" >
-										
-										<div class="col-sm-3 ">
-											<img src="resources/images/akciya.png" class="" alt="" />
-										</div>
-										<div class="col-sm-6 text-center ">
-											<h2>${advCamp.text_to_slider}</h2>
-											<p class="text-left"><a href="action#1" class="btn btn-default get"><spring:message code="read.more"/></a></p>
-										</div>
-										<div class="col-sm-3 ">
-											<img src="resources/images/akciya.png" class="" alt="" />
-										</div>
-								</div>
-							</div>
-							<div class="item">
-								<div class="col-sm-3  text-right">
-									<img src="resources/images/akciya.png" class="" alt="" />
-								</div>
-								<div class="col-sm-7 slider_reklama text-center">
-									<h3>С 02 мая  по 30 июня 2017г. Акция ОАО"Купалинка". Скидка -50% с розничной цены на товары, участвующие в акции.</h3>
-									<p class="text-left"><a href="action#2" class="btn btn-default get"><spring:message code="read.more"/></a></p>
-								</div>
-							</div>
-							<div class="item">
-								<div class="col-sm-3  text-right">
-									<img src="resources/images/akciya.png" class="" alt="" />
-								</div>
-								<div class="col-sm-7 slider_reklama text-center">
-									<h3>С 03 мая 2017г. Акция ЗАО"Калинка". Распродажа женского ассортимента. Скидка -35%, -50%, -70% от розничной цены на модели, участвующие в акции.</h3>
-									<p class="text-left"><a href="action#3" class="btn btn-default get"><spring:message code="read.more"/></a></p>
-								</div>
-							</div>
-						</div -->
-						
 					</div>
 				</div>
 			</div>
