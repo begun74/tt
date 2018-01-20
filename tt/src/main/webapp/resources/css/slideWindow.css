@@ -50,9 +50,9 @@
 }
 
 #logo {
-	background-image: url(../images/gif/cooltext1855313453.gif);
-	background-size: content;
-	background-repeat: no-repeat;
+	background: url(../images/gif/cooltext1855313453.gif) no-repeat center center;
+	/* background-size: content;
+	background-repeat: no-repeat; */
 	height: 150px;
 	width: 100%;
 }

@@ -6,7 +6,7 @@
 
 
 	<c:if test="${fn:length(advCamps_slider) gt 0}">
-			<div class="suggestions">
+			<div class="suggestions ">
 
 				<div id="logo"  class="" >
 				</div>
