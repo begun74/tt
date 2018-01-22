@@ -5,11 +5,11 @@
 
 
 
-	<c:if test="${fn:length(advCamps_slider) gt 0}">
+	<c:if test="${fn:length(advCamps_slider) gt 0 }">
 			<div class="suggestions cursor ">
 			
 				<div class="panelz ">
-					<div class="closeDiv border1px">X</div>
+					<div class="closeDiv "><h3>X</h3></div>
 				</div>
 			
 				<div id="logo"  class="" >

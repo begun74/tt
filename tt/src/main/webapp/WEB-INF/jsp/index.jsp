@@ -217,15 +217,23 @@
 
 				
        			
-				
+				/***** Обработка флайера по скидкам */
 				$(".closeDiv").click(function(){
-					$(".suggestions").slideToggle(200);
+					$(".suggestions").animate({'width': 'toggle'});
 				});
 
-				$("#logo").click(function(){
+				$("#logo, .slide-down").click(function(){
 					window.location.href = "action";
 				});
-
+				
+				var nPage = ${p};
+				
+				if(nPage >1) /* Если страница на сайте первая то показываем флайер */
+					$(".suggestions").hide();
+				else         /* Иначе - нет */
+					$(".suggestions").show();
+				/***** Обработка флайера по скидкам */
+				
 	    });
 
         $(document).ready(function(){
