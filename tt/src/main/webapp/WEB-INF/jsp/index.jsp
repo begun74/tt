@@ -216,13 +216,16 @@
 					$("#badgeGender").html(${mA_search.gndr.size()});
 
 				
-				$(".suggestions").click(function(){
-				    //$(this).fadeOut();
-				    //$(this).slideToggle(200);
-				    
+       			
+				
+				$(".closeDiv").click(function(){
+					$(".suggestions").slideToggle(200);
+				});
+
+				$("#logo").click(function(){
 					window.location.href = "action";
 				});
-	       			
+
 	    });
 
         $(document).ready(function(){

@@ -6,7 +6,11 @@
 
 
 	<c:if test="${fn:length(advCamps_slider) gt 0}">
-			<div class="suggestions cursor">
+			<div class="suggestions cursor ">
+			
+				<div class="panelz ">
+					<div class="closeDiv border1px">X</div>
+				</div>
 			
 				<div id="logo"  class="" >
 					<a href="/action"></a>

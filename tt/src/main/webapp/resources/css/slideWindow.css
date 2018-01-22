@@ -6,11 +6,10 @@
 	position: fixed;
 	margin: 0 auto; 
     left: 0px; 
-    bottom: 90px;
-    height: 150px;
+    bottom: 190px;
+    height: 220px;
     width: 400px;
     overflow: hidden;
-    /* opacity: 0.5; */
     align-items: center;
     
 /*	
@@ -27,16 +26,24 @@
     float: none;    
 */    
     
-	z-index:999;
+	z-index:998;
 }
 
 
-.suggestions div {
-	
-    height: 150px;
+.suggestions .panelz {
+    height: 30px;
     width: 100%;
-	
 }
+
+.suggestions .panelz .closeDiv{
+	
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    align-items: center;
+    z-index:998;
+}
+
 .slide-left  p{
 	
 	animation: 30s slide-left;
@@ -45,7 +52,6 @@
 .slide-down {
 	
 	animation: 20s slide-down infinite alternate ;
-	20s slide-down infinite reverse;
 	text-align: center;
 }
 
@@ -53,7 +59,7 @@
 	background: url(../images/gif/action_sale.gif) no-repeat center center;
 	/* background-size: content;
 	background-repeat: no-repeat; */
-	height: 150px;
+	height: 100%;
 	width: 100%;
 }
 
