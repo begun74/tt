@@ -8,7 +8,7 @@
     left: 0px; 
     bottom: 90px;
     height: 150px;
-    width: 300px;
+    width: 400px;
     overflow: hidden;
     /* opacity: 0.5; */
     align-items: center;
@@ -50,7 +50,7 @@
 }
 
 #logo {
-	background: url(../images/gif/cooltext1855313453.gif) no-repeat center center;
+	background: url(../images/gif/action_sale.gif) no-repeat center center;
 	/* background-size: content;
 	background-repeat: no-repeat; */
 	height: 150px;

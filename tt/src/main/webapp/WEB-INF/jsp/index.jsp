@@ -218,10 +218,11 @@
 				
 				$(".suggestions").click(function(){
 				    //$(this).fadeOut();
-				    $(this).slideToggle(200);
+				    //$(this).slideToggle(200);
+				    
+					window.location.href = "action";
 				});
 	       			
-				$('.carouselExampleSlidesOnly').carousel()
 	    });
 
         $(document).ready(function(){

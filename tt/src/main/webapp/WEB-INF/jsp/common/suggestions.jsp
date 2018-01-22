@@ -6,9 +6,10 @@
 
 
 	<c:if test="${fn:length(advCamps_slider) gt 0}">
-			<div class="suggestions ">
-
+			<div class="suggestions cursor">
+			
 				<div id="logo"  class="" >
+					<a href="/action"></a>
 				</div>
 
 			    
@@ -25,10 +26,7 @@
 			    	
 			    </div>
 			    
-
+			
 		   </div>
 	</c:if>
 
-	<script>
-	
-	</script>
