@@ -70,7 +70,7 @@
 			</div>
 
 
-			<%@include file="common/suggestions.jsp" %>
+			<%@include file="common/suggestions.jsp"%>
 			
 		</div>
 
