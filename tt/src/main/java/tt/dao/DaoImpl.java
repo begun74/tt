@@ -75,8 +75,11 @@ public class DaoImpl implements Dao {
 	public List<AdvertisingCampaign> getAdvCampList(boolean active) {
 		// TODO Auto-generated method stub
 		//return getSession().createSQLQuery("select * from advert_campaign where active = :active order by fromdate, todate").addEntity(AdvertisingCampaign.class).setParameter("active", active).list();
+		//return getSession().createCriteria(AdvertisingCampaign.class).add(Restrictions.eq("active", active)).addOrder(Order.asc("index")).list();
+		
 		List<AdvertisingCampaign> advCampList = getSession().createCriteria(AdvertisingCampaign.class).add(Restrictions.eq("active", active)).addOrder(Order.asc("index")).list();
 		return advCampList;
+
 	}
 	
 	@SuppressWarnings("unchecked")

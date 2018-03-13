@@ -40,7 +40,7 @@ public class AdvertisingCampaign implements  IModel {
 	
 	@Column(name="text_to_slider")
 	private String text_to_slider;
-
+	
 	private Timestamp create_date;
 	
 	@Column(name="fromdate")
@@ -53,6 +53,8 @@ public class AdvertisingCampaign implements  IModel {
 	
 	private boolean active;
 
+	@Column(name="index")
+	private int index;
 	
 	@Override
 	public Long getId() {
@@ -66,6 +68,8 @@ public class AdvertisingCampaign implements  IModel {
 		this.id = id;
 	}
 
+	
+	
 	public String getText() {
 		return text;
 	}
@@ -73,6 +77,8 @@ public class AdvertisingCampaign implements  IModel {
 	public void setText(String text) {
 		this.text = text;
 	}
+	
+	
 
 	public String getText_to_slider() {
 		return text_to_slider;
@@ -82,6 +88,7 @@ public class AdvertisingCampaign implements  IModel {
 		this.text_to_slider = text_to_slider;
 	}
 
+	
 	public Timestamp getCreate_date() {
 		return create_date;
 	}
@@ -114,7 +121,7 @@ public class AdvertisingCampaign implements  IModel {
 		this.name = name;
 	}
 
-	
+	//@Override
 	public String getName() {
 		// TODO Auto-generated method stub
 		return name;
@@ -129,11 +136,27 @@ public class AdvertisingCampaign implements  IModel {
 		this.active = active;
 	}
 
+	
+	
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
 	@Override
 	public int compareTo(Object arg0) {
 		// TODO Auto-generated method stub
 		return 0;
 	}
 
-}
+	@Override
+	public String toString() {
+		return "AdvertisingCampaign [index=" + index + "]";
+	}
+	
+	
 
+}
