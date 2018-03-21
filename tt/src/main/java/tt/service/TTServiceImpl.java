@@ -93,12 +93,12 @@ public class TTServiceImpl implements Dao {
 	}
 
 
-	@Override
+	/*@Override
 	public void addProvider(DirProvider dirProvider) {
 		// TODO Auto-generated method stub
 		dao.addProvider(dirProvider);
 	}
-
+	*/
 
 
 	//@CheckAccess
@@ -129,12 +129,12 @@ public class TTServiceImpl implements Dao {
 	}
 
 
-	@Override
+	/*@Override
 	public void addNomenclature(DirNomenclature dirNomenclature) {
 		// TODO Auto-generated method stub
 		dao.addNomenclature(dirNomenclature);
 	}
-
+	*/
 
 
 	@Override
@@ -165,7 +165,7 @@ public class TTServiceImpl implements Dao {
 		return dao.getTailsList();
 	}
 
-	@ProcessTail //Обработка остатков для расчета опт и розничной цены
+	/*@ProcessTail //Обработка остатков для расчета опт и розничной цены
 	@Override
 	public void addTail(Tail tail) {
 		// TODO Auto-generated method stub
@@ -177,7 +177,7 @@ public class TTServiceImpl implements Dao {
 		// TODO Auto-generated method stub
 		dao.addTails(tails);
 	}
-
+	*/
 
 
 	@Override
@@ -199,11 +199,11 @@ public class TTServiceImpl implements Dao {
 		return dao.getNomenclGroupListInTails();
 	}
 
-	@Override
+	/*@Override
 	public void addNomenclGroup(DirNomenclGroup dirNomenclGroup) {
 		dao.addNomenclGroup(dirNomenclGroup);
 	}
-
+	*/
 
 	@Override
 	public List<DirGender> getGenderList() {
@@ -224,12 +224,12 @@ public class TTServiceImpl implements Dao {
 		return dao.getNomenclGroupRootListInTails();
 	}
 
-	@Override
+	/*@Override
 	public void addNomenclGroupRoot(DirNomenclGroupRoot dirNomenclGroupRoot) {
 		// TODO Auto-generated method stub
 		dao.addNomenclGroupRoot(dirNomenclGroupRoot);
 	}
-
+*/
 	
 	public List<Tail> getTailsList(List<Long> providers, List<Long> genders,  List<Long> categories, int p) {
 		// TODO Auto-generated method stub
@@ -428,13 +428,13 @@ public class TTServiceImpl implements Dao {
 		return dao.getContactUsMessagesList();
 	}
 
-
+	/*
 	@Override
 	public void updateTails() {
 		// TODO Auto-generated method stub
 		dao.updateTails();
 	}
-	
+	*/
 
 
 	@Override

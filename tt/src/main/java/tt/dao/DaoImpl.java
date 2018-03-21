@@ -108,12 +108,12 @@ public class DaoImpl implements Dao {
 		return getSession().createSQLQuery(sqlDirProviderInTails).addEntity(DirProvider.class).list();
 	}
 
-	@Override
+	/*@Override
 	public void addProvider(DirProvider dirProvider) {
 		// TODO Auto-generated method stub
 		getSession().saveOrUpdate(dirProvider);
 	}
-
+*/
 
 	@Override
 	public void delObject(Object obj) {
@@ -150,7 +150,7 @@ public class DaoImpl implements Dao {
 		return result;
 	}
 
-	@Override
+	/* @Override
 	public void addNomenclature(DirNomenclature dirNomenclature) {
 		
 		// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -184,7 +184,7 @@ public class DaoImpl implements Dao {
 		
 		
 	}
-
+*/
 
 	@Override
 	public List<Store> getStoreList() {
@@ -210,12 +210,13 @@ public class DaoImpl implements Dao {
 		return getSession().createCriteria(Tail.class).add(Restrictions.isNull("destruction_date")).addOrder(Order.asc("id")).list();
 	}
 
-	@Override
+	/*@Override
 	public void addTail(Tail tail) {
 		// TODO Auto-generated method stub
 		getSession().saveOrUpdate(tail);
 	}
-	
+	*/
+	/*
 	@Override
 	public void addTails(Collection<Tail> tails) {
 		// TODO Auto-generated method stub
@@ -224,7 +225,7 @@ public class DaoImpl implements Dao {
 			sess.saveOrUpdate(tail);
 		
 	}
-
+*/
 
 	@Override
 	public DirProvider getProviderByCode(Integer code) {
@@ -249,12 +250,12 @@ public class DaoImpl implements Dao {
 	}
 
 
-	@Override
+	/*@Override
 	public void addNomenclGroup(DirNomenclGroup dirNomenclGroup) {
 		// TODO Auto-generated method stub
 		getSession().saveOrUpdate(dirNomenclGroup);
 	}
-
+	*/
 	@Override
 	public List<DirGender> getGenderList() {
 		// TODO Auto-generated method stub
@@ -276,12 +277,12 @@ public class DaoImpl implements Dao {
 		return getSession().createSQLQuery(sqlNomenclGroupRootListInTails).addEntity(DirNomenclGroupRoot.class).list();
 	}
 
-	@Override
+	/*@Override
 	public void addNomenclGroupRoot(DirNomenclGroupRoot dirNomenclGroupRoot) {
 		// TODO Auto-generated method stub
 		getSession().saveOrUpdate(dirNomenclGroupRoot);
 	}
-
+	 */
 	@Override
 	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions, int p) {
 		// TODO Auto-generated method stub
@@ -538,12 +539,12 @@ public class DaoImpl implements Dao {
 		return  getSession().createQuery("from ContactUsMessages").list();
 	}
 
-	@Override
+	/*@Override
 	public void updateTails() {
 		// TODO Auto-generated method stub
 		getSession().createSQLQuery("update tails set destruction_date = now() where destruction_date is null").executeUpdate();
 	}
-
+*/
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<DirNomenclature> getPopularDirNomenclature() {

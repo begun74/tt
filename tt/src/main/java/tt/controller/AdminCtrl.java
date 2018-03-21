@@ -43,9 +43,9 @@ import tt.util.autoLoad.ProcessFiles;
 
 
 
-@Controller
-@Scope("session")
-@RequestMapping(value = {"/admin"} , method = RequestMethod.GET)
+//@Controller
+//@Scope("session")
+//@RequestMapping(value = {"/admin"} , method = RequestMethod.GET)
 public class AdminCtrl {
 	
 	
@@ -67,7 +67,7 @@ public class AdminCtrl {
 	
 
 	
-	//@Loggable
+	/* //@Loggable
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView  manage(HttpSession session, 
 				@RequestParam(value = "act",   defaultValue = "0") String act,
@@ -180,7 +180,7 @@ public class AdminCtrl {
 		if(id_dir_provider != null && id_dir_provider.longValue()>0) 
 			dirProvider.setId(id_dir_provider);
 		
-		ttService.addProvider(dirProvider);
+		//ttService.addProvider(dirProvider);
 		
 	    return model;
 	}
@@ -230,7 +230,7 @@ public class AdminCtrl {
 	}
 	
 	
-
+/*
 	@RequestMapping(value = "addFileNomencl" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFileNomencl( @ModelAttribute  MultipartFile file,
 										@Valid MA_loadNomencl mA_loadNomencl ,
@@ -306,8 +306,8 @@ public class AdminCtrl {
 		return model;
 	}
 	
-	
-	
+	*/
+	/*
 	@RequestMapping(value = "addFileNomenclGroup" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFileNomenclGroup( @ModelAttribute  MultipartFile file,
 										@Valid MA_loadNomenclGroup mA_loadNomenclGroup ,
@@ -376,8 +376,8 @@ public class AdminCtrl {
 
 		return model;
 	}
-
-	
+*/
+	/*
 	@RequestMapping(value = "addFileNomenclGroupRoot" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFileNomenclGroupRoot( @ModelAttribute  MultipartFile file,
 										@Valid MA_loadNomenclGroupRoot mA_loadNomenclGroupRoot ,
@@ -446,8 +446,8 @@ public class AdminCtrl {
 
 		return model;
 	}
-	
-	
+	*/
+	/*
 
 	@RequestMapping(value = "addFileProvider" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFileProvidere( @ModelAttribute  MultipartFile file,
@@ -519,9 +519,9 @@ public class AdminCtrl {
 		
 		return model;
 	}
+	*/
 
-
-	
+	/*
 	@RequestMapping(value = "addFileTail" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processFileTail(@ModelAttribute MA_loadTempTail mA_loadTempTail, 
 														@RequestParam(value = "act",   defaultValue = "-1", required=true) int act,
@@ -569,8 +569,8 @@ public class AdminCtrl {
 		
 		return model;
 	}
-	
-
+	*/
+/*
 	@RequestMapping(value = "addTempFileTail" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   processTempFileTail( @ModelAttribute  MultipartFile file,
 										@Valid MA_loadTail mA_loadTail ,
@@ -672,5 +672,5 @@ public class AdminCtrl {
 		return "AdminCtrl []";
 	}
 	
-	
+*/
 }

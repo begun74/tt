@@ -34,14 +34,14 @@ public interface Dao {
 
 	public List<DirProvider> getProviderList();
 	public List<DirProvider> getProviderListInTails();
-	public void addProvider(DirProvider dirProvider);
+	//public void addProvider(DirProvider dirProvider);
 	public DirProvider getProviderByCode(Integer code);
 	
 
 	public List<DirNomenclature> getNomenclatureList();
 	public Object [] getNomenclatureList(int p, int itemOnPage);
 	public List<DirNomenclature> getNomenclatureList(Collection<Criterion> criterions);
-	public void addNomenclature(DirNomenclature dirNomenclature);
+	//public void addNomenclature(DirNomenclature dirNomenclature);
 	public Set<DirNomenclature> getTailsNomenclature(Tail tail_example, Collection<Criterion> criterions ,int p);
 	public Object [] getNomenclInTails(MA_search mA_search , int p,int itemOnPage);
 	//public Set<DirNomenclature> getNomenclInTails_(List<Long> types, List<Long> providers, List<Long> genders, List<Long> categories , int p);
@@ -51,18 +51,18 @@ public interface Dao {
 
 	public List<DirNomenclGroup> getNomenclGroupList();
 	public List<DirNomenclGroup> getNomenclGroupListInTails();
-	public void addNomenclGroup(DirNomenclGroup dirNomenclGroup);
+	//public void addNomenclGroup(DirNomenclGroup dirNomenclGroup);
 
 	public List<DirNomenclGroupRoot> getNomenclGroupRootList();
 	public List<DirNomenclGroupRoot> getNomenclGroupRootListInTails();
-	public void addNomenclGroupRoot(DirNomenclGroupRoot dirNomenclGroupRoot);
+	//public void addNomenclGroupRoot(DirNomenclGroupRoot dirNomenclGroupRoot);
 
 	public List<DirGender> getGenderList();
 	public DirGender getGenderByName(String name);
 
 	
-	public void addTail(Tail tail);
-	public void addTails(Collection<Tail> tails);
+	//public void addTail(Tail tail);
+	//public void addTails(Collection<Tail> tails);
 	public List<Tail> getTailsList();
 	public List<Tail> getTailsList(Tail tail_example, Collection<Criterion> criterions, int p );
 	public List<Tail> getTailsList(long id_dirNomenclature);
@@ -88,7 +88,7 @@ public interface Dao {
 	public Object getObject(Class clazz,Long id);
 	public void delObject(Object obj);
 	
-	public void updateTails();
+	//public void updateTails();
 	
 	User findByUserName(String username);
 	
