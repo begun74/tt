@@ -43,9 +43,9 @@ import tt.util.autoLoad.ProcessFiles;
 
 
 
-//@Controller
-//@Scope("session")
-//@RequestMapping(value = {"/admin"} , method = RequestMethod.GET)
+@Controller
+@Scope("session")
+@RequestMapping(value = {"/admin"} , method = RequestMethod.GET)
 public class AdminCtrl {
 	
 	
@@ -67,7 +67,7 @@ public class AdminCtrl {
 	
 
 	
-	/* //@Loggable
+	//@Loggable
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView  manage(HttpSession session, 
 				@RequestParam(value = "act",   defaultValue = "0") String act,
@@ -122,7 +122,7 @@ public class AdminCtrl {
 		return model;
 	}
 	
-	
+/*	
 	
 	@RequestMapping(value = "addNomencl" , method = RequestMethod.POST , consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	public ModelAndView   addNomencl(HttpSession session, @Valid @ModelAttribute("addNomenclForm") DirNomenclature dirNomenclature,
