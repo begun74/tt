@@ -62,8 +62,8 @@
 							<p>Тел.: 8 (017) 292 39 11</p>
 							<p>Режим работы:</p>
 							<p>понедельник - пятница: с 10.00 до 19.00</p>
-							<p>суббота: с 10.00 до 18.00</p>
-							<p>воскресенье — выходной день</p>
+							<!--  p>суббота: с 10.00 до 18.00</p -->
+							<p>суббота,воскресенье — выходной день</p>
 						</div>
 						<div class="col-sm-4 padding-right">
 							<img alt="" class="div_h200_w282" src="resources/images/shop/shop1_1.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
