@@ -54,7 +54,7 @@
 					<div style="text-align:center;"><h3>Наши магазины</h3></div>
 				</div>
 				<div class="col-sm-12 padding-right">
-					<div>
+					<!-- div>
 						<div class="col-sm-2 "></div>
 						<div class="col-sm-6 ">
 							<p><b>Магазин № 1 «Трикотаж»</b>
@@ -62,14 +62,14 @@
 							<p>Тел.: 8 (017) 292 39 11</p>
 							<p>Режим работы:</p>
 							<p>понедельник - пятница: с 10.00 до 19.00</p>
-							<!--  p>суббота: с 10.00 до 18.00</p -->
+							
 							<p>суббота,воскресенье — выходной день</p>
 						</div>
 						<div class="col-sm-4 padding-right">
 							<img alt="" class="div_h200_w282" src="resources/images/shop/shop1_1.jpg" onerror="this.onerror=null;this.src='resources/images/products/nopicture2.jpg';"> 
 						</div>
 					</div>
-					<h3>&nbsp</h3>
+					<h3>&nbsp</h3 -->
 					<div>
 						<div class="col-sm-2 "></div>
 						<div class="col-sm-6 padding-right">
