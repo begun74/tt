@@ -118,9 +118,9 @@
 								<li>
 									<p><b><spring:message code="contact.info.boss"/></b>: <spring:message code="contact.info.boss_name"/></p>
 								</li>
-								<li>
+								<!-- li>
 									<p><b><spring:message code="contact.info.mainoper1"/></b>: <spring:message code="contact.info.mainoper1_name"/></p>
-								</li>
+								</li -->
 								<li>
 									<p><b><spring:message code="contact.info.mainoper2"/></b>: <spring:message code="contact.info.mainoper2_name"/></p>
 								</li>
