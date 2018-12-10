@@ -116,13 +116,16 @@
 							<p><h2 class="title text-center"><spring:message code="contact.info.main"/></h2></p>
 							<ul>
 								<li>
-									<p><b><spring:message code="contact.info.boss"/></b>: <spring:message code="contact.info.boss_name"/></p>
+									<p><b><spring:message code="contact.info.boss"/></b>:</p>
+									<p><spring:message code="contact.info.boss_name"/></p>
 								</li>
 								<!-- li>
-									<p><b><spring:message code="contact.info.mainoper1"/></b>: <spring:message code="contact.info.mainoper1_name"/></p>
+									<p><b><spring:message code="contact.info.mainoper1"/></b>:</p>
+									<p><spring:message code="contact.info.mainoper1_name"/></p>
 								</li -->
 								<li>
-									<p><b><spring:message code="contact.info.mainoper2"/></b>: <spring:message code="contact.info.mainoper2_name"/></p>
+									<p><b><spring:message code="contact.info.mainoper2"/></b>:</p>
+									<p><spring:message code="contact.info.mainoper2_name"/></p>
 								</li>
 							</ul>
 	    				</address>
